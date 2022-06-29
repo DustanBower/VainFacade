@@ -1,37 +1,39 @@
 {
-   "title":"Sample Mod",
-   "author":"MigrantP",
-   "description":"Nothing in this mod is intended to be balanced or playable. It exists as an example to help you as you start working on your own mod. Get the source code here: https://github.com/Handelabra/WorkshopSample",
-   "namespace":"Workshopping",
+   "title":"Vain Facade",
+   "author":"Tonitrus",
+   "description":"Playtesting mod for Vain Facade custom expansion",
+   "namespace":"vain-facade",
    "publishedFileId":2422637296,
    "dll":"MyMod.dll",
-   "version":"0.5",
-   "color":"4444DD",
+   "version":"0.1",
+   "color":"232370",
    "manualTags":[],
    "decks":{
-      "heroes":[
-         "MigrantCoder"
-      ],
-      "villains":[
-         "TheBaddies"
-      ],
-      "teamVillains":[
-         "TheHugMonsterTeam"
-      ],
+      "heroes":[],
+      "villains":[],
+      "teamVillains":[],
       "environments":[
-         "DevStream"
+         "TheMidnightBazaar"
       ]
    },
-   "variants":{
-       "Bunker":["WaywardBunkerCharacter"],
-       "TheSentinels":["TheSerpentinelsInstructions","DrMedicobraCharacter","MainsnakeCharacter","TheIdealizardCharacter","WrattleCharacter"],
-       "SkyScraper":["CentristSkyScraperNormalCharacter"],
-"BaronBlade":["BaronJeremyCharacter"],
-"Cauldron.Cricket":["NoisyCricketCharacter"]
-   },
+   "variants":{},
    "credits":[
-   "Credits can have many lines.",
-   "This line is one of them.",
-   "This line is another one of them."
+       "Game icons from game-icons.net",
+       "The Midnight Bazaar",
+        "a sense of loss - forest entrance - by Delapouite under CC BY 3.0",
+        "goblin fruit - fruiting - by Lorc under CC BY 3.0",
+        "disquiet - stitched wound - by Lorc under CC BY 3.0 [rotate to look like a smile]",
+        "memories of tomorrow - open book - by Lorc under CC BY 3.0",
+        "mr. wolf - mouth watering - by Lorc under CC BY 3.0",
+        "red-eyed ronald - delighted - by Lorc under CC BY 3.0",
+        "the black dog - hidden - by Lorc under CC BY 3.0",
+        "the blinded queen - crown - by Lorc under CC BY 3.0",
+        "the cloistered prince - portrait - by Delapouite under CC BY 3.0",
+        "the dancer at the dawn - ballerina shoes - by Delapouite under CC BY 3.0",
+        "the empty well - well - by Delapouite under CC BY 3.0",
+        "the poet of the pale - two shadows - by Lorc under CC BY 3.0",
+        "the singer in the silence - echo ripples - by Lorc under CC BY 3.0",
+        "the whisper scribe - double face mask - by Lorc under CC BY 3.0",
+        "velkinor - relic blade - by Lorc under CC BY 3.0"
    ]
 }
