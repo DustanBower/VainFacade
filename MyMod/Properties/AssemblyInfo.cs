@@ -4,12 +4,12 @@ using System.Runtime.CompilerServices;
 // Information about this assembly is defined by the following attributes. 
 // Change them to the values specific to your project.
 
-[assembly: AssemblyTitle("MyMod")]
+[assembly: AssemblyTitle("VainFacade")]
 [assembly: AssemblyDescription("")]
-[assembly: AssemblyConfiguration("")]
+[assembly: AssemblyConfiguration("Release")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("")]
-[assembly: AssemblyCopyright("${AuthorCopyright}")]
+[assembly: AssemblyProduct("VainFacade")]
+[assembly: AssemblyCopyright("Dustan Bower")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
