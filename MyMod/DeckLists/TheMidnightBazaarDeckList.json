@@ -356,7 +356,7 @@
 			],
 			"powers": [
 				"Your hero deals 1 target 5 irreducible melee damage, then increases damage dealt to your hero by 1 until the start of your next turn."
-			]
+			],
 			"icons": [
 				"HasPower",
 				"DealDamageMelee",
