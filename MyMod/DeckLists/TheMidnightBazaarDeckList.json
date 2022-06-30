@@ -1,0 +1,369 @@
+{
+	"name": "The Midnight Bazaar",
+	"listname":  "Midnight Bazaar",
+	"kind": "Environment",
+	"backgroundColor": "538B15",
+	"difficulty": 1,
+	"cards": [
+		{
+			"identifier": "ASenseOfLoss",
+			"count": 1,
+			"title": "A Sense of Loss",
+			"keywords": [
+				"the ties that bind"
+			],
+			"body": [
+				"When this card enters play, play the top card of the environment deck.",
+				"Reduce damage dealt by non-environment targets by 1.",
+				"At the start of the environment turn, deal each hero 1 psychic damage for each card from their deck under [i]The Empty Well.[/i]"
+			],
+			"icons": [
+				"PlayCardNow",
+				"ReduceDamageDealt",
+				"StartOfTurnAction",
+				"DealDamagePsychic"
+			],
+			"flavorText": "Strange thoughts clouded Blitz's mind. His{BR}heart pined for something he couldn't{BR}remember, beyond this place. Sensing an{BR}opening, Firebird swooped in for the kill.",
+			"flavorQuotes": []
+		},
+		{
+			"identifier": "Disquiet",
+			"count": 1,
+			"title": "Disquiet",
+			"keywords": [
+				"unbinding"
+			],
+			"body": [
+				"This card is indestructible.",
+				"When this card enters play, play the top card of the environment deck.",
+				"Damage dealt by Threens is irreducible.",
+				"When a Threen would deal damage, 1 player may put 2 cards from their hand or 1 hero card from play under [i]The Empty Well[/i] to redirect that damage to a non-Threen target."
+			],
+			"icons": [
+				"Indestructible",
+				"PlayCardNow",
+				"MakeDamageIrreducible",
+				"RedirectDamage"
+			],
+			"flavorText": "The woman tapped her fingers rhythmically on{BR}her forearm, her stitched-together lips{BR}contorting into an eerie smile, as Glyph sliced{BR}the threads that bound them one by one.",
+			"flavorQuotes": []
+		},
+		{
+			"identifier": "GoblinFruit",
+			"count": 1,
+			"title": "Goblin Fruit",
+			"keywords": [
+				"succulent morsel"
+			],
+			"body": [
+				"When this card enters play, search the environment deck and trash for [i]The Empty Well[/i] and put it into play. Shuffle the environment deck.",
+				"At the end of the environment turn, a player may move a card from their hand under [i]The Empty Well[/i] to put the bottom card of their deck into play. If they do not, put the bottom card of the villain deck into play."
+			],
+			"icons": [
+				"Search",
+				"EndOfTurnAction",
+				"Manipulate",
+				"PlayCardNow"
+			],
+			"flavorText": "Ember still remembered how that first fruit{BR}tasted -- the power and the portents within --{BR}and how she had run from the old tree, only{BR}to find it always behind her, in the clearing{BR}that she had somehow never left.",
+			"flavorQuotes": []
+		},
+		{
+			"identifier": "MemoriesOfTomorrow",
+			"count": 1,
+			"title": "Memories of Tomorrow",
+			"keywords": [
+				"relic"
+			],
+			"hitpoints": 3,
+			"body": [
+				"When this card enters play, search the environment deck and trash for [i]The Empty Well[/i] and put it into play. Shuffle the environment deck.",
+				"At the end of the environment turn, 1 player may move 1 card from their hand under [i]The Empty Well[/i] to discard the top card of each deck and put a card from a trash into play."
+			],
+			"icons": [
+				"Search",
+				"EndOfTurnAction",
+				"Discard",
+				"PlayCardNow"
+			],
+			"flavorText": "The old tome was impossibly thick, filled with dry,{BR}blank pages. Suddenly, the pages came to life with{BR}words penned in living ink that ran across them,{BR}from beginning to end and back again. Banshee{BR}read as quickly as she could, but gleaned little.",
+			"flavorQuotes": []
+		},
+		{
+			"identifier": "MrWolf",
+			"count": 1,
+			"title": "Mr. Wolf",
+			"keywords": [
+				"fae"
+			],
+			"hitpoints": 7,
+			"body": [
+				"When this card would deal damage, if [i]The Blinded Queen[/i] is in play, play the top card of the villain deck instead.",
+				"At the end of the environment turn, this card deals the target with the lowest HP {H + 1} melee damage."
+			],
+			"icons": [
+				"PlayCardNow",
+				"EndOfTurnAction",
+				"DealDamageMelee"
+			],
+			"flavorText": "“How will I know where to look?” Glyph asked.{BR}Firebird shifted on her perch, which had begun{BR}to glow red from the heat from her talons.{BR}“Look for Mr. Wolf,” she croaked. “Wherever{BR}there is trouble, he will be there in its midst.”",
+			"flavorQuotes": [
+				{
+					"identifier": "Glyph",
+					"text": "How will I know where to look?"
+				},
+				{
+					"identifier": "Firebird",
+					"text": "Look for Mr. Wolf,"
+				},
+				{
+					"identifier": "Firebird",
+					"text": "Wherever{BR}there is trouble, he will be there in its midst."
+				}
+			]
+		},
+		{
+			"identifier": "RedEyedRonald",
+			"count": 1,
+			"title": "Red-Eyed Ronald",
+			"keywords": [
+				"fae"
+			],
+			"hitpoints": 7,
+			"body": [
+				"When this card would deal damage, if [i]The Blinded Queen[/i] is in play, play the top card of the environment deck instead.",
+				"At the end of the environment turn, this card deals the hero target with the highest HP {H + 2} melee damage. If a player puts a card from their hand under [i]The Empty Well[/i], redirect that damage to a target other than this card."
+			],
+			"icons": [
+				"PlayCardNow",
+				"EndOfTurnAction",
+				"DealDamageMelee",
+				"RedirectDamage"
+			],
+			"flavorText": "His beard and hair were black as pitch, and his skin{BR}a light green. His red eye had no white or iris, but{BR}was entirely blood-red. “I'm told you solve{BR}problems,” Carnaval said coolly. Ronald smiled a{BR}toothy smile, with each tooth long and pointed.",
+			"flavorQuotes": [
+				{
+					"identifier": "Carnaval",
+					"text": "I'm told you solve{BR}problems,"
+				}
+			]
+		},
+		{
+			"identifier": "TheBlackDog",
+			"count": 1,
+			"title": "The Black Dog",
+			"keywords": [
+				"fae",
+				"hound"
+			],
+			"hitpoints": 7,
+			"body": [
+				"When this card enters play, play the top card of the environment deck.",
+				"Damage dealt by this card can only be increased by environment cards.",
+				"At the start of the environment turn, this card deals each non-environment or Threen target 0 irreducible infernal damage 3 times."
+			],
+			"icons": [
+				"PlayCardNow",
+				"MakeDamageUnincreasable",
+				"StartOfTurnAction",
+				"DealDamageInfernal"
+			],
+			"flavorText": "Before Arctis could act, Liana pulled him behind the{BR}cart with such force that he nearly fell. Her eyes{BR}turned completely black as she snarled at him. “You{BR}can escape, or it can take you. If you're very lucky,{BR}kill you. You can fight, but you can't win.”",
+			"flavorQuotes": [
+				{
+					"identifier": "Liana",
+					"text": "You{BR}can escape, or it can take you. If you're very lucky,{BR}kill you. You can fight, but you can't win."
+				}
+			]
+		},
+		{
+			"identifier": "TheBlindedQueen",
+			"count": 1,
+			"title": "The Blinded Queen",
+			"keywords": [
+				"her grace"
+			],
+			"body": [
+				"This card can't be removed from play by other cards.",
+				"The first time each turn a Threen or non-environment target deals damage to a target other than itself, increase damage dealt to the source of that damage by 1 until this card leaves play.",
+				"At the start of the environment turn, play the top card of the environment deck, then shuffle this card and a Hound from the environment trash into the environment deck."
+			],
+			"icons": [
+				"Indestructible",
+				"IncreaseDamageTaken",
+				"StartOfTurnAction",
+				"PlayCardNow",
+				"Manipulate"
+			],
+			"flavorText": "From nowhere she suddenly stood in their{BR}midst. Where her eyes should have been was{BR}only darkness -- a watchful darkness -- a{BR}hungry darkness. Then they were alone again.",
+			"flavorQuotes": []
+		},
+		{
+			"identifier": "TheCloisteredPrince",
+			"count": 1,
+			"title": "The Cloistered Prince",
+			"keywords": [
+				"relic"
+			],
+			"hitpoints": 7,
+			"body": [
+				"Play this card in a hero play area.",
+				"Increase damage dealt to and by targets in this play area by 1.",
+				"At the end of that hero's turn, they may play a card or use a power. If they do, play the top card of the environment or villain deck."
+			],
+			"icons": [
+				"IncreaseDamageDealt",
+				"IncreaseDamageTaken",
+				"EndOfTurnAction",
+				"PlayCardNow"
+			],
+			"flavorText": "Ignatius pounded his fists on the painting, but only{BR}silence greeted him. “Do you hear me, wretch?” he{BR}shouted. “I wish to see all my enemies dead!”{BR}Silence reigned. After what seemed like an eternity,{BR}the face in the painting simply smiled.",
+			"flavorQuotes": [
+				{
+					"identifier": "Ignatius",
+					"text": "Do you hear me, wretch?"
+				},
+				{
+					"identifier": "Ignatius",
+					"text": "I wish to see all my enemies dead!"
+				}
+			]
+		},
+		{
+			"identifier": "TheDancerAtTheDawn",
+			"count": 1,
+			"title": "The Dancer at the Dawn",
+			"keywords": [
+				"fae",
+				"threen"
+			],
+			"hitpoints": 7,
+			"body": [
+				"Reduce damage dealt by this card to 0.",
+				"At the end of the environment turn, discard the top 3 cards of the environment deck. Put any Threens or Unbindings discarded this way into play. Then set the HP of each Threen to the HP of the Threen with the highest HP."
+			],
+			"icons": [
+				"ReduceDamageDealt",
+				"EndOfTurnAction",
+				"Manipulate",
+				"RegainHP"
+			],
+			"flavorText": "Her every move and step in perfect time, the{BR}dancer was a sight to behold. Flowers sprang{BR}up in her footprints, their petals opening in{BR}perfect sync with the winds and the clouds.{BR}Where she danced, so danced the world.",
+			"flavorQuotes": []
+		},
+		{
+			"identifier": "TheEmptyWell",
+			"count": 1,
+			"title": "The Empty Well",
+			"keywords": [],
+			"body": [
+				"This card is indestructible.",
+				"When this card enters play, play the top card of the environment deck.",
+				"When a card with the same title from the same deck as a card under this card would enter play, remove it from the game instead."
+			],
+			"icons": [
+				"Indestructible",
+				"PlayCardNow",
+				"CannotPlayCards",
+				"RemoveFromGame"
+			],
+			"flavorText": "Merchants and visitors alike gathered around the{BR}well to pay tribute to Her Grace. None thirsted in{BR}sight of the well, but neither were they truly sated. It{BR}sat in the courtyard, somehow both inconspicuous{BR}and ominous, at the center of all things.",
+			"flavorQuotes": []
+		},
+		{
+			"identifier": "ThePoetOfThePale",
+			"count": 1,
+			"title": "The Poet of the Pale",
+			"keywords": [
+				"fae",
+				"threen"
+			],
+			"hitpoints": 7,
+			"body": [
+				"Reduce damage dealt by this card to 0.",
+				"Threens are indestructible if any Threen has 1 or more HP.",
+				"At the end of the environment turn, this card deals the non-Threen target with the lowest HP {H - 2} psychic damage."
+			],
+			"icons": [
+				"ReduceDamageDealt",
+				"Indestructible",
+				"EndOfTurnAction",
+				"DealDamagePsychic"
+			],
+			"flavorText": "They were allowed to speak so long as{BR}they didn't sing. Once the poet was freed,{BR}they all spoke in perfect unison, no matter{BR}how far apart. It made Liana's skin crawl.",
+			"flavorQuotes": []
+		},
+		{
+			"identifier": "TheSingerInTheSilence",
+			"count": 1,
+			"title": "The Singer in the Silence",
+			"keywords": [
+				"fae",
+				"threen"
+			],
+			"hitpoints": 7,
+			"body": [
+				"Reduce damage dealt by this card to 0.",
+				"Increase damage dealt by Threens by the number of Threens in play.",
+				"At the end of the environment turn, this card deals each non-Threen target 1 sonic damage, then plays a Threen and an Unbinding from the environment trash."
+			],
+			"icons": [
+				"ReduceDamageDealt",
+				"IncreaseDamageDealt",
+				"EndOfTurnAction",
+				"DealDamageSonic",
+				"PlayCardNow"
+			],
+			"flavorText": "Though the singer was miles away, Banshee knew{BR}when she began. Beside her, the poet's mouth{BR}opened, but 3 voices came out, singing in perfect{BR}harmony. The world bent and gnarled under the{BR}force of it, and the disciples began to shatter.",
+			"flavorQuotes": []
+		},
+		{
+			"identifier": "TheWhisperScribe",
+			"count": 1,
+			"title": "The Whisper Scribe",
+			"keywords": [
+				"fae"
+			],
+			"hitpoints": 3,
+			"body": [
+				"When this card enters play, search the environment deck and trash for [i]The Empty Well[/i] and put it into play. Shuffle the environment deck.",
+				"At the end of the environment turn, a player may put 2 different cards from their hand under [i]The Empty Well[/i]. If 2 cards are moved this way, search a deck for a card and put it into play, then shuffle that deck. If a card enters play this way, remove this card from the game."
+			],
+			"icons": [
+				"Search",
+				"EndOfTurnAction",
+				"PlayCardNow",
+				"RemoveFromGame"
+			],
+			"flavorText": "Without looking up from the coin he was{BR}polishing, he offhandedly said, “The tattooed watch{BR}counts down to your apocalypse, Ms. Reaper, but{BR}it may one day be averted. You will not see your{BR}doom in time, but then, again, you may.”",
+			"flavorQuotes": [
+				{
+					"identifier": "",
+					"text": "The tattooed watch{BR}counts down to your apocalypse, Ms. Reaper, but{BR}it may one day be averted. You will not see your{BR}doom in time, but then, again, you may."
+				}
+			]
+		},
+		{
+			"identifier": "Velkinor",
+			"count": 1,
+			"title": "Velkinor",
+			"keywords": [
+				"relic"
+			],
+			"hitpoints": 3,
+			"body": [
+				"At the end of the environment turn, if there is no active hero in this play area, 1 player may move a card from their hand under [i]The Empty Well[/i] to move this card to their play area. They gain the following power:"
+			],
+			"powers": [
+				"Your hero deals 1 target 5 irreducible melee damage, then increases damage dealt to your hero by 1 until the start of your next turn."
+			]
+			"icons": [
+				"HasPower",
+				"DealDamageMelee",
+				"IncreaseDamageTaken"
+			],
+			"flavorText": "The cursed blade was known to appear{BR}in markets across the world, magical{BR}and mundane. While other weapons might{BR}bring destruction, Velkinor simply was.",
+			"flavorQuotes": []
+		}
+	]
+}
