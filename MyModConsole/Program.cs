@@ -62,7 +62,7 @@ namespace Handelabra.MyModConsole // this has to be this way to work around an E
     {
         public static Dictionary<string, Assembly> ModAssemblies = new Dictionary<string, Assembly>
         {
-            { "Workshopping", typeof(Workshopping.MigrantCoder.MigrantCoderCharacterCardController).Assembly } // replace with your own namespace and type
+            //{ "Workshopping", typeof(Workshopping.MigrantCoder.MigrantCoderCharacterCardController).Assembly } // replace with your own namespace and type
         };
 
         // LoadAllModContentOfKind() tries to guess the right identifiers - use this to override ones that don't fit
