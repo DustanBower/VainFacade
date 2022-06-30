@@ -39,7 +39,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TheMidnightBazaar\MrWolfCardController.cs" />
     <Compile Include="TheMidnightBazaar\TheCloisteredPrinceCardController.cs" />
+    <Compile Include="TheMidnightBazaar\TheDancerAtTheDawnCardController.cs" />
     <Compile Include="TheMidnightBazaar\TheMidnightBazaarUtilityCardController.cs" />
+    <Compile Include="TheMidnightBazaar\ThePoetOfThePaleCardController.cs" />
+    <Compile Include="TheMidnightBazaar\TheSingerInTheSilenceCardController.cs" />
     <Compile Include="TheMidnightBazaar\ThreenCardController.cs" />
   </ItemGroup>
   <ItemGroup>
