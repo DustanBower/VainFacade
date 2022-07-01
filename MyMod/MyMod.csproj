@@ -50,6 +50,7 @@
     <Compile Include="TheMidnightBazaar\TheSingerInTheSilenceCardController.cs" />
     <Compile Include="TheMidnightBazaar\TheWhisperScribeCardController.cs" />
     <Compile Include="TheMidnightBazaar\ThreenCardController.cs" />
+    <Compile Include="TheMidnightBazaar\VelkinorCardController.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="DeckLists\TheMidnightBazaarDeckList.json" />
