@@ -37,9 +37,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TheMidnightBazaar\ASenseOfLossCardController.cs" />
     <Compile Include="TheMidnightBazaar\MrWolfCardController.cs" />
     <Compile Include="TheMidnightBazaar\TheCloisteredPrinceCardController.cs" />
     <Compile Include="TheMidnightBazaar\TheDancerAtTheDawnCardController.cs" />
+    <Compile Include="TheMidnightBazaar\TheEmptyWellCardController.cs" />
     <Compile Include="TheMidnightBazaar\TheMidnightBazaarUtilityCardController.cs" />
     <Compile Include="TheMidnightBazaar\ThePoetOfThePaleCardController.cs" />
     <Compile Include="TheMidnightBazaar\TheSingerInTheSilenceCardController.cs" />
