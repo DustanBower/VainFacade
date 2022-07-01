@@ -48,6 +48,7 @@
     <Compile Include="TheMidnightBazaar\TheMidnightBazaarUtilityCardController.cs" />
     <Compile Include="TheMidnightBazaar\ThePoetOfThePaleCardController.cs" />
     <Compile Include="TheMidnightBazaar\TheSingerInTheSilenceCardController.cs" />
+    <Compile Include="TheMidnightBazaar\TheWhisperScribeCardController.cs" />
     <Compile Include="TheMidnightBazaar\ThreenCardController.cs" />
   </ItemGroup>
   <ItemGroup>
