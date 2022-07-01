@@ -39,6 +39,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TheMidnightBazaar\ASenseOfLossCardController.cs" />
     <Compile Include="TheMidnightBazaar\DisquietCardController.cs" />
+    <Compile Include="TheMidnightBazaar\GoblinFruitCardController.cs" />
     <Compile Include="TheMidnightBazaar\MrWolfCardController.cs" />
     <Compile Include="TheMidnightBazaar\TheCloisteredPrinceCardController.cs" />
     <Compile Include="TheMidnightBazaar\TheDancerAtTheDawnCardController.cs" />
