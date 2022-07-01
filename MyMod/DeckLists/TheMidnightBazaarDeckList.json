@@ -34,10 +34,9 @@
 				"unbinding"
 			],
 			"body": [
-				"This card is indestructible.",
 				"When this card enters play, play the top card of the environment deck.",
-				"Damage dealt by Threens is irreducible.",
-				"When a Threen would deal damage, 1 player may put 2 cards from their hand or 1 hero card from play under [i]The Empty Well[/i] to redirect that damage to a non-Threen target."
+				"This card is indestructible. Damage dealt by Threens is irreducible.",
+				"When a Threen would deal damage, 1 player may put 2 cards from their hand or 1 non-character hero card from play and not under [i]The Empty Well[/i] under [i]The Empty Well[/i] to redirect that damage to a non-Threen target."
 			],
 			"icons": [
 				"Indestructible",

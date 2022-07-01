@@ -38,6 +38,7 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TheMidnightBazaar\ASenseOfLossCardController.cs" />
+    <Compile Include="TheMidnightBazaar\DisquietCardController.cs" />
     <Compile Include="TheMidnightBazaar\MrWolfCardController.cs" />
     <Compile Include="TheMidnightBazaar\TheCloisteredPrinceCardController.cs" />
     <Compile Include="TheMidnightBazaar\TheDancerAtTheDawnCardController.cs" />
@@ -48,7 +49,7 @@
     <Compile Include="TheMidnightBazaar\ThreenCardController.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="DeckLists\TheMidnightBazaarDeckList.json" />
+    <EmbeddedResource Include="DeckLists\TheMidnightBazaarDeckList.json" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

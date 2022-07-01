@@ -21,6 +21,7 @@ namespace VainFacade.TheMidnightBazaar
 
         public override bool AskIfCardIsIndestructible(Card card)
         {
+            // "This card is indestructible."
             return card == base.Card;
         }
 
