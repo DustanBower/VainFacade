@@ -26,7 +26,7 @@ namespace VainFacade.TheMidnightBazaar
             // "When this card would deal damage, if [i]The Blinded Queen[/i] is in play, play the top card of the villain deck instead."
             AddTrigger((DealDamageAction dda) => dda.DamageSource != null && dda.DamageSource.Card == base.Card && IsBlindedQueenInPlay(), PlayVillainCardInsteadResponse, new TriggerType[]{ TriggerType.WouldBeDealtDamage, TriggerType.CancelAction, TriggerType.PlayCard}, TriggerTiming.Before);
             // "At the end of the environment turn, this card deals the target with the lowest HP {H + 1} melee damage."
-            AddDealDamageAtEndOfTurnTrigger(TurnTaker, base.Card, (Card c) => c.IsTarget, TargetType.LowestHP, H + 1, DamageType.Melee);
+            AddDealDamageAtEndOfTurnTrigger(TurnTaker, base.Card, (Card c) => c.IsTarget && c != base.Card, TargetType.LowestHP, H + 1, DamageType.Melee);
         }
 
         private IEnumerator PlayVillainCardInsteadResponse(DealDamageAction dda)

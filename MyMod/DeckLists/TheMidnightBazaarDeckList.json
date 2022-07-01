@@ -98,7 +98,7 @@
 			"hitpoints": 7,
 			"body": [
 				"When this card would deal damage, if [i]The Blinded Queen[/i] is in play, play the top card of the villain deck instead.",
-				"At the end of the environment turn, this card deals the target with the lowest HP {H + 1} melee damage."
+				"At the end of the environment turn, this card deals the target with the lowest HP other than itself {H + 1} melee damage."
 			],
 			"icons": [
 				"PlayCardNow",
