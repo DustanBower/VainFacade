@@ -98,6 +98,7 @@ namespace VainFacade.TheMidnightBazaar
             List<Card> found = base.GameController.FindCardsWhere(new LinqCardCriteria((Card c) => c.Location.IsEnvironment && c.IsInTrash && c.DoKeywordsContain(HoundKeyword), "in the environment trash", false, true, "Hound card", "Hound cards"), visibleToCard: GetCardSource()).ToList();
             if (found.Any())
             {
+                // Move the Hound to the deck, then shuffle
                 MoveCardDestination dest = new MoveCardDestination(FindEnvironment().TurnTaker.Deck);
                 IEnumerator moveHoundCoroutine = base.GameController.SelectCardFromLocationAndMoveIt(DecisionMaker, base.TurnTaker.Trash, new LinqCardCriteria((Card c) => c.DoKeywordsContain(HoundKeyword), "Hound"), dest.ToEnumerable(), shuffleAfterwards: true, responsibleTurnTaker: base.TurnTaker, cardSource: GetCardSource());
                 if (base.UseUnityCoroutines)
@@ -107,6 +108,19 @@ namespace VainFacade.TheMidnightBazaar
                 else
                 {
                     base.GameController.ExhaustCoroutine(moveHoundCoroutine);
+                }
+            }
+            else
+            {
+                // Just shuffle
+                IEnumerator shuffleCoroutine = base.GameController.ShuffleLocation(base.TurnTaker.Deck, cardSource: GetCardSource());
+                if (base.UseUnityCoroutines)
+                {
+                    yield return base.GameController.StartCoroutine(shuffleCoroutine);
+                }
+                else
+                {
+                    base.GameController.ExhaustCoroutine(shuffleCoroutine);
                 }
             }
             yield break;
