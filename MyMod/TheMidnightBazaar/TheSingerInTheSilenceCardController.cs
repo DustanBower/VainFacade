@@ -17,9 +17,9 @@ namespace VainFacade.TheMidnightBazaar
             // Show number of Threens in play
             SpecialStringMaker.ShowNumberOfCardsInPlay(ThreenCards);
             // Show list of Threens in trash
-            SpecialStringMaker.ShowListOfCardsAtLocation(FindEnvironment().TurnTaker.Trash, ThreenCards);
+            SpecialStringMaker.ShowListOfCardsAtLocation(base.TurnTaker.Trash, ThreenCards);
             // Show list of Unbindings in trash
-            SpecialStringMaker.ShowListOfCardsAtLocation(FindEnvironment().TurnTaker.Trash, UnbindingCards);
+            SpecialStringMaker.ShowListOfCardsAtLocation(base.TurnTaker.Trash, UnbindingCards);
         }
 
         public override void AddTriggers()

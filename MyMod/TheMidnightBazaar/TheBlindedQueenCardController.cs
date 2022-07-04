@@ -18,7 +18,7 @@ namespace VainFacade.TheMidnightBazaar
             // Show whether a non-Environment or Threen target has already dealt damage to a target other than itself this turn
             SpecialStringMaker.ShowIfElseSpecialString(() => HasBeenSetToTrueThisTurn(FirstHostileDamageThisTurn), () => "A non-environment or Threen target has already dealt damage to a target other than itself this turn.", () => "No non-environment or Threen targets have dealt damage to targets other than themselves this turn.").Condition = () => base.Card.IsInPlayAndHasGameText;
             // Show any Hounds in the environment trash
-            SpecialStringMaker.ShowListOfCardsAtLocation(FindEnvironment().TurnTaker.Trash, new LinqCardCriteria((Card c) => c.DoKeywordsContain(HoundKeyword), "Hound"));
+            SpecialStringMaker.ShowListOfCardsAtLocation(base.TurnTaker.Trash, new LinqCardCriteria((Card c) => c.DoKeywordsContain(HoundKeyword), "Hound"));
         }
 
         public override bool AskIfCardIsIndestructible(Card card)
