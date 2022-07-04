@@ -78,7 +78,7 @@ namespace VainFacade.TheMidnightBazaar
                     if (stillChoosing)
                     {
                         Func<Card, int?> damageAmount = (Card target) => (target == null) ? null : new int?(1);
-                        Func<Card, int?> numberOfTimes = (Card target) => target == null ? null : new int?(cardAttacks[target]);
+                        Func<Card, int?> numberOfTimes = (Card target) => (target == null) ? null : new int?(cardAttacks[target]);
                         List<SelectTargetDecision> storedResults = new List<SelectTargetDecision>();
                         IEnumerator selectCoroutine = base.GameController.SelectTargetAndStoreResults(DecisionMaker, cardAttacks.Keys, storedResults, allowAutoDecide: true, damageSource: base.Card, damageAmount: damageAmount, damageType: DamageType.Psychic, dynamicNumberOfTimes: numberOfTimes, cardSource: GetCardSource());
                         if (base.UseUnityCoroutines)
