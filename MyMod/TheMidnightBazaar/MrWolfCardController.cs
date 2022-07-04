@@ -16,8 +16,8 @@ namespace VainFacade.TheMidnightBazaar
         {
             // Show whether The Blinded Queen is in play
             SpecialStringMaker.ShowIfSpecificCardIsInPlay(BlindedQueenIdentifier);
-            // Show target with lowest HP
-            SpecialStringMaker.ShowLowestHP(1, () => 1);
+            // Show target with lowest HP other than this card
+            SpecialStringMaker.ShowLowestHP(1, () => 1, cardCriteria: new LinqCardCriteria((Card c) => c != base.Card, "other than " + base.Card.Title, false, true, "target", "targets"));
         }
 
         public override void AddTriggers()
@@ -25,7 +25,7 @@ namespace VainFacade.TheMidnightBazaar
             base.AddTriggers();
             // "When this card would deal damage, if [i]The Blinded Queen[/i] is in play, play the top card of the villain deck instead."
             AddTrigger((DealDamageAction dda) => dda.DamageSource != null && dda.DamageSource.Card == base.Card && IsBlindedQueenInPlay(), PlayVillainCardInsteadResponse, new TriggerType[]{ TriggerType.WouldBeDealtDamage, TriggerType.CancelAction, TriggerType.PlayCard}, TriggerTiming.Before);
-            // "At the end of the environment turn, this card deals the target with the lowest HP {H + 1} melee damage."
+            // "At the end of the environment turn, this card deals the target with the lowest HP other than this card {H + 1} melee damage."
             AddDealDamageAtEndOfTurnTrigger(TurnTaker, base.Card, (Card c) => c.IsTarget && c != base.Card, TargetType.LowestHP, H + 1, DamageType.Melee);
         }
 
