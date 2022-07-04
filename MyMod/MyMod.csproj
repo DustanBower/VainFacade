@@ -43,6 +43,7 @@
     <Compile Include="TheMidnightBazaar\MemoriesOfTomorrowCardController.cs" />
     <Compile Include="TheMidnightBazaar\MrWolfCardController.cs" />
     <Compile Include="TheMidnightBazaar\RedEyedRonaldCardController.cs" />
+    <Compile Include="TheMidnightBazaar\TheBlindedQueenCardController.cs" />
     <Compile Include="TheMidnightBazaar\TheCloisteredPrinceCardController.cs" />
     <Compile Include="TheMidnightBazaar\TheDancerAtTheDawnCardController.cs" />
     <Compile Include="TheMidnightBazaar\TheEmptyWellCardController.cs" />
