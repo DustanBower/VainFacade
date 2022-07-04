@@ -15,10 +15,10 @@ namespace VainFacade.TheMidnightBazaar
             : base(card, turnTakerController)
         {
             // If The Empty Well is in play, show the number of cards from each hero deck under it
-            foreach (HeroTurnTaker hero in Game.HeroTurnTakers)
+            /*foreach (HeroTurnTaker hero in Game.HeroTurnTakers)
             {
                 SpecialStringMaker.ShowNumberOfCardsAtLocation(FindCard(EmptyWellIdentifier).UnderLocation, new LinqCardCriteria((Card c) => c.Owner.ToHero() == hero, "from " + hero.Name + "'s deck", false, true), () => base.Card.IsInPlayAndHasGameText && FindCard(EmptyWellIdentifier).IsInPlayAndHasGameText).Condition = () => FindCard(EmptyWellIdentifier).IsInPlayAndHasGameText;
-            }
+            }*/
             // Otherwise, remind the players that The Empty Well is not in play
             SpecialStringMaker.ShowSpecialString(() => FindCard(EmptyWellIdentifier).Title + " is not in play.").Condition = () => !FindCard(EmptyWellIdentifier).IsInPlayAndHasGameText;
         }
