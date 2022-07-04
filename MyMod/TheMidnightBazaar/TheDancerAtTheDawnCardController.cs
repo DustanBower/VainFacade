@@ -14,6 +14,10 @@ namespace VainFacade.TheMidnightBazaar
         public TheDancerAtTheDawnCardController(Card card, TurnTakerController turnTakerController)
             : base(card, turnTakerController)
         {
+            // Show the number of Threen in the environment deck
+            SpecialStringMaker.ShowNumberOfCardsAtLocation(base.TurnTaker.Deck, new LinqCardCriteria((Card c) => IsThreen(c), "Threen"));
+            // Show the number of Unbindings in the environment deck
+            SpecialStringMaker.ShowNumberOfCardsAtLocation(base.TurnTaker.Deck, new LinqCardCriteria((Card c) => IsUnbinding(c), "Unbinding"));
             // Show the Threen with the highest HP
             SpecialStringMaker.ShowHighestHP(1, cardCriteria: ThreenInPlay);
         }
