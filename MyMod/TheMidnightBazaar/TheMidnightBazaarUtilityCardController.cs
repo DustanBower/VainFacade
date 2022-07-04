@@ -104,9 +104,19 @@ namespace VainFacade.TheMidnightBazaar
                     // Have the player choose one card at a time
                     List<SelectCardDecision> choices = new List<SelectCardDecision>();
                     bool stillChoosing = true;
+                    LinqCardCriteria fullCriteria = new LinqCardCriteria((Card c) => handCriteria(c));
                     for (int i = 0; i < number && stillChoosing; i++)
                     {
-                        LinqCardCriteria fullCriteria = new LinqCardCriteria((Card c) => handCriteria(c) && !choices.Where((SelectCardDecision scd) => scd.Choices.Any((Card p) => p.Title == c.Title)).Any());
+                        // If any cards have already been chosen, then cards with the same name can't be chosen this time
+                        if (choices.Any((SelectCardDecision scd) => scd != null && scd.SelectedCard != null))
+                        {
+                            List<Card> eliminated = new List<Card>();
+                            foreach (SelectCardDecision choice in choices.Where((SelectCardDecision scd) => scd != null && scd.SelectedCard != null))
+                            {
+                                eliminated.Add(choice.SelectedCard);
+                            }
+                            fullCriteria = new LinqCardCriteria((Card c) => handCriteria(c) && !eliminated.Where((Card el) => el.Title == c.Title && el.Owner == c.Owner).Any());
+                        }
                         IEnumerator selectCoroutine = base.GameController.SelectCardAndStoreResults(GameController.FindTurnTakerController(tt).ToHero(), SelectionType.MoveCardBelowCard, fullCriteria, choices, optional && choices.Count == 0, cardSource: cardSource);
                         if (base.UseUnityCoroutines)
                         {
