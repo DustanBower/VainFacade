@@ -85,7 +85,7 @@
 				"Discard",
 				"PlayCardNow"
 			],
-			"flavorText": "The old tome was impossibly thick, filled with dry,{BR}blank pages. Suddenly, the pages came to life with{BR}words penned in living ink that ran across them,{BR}from beginning to end and back again. Banshee{BR}read as quickly as she could, but gleaned little.",
+			"flavorText": "The old tome was impossibly thick, filled with{BR}dry, blank pages. Suddenly, the pages came to{BR}life with words penned in living ink that ran{BR}across them, from beginning to end and back{BR}again. Banshee read as quickly as she could, but gleaned little.",
 			"flavorQuotes": []
 		},
 		{
@@ -105,7 +105,7 @@
 				"EndOfTurnAction",
 				"DealDamageMelee"
 			],
-			"flavorText": "“How will I know where to look?” Glyph asked.{BR}Firebird shifted on her perch, which had begun{BR}to glow red from the heat from her talons.{BR}“Look for Mr. Wolf,” she croaked. “Wherever{BR}there is trouble, he will be there in its midst.”",
+			"flavorText": "“How will I know where to look?” Glyph{BR}asked. Firebird shifted on her perch, which had{BR}begun to glow red from the heat from her{BR}talons. “Look for Mr. Wolf,” she croaked.{BR}“Wherever there is trouble, he will be there in its midst.”",
 			"flavorQuotes": [
 				{
 					"identifier": "Glyph",
@@ -117,7 +117,7 @@
 				},
 				{
 					"identifier": "Firebird",
-					"text": "Wherever{BR}there is trouble, he will be there in its midst."
+					"text": "Wherever there is trouble, he will be there in its midst."
 				}
 			]
 		},
@@ -139,7 +139,7 @@
 				"DealDamageMelee",
 				"RedirectDamage"
 			],
-			"flavorText": "His beard and hair were black as pitch, and his skin{BR}a light green. His red eye had no white or iris, but{BR}was entirely blood-red. “I'm told you solve{BR}problems,” Carnaval said coolly. Ronald smiled a{BR}toothy smile, with each tooth long and pointed.",
+			"flavorText": "His beard and hair were black as pitch, and{BR}his skin a light green. His red eye had no{BR}white or iris, but was entirely blood-red. “I'm{BR}told you solve problems,” Carnaval said coolly.{BR}Ronald smiled a toothy smile, with each tooth long and pointed.",
 			"flavorQuotes": [
 				{
 					"identifier": "Carnaval",
@@ -167,11 +167,11 @@
 				"StartOfTurnAction",
 				"DealDamageInfernal"
 			],
-			"flavorText": "Before Arctis could act, Liana pulled him behind the{BR}cart with such force that he nearly fell. Her eyes{BR}turned completely black as she snarled at him. “You{BR}can escape, or it can take you. If you're very lucky,{BR}kill you. You can fight, but you can't win.”",
+			"flavorText": "Before Arctis could act, Liana pulled him{BR}behind the cart with such force that he nearly{BR}fell. Her eyes turned completely black as she{BR}snarled at him. “You can escape, or it can take{BR}you. If you're very lucky, kill you. You can fight, but you can't win.”",
 			"flavorQuotes": [
 				{
 					"identifier": "Liana",
-					"text": "You{BR}can escape, or it can take you. If you're very lucky,{BR}kill you. You can fight, but you can't win."
+					"text": "You can escape, or it can take{BR}you. If you're very lucky, kill you. You can fight, but you can't win."
 				}
 			]
 		},
@@ -216,15 +216,15 @@
 				"EndOfTurnAction",
 				"PlayCardNow"
 			],
-			"flavorText": "Ignatius pounded his fists on the painting, but only{BR}silence greeted him. “Do you hear me, wretch?” he{BR}shouted. “I wish to see all my enemies dead!”{BR}Silence reigned. After what seemed like an eternity,{BR}the face in the painting simply smiled.",
+			"flavorText": "Ignatius pounded his fists on the painting, but{BR}only silence greeted him. “Do you hear me,{BR}wretch?” he shouted. “I wish to see all my{BR}enemies dead!” Silence reigned. After what seemed{BR}like an eternity, the face in the painting simply smiled.",
 			"flavorQuotes": [
 				{
 					"identifier": "Ignatius",
-					"text": "Do you hear me, wretch?"
+					"text": "Do you hear me,{BR}wretch?"
 				},
 				{
 					"identifier": "Ignatius",
-					"text": "I wish to see all my enemies dead!"
+					"text": "I wish to see all my{BR}enemies dead!"
 				}
 			]
 		},
@@ -266,7 +266,7 @@
 				"CannotPlayCards",
 				"RemoveFromGame"
 			],
-			"flavorText": "Merchants and visitors alike gathered around the{BR}well to pay tribute to Her Grace. None thirsted in{BR}sight of the well, but neither were they truly sated. It{BR}sat in the courtyard, somehow both inconspicuous{BR}and ominous, at the center of all things.",
+			"flavorText": "Merchants and visitors alike gathered around{BR}the well to pay tribute to Her Grace. None{BR}thirsted in sight of the well, but neither were{BR}they truly sated. It sat in the courtyard,{BR}somehow both inconspicuous and ominous, at the center of all things.",
 			"flavorQuotes": []
 		},
 		{
@@ -313,7 +313,7 @@
 				"DealDamageSonic",
 				"PlayCardNow"
 			],
-			"flavorText": "Though the singer was miles away, Banshee knew{BR}when she began. Beside her, the poet's mouth{BR}opened, but 3 voices came out, singing in perfect{BR}harmony. The world bent and gnarled under the{BR}force of it, and the disciples began to shatter.",
+			"flavorText": "Though the singer was miles away, Banshee{BR}knew when she began. Beside her, the poet's{BR}mouth opened, but 3 voices came out, singing{BR}in perfect harmony. The world bent and gnarled{BR}under the force of it, and the disciples began to shatter.",
 			"flavorQuotes": []
 		},
 		{
