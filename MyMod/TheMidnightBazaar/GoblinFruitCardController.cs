@@ -44,7 +44,7 @@ namespace VainFacade.TheMidnightBazaar
             // "... a player may move a card from their hand under [i]The Empty Well[/i] to put the bottom card of their deck into play. If they do not, put the bottom card of the villain deck into play."
             List<bool> cardsMoved = new List<bool>();
             currentMode = CustomMode.PlayerToDropCard;
-            SelectTurnTakerDecision selection = new SelectTurnTakerDecision(base.GameController, DecisionMaker, GameController.FindTurnTakersWhere((TurnTaker tt) => tt.IsHero && GameController.IsTurnTakerVisibleToCardSource(tt, GetCardSource())), SelectionType.MoveCard, isOptional: true, cardSource: GetCardSource());
+            SelectTurnTakerDecision selection = new SelectTurnTakerDecision(base.GameController, DecisionMaker, GameController.FindTurnTakersWhere((TurnTaker tt) => tt.IsHero && tt.ToHero().HasCardsInHand && GameController.IsTurnTakerVisibleToCardSource(tt, GetCardSource())), SelectionType.Custom, isOptional: true, cardSource: GetCardSource());
             IEnumerator selectCoroutine = base.GameController.SelectTurnTakerAndDoAction(selection, (TurnTaker tt) => BottomCardResponse(tt, cardsMoved));
             if (base.UseUnityCoroutines)
             {
@@ -64,7 +64,8 @@ namespace VainFacade.TheMidnightBazaar
             {
                 // "If they do not, put the bottom card of the villain deck into play."
                 List<SelectLocationDecision> locationDecisions = new List<SelectLocationDecision>();
-                IEnumerator selectDeckCoroutine = base.GameController.SelectADeck(DecisionMaker, SelectionType.PlayBottomCardOfVillainDeck, (Location l) => l.IsVillain, locationDecisions, cardSource: GetCardSource());
+                currentMode = CustomMode.VillainDeckToPutBottomCardIntoPlay;
+                IEnumerator selectDeckCoroutine = base.GameController.SelectADeck(DecisionMaker, SelectionType.Custom, (Location l) => l.IsVillain, locationDecisions, cardSource: GetCardSource());
                 if (base.UseUnityCoroutines)
                 {
                     yield return base.GameController.StartCoroutine(selectDeckCoroutine);

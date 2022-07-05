@@ -22,7 +22,8 @@ namespace VainFacade.TheMidnightBazaar
             PlayerToDropCard,
             PlayerToDropCards,
             PlayerToDropUniqueCards,
-            CardToDrop
+            CardToDrop,
+            VillainDeckToPutBottomCardIntoPlay
         }
 
         protected CustomMode currentMode;
@@ -226,6 +227,10 @@ namespace VainFacade.TheMidnightBazaar
             else if (currentMode is CustomMode.PlayerToDropUniqueCards)
             {
                 return new CustomDecisionText("Select a player to move 2 different cards from their hand under " + emptyWellString, "choosing a player to move cards from their hand under " + emptyWellString, "Vote for a player to move 2 different cards from their hand under " + emptyWellString, "player to move 2 different cards from their hand under " + emptyWellString);
+            }
+            else if (currentMode is CustomMode.VillainDeckToPutBottomCardIntoPlay)
+            {
+                return new CustomDecisionText("Select a deck to put its bottom card into play", "choosing a deck to put its bottom card into play", "Vote for a deck to put its bottom card into play", "deck to put the bottom card of into play");
             }
             return base.GetCustomDecisionText(decision);
         }
