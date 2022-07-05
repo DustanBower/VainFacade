@@ -105,6 +105,9 @@ namespace VainFacade.TheMidnightBazaar
 
         public IEnumerator DropCardsFromHand(TurnTaker tt, int number, bool requireUnique, bool optional, List<bool> cardsMoved, CardSource cardSource)
         {
+            //Log.Debug("TheMidnightBazaarUtilityCardController.DropCardsFromHand: number = " + number.ToString());
+            //Log.Debug("TheMidnightBazaarUtilityCardController.DropCardsFromHand: requireUnique = " + requireUnique.ToString());
+            //Log.Debug("TheMidnightBazaarUtilityCardController.DropCardsFromHand: optional = " + optional.ToString());
             // Have [the player for TurnTaker tt] choose and move [number] cards from hand under The Empty Well
             // If [requireUnique], the cards must have different titles
             if (FindCard(EmptyWellIdentifier).IsInPlayAndHasGameText && base.GameController.IsCardVisibleToCardSource(FindCard(EmptyWellIdentifier), cardSource))
@@ -125,6 +128,7 @@ namespace VainFacade.TheMidnightBazaar
                     requiredCount = 0;
                 if (number > 1 && requireUnique)
                 {
+                    //Log.Debug("TheMidnightBazaarUtilityCardController.DropCardsFromHand: choosing multiple cards, one at a time");
                     // Have the player choose one card at a time
                     List<SelectCardDecision> choices = new List<SelectCardDecision>();
                     bool stillChoosing = true;
@@ -141,7 +145,9 @@ namespace VainFacade.TheMidnightBazaar
                             }
                             fullCriteria = new LinqCardCriteria((Card c) => handCriteria(c) && !eliminated.Where((Card el) => el.Title == c.Title && el.Owner == c.Owner).Any());
                         }
-                        IEnumerator selectCoroutine = base.GameController.SelectCardAndStoreResults(GameController.FindTurnTakerController(tt).ToHero(), SelectionType.MoveCardBelowCard, fullCriteria, choices, optional && choices.Count == 0, cardSource: cardSource);
+                        //Log.Debug("TheMidnightBazaarUtilityCardController.DropCardsFromHand: calling SelectCardAndStoreResults");
+                        currentMode = CustomMode.CardToDrop;
+                        IEnumerator selectCoroutine = base.GameController.SelectCardAndStoreResults(GameController.FindTurnTakerController(tt).ToHero(), SelectionType.Custom, fullCriteria, choices, optional && choices.Count == 0, cardSource: cardSource);
                         if (base.UseUnityCoroutines)
                         {
                             yield return base.GameController.StartCoroutine(selectCoroutine);
@@ -161,6 +167,7 @@ namespace VainFacade.TheMidnightBazaar
                         if (choice != null && choice.SelectedCard != null)
                             chosen.Add(choice.SelectedCard);
                     }
+                    //Log.Debug("TheMidnightBazaarUtilityCardController.DropCardsFromHand: calling MoveCards");
                     IEnumerator moveCoroutine = base.GameController.MoveCards(base.GameController.FindTurnTakerController(tt), chosen, FindCard(EmptyWellIdentifier).UnderLocation, playIfMovingToPlayArea: false, responsibleTurnTaker: tt, storedResultsAction: moves, cardSource: cardSource);
                     if (base.UseUnityCoroutines)
                     {
@@ -178,8 +185,11 @@ namespace VainFacade.TheMidnightBazaar
                 }
                 else
                 {
+                    //Log.Debug("TheMidnightBazaarUtilityCardController.DropCardsFromHand: selecting all cards to move");
                     // Have the player choose the cards, and move the cards they choose
-                    IEnumerator selectCoroutine = GameController.SelectCardsAndDoAction(GameController.FindTurnTakerController(tt).ToHero(), new LinqCardCriteria(handCriteria), SelectionType.MoveCardBelowCard, (Card c) => GameController.MoveCard(TurnTakerController, c, FindCard(EmptyWellIdentifier).UnderLocation, playCardIfMovingToPlayArea: false, responsibleTurnTaker: tt, storedResults: moves, doesNotEnterPlay: true, cardSource: cardSource), numberOfCards: number, optional: optional, requiredDecisions: requiredCount, cardSource: cardSource);
+                    currentMode = CustomMode.CardToDrop;
+                    //Log.Debug("TheMidnightBazaarUtilityCardController.DropCardsFromHand: calling SelectCardsAndDoAction");
+                    IEnumerator selectCoroutine = GameController.SelectCardsAndDoAction(GameController.FindTurnTakerController(tt).ToHero(), new LinqCardCriteria(handCriteria), SelectionType.Custom, (Card c) => GameController.MoveCard(TurnTakerController, c, FindCard(EmptyWellIdentifier).UnderLocation, playCardIfMovingToPlayArea: false, responsibleTurnTaker: tt, storedResults: moves, doesNotEnterPlay: true, cardSource: cardSource), numberOfCards: number, optional: false, requiredDecisions: requiredCount, cardSource: cardSource);
                     if (base.UseUnityCoroutines)
                     {
                         yield return base.GameController.StartCoroutine(selectCoroutine);
