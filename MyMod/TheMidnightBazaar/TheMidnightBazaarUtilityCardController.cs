@@ -90,6 +90,19 @@ namespace VainFacade.TheMidnightBazaar
             yield break;
         }
 
+        public IEnumerator EmptyWellNotInPlayResponse(GameAction ga)
+        {
+            IEnumerator announceCoroutine = base.GameController.SendMessageAction("[i]The Empty Well[/i] is not in play.", Priority.High, GetCardSource(), showCardSource: true);
+            if (base.UseUnityCoroutines)
+            {
+                yield return base.GameController.StartCoroutine(announceCoroutine);
+            }
+            else
+            {
+                base.GameController.ExhaustCoroutine(announceCoroutine);
+            }
+        }
+
         public IEnumerator DropCardsFromHand(TurnTaker tt, int number, bool requireUnique, bool optional, List<bool> cardsMoved, CardSource cardSource)
         {
             // Have [the player for TurnTaker tt] choose and move [number] cards from hand under The Empty Well

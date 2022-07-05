@@ -30,6 +30,7 @@ namespace VainFacade.TheMidnightBazaar
             AddReduceDamageTrigger((DealDamageAction dda) => dda.DamageSource != null && dda.DamageSource.IsTarget && !dda.DamageSource.IsEnvironmentTarget, (DealDamageAction dda) => 1);
             // "At the start of the environment turn, deal each hero 1 psychic damage for each card from their deck under [i]The Empty Well.[/i]"
             AddStartOfTurnTrigger((TurnTaker tt) => tt.IsEnvironment && IsEmptyWellInPlay(), PsychicDamageResponse, TriggerType.DealDamage);
+            AddStartOfTurnTrigger((TurnTaker tt) => tt.IsEnvironment && !IsEmptyWellInPlay(), EmptyWellNotInPlayResponse, TriggerType.ShowMessage);
         }
 
         public override IEnumerator Play()
