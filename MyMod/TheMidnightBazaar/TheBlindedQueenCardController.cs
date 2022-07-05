@@ -26,9 +26,16 @@ namespace VainFacade.TheMidnightBazaar
             // "This card can't be removed from play by other cards."
             if (card == base.Card)
             {
-                return !((bool)Journal.GetCardPropertiesBoolean(base.Card, IsShufflingSelf));
+                if (Journal.GetCardPropertiesBoolean(base.Card, IsShufflingSelf).HasValue)
+                {
+                    return !((bool)Journal.GetCardPropertiesBoolean(base.Card, IsShufflingSelf));
+                }
+                else
+                {
+                    return true;
+                }
             }
-            return base.AskIfCardIsIndestructible(card);
+            return false;
         }
 
         protected const string FirstHostileDamageThisTurn = "FirstHostileDamageThisTurn";
