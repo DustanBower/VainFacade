@@ -52,7 +52,7 @@ namespace VainFacade.TheMidnightBazaar
             List<bool> cardsMoved = new List<bool>();
             List<DealDamageAction> damageList = new List<DealDamageAction>();
             damageList.Add(dda);
-            SelectTurnTakerDecision selection = new SelectTurnTakerDecision(base.GameController, DecisionMaker, GameController.FindTurnTakersWhere((TurnTaker tt) => tt.IsHero && GameController.IsTurnTakerVisibleToCardSource(tt, GetCardSource())), SelectionType.MoveCard, isOptional: true, gameAction: dda, dealDamageInfo: damageList, cardSource: GetCardSource());
+            SelectTurnTakerDecision selection = new SelectTurnTakerDecision(base.GameController, DecisionMaker, GameController.FindTurnTakersWhere((TurnTaker tt) => tt.IsHero && (tt.ToHero().HasCardsInHand || tt.ToHero().HasDestroyableCards) && GameController.IsTurnTakerVisibleToCardSource(tt, GetCardSource())), SelectionType.MoveCard, isOptional: true, gameAction: dda, dealDamageInfo: damageList, cardSource: GetCardSource());
             IEnumerator selectCoroutine = base.GameController.SelectTurnTakerAndDoAction(selection, (TurnTaker tt) => ChooseSourceAndMoveCardsToRedirect(tt, cardsMoved, dda));
             if (base.UseUnityCoroutines)
             {
