@@ -29,7 +29,7 @@ namespace VainFacade.TheMidnightBazaar
         {
             base.AddTriggers();
             // "When this card would deal damage, if [i]The Blinded Queen[/i] is in play, play the top card of the environment deck instead."
-            AddTrigger((DealDamageAction dda) => dda.DamageSource != null && dda.DamageSource.Card == base.Card && IsBlindedQueenInPlay(), PlayEnvironmentCardInsteadResponse, new TriggerType[] { TriggerType.WouldBeDealtDamage, TriggerType.CancelAction, TriggerType.PlayCard }, TriggerTiming.Before);
+            AddTrigger((DealDamageAction dda) => dda.DamageSource != null && dda.DamageSource.Card == base.Card && dda.Amount > 0 && IsBlindedQueenInPlay(), PlayEnvironmentCardInsteadResponse, new TriggerType[] { TriggerType.WouldBeDealtDamage, TriggerType.CancelAction, TriggerType.PlayCard }, TriggerTiming.Before);
             // "At the end of the environment turn, this card deals the hero target with the highest HP {H + 2} melee damage."
             AddEndOfTurnTrigger((TurnTaker tt) => tt.IsEnvironment, DamageWithRedirectResponse, TriggerType.DealDamage);
             // "If a player puts a card from their hand under [i]The Empty Well[/i], redirect that damage to a target other than this card."
@@ -44,7 +44,9 @@ namespace VainFacade.TheMidnightBazaar
         private IEnumerator PlayEnvironmentCardInsteadResponse(DealDamageAction dda)
         {
             // "... play the top card of the environment deck instead."
-            IEnumerator cancelCoroutine = CancelAction(dda);
+            bool wouldDealDamage = dda.CanDealDamage && !dda.IsPretend;
+            //Log.Debug("RedEyedRonaldCardController.PlayEnvironmentCardInsteadResponse: calling CancelAction");
+            IEnumerator cancelCoroutine = CancelAction(dda, isPreventEffect: true);
             if (base.UseUnityCoroutines)
             {
                 yield return base.GameController.StartCoroutine(cancelCoroutine);
@@ -53,14 +55,18 @@ namespace VainFacade.TheMidnightBazaar
             {
                 base.GameController.ExhaustCoroutine(cancelCoroutine);
             }
-            IEnumerator playCoroutine = PlayTheTopCardOfTheEnvironmentDeckWithMessageResponse(dda);
-            if (base.UseUnityCoroutines)
+            if (wouldDealDamage)
             {
-                yield return base.GameController.StartCoroutine(playCoroutine);
-            }
-            else
-            {
-                base.GameController.ExhaustCoroutine(playCoroutine);
+                //Log.Debug("RedEyedRonaldCardController.PlayEnvironmentCardInsteadResponse: calling PlayTheTopCardOfTheEnvironmentDeckWithMessageResponse");
+                IEnumerator playCoroutine = PlayTheTopCardOfTheEnvironmentDeckWithMessageResponse(dda);
+                if (base.UseUnityCoroutines)
+                {
+                    yield return base.GameController.StartCoroutine(playCoroutine);
+                }
+                else
+                {
+                    base.GameController.ExhaustCoroutine(playCoroutine);
+                }
             }
             yield break;
         }
