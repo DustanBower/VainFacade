@@ -92,7 +92,8 @@ namespace VainFacade.TheMidnightBazaar
                     // Choose a player to move cards
                     List<SelectTurnTakerDecision> selection = new List<SelectTurnTakerDecision>();
                     currentMode = CustomMode.PlayerToDropCard;
-                    IEnumerator selectCoroutine = base.GameController.SelectTurnTaker(DecisionMaker, SelectionType.Custom, selection, optional: true, additionalCriteria: (TurnTaker tt) => tt.IsHero && tt.ToHero().HasCardsInHand, cardSource: GetCardSource());
+                    //Log.Debug("RedEyedRonaldCardController.DamageWithRedirectResponse: calling SelectTurnTaker");
+                    IEnumerator selectCoroutine = base.GameController.SelectTurnTaker(DecisionMaker, SelectionType.Custom, selection, optional: true, additionalCriteria: (TurnTaker tt) => tt.IsHero && tt.ToHero().HasCardsInHand, dealDamageInfo: targetPreview.ToEnumerable(), cardSource: GetCardSource());
                     if (base.UseUnityCoroutines)
                     {
                         yield return base.GameController.StartCoroutine(selectCoroutine);
@@ -106,6 +107,7 @@ namespace VainFacade.TheMidnightBazaar
                         chosen = selection.FirstOrDefault().SelectedTurnTaker;
                     }
                     // The chosen player may move a card
+                    //Log.Debug("RedEyedRonaldCardController.DamageWithRedirectResponse: calling DropCardsFromHand");
                     IEnumerator moveCoroutine = DropCardsFromHand(chosen, 1, false, true, cardsMoved, GetCardSource());
                     if (base.UseUnityCoroutines)
                     {
