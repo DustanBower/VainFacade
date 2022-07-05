@@ -34,7 +34,6 @@ namespace VainFacade.TheMidnightBazaar
             AddEndOfTurnTrigger((TurnTaker tt) => tt.IsEnvironment, DamageWithRedirectResponse, TriggerType.DealDamage);
             // "If a player puts a card from their hand under [i]The Empty Well[/i], redirect that damage to a target other than this card."
             redirectDamageTrigger = AddTrigger((DealDamageAction dda) => EndOfTurnDamageCriteria(dda), MovedRedirectResponse, TriggerType.RedirectDamage, TriggerTiming.Before);
-            // ...
         }
 
         private bool EndOfTurnDamageCriteria(DealDamageAction dda)
@@ -92,6 +91,7 @@ namespace VainFacade.TheMidnightBazaar
                     List<bool> cardsMoved = new List<bool>();
                     // Choose a player to move cards
                     List<SelectTurnTakerDecision> selection = new List<SelectTurnTakerDecision>();
+                    currentMode = CustomMode.PlayerToDropCard;
                     IEnumerator selectCoroutine = base.GameController.SelectTurnTaker(DecisionMaker, SelectionType.Custom, selection, optional: true, additionalCriteria: (TurnTaker tt) => tt.IsHero && tt.ToHero().HasCardsInHand, cardSource: GetCardSource());
                     if (base.UseUnityCoroutines)
                     {
@@ -161,11 +161,6 @@ namespace VainFacade.TheMidnightBazaar
                 SetCardProperty(didMoveToRedirect, false);
             }
             yield break;
-        }
-
-        public override CustomDecisionText GetCustomDecisionText(IDecision decision)
-        {
-            return new CustomDecisionText("Do you want to move a card from hand under [i]The Empty Well[/i] to redirect the damage?", "Should they move a card from hand under [i]The Empty Well[/i] to redirect the damage?", "Vote for whether to move a card from hand under [i]The Empty Well[/i] to redirect the damage", "moving a card from hand under [i]The Empty Well[/i] and redirecting damage", false);
         }
     }
 }

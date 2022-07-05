@@ -29,6 +29,7 @@ namespace VainFacade.TheMidnightBazaar
         {
             // "... 1 player may move a card from their hand under [i]The Empty Well[/i] to move this card to their play area."
             List<bool> cardsMoved = new List<bool>();
+            currentMode = CustomMode.PlayerToDropCard;
             SelectTurnTakerDecision selection = new SelectTurnTakerDecision(base.GameController, null, GameController.FindTurnTakersWhere((TurnTaker tt) => tt.IsHero && tt.ToHero().HasCardsInHand && GameController.IsTurnTakerVisibleToCardSource(tt, GetCardSource())), SelectionType.MoveCard, isOptional: true, cardSource: GetCardSource());
             IEnumerator selectCoroutine = base.GameController.SelectTurnTakerAndDoAction(selection, (TurnTaker tt) => GetSwordResponse(tt));
             if (base.UseUnityCoroutines)

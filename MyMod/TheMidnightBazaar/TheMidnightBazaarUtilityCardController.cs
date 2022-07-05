@@ -17,6 +17,16 @@ namespace VainFacade.TheMidnightBazaar
 
         }
 
+        protected enum CustomMode
+        {
+            PlayerToDropCard,
+            PlayerToDropCards,
+            PlayerToDropUniqueCards,
+            CardToDrop
+        }
+
+        protected CustomMode currentMode;
+
         public static readonly string EmptyWellIdentifier = "TheEmptyWell";
         public static readonly string BlindedQueenIdentifier = "TheBlindedQueen";
         public static readonly string ThreenKeyword = "threen";
@@ -96,6 +106,7 @@ namespace VainFacade.TheMidnightBazaar
                     cardsMoved = new List<bool>(number);
                 }
                 List<MoveCardAction> moves = new List<MoveCardAction>();
+                currentMode = CustomMode.CardToDrop;
                 int requiredCount = number;
                 if (optional)
                     requiredCount = 0;
@@ -172,6 +183,28 @@ namespace VainFacade.TheMidnightBazaar
                 }
             }
             yield break;
+        }
+
+        public override CustomDecisionText GetCustomDecisionText(IDecision decision)
+        {
+            string emptyWellString = "[i]The Empty Well[/i]";
+            if (currentMode is CustomMode.CardToDrop)
+            {
+                return new CustomDecisionText("Select a card to move under " + emptyWellString, "choosing a card to move under " + emptyWellString, "Vote for a card to move under " + emptyWellString, "card to move under " + emptyWellString);
+            }
+            else if (currentMode is CustomMode.PlayerToDropCard)
+            {
+                return new CustomDecisionText("Select a player to move a card from their hand under " + emptyWellString, "choosing a player to move a card from their hand under " + emptyWellString, "Vote for a player to move a card from their hand under " + emptyWellString, "player to move a card from their hand under " + emptyWellString);
+            }
+            else if (currentMode is CustomMode.PlayerToDropCards)
+            {
+                return new CustomDecisionText("Select a player to move cards under " + emptyWellString, "choosing a player to move cards under " + emptyWellString, "Vote for a player to move cards under " + emptyWellString, "player to move cards under " + emptyWellString);
+            }
+            else if (currentMode is CustomMode.PlayerToDropUniqueCards)
+            {
+                return new CustomDecisionText("Select a player to move 2 different cards from their hand under " + emptyWellString, "choosing a player to move cards from their hand under " + emptyWellString, "Vote for a player to move 2 different cards from their hand under " + emptyWellString, "player to move 2 different cards from their hand under " + emptyWellString);
+            }
+            return base.GetCustomDecisionText(decision);
         }
     }
 }

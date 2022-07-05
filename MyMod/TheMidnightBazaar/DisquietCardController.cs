@@ -52,6 +52,7 @@ namespace VainFacade.TheMidnightBazaar
             List<bool> cardsMoved = new List<bool>();
             List<DealDamageAction> damageList = new List<DealDamageAction>();
             damageList.Add(dda);
+            currentMode = CustomMode.PlayerToDropCards;
             SelectTurnTakerDecision selection = new SelectTurnTakerDecision(base.GameController, DecisionMaker, GameController.FindTurnTakersWhere((TurnTaker tt) => tt.IsHero && (tt.ToHero().HasCardsInHand || tt.ToHero().HasDestroyableCards) && GameController.IsTurnTakerVisibleToCardSource(tt, GetCardSource())), SelectionType.MoveCard, isOptional: true, gameAction: dda, dealDamageInfo: damageList, cardSource: GetCardSource());
             IEnumerator selectCoroutine = base.GameController.SelectTurnTakerAndDoAction(selection, (TurnTaker tt) => ChooseSourceAndMoveCardsToRedirect(tt, cardsMoved, dda));
             if (base.UseUnityCoroutines)
@@ -124,6 +125,7 @@ namespace VainFacade.TheMidnightBazaar
                     cardsMoved = new List<bool>();
                 }
                 List<SelectCardDecision> choices = new List<SelectCardDecision>();
+                currentMode = CustomMode.CardToDrop;
                 // Have the players select and move a card
                 IEnumerator moveCoroutine = base.GameController.SelectAndMoveCard(DecisionMaker, (Card c) => c.IsHero && !c.IsCharacter && c.IsInPlay && c.Location != FindCard(EmptyWellIdentifier).UnderLocation, FindCard(EmptyWellIdentifier).UnderLocation, optional: true, playIfMovingToPlayArea: false, storedResults: choices, cardSource: GetCardSource());
                 if (base.UseUnityCoroutines)
