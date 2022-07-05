@@ -46,7 +46,7 @@ namespace VainFacade.TheMidnightBazaar
         {
             base.AddTriggers();
             // "The first time each turn a Threen or non-environment target deals damage to a target other than itself, increase damage dealt to the source of that damage by 1 until this card leaves play."
-            AddTrigger<DealDamageAction>((DealDamageAction dda) => !HasBeenSetToTrueThisTurn(FirstHostileDamageThisTurn) && dda.DidDealDamage && dda.DamageSource != null && dda.DamageSource.Card.IsTarget && (IsThreen(dda.DamageSource.Card) || !dda.DamageSource.Card.IsEnvironmentTarget) && dda.Target != dda.DamageSource.Card, AggroResponse, TriggerType.CreateStatusEffect, TriggerTiming.After);
+            AddTrigger<DealDamageAction>((DealDamageAction dda) => !HasBeenSetToTrueThisTurn(FirstHostileDamageThisTurn) && dda.DidDealDamage && dda.DamageSource != null && dda.DamageSource.Card.IsTarget && (IsThreen(dda.DamageSource.Card) || !dda.DamageSource.Card.IsEnvironmentTarget) && dda.Target != dda.DamageSource.Card, AggroResponse, TriggerType.AddStatusEffectToDamage, TriggerTiming.After);
             AddAfterLeavesPlayAction((GameAction ga) => ResetFlagAfterLeavesPlay(FirstHostileDamageThisTurn), TriggerType.Hidden);
             AddAfterLeavesPlayAction((GameAction ga) => ResetFlagAfterLeavesPlay(IsShufflingSelf), TriggerType.Hidden);
             // "At the start of the environment turn, play the top card of the environment deck, then shuffle this card and a Hound from the environment trash into the environment deck."
