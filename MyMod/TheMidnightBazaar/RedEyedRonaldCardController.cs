@@ -85,77 +85,48 @@ namespace VainFacade.TheMidnightBazaar
             if (highestHeroTarget != null)
             {
                 DealDamageAction targetPreview = new DealDamageAction(GetCardSource(), new DamageSource(base.GameController, base.Card), highestHeroTarget, H + 2, DamageType.Melee);
+
                 if (cardsInHand.Any() && IsEmptyWellInPlay())
                 {
-                    List<YesNoCardDecision> chooseToMove = new List<YesNoCardDecision>();
-                    HeroTurnTakerController httc = DecisionMaker;
-                    Card firstInHand = cardsInHand.FirstOrDefault();
-                    if (firstInHand != null && !cardsInHand.Any((Card c) => c.Owner != firstInHand.Owner))
-                    {
-                        httc = base.GameController.FindHeroTurnTakerController(firstInHand.Owner.ToHero());
-                    }
-                    IEnumerator decideCoroutine = base.GameController.MakeYesNoCardDecision(httc, SelectionType.Custom, base.Card, action: targetPreview, storedResults: chooseToMove, cardSource: GetCardSource());
+                    TurnTaker chosen = null;
+                    List<bool> cardsMoved = new List<bool>();
+                    // Choose a player to move cards
+                    List<SelectTurnTakerDecision> selection = new List<SelectTurnTakerDecision>();
+                    IEnumerator selectCoroutine = base.GameController.SelectTurnTaker(DecisionMaker, SelectionType.Custom, selection, optional: true, additionalCriteria: (TurnTaker tt) => tt.IsHero && tt.ToHero().HasCardsInHand, cardSource: GetCardSource());
                     if (base.UseUnityCoroutines)
                     {
-                        yield return base.GameController.StartCoroutine(decideCoroutine);
+                        yield return base.GameController.StartCoroutine(selectCoroutine);
                     }
                     else
                     {
-                        base.GameController.ExhaustCoroutine(decideCoroutine);
+                        base.GameController.ExhaustCoroutine(selectCoroutine);
                     }
-                    if (DidPlayerAnswerYes(chooseToMove))
+                    if (DidSelectTurnTaker(selection))
                     {
-                        List<bool> cardsMoved = new List<bool>();
-                        TurnTaker chosen = null;
-                        if (httc == DecisionMaker)
+                        chosen = selection.FirstOrDefault().SelectedTurnTaker;
+                    }
+                    // The chosen player may move a card
+                    IEnumerator moveCoroutine = DropCardsFromHand(chosen, 1, false, true, cardsMoved, GetCardSource());
+                    if (base.UseUnityCoroutines)
+                    {
+                        yield return base.GameController.StartCoroutine(moveCoroutine);
+                    }
+                    else
+                    {
+                        base.GameController.ExhaustCoroutine(moveCoroutine);
+                    }
+                    int cardsDropped = 0;
+                    foreach (bool b in cardsMoved)
+                    {
+                        if (b)
                         {
-                            // Choose a player to move cards
-                            List<SelectTurnTakerDecision> selection = new List<SelectTurnTakerDecision>();
-                            IEnumerator selectCoroutine = base.GameController.SelectTurnTaker(DecisionMaker, SelectionType.Custom, selection, additionalCriteria: (TurnTaker tt) => tt.IsHero && tt.ToHero().Hand.HasCards, cardSource: GetCardSource());
-                            if (base.UseUnityCoroutines)
-                            {
-                                yield return base.GameController.StartCoroutine(selectCoroutine);
-                            }
-                            else
-                            {
-                                base.GameController.ExhaustCoroutine(selectCoroutine);
-                            }
-                            if (DidSelectTurnTaker(selection))
-                            {
-                                chosen = selection.FirstOrDefault().SelectedTurnTaker;
-                            }
+                            cardsDropped++;
                         }
-                        else
-                        {
-                            // Only one player has cards to move
-                            chosen = httc.TurnTaker;
-                        }
-                        if (chosen != null)
-                        {
-                            // The chosen player may move a card
-                            IEnumerator moveCoroutine = DropCardsFromHand(chosen, 1, false, true, cardsMoved, GetCardSource());
-                            if (base.UseUnityCoroutines)
-                            {
-                                yield return base.GameController.StartCoroutine(moveCoroutine);
-                            }
-                            else
-                            {
-                                base.GameController.ExhaustCoroutine(moveCoroutine);
-                            }
-                            int cardsDropped = 0;
-                            foreach (bool b in cardsMoved)
-                            {
-                                if (b)
-                                {
-                                    cardsDropped++;
-                                }
-                            }
-                            // If a card was moved, set the redirect flag
-                            if (cardsDropped > 0 && IsRealAction())
-                            {
-                                Journal.RecordCardProperties(base.Card, didMoveToRedirect, true);
-                            }
-                        }
+                    }
+                    // If a card was moved, set the redirect flag
+                    if (cardsDropped > 0 && IsRealAction())
+                    {
+                        Journal.RecordCardProperties(base.Card, didMoveToRedirect, true);
                     }
 
                     // Initiate damage
