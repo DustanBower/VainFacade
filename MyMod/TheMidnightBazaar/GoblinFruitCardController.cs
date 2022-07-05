@@ -43,7 +43,7 @@ namespace VainFacade.TheMidnightBazaar
             // "... a player may move a card from their hand under [i]The Empty Well[/i] to put the bottom card of their deck into play. If they do not, put the bottom card of the villain deck into play."
             List<bool> cardsMoved = new List<bool>();
             SelectTurnTakerDecision selection = new SelectTurnTakerDecision(base.GameController, DecisionMaker, GameController.FindTurnTakersWhere((TurnTaker tt) => tt.IsHero && GameController.IsTurnTakerVisibleToCardSource(tt, GetCardSource())), SelectionType.MoveCard, isOptional: true, cardSource: GetCardSource());
-            IEnumerator selectCoroutine = base.GameController.SelectTurnTakerAndDoAction(selection, (TurnTaker tt) => BottomCardResponse(tt));
+            IEnumerator selectCoroutine = base.GameController.SelectTurnTakerAndDoAction(selection, (TurnTaker tt) => BottomCardResponse(tt, cardsMoved));
             if (base.UseUnityCoroutines)
             {
                 yield return base.GameController.StartCoroutine(selectCoroutine);
@@ -52,13 +52,47 @@ namespace VainFacade.TheMidnightBazaar
             {
                 base.GameController.ExhaustCoroutine(selectCoroutine);
             }
+            int cardsDropped = 0;
+            foreach (bool b in cardsMoved)
+            {
+                if (b)
+                    cardsDropped++;
+            }
+            if (cardsDropped <= 0)
+            {
+                // "If they do not, put the bottom card of the villain deck into play."
+                List<SelectLocationDecision> locationDecisions = new List<SelectLocationDecision>();
+                IEnumerator selectDeckCoroutine = base.GameController.SelectADeck(DecisionMaker, SelectionType.PlayBottomCardOfVillainDeck, (Location l) => l.IsVillain, locationDecisions, cardSource: GetCardSource());
+                if (base.UseUnityCoroutines)
+                {
+                    yield return base.GameController.StartCoroutine(selectDeckCoroutine);
+                }
+                else
+                {
+                    base.GameController.ExhaustCoroutine(selectDeckCoroutine);
+                }
+                SelectLocationDecision choice = locationDecisions.FirstOrDefault();
+                if (choice != null && choice.SelectedLocation.Location != null)
+                {
+                    Location deck = choice.SelectedLocation.Location;
+                    TurnTakerController ttc = base.GameController.FindTurnTakerController(deck.OwnerTurnTaker);
+                    IEnumerator playCoroutine = base.GameController.PlayTopCard(DecisionMaker, ttc, isPutIntoPlay: true, responsibleTurnTaker: base.TurnTaker, playBottomInstead: true, showMessage: true, cardSource: GetCardSource());
+                    if (base.UseUnityCoroutines)
+                    {
+                        yield return base.GameController.StartCoroutine(playCoroutine);
+                    }
+                    else
+                    {
+                        base.GameController.ExhaustCoroutine(playCoroutine);
+                    }
+                }
+            }
             yield break;
         }
 
-        private IEnumerator BottomCardResponse(TurnTaker tt)
+        private IEnumerator BottomCardResponse(TurnTaker tt, List<bool> cardsMoved)
         {
             // "... a player may move a card from their hand under [i]The Empty Well[/i] to put the bottom card of their deck into play."
-            List<bool> cardsMoved = new List<bool>();
             IEnumerator moveCoroutine = DropCardsFromHand(tt, 1, false, true, cardsMoved, GetCardSource());
             if (base.UseUnityCoroutines)
             {
@@ -84,35 +118,6 @@ namespace VainFacade.TheMidnightBazaar
                 else
                 {
                     base.GameController.ExhaustCoroutine(playCoroutine);
-                }
-            }
-            else
-            {
-                // "If they do not, put the bottom card of the villain deck into play."
-                List<SelectLocationDecision> locationDecisions = new List<SelectLocationDecision>();
-                IEnumerator selectCoroutine = base.GameController.SelectADeck(DecisionMaker, SelectionType.PlayBottomCardOfVillainDeck, (Location l) => l.IsVillain, locationDecisions, cardSource: GetCardSource());
-                if (base.UseUnityCoroutines)
-                {
-                    yield return base.GameController.StartCoroutine(selectCoroutine);
-                }
-                else
-                {
-                    base.GameController.ExhaustCoroutine(selectCoroutine);
-                }
-                SelectLocationDecision choice = locationDecisions.FirstOrDefault();
-                if (choice != null && choice.SelectedLocation.Location != null)
-                {
-                    Location deck = choice.SelectedLocation.Location;
-                    TurnTakerController ttc = base.GameController.FindTurnTakerController(deck.OwnerTurnTaker);
-                    IEnumerator playCoroutine = base.GameController.PlayTopCard(DecisionMaker, ttc, isPutIntoPlay: true, responsibleTurnTaker: base.TurnTaker, playBottomInstead: true, showMessage: true, cardSource: GetCardSource());
-                    if (base.UseUnityCoroutines)
-                    {
-                        yield return base.GameController.StartCoroutine(playCoroutine);
-                    }
-                    else
-                    {
-                        base.GameController.ExhaustCoroutine(playCoroutine);
-                    }
                 }
             }
             yield break;
