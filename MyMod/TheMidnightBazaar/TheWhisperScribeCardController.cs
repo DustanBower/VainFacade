@@ -21,7 +21,7 @@ namespace VainFacade.TheMidnightBazaar
         {
             base.AddTriggers();
             // "At the end of the environment turn, a player may put 2 different cards from their hand under [i]The Empty Well[/i]. If 2 cards are moved this way, search a deck for a card and put it into play, then shuffle that deck. If a card enters play this way, remove this card from the game."
-            AddEndOfTurnTrigger((TurnTaker tt) => tt.IsEnvironment, SelectPlayerResponse, new TriggerType[] { TriggerType.MoveCard, TriggerType.PutIntoPlay, TriggerType.RemoveFromGame });
+            AddEndOfTurnTrigger((TurnTaker tt) => tt.IsEnvironment && IsEmptyWellInPlay(), SelectPlayerResponse, new TriggerType[] { TriggerType.MoveCard, TriggerType.PutIntoPlay, TriggerType.RemoveFromGame });
         }
 
         public override IEnumerator Play()

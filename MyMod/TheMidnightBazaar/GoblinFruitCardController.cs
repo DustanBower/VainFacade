@@ -21,7 +21,7 @@ namespace VainFacade.TheMidnightBazaar
         {
             base.AddTriggers();
             // "At the end of the environment turn, a player may move a card from their hand under [i]The Empty Well[/i] to put the bottom card of their deck into play. If they do not, put the bottom card of the villain deck into play."
-            AddEndOfTurnTrigger((TurnTaker tt) => tt.IsEnvironment, SelectPlayerResponse, new TriggerType[] { TriggerType.MoveCard, TriggerType.PutIntoPlay });
+            AddEndOfTurnTrigger((TurnTaker tt) => tt.IsEnvironment && IsEmptyWellInPlay(), SelectPlayerResponse, new TriggerType[] { TriggerType.MoveCard, TriggerType.PutIntoPlay });
         }
 
         public override IEnumerator Play()

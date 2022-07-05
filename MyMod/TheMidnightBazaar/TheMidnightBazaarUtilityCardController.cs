@@ -51,7 +51,7 @@ namespace VainFacade.TheMidnightBazaar
             Card well = FindCard(EmptyWellIdentifier);
             if (well == null)
                 return false;
-            return well.IsInPlayAndHasGameText;
+            return well.IsInPlayAndHasGameText && base.GameController.IsCardVisibleToCardSource(well, GetCardSource());
         }
 
         public bool IsBlindedQueenInPlay()
@@ -59,7 +59,7 @@ namespace VainFacade.TheMidnightBazaar
             Card queen = FindCard(BlindedQueenIdentifier);
             if (queen == null)
                 return false;
-            return queen.IsInPlayAndHasGameText;
+            return queen.IsInPlayAndHasGameText && base.GameController.IsCardVisibleToCardSource(queen, GetCardSource());
         }
 
         public IEnumerator FetchWellResponse()

@@ -20,7 +20,7 @@ namespace VainFacade.TheMidnightBazaar
                 SpecialStringMaker.ShowNumberOfCardsAtLocation(FindCard(EmptyWellIdentifier).UnderLocation, new LinqCardCriteria((Card c) => c.Owner.ToHero() == hero, "from " + hero.Name + "'s deck", false, true), () => base.Card.IsInPlayAndHasGameText && FindCard(EmptyWellIdentifier).IsInPlayAndHasGameText).Condition = () => FindCard(EmptyWellIdentifier).IsInPlayAndHasGameText;
             }*/
             // Otherwise, remind the players that The Empty Well is not in play
-            SpecialStringMaker.ShowSpecialString(() => FindCard(EmptyWellIdentifier).Title + " is not in play.").Condition = () => !FindCard(EmptyWellIdentifier).IsInPlayAndHasGameText;
+            SpecialStringMaker.ShowSpecialString(() => FindCard(EmptyWellIdentifier).Title + " is not in play.").Condition = () => !IsEmptyWellInPlay();
         }
 
         public override void AddTriggers()
@@ -29,7 +29,7 @@ namespace VainFacade.TheMidnightBazaar
             // "Reduce damage dealt by non-environment targets by 1."
             AddReduceDamageTrigger((DealDamageAction dda) => dda.DamageSource != null && dda.DamageSource.IsTarget && !dda.DamageSource.IsEnvironmentTarget, (DealDamageAction dda) => 1);
             // "At the start of the environment turn, deal each hero 1 psychic damage for each card from their deck under [i]The Empty Well.[/i]"
-            AddStartOfTurnTrigger((TurnTaker tt) => tt.IsEnvironment, PsychicDamageResponse, TriggerType.DealDamage);
+            AddStartOfTurnTrigger((TurnTaker tt) => tt.IsEnvironment && IsEmptyWellInPlay(), PsychicDamageResponse, TriggerType.DealDamage);
         }
 
         public override IEnumerator Play()

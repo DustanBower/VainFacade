@@ -22,7 +22,7 @@ namespace VainFacade.TheMidnightBazaar
         {
             base.AddTriggers();
             // "At the end of the environment turn, if there is no active hero in this play area, 1 player may move a card from their hand under [i]The Empty Well[/i] to move this card to their play area."
-            AddEndOfTurnTrigger((TurnTaker tt) => tt.IsEnvironment && !base.GameController.FindCardsWhere(new LinqCardCriteria((Card c) => c.IsHeroCharacterCard && c.IsActive && c.Location.HighestRecursiveLocation == base.Card.Location.HighestRecursiveLocation)).Any(), SelectPlayerResponse, TriggerType.MoveCard);
+            AddEndOfTurnTrigger((TurnTaker tt) => tt.IsEnvironment && !base.GameController.FindCardsWhere(new LinqCardCriteria((Card c) => c.IsHeroCharacterCard && c.IsActive && c.Location.HighestRecursiveLocation == base.Card.Location.HighestRecursiveLocation)).Any() && IsEmptyWellInPlay(), SelectPlayerResponse, TriggerType.MoveCard);
         }
 
         private IEnumerator SelectPlayerResponse(PhaseChangeAction pca)
