@@ -44,56 +44,17 @@ namespace VainFacade.TheMidnightBazaar
             {
                 base.GameController.ExhaustCoroutine(cancelCoroutine);
             }
-            /*Log.Debug("MrWolfCardController.PlayVillainCardInsteadResponse: calling PlayTheTopCardOfTheVillainDeckWithMessageResponse");
-            IEnumerator playCoroutine = base.PlayTheTopCardOfTheVillainDeckWithMessageResponse(cancelActions.FirstOrDefault());
-            if (base.UseUnityCoroutines)
-            {
-                yield return base.GameController.StartCoroutine(playCoroutine);
-            }
-            else
-            {
-                base.GameController.ExhaustCoroutine(playCoroutine);
-            }*/
             if (wouldDealDamage)
             {
-                //Log.Debug("MrWolfCardController.PlayVillainCardInsteadResponse: calling SendMessageAction");
-                IEnumerator announceCoroutine = base.GameController.SendMessageAction(base.Card.Title + " plays the top card of the villain deck...", Priority.High, GetCardSource(), showCardSource: true);
+                //Log.Debug("MrWolfCardController.PlayVillainCardInsteadResponse: calling PlayTheTopCardOfTheVillainDeckWithMessageResponse");
+                IEnumerator playCoroutine = base.PlayTheTopCardOfTheVillainDeckWithMessageResponse(cancelActions.FirstOrDefault());
                 if (base.UseUnityCoroutines)
                 {
-                    yield return base.GameController.StartCoroutine(announceCoroutine);
+                    yield return base.GameController.StartCoroutine(playCoroutine);
                 }
                 else
                 {
-                    base.GameController.ExhaustCoroutine(announceCoroutine);
-                }
-                List<SelectLocationDecision> choices = new List<SelectLocationDecision>();
-                //Log.Debug("MrWolfCardController.PlayVillainCardInsteadResponse: calling SelectADeck");
-                IEnumerator selectCoroutine = base.GameController.SelectADeck(DecisionMaker, SelectionType.PlayTopCardOfVillainDeck, (Location l) => l.IsVillain, storedResults: choices, cardSource: GetCardSource());
-                if (base.UseUnityCoroutines)
-                {
-                    yield return base.GameController.StartCoroutine(selectCoroutine);
-                }
-                else
-                {
-                    base.GameController.ExhaustCoroutine(selectCoroutine);
-                }
-                SelectLocationDecision playerChoice = choices.FirstOrDefault();
-                if (playerChoice != null && playerChoice.SelectedLocation.Location != null)
-                {
-                    //Log.Debug("MrWolfCardController.PlayVillainCardInsteadResponse: deck was selected");
-                    Location chosenDeck = playerChoice.SelectedLocation.Location;
-                    //Log.Debug("MrWolfCardController.PlayVillainCardInsteadResponse: chosenDeck: " + chosenDeck.GetFriendlyName());
-                    TurnTakerController ttc = FindTurnTakerController(chosenDeck.OwnerTurnTaker);
-                    //Log.Debug("MrWolfCardController.PlayVillainCardInsteadResponse: calling PlayTopCardOfLocation");
-                    IEnumerator playCoroutine = base.GameController.PlayTopCardOfLocation(ttc, chosenDeck, cardSource: GetCardSource());
-                    if (base.UseUnityCoroutines)
-                    {
-                        yield return base.GameController.StartCoroutine(playCoroutine);
-                    }
-                    else
-                    {
-                        base.GameController.ExhaustCoroutine(playCoroutine);
-                    }
+                    base.GameController.ExhaustCoroutine(playCoroutine);
                 }
             }
             yield break;
