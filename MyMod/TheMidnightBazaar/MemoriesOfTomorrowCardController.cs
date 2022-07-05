@@ -44,7 +44,7 @@ namespace VainFacade.TheMidnightBazaar
             // "... 1 player may move 1 card from their hand under [i]The Empty Well[/i] to discard the top card of each deck and put the top card from a trash into play."
             List<bool> cardsMoved = new List<bool>();
             currentMode = CustomMode.PlayerToDropCard;
-            SelectTurnTakerDecision selection = new SelectTurnTakerDecision(base.GameController, DecisionMaker, GameController.FindTurnTakersWhere((TurnTaker tt) => tt.IsHero && GameController.IsTurnTakerVisibleToCardSource(tt, GetCardSource())), SelectionType.MoveCard, isOptional: true, cardSource: GetCardSource());
+            SelectTurnTakerDecision selection = new SelectTurnTakerDecision(base.GameController, DecisionMaker, GameController.FindTurnTakersWhere((TurnTaker tt) => tt.IsHero && GameController.IsTurnTakerVisibleToCardSource(tt, GetCardSource())), SelectionType.Custom, isOptional: true, cardSource: GetCardSource());
             IEnumerator selectCoroutine = base.GameController.SelectTurnTakerAndDoAction(selection, (TurnTaker tt) => DiscardAndPlayResponse(tt));
             if (base.UseUnityCoroutines)
             {
