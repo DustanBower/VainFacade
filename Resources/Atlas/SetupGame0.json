@@ -1,0 +1,20 @@
+{"frames": {
+
+"TheMidnightBazaarDeckBack.png":
+{
+	"frame": {"x":0,"y":0,"w":177,"h":256},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":177,"h":256},
+	"sourceSize": {"w":177,"h":256}
+}},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "SetupGame0.png",
+	"format": "RGBA8888",
+	"size": {"w":256,"h":256},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:afe4daa910f29aaf08ba785740e06c47:54b7deeb8ac7c1fcf4fc5b35b55ab003:4ee285c32a91b7652e02ac049f918b2a$"
+}
+}
