@@ -60,4 +60,7 @@
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>call "C:\Users\Kendal\source\repos\VainFacade\MyMod\postbuild.bat"</PostBuildEvent>
+  </PropertyGroup>
 </Project>
