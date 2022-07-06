@@ -15,8 +15,10 @@ namespace VainFacade.TheMidnightBazaar
             : base(card, turnTakerController)
         {
             AddThisCardControllerToList(CardControllerListType.MakesIndestructible);
-            // Show list of cards under this card (if this is in play)
-            SpecialStringMaker.ShowListOfCardsAtLocation(base.Card.UnderLocation, new LinqCardCriteria(), () => base.Card.IsInPlayAndHasGameText).Condition = () => base.Card.IsInPlayAndHasGameText;
+            // Show list of cards under this card (if this is in play and has cards under it)
+            SpecialStringMaker.ShowListOfCardsAtLocation(base.Card.UnderLocation, new LinqCardCriteria((Card c) => true, ""), () => base.Card.IsInPlayAndHasGameText && base.Card.UnderLocation.HasCards).Condition = () => base.Card.IsInPlayAndHasGameText && base.Card.UnderLocation.HasCards;
+            // Show "There are no cards under The Empty Well." (if this is in play and has no cards under it)
+            SpecialStringMaker.ShowSpecialString(() => "There are no cards under " + base.Card.Title + ".", () => base.Card.IsInPlayAndHasGameText && !base.Card.UnderLocation.HasCards).Condition = () => base.Card.IsInPlayAndHasGameText && !base.Card.UnderLocation.HasCards;
         }
 
         public override bool AskIfCardIsIndestructible(Card card)
