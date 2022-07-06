@@ -91,7 +91,7 @@ namespace VainFacade.TheMidnightBazaar
             {
                 DealDamageAction targetPreview = new DealDamageAction(GetCardSource(), new DamageSource(base.GameController, base.Card), highestHeroTarget, H + 2, DamageType.Melee);
 
-                if (cardsInHand.Any() && IsEmptyWellInPlay())
+                if (cardsInHand.Any() && IsEmptyWellInPlay() && !IsBlindedQueenInPlay())
                 {
                     TurnTaker chosen = null;
                     List<bool> cardsMoved = new List<bool>();
@@ -136,17 +136,17 @@ namespace VainFacade.TheMidnightBazaar
                     {
                         Journal.RecordCardProperties(base.Card, didMoveToRedirect, true);
                     }
+                }
 
-                    // Initiate damage
-                    IEnumerator damageCoroutine = DealDamage(base.Card, highestHeroTarget, H + 2, DamageType.Melee, cardSource: GetCardSource());
-                    if (base.UseUnityCoroutines)
-                    {
-                        yield return base.GameController.StartCoroutine(damageCoroutine);
-                    }
-                    else
-                    {
-                        base.GameController.ExhaustCoroutine(damageCoroutine);
-                    }
+                // Initiate damage
+                IEnumerator damageCoroutine = DealDamage(base.Card, highestHeroTarget, H + 2, DamageType.Melee, cardSource: GetCardSource());
+                if (base.UseUnityCoroutines)
+                {
+                    yield return base.GameController.StartCoroutine(damageCoroutine);
+                }
+                else
+                {
+                    base.GameController.ExhaustCoroutine(damageCoroutine);
                 }
             }
             yield break;
