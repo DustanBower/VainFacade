@@ -65,7 +65,7 @@ namespace VainFacade.TheMidnightBazaar
                 // "If they do not, put the bottom card of the villain deck into play."
                 List<SelectLocationDecision> locationDecisions = new List<SelectLocationDecision>();
                 currentMode = CustomMode.VillainDeckToPutBottomCardIntoPlay;
-                IEnumerator selectDeckCoroutine = base.GameController.SelectADeck(DecisionMaker, SelectionType.Custom, (Location l) => l.IsVillain, locationDecisions, cardSource: GetCardSource());
+                IEnumerator selectDeckCoroutine = FindVillainDeck(DecisionMaker, SelectionType.Custom, locationDecisions, (Location l) => true);
                 if (base.UseUnityCoroutines)
                 {
                     yield return base.GameController.StartCoroutine(selectDeckCoroutine);
@@ -79,7 +79,7 @@ namespace VainFacade.TheMidnightBazaar
                 {
                     Location deck = choice.SelectedLocation.Location;
                     TurnTakerController ttc = base.GameController.FindTurnTakerController(deck.OwnerTurnTaker);
-                    IEnumerator playCoroutine = base.GameController.PlayTopCard(DecisionMaker, ttc, isPutIntoPlay: true, responsibleTurnTaker: base.TurnTaker, playBottomInstead: true, showMessage: true, cardSource: GetCardSource());
+                    IEnumerator playCoroutine = base.GameController.PlayTopCard(DecisionMaker, ttc, isPutIntoPlay: true, responsibleTurnTaker: base.TurnTaker, playBottomInstead: true, showMessage: true, overrideDeck: deck, cardSource: GetCardSource());
                     if (base.UseUnityCoroutines)
                     {
                         yield return base.GameController.StartCoroutine(playCoroutine);
