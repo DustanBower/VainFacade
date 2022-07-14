@@ -64,7 +64,7 @@
 				"Manipulate",
 				"PlayCardNow"
 			],
-			"flavorText": "Ember still remembered how that first fruit{BR}tasted -- the power and the portents within --{BR}and how she had run from the old tree, only{BR}to find it always behind her, in the clearing{BR}that she had somehow never left.",
+			"flavorText": "Ember still remembered that first fruit's{BR}flavor -- the power and portents within -- and{BR}how she'd run with that old tree always behind{BR}her, in the clearing she'd somehow never left.",
 			"flavorQuotes": []
 		},
 		{
@@ -77,7 +77,7 @@
 			"hitpoints": 3,
 			"body": [
 				"When this card enters play, search the environment deck and trash for [i]The Empty Well[/i] and put it into play. Shuffle the environment deck.",
-				"At the end of the environment turn, 1 player may move 1 card from their hand under [i]The Empty Well[/i] to discard the top card of each deck and put the top card from a trash into play."
+				"At the end of the environment turn, 1 player may move 1 card from their hand under [i]The Empty Well[/i] to discard the top card of each deck and put the top card of a trash into play."
 			],
 			"icons": [
 				"Search",
@@ -85,7 +85,7 @@
 				"Discard",
 				"PlayCardNow"
 			],
-			"flavorText": "The old tome was impossibly thick, filled with{BR}dry, blank pages. Suddenly, the pages came to{BR}life with words penned in living ink that ran{BR}across them, from beginning to end and back{BR}again. Banshee read as quickly as she could, but gleaned little.",
+			"flavorText": "Suddenly, the blank pages came to life. Words{BR}penned in living ink ran across them, from{BR}beginning to end and back again. Banshee{BR}read as quickly as she could, but gleaned little.",
 			"flavorQuotes": []
 		},
 		{
@@ -105,7 +105,7 @@
 				"EndOfTurnAction",
 				"DealDamageMelee"
 			],
-			"flavorText": "“How will I know where to look?” Glyph{BR}asked. Firebird shifted on her perch, which had{BR}begun to glow red from the heat from her{BR}talons. “Look for Mr. Wolf,” she croaked.{BR}“Wherever there is trouble, he will be there in its midst.”",
+			"flavorText": "“How will I know where to look?” Glyph{BR}asked. Firebird shifted on her smoldering{BR}perch. “Look for Mr. Wolf,” she croaked.{BR}“Wherever there is trouble, he will be in its midst.”",
 			"flavorQuotes": [
 				{
 					"identifier": "Glyph",
@@ -139,7 +139,7 @@
 				"DealDamageMelee",
 				"RedirectDamage"
 			],
-			"flavorText": "His beard and hair were black as pitch, and{BR}his skin a light green. His red eye had no{BR}white or iris, but was entirely blood-red. “I'm{BR}told you solve problems,” Carnaval said coolly.{BR}Ronald smiled a toothy smile, with each tooth long and pointed.",
+			"flavorText": "His left eye had no white or iris, but was{BR}entirely blood-red. “I'm told you solve{BR}problems,” Carnaval said coolly. Ronald smiled{BR}a toothy smile, with each tooth long and pointed.",
 			"flavorQuotes": [
 				{
 					"identifier": "Carnaval",
@@ -167,11 +167,11 @@
 				"StartOfTurnAction",
 				"DealDamageInfernal"
 			],
-			"flavorText": "Before Arctis could act, Liana pulled him{BR}behind the cart with such force that he nearly{BR}fell. Her eyes turned completely black as she{BR}snarled at him. “You can escape, or it can take{BR}you. If you're very lucky, kill you. You can fight, but you can't win.”",
+			"flavorText": "Liana pulled Arctis behind the cart so hard{BR}he nearly fell. Her eyes turned black as she{BR}snarled at him. “You can escape, or it can{BR}take you. You can fight, but you can't win.”",
 			"flavorQuotes": [
 				{
 					"identifier": "Liana",
-					"text": "You can escape, or it can take{BR}you. If you're very lucky, kill you. You can fight, but you can't win."
+					"text": "You can escape, or it can take{BR}you. You can fight, but you can't win."
 				}
 			]
 		},
@@ -183,8 +183,8 @@
 				"her grace"
 			],
 			"body": [
-				"This card can't be removed from play by other cards.",
-				"The first time each turn a Threen or non-environment target deals damage to a target other than itself, increase damage dealt to the source of that damage by 1 until this card leaves play.",
+				"This card is indestructible to other cards.",
+				"The first time each turn a Threen or non-environment target deals damage to a target other than itself, increase damage dealt to the source of that damage by 1.",
 				"At the start of the environment turn, play the top card of the environment deck, then shuffle this card and a Hound from the environment trash into the environment deck."
 			],
 			"icons": [
@@ -247,7 +247,7 @@
 				"Manipulate",
 				"RegainHP"
 			],
-			"flavorText": "Her every move and step in perfect time, the{BR}dancer was a sight to behold. Flowers sprang{BR}up in her footprints, their petals opening in{BR}perfect sync with the winds and the clouds.{BR}Where she danced, so danced the world.",
+			"flavorText": "Her every move in perfect time, she was a sight{BR}to behold. Flowers sprang up in her{BR}footprints, petals opening in time with the{BR}wind. Where she danced, so danced the world.",
 			"flavorQuotes": []
 		},
 		{
@@ -266,7 +266,7 @@
 				"CannotPlayCards",
 				"RemoveFromGame"
 			],
-			"flavorText": "Merchants and visitors alike gathered around{BR}the well to pay tribute to Her Grace. None{BR}thirsted in sight of the well, but neither were{BR}they truly sated. It sat in the courtyard,{BR}somehow both inconspicuous and ominous, at the center of all things.",
+			"flavorText": "None thirsted in sight of the well, but nor{BR}were they truly sated. It sat in the courtyard,{BR}somehow both inconspicuous and ominous, at{BR}the center of all things.",
 			"flavorQuotes": []
 		},
 		{
@@ -313,7 +313,7 @@
 				"DealDamageSonic",
 				"PlayCardNow"
 			],
-			"flavorText": "Though the singer was miles away, Banshee{BR}knew when she began. Beside her, the poet's{BR}mouth opened, but 3 voices came out, singing{BR}in perfect harmony. The world bent and gnarled{BR}under the force of it, and the disciples began to shatter.",
+			"flavorText": "The Singer was miles away. When the poet's{BR}mouth opened, three voices rang out in in perfect{BR}harmony. The world bent and gnarled under the force of it, and the disciples began to shatter.{BR}",
 			"flavorQuotes": []
 		},
 		{
@@ -326,7 +326,7 @@
 			"hitpoints": 3,
 			"body": [
 				"When this card enters play, search the environment deck and trash for [i]The Empty Well[/i] and put it into play. Shuffle the environment deck.",
-				"At the end of the environment turn, a player may put 2 different cards from their hand under [i]The Empty Well[/i]. If 2 cards are moved this way, search a deck for a card and put it into play, then shuffle that deck. If a card enters play this way, remove this card from the game."
+				"At the end of the environment turn, a player may put 2 different cards from their hand under [i]The Empty Well[/i]. If 2 cards are moved this way, search a deck for a card and put it into play, then shuffle that deck and remove this card from the game."
 			],
 			"icons": [
 				"Search",

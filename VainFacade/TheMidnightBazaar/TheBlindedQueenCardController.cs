@@ -23,7 +23,7 @@ namespace VainFacadePlaytest.TheMidnightBazaar
 
         public override bool AskIfCardIsIndestructible(Card card)
         {
-            // "This card can't be removed from play by other cards."
+            // "This card is indestructible to other cards."
             if (card == base.Card)
             {
                 if (Journal.GetCardPropertiesBoolean(base.Card, IsShufflingSelf).HasValue)
