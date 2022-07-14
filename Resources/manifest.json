@@ -1,42 +1,43 @@
 {
-   "title":"Vain Facade (playtesting)",
-   "author":"Tonitrus",
-   "description":"Playtesting mod for Vain Facade custom expansion",
-   "namespace":"VainFacadePlaytest",
-   "dll":"VainFacadePlaytest.dll",
-   "version":"0.1",
-   "color":"232370",
-   "manualTags":[],
-   "decks":{
-      "heroes":[],
-      "villains":[],
-      "teamVillains":[],
-      "environments":[
-         "TheMidnightBazaar"
-      ]
-   },
-   "variants":{},
-   "credits":[
-           "The Midnight Bazaar",
-           "Code by Bart_KF",
-           "Card art icons from game-icons.net",
-           "card icon - a sense of loss - forest entrance - by Delapouite under CC BY 3.0",
-           "card icon - goblin fruit - fruiting - by Lorc under CC BY 3.0",
-           "card icon - disquiet - stitched wound - by Lorc under CC BY 3.0 [rotate to look like a smile]",
-           "card icon - memories of tomorrow - open book - by Lorc under CC BY 3.0",
-           "card icon - mr. wolf - mouth watering - by Lorc under CC BY 3.0",
-           "card icon - red-eyed ronald - delighted - by Lorc under CC BY 3.0",
-           "card icon - the black dog - hidden - by Lorc under CC BY 3.0",
-           "card icon - the blinded queen - crown - by Lorc under CC BY 3.0",
-           "card icon - the cloistered prince - portrait - by Delapouite under CC BY 3.0",
-           "card icon - the dancer at the dawn - ballerina shoes - by Delapouite under CC BY 3.0",
-           "card icon - the empty well - well - by Delapouite under CC BY 3.0",
-           "card icon - the poet of the pale - two shadows - by Lorc under CC BY 3.0",
-           "card icon - the singer in the silence - echo ripples - by Lorc under CC BY 3.0",
-           "card icon - the whisper scribe - double face mask - by Lorc under CC BY 3.0",
-           "card icon - velkinor - relic blade - by Lorc under CC BY 3.0",
-           "Music: At the Court of the Blinded Queen by Tonitrus (made with LMMS with",
-           "instruments by Mattias Wesdlund, bigcat instruments, dsk music, and Versil Studios)",
-           "Sentinels Digital Background artwork by Tonitrus"
-   ]
+    "title": "Vain Facade (playtesting)",
+    "author": "Tonitrus",
+    "description": "Playtesting mod for Vain Facade custom expansion",
+    "namespace": "VainFacadePlaytest",
+    "dll": "VainFacadePlaytest.dll",
+    "publishedFileId": 2835111137,
+    "version": "0.1",
+    "color": "232370",
+    "manualTags": [],
+    "decks": {
+      "heroes": [],
+      "villains": [],
+      "teamVillains": [],
+      "environments": [
+        "TheMidnightBazaar"
+    ]
+  },
+    "variants": {},
+    "credits": [
+      "The Midnight Bazaar",
+      "Code by Bart_KF",
+      "Card art icons from game-icons.net",
+      "card icon - a sense of loss - forest entrance - by Delapouite under CC BY 3.0",
+      "card icon - goblin fruit - fruiting - by Lorc under CC BY 3.0",
+      "card icon - disquiet - stitched wound - by Lorc under CC BY 3.0 [rotate to look like a smile]",
+      "card icon - memories of tomorrow - open book - by Lorc under CC BY 3.0",
+      "card icon - mr. wolf - mouth watering - by Lorc under CC BY 3.0",
+      "card icon - red-eyed ronald - delighted - by Lorc under CC BY 3.0",
+      "card icon - the black dog - hidden - by Lorc under CC BY 3.0",
+      "card icon - the blinded queen - crown - by Lorc under CC BY 3.0",
+      "card icon - the cloistered prince - portrait - by Delapouite under CC BY 3.0",
+      "card icon - the dancer at the dawn - ballerina shoes - by Delapouite under CC BY 3.0",
+      "card icon - the empty well - well - by Delapouite under CC BY 3.0",
+      "card icon - the poet of the pale - two shadows - by Lorc under CC BY 3.0",
+      "card icon - the singer in the silence - echo ripples - by Lorc under CC BY 3.0",
+      "card icon - the whisper scribe - double face mask - by Lorc under CC BY 3.0",
+      "card icon - velkinor - relic blade - by Lorc under CC BY 3.0",
+      "Music: At the Court of the Blinded Queen by Tonitrus (made with LMMS with",
+      "instruments by Mattias Westlund, bigcat instruments, dsk music, and Versil Studios)",
+      "Sentinels Digital Background artwork by Tonitrus"
+  ]
 }
