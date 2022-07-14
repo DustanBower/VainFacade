@@ -3,7 +3,6 @@
    "author":"Tonitrus",
    "description":"Playtesting mod for Vain Facade custom expansion",
    "namespace":"VainFacadePlaytest",
-   "publishedFileId":2422637296,
    "dll":"VainFacadePlaytest.dll",
    "version":"0.1",
    "color":"232370",
