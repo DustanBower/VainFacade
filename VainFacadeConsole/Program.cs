@@ -18,7 +18,7 @@ using Boomlagoon.JSON;
 using System.Xml.XPath;
 using System.Globalization;
 
-namespace Handelabra.MyModConsole // this has to be this way to work around an EngineCommon issue, will be fixed soon.
+namespace Handelabra.VainFacadeConsole // this has to be this way to work around an EngineCommon issue, will be fixed soon.
 {
     /*
     * In order to use the Console version of Sentinels, you must first register your assemblies:

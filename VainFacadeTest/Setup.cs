@@ -4,7 +4,7 @@ using System.Reflection;
 using Handelabra.Sentinels.Engine.Model;
 using Handelabra;
 
-namespace MyModTest
+namespace VainFacadeTest
 {
     [SetUpFixture]
     public class Setup
