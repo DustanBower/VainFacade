@@ -37,7 +37,7 @@ namespace VainFacadePlaytest.TheMidnightBazaar
             // "At the end of the environment turn, this card deals the non-Threen target with the lowest HP {H - 2} psychic damage."
             AddDealDamageAtEndOfTurnTrigger(base.TurnTaker, base.Card, (Card c) => !IsThreen(c), TargetType.LowestHP, H - 2, DamageType.Psychic);
             // When the last Threen with >0 HP leaves play, other Threen lose indestructibility
-            AddAfterLeavesPlayAction(CleanUpThreens, TriggerType.DestroyCard);
+            AddAfterLeavesPlayAction((GameAction ga) => base.GameController.DestroyAnyCardsThatShouldBeDestroyed(ignoreBattleZone: true, cardSource: GetCardSource()), TriggerType.DestroyCard);
             AddTrigger((DestroyCardAction dca) => IsThreen(dca.CardToDestroy.Card), CleanUpThreens, TriggerType.DestroyCard, TriggerTiming.After);
             AddTrigger((BulkMoveCardsAction bmc) => bmc.CardsToMove.Any((Card c) => IsThreen(c)) && bmc.Destination.IsOutOfGame, CleanUpThreens, TriggerType.DestroyCard, TriggerTiming.After, ActionDescription.Unspecified, isConditional: false, requireActionSuccess: true, null, outOfPlayTrigger: true);
             AddTrigger((SwitchBattleZoneAction sb) => sb.Origin == base.Card.BattleZone, CleanUpThreens, TriggerType.DestroyCard, TriggerTiming.After, ActionDescription.Unspecified, isConditional: false, requireActionSuccess: true, null, outOfPlayTrigger: false, null, null, ignoreBattleZone: true);
@@ -47,10 +47,13 @@ namespace VainFacadePlaytest.TheMidnightBazaar
 
         private IEnumerator CleanUpThreens(GameAction ga)
         {
+            //Log.Debug("ThePoetOfThePaleCardController.CleanUpThreens(" + ga.GetHashCode().ToString() + ")");
+            //Log.Debug("ThePoetOfThePaleCardController.CleanUpThreens(" + ga.GetHashCode().ToString() + ") started, ga = " + ga.ToString());
             // When the last Threen with >0 HP leaves play, other Threen lose indestructibility and need cleaning up
             if (Journal.GetCardPropertiesBoolean(base.Card, IsCleaningUp).HasValue && Journal.GetCardPropertiesBoolean(base.Card, IsCleaningUp).Value)
             {
                 // We don't need to start this process again if it's already running
+                //Log.Debug("ThePoetOfThePaleCardController.CleanUpThreens(" + ga.GetHashCode().ToString() + ") exited (already running)");
                 yield break;
             }
             if (IsRealAction())
@@ -66,6 +69,7 @@ namespace VainFacadePlaytest.TheMidnightBazaar
             {
                 base.GameController.ExhaustCoroutine(cleanupCoroutine);
             }
+            //Log.Debug("ThePoetOfThePaleCardController.CleanUpThreens(" + ga.GetHashCode().ToString() + ") finished");
         }
     }
 }
