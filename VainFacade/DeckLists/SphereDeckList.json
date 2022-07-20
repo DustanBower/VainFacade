@@ -1,0 +1,451 @@
+{
+	"name": "Sphere",
+	"kind": "Hero",
+	"initialCardIdentifiers": [
+		"SphereCharacter"
+	],
+	"cards": [
+		{
+			"identifier": "SphereCharacter",
+			"count": 1,
+			"title": "Sphere",
+			"body": "Charge",
+			"backgroundColor": "900CA1",
+			"character": true,
+			"powers": [
+				"Choose an Emanation in play and put a card with the same title into play from your trash or {Sphere} deals 1 target 1 melee damage and 1 energy damage."
+			],
+			"icons": [
+				"HasPower",
+				"PlayCardNow",
+				"DealDamageMelee",
+				"DealDamageEnergy"
+			],
+			"hitpoints": 0,
+			"nemesisIdentifiers": [
+				"VainFacadePlaytest.Sphere"
+			],
+			"incapacitatedAbilities": [
+				"Select a target. Reduce damage dealt to that target by 1 until the start of your next turn.",
+				"Destroy an environment card.",
+				"Destroy an Ongoing card."
+			],
+			"flippedIcons": [
+				"ReduceDamageTaken",
+				"DestroyEnvironment",
+				"DestroyOngoing"
+			],
+			"complexity": 2,
+			"openingLines": {
+				"default": ""
+			}
+		},
+		{
+			"identifier": "AlienHeart",
+			"count": 2,
+			"title": "Alien Heart",
+			"keywords": [
+				"ongoing",
+				"limited"
+			],
+			"body": [
+				"The first time each turn a non-hero card prevents you from playing a card, you may use a power.",
+				"The first time each turn a non-hero card prevents you from drawing a card, you may play a card.",
+				"The first time each turn a non-hero card prevents you from using a power, you may draw a card."
+			],
+			"icons": [
+				"UsePowerNow",
+				"PlayCardNow",
+				"DrawCardNow"
+			],
+			"flavorQuotes": [
+				{
+					"identifier": "Doctor Vargha",
+					"text": "Subject 9 shows more promising{BR}results: forcefield generation abilities with{BR}no apparent side-effects, despite the orb{BR}subsuming his heart."
+				}
+			],
+			"flavorReference": "Doctor Vargha, Sphere: Test Subject 9 One-Shot"
+		},
+		{
+			"identifier": "AlterationWard",
+			"count": 3,
+			"title": "Alteration Ward",
+			"keywords": [
+				"ongoing",
+				"emanation"
+			],
+			"body": [
+				"At the start of your turn, select an Emanation. Destroy all Emanations that are not copies of that card.",
+				"When {Sphere} would be dealt exactly 1 damage, prevent it. The first time each turn {Sphere} is dealt damage by a non-hero target, draw a card."
+			],
+			"icons": [
+				"StartOfTurnAction",
+				"DestroyOngoing",
+				"CancelledDamageGreen",
+				"DrawCardNow"
+			],
+			"flavorQuotes": [
+				{
+					"identifier": "Butcher Bill",
+					"text": "Well, boys, hit on Sphere{BR}was a failure. Bullets can't pierce{BR}the bubble. Good news is he thinks BPD{BR}shot at him. Doesn't suspect us.'"
+				}
+			],
+			"flavorReference": "Butcher Bill, Bastion's Best #23"
+		},
+		{
+			"identifier": "BattleAura",
+			"count": 3,
+			"title": "Battle Aura",
+			"keywords": [
+				"ongoing",
+				"emanation"
+			],
+			"body": [
+				"At the start of your turn, select an Emanation. Destroy all Emanations that are not copies of that card.",
+				"Increase energy and melee damage dealt by {Sphere} by 1."
+			],
+			"icons": [
+				"StartOfTurnAction",
+				"DestroyOngoing",
+				"IncreaseDamageDealtEnergy",
+				"IncreaseDamageDealtMelee"
+			],
+			"flavorQuotes": [
+				{
+					"identifier": "Goon",
+					"text": "I thought you said it was a{BR}forcefield? What kind of forcefield{BR}[b]cuts through walls?[/b]"
+				}
+			],
+			"flavorReference": "Goon, Sphere: Guardian of Bastion #107"
+		},
+		{
+			"identifier": "BowledOver",
+			"count": 2,
+			"title": "Bowled Over",
+			"keywords": [
+				"one-shot"
+			],
+			"body": [
+				"{Sphere} deals 1 target X plus 2 energy damage, where X is the number of Emanations in play."
+			],
+			"icons": [
+				"DealDamageEnergy"
+			],
+			"flavorQuotes": [
+				{
+					"identifier": "Sphere",
+					"text": "Want to play chicken? Be my{BR}guest."
+				}
+			],
+			"flavorReference": "Sphere, Sphere: Fallen Hero #1"
+		},
+		{
+			"identifier": "CallousDisregard",
+			"count": 2,
+			"title": "Callous Disregard",
+			"keywords": [
+				"one-shot"
+			],
+			"body": [
+				"{Sphere} is immune to psychic damage this turn. {Sphere} deals each hero 1 psychic damage. You may destroy an environment card for each point of damage dealt this way."
+			],
+			"icons": [
+				"ImmuneToDamagePsychic",
+				"DealDamagePsychic",
+				"DestroyEnvironment"
+			],
+			"flavorQuotes": [
+				{
+					"identifier": "Grandfather",
+					"text": "Now, dear, if I'm to stop Sphere{BR}from destroying Bastion City, I'll require{BR}your skills. I believe you are programmed for{BR}murder?"
+				}
+			],
+			"flavorReference": "Grandfather, Sphere: Grandfather Paradox #3"
+		},
+		{
+			"identifier": "CollateralDamage",
+			"count": 2,
+			"title": "Collateral Damage",
+			"keywords": [
+				"one-shot"
+			],
+			"body": [
+				"Destroy all environment cards. {Sphere} deals himself X projectile damage, then another target X times 2 projectile damage, where X is the number of environment cards destroyed in this way."
+			],
+			"icons": [
+				"DestroyEnvironment",
+				"DealDamageProjectile"
+			],
+			"flavorQuotes": [
+				{
+					"identifier": "Sphere",
+					"text": "Hey, REAPER 3! You imitate, but{BR}you never learn. Want to see real{BR}power? Copy this!"
+				}
+			],
+			"flavorReference": "Sphere, Sphere: Grandfather Paradox #12"
+		},
+		{
+			"identifier": "CombatBarrier",
+			"count": 3,
+			"title": "Combat Barrier",
+			"keywords": [
+				"ongoing",
+				"emanation"
+			],
+			"body": [
+				"At the start of your turn, select an Emanation. Destroy all Emanations that are not copies of that card.",
+				"When {Sphere} is dealt damage, you may discard a card.",
+				"When you discard a card for any copy of this card, {Sphere} deals the source of that damage 1 energy damage."
+			],
+			"icons": [
+				"StartOfTurnAction",
+				"DestroyOngoing",
+				"Discard",
+				"CounterDamage"
+			],
+			"flavorQuotes": [
+				{
+					"identifier": "Thug",
+					"text": "Sphere can't touch{BR}us. BPD's after him."
+				},
+				{
+					"identifier": "Sphere",
+					"text": "Deliver a message for me: I'm on{BR}vacation, I'm not gone. You say my{BR}name, you answer to me."
+				}
+			],
+			"flavorReference": "Sphere: Fallen Hero #5"
+		},
+		{
+			"identifier": "ConventionalExplosives",
+			"count": 3,
+			"title": "Conventional Explosives",
+			"keywords": [
+				"one-shot"
+			],
+			"body": [
+				"{Sphere} deals up to 5 targets 2 fire damage each."
+			],
+			"icons": [
+				"DealDamageFire"
+			],
+			"flavorQuotes": [
+				{
+					"identifier": "General Janson",
+					"text": "It's time we gave you some real{BR}firepower."
+				}
+			],
+			"flavorReference": "General Janson, Sphere: Test Subject 9 One-Shot"
+		},
+		{
+			"identifier": "ConversionField",
+			"count": 3,
+			"title": "Conversion Field",
+			"keywords": [
+				"ongoing",
+				"emanation"
+			],
+			"body": [
+				"At the start of your turn, select an Emanation. Destroy all Emanations that are not copies of that card. Then select a damage type.",
+				"When this card enters play, select a damage type.",
+				"When {Sphere} is dealt damage of that type, he regains 2HP."
+			],
+			"icons": [
+				"StartOfTurnAction",
+				"DestroyOngoing",
+				"GainHP"
+			],
+			"flavorQuotes": [
+				{
+					"identifier": "Blitz",
+					"text": "Absorbin' electricity{BR}now? Anythin' t'look good for{BR}the cameras, huh?"
+				}
+			],
+			"flavorReference": "Blitz, Sphere: Fallen Hero #32"
+		},
+		{
+			"identifier": "FieldProjectionStabilizer",
+			"count": 2,
+			"title": "Field Projection Stabilizer",
+			"keywords": [
+				"equipment",
+				"limited"
+			],
+			"body": [
+				"When you play an Emanation, you may draw or play a card."
+			],
+			"icons": [
+				"DrawCardNow",
+				"PlayCardNow"
+			],
+			"flavorQuotes": [
+				{
+					"identifier": "Carnaval",
+					"text": "The first unit was{BR}shipped from-"
+				},
+				{
+					"identifier": "Sphere",
+					"text": "I hear that you've been asking about{BR}me. Leave X51 in the past. You don't{BR}want me as an enemy."
+				}
+			],
+			"flavorReference": "Echoes of X51 #16"
+		},
+		{
+			"identifier": "Gen3OrbChanneler",
+			"count": 2,
+			"title": "Gen 3 Orb Channeler",
+			"keywords": [
+				"equipment",
+				"limited"
+			],
+			"powers": [
+				"Return an Emanation to your hand. If you do, {Sphere} deals 1 target 3 energy damage."
+			],
+			"icons": [
+				"HasPower",
+				"Manipulate",
+				"DealDamageEnergy"
+			],
+			"flavorQuotes": [
+				{
+					"identifier": "Doctor Vargha",
+					"text": "We wired up the proof-of-concept. To{BR}our surprise, it worked as-is, but only in 9's{BR}hands. It's as if the ship reacts only to him."
+				}
+			],
+			"flavorReference": "Doctor Vargha, Sphere: Test Subject 9 One-Shot"
+		},
+		{
+			"identifier": "OrbProjection",
+			"count": 3,
+			"title": "Orb Projection",
+			"keywords": [
+				"ongoing",
+				"emanation"
+			],
+			"body": [
+				"At the start of your turn, select an Emanation. Destroy all Emanations that are not copies of that card."
+			],
+			"powers": [
+				"{Sphere} deals 1 target 1 energy damage or increase energy damage dealt by {Sphere} by 1 until the start of your next turn. You may use a power."
+			],
+			"icons": [
+				"StartOfTurnAction",
+				"DestroyOngoing",
+				"HasPower",
+				"DealDamageEnergy"
+			],
+			"flavorQuotes": [
+				{
+					"identifier": "Janson",
+					"text": "What good is it if he{BR}can't fight at a range?"
+				},
+				{
+					"identifier": "Vargha",
+					"text": "He can fire the forcefield out from{BR}himself briefly. Short range, but{BR}effective."
+				}
+			],
+			"flavorReference": "Sphere: Test Subject 9 One-Shot"
+		},
+		{
+			"identifier": "ReboundingForcefield",
+			"count": 3,
+			"title": "Rebounding Forcefield",
+			"keywords": [
+				"ongoing",
+				"emanation"
+			],
+			"body": [
+				"At the start of your turn, select an Emanation. Destroy all Emanations that are not copies of that card.",
+				"When {Sphere} would be dealt damage, if that damage is less than or equal to X, you may discard a card to redirect that damage to the non-hero target with the lowest HP.",
+				"X on this card = twice the number of copies of this card in play."
+			],
+			"icons": [
+				"StartOfTurnAction",
+				"DestroyOngoing",
+				"Discard",
+				"RedirectDamage"
+			],
+			"flavorQuotes": [
+				{
+					"identifier": "Sphere",
+					"text": "Could you thugs get it together{BR}already? This is frankly embarrassing."
+				}
+			],
+			"flavorReference": "Sphere, Sphere: Guardian of Bastion #79"
+		},
+		{
+			"identifier": "ShieldBarrier",
+			"count": 3,
+			"title": "Shield Barrier",
+			"keywords": [
+				"ongoing",
+				"emanation"
+			],
+			"body": [
+				"At the start of your turn, select an Emanation. Destroy all Emanations that are not copies of that card.",
+				"Reduce damage dealt to {Sphere} by 1."
+			],
+			"icons": [
+				"StartOfTurnAction",
+				"DestroyOngoing",
+				"ReduceDamageTaken"
+			],
+			"flavorQuotes": [
+				{
+					"identifier": "Peacekeeper",
+					"text": "Don't trust him, but{BR}don't underestimate him, either. I've{BR}seen him get hit by a freight train.{BR}Barely scratched him."
+				}
+			],
+			"flavorReference": "Peacekeeper, Echoes of X51 #13"
+		},
+		{
+			"identifier": "TestSubject9",
+			"count": 2,
+			"title": "Test Subject 9",
+			"keywords": [
+				"one-shot"
+			],
+			"body": [
+				"Reveal cards from the top of your deck until 2 Emanations are revealed. Put one into play and one into your hand."
+			],
+			"icons": [
+				"Search"
+			],
+			"flavorQuotes": [
+				{
+					"identifier": "General Janson",
+					"text": "We did what we had to do.{BR}We can't be held responsible for{BR}personnel failures. We made soldiers{BR}with the best tech we had."
+				}
+			],
+			"flavorReference": "General Janson, Echoes of X51 #4"
+		},
+		{
+			"identifier": "X51QuantumFieldStabilizer",
+			"count": 2,
+			"title": "X51 Quantum Field Stabilizer",
+			"keywords": [
+				"equipment",
+				"limited"
+			],
+			"powers": [
+				"Reveal cards from the top of your deck until an Emanation is revealed. Put it into your hand or into play."
+			],
+			"icons": [
+				"HasPower",
+				"Search",
+				"DrawCardNow",
+				"PlayCardNow"
+			],
+			"flavorQuotes": [
+				{
+					"identifier": "Guard",
+					"text": "Stand down, soldier! You are{BR}not authorized-"
+				},
+				{
+					"identifier": "Sphere",
+					"text": "Shoot me, then. That ship is calling to{BR}me. I want to hear what it has to say."
+				}
+			],
+			"flavorReference": "Echoes of X51 #7"
+		}
+	]
+}

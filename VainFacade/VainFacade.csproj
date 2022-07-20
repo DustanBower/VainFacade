@@ -58,7 +58,9 @@
   <ItemGroup>
     <EmbeddedResource Include="DeckLists\TheMidnightBazaarDeckList.json" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="DeckLists\SphereDeckList.json" />
+  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>call "$(projectDir)\postbuild.bat"</PostBuildEvent>
