@@ -42,7 +42,7 @@ namespace VainFacadePlaytest.Sphere
             LinqCardCriteria toDestroy = SphereUtilityCardController.isEmanationInPlay;
             if (choice != null && choice.SelectedCard != null)
             {
-                toDestroy = new LinqCardCriteria((Card c) => c.IsInPlayAndHasGameText && c.DoKeywordsContain(emanationKeyword) && c.Title != choice.SelectedCard.Title, "Emanations in play other than copies of " + choice.SelectedCard.Title, false, false, "Emanation in play other than copies of " + choice.SelectedCard.Title, "Emanations in play other than copies of " + choice.SelectedCard.Title);
+                toDestroy = new LinqCardCriteria((Card c) => c.IsInPlayAndHasGameText && c.DoKeywordsContain(emanationKeyword) && c.Title != choice.SelectedCard.Title, " in play other than copies of " + choice.SelectedCard.Title, false, false, "Emanation", "Emanations");
             }
             IEnumerator destroyCoroutine = base.GameController.DestroyCards(base.HeroTurnTakerController, toDestroy, cardSource: GetCardSource());
             if (base.UseUnityCoroutines)

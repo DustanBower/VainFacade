@@ -37,6 +37,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Sphere\AlterationWardCardController.cs" />
+    <Compile Include="Sphere\BattleAuraCardController.cs" />
+    <Compile Include="Sphere\CombatBarrierCardController.cs" />
     <Compile Include="Sphere\EmanationCardController.cs" />
     <Compile Include="Sphere\SphereCharacterCardController.cs" />
     <Compile Include="Sphere\SphereUtilityCardController.cs" />
