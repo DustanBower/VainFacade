@@ -21,7 +21,7 @@
 				"DealDamageMelee",
 				"DealDamageEnergy"
 			],
-			"hitpoints": 0,
+			"hitpoints": 29,
 			"nemesisIdentifiers": [
 				"VainFacadePlaytest.Sphere"
 			],
