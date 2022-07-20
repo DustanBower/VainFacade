@@ -40,7 +40,12 @@
     <Compile Include="Sphere\AlterationWardCardController.cs" />
     <Compile Include="Sphere\BattleAuraCardController.cs" />
     <Compile Include="Sphere\CombatBarrierCardController.cs" />
+    <Compile Include="Sphere\ConventionalExplosivesCardController.cs" />
+    <Compile Include="Sphere\ConversionFieldCardController.cs" />
     <Compile Include="Sphere\EmanationCardController.cs" />
+    <Compile Include="Sphere\FieldProjectionStabilizerCardController.cs" />
+    <Compile Include="Sphere\Gen3OrbChannelerCardController.cs" />
+    <Compile Include="Sphere\OrbProjectionCardController.cs" />
     <Compile Include="Sphere\SphereCharacterCardController.cs" />
     <Compile Include="Sphere\SphereUtilityCardController.cs" />
     <Compile Include="TheMidnightBazaar\ASenseOfLossCardController.cs" />
