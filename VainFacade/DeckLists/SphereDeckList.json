@@ -157,7 +157,7 @@
 			"flavorQuotes": [
 				{
 					"identifier": "Grandfather",
-					"text": "Now, dear, if I'm to stop Sphere{BR}from destroying Bastion City, I'll require{BR}your skills. I believe you are programmed for{BR}murder?"
+					"text": "Now, dear, if I'm to stop Sphere{BR}from destroying Bastion City, I'll require{BR}your skills. I believe you are programmed{BR}for murder?"
 				}
 			],
 			"flavorReference": "Grandfather, Sphere: Grandfather Paradox #3"
@@ -308,7 +308,7 @@
 			"flavorQuotes": [
 				{
 					"identifier": "Doctor Vargha",
-					"text": "We wired up the proof-of-concept. To{BR}our surprise, it worked as-is, but only in 9's{BR}hands. It's as if the ship reacts only to him."
+					"text": "We wired up the proof-of-concept.{BR}To our surprise, it worked as-is, but only{BR}in 9's hands. It's as if the ship reacts only{BR}to him."
 				}
 			],
 			"flavorReference": "Doctor Vargha, Sphere: Test Subject 9 One-Shot"
@@ -340,7 +340,7 @@
 				},
 				{
 					"identifier": "Vargha",
-					"text": "He can fire the forcefield out from{BR}himself briefly. Short range, but{BR}effective."
+					"text": "He can fire the forcefield out from{BR}himself briefly. Short range, but effective."
 				}
 			],
 			"flavorReference": "Sphere: Test Subject 9 One-Shot"
@@ -438,11 +438,11 @@
 			"flavorQuotes": [
 				{
 					"identifier": "Guard",
-					"text": "Stand down, soldier! You are{BR}not authorized-"
+					"text": "Stand down, soldier! You{BR}are not authorized-"
 				},
 				{
 					"identifier": "Sphere",
-					"text": "Shoot me, then. That ship is calling to{BR}me. I want to hear what it has to say."
+					"text": "Shoot me, then. That ship is calling{BR}to me. I want to hear what it has to say."
 				}
 			],
 			"flavorReference": "Echoes of X51 #7"
