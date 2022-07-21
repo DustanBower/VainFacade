@@ -405,7 +405,7 @@
 				"one-shot"
 			],
 			"body": [
-				"Reveal cards from the top of your deck until 2 Emanations are revealed. Put one into play and one into your hand."
+				"Reveal cards from the top of your deck until 2 Emanations are revealed. Put one into play and one into your hand. Discard the other revealed cards."
 			],
 			"icons": [
 				"Search"
@@ -427,7 +427,7 @@
 				"limited"
 			],
 			"powers": [
-				"Reveal cards from the top of your deck until an Emanation is revealed. Put it into your hand or into play."
+				"Reveal cards from the top of your deck until an Emanation is revealed. Put it into your hand or into play. Discard the other revealed cards."
 			],
 			"icons": [
 				"HasPower",
