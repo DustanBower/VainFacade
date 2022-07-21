@@ -37,6 +37,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Sphere\AlienHeartCardController.cs" />
     <Compile Include="Sphere\AlterationWardCardController.cs" />
     <Compile Include="Sphere\BattleAuraCardController.cs" />
     <Compile Include="Sphere\BowledOverCardController.cs" />
