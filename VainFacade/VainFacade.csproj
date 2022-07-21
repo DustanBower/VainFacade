@@ -46,6 +46,8 @@
     <Compile Include="Sphere\FieldProjectionStabilizerCardController.cs" />
     <Compile Include="Sphere\Gen3OrbChannelerCardController.cs" />
     <Compile Include="Sphere\OrbProjectionCardController.cs" />
+    <Compile Include="Sphere\ReboundingForcefieldCardController.cs" />
+    <Compile Include="Sphere\ShieldBarrierCardController.cs" />
     <Compile Include="Sphere\SphereCharacterCardController.cs" />
     <Compile Include="Sphere\SphereUtilityCardController.cs" />
     <Compile Include="TheMidnightBazaar\ASenseOfLossCardController.cs" />
