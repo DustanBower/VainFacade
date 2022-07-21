@@ -39,6 +39,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Sphere\AlterationWardCardController.cs" />
     <Compile Include="Sphere\BattleAuraCardController.cs" />
+    <Compile Include="Sphere\BowledOverCardController.cs" />
+    <Compile Include="Sphere\CallousDisregardCardController.cs" />
+    <Compile Include="Sphere\CollateralDamageCardController.cs" />
     <Compile Include="Sphere\CombatBarrierCardController.cs" />
     <Compile Include="Sphere\ConventionalExplosivesCardController.cs" />
     <Compile Include="Sphere\ConversionFieldCardController.cs" />
@@ -50,6 +53,8 @@
     <Compile Include="Sphere\ShieldBarrierCardController.cs" />
     <Compile Include="Sphere\SphereCharacterCardController.cs" />
     <Compile Include="Sphere\SphereUtilityCardController.cs" />
+    <Compile Include="Sphere\TestSubject9CardController.cs" />
+    <Compile Include="Sphere\X51QuantumFieldStabilizerCardController.cs" />
     <Compile Include="TheMidnightBazaar\ASenseOfLossCardController.cs" />
     <Compile Include="TheMidnightBazaar\DisquietCardController.cs" />
     <Compile Include="TheMidnightBazaar\GoblinFruitCardController.cs" />
