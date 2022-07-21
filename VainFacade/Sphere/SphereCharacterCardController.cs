@@ -91,6 +91,11 @@ namespace VainFacadePlaytest.Sphere
             yield break;
         }
 
+        public override CustomDecisionText GetCustomDecisionText(IDecision decision)
+        {
+            return new CustomDecisionText("Select an Emanation to find a copy in your trash", "selecting an Emanation to find a copy in their trash", "Vote for an Emanation for " + base.TurnTaker.Name + " to find a copy of in their trash", "Emanation to find a copy of in the trash");
+        }
+
         public override IEnumerator UseIncapacitatedAbility(int index)
         {
             IEnumerator incapCoroutine;
