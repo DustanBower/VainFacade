@@ -17,6 +17,15 @@ namespace VainFacadePlaytest.Sphere
 
         }
 
+        public override bool CanOrderAffectOutcome(GameAction action)
+        {
+            if (action is DealDamageAction)
+            {
+                return (action as DealDamageAction).Target == base.CharacterCard;
+            }
+            return false;
+        }
+
         private int X()
         {
             return 2 * base.GameController.FindCardsWhere(new LinqCardCriteria((Card c) => c.IsInPlayAndHasGameText && c.Title == base.Card.Title && c.Owner == base.Card.Owner), visibleToCard: GetCardSource()).Count();
