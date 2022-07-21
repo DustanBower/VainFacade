@@ -59,7 +59,7 @@ namespace VainFacadePlaytest.Sphere
                 }
                 if (totalDamage > 0)
                 {
-                    IEnumerator destroyCoroutine = base.GameController.SelectAndDestroyCards(base.HeroTurnTakerController, new LinqCardCriteria((Card c) => c.IsEnvironment, "environment"), totalDamage, optional: true, requiredDecisions: 0, responsibleCard: base.Card, cardSource: GetCardSource());
+                    IEnumerator destroyCoroutine = base.GameController.SelectAndDestroyCards(base.HeroTurnTakerController, new LinqCardCriteria((Card c) => c.IsEnvironment, "environment"), totalDamage, optional: false, requiredDecisions: 0, responsibleCard: base.Card, cardSource: GetCardSource());
                     if (base.UseUnityCoroutines)
                     {
                         yield return base.GameController.StartCoroutine(destroyCoroutine);
