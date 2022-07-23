@@ -98,14 +98,17 @@ namespace VainFacadePlaytest.Sphere
 				else
 				{
 					selectedCard = revealed.MatchingCards.FirstOrDefault();
-					coroutine = GameController.SendMessageAction("The only matching card found in " + locationToRevealFrom.GetFriendlyName() + " was " + selectedCard.Title + ".", Priority.High, GetCardSource());
-					if (UseUnityCoroutines)
+					if (numberOfMatchesToReveal > 1)
 					{
-						yield return GameController.StartCoroutine(coroutine);
-					}
-					else
-					{
-						GameController.ExhaustCoroutine(coroutine);
+						coroutine = GameController.SendMessageAction("The only matching card found in " + locationToRevealFrom.GetFriendlyName() + " was " + selectedCard.Title + ".", Priority.High, GetCardSource());
+						if (UseUnityCoroutines)
+						{
+							yield return GameController.StartCoroutine(coroutine);
+						}
+						else
+						{
+							GameController.ExhaustCoroutine(coroutine);
+						}
 					}
 					if (selectedCard != null)
 					{
