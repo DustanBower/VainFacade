@@ -26,7 +26,7 @@ namespace VainFacadePlaytest.Sphere
             List<MoveCardAction> storedResults = new List<MoveCardAction>();
             List<MoveCardDestination> destinations = new List<MoveCardDestination>();
             destinations.Add(new MoveCardDestination(base.HeroTurnTaker.Hand));
-            IEnumerator moveCoroutine = base.GameController.SelectCardFromLocationAndMoveIt(base.HeroTurnTakerController, base.TurnTaker.PlayArea, isEmanationInPlay, destinations, responsibleTurnTaker: base.TurnTaker, storedResultsMove: storedResults, cardSource: GetCardSource());
+            IEnumerator moveCoroutine = base.GameController.SelectAndReturnCards(base.HeroTurnTakerController, 1, isEmanation, true, false, false, 1, storedResults, cardSource: GetCardSource());
             if (base.UseUnityCoroutines)
             {
                 yield return base.GameController.StartCoroutine(moveCoroutine);
