@@ -1,0 +1,20 @@
+{"frames": {
+
+"SphereCharacter.png":
+{
+	"frame": {"x":0,"y":0,"w":330,"h":260},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":330,"h":260},
+	"sourceSize": {"w":330,"h":260}
+}},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "HeroLogos0.png",
+	"format": "RGBA8888",
+	"size": {"w":512,"h":512},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:49368531e9e6cfe57f84ab2b7bcf0df3:d614d0d54aebeacb01d968d23596d77e:abd76add2ce06cabb8b0a8e056eb9b47$"
+}
+}

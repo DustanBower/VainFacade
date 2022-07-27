@@ -1,8 +1,16 @@
 {"frames": {
 
-"TheMidnightBazaarDeckBack.png":
+"SphereCharacter.png":
 {
 	"frame": {"x":0,"y":0,"w":177,"h":256},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":177,"h":256},
+	"sourceSize": {"w":177,"h":256}
+},
+"TheMidnightBazaarDeckBack.png":
+{
+	"frame": {"x":180,"y":0,"w":177,"h":256},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":177,"h":256},
@@ -13,8 +21,8 @@
 	"version": "1.0",
 	"image": "SetupGame0.png",
 	"format": "RGBA8888",
-	"size": {"w":256,"h":256},
+	"size": {"w":512,"h":512},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:afe4daa910f29aaf08ba785740e06c47:54b7deeb8ac7c1fcf4fc5b35b55ab003:4ee285c32a91b7652e02ac049f918b2a$"
+	"smartupdate": "$TexturePacker:SmartUpdate:5608e3b7e7d75cd925e8fee52358d2e8:cee6f3eedd98bfbadfffe6d64f279d75:4ee285c32a91b7652e02ac049f918b2a$"
 }
 }

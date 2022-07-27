@@ -34,7 +34,7 @@
         <key>dataFormat</key>
         <string>json</string>
         <key>textureFileName</key>
-        <filename>SetupGame0.png</filename>
+        <filename>SphereAtlas0.png</filename>
         <key>flipPVR</key>
         <false/>
         <key>pvrQualityLevel</key>
@@ -124,7 +124,7 @@
             <key>data</key>
             <struct type="DataFile">
                 <key>name</key>
-                <filename>SetupGame0.json</filename>
+                <filename>SphereAtlas0.json</filename>
             </struct>
         </map>
         <key>multiPack</key>
@@ -173,8 +173,39 @@
         </struct>
         <key>individualSpriteSettings</key>
         <map type="IndividualSpriteSettingsMap">
-            <key type="filename">../SmallCardArt/Sphere/SphereCharacter.png</key>
-            <key type="filename">../SmallCardArt/TheMidnightBazaar/TheMidnightBazaarDeckBack.png</key>
+            <key type="filename">AlienHeart.png</key>
+            <key type="filename">AlterationWard.png</key>
+            <key type="filename">BattleAura.png</key>
+            <key type="filename">BowledOver.png</key>
+            <key type="filename">CallousDisregard.png</key>
+            <key type="filename">CollateralDamage.png</key>
+            <key type="filename">CombatBarrier.png</key>
+            <key type="filename">ConventionalExplosives.png</key>
+            <key type="filename">ConversionField.png</key>
+            <key type="filename">FieldProjectionStabilizer.png</key>
+            <key type="filename">Gen3OrbChanneler.png</key>
+            <key type="filename">OrbProjection.png</key>
+            <key type="filename">ReboundingForcefield.png</key>
+            <key type="filename">ShieldBarrier.png</key>
+            <key type="filename">TestSubject9.png</key>
+            <key type="filename">X51QuantumFieldStabilizer.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>64,50,128,99</rect>
+                <key>scale9Paddings</key>
+                <rect>64,50,128,99</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">SphereCharacter.png</key>
+            <key type="filename">SphereCharacterBack.png</key>
+            <key type="filename">SphereDeckBack.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
@@ -192,8 +223,25 @@
         </map>
         <key>fileList</key>
         <array>
-            <filename>../SmallCardArt/TheMidnightBazaar/TheMidnightBazaarDeckBack.png</filename>
-            <filename>../SmallCardArt/Sphere/SphereCharacter.png</filename>
+            <filename>AlienHeart.png</filename>
+            <filename>AlterationWard.png</filename>
+            <filename>BattleAura.png</filename>
+            <filename>BowledOver.png</filename>
+            <filename>CallousDisregard.png</filename>
+            <filename>CollateralDamage.png</filename>
+            <filename>CombatBarrier.png</filename>
+            <filename>ConventionalExplosives.png</filename>
+            <filename>ConversionField.png</filename>
+            <filename>FieldProjectionStabilizer.png</filename>
+            <filename>Gen3OrbChanneler.png</filename>
+            <filename>OrbProjection.png</filename>
+            <filename>ReboundingForcefield.png</filename>
+            <filename>ShieldBarrier.png</filename>
+            <filename>SphereCharacter.png</filename>
+            <filename>SphereCharacterBack.png</filename>
+            <filename>SphereDeckBack.png</filename>
+            <filename>TestSubject9.png</filename>
+            <filename>X51QuantumFieldStabilizer.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>
