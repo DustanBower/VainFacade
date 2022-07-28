@@ -14,10 +14,76 @@ namespace VainFacadePlaytest.Sphere
         public SphereCharacterCardController(Card card, TurnTakerController turnTakerController)
             : base(card, turnTakerController)
         {
-            // Show list of Emanation cards in play
+            /*// Show list of Emanation cards in play
             SpecialStringMaker.ShowListOfCardsInPlay(SphereUtilityCardController.isEmanation);
             // Show list of Emanation cards in trash
-            SpecialStringMaker.ShowListOfCardsAtLocation(base.TurnTaker.Trash, SphereUtilityCardController.isEmanation);
+            SpecialStringMaker.ShowListOfCardsAtLocation(base.TurnTaker.Trash, SphereUtilityCardController.isEmanation);*/
+            // Show list of Emanation cards in trash that match Emanation cards in play
+            SpecialStringMaker.ShowSpecialString(() => StringForListOfCards(new LinqCardCriteria((Card c) => c.Location == base.TurnTaker.Trash && matchesEmanationInPlay().Criteria(c), "Emanation cards in " + base.TurnTaker.Name + "'s trash that match an Emanation in play", useCardsSuffix: false, useCardsPrefix: false)));
+        }
+
+        public LinqCardCriteria matchesEmanationInPlay()
+        {
+            List<Card> emanationsInPlay = base.GameController.FindCardsWhere((Card c) => SphereUtilityCardController.isEmanationInPlay.Criteria(c), visibleToCard: GetCardSource()).ToList<Card>();
+            LinqCardCriteria req = new LinqCardCriteria((Card c) => SphereUtilityCardController.isEmanation.Criteria(c) && emanationsInPlay.Where<Card>((Card p) => p.Title == c.Title && p.Owner == c.Owner).Any(), "Emanation", true, false, "card that matches an Emanation in play", "cards that match an Emanation in play");
+            return req;
+        }
+
+        private string StringForListOfCards(LinqCardCriteria cardCriteria, string where = null, bool consolidateDuplicates = true)
+        {
+            IEnumerable<Card> source = FindCardsWhere((Card c) => cardCriteria.Criteria(c));
+            int num = source.Count();
+            if (where != null)
+            {
+                where = " " + where;
+            }
+            if (num == 0)
+            {
+                int number = FindCardsWhere((Card c) => c.IsInPlay && cardCriteria.Criteria(c)).Count();
+                return "There " + number.ToString_NumberOfCards(cardCriteria.GetDescription(plural: true, false), cardCriteria.UseCardsSuffix) + where + ".";
+            }
+            List<string> list = new List<string>();
+            IEnumerable<string> source2 = source.Select((Card c) => c.AlternateTitleOrTitle);
+            if (consolidateDuplicates)
+            {
+                foreach (string distinctTitle in source2.Distinct())
+                {
+                    int num2 = source2.Where((string s) => s == distinctTitle).Count();
+                    string text = distinctTitle;
+                    if (num2 > 1)
+                    {
+                        text = text + " (x" + num2 + ")";
+                    }
+                    list.Add(text);
+                }
+            }
+            else
+            {
+                list = source2.ToList();
+            }
+            return cardCriteria.GetDescription().Capitalize() + where + ": " + list.ToCommaList(useWordAnd: true) + ".";
+        }
+
+        private string GetLocationOutput(Location location, bool specifyPlayAreas)
+        {
+            string text = location.GetFriendlyName();
+            if (location.Name == LocationName.PlayArea)
+            {
+                if (specifyPlayAreas)
+                {
+                    string name = location.OwnerTurnTaker.Name;
+                    text = ((!name.EndsWith("s")) ? (name + "'s play area") : (name + "' play area"));
+                }
+                else
+                {
+                    text = "play";
+                }
+            }
+            if (location.Name != LocationName.NextToCard && location.Name != LocationName.UnderCard)
+            {
+                text = "in " + text;
+            }
+            return text;
         }
 
         public override IEnumerator UsePower(int index = 0)
