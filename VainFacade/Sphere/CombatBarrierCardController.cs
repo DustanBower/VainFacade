@@ -29,7 +29,7 @@ namespace VainFacadePlaytest.Sphere
         {
             // "... you may discard a card."
             List<DiscardCardAction> storedResults = new List<DiscardCardAction>();
-            IEnumerator discardCoroutine = SelectAndDiscardCards(base.HeroTurnTakerController, 1, optional: true, requiredDecisions: 0, storedResults: storedResults, responsibleTurnTaker: base.TurnTaker);
+            IEnumerator discardCoroutine = SelectAndDiscardCards(base.HeroTurnTakerController, 1, optional: true, requiredDecisions: 0, storedResults: storedResults, gameAction: dda, responsibleTurnTaker: base.TurnTaker);
             if (base.UseUnityCoroutines)
             {
                 yield return base.GameController.StartCoroutine(discardCoroutine);
