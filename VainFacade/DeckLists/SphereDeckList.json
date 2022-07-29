@@ -60,11 +60,11 @@
 			],
 			"flavorQuotes": [
 				{
-					"identifier": "Doctor Vargha",
-					"text": "Subject 9 shows more promising{BR}results: forcefield generation abilities with{BR}no apparent side-effects, despite the orb{BR}subsuming his heart."
+					"identifier": "Dr. Vargha",
+					"text": "Subject 9 shows more promising{BR}results: Forcefield generation with no apparent side-effects, despite the orb{BR}subsuming his heart."
 				}
 			],
-			"flavorReference": "Doctor Vargha, Sphere: Test Subject 9 One-Shot"
+			"flavorReference": "Dr. Vargha, Sphere: Test Subject 9"
 		},
 		{
 			"identifier": "AlterationWard",
@@ -87,7 +87,7 @@
 			"flavorQuotes": [
 				{
 					"identifier": "Butcher Bill",
-					"text": "Well, boys, hit on Sphere{BR}was a failure. Bullets can't pierce{BR}the bubble. Good news is he thinks BPD{BR}shot at him. Doesn't suspect us.'"
+					"text": "Hit on Sphere was a failure. Bullets{BR}can't pierce the bubble. Good news is he{BR}thinks BPD shot at him. Doesn't suspect us.'"
 				}
 			],
 			"flavorReference": "Butcher Bill, Bastion's Best #23"
@@ -157,7 +157,7 @@
 			"flavorQuotes": [
 				{
 					"identifier": "Grandfather",
-					"text": "Now, dear, if I'm to stop Sphere{BR}from destroying Bastion City, I'll require{BR}your skills. I believe you are programmed{BR}for murder?"
+					"text": "Now, dear, if I'm to stop Sphere{BR}from destroying Bastion City, I'll require your skills. I believe you are programmed{BR}for murder?"
 				}
 			],
 			"flavorReference": "Grandfather, Sphere: Grandfather Paradox #3"
@@ -234,7 +234,7 @@
 					"text": "It's time we gave you some real{BR}firepower."
 				}
 			],
-			"flavorReference": "General Janson, Sphere: Test Subject 9 One-Shot"
+			"flavorReference": "General Janson, Sphere: Test Subject 9"
 		},
 		{
 			"identifier": "ConversionField",
@@ -307,11 +307,11 @@
 			],
 			"flavorQuotes": [
 				{
-					"identifier": "Doctor Vargha",
-					"text": "We wired up the proof-of-concept.{BR}To our surprise, it worked as-is, but only{BR}in 9's hands. It's as if the ship reacts only{BR}to him."
+					"identifier": "Dr. Vargha",
+					"text": "To our surprise, the proof-of-concept{BR}worked as-is, but only in 9's hands.{BR}It's as if the ship reacts only to him."
 				}
 			],
-			"flavorReference": "Doctor Vargha, Sphere: Test Subject 9 One-Shot"
+			"flavorReference": "Dr. Vargha, Sphere: Test Subject 9"
 		},
 		{
 			"identifier": "OrbProjection",
@@ -343,7 +343,7 @@
 					"text": "He can fire the forcefield out from{BR}himself briefly. Short range, but effective."
 				}
 			],
-			"flavorReference": "Sphere: Test Subject 9 One-Shot"
+			"flavorReference": "Sphere: Test Subject 9"
 		},
 		{
 			"identifier": "ReboundingForcefield",
@@ -392,7 +392,7 @@
 			"flavorQuotes": [
 				{
 					"identifier": "Peacekeeper",
-					"text": "Don't trust him, but{BR}don't underestimate him, either. I've{BR}seen him get hit by a freight train.{BR}Barely scratched him."
+					"text": "Don't trust him, but don't{BR}underestimate him, either. I've seen him get hit by a freight train. Barely scratched him."
 				}
 			],
 			"flavorReference": "Peacekeeper, Echoes of X51 #13"
@@ -413,7 +413,7 @@
 			"flavorQuotes": [
 				{
 					"identifier": "General Janson",
-					"text": "We did what we had to do.{BR}We can't be held responsible for{BR}personnel failures. We made soldiers{BR}with the best tech we had."
+					"text": "We did what we had to do. We can't{BR}be held responsible for personnel failures. We made soldiers with the best tech we had."
 				}
 			],
 			"flavorReference": "General Janson, Echoes of X51 #4"
