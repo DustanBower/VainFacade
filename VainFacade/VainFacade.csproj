@@ -63,6 +63,7 @@
     <Compile Include="TheBaroness\TheBaronessCharacterCardController.cs" />
     <Compile Include="TheBaroness\TheBaronessTurnTakerController.cs" />
     <Compile Include="TheBaroness\UndyingEssenceCardController.cs" />
+    <Compile Include="TheBaroness\VampiricStrengthCardController.cs" />
     <Compile Include="TheMidnightBazaar\ASenseOfLossCardController.cs" />
     <Compile Include="TheMidnightBazaar\DisquietCardController.cs" />
     <Compile Include="TheMidnightBazaar\GoblinFruitCardController.cs" />
