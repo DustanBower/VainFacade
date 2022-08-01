@@ -19,7 +19,7 @@
 			"character": true,
 			"hitpoints": 91,
 			"nemesisIdentifiers": [
-				""
+				"VainFacadePlaytest.Glyph"
 			],
 			"setup": [
 				"Put the card Vampirism into play. Flip {TheBaroness}'s character card."
@@ -30,7 +30,7 @@
 				"When {TheBaroness} is dealt more than 5 damage in a turn, play the top card of the villain deck.",
 				"When a hero card destroys a villain Scheme, {TheBaroness} deals the 2 heroes with the lowest HP {H - 2} melee damage each.",
 				"When there are no villain Schemes in play, flip {TheBaroness}'s character card.",
-				"At the end of the villain turn, {TheBaroness} deals the hero with the highest HP {H - 1} melee damage. Then, unless {TheBaroness} dealt a hero target damage this turn, the hero with the most cards in play destroys {H} Ongoing or Equipment cards."
+				"At the end of the villain turn, {TheBaroness} deals the hero with the highest HP {H - 1} melee damage. Then, unless {TheBaroness} dealt a hero target damage this turn, destroy {H} hero Ongoing and/or Equipment cards."
 			],
 			"advanced": [
 				"Increase damage dealt by {TheBaroness} by 1."
@@ -72,7 +72,7 @@
 			"flippedAdvancedIcons": [
 				"GainHP"
 			],
-			"difficulty": 2,
+			"difficulty": 4,
 			"openingLines": {
 				"default": ""
 			}

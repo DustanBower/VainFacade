@@ -56,6 +56,8 @@
     <Compile Include="Sphere\SphereUtilityCardController.cs" />
     <Compile Include="Sphere\TestSubject9CardController.cs" />
     <Compile Include="Sphere\X51QuantumFieldStabilizerCardController.cs" />
+    <Compile Include="TheBaroness\BaronessUtilityCardController.cs" />
+    <Compile Include="TheBaroness\TheBaronessCharacterCardController.cs" />
     <Compile Include="TheMidnightBazaar\ASenseOfLossCardController.cs" />
     <Compile Include="TheMidnightBazaar\DisquietCardController.cs" />
     <Compile Include="TheMidnightBazaar\GoblinFruitCardController.cs" />
@@ -83,6 +85,7 @@
   <ItemGroup>
     <EmbeddedResource Include="DeckLists\TheBaronessDeckList.json" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>call "$(projectDir)\postbuild.bat"</PostBuildEvent>
