@@ -30,7 +30,6 @@ namespace VainFacadePlaytest.TheBaroness
             SpecialStringMaker.ShowHasBeenUsedThisTurn(FirstBloodThisTurn, "A hero card has already been put face-down in the villain play area this turn.", "No hero cards have been put face-down in the villain play area this turn.").Condition = () => base.Card.IsFlipped;
             // Back side: show number of villain Schemes in play
             SpecialStringMaker.ShowNumberOfCardsInPlay(new LinqCardCriteria((Card c) => c.IsVillain && c.DoKeywordsContain(SchemeKeyword), "villain Scheme")).Condition = () => base.Card.IsFlipped;
-            // ...
             // Back side: show hero target with lowest HP
             SpecialStringMaker.ShowHeroTargetWithLowestHP(ranking: 1, numberOfTargets: 1).Condition = () => base.Card.IsFlipped;
         }

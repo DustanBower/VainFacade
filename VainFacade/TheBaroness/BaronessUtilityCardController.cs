@@ -17,19 +17,33 @@ namespace VainFacadePlaytest.TheBaroness
 
         }
 
-        public override void AddTriggers()
+        protected const string SchemeKeyword = "scheme";
+        protected const string SpellKeyword = "spell";
+        protected const string VampirismKey = "VampirismEffectKey";
+
+		protected LinqCardCriteria BloodCard()
         {
-            base.AddTriggers();
+			if (CanActivateEffect(DecisionMaker, VampirismKey))
+            {
+				return new LinqCardCriteria((Card c) => c.IsFaceDownNonCharacter && c.Location.IsPlayAreaOf(base.TurnTaker), "Blood");
+            }
+			else
+            {
+				return new LinqCardCriteria((Card c) => false, "Blood");
+            }
         }
 
-        public override IEnumerator Play()
-        {
-            yield break;
-        }
-
-        public override IEnumerator UsePower(int index = 0)
-        {
-            yield break;
-        }
-    }
+		protected IEnumerator MoveFaceDownToVillainPlayArea(Card card)
+		{
+			IEnumerator coroutine = base.GameController.MoveCard(base.TurnTakerController, card, base.TurnTaker.PlayArea, toBottom: false, isPutIntoPlay: false, playCardIfMovingToPlayArea: false, null, showMessage: false, null, null, null, evenIfIndestructible: false, flipFaceDown: true, null, isDiscard: false, evenIfPretendGameOver: false, shuffledTrashIntoDeck: false, doesNotEnterPlay: false, GetCardSource());
+			if (base.UseUnityCoroutines)
+			{
+				yield return base.GameController.StartCoroutine(coroutine);
+			}
+			else
+			{
+				base.GameController.ExhaustCoroutine(coroutine);
+			}
+		}
+	}
 }
