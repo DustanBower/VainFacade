@@ -3,8 +3,7 @@
 	"sortName": "Baroness",
 	"kind": "Villain",
 	"initialCardIdentifiers": [
-		"TheBaronessCharacter",
-		"Vampirism"
+		"TheBaronessCharacter"
 	],
 	"cards": [
 		{
