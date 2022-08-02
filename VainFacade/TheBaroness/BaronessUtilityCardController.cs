@@ -20,6 +20,8 @@ namespace VainFacadePlaytest.TheBaroness
         protected const string SchemeKeyword = "scheme";
         protected const string SpellKeyword = "spell";
         protected const string VampirismKey = "VampirismEffectKey";
+		protected const string BatsIdentifier = "CloudOfBats";
+		protected const string TerrorIdentifier = "WingedTerror";
 
 		protected LinqCardCriteria BloodCard()
         {
