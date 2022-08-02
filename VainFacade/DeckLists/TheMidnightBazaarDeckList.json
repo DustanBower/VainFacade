@@ -3,7 +3,7 @@
 	"listname":  "Midnight Bazaar",
 	"kind": "Environment",
 	"backgroundColor": "538B15",
-	"difficulty": 1,
+	"difficulty": 2,
 	"cards": [
 		{
 			"identifier": "ASenseOfLoss",
