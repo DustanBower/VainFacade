@@ -56,7 +56,10 @@
     <Compile Include="Sphere\SphereUtilityCardController.cs" />
     <Compile Include="Sphere\TestSubject9CardController.cs" />
     <Compile Include="Sphere\X51QuantumFieldStabilizerCardController.cs" />
+    <Compile Include="TheBaroness\AgelessEnmityCardController.cs" />
+    <Compile Include="TheBaroness\ArcaneVeinsCardController.cs" />
     <Compile Include="TheBaroness\BaronessUtilityCardController.cs" />
+    <Compile Include="TheBaroness\ByTheThroatCardController.cs" />
     <Compile Include="TheBaroness\DrawOutTheBloodCardController.cs" />
     <Compile Include="TheBaroness\EndlessThirstCardController.cs" />
     <Compile Include="TheBaroness\FangAndClawCardController.cs" />
