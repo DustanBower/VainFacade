@@ -15,7 +15,7 @@ namespace VainFacadePlaytest.TheBaroness
             : base(card, turnTakerController)
         {
             // Show if Cloud of Bats is in play
-            SpecialStringMaker.ShowIfSpecificCardIsInPlay(BatsIdentifier);
+            SpecialStringMaker.ShowIfSpecificCardIsInPlay(CloudIdentifier);
         }
 
         public override void AddTriggers()
@@ -31,7 +31,7 @@ namespace VainFacadePlaytest.TheBaroness
         {
             // "When this card enters play, destroy Cloud of Bats."
             List<DestroyCardAction> results = new List<DestroyCardAction>();
-            Card cloud = base.TurnTaker.FindCard(BatsIdentifier);
+            Card cloud = base.TurnTaker.FindCard(CloudIdentifier);
             if (cloud.IsInPlayAndHasGameText)
             {
                 IEnumerator destroyCoroutine = base.GameController.DestroyCard(DecisionMaker, cloud, storedResults: results, responsibleCard: base.Card, cardSource: GetCardSource());

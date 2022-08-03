@@ -59,7 +59,9 @@
     <Compile Include="TheBaroness\AgelessEnmityCardController.cs" />
     <Compile Include="TheBaroness\ArcaneVeinsCardController.cs" />
     <Compile Include="TheBaroness\BaronessUtilityCardController.cs" />
+    <Compile Include="TheBaroness\BatCardController.cs" />
     <Compile Include="TheBaroness\ByTheThroatCardController.cs" />
+    <Compile Include="TheBaroness\CloudOfBatsCardController.cs" />
     <Compile Include="TheBaroness\DeathsCallCardController.cs" />
     <Compile Include="TheBaroness\DrawOutTheBloodCardController.cs" />
     <Compile Include="TheBaroness\EndlessThirstCardController.cs" />
