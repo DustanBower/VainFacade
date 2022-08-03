@@ -73,7 +73,7 @@
 			],
 			"difficulty": 4,
 			"openingLines": {
-				"default": ""
+				"default": "You believe zat you can oppose [b]me[/b]? How delightful!"
 			}
 		},
 		{
@@ -398,7 +398,7 @@
 			"flavorQuotes": [
 				{
 					"identifier": "Katalin",
-					"text": "No, my dear zsekje, zee spells{BR}you seek are written in blood."
+					"text": "No, my dear Zsekje, zee spells{BR}you seek are written in blood."
 				}
 			],
 			"flavorReference": "Katalin, Beginnings: Baroness Bogozi #6"
