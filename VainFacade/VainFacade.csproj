@@ -60,6 +60,7 @@
     <Compile Include="TheBaroness\ArcaneVeinsCardController.cs" />
     <Compile Include="TheBaroness\BaronessUtilityCardController.cs" />
     <Compile Include="TheBaroness\ByTheThroatCardController.cs" />
+    <Compile Include="TheBaroness\DeathsCallCardController.cs" />
     <Compile Include="TheBaroness\DrawOutTheBloodCardController.cs" />
     <Compile Include="TheBaroness\EndlessThirstCardController.cs" />
     <Compile Include="TheBaroness\FangAndClawCardController.cs" />
@@ -67,6 +68,7 @@
     <Compile Include="TheBaroness\TheBaronessTurnTakerController.cs" />
     <Compile Include="TheBaroness\UndyingEssenceCardController.cs" />
     <Compile Include="TheBaroness\VampiricStrengthCardController.cs" />
+    <Compile Include="TheBaroness\VampirismCardController.cs" />
     <Compile Include="TheBaroness\WingedTerrorCardController.cs" />
     <Compile Include="TheMidnightBazaar\ASenseOfLossCardController.cs" />
     <Compile Include="TheMidnightBazaar\DisquietCardController.cs" />

@@ -167,7 +167,7 @@
 			],
 			"body": [
 				"When this card enters play, destroy Winged Terror.",
-				"When a Bat is dealt damage, reduce damage dealt to Bats by 1 this turn. Blood cards have a maximum HP of 4 and gain the Bat keyword.",
+				"When a Bat is dealt damage, reduce damage dealt to Bats by 1 this turn. Blood cards have a maximum HP of 4 and are villain Bats.",
 				"At the start of the villain turn, each Bat deals each hero target 1 projectile damage. If less than 4 damage is dealt this way, destroy this card."
 			],
 			"icons": [

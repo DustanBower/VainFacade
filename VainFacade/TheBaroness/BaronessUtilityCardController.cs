@@ -35,6 +35,18 @@ namespace VainFacadePlaytest.TheBaroness
             }
         }
 
+		protected int Resonance(TurnTaker tt)
+        {
+			if (CanActivateEffect(DecisionMaker, VampirismKey))
+            {
+				return base.GameController.FindCardsWhere(new LinqCardCriteria((Card c) => BloodCard().Criteria(c) && c.Owner == tt)).Count();
+            }
+			else
+            {
+				return 0;
+            }
+        }
+
 		protected IEnumerator MoveFaceDownToVillainPlayArea(Card card)
 		{
 			IEnumerator coroutine = base.GameController.MoveCard(base.TurnTakerController, card, base.TurnTaker.PlayArea, toBottom: false, isPutIntoPlay: false, playCardIfMovingToPlayArea: false, null, showMessage: false, null, null, null, evenIfIndestructible: false, flipFaceDown: true, null, isDiscard: false, evenIfPretendGameOver: false, shuffledTrashIntoDeck: false, doesNotEnterPlay: false, GetCardSource());
