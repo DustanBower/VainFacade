@@ -5,6 +5,9 @@
 	"initialCardIdentifiers": [
 		"TheBaronessCharacter"
 	],
+	"initialOffToTheSideCardIdentifiers": [
+		"Bat"
+	],
 	"cards": [
 		{
 			"identifier": "TheBaronessCharacter",
@@ -98,7 +101,7 @@
 			"flavorQuotes": [
 				{
 					"identifier": "The Baroness",
-					"text": "I tire of your games, Bruzer Stevens. Surely{BR}you cannot sink to oppose me, who mastered zee{BR}game before your great-grandfahzer vas born?"
+					"text": "I tire of your games, Bruzer Stevens.{BR}Surely you cannot sink to oppose me, who{BR}mastered zee game before your{BR}great-grandfahzer vas born?"
 				}
 			],
 			"flavorReference": "The Baroness, Bastion City: A Spider Never Blinks #17"
