@@ -48,11 +48,12 @@ namespace VainFacadePlaytest.TheBaroness
         {
             // "Face-down cards in the villain play area are Blood. A hero's resonance equals the number of Blood cards from that hero's deck."
             // Effects that refer to Blood cards or resonance will require VampirismKey to activate
+            bool? result = null;
             if (turnTakerController == base.TurnTakerController && effectKey == VampirismKey)
             {
-                return true;
+                result = true;
             }
-            return null;
+            return result;
         }
     }
 }

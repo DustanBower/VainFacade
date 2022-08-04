@@ -47,30 +47,27 @@ namespace VainFacadePlaytest.TheBaroness
             if (GainedHPThisTurn())
             {
                 // "... destroy 1 Blood card."
-                if (CanActivateEffect(DecisionMaker, VampirismKey))
+                List<DestroyCardAction> results = new List<DestroyCardAction>();
+                IEnumerator destroyCoroutine = base.GameController.SelectAndDestroyCard(DecisionMaker, BloodCard(), false, storedResultsAction: results, responsibleCard: base.Card, cardSource: GetCardSource());
+                if (base.UseUnityCoroutines)
                 {
-                    List<DestroyCardAction> results = new List<DestroyCardAction>();
-                    IEnumerator destroyCoroutine = base.GameController.SelectAndDestroyCard(DecisionMaker, BloodCard(), false, storedResultsAction: results, responsibleCard: base.Card, cardSource: GetCardSource());
+                    yield return base.GameController.StartCoroutine(destroyCoroutine);
+                }
+                else
+                {
+                    base.GameController.ExhaustCoroutine(destroyCoroutine);
+                }
+                // "If a card is destroyed this way, {TheBaroness} regains 1 HP."
+                if (DidDestroyCards(results))
+                {
+                    IEnumerator healCoroutine = base.GameController.GainHP(base.CharacterCard, 1, cardSource: GetCardSource());
                     if (base.UseUnityCoroutines)
                     {
-                        yield return base.GameController.StartCoroutine(destroyCoroutine);
+                        yield return base.GameController.StartCoroutine(healCoroutine);
                     }
                     else
                     {
-                        base.GameController.ExhaustCoroutine(destroyCoroutine);
-                    }
-                    // "If a card is destroyed this way, {TheBaroness} regains 1 HP."
-                    if (DidDestroyCards(results))
-                    {
-                        IEnumerator healCoroutine = base.GameController.GainHP(base.CharacterCard, 1, cardSource: GetCardSource());
-                        if (base.UseUnityCoroutines)
-                        {
-                            yield return base.GameController.StartCoroutine(healCoroutine);
-                        }
-                        else
-                        {
-                            base.GameController.ExhaustCoroutine(healCoroutine);
-                        }
+                        base.GameController.ExhaustCoroutine(healCoroutine);
                     }
                 }
             }
