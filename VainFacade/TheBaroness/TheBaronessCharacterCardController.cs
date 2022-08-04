@@ -79,7 +79,7 @@ namespace VainFacadePlaytest.TheBaroness
                 AddSideTrigger(AddTrigger((DealDamageAction dda) => !HasBeenSetToTrueThisTurn(PlayedBonusThisTurn) && dda.Target == base.Card && dda.DidDealDamage && DamageTakenThisTurn() > 5, PlayBonusCardResponse, TriggerType.PlayCard, TriggerTiming.After));
 
                 // "When a hero card destroys a villain Scheme, {TheBaroness} deals the 2 heroes with the lowest HP {H - 2} melee damage each."
-                base.AddSideTrigger(AddTrigger((DestroyCardAction dca) => dca.CardToDestroy.Card.IsVillain && dca.WasCardDestroyed && dca.CardSource != null && dca.CardSource.Card.IsHero, HitTwoLowestResponse, TriggerType.DealDamage, TriggerTiming.After));
+                base.AddSideTrigger(AddTrigger((DestroyCardAction dca) => dca.CardToDestroy.Card.IsVillain && dca.CardToDestroy.Card.DoKeywordsContain(SchemeKeyword) && dca.WasCardDestroyed && dca.CardSource != null && dca.CardSource.Card.IsHero, HitTwoLowestResponse, TriggerType.DealDamage, TriggerTiming.After));
                 // "When there are no villain Schemes in play, flip {TheBaroness}'s character card."
                 base.AddSideTrigger(AddTrigger((GameAction a) => a.CardSource != null && NumVillainSchemesInPlay() == 0, (GameAction a) => base.GameController.FlipCard(this, cardSource: GetCardSource()), TriggerType.FlipCard, TriggerTiming.After));
                 base.AddSideTrigger(AddTrigger((PhaseChangeAction pca) => NumVillainSchemesInPlay() == 0, (PhaseChangeAction pca) => base.GameController.FlipCard(this, cardSource: GetCardSource()), TriggerType.FlipCard, TriggerTiming.After));
