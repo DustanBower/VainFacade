@@ -37,7 +37,7 @@ namespace VainFacadePlaytest.TheBaroness
             {
                 base.GameController.ExhaustCoroutine(shuffleCoroutine);
             }
-            // "Flip {TheBaroness}'s character card."
+            /*// "Flip {TheBaroness}'s character card."
             IEnumerator flipcoroutine = base.GameController.FlipCard(base.CharacterCardController, cardSource: new CardSource(base.CharacterCardController));
             if (base.UseUnityCoroutines)
             {
@@ -46,7 +46,7 @@ namespace VainFacadePlaytest.TheBaroness
             else
             {
                 base.GameController.ExhaustCoroutine(flipcoroutine);
-            }
+            }*/
         }
     }
 }

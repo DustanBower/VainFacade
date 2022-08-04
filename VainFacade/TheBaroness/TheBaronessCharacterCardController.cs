@@ -1,4 +1,5 @@
-﻿using Handelabra.Sentinels.Engine.Controller;
+﻿using Handelabra;
+using Handelabra.Sentinels.Engine.Controller;
 using Handelabra.Sentinels.Engine.Model;
 using System;
 using System.Collections;
@@ -81,6 +82,7 @@ namespace VainFacadePlaytest.TheBaroness
                 base.AddSideTrigger(AddTrigger((DestroyCardAction dca) => dca.CardToDestroy.Card.IsVillain && dca.WasCardDestroyed && dca.CardSource != null && dca.CardSource.Card.IsHero, HitTwoLowestResponse, TriggerType.DealDamage, TriggerTiming.After));
                 // "When there are no villain Schemes in play, flip {TheBaroness}'s character card."
                 base.AddSideTrigger(AddTrigger((GameAction a) => a.CardSource != null && NumVillainSchemesInPlay() == 0, (GameAction a) => base.GameController.FlipCard(this, cardSource: GetCardSource()), TriggerType.FlipCard, TriggerTiming.After));
+                base.AddSideTrigger(AddTrigger((PhaseChangeAction pca) => NumVillainSchemesInPlay() == 0, (PhaseChangeAction pca) => base.GameController.FlipCard(this, cardSource: GetCardSource()), TriggerType.FlipCard, TriggerTiming.After));
                 // "At the end of the villain turn, {TheBaroness} deals the hero with the highest HP {H - 1} melee damage. Then, unless {TheBaroness} dealt a hero target damage this turn, destroy {H} hero Ongoing and/or Equipment cards."
                 base.AddSideTrigger(AddEndOfTurnTrigger((TurnTaker tt) => tt == base.TurnTaker, HitHighestOrDestroyResponse, new TriggerType[] { TriggerType.DealDamage, TriggerType.DestroyCard }));
                 if (base.IsGameAdvanced)
@@ -113,6 +115,36 @@ namespace VainFacadePlaytest.TheBaroness
             }
             AddDefeatedIfDestroyedTriggers();
         }
+
+        /*public override void AddTriggers()
+        {
+            base.AddTriggers();
+            AddTrigger((PhaseChangeAction pca) => pca.FromPhase.TurnTaker == base.TurnTaker || pca.ToPhase.TurnTaker == base.TurnTaker, LogPhaseChangeAction, TriggerType.Hidden, TriggerTiming.After);
+        }
+
+        private IEnumerator LogPhaseChangeAction(PhaseChangeAction pca)
+        {
+            Log.Debug("TheBaronessCharacterCardController.LogPhaseChangeAction activated: pca: " + pca.ToString());
+            Log.Debug("TheBaronessCharacterCardController.LogPhaseChangeAction: pca.FromPhase.TurnTaker: " + pca.FromPhase.TurnTaker.Name);
+            Log.Debug("TheBaronessCharacterCardController.LogPhaseChangeAction: pca.FromPhase.TurnPhase: " + pca.FromPhase.Phase.ToString());
+            Log.Debug("TheBaronessCharacterCardController.LogPhaseChangeAction: pca.FromPhase.GetPhaseActionCount: " + pca.FromPhase.GetPhaseActionCount().ToString());
+            Log.Debug("TheBaronessCharacterCardController.LogPhaseChangeAction: pca.FromPhase.PhaseActionCountRoot: " + pca.FromPhase.PhaseActionCountRoot.ToString());
+            Log.Debug("TheBaronessCharacterCardController.LogPhaseChangeAction: pca.FromPhase.PhaseActionCountModifiers: " + pca.FromPhase.PhaseActionCountModifiers.ToString());
+            Log.Debug("TheBaronessCharacterCardController.LogPhaseChangeAction: pca.FromPhase.PhaseActionCountUsed: " + pca.FromPhase.PhaseActionCountUsed.ToString());
+            Log.Debug("TheBaronessCharacterCardController.LogPhaseChangeAction: pca.FromPhase.CanPerformAction: " + pca.FromPhase.CanPerformAction.ToString());
+            Log.Debug("TheBaronessCharacterCardController.LogPhaseChangeAction: pca.FromPhase.WasSkipped: " + pca.FromPhase.WasSkipped.ToString());
+            Log.Debug("TheBaronessCharacterCardController.LogPhaseChangeAction: pca.ToPhase.TurnTaker: " + pca.ToPhase.TurnTaker.Name);
+            Log.Debug("TheBaronessCharacterCardController.LogPhaseChangeAction: pca.ToPhase.TurnPhase: " + pca.ToPhase.Phase.ToString());
+            Log.Debug("TheBaronessCharacterCardController.LogPhaseChangeAction: pca.ToPhase.GetPhaseActionCount: " + pca.ToPhase.GetPhaseActionCount().ToString());
+            Log.Debug("TheBaronessCharacterCardController.LogPhaseChangeAction: pca.ToPhase.PhaseActionCountRoot: " + pca.ToPhase.PhaseActionCountRoot.ToString());
+            Log.Debug("TheBaronessCharacterCardController.LogPhaseChangeAction: pca.ToPhase.PhaseActionCountModifiers: " + pca.ToPhase.PhaseActionCountModifiers.ToString());
+            Log.Debug("TheBaronessCharacterCardController.LogPhaseChangeAction: pca.ToPhase.PhaseActionCountUsed: " + pca.ToPhase.PhaseActionCountUsed.ToString());
+            Log.Debug("TheBaronessCharacterCardController.LogPhaseChangeAction: pca.ToPhase.CanPerformAction: " + pca.ToPhase.CanPerformAction.ToString());
+            Log.Debug("TheBaronessCharacterCardController.LogPhaseChangeAction: pca.ToPhase.WasSkipped: " + pca.ToPhase.WasSkipped.ToString());
+
+            //Log.Debug("TheBaronessCharacterCardController.LogPhaseChangeAction: ");
+            yield break;
+        }*/
 
         private IEnumerator PlayBonusCardResponse(DealDamageAction dda)
         {
