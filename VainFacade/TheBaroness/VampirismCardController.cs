@@ -23,7 +23,7 @@ namespace VainFacadePlaytest.TheBaroness
         {
             base.AddTriggers();
             // "The first time each turn {TheBaroness} deals each hero target melee damage, put the top card of that target's deck face-down in the villain play area."
-            AddTrigger((DealDamageAction dda) => !IsPropertyTrue(GeneratePerTargetKey(GivenBlood, dda.Target)) && dda.DamageType == DamageType.Melee && dda.DamageSource != null && dda.DamageSource.Card == base.CharacterCard, FirstDrinkResponse, TriggerType.MoveCard, TriggerTiming.After);
+            AddTrigger((DealDamageAction dda) => !IsPropertyTrue(GeneratePerTargetKey(GivenBlood, dda.Target)) && dda.DidDealDamage && dda.DamageType == DamageType.Melee && dda.DamageSource != null && dda.DamageSource.Card == base.CharacterCard, FirstDrinkResponse, TriggerType.MoveCard, TriggerTiming.After);
             AddAfterLeavesPlayAction((GameAction ga) => ResetFlagsAfterLeavesPlay(GivenBlood), TriggerType.Hidden);
             // "When a card becomes Blood, {TheBaroness} regains 1 HP."
             AddTrigger((MoveCardAction mca) => mca.CardToMove.IsFaceDownNonCharacter && mca.CardToMove.IsHero && mca.WasCardMoved && mca.Destination.IsPlayAreaOf(base.TurnTaker) && !mca.Origin.IsPlayAreaOf(base.TurnTaker), (MoveCardAction mca) => base.GameController.GainHP(base.CharacterCard, 1, cardSource: GetCardSource()), TriggerType.GainHP, TriggerTiming.After);
