@@ -209,7 +209,8 @@ namespace VainFacadePlaytest.TheBaroness
             // "Then, unless {TheBaroness} dealt a hero target damage this turn, destroy {H} hero Ongoing and/or Equipment cards."
             if (!DidHitHeroTargetThisTurn())
             {
-                IEnumerator destroyCoroutine = base.GameController.SelectAndDestroyCards(DecisionMaker, new LinqCardCriteria((Card c) => c.IsHero && (c.IsOngoing || IsEquipment(c)), "hero Ongoing or Equipment"), H, requiredDecisions: H, responsibleCard: base.Card, cardSource: GetCardSource());
+                LinqCardCriteria heroOngEqp = new LinqCardCriteria((Card c) => c.IsHero && (c.IsOngoing || IsEquipment(c)) && c.IsInPlayAndHasGameText, "hero Ongoing or Equipment");
+                IEnumerator destroyCoroutine = base.GameController.SelectAndDestroyCards(DecisionMaker, heroOngEqp, H, requiredDecisions: H, allowAutoDecide: H >= base.GameController.FindCardsWhere(heroOngEqp, visibleToCard: GetCardSource()).Count(), responsibleCard: base.Card, cardSource: GetCardSource());
                 if (base.UseUnityCoroutines)
                 {
                     yield return base.GameController.StartCoroutine(destroyCoroutine);
@@ -277,7 +278,8 @@ namespace VainFacadePlaytest.TheBaroness
             // "Unless {TheBaroness} dealt a hero target damage this turn, destroy {H} hero Ongoing and/or Equipment cards."
             if (!DidHitHeroTargetThisTurn())
             {
-                IEnumerator destroyCoroutine = base.GameController.SelectAndDestroyCards(DecisionMaker, new LinqCardCriteria((Card c) => c.IsHero && (c.IsOngoing || IsEquipment(c)), "hero Ongoing or Equipment"), H, requiredDecisions: H, responsibleCard: base.Card, cardSource: GetCardSource());
+                LinqCardCriteria heroOngEqp = new LinqCardCriteria((Card c) => c.IsHero && (c.IsOngoing || IsEquipment(c)) && c.IsInPlayAndHasGameText, "hero Ongoing or Equipment");
+                IEnumerator destroyCoroutine = base.GameController.SelectAndDestroyCards(DecisionMaker, heroOngEqp, H, requiredDecisions: H, allowAutoDecide: H >= base.GameController.FindCardsWhere(heroOngEqp, visibleToCard: GetCardSource()).Count(), responsibleCard: base.Card, cardSource: GetCardSource());
                 if (base.UseUnityCoroutines)
                 {
                     yield return base.GameController.StartCoroutine(destroyCoroutine);
