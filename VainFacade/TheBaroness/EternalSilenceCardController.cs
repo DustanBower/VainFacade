@@ -48,7 +48,7 @@ namespace VainFacadePlaytest.TheBaroness
                 int x = bloodDestroyed.Where((DestroyCardAction dca) => dca.WasCardDestroyed).Count();
                 // Find a hero character target for mostBlood
                 List<Card> chosen = new List<Card>();
-                IEnumerator chooseCoroutine = FindCharacterCardToTakeDamage(mostBlood, chosen, base.CharacterCard, x * 2, DamageType.Infernal);
+                IEnumerator chooseCoroutine = FindCharacterCardToTakeDamage(mostBlood, chosen, base.CharacterCard, x * 2, DamageType.Melee);
                 if (base.UseUnityCoroutines)
                 {
                     yield return base.GameController.StartCoroutine(chooseCoroutine);
@@ -60,7 +60,7 @@ namespace VainFacadePlaytest.TheBaroness
                 if (chosen.Count() > 0)
                 {
                     Card unluckyCharacter = chosen.FirstOrDefault();
-                    IEnumerator damageCoroutine = DealDamage(base.CharacterCard, unluckyCharacter, x * 2, DamageType.Infernal, cardSource: GetCardSource());
+                    IEnumerator damageCoroutine = DealDamage(base.CharacterCard, unluckyCharacter, x * 2, DamageType.Melee, cardSource: GetCardSource());
                     if (base.UseUnityCoroutines)
                     {
                         yield return base.GameController.StartCoroutine(damageCoroutine);
