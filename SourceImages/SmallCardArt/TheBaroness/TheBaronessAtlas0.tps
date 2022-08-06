@@ -34,7 +34,7 @@
         <key>dataFormat</key>
         <string>json</string>
         <key>textureFileName</key>
-        <filename>SetupGame0.png</filename>
+        <filename>TheBaronessAtlas0.png</filename>
         <key>flipPVR</key>
         <false/>
         <key>pvrQualityLevel</key>
@@ -124,7 +124,7 @@
             <key>data</key>
             <struct type="DataFile">
                 <key>name</key>
-                <filename>SetupGame0.json</filename>
+                <filename>TheBaronessAtlas0.json</filename>
             </struct>
         </map>
         <key>multiPack</key>
@@ -173,9 +173,37 @@
         </struct>
         <key>individualSpriteSettings</key>
         <map type="IndividualSpriteSettingsMap">
-            <key type="filename">../SmallCardArt/Sphere/SphereCharacter.png</key>
-            <key type="filename">../SmallCardArt/TheBaroness/TheBaronessCharacter.png</key>
-            <key type="filename">../SmallCardArt/TheMidnightBazaar/TheMidnightBazaarDeckBack.png</key>
+            <key type="filename">AgelessEnmity.png</key>
+            <key type="filename">ArcaneVeins.png</key>
+            <key type="filename">ByTheThroat.png</key>
+            <key type="filename">CloudOfBats.png</key>
+            <key type="filename">DeathsCall.png</key>
+            <key type="filename">DrawOutTheBlood.png</key>
+            <key type="filename">EndlessThirst.png</key>
+            <key type="filename">EternalSilence.png</key>
+            <key type="filename">FangAndClaw.png</key>
+            <key type="filename">TwistedPerceptions.png</key>
+            <key type="filename">UndyingEssence.png</key>
+            <key type="filename">VampiricStrength.png</key>
+            <key type="filename">Vampirism.png</key>
+            <key type="filename">WingedTerror.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>64,50,128,99</rect>
+                <key>scale9Paddings</key>
+                <rect>64,50,128,99</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">TheBaronessCharacter.png</key>
+            <key type="filename">TheBaronessCharacterBack.png</key>
+            <key type="filename">TheBaronessDeckBack.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
@@ -193,9 +221,23 @@
         </map>
         <key>fileList</key>
         <array>
-            <filename>../SmallCardArt/TheMidnightBazaar/TheMidnightBazaarDeckBack.png</filename>
-            <filename>../SmallCardArt/Sphere/SphereCharacter.png</filename>
-            <filename>../SmallCardArt/TheBaroness/TheBaronessCharacter.png</filename>
+            <filename>AgelessEnmity.png</filename>
+            <filename>ArcaneVeins.png</filename>
+            <filename>ByTheThroat.png</filename>
+            <filename>CloudOfBats.png</filename>
+            <filename>DeathsCall.png</filename>
+            <filename>DrawOutTheBlood.png</filename>
+            <filename>EndlessThirst.png</filename>
+            <filename>EternalSilence.png</filename>
+            <filename>FangAndClaw.png</filename>
+            <filename>TheBaronessCharacter.png</filename>
+            <filename>TheBaronessCharacterBack.png</filename>
+            <filename>TheBaronessDeckBack.png</filename>
+            <filename>TwistedPerceptions.png</filename>
+            <filename>UndyingEssence.png</filename>
+            <filename>VampiricStrength.png</filename>
+            <filename>Vampirism.png</filename>
+            <filename>WingedTerror.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

@@ -8,9 +8,17 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":177,"h":256},
 	"sourceSize": {"w":177,"h":256}
 },
-"TheMidnightBazaarDeckBack.png":
+"TheBaronessCharacter.png":
 {
 	"frame": {"x":180,"y":0,"w":177,"h":256},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":177,"h":256},
+	"sourceSize": {"w":177,"h":256}
+},
+"TheMidnightBazaarDeckBack.png":
+{
+	"frame": {"x":360,"y":0,"w":177,"h":256},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":177,"h":256},
@@ -21,8 +29,8 @@
 	"version": "1.0",
 	"image": "SetupGame0.png",
 	"format": "RGBA8888",
-	"size": {"w":512,"h":512},
+	"size": {"w":1024,"h":1024},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:5608e3b7e7d75cd925e8fee52358d2e8:cee6f3eedd98bfbadfffe6d64f279d75:4ee285c32a91b7652e02ac049f918b2a$"
+	"smartupdate": "$TexturePacker:SmartUpdate:bf2fc4146e852b4f7198f85c253c79a3:db47510b59b793e283ac8fb70fdd54bf:4ee285c32a91b7652e02ac049f918b2a$"
 }
 }
