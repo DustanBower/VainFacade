@@ -34,9 +34,7 @@
 				"When there are no villain Schemes in play, flip {TheBaroness}'s character card.",
 				"At the end of the villain turn, {TheBaroness} deals the hero with the highest HP {H - 1} melee damage. Then, unless {TheBaroness} dealt a hero target damage this turn, destroy {H} hero Ongoing and/or Equipment cards."
 			],
-			"advanced": [
-				"Increase damage dealt by {TheBaroness} by 1."
-			],
+			"advanced": "Increase damage dealt by {TheBaroness} by 1.",
 			"icons": [
 				"IncreaseDamageTakenRadiant",
 				"PlayCardNow",
@@ -58,9 +56,7 @@
 				"Then if there is at least 1 villain Scheme in play, flip {TheBaroness}'s character card.",
 				"Then {TheBaroness} deals the hero target with the lowest HP {H - 2} melee damage. Unless {TheBaroness} dealt a hero target damage this turn, destroy {H} hero Ongoing and/or Equipment cards."
 			],
-			"flippedAdvanced": [
-				"At the end of the villain turn, {TheBaroness} regains {H - 2} HP."
-			],
+			"flippedAdvanced": "At the end of the villain turn, {TheBaroness} regains {H - 2} HP.",
 			"flippedIcons": [
 				"IncreaseDamageTakenRadiant",
 				"PlayCardNow",
@@ -75,6 +71,11 @@
 				"GainHP"
 			],
 			"difficulty": 4,
+			"challengeTitle": "Bloodlust",
+			"challengeText": "The first time a Scheme enters play each turn, play the top card of the villain deck.",
+			"challengeIcons": [
+				"PlayCardNow"
+			],
 			"openingLines": {
 				"default": "You believe zat you can oppose [b]me[/b]? How delightful!"
 			}

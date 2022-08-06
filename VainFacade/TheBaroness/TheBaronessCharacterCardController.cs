@@ -33,12 +33,16 @@ namespace VainFacadePlaytest.TheBaroness
             SpecialStringMaker.ShowNumberOfCardsInPlay(new LinqCardCriteria((Card c) => c.IsVillain && c.DoKeywordsContain(SchemeKeyword), "villain Scheme")).Condition = () => base.Card.IsFlipped;
             // Back side: show hero target with lowest HP
             SpecialStringMaker.ShowHeroTargetWithLowestHP(ranking: 1, numberOfTargets: 1).Condition = () => base.Card.IsFlipped;
+
+            // Challenge: show whether a Scheme has entered play this turn
+            SpecialStringMaker.ShowHasBeenUsedThisTurn(FirstSchemeThisTurn, "A Scheme card has already entered play this turn.", "No Scheme cards have entered play this turn.").Condition = () => base.IsGameChallenge;
         }
 
         protected const string VampirismIdentifier = "Vampirism";
         protected const string SchemeKeyword = "scheme";
         protected const string FirstBloodThisTurn = "FirstBloodThisTurn";
         protected const string PlayedBonusThisTurn = "PlayedBonusThisTurn";
+        protected const string FirstSchemeThisTurn = "FirstSchemeThisTurn";
 
         public override bool AskIfCardIsIndestructible(Card card)
         {
@@ -67,6 +71,16 @@ namespace VainFacadePlaytest.TheBaroness
             return (from e in list select e.Amount).Sum();
         }
 
+        public override void AddTriggers()
+        {
+            if (base.IsGameChallenge)
+            {
+                // "The first time a Scheme enters play each turn, play the top card of the villain deck."
+                AddTrigger((CardEntersPlayAction cepa) => !HasBeenSetToTrueThisTurn(FirstSchemeThisTurn) && cepa.CardEnteringPlay.DoKeywordsContain(SchemeKeyword), PlayCardForSchemeResponse, TriggerType.PlayCard, TriggerTiming.After);
+            }
+            base.AddTriggers();
+        }
+
         public override void AddSideTriggers()
         {
             base.AddSideTriggers();
@@ -76,7 +90,7 @@ namespace VainFacadePlaytest.TheBaroness
                 // "Increase radiant damage dealt to {TheBaroness} by 1."
                 base.AddSideTrigger(AddIncreaseDamageTrigger((DealDamageAction dd) => dd.DamageType == DamageType.Radiant && dd.Target == base.Card, 1));
                 // "When {TheBaroness} is dealt more than 5 damage in a turn, play the top card of the villain deck."
-                AddSideTrigger(AddTrigger((DealDamageAction dda) => !HasBeenSetToTrueThisTurn(PlayedBonusThisTurn) && dda.Target == base.Card && dda.DidDealDamage && DamageTakenThisTurn() > 5, PlayBonusCardResponse, TriggerType.PlayCard, TriggerTiming.After));
+                AddSideTrigger(AddTrigger((DealDamageAction dda) => !HasBeenSetToTrueThisTurn(PlayedBonusThisTurn) && dda.Target == base.Card && dda.DidDealDamage && DamageTakenThisTurn() > 5, PlayCardForDamageResponse, TriggerType.PlayCard, TriggerTiming.After));
 
                 // "When a hero card destroys a villain Scheme, {TheBaroness} deals the 2 heroes with the lowest HP {H - 2} melee damage each."
                 base.AddSideTrigger(AddTrigger((DestroyCardAction dca) => dca.CardToDestroy.Card.IsVillain && dca.CardToDestroy.Card.DoKeywordsContain(SchemeKeyword) && dca.WasCardDestroyed && dca.CardSource != null && dca.CardSource.Card.IsHero, HitTwoLowestResponse, TriggerType.DealDamage, TriggerTiming.After));
@@ -98,7 +112,7 @@ namespace VainFacadePlaytest.TheBaroness
                 // "Increase radiant damage dealt to {TheBaroness} by 1."
                 base.AddSideTrigger(AddIncreaseDamageTrigger((DealDamageAction dd) => dd.DamageType == DamageType.Radiant && dd.Target == base.Card, 1));
                 // "When {TheBaroness} is dealt more than 5 damage in a turn, play the top card of the villain deck."
-                AddSideTrigger(AddTrigger((DealDamageAction dda) => !HasBeenSetToTrueThisTurn(PlayedBonusThisTurn) && dda.Target == base.Card && dda.DidDealDamage && DamageTakenThisTurn() > 5, PlayBonusCardResponse, TriggerType.PlayCard, TriggerTiming.After));
+                AddSideTrigger(AddTrigger((DealDamageAction dda) => !HasBeenSetToTrueThisTurn(PlayedBonusThisTurn) && dda.Target == base.Card && dda.DidDealDamage && DamageTakenThisTurn() > 5, PlayCardForDamageResponse, TriggerType.PlayCard, TriggerTiming.After));
 
                 // "The first time each turn a hero card is put face-down into the villain play area, put the top card of its associated deck face-down in the villain play area."
                 AddSideTrigger(AddTrigger((MoveCardAction mca) => !HasBeenSetToTrueThisTurn(FirstBloodThisTurn) && mca.CardToMove.IsFaceDownNonCharacter && mca.CardToMove.IsHero && mca.Destination.IsPlayAreaOf(base.TurnTaker), FirstBloodTakenResponse, TriggerType.MoveCard, TriggerTiming.After));
@@ -116,37 +130,22 @@ namespace VainFacadePlaytest.TheBaroness
             AddDefeatedIfDestroyedTriggers();
         }
 
-        /*public override void AddTriggers()
+        private IEnumerator PlayCardForSchemeResponse(CardEntersPlayAction cepa)
         {
-            base.AddTriggers();
-            AddTrigger((PhaseChangeAction pca) => pca.FromPhase.TurnTaker == base.TurnTaker || pca.ToPhase.TurnTaker == base.TurnTaker, LogPhaseChangeAction, TriggerType.Hidden, TriggerTiming.After);
+            // "... play the top card of the villain deck."
+            SetCardPropertyToTrueIfRealAction(FirstSchemeThisTurn);
+            IEnumerator playCoroutine = PlayTheTopCardOfTheVillainDeckResponse(cepa);
+            if (base.UseUnityCoroutines)
+            {
+                yield return base.GameController.StartCoroutine(playCoroutine);
+            }
+            else
+            {
+                base.GameController.ExhaustCoroutine(playCoroutine);
+            }
         }
 
-        private IEnumerator LogPhaseChangeAction(PhaseChangeAction pca)
-        {
-            Log.Debug("TheBaronessCharacterCardController.LogPhaseChangeAction activated: pca: " + pca.ToString());
-            Log.Debug("TheBaronessCharacterCardController.LogPhaseChangeAction: pca.FromPhase.TurnTaker: " + pca.FromPhase.TurnTaker.Name);
-            Log.Debug("TheBaronessCharacterCardController.LogPhaseChangeAction: pca.FromPhase.TurnPhase: " + pca.FromPhase.Phase.ToString());
-            Log.Debug("TheBaronessCharacterCardController.LogPhaseChangeAction: pca.FromPhase.GetPhaseActionCount: " + pca.FromPhase.GetPhaseActionCount().ToString());
-            Log.Debug("TheBaronessCharacterCardController.LogPhaseChangeAction: pca.FromPhase.PhaseActionCountRoot: " + pca.FromPhase.PhaseActionCountRoot.ToString());
-            Log.Debug("TheBaronessCharacterCardController.LogPhaseChangeAction: pca.FromPhase.PhaseActionCountModifiers: " + pca.FromPhase.PhaseActionCountModifiers.ToString());
-            Log.Debug("TheBaronessCharacterCardController.LogPhaseChangeAction: pca.FromPhase.PhaseActionCountUsed: " + pca.FromPhase.PhaseActionCountUsed.ToString());
-            Log.Debug("TheBaronessCharacterCardController.LogPhaseChangeAction: pca.FromPhase.CanPerformAction: " + pca.FromPhase.CanPerformAction.ToString());
-            Log.Debug("TheBaronessCharacterCardController.LogPhaseChangeAction: pca.FromPhase.WasSkipped: " + pca.FromPhase.WasSkipped.ToString());
-            Log.Debug("TheBaronessCharacterCardController.LogPhaseChangeAction: pca.ToPhase.TurnTaker: " + pca.ToPhase.TurnTaker.Name);
-            Log.Debug("TheBaronessCharacterCardController.LogPhaseChangeAction: pca.ToPhase.TurnPhase: " + pca.ToPhase.Phase.ToString());
-            Log.Debug("TheBaronessCharacterCardController.LogPhaseChangeAction: pca.ToPhase.GetPhaseActionCount: " + pca.ToPhase.GetPhaseActionCount().ToString());
-            Log.Debug("TheBaronessCharacterCardController.LogPhaseChangeAction: pca.ToPhase.PhaseActionCountRoot: " + pca.ToPhase.PhaseActionCountRoot.ToString());
-            Log.Debug("TheBaronessCharacterCardController.LogPhaseChangeAction: pca.ToPhase.PhaseActionCountModifiers: " + pca.ToPhase.PhaseActionCountModifiers.ToString());
-            Log.Debug("TheBaronessCharacterCardController.LogPhaseChangeAction: pca.ToPhase.PhaseActionCountUsed: " + pca.ToPhase.PhaseActionCountUsed.ToString());
-            Log.Debug("TheBaronessCharacterCardController.LogPhaseChangeAction: pca.ToPhase.CanPerformAction: " + pca.ToPhase.CanPerformAction.ToString());
-            Log.Debug("TheBaronessCharacterCardController.LogPhaseChangeAction: pca.ToPhase.WasSkipped: " + pca.ToPhase.WasSkipped.ToString());
-
-            //Log.Debug("TheBaronessCharacterCardController.LogPhaseChangeAction: ");
-            yield break;
-        }*/
-
-        private IEnumerator PlayBonusCardResponse(DealDamageAction dda)
+        private IEnumerator PlayCardForDamageResponse(DealDamageAction dda)
         {
             // "... play the top card of the villain deck."
             SetCardPropertyToTrueIfRealAction(PlayedBonusThisTurn);
