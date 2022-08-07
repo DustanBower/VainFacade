@@ -1,8 +1,16 @@
 {"frames": {
 
-"SphereIcon.png":
+"GlyphIcon.png":
 {
 	"frame": {"x":0,"y":0,"w":128,"h":128},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":128,"h":128},
+	"sourceSize": {"w":128,"h":128}
+},
+"SphereIcon.png":
+{
+	"frame": {"x":131,"y":0,"w":128,"h":128},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":128,"h":128},
@@ -13,8 +21,8 @@
 	"version": "1.0",
 	"image": "Icons0.png",
 	"format": "RGBA8888",
-	"size": {"w":128,"h":128},
+	"size": {"w":512,"h":512},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:f7db2bfce66ea08cb98e873e169a8def:64b4528500c8424396c828657d0e4153:c680398f21d101d0a1ae6d7fc2a23608$"
+	"smartupdate": "$TexturePacker:SmartUpdate:93dd42f26b0cf05fa34f286f3c621bab:38639a85c0951b25bd9dddddffe4d638:c680398f21d101d0a1ae6d7fc2a23608$"
 }
 }

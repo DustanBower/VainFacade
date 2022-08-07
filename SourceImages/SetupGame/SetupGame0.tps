@@ -174,6 +174,7 @@
         <key>individualSpriteSettings</key>
         <map type="IndividualSpriteSettingsMap">
             <key type="filename">../SmallCardArt/Sphere/SphereCharacter.png</key>
+            <key type="filename">../SmallCardArt/TheBaroness/TheBaronessCharacter.png</key>
             <key type="filename">../SmallCardArt/TheMidnightBazaar/TheMidnightBazaarDeckBack.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
@@ -194,6 +195,7 @@
         <array>
             <filename>../SmallCardArt/TheMidnightBazaar/TheMidnightBazaarDeckBack.png</filename>
             <filename>../SmallCardArt/Sphere/SphereCharacter.png</filename>
+            <filename>../SmallCardArt/TheBaroness/TheBaronessCharacter.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

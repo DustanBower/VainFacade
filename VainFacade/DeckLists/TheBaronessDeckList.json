@@ -1,0 +1,461 @@
+{
+	"name": "The Baroness",
+	"sortName": "Baroness",
+	"kind": "Villain",
+	"initialCardIdentifiers": [
+		"TheBaronessCharacter"
+	],
+	"initialOffToTheSideCardIdentifiers": [
+		"Bat"
+	],
+	"cards": [
+		{
+			"identifier": "TheBaronessCharacter",
+			"count": 1,
+			"title": "The Baroness",
+			"keywords": [
+				"villain"
+			],
+			"body": "Elegant Killer",
+			"backgroundColor": "ff0000",
+			"character": true,
+			"hitpoints": 91,
+			"nemesisIdentifiers": [
+				"VainFacadePlaytest.Glyph"
+			],
+			"setup": [
+				"Put the card Vampirism into play. Flip {TheBaroness}'s character card."
+			],
+			"gameplay": [
+				"Vampirism is indestructible.",
+				"Increase radiant damage dealt to {TheBaroness} by 1.",
+				"When {TheBaroness} is dealt more than 5 damage in a turn, play the top card of the villain deck.",
+				"When a hero card destroys a villain Scheme, {TheBaroness} deals the 2 heroes with the lowest HP {H - 2} melee damage each.",
+				"When there are no villain Schemes in play, flip {TheBaroness}'s character card.",
+				"At the end of the villain turn, {TheBaroness} deals the hero with the highest HP {H - 1} melee damage. Then, unless {TheBaroness} dealt a hero target damage this turn, destroy {H} hero Ongoing and/or Equipment cards."
+			],
+			"advanced": "Increase damage dealt by {TheBaroness} by 1.",
+			"icons": [
+				"IncreaseDamageTakenRadiant",
+				"PlayCardNow",
+				"EndOfTurnAction",
+				"DealDamageMelee",
+				"DestroyOngoing",
+				"DestroyEquipment"
+			],
+			"advancedIcons": [
+				"IncreaseDamageDealt"
+			],
+			"flippedBody": "Calculating Predator",
+			"flippedGameplay": [
+				"Vampirism is indestructible.",
+				"Increase radiant damage dealt to {TheBaroness} by 1.",
+				"When {TheBaroness} is dealt more than 5 damage in a turn, play the top card of the villain deck.",
+				"The first time each turn a hero card is put face-down into the villain play area, put the top card of its associated deck face-down in the villain play area.",
+				"At the end of the villain turn, discard the top {H + 2} cards of the villain deck. Put any Schemes discarded this way into play.",
+				"Then if there is at least 1 villain Scheme in play, flip {TheBaroness}'s character card.",
+				"Then {TheBaroness} deals the hero target with the lowest HP {H - 2} melee damage. Unless {TheBaroness} dealt a hero target damage this turn, destroy {H} hero Ongoing and/or Equipment cards."
+			],
+			"flippedAdvanced": "At the end of the villain turn, {TheBaroness} regains {H - 2} HP.",
+			"flippedIcons": [
+				"IncreaseDamageTakenRadiant",
+				"PlayCardNow",
+				"FlipFaceDown",
+				"EndOfTurnAction",
+				"Manipulate",
+				"DealDamageMelee",
+				"DestroyOngoing",
+				"DestroyEquipment"
+			],
+			"flippedAdvancedIcons": [
+				"GainHP"
+			],
+			"difficulty": 4,
+			"challengeTitle": "Bloodlust",
+			"challengeText": "The first time a Scheme enters play each turn, play the top card of the villain deck.",
+			"challengeIcons": [
+				"PlayCardNow"
+			],
+			"openingLines": {
+				"default": "You believe zat you can oppose [b]me[/b]? How delightful!"
+			}
+		},
+		{
+			"identifier": "AgelessEnmity",
+			"count": 3,
+			"title": "Ageless Enmity",
+			"keywords": [
+				"one-shot"
+			],
+			"body": [
+				"{TheBaroness} deals the hero target with the highest HP 5 melee damage.",
+				"Play the top card of the villain deck.",
+				"Destroy a Scheme.",
+				"If there are {H - 2} or fewer villain Schemes in play, discard the top 5 cards of the villain deck. Put any Schemes discarded this way into play."
+			],
+			"icons": [
+				"DealDamageMelee",
+				"PlayCardNow",
+				"Destroy",
+				"Manipulate"
+			],
+			"flavorQuotes": [
+				{
+					"identifier": "The Baroness",
+					"text": "I tire of your games, Bruzer{BR}Stevens. Surely you cannot sink to oppose{BR}me, who mastered zee game before your{BR}great-grandfahzer vas born?"
+				}
+			],
+			"flavorReference": "The Baroness, Bastion City: A Spider Never Blinks #17"
+		},
+		{
+			"identifier": "ArcaneVeins",
+			"count": 1,
+			"title": "Arcane Veins",
+			"keywords": [
+				"ongoing",
+				"scheme"
+			],
+			"body": [
+				"Increase infernal damage dealt by {TheBaroness} by 1.",
+				"At the end of the villain turn, reveal {H - 2} cards from the top of the villain deck. Put any revealed Spells into play. Discard the other revealed cards."
+			],
+			"icons": [
+				"IncreaseDamageDealtInfernal",
+				"EndOfTurnAction",
+				"Manipulate"
+			],
+			"flavorQuotes": [
+				{
+					"identifier": "The Baroness",
+					"text": "Your spells are painted on your skin,{BR}mine etched vissin my veins."
+				}
+			],
+			"flavorReference": "The Baroness, Bastion City: A Spider Never Blinks #23"
+		},
+		{
+			"identifier": "ByTheThroat",
+			"count": 1,
+			"title": "By the Throat",
+			"keywords": [
+				"ongoing",
+				"scheme"
+			],
+			"body": [
+				"Play this card next to an active hero. When that target leaves play, destroy this card.",
+				"Increase damage dealt to that hero by 1.",
+				"At the start of that hero's turn, {TheBaroness} deals them 2 melee damage and regains 2 HP.",
+				"When {TheBaroness} is dealt {H} or more damage from a single source, destroy this card."
+			],
+			"icons": [
+				"IncreaseDamageTaken",
+				"StartOfTurnAction",
+				"DealDamageMelee",
+				"GainHP",
+				"DestroySelf"
+			],
+			"flavorQuotes": [
+				{
+					"identifier": "Burgess",
+					"text": "I don't know! Shoot her! Shoot me! Do{BR}[b]something![/b]"
+				}
+			],
+			"flavorReference": "Burgess, Bastion's Best: Dark October One-Shot"
+		},
+		{
+			"identifier": "CloudOfBats",
+			"count": 1,
+			"title": "Cloud of Bats",
+			"keywords": [
+				"ongoing",
+				"scheme"
+			],
+			"body": [
+				"When this card enters play, destroy Winged Terror.",
+				"When a Bat is dealt damage, reduce damage dealt to Bats by 1 this turn. Blood cards have a maximum HP of 4 and are villain Bats.",
+				"At the start of the villain turn, each Bat deals each hero target 1 projectile damage. If less than 4 damage is dealt this way, destroy this card."
+			],
+			"icons": [
+				"Destroy",
+				"ReduceDamageTaken",
+				"StartOfTurnAction",
+				"DealDamageProjectile"
+			],
+			"flavorQuotes": [
+				{
+					"identifier": "Burgess",
+					"text": "Everything was going fine until that{BR}weird lady exploded into an endless{BR}swarm of bats."
+				}
+			],
+			"flavorReference": "Burgess, Bastion's Best: Dark October One-Shot"
+		},
+		{
+			"identifier": "DeathsCall",
+			"count": 3,
+			"title": "Death's Call",
+			"keywords": [
+				"one-shot",
+				"spell"
+			],
+			"body": [
+				"Each hero destroys one of their non-character cards for each point of resonance they have.",
+				"For each card destroyed this way, destroy 1 Blood card owned by that hero.",
+				"Then {TheBaroness} deals each hero target that did not destroy a card in this way {H - 1} infernal damage."
+			],
+			"icons": [
+				"DestroyHero",
+				"Destroy",
+				"DealDamageInfernal"
+			],
+			"flavorQuotes": [
+				{
+					"identifier": "The Baroness",
+					"text": "By all means, shine your little lights{BR}into zee darkness... but you cannot beat{BR}zee night."
+				}
+			],
+			"flavorReference": "The Baroness, Bastion's Best: Black Thorn Academy #15"
+		},
+		{
+			"identifier": "DrawOutTheBlood",
+			"count": 3,
+			"title": "Draw Out the Blood",
+			"keywords": [
+				"one-shot",
+				"spell"
+			],
+			"body": [
+				"{TheBaroness} deals each non-villain target 1 infernal damage.",
+				"Put the top card of each hero deck face-down in the villain play area."
+			],
+			"icons": [
+				"DealDamageInfernal",
+				"FlipFaceDown"
+			],
+			"flavorQuotes": [
+				{
+					"identifier": "The Baroness",
+					"text": "Run if you vish, it hardly matters. If I{BR}do not find you, zen your blood... it vill{BR}find me."
+				}
+			],
+			"flavorReference": "The Baroness, Three-Fold Vengeance One-Shot"
+		},
+		{
+			"identifier": "EndlessThirst",
+			"count": 1,
+			"title": "Endless Thirst",
+			"keywords": [
+				"ongoing",
+				"scheme"
+			],
+			"body": [
+				"Each time {TheBaroness} deals a hero target melee damage, put the top card of that target's deck face-down in the villain play area."
+			],
+			"icons": [
+				"FlipFaceDown"
+			],
+			"flavorQuotes": [
+				{
+					"identifier": "The Baroness",
+					"text": "Quite a convincing mask, but useless{BR}here, I fear. No mask can silence zee song{BR}your very veins sing to me."
+				}
+			],
+			"flavorReference": "The Baroness, Bastion's Best: Black Thorn Academy #15"
+		},
+		{
+			"identifier": "EternalSilence",
+			"count": 3,
+			"title": "Eternal Silence",
+			"keywords": [
+				"one-shot"
+			],
+			"body": [
+				"Destroy all Blood cards belonging to the hero with the highest resonance. {TheBaroness} deals that hero X times 2 melee damage, where X is the number of Blood cards destroyed in this way."
+			],
+			"icons": [
+				"Destroy",
+				"DealDamageMelee"
+			],
+			"flavorQuotes": [
+				{
+					"identifier": "The Baroness",
+					"text": "Hush, hush... soon zere will be{BR}only zee sveetest silence."
+				}
+			],
+			"flavorReference": "The Baroness, Fury: Sins of the Siblings #15"
+		},
+		{
+			"identifier": "FangAndClaw",
+			"count": 2,
+			"title": "Fang and Claw",
+			"keywords": [
+				"one-shot"
+			],
+			"body": [
+				"{TheBaroness} deals the 2 hero targets with the highest HP {H} melee damage each, then deals the hero target with the lowest HP {H - 2} melee damage."
+			],
+			"icons": [
+				"DealDamageMelee"
+			],
+			"flavorQuotes": [
+				{
+					"identifier": "The Baroness",
+					"text": "You are not alive... how fascinating!{BR}Let's see what makes you tick."
+				}
+			],
+			"flavorReference": "The Baroness, Bastion's Best: Black Thorn Academy #15"
+		},
+		{
+			"identifier": "TwistedPerceptions",
+			"count": 3,
+			"title": "Twisted Perceptions",
+			"keywords": [
+				"ongoing",
+				"spell"
+			],
+			"body": [
+				"When a hero target would deal damage, increase that damage by 3 and redirect it to the hero target with the highest HP.",
+				"Reduce damage dealt this way by 1 for each time damage has been redirected this way.",
+				"When this card enters play, play the top card of each hero deck.",
+				"At the start of the villain turn, destroy this card."
+			],
+			"icons": [
+				"RedirectDamage",
+				"PlayCardNow",
+				"StartOfTurnAction",
+				"DestroySelf"
+			],
+			"flavorQuotes": [
+				{
+					"identifier": "The Baroness",
+					"text": "He vill show you zee way, Liana. Zee{BR}fates have set his steps. Yield to zee spirit{BR}vissin you and bring justice to zee vorld."
+				}
+			],
+			"flavorReference": "The Baroness, Bastion City: A Spider Never Blinks #12"
+		},
+		{
+			"identifier": "UndyingEssence",
+			"count": 1,
+			"title": "Undying Essence",
+			"keywords": [
+				"ongoing",
+				"scheme"
+			],
+			"body": [
+				"When {TheBaroness} would be dealt 4 or more damage from a single source, reduce that damage by 2.",
+				"At the end of the villain turn, if {TheBaroness} gained HP this turn, destroy 1 Blood card. If a card is destroyed this way, {TheBaroness} regains 1 HP."
+			],
+			"icons": [
+				"ReduceDamageTaken",
+				"EndOfTurnAction",
+				"Destroy",
+				"GainHP"
+			],
+			"flavorQuotes": [
+				{
+					"identifier": "The Baroness",
+					"text": "Deat vaits patiently for me, an{BR}unrequited love. So kind of you to keep him{BR}company in my stead."
+				}
+			],
+			"flavorReference": "The Baroness, Strange Stories: Dead Reckoning #2"
+		},
+		{
+			"identifier": "VampiricStrength",
+			"count": 1,
+			"title": "Vampiric Strength",
+			"keywords": [
+				"ongoing",
+				"scheme"
+			],
+			"body": [
+				"Increase melee and projectile damage dealt by villain targets by 1.",
+				"At the end of the villain turn, {TheBaroness} deals the hero target with the highest HP {H} melee damage."
+			],
+			"icons": [
+				"IncreaseDamageDealtMelee",
+				"IncreaseDamageDealtProjectile",
+				"EndOfTurnAction",
+				"DealDamageMelee"
+			],
+			"flavorQuotes": [
+				{
+					"identifier": "The Baroness",
+					"text": "Vorssless cretin! Your limbs are{BR}as veak as your manners!"
+				}
+			],
+			"flavorReference": "The Baroness, Bastion City: Secret Wars #15"
+		},
+		{
+			"identifier": "Vampirism",
+			"count": 1,
+			"title": "Vampirism",
+			"keywords": [
+				"the blood is the life"
+			],
+			"body": [
+				"Face-down cards in the villain play area are Blood. A hero's resonance equals the number of Blood cards from that hero's deck.",
+				"The first time each turn {TheBaroness} deals each hero target melee damage, put the top card of that target's deck face-down in the villain play area.",
+				"When a card becomes Blood, {TheBaroness} regains 1 HP."
+			],
+			"icons": [
+				"FlipFaceDown",
+				"GainHP"
+			],
+			"flavorQuotes": [
+				{
+					"identifier": "Katalin",
+					"text": "No, my dear Zsekje, zee spells{BR}you seek are written in blood."
+				}
+			],
+			"flavorReference": "Katalin, Beginnings: Baroness Bogozi #6"
+		},
+		{
+			"identifier": "WingedTerror",
+			"count": 1,
+			"title": "Winged Terror",
+			"keywords": [
+				"ongoing",
+				"scheme"
+			],
+			"body": [
+				"When this card enters play, destroy Cloud of Bats. If you do, {TheBaroness} regains {H} HP.",
+				"Reduce damage dealt to {TheBaroness} by 1.",
+				"{TheBaroness} is immune to melee damage."
+			],
+			"icons": [
+				"Destroy",
+				"GainHP",
+				"ReduceDamageTaken",
+				"ImmuneToDamageMelee"
+			],
+			"flavorQuotes": [
+				{
+					"identifier": "The Baroness",
+					"text": "Ve have guests, how vonderful!{BR}Do allow me to change into somesing{BR}... a little bit... more comfortable."
+				}
+			],
+			"flavorReference": "The Baroness, Glyph: Casting Runes #12"
+		},
+		{
+			"identifier": "Bat",
+			"count": 40,
+			"title": "Bat",
+			"keywords": [
+				"blood",
+				"bat"
+			],
+			"hitpoints": 4,
+			"body": [
+				"This card is a placeholder. Turning face-down cards into Bats wasn't feasible in the engine."
+			],
+			"icons": [
+				""
+			],
+			"flavorQuotes": [
+				{
+					"identifier": "",
+					"text": ""
+				}
+			],
+			"flavorReference": ""
+		}
+	]
+}

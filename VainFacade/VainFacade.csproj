@@ -56,6 +56,24 @@
     <Compile Include="Sphere\SphereUtilityCardController.cs" />
     <Compile Include="Sphere\TestSubject9CardController.cs" />
     <Compile Include="Sphere\X51QuantumFieldStabilizerCardController.cs" />
+    <Compile Include="TheBaroness\AgelessEnmityCardController.cs" />
+    <Compile Include="TheBaroness\ArcaneVeinsCardController.cs" />
+    <Compile Include="TheBaroness\BaronessUtilityCardController.cs" />
+    <Compile Include="TheBaroness\BatCardController.cs" />
+    <Compile Include="TheBaroness\ByTheThroatCardController.cs" />
+    <Compile Include="TheBaroness\CloudOfBatsCardController.cs" />
+    <Compile Include="TheBaroness\DeathsCallCardController.cs" />
+    <Compile Include="TheBaroness\DrawOutTheBloodCardController.cs" />
+    <Compile Include="TheBaroness\EndlessThirstCardController.cs" />
+    <Compile Include="TheBaroness\EternalSilenceCardController.cs" />
+    <Compile Include="TheBaroness\FangAndClawCardController.cs" />
+    <Compile Include="TheBaroness\TheBaronessCharacterCardController.cs" />
+    <Compile Include="TheBaroness\TheBaronessTurnTakerController.cs" />
+    <Compile Include="TheBaroness\TwistedPerceptionsCardController.cs" />
+    <Compile Include="TheBaroness\UndyingEssenceCardController.cs" />
+    <Compile Include="TheBaroness\VampiricStrengthCardController.cs" />
+    <Compile Include="TheBaroness\VampirismCardController.cs" />
+    <Compile Include="TheBaroness\WingedTerrorCardController.cs" />
     <Compile Include="TheMidnightBazaar\ASenseOfLossCardController.cs" />
     <Compile Include="TheMidnightBazaar\DisquietCardController.cs" />
     <Compile Include="TheMidnightBazaar\GoblinFruitCardController.cs" />
@@ -80,6 +98,10 @@
   <ItemGroup>
     <EmbeddedResource Include="DeckLists\SphereDeckList.json" />
   </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="DeckLists\TheBaronessDeckList.json" />
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>call "$(projectDir)\postbuild.bat"</PostBuildEvent>
