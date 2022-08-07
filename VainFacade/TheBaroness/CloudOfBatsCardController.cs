@@ -104,7 +104,7 @@ namespace VainFacadePlaytest.TheBaroness
             }
             // "Blood cards have a maximum HP of 4 and are villain Bats."
             // Assign a Bat to each Blood card in play
-            IEnumerable<Card> bloodCards = base.GameController.FindCardsWhere(BloodCard(), visibleToCard: GetCardSource());
+            IEnumerable<Card> bloodCards = base.GameController.FindCardsWhere(new LinqCardCriteria((Card c) => BloodCard().Criteria(c) && !HasBat().Criteria(c)), visibleToCard: GetCardSource());
             foreach (Card c in bloodCards)
             {
                 IEnumerator makeCoroutine = MakeBat(c);
