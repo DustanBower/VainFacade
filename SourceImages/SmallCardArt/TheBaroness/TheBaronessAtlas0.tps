@@ -175,6 +175,7 @@
         <map type="IndividualSpriteSettingsMap">
             <key type="filename">AgelessEnmity.png</key>
             <key type="filename">ArcaneVeins.png</key>
+            <key type="filename">Bat.png</key>
             <key type="filename">ByTheThroat.png</key>
             <key type="filename">CloudOfBats.png</key>
             <key type="filename">DeathsCall.png</key>
@@ -238,6 +239,7 @@
             <filename>VampiricStrength.png</filename>
             <filename>Vampirism.png</filename>
             <filename>WingedTerror.png</filename>
+            <filename>Bat.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>
