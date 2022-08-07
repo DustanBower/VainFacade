@@ -173,6 +173,7 @@
         </struct>
         <key>individualSpriteSettings</key>
         <map type="IndividualSpriteSettingsMap">
+            <key type="filename">GlyphIcon.png</key>
             <key type="filename">SphereIcon.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
@@ -192,6 +193,7 @@
         <key>fileList</key>
         <array>
             <filename>SphereIcon.png</filename>
+            <filename>GlyphIcon.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>
