@@ -42,7 +42,7 @@
 		{
 			"identifier": "AQuestionableSource",
 			"count": 1,
-			"title": "",
+			"title": "A Questionable Source",
 			"keywords": [
 				"ongoing",
 				"clue"
@@ -285,7 +285,7 @@
 				"clue"
 			],
 			"body": [
-				"The first time a villain card enters play each turn, draw a card."
+				"The first time a villain card enters play each turn, you may draw a card."
 			],
 			"icons": [
 				"DrawCardNow"
@@ -362,7 +362,7 @@
 			],
 			"hitpoints": 10,
 			"body": [
-				"Reduce damage dealt to this card by 1. Once per turn when {BurgessCharacter} or a Backup deals a target damage, this card may deal that target 3 projectile damage. When this card enters play, discard up to 5 cards. Set this card's HP to twice the number of cards discarded.'"
+				"Reduce damage dealt to this card by 1. Once per turn when {BurgessCharacter} or a Backup deals a target damage, this card may deal that target 3 projectile damage. When this card enters play, discard up to 5 cards. Set this card's HP to twice the number of cards discarded."
 			],
 			"powers": [
 				"Discard a card. Increase damage dealt by {BurgessCharacter} and Backups by 1 until the start of your next turn."
@@ -391,7 +391,7 @@
 				"limited"
 			],
 			"body": [
-				"Once per round when {BurgessCharacter} or a Backup would deal damage, you may increase that damage by 1 plus the number of Backup in play. If damage is dealt this way, draw 3 cards or destroy this card."
+				"Once per round when {BurgessCharacter} or a Backup would deal damage, you may increase that damage by 1 plus the number of Backup in play. If damage is dealt this way, discard 3 cards or destroy this card."
 			],
 			"icons": [
 				"IncreaseDamageDealt",
@@ -532,38 +532,6 @@
 				}
 			],
 			"flavorReference": "Burgess, Friday #3"
-		}
-	],
-	"promoCards": [
-		{
-			"identifier": "HeroAlternateCharacter",
-			"promoIdentifier": "",
-			"count": 1,
-			"title": "",
-			"promoTitle": "",
-			"body": "",
-			"backgroundColor": "",
-			"character": true,
-			"powers": [
-				""
-			],
-			"icons": [
-				""
-			],
-			"hitpoints": 0,
-			"nemesisIdentifiers": [
-				""
-			],
-			"incapacitatedAbilities": [
-				""
-			],
-			"flippedIcons": [
-				""
-			],
-			"complexity": 2,
-			"openingLines": {
-				"default": ""
-			}
 		}
 	]
 }
