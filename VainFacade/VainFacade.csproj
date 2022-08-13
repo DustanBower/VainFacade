@@ -36,6 +36,21 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Burgess\BastionPDVestCardController.cs" />
+    <Compile Include="Burgess\BurgessCharacterCardController.cs" />
+    <Compile Include="Burgess\BurgessUtilityCardController.cs" />
+    <Compile Include="Burgess\CIReportCardController.cs" />
+    <Compile Include="Burgess\CordonedAreaCardController.cs" />
+    <Compile Include="Burgess\DimpledPrimerCardController.cs" />
+    <Compile Include="Burgess\ForensicAnalysisCardController.cs" />
+    <Compile Include="Burgess\LookingOutCardController.cs" />
+    <Compile Include="Burgess\PaperTrailCardController.cs" />
+    <Compile Include="Burgess\RidingADeskCardController.cs" />
+    <Compile Include="Burgess\S9PServicePistolCardController.cs" />
+    <Compile Include="Burgess\SWATSupportCardController.cs" />
+    <Compile Include="Burgess\UniformCardController.cs" />
+    <Compile Include="Burgess\WitnessStatementsCardController.cs" />
+    <Compile Include="Burgess\WordOnTheStreetCardController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Sphere\AlienHeartCardController.cs" />
     <Compile Include="Sphere\AlterationWardCardController.cs" />
