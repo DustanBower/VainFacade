@@ -101,7 +101,9 @@
   <ItemGroup>
     <EmbeddedResource Include="DeckLists\TheBaronessDeckList.json" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="DeckLists\BurgessDeckList.json" />
+  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>call "$(projectDir)\postbuild.bat"</PostBuildEvent>
