@@ -89,7 +89,7 @@ namespace VainFacadePlaytest.TheBaroness
                 // Front side:
                 // "Increase radiant damage dealt to {TheBaroness} by 1."
                 base.AddSideTrigger(AddIncreaseDamageTrigger((DealDamageAction dd) => dd.DamageType == DamageType.Radiant && dd.Target == base.Card, 1));
-                // "When {TheBaroness} is dealt more than 5 damage in a turn, play the top card of the villain deck."
+                // "When {TheBaroness} is dealt 6 or more damage in a turn, play the top card of the villain deck."
                 AddSideTrigger(AddTrigger((DealDamageAction dda) => !HasBeenSetToTrueThisTurn(PlayedBonusThisTurn) && dda.Target == base.Card && dda.DidDealDamage && DamageTakenThisTurn() > 5, PlayCardForDamageResponse, TriggerType.PlayCard, TriggerTiming.After));
 
                 // "When a hero card destroys a villain Scheme, {TheBaroness} deals the 2 heroes with the lowest HP {H - 2} melee damage each."
@@ -111,7 +111,7 @@ namespace VainFacadePlaytest.TheBaroness
                 // Back side:
                 // "Increase radiant damage dealt to {TheBaroness} by 1."
                 base.AddSideTrigger(AddIncreaseDamageTrigger((DealDamageAction dd) => dd.DamageType == DamageType.Radiant && dd.Target == base.Card, 1));
-                // "When {TheBaroness} is dealt more than 5 damage in a turn, play the top card of the villain deck."
+                // "When {TheBaroness} is dealt 6 or more damage in a turn, play the top card of the villain deck."
                 AddSideTrigger(AddTrigger((DealDamageAction dda) => !HasBeenSetToTrueThisTurn(PlayedBonusThisTurn) && dda.Target == base.Card && dda.DidDealDamage && DamageTakenThisTurn() > 5, PlayCardForDamageResponse, TriggerType.PlayCard, TriggerTiming.After));
 
                 // "The first time each turn a hero card is put face-down into the villain play area, put the top card of its associated deck face-down in the villain play area."
