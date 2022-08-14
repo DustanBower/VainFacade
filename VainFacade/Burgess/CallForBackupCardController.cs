@@ -35,7 +35,7 @@ namespace VainFacadePlaytest.Burgess
         {
             // "When this card enters play, discard any number of cards and draw a card for each card discarded this way."
             List<DiscardCardAction> discards = new List<DiscardCardAction>();
-            IEnumerator discardCoroutine = SelectAndDiscardCards(base.HeroTurnTakerController, null, storedResults: discards, allowAutoDecide: true, responsibleTurnTaker: base.TurnTaker);
+            IEnumerator discardCoroutine = SelectAndDiscardCards(base.HeroTurnTakerController, null, requiredDecisions: 0, storedResults: discards, allowAutoDecide: true, responsibleTurnTaker: base.TurnTaker);
             if (base.UseUnityCoroutines)
             {
                 yield return base.GameController.StartCoroutine(discardCoroutine);
