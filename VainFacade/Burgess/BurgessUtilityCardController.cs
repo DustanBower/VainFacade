@@ -22,5 +22,6 @@ namespace VainFacadePlaytest.Burgess
 
         protected static LinqCardCriteria BackupCard = new LinqCardCriteria((Card c) => c.DoKeywordsContain(BackupKeyword), "Backup");
         protected static LinqCardCriteria ClueCard = new LinqCardCriteria((Card c) => c.DoKeywordsContain(ClueKeyword), "Clue");
+        protected static LinqCardCriteria BackupInPlay = new LinqCardCriteria((Card c) => c.IsInPlayAndHasGameText && c.DoKeywordsContain(BackupKeyword), "Backup", singular: "card in play", plural: "cards in play");
     }
 }

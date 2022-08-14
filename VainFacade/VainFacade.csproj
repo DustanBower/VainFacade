@@ -36,9 +36,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Burgess\AQuestionableSourceCardController.cs" />
     <Compile Include="Burgess\BastionPDVestCardController.cs" />
     <Compile Include="Burgess\BurgessCharacterCardController.cs" />
     <Compile Include="Burgess\BurgessUtilityCardController.cs" />
+    <Compile Include="Burgess\CallForBackupCardController.cs" />
     <Compile Include="Burgess\CIReportCardController.cs" />
     <Compile Include="Burgess\CordonedAreaCardController.cs" />
     <Compile Include="Burgess\DimpledPrimerCardController.cs" />
