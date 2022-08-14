@@ -14,10 +14,10 @@ namespace VainFacadePlaytest.Burgess
         public CIReportCardController(Card card, TurnTakerController turnTakerController)
             : base(card, turnTakerController)
         {
+            // Show list of Clue cards in Burgess's deck
+            SpecialStringMaker.ShowListOfCardsAtLocation(base.TurnTaker.Deck, new LinqCardCriteria((Card c) => c.DoKeywordsContain(ClueKeyword), "Clue"));
             // Show list of Clue cards in Burgess's trash
             SpecialStringMaker.ShowListOfCardsAtLocation(base.TurnTaker.Trash, new LinqCardCriteria((Card c) => c.DoKeywordsContain(ClueKeyword), "Clue"));
-            // Show number of Clue cards in Burgess's deck
-            SpecialStringMaker.ShowNumberOfCardsAtLocation(base.TurnTaker.Deck, new LinqCardCriteria((Card c) => c.DoKeywordsContain(ClueKeyword), "Clue"));
         }
 
         public override IEnumerator Play()

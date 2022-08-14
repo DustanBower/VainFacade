@@ -14,10 +14,15 @@ namespace VainFacadePlaytest.Burgess
         public ToServeAndProtectCardController(Card card, TurnTakerController turnTakerController)
             : base(card, turnTakerController)
         {
+            // Show list of targets in your play area that damage can be redirected to
+            SpecialStringMaker.ShowListOfCardsAtLocation(base.TurnTaker.PlayArea, new LinqCardCriteria((Card c) => c.IsTarget, "target", false, false, "target", "targets"));
+
             // If this card is in play, make sure the player can tell where it is...
             SpecialStringMaker.ShowSpecialString(() => "This card is in " + base.Card.Location.GetFriendlyName() + ".").Condition = () => base.Card.IsInPlayAndHasGameText;
-            // ... and who it's protecting
-            SpecialStringMaker.ShowListOfCardsAtLocationOfCard(base.Card, new LinqCardCriteria((Card c) => c.IsTarget, "target", useCardsSuffix: false, false, "target", "targets")).Condition = () => base.Card.IsInPlayAndHasGameText;
+            // ... who it's protecting...
+            SpecialStringMaker.ShowListOfCardsAtLocationOfCard(base.Card, new LinqCardCriteria((Card c) => c.IsTarget, "target", false, false, "target", "targets")).Condition = () => base.Card.IsInPlayAndHasGameText;
+            // ... and whether it's redirected damage since the start of your last turn
+            SpecialStringMaker.ShowIfElseSpecialString(() => base.GameController.Game.Journal.QueryJournalEntries((RedirectDamageJournalEntry r) => r.CardSource == base.Card && r.AmoutRedirected > 0).Where(SinceStartOfLastTurn<RedirectDamageJournalEntry>(base.TurnTaker)).Where(base.GameController.Game.Journal.SinceCardWasPlayed<RedirectDamageJournalEntry>(base.Card)).Any(), () => base.Card.Title + " has already redirected damage since the start of " + base.TurnTaker.Name + "'s last turn. (" + base.TurnTaker.Name + " will have to discard cards or destroy it at the start of their next turn, but the cost won't go up if more damage is redirected before then.)", () => base.Card.Title + " has not redirected damage since the start of " + base.TurnTaker.Name + "'s last turn. (If no damage is redirected this way before " + base.TurnTaker.Name + "'s next turn, they won't have to either discard cards or destroy this card.)").Condition = () => base.Card.IsInPlayAndHasGameText;
         }
 
         public override void AddTriggers()

@@ -14,8 +14,8 @@ namespace VainFacadePlaytest.Burgess
         public AQuestionableSourceCardController(Card card, TurnTakerController turnTakerController)
             : base(card, turnTakerController)
         {
-            // Show number of Clue cards in Burgess's deck
-            SpecialStringMaker.ShowNumberOfCardsAtLocation(base.TurnTaker.Deck, ClueCard);
+            // If not in play: show number of Clue cards in Burgess's deck
+            SpecialStringMaker.ShowNumberOfCardsAtLocation(base.TurnTaker.Deck, ClueCard).Condition = () => !base.Card.IsInPlayAndHasGameText;
         }
 
         public override IEnumerator Play()

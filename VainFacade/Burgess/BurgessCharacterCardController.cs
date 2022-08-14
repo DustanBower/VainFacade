@@ -14,7 +14,7 @@ namespace VainFacadePlaytest.Burgess
         public BurgessCharacterCardController(Card card, TurnTakerController turnTakerController)
             : base(card, turnTakerController)
         {
-            // Show number of Clue cards in Burgess's deck
+            // If active: show number of Clue cards in Burgess's deck
             SpecialStringMaker.ShowNumberOfCardsAtLocation(base.TurnTaker.Deck, new LinqCardCriteria((Card c) => c.DoKeywordsContain(ClueKeyword), "Clue")).Condition = () => !base.Card.IsFlipped;
         }
 
@@ -34,7 +34,7 @@ namespace VainFacadePlaytest.Burgess
                 base.GameController.ExhaustCoroutine(discardCoroutine);
             }
             // "Put any Clues discarded this way into play or into your hand."
-            List<Card> discardedClues = results.SelectMany<MoveCardAction, Card>((MoveCardAction mca) => mca.CardToMove.ToEnumerable()).ToList();
+            List<Card> discardedClues = results.SelectMany<MoveCardAction, Card>((MoveCardAction mca) => mca.CardToMove.ToEnumerable()).Where((Card c) => c.DoKeywordsContain(ClueKeyword)).ToList();
             MoveCardDestination[] playOrHand = new MoveCardDestination[2] { new MoveCardDestination(base.TurnTaker.PlayArea), new MoveCardDestination(base.HeroTurnTaker.Hand) };
             foreach (Card c in discardedClues)
             {
