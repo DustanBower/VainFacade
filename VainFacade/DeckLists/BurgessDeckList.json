@@ -343,7 +343,9 @@
 				"The first time each turn {BurgessCharacter} or a Backup is dealt damage, {BurgessCharacter} may deal the source of that damage 1 psychic or 2 projectile damage."
 			],
 			"icons": [
-				"DealCounterDamage"
+				"CounterDamage",
+				"DealDamagePsychic",
+				"DealDamageProjectile"
 			],
 			"flavorQuotes": [
 				{
@@ -449,7 +451,8 @@
 				"When this card enters play, you may draw a card."
 			],
 			"icons": [
-				"DealCounterDamage",
+				"CounterDamage",
+				"DealDamageProjectile",
 				"DrawCardNow"
 			],
 			"flavorQuotes": [
