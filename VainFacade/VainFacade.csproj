@@ -45,12 +45,15 @@
     <Compile Include="Burgess\CordonedAreaCardController.cs" />
     <Compile Include="Burgess\DimpledPrimerCardController.cs" />
     <Compile Include="Burgess\ForensicAnalysisCardController.cs" />
+    <Compile Include="Burgess\HotPursuitCardController.cs" />
     <Compile Include="Burgess\LookingOutCardController.cs" />
     <Compile Include="Burgess\PaperTrailCardController.cs" />
     <Compile Include="Burgess\RidingADeskCardController.cs" />
     <Compile Include="Burgess\S9PServicePistolCardController.cs" />
     <Compile Include="Burgess\SWATSupportCardController.cs" />
+    <Compile Include="Burgess\ToServeAndProtectCardController.cs" />
     <Compile Include="Burgess\UniformCardController.cs" />
+    <Compile Include="Burgess\UpdatedProfileCardController.cs" />
     <Compile Include="Burgess\WitnessStatementsCardController.cs" />
     <Compile Include="Burgess\WordOnTheStreetCardController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
