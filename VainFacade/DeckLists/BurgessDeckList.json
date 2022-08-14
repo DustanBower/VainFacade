@@ -293,11 +293,11 @@
 			"flavorQuotes": [
 				{
 					"identifier": "Burgess",
-					"text": "You have to be careful{BR}leaving paper trails, or you{BR}might get cut."
+					"text": "You have to be{BR}careful leaving paper trails, or you{BR}might get cut."
 				},
 				{
 					"identifier": "Butcher Bill",
-					"text": "You're a funny guy, Burgess. Looking{BR}forward to talking about it at your{BR}funeral."
+					"text": "You're a funny guy, Burgess.{BR}Looking forward to talking about it at your{BR}funeral."
 				}
 			],
 			"flavorReference": "Burgess #25"
@@ -427,11 +427,11 @@
 			"flavorQuotes": [
 				{
 					"identifier": "Arctis",
-					"text": "You don't have to do this.{BR}We'll find another way."
+					"text": "You don't have to do{BR}this. We'll find another way."
 				},
 				{
 					"identifier": "Burgess",
-					"text": "It's done. I'll buy you time. Get the{BR}others out."
+					"text": "It's done. I'll buy you time. Get{BR}the others out."
 				}
 			],
 			"flavorReference": "Apex Incursion: The Ketalion Incident #6"
@@ -455,7 +455,7 @@
 			"flavorQuotes": [
 				{
 					"identifier": "Malone",
-					"text": "With all due respect, Mr. Liason, I{BR}don't see how you have jurisdiction, but{BR}I've been told [b]repeatedly[/b]not to ask."
+					"text": "With all due respect, Mr. Liason, I{BR}don't see how you have jurisdiction, but{BR}I've been told [b]repeatedly[/b] not to ask."
 				}
 			],
 			"flavorReference": "Malone, Division X: Friendly Fire One-Shot"

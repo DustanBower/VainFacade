@@ -15,7 +15,7 @@ namespace VainFacadePlaytest.Burgess
             : base(card, turnTakerController)
         {
             // If in play: show whether attached target has dealt damage this turn
-            SpecialStringMaker.ShowHasBeenUsedThisTurn(FirstDamageFromTargetThisTurn, GetCardThisCardIsNextTo().Title + " has already dealt damage this turn since " + base.Card.Title + " entered play.", GetCardThisCardIsNextTo().Title + " has not dealt damage this turn since " + base.Card.Title + " entered play.").Condition = () => base.Card.IsInPlayAndHasGameText && base.Card.Location.IsNextToCard;
+            SpecialStringMaker.ShowIfElseSpecialString(() => HasBeenSetToTrueThisTurn(FirstDamageFromTargetThisTurn), () => GetCardThisCardIsNextTo().Title + " has already dealt damage this turn since " + base.Card.Title + " entered play.", () => GetCardThisCardIsNextTo().Title + " has not dealt damage this turn since " + base.Card.Title + " entered play.").Condition = () => base.Card.IsInPlayAndHasGameText && base.Card.Location.IsNextToCard;
         }
 
         protected readonly string FirstDamageFromTargetThisTurn = "FirstDamageFromTargetThisTurn";
