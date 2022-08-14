@@ -25,6 +25,7 @@ namespace VainFacadePlaytest.Burgess
             base.AddTriggers();
             // "The first time each turn you draw a card, another player may draw a card."
             AddTrigger((DrawCardAction dca) => !HasBeenSetToTrueThisTurn(FirstDrawThisTurn) && dca.HeroTurnTaker == base.HeroTurnTaker && dca.DidDrawCard, AnotherPlayerDrawsResponse, TriggerType.DrawCard, TriggerTiming.After);
+            AddAfterLeavesPlayAction((GameAction ga) => ResetFlagAfterLeavesPlay(FirstDrawThisTurn), TriggerType.Hidden);
         }
 
         private IEnumerator AnotherPlayerDrawsResponse(DrawCardAction dca)

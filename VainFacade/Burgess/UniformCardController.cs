@@ -25,6 +25,7 @@ namespace VainFacadePlaytest.Burgess
             base.AddTriggers();
             // "The first time each turn {BurgessCharacter} or a Backup is dealt damage, this card may deal the source of that damage 1 projectile damage."
             AddTrigger((DealDamageAction dda) => !HasBeenSetToTrueThisTurn(FirstDamageThisTurn) && dda.DidDealDamage && (dda.Target == base.CharacterCard || dda.Target.DoKeywordsContain(BackupKeyword)), ShootBackResponse, TriggerType.DealDamage, TriggerTiming.After);
+            AddAfterLeavesPlayAction((GameAction ga) => ResetFlagAfterLeavesPlay(FirstDamageThisTurn), TriggerType.Hidden);
         }
 
         private IEnumerator ShootBackResponse(DealDamageAction dda)

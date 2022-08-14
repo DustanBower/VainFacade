@@ -25,6 +25,7 @@ namespace VainFacadePlaytest.Burgess
             base.AddTriggers();
             // "The first time each turn that target deals damage, 1 hero may use a power."
             AddTrigger((DealDamageAction dda) => !HasBeenSetToTrueThisTurn(FirstDamageFromTargetThisTurn) && dda.DidDealDamage && dda.DamageSource.IsCard && dda.DamageSource.IsSameCard(GetCardThisCardIsNextTo()), GrantPowerResponse, TriggerType.UsePower, TriggerTiming.After);
+            AddAfterLeavesPlayAction((GameAction ga) => ResetFlagAfterLeavesPlay(FirstDamageFromTargetThisTurn), TriggerType.Hidden);
             // "When that target leaves play, destroy this card."
             AddIfTheTargetThatThisCardIsNextToLeavesPlayDestroyThisCardTrigger();
         }

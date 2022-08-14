@@ -51,6 +51,7 @@
     <Compile Include="Burgess\RidingADeskCardController.cs" />
     <Compile Include="Burgess\S9PServicePistolCardController.cs" />
     <Compile Include="Burgess\SWATSupportCardController.cs" />
+    <Compile Include="Burgess\TakeEmCardController.cs" />
     <Compile Include="Burgess\ToServeAndProtectCardController.cs" />
     <Compile Include="Burgess\UniformCardController.cs" />
     <Compile Include="Burgess\UpdatedProfileCardController.cs" />

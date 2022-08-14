@@ -25,6 +25,7 @@ namespace VainFacadePlaytest.Burgess
             base.AddTriggers();
             // "The first time each turn {BurgessCharacter} or a Backup is dealt damage, {BurgessCharacter} may deal the source of that damage 1 psychic or 2 projectile damage."
             AddTrigger((DealDamageAction dda) => !HasBeenSetToTrueThisTurn(FirstDamageThisTurn) && dda.DidDealDamage && (dda.Target == base.CharacterCard || dda.Target.DoKeywordsContain(BackupKeyword)), PullTheGunResponse, TriggerType.DealDamage, TriggerTiming.After);
+            AddAfterLeavesPlayAction((GameAction ga) => ResetFlagAfterLeavesPlay(FirstDamageThisTurn), TriggerType.Hidden);
         }
 
         private IEnumerator PullTheGunResponse(DealDamageAction dda)

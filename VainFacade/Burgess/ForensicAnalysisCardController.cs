@@ -25,6 +25,7 @@ namespace VainFacadePlaytest.Burgess
             base.AddTriggers();
             // "The first time each turn a villain target deals damage, you may draw a card."
             AddTrigger((DealDamageAction dda) => !HasBeenSetToTrueThisTurn(FirstVillainDamageThisTurn) && dda.DamageSource != null && dda.DamageSource.Card.IsVillainTarget && dda.DidDealDamage, DrawResponse, TriggerType.DrawCard, TriggerTiming.After);
+            AddAfterLeavesPlayAction((GameAction ga) => ResetFlagAfterLeavesPlay(FirstVillainDamageThisTurn), TriggerType.Hidden);
         }
 
         private IEnumerator DrawResponse(DealDamageAction dda)
