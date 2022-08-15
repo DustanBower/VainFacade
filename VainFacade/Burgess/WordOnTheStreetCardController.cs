@@ -47,6 +47,11 @@ namespace VainFacadePlaytest.Burgess
                 MakeDamageIrreducibleStatusEffect buff = new MakeDamageIrreducibleStatusEffect();
                 buff.SourceCriteria.IsTarget = true;
                 buff.SourceCriteria.OwnedBy = pca.ToPhase.TurnTaker;
+                buff.SourceCriteria.OutputString = pca.ToPhase.TurnTaker.Name + "'s targets";
+                if (pca.ToPhase.TurnTaker.IsMultiCharacterTurnTaker && pca.ToPhase.TurnTaker.Name.EndsWith("s"))
+                {
+                    buff.SourceCriteria.OutputString = pca.ToPhase.TurnTaker.Name + "' targets";
+                }
                 buff.UntilThisTurnIsOver(Game);
                 IEnumerator statusCoroutine = AddStatusEffect(buff);
                 if (base.UseUnityCoroutines)
