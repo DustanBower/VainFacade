@@ -83,7 +83,19 @@ namespace VainFacadePlaytest.Burgess
             {
                 base.GameController.ExhaustCoroutine(hpCoroutine);
             }
-            // Do we need to specify "destroy this card if it has 0 HP"? We'll see...
+            // Do we need to specify "destroy this card if it has 0 HP"? Yes, apparently
+            if (base.Card.HitPoints <= 0)
+            {
+                IEnumerator destroyCoroutine = base.GameController.DestroyCard(base.HeroTurnTakerController, base.Card, responsibleCard: base.Card, cardSource: GetCardSource());
+                if (base.UseUnityCoroutines)
+                {
+                    yield return base.GameController.StartCoroutine(destroyCoroutine);
+                }
+                else
+                {
+                    base.GameController.ExhaustCoroutine(destroyCoroutine);
+                }
+            }
         }
 
         public override IEnumerator UsePower(int index = 0)
