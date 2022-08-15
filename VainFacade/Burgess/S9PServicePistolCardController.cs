@@ -38,7 +38,7 @@ namespace VainFacadePlaytest.Burgess
                 List<Function> options = new List<Function>();
                 options.Add(new Function(base.HeroTurnTakerController, base.CharacterCard.Title + " deals " + attacker.Title + " 1 psychic damage", SelectionType.DealDamage, () => DealDamage(base.CharacterCard, attacker, 1, DamageType.Psychic, isCounterDamage: true, cardSource: GetCardSource())));
                 options.Add(new Function(base.HeroTurnTakerController, base.CharacterCard.Title + " deals " + attacker.Title + " 2 projectile damage", SelectionType.DealDamage, () => DealDamage(base.CharacterCard, attacker, 2, DamageType.Projectile, isCounterDamage: true, cardSource: GetCardSource())));
-                SelectFunctionDecision choice = new SelectFunctionDecision(base.GameController, base.HeroTurnTakerController, options, true, gameAction: dda, cardSource: GetCardSource());
+                SelectFunctionDecision choice = new SelectFunctionDecision(base.GameController, base.HeroTurnTakerController, options, true, associatedCards: attacker.ToEnumerable(), cardSource: GetCardSource());
                 IEnumerator selectCoroutine = base.GameController.SelectAndPerformFunction(choice);
                 if (base.UseUnityCoroutines)
                 {
