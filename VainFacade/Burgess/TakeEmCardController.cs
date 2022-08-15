@@ -30,13 +30,38 @@ namespace VainFacadePlaytest.Burgess
             AddTrigger((DealDamageAction dda) => !HasBeenSetToTrueThisRound(IncreasedDamageThisRound) && dda.DamageSource.IsCard && (dda.DamageSource.IsSameCard(base.CharacterCard) || BackupCard.Criteria(dda.DamageSource.Card)), IncreaseDamageResponse, TriggerType.IncreaseDamage, TriggerTiming.Before);
             AddAfterLeavesPlayAction((GameAction ga) => ResetFlagAfterLeavesPlay(IncreasedDamageThisRound), TriggerType.Hidden);
             // "If damage is dealt this way, discard 3 cards or destroy this card."
-            AddTrigger((DealDamageAction dda) => HasBeenSetToTrueThisRound(IncreasedDamageThisRound) && dda.DidDealDamage && dda.DamageSource.IsCard && (dda.DamageSource.IsSameCard(base.CharacterCard) || BackupCard.Criteria(dda.DamageSource.Card)) && dda.DamageModifiers.Where((ModifyDealDamageAction m) => m is IncreaseDamageAction && m.CardSource == GetCardSource()).Any(), DiscardOrSelfDestructResponse, new TriggerType[] { TriggerType.DiscardCard, TriggerType.DestroySelf }, TriggerTiming.After);
+            AddTrigger((DealDamageAction dda) => HasBeenSetToTrueThisRound(IncreasedDamageThisRound) && dda.DidDealDamage && dda.DamageSource.IsCard && (dda.DamageSource.IsSameCard(base.CharacterCard) || BackupCard.Criteria(dda.DamageSource.Card)) && dda.DamageModifiers.Where((ModifyDealDamageAction m) => m is IncreaseDamageAction && m.CardSource.Card == base.Card).Any(), DiscardOrSelfDestructResponse, new TriggerType[] { TriggerType.DiscardCard, TriggerType.DestroySelf }, TriggerTiming.After);
+            //AddTrigger((DealDamageAction dda) => true, LogDDA, TriggerType.Hidden, TriggerTiming.After);
         }
+
+        /*private IEnumerator LogDDA(DealDamageAction dda)
+        {
+            Log.Debug("TakeEmCardController.LogDDA: HasBeenSetToTrueThisRound(IncreasedDamageThisRound): " + HasBeenSetToTrueThisRound(IncreasedDamageThisRound).ToString());
+            Log.Debug("TakeEmCardController.LogDDA: dda.DidDealDamage: " + dda.DidDealDamage.ToString());
+            Log.Debug("TakeEmCardController.LogDDA: dda.DamageSource.IsCard: " + dda.DamageSource.IsCard.ToString());
+            if (dda.DamageSource.IsCard)
+            {
+                Log.Debug("TakeEmCardController.LogDDA: dda.DamageSource.IsSameCard(base.CharacterCard): " + dda.DamageSource.IsSameCard(base.CharacterCard));
+                Log.Debug("TakeEmCardController.LogDDA: BackupCard.Criteria(dda.DamageSource.Card): " + BackupCard.Criteria(dda.DamageSource.Card));
+            }
+            foreach(ModifyDealDamageAction m in dda.DamageModifiers)
+            {
+                Log.Debug("TakeEmCardController.LogDDA: modifier: " + m.ToString());
+                Log.Debug("TakeEmCardController.LogDDA: modifier is IncreaseDamageAction: " + (m is IncreaseDamageAction).ToString());
+                Log.Debug("TakeEmCardController.LogDDA: modifier.CardSource.Card: " + m.CardSource.Card.ToString());
+                Log.Debug("TakeEmCardController.LogDDA: base.Card: " + base.Card.ToString());
+                Log.Debug("TakeEmCardController.LogDDA: modifier.CardSource.Card == base.Card: " + (m.CardSource.Card == base.Card).ToString());
+            }
+            Log.Debug("TakeEmCardController.LogDDA: dda.DamageModifiers.Where((ModifyDealDamageAction m) => m is IncreaseDamageAction && m.CardSource.Card == base.Card).Any(): " + dda.DamageModifiers.Where((ModifyDealDamageAction m) => m is IncreaseDamageAction && m.CardSource.Card == base.Card).Any().ToString());
+
+            //Log.Debug("TakeEmCardController.LogDDA: ");
+            yield break;
+        }*/
 
         private IEnumerator IncreaseDamageResponse(DealDamageAction dda)
         {
             // "... you may increase that damage by 1 plus the number of Backup in play."
-            YesNoDecision choice = new YesNoDecision(base.GameController, base.HeroTurnTakerController, SelectionType.IncreaseDamage, gameAction: dda, associatedCards: base.Card.ToEnumerable(), cardSource: GetCardSource());
+            YesNoDecision choice = new YesNoDecision(base.GameController, base.HeroTurnTakerController, SelectionType.Custom, gameAction: dda, associatedCards: base.Card.ToEnumerable(), cardSource: GetCardSource());
             IEnumerator decideCoroutine = base.GameController.MakeDecisionAction(choice);
             if (base.UseUnityCoroutines)
             {
@@ -60,6 +85,11 @@ namespace VainFacadePlaytest.Burgess
                 }
             }
             yield break;
+        }
+
+        public override CustomDecisionText GetCustomDecisionText(IDecision decision)
+        {
+            return new CustomDecisionText("Do you want to increase the damage?", "Selecting whether to increase the damage", "Vote for whether to increase the damage.", "Increase the damage");
         }
 
         private IEnumerator DiscardOrSelfDestructResponse(DealDamageAction dda)
