@@ -83,7 +83,7 @@ namespace VainFacadePlaytest.Burgess
             // "{BurgessCharacter} deals himself up to 4 psychic damage."
             int maxAmt = GetPowerNumeral(0, 4);
             List<SelectNumberDecision> decisions = new List<SelectNumberDecision>();
-            IEnumerator selectCoroutine = base.GameController.SelectNumber(base.HeroTurnTakerController, SelectionType.DealDamage, 0, maxAmt, cardSource: GetCardSource());
+            IEnumerator selectCoroutine = base.GameController.SelectNumber(base.HeroTurnTakerController, SelectionType.DealDamage, 0, maxAmt, storedResults: decisions, cardSource: GetCardSource());
             if (base.UseUnityCoroutines)
             {
                 yield return base.GameController.StartCoroutine(selectCoroutine);
@@ -92,34 +92,48 @@ namespace VainFacadePlaytest.Burgess
             {
                 base.GameController.ExhaustCoroutine(selectCoroutine);
             }
-            int damageAmt = decisions.First((SelectNumberDecision d) => d.Completed).SelectedNumber.Value;
-            List<DealDamageAction> results = new List<DealDamageAction>();
-            IEnumerator damageCoroutine = DealDamage(base.CharacterCard, base.CharacterCard, damageAmt, DamageType.Psychic, storedResults: results, cardSource: GetCardSource());
-            if (base.UseUnityCoroutines)
+            /*Log.Debug("AQuestionableSourceCardController.UsePower: SelectNumber completed");
+            foreach (SelectNumberDecision dec in decisions)
             {
-                yield return base.GameController.StartCoroutine(damageCoroutine);
-            }
-            else
+                Log.Debug("AQuestionableSourceCardController.UsePower: decision: " + dec.ToString());
+                Log.Debug("AQuestionableSourceCardController.UsePower: decision.Completed: " + dec.Completed.ToString());
+                Log.Debug("AQuestionableSourceCardController.UsePower: decision.SelectedNumber: " + dec.SelectedNumber.ToString());
+            }*/
+            SelectNumberDecision firstCompleted = decisions.First((SelectNumberDecision d) => d.Completed);
+            /*Log.Debug("AQuestionableSourceCardController.UsePower: firstCompleted: " + firstCompleted.ToString());
+            Log.Debug("AQuestionableSourceCardController.UsePower: firstCompleted.Completed: " + firstCompleted.Completed.ToString());
+            Log.Debug("AQuestionableSourceCardController.UsePower: firstCompleted.SelectedNumber: " + firstCompleted.SelectedNumber.ToString());*/
+            int? damageAmt = firstCompleted.SelectedNumber;
+            if (damageAmt.HasValue)
             {
-                base.GameController.ExhaustCoroutine(damageCoroutine);
-            }
-            // "For each point of damage he is dealt this way, draw a card."
-            int totalDamage = 0;
-            foreach (DealDamageAction dda in results)
-            {
-                if (dda.DidDealDamage && dda.Target == base.CharacterCard)
+                List<DealDamageAction> results = new List<DealDamageAction>();
+                IEnumerator damageCoroutine = DealDamage(base.CharacterCard, base.CharacterCard, damageAmt.Value, DamageType.Psychic, storedResults: results, cardSource: GetCardSource());
+                if (base.UseUnityCoroutines)
                 {
-                    totalDamage += dda.Amount;
+                    yield return base.GameController.StartCoroutine(damageCoroutine);
                 }
-            }
-            IEnumerator drawCoroutine = DrawCards(base.HeroTurnTakerController, totalDamage);
-            if (base.UseUnityCoroutines)
-            {
-                yield return base.GameController.StartCoroutine(drawCoroutine);
-            }
-            else
-            {
-                base.GameController.ExhaustCoroutine(drawCoroutine);
+                else
+                {
+                    base.GameController.ExhaustCoroutine(damageCoroutine);
+                }
+                // "For each point of damage he is dealt this way, draw a card."
+                int totalDamage = 0;
+                foreach (DealDamageAction dda in results)
+                {
+                    if (dda.DidDealDamage && dda.Target == base.CharacterCard)
+                    {
+                        totalDamage += dda.Amount;
+                    }
+                }
+                IEnumerator drawCoroutine = DrawCards(base.HeroTurnTakerController, totalDamage);
+                if (base.UseUnityCoroutines)
+                {
+                    yield return base.GameController.StartCoroutine(drawCoroutine);
+                }
+                else
+                {
+                    base.GameController.ExhaustCoroutine(drawCoroutine);
+                }
             }
             // "Then destroy this card."
             IEnumerator destructCoroutine = DestroyThisCardResponse(null);
@@ -131,6 +145,7 @@ namespace VainFacadePlaytest.Burgess
             {
                 base.GameController.ExhaustCoroutine(destructCoroutine);
             }
+            //Log.Debug("AQuestionableSourceCardController.UsePower: ");
         }
     }
 }
