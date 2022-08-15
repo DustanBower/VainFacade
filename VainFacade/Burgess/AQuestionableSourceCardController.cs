@@ -54,7 +54,9 @@ namespace VainFacadePlaytest.Burgess
                     }
                 }
                 // If the card wasn't moved, replace it
-                IEnumerator cleanupCoroutine = CleanupRevealedCards(base.TurnTaker.Revealed, base.TurnTaker.Deck);
+                List<Location> places = new List<Location>();
+                places.Add(base.TurnTaker.Revealed);
+                IEnumerator cleanupCoroutine = CleanupCardsAtLocations(places, base.TurnTaker.Deck, cardsInList: revealed);
                 if (base.UseUnityCoroutines)
                 {
                     yield return base.GameController.StartCoroutine(cleanupCoroutine);
