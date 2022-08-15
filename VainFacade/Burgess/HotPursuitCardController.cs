@@ -16,11 +16,14 @@ namespace VainFacadePlaytest.Burgess
         {
             // If not in play: show whether Burgess has been dealt damage since his last turn, and if so, by whom
             SpecialStringMaker.ShowDamageTaken(base.CharacterCard, new LinqCardCriteria((Card c) => c.IsTarget && c.IsInPlay, "targets", useCardsSuffix: false), showTotalAmountOfDamageTaken: false, sinceLastTurn: base.TurnTaker, showDamageDealers: true).Condition = () => !base.Card.IsInPlayAndHasGameText;
+            // If in play: remind player to click on Burgess's character card to use this card's power
+            SpecialStringMaker.ShowSpecialString(() => "Click on " + base.TurnTaker.Name + "'s hero character card to use this power.").Condition = () => base.Card.IsInPlayAndHasGameText;
         }
 
         public override void AddTriggers()
         {
             base.AddTriggers();
+            base.AddAsPowerContributor();
             // "When this card is not next to a target, destroy it."
             AddIfTheTargetThatThisCardIsNextToLeavesPlayDestroyThisCardTrigger();
             // "Redirect all damage dealt by that target to {BurgessCharacter}..."
@@ -70,7 +73,37 @@ namespace VainFacadePlaytest.Burgess
             return false;
         }
 
-        public override IEnumerator UsePower(int index = 0)
+        public override IEnumerable<Power> AskIfContributesPowersToCardController(CardController cardController)
+        {
+            // For ease of use, this card's power is accessed by clicking Burgess's character card, not this card
+            //Log.Debug("HotPursuitCardController.AskIfContributesPowersToCardController activated for " + cardController.Card.Title);
+            if (base.TurnTakerController.CharacterCardControllers.Any((CharacterCardController cc) => cc == cardController))
+            {
+                //Log.Debug("HotPursuitCardController.AskIfContributesPowersToCardController: returning granted power");
+                return new Power[] { new Power(base.HeroTurnTakerController, cardController, PowerDescription(), UseGrantedPower(), 0, null, GetCardSource()) };
+            }
+            else
+            {
+                //Log.Debug("HotPursuitCardController.AskIfContributesPowersToCardController: returning none");
+                return null;
+            }
+        }
+
+        private string PowerDescription()
+        {
+            string damagepart1 = "{BurgessCharacter} deals ";
+            string target = "the target next to " + base.Card.Title;
+            if (base.Card.IsInPlayAndHasGameText && base.Card.Location.IsNextToCard)
+            {
+                target = GetCardThisCardIsNextTo().Title;
+            }
+            string damagepart2 = " 3 projectile damage";
+            string orDestroys = " or destroys " + base.Card.Title + ".";
+            string desc = damagepart1 + target + damagepart2 + orDestroys;
+            return desc;
+        }
+
+        private IEnumerator UseGrantedPower()
         {
             int damageAmt = GetPowerNumeral(0, 3);
             // "{BurgessCharacter} deals the target next to this card 3 projectile damage or destroys this card."

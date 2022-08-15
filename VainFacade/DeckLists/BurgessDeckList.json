@@ -230,10 +230,8 @@
 				"limited"
 			],
 			"body": [
-				"Play this card next to a target that has dealt {BurgessCharacter} damage since the end of your last turn. When this card is not next to a target, destroy it. Redirect all damage dealt by that target to {BurgessCharacter} and increase that damage by 1."
-			],
-			"powers": [
-				"{BurgessCharacter} deals the target next to this card 3 projectile damage or destroys this card."
+				"Play this card next to a target that has dealt {BurgessCharacter} damage since the end of your last turn. When this card is not next to a target, destroy it. Redirect all damage dealt by that target to {BurgessCharacter} and increase that damage by 1.",
+				"[b]Power:[/b] {BurgessCharacter} deals the target next to this{BR}        card 3 projectile damage or destroys{BR}        this card."
 			],
 			"icons": [
 				"RedirectDamage",
