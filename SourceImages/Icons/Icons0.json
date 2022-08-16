@@ -1,6 +1,6 @@
 {"frames": {
 
-"GlyphIcon.png":
+"BurgessIcon.png":
 {
 	"frame": {"x":0,"y":0,"w":128,"h":128},
 	"rotated": false,
@@ -8,9 +8,17 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":128,"h":128},
 	"sourceSize": {"w":128,"h":128}
 },
-"SphereIcon.png":
+"GlyphIcon.png":
 {
 	"frame": {"x":131,"y":0,"w":128,"h":128},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":128,"h":128},
+	"sourceSize": {"w":128,"h":128}
+},
+"SphereIcon.png":
+{
+	"frame": {"x":262,"y":0,"w":128,"h":128},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":128,"h":128},
@@ -23,6 +31,6 @@
 	"format": "RGBA8888",
 	"size": {"w":512,"h":512},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:93dd42f26b0cf05fa34f286f3c621bab:38639a85c0951b25bd9dddddffe4d638:c680398f21d101d0a1ae6d7fc2a23608$"
+	"smartupdate": "$TexturePacker:SmartUpdate:9ca0792a9d4d0047ddb7c862da5a68ad:72d1d3b64ddebf724469b565e6917b0a:c680398f21d101d0a1ae6d7fc2a23608$"
 }
 }
