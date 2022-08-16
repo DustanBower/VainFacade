@@ -36,7 +36,7 @@
 			],
 			"complexity": 2,
 			"openingLines": {
-				"default": ""
+				"default": "You're all officially deputized for this operation. You want a conviction? Go by the book."
 			}
 		},
 		{
@@ -456,7 +456,7 @@
 			"flavorQuotes": [
 				{
 					"identifier": "Malone",
-					"text": "With all due respect, Mr. Liason, I{BR}don't see how you have jurisdiction, but{BR}I've been told [b]repeatedly[/b] not to ask."
+					"text": "With all due respect, Mr. Liaison, I{BR}don't see how you have jurisdiction, but{BR}I've been told [b]repeatedly[/b] not to ask."
 				}
 			],
 			"flavorReference": "Malone, Division X: Friendly Fire One-Shot"
