@@ -32,7 +32,7 @@ namespace VainFacadePlaytest.Burgess
         {
             SetCardPropertyToTrueIfRealAction(FirstDamageThisTurn);
             // "... {BurgessCharacter} may deal the source of that damage 1 psychic or 2 projectile damage."
-            if (dda.DamageSource.IsCard && dda.DamageSource.Card.IsTarget)
+            if (dda.DamageSource.IsCard && dda.DamageSource.Card.IsTarget && dda.DamageSource.Card.IsInPlayAndHasGameText)
             {
                 Card attacker = dda.DamageSource.Card;
                 List<Function> options = new List<Function>();
@@ -52,6 +52,10 @@ namespace VainFacadePlaytest.Burgess
             else
             {
                 string message = base.TurnTaker.Name + " pulls his service weapon, but there's nothing for him to shoot...";
+                if (dda.DamageSource.IsCard && dda.DamageSource.Card.IsTarget)
+                {
+                    message = base.TurnTaker.Name + " pulls his service weapon, but the attacker has already been taken out...";
+                }
                 IEnumerator messageCoroutine = base.GameController.SendMessageAction(message, Priority.Medium, GetCardSource(), showCardSource: true);
                 if (base.UseUnityCoroutines)
                 {

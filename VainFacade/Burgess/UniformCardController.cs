@@ -32,7 +32,7 @@ namespace VainFacadePlaytest.Burgess
         {
             SetCardPropertyToTrueIfRealAction(FirstDamageThisTurn);
             // "... this card may deal the source of that damage 1 projectile damage."
-            if (dda.DamageSource.IsCard && dda.DamageSource.Card.IsTarget)
+            if (dda.DamageSource.IsCard && dda.DamageSource.Card.IsTarget && dda.DamageSource.Card.IsInPlayAndHasGameText)
             {
                 Card attacker = dda.DamageSource.Card;
                 IEnumerator damageCoroutine = DealDamage(base.Card, attacker, 1, DamageType.Projectile, optional: true, isCounterDamage: true, cardSource: GetCardSource());
@@ -48,6 +48,10 @@ namespace VainFacadePlaytest.Burgess
             else
             {
                 string message = "The " + base.Card.Title + " looks around for the source of damage, but there's nothing for them to shoot...";
+                if (dda.DamageSource.IsCard && dda.DamageSource.Card.IsTarget)
+                {
+                    message = "The " + base.Card.Title + " looks around for the source of damage, but they've already been taken out...";
+                }
                 IEnumerator messageCoroutine = base.GameController.SendMessageAction(message, Priority.Medium, GetCardSource(), showCardSource: true);
                 if (base.UseUnityCoroutines)
                 {
