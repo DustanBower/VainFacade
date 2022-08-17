@@ -173,6 +173,7 @@
         </struct>
         <key>individualSpriteSettings</key>
         <map type="IndividualSpriteSettingsMap">
+            <key type="filename">BurgessIcon.png</key>
             <key type="filename">GlyphIcon.png</key>
             <key type="filename">SphereIcon.png</key>
             <struct type="IndividualSpriteSettings">
@@ -194,6 +195,7 @@
         <array>
             <filename>SphereIcon.png</filename>
             <filename>GlyphIcon.png</filename>
+            <filename>BurgessIcon.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

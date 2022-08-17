@@ -173,6 +173,7 @@
         </struct>
         <key>individualSpriteSettings</key>
         <map type="IndividualSpriteSettingsMap">
+            <key type="filename">../SmallCardArt/Burgess/BurgessCharacter.png</key>
             <key type="filename">../SmallCardArt/Sphere/SphereCharacter.png</key>
             <key type="filename">../SmallCardArt/TheBaroness/TheBaronessCharacter.png</key>
             <key type="filename">../SmallCardArt/TheMidnightBazaar/TheMidnightBazaarDeckBack.png</key>
@@ -196,6 +197,7 @@
             <filename>../SmallCardArt/TheMidnightBazaar/TheMidnightBazaarDeckBack.png</filename>
             <filename>../SmallCardArt/Sphere/SphereCharacter.png</filename>
             <filename>../SmallCardArt/TheBaroness/TheBaronessCharacter.png</filename>
+            <filename>../SmallCardArt/Burgess/BurgessCharacter.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

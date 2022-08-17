@@ -1,0 +1,538 @@
+{
+	"name": "Burgess",
+	"kind": "Hero",
+	"initialCardIdentifiers": [
+		"BurgessCharacter"
+	],
+	"cards": [
+		{
+			"identifier": "BurgessCharacter",
+			"count": 1,
+			"title": "Burgess",
+			"body": "Chasing Leads",
+			"backgroundColor": "4A8CD4",
+			"character": true,
+			"powers": [
+				"Discard the top two cards of your deck. Put any Clues discarded this way into play or into your hand. Draw a card."
+			],
+			"icons": [
+				"HasPower",
+				"Manipulate",
+				"DrawCardNow"
+			],
+			"hitpoints": 26,
+			"nemesisIdentifiers": [
+				"VainFacadePlaytest.Burgess"
+			],
+			"incapacitatedAbilities": [
+				"One player may draw a card.",
+				"Increase projectile damage dealt by hero targets by 1 until the start of your next turn.",
+				"One hero may use a power now."
+			],
+			"flippedIcons": [
+				"DrawCardNow",
+				"IncreaseDamageDealtProjectile",
+				"UsePowerNow"
+			],
+			"complexity": 2,
+			"openingLines": {
+				"default": "You're all officially deputized for this operation. You want a conviction? Go by the book."
+			}
+		},
+		{
+			"identifier": "AQuestionableSource",
+			"count": 1,
+			"title": "A Questionable Source",
+			"keywords": [
+				"ongoing",
+				"clue"
+			],
+			"body": [
+				"When this card enters play, reveal the top card of your deck. If it is a Clue card, you may put it into play or in your hand. Then draw a card."
+			],
+			"powers": [
+				"{BurgessCharacter} deals himself up to 4 psychic damage. For each point of damage he is dealt this way, draw a card. Then destroy this card."
+			],
+			"icons": [
+				"Manipulate",
+				"DrawCardNow",
+				"HasPower",
+				"DealDamagePsychic",
+				"DestroySelf"
+			],
+			"flavorQuotes": [
+				{
+					"identifier": "Burgess",
+					"text": "No point in playing{BR}nice. This was your doing.{BR}You'll go down for this."
+				},
+				{
+					"identifier": "Stevens",
+					"text": "You're playing checkers on a chess{BR}board, Detective."
+				}
+			],
+			"flavorReference": "Bastion's Best #64"
+		},
+		{
+			"identifier": "BastionPDVest",
+			"count": 3,
+			"title": "Bastion PD Vest",
+			"keywords": [
+				"equipment",
+				"limited"
+			],
+			"body": [
+				"The first time {BurgessCharacter} is dealt damage each turn, he regains 1 HP.",
+				"The first time {BurgessCharacter} is dealt projectile damage each turn, he regains 1 HP."
+			],
+			"icons": [
+				"GainHP"
+			],
+			"flavorQuotes": [
+				{
+					"identifier": "Butcher Bill",
+					"text": "I want you boys to take{BR}Burgess on a little trip. Make{BR}sure he forgets his vest."
+				}
+			],
+			"flavorReference": "Butcher Bill, Bastion's Best #41"
+		},
+		{
+			"identifier": "CallForBackup",
+			"count": 2,
+			"title": "Call for Backup",
+			"keywords": [
+				"ongoing"
+			],
+			"body": [
+				"When this card enters play, discard any number of cards and draw a card for each card discarded this way. Then put any number of Backups from your hand into play.",
+				"At the end of your turn, you may destroy this card. Otherwise, you may put a Backup from your trash into play. Then discard X minus 2 cards, where X = the number of Backups in play."
+			],
+			"icons": [
+				"Discard",
+				"DrawCardNow",
+				"PlayCardNow",
+				"EndOfTurnAction",
+				"DestroySelf"
+			],
+			"flavorQuotes": [
+				{
+					"identifier": "Stanek",
+					"text": "Would someone please explain{BR}to me why Interpol is here?"
+				}
+			],
+			"flavorReference": "Stanek, Division X: Old Habits #7"
+		},
+		{
+			"identifier": "CIReport",
+			"count": 3,
+			"title": "CI Report",
+			"keywords": [
+				"ongoing",
+				"clue"
+			],
+			"body": [
+				"When this card enters play, draw 2 cards."
+			],
+			"powers": [
+				"Put a Clue into play from your trash. Destroy this card.",
+				"Reveal cards from the top of your deck until a Clue is revealed. Put it into your hand or into play. Discard the remaining cards. Destroy this card."
+			],
+			"icons": [
+				"DrawCardNow",
+				"HasPower",
+				"PlayCardNow",
+				"DestroySelf",
+				"Manipulate"
+			],
+			"flavorQuotes": [
+				{
+					"identifier": "Mad Tom",
+					"text": "Your little trick made Brzezicki look{BR}weak in front of his men. He's looking to{BR}make an example out of you."
+				}
+			],
+			"flavorReference": "Mad Tom, Bastion City: The Coalition #9"
+		},
+		{
+			"identifier": "CordonedArea",
+			"count": 3,
+			"title": "Cordoned Area",
+			"keywords": [
+				"one-shot"
+			],
+			"body": [
+				"Destroy an environment or Ongoing card."
+			],
+			"icons": [
+				"DestroyEnvironment",
+				"DestroyOngoing"
+			],
+			"flavorQuotes": [
+				{
+					"identifier": "Burgess",
+					"text": "Make sure to secure the perimeter.{BR}Last thing we need is more vigilantes{BR}thinking they understand police work."
+				}
+			],
+			"flavorReference": "Burgess, Bastion's Best #28"
+		},
+		{
+			"identifier": "DimpledPrimer",
+			"count": 3,
+			"title": "Dimpled Primer",
+			"keywords": [
+				"one-shot"
+			],
+			"body": [
+				"Discard any number of cards. Increase the next damage dealt by Burgess by X plus 1, where X is the amount of cards discarded in this way."
+			],
+			"icons": [
+				"Discard",
+				"IncreaseDamageDealt"
+			],
+			"flavorQuotes": [
+				{
+					"identifier": "Bladewight",
+					"text": "How?!"
+				},
+				{
+					"identifier": "Burgess",
+					"text": "An old... friend... taught{BR}me to be ready for anything."
+				}
+			],
+			"flavorReference": "Division X: Fields of the Dead #8"
+		},
+		{
+			"identifier": "ForensicAnalysis",
+			"count": 1,
+			"title": "Forensic Analysis",
+			"keywords": [
+				"ongoing",
+				"clue"
+			],
+			"body": [
+				"The first time each turn a villain target deals damage, you may draw a card."
+			],
+			"icons": [
+				"DrawCardNow"
+			],
+			"flavorQuotes": [
+				{
+					"identifier": "Burgess",
+					"text": "Cause of death was... exsanguination.{BR}Huh."
+				}
+			],
+			"flavorReference": "Burgess, Bastion's Best: Dark October One-Shot"
+		},
+		{
+			"identifier": "HotPursuit",
+			"count": 3,
+			"title": "Hot Pursuit",
+			"keywords": [
+				"ongoing",
+				"limited"
+			],
+			"body": [
+				"Play this card next to a target that has dealt {BurgessCharacter} damage since the end of your last turn. When this card is not next to a target, destroy it. Redirect all damage dealt by that target to {BurgessCharacter} and increase that damage by 1.",
+				"[b]Power:[/b] {BurgessCharacter} deals the target next to this{BR}        card 3 projectile damage or destroys{BR}        this card."
+			],
+			"icons": [
+				"RedirectDamage",
+				"IncreaseDamageDealt",
+				"HasPower",
+				"DealDamageProjectile",
+				"DestroySelf"
+			],
+			"flavorQuotes": [
+				{
+					"identifier": "Burgess",
+					"text": "Why did I let you drive?"
+				},
+				{
+					"identifier": "Gadhavi",
+					"text": "You can cry about it after we{BR}catch him."
+				}
+			],
+			"flavorReference": "Bastion City: Secret Wars #1"
+		},
+		{
+			"identifier": "LookingOut",
+			"count": 2,
+			"title": "Looking Out",
+			"keywords": [
+				"ongoing",
+				"limited"
+			],
+			"body": [
+				"The first time each turn you draw a card, another player may draw a card."
+			],
+			"icons": [
+				"DrawCardNow"
+			],
+			"flavorQuotes": [
+				{
+					"identifier": "The Baroness",
+					"text": "You know you cannot vin. Still you{BR}fight... to protect your friends? Strong in{BR}spirit... Very vell. Take zem and depart. " 
+				}
+			],
+			"flavorReference": "The Baroness, Bastion's Best: Black Thorn Academy #16"
+		},
+		{
+			"identifier": "PaperTrail",
+			"count": 1,
+			"title": "Paper Trail",
+			"keywords": [
+				"ongoing",
+				"clue"
+			],
+			"body": [
+				"The first time a villain card enters play each turn, you may draw a card."
+			],
+			"icons": [
+				"DrawCardNow"
+			],
+			"flavorQuotes": [
+				{
+					"identifier": "Burgess",
+					"text": "You have to be{BR}careful leaving paper trails, or you{BR}might get cut."
+				},
+				{
+					"identifier": "Butcher Bill",
+					"text": "You're a funny guy, Burgess.{BR}Looking forward to talking about it at your{BR}funeral."
+				}
+			],
+			"flavorReference": "Burgess #25"
+		},
+		{
+			"identifier": "RidingADesk",
+			"count": 2,
+			"title": "Riding a Desk",
+			"keywords": [
+				"ongoing",
+				"limited"
+			],
+			"body": [
+				"When this card enters play, destroy [i]Hot Pursuit[/i] and [i]To Serve and Protect[/i]. Then {BurgessCharacter} regains 1 HP.",
+				"{BurgessCharacter} is immune to damage. You may not play cards or use powers. When a card would cause you to draw a card, prevent that draw.",
+				"At the start of your turn, {BurgessCharacter} regains 2 HP, then destroy this card."
+			],
+			"icons": [
+				"GainHP",
+				"ImmuneToDamage",
+				"CannotPlayCards",
+				"CannotUsePowers",
+				"StartOfTurnAction",
+				"DestroySelf"
+			],
+			"flavorQuotes": [
+				{
+					"identifier": "Briggs",
+					"text": "You need some time to{BR}process what happened. Take it,{BR}or I take your badge."
+				}
+			],
+			"flavorReference": "Briggs, Bastion's Best #44"
+		},
+		{
+			"identifier": "S9PServicePistol",
+			"count": 3,
+			"title": "S9P Service Pistol",
+			"keywords": [
+				"equipment",
+				"limited"
+			],
+			"body": [
+				"The first time each turn {BurgessCharacter} or a Backup is dealt damage, {BurgessCharacter} may deal the source of that damage 1 psychic or 2 projectile damage."
+			],
+			"icons": [
+				"CounterDamage",
+				"DealDamagePsychic",
+				"DealDamageProjectile"
+			],
+			"flavorQuotes": [
+				{
+					"identifier": "Burgess",
+					"text": "Monsters, cults, the mob, dirty{BR}cops... I used to wonder if I'd ever fire my{BR}weapon. How did this city go so wrong?"
+				}
+			],
+			"flavorReference": "Burgess, Bastion's Best #62"
+		},
+		{
+			"identifier": "SWATSupport",
+			"count": 1,
+			"title": "SWAT Support",
+			"keywords": [
+				"backup"
+			],
+			"hitpoints": 10,
+			"body": [
+				"Reduce damage dealt to this card by 1. Once per turn when {BurgessCharacter} or a Backup deals a target damage, this card may deal that target 3 projectile damage. When this card enters play, discard up to 5 cards. Set this card's HP to twice the number of cards discarded."
+			],
+			"powers": [
+				"Discard a card. Increase damage dealt by {BurgessCharacter} and Backups by 1 until the start of your next turn."
+			],
+			"icons": [
+				"ReduceDamageTaken",
+				"DealDamageProjectile",
+				"Discard",
+				"HasPower",
+				"IncreaseDamageDealt"
+			],
+			"flavorQuotes": [
+				{
+					"identifier": "The Fury",
+					"text": "False-Judges, meet your doom!"
+				}
+			],
+			"flavorReference": "The Fury, Bastion's Best #31"
+		},
+		{
+			"identifier": "TakeEm",
+			"count": 2,
+			"title": "Take 'Em",
+			"keywords": [
+				"ongoing",
+				"limited"
+			],
+			"body": [
+				"Once per round when {BurgessCharacter} or a Backup would deal damage, you may increase that damage by 1 plus the number of Backup in play. If damage is dealt this way, discard 3 cards or destroy this card."
+			],
+			"icons": [
+				"IncreaseDamageDealt",
+				"Discard",
+				"DestroySelf"
+			],
+			"flavorQuotes": [
+				{
+					"identifier": "Burgess",
+					"text": "She's got some sort of trigger.{BR}If she so much as breathes funny, shoot{BR}first, shoot some more, and direct your{BR}questions to the coroner."
+				}
+			],
+			"flavorReference": "Burgess, Bastion's Best #33"
+		},
+		{
+			"identifier": "ToServeAndProtect",
+			"count": 3,
+			"title": "To Serve and Protect",
+			"keywords": [
+				"ongoing",
+				"limited"
+			],
+			"body": [
+				"Play this card in another play area. When a target in this play area would take damage, you may redirect that damage to a target in your play area.",
+				"At the start of your turn, if you redirected damage this way since the start of your last turn, discard 3 cards or destroy this card."
+			],
+			"icons": [
+				"RedirectDamage",
+				"StartOfTurnAction",
+				"Discard",
+				"DestroySelf"
+			],
+			"flavorQuotes": [
+				{
+					"identifier": "Arctis",
+					"text": "You don't have to do this."
+				},
+				{
+					"identifier": "Burgess",
+					"text": "It's done. I'll buy you time.{BR}Get the others out."
+				}
+			],
+			"flavorReference": "Apex Incursion: The Ketalion Incident #6"
+		},
+		{
+			"identifier": "Uniform",
+			"count": 4,
+			"title": "Uniform",
+			"keywords": [
+				"backup"
+			],
+			"hitpoints": 3,
+			"body": [
+				"The first time each turn {BurgessCharacter} or a Backup is dealt damage, this card may deal the source of that damage 1 projectile damage.",
+				"When this card enters play, you may draw a card."
+			],
+			"icons": [
+				"CounterDamage",
+				"DealDamageProjectile",
+				"DrawCardNow"
+			],
+			"flavorQuotes": [
+				{
+					"identifier": "Malone",
+					"text": "With all due respect, Mr. Liaison, I{BR}don't see how you have jurisdiction, but{BR}I've been told [b]repeatedly[/b] not to ask."
+				}
+			],
+			"flavorReference": "Malone, Division X: Friendly Fire One-Shot"
+		},
+		{
+			"identifier": "UpdatedProfile",
+			"count": 1,
+			"title": "Updated Profile",
+			"keywords": [
+				"ongoing",
+				"clue"
+			],
+			"body": [
+				"Play this card next to a non-hero target.",
+				"When that target deals damage to a target other than the hero target with the highest HP, you may discard 2 cards. If you do, redirect that damage to the hero target with the highest HP. Reduce damage redirected this way by 1.",
+				"When that target leaves play, destroy this card."
+			],
+			"icons": [
+				"Discard",
+				"RedirectDamage",
+				"DestroySelf"
+			],
+			"flavorQuotes": [
+				{
+					"identifier": "Burgess",
+					"text": "He won't stay hidden long. He{BR}needs to make a spectacle. He's got something planned for New Saxton, and he's{BR}still putting the pieces into place.'"
+				}
+			],
+			"flavorReference": "Burgess, Broadcast Blues One-Shot"
+		},
+		{
+			"identifier": "WitnessStatements",
+			"count": 1,
+			"title": "Witness Statements",
+			"keywords": [
+				"ongoing",
+				"clue"
+			],
+			"body": [
+				"Play this card next to a non-hero target. The first time each turn that target deals damage, 1 hero may use a power. When that target leaves play, destroy this card."
+			],
+			"icons": [
+				"UsePowerNow",
+				"DestroySelf"
+			],
+			"flavorQuotes": [
+				{
+					"identifier": "Jones",
+					"text": "Last I seen o' her, she was headin'{BR}outta town on that road by the forest.{BR}Place gives me the creeps."
+				}
+			],
+			"flavorReference": "Jones, Grim Tidings: Old Forest Road"
+		},
+		{
+			"identifier": "WordOnTheStreet",
+			"count": 1,
+			"title": "Word on the Street",
+			"keywords": [
+				"ongoing",
+				"clue"
+			],
+			"body": [
+				"At the start of each player's turn, you may discard 2 cards. If you do, damage dealt by that player's targets is irreducible until the end of the turn."
+			],
+			"icons": [
+				"StartOfTurnAction",
+				"Discard",
+				"MakeDamageIrreducible"
+			],
+			"flavorQuotes": [
+				{
+					"identifier": "Burgess",
+					"text": "I got you the information{BR}you asked for. Just... try not{BR}to do anything crazy."
+				}
+			],
+			"flavorReference": "Burgess, Friday #3"
+		}
+	]
+}
