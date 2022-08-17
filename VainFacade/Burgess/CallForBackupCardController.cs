@@ -78,7 +78,8 @@ namespace VainFacadePlaytest.Burgess
         private IEnumerator DestroyOrPlayAndDiscardResponse(PhaseChangeAction pca)
         {
             // "... you may destroy this card."
-            IEnumerator destructCoroutine = base.GameController.DestroyCard(base.HeroTurnTakerController, base.Card, optional: true, responsibleCard: base.Card, cardSource: GetCardSource());
+            List<DestroyCardAction> results = new List<DestroyCardAction>();
+            IEnumerator destructCoroutine = base.GameController.DestroyCard(base.HeroTurnTakerController, base.Card, optional: true, storedResults: results, responsibleCard: base.Card, cardSource: GetCardSource());
             if (base.UseUnityCoroutines)
             {
                 yield return base.GameController.StartCoroutine(destructCoroutine);
@@ -87,25 +88,28 @@ namespace VainFacadePlaytest.Burgess
             {
                 base.GameController.ExhaustCoroutine(destructCoroutine);
             }
-            // "Otherwise, you may put a Backup from your trash into play."
-            IEnumerator putCoroutine = SearchForCards(base.HeroTurnTakerController, false, true, 0, 1, BackupCard, true, false, false);
-            if (base.UseUnityCoroutines)
+            if (!DidDestroyCard(results))
             {
-                yield return base.GameController.StartCoroutine(putCoroutine);
-            }
-            else
-            {
-                base.GameController.ExhaustCoroutine(putCoroutine);
-            }
-            // "Then discard X minus 2 cards, where X = the number of Backups in play."
-            IEnumerator discardCoroutine = SelectAndDiscardCards(base.HeroTurnTakerController, FindCardsWhere(BackupInPlay, visibleToCard: GetCardSource()).Count() - 2, requiredDecisions: FindCardsWhere(BackupInPlay, visibleToCard: GetCardSource()).Count() - 2, responsibleTurnTaker: base.TurnTaker);
-            if (base.UseUnityCoroutines)
-            {
-                yield return base.GameController.StartCoroutine(discardCoroutine);
-            }
-            else
-            {
-                base.GameController.ExhaustCoroutine(discardCoroutine);
+                // "Otherwise, you may put a Backup from your trash into play."
+                IEnumerator putCoroutine = SearchForCards(base.HeroTurnTakerController, false, true, 0, 1, BackupCard, true, false, false);
+                if (base.UseUnityCoroutines)
+                {
+                    yield return base.GameController.StartCoroutine(putCoroutine);
+                }
+                else
+                {
+                    base.GameController.ExhaustCoroutine(putCoroutine);
+                }
+                // "Then discard X minus 2 cards, where X = the number of Backups in play."
+                IEnumerator discardCoroutine = SelectAndDiscardCards(base.HeroTurnTakerController, FindCardsWhere(BackupInPlay, visibleToCard: GetCardSource()).Count() - 2, requiredDecisions: FindCardsWhere(BackupInPlay, visibleToCard: GetCardSource()).Count() - 2, responsibleTurnTaker: base.TurnTaker);
+                if (base.UseUnityCoroutines)
+                {
+                    yield return base.GameController.StartCoroutine(discardCoroutine);
+                }
+                else
+                {
+                    base.GameController.ExhaustCoroutine(discardCoroutine);
+                }
             }
         }
     }
