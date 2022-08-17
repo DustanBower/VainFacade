@@ -146,7 +146,7 @@
 			"flavorQuotes": [
 				{
 					"identifier": "Mad Tom",
-					"text": "Didn't hear it from me, but{BR}your little trick made Brzezicki look{BR}weak in front of his men. Looking to make{BR}an example out of you."
+					"text": "Your little trick made Brzezicki look{BR}weak in front of his men. He's looking to{BR}make an example out of you."
 				}
 			],
 			"flavorReference": "Mad Tom, Bastion City: The Coalition #9"
@@ -168,7 +168,7 @@
 			"flavorQuotes": [
 				{
 					"identifier": "Burgess",
-					"text": "Just make sure to keep{BR}the perimeter secure. Last thing we{BR}need is more vigilantes thinking they{BR}understand police work."
+					"text": "Make sure to secure the perimeter.{BR}Last thing we need is more vigilantes{BR}thinking they understand police work."
 				}
 			],
 			"flavorReference": "Burgess, Bastion's Best #28"
@@ -194,7 +194,7 @@
 				},
 				{
 					"identifier": "Burgess",
-					"text": "An old... friend...{BR}taught me to be ready{BR}for anything."
+					"text": "An old... friend... taught{BR}me to be ready for anything."
 				}
 			],
 			"flavorReference": "Division X: Fields of the Dead #8"
@@ -243,11 +243,11 @@
 			"flavorQuotes": [
 				{
 					"identifier": "Burgess",
-					"text": "Why did I{BR}let you drive?"
+					"text": "Why did I let you drive?"
 				},
 				{
 					"identifier": "Gadhavi",
-					"text": "You can cry about it after{BR}we catch him."
+					"text": "You can cry about it after we{BR}catch him."
 				}
 			],
 			"flavorReference": "Bastion City: Secret Wars #1"
@@ -269,7 +269,7 @@
 			"flavorQuotes": [
 				{
 					"identifier": "The Baroness",
-					"text": "You know you cannot vin, but still{BR}you fight... to protect your friends? Veak of{BR}body, but strong in spirit... Very well. I vill{BR}spare your friends. Take zem and depart."
+					"text": "You know you cannot vin. Still you{BR}fight... to protect your friends? Strong in{BR}spirit... Very vell. Take zem and depart. " 
 				}
 			],
 			"flavorReference": "The Baroness, Bastion's Best: Black Thorn Academy #16"
@@ -348,7 +348,7 @@
 			"flavorQuotes": [
 				{
 					"identifier": "Burgess",
-					"text": "Monsters, cults, the mob, dirty{BR}cops... I remember the days when I{BR}wondered if I'd ever even fire my weapon.{BR}How did this city go so wrong?"
+					"text": "Monsters, cults, the mob, dirty{BR}cops... I used to wonder if I'd ever fire my{BR}weapon. How did this city go so wrong?"
 				}
 			],
 			"flavorReference": "Burgess, Bastion's Best #62"
@@ -401,7 +401,7 @@
 			"flavorQuotes": [
 				{
 					"identifier": "Burgess",
-					"text": "She's got some sort{BR}of trigger. If she so much as{BR}breathes funny, you shoot first, shoot some{BR}more, and direct your questions to the coroner."
+					"text": "She's got some sort of trigger.{BR}If she so much as breathes funny, shoot{BR}first, shoot some more, and direct your{BR}questions to the coroner."
 				}
 			],
 			"flavorReference": "Burgess, Bastion's Best #33"
@@ -427,11 +427,11 @@
 			"flavorQuotes": [
 				{
 					"identifier": "Arctis",
-					"text": "You don't have to do{BR}this. We'll find another way."
+					"text": "You don't have to do this."
 				},
 				{
 					"identifier": "Burgess",
-					"text": "It's done. I'll buy you time. Get{BR}the others out."
+					"text": "It's done. I'll buy you time.{BR}Get the others out."
 				}
 			],
 			"flavorReference": "Apex Incursion: The Ketalion Incident #6"
@@ -482,7 +482,7 @@
 			"flavorQuotes": [
 				{
 					"identifier": "Burgess",
-					"text": "He won't stay hidden long.{BR}He needs to make a spectacle. He's got{BR}something planned for New Saxton, and{BR}he's still putting the pieces into place.'"
+					"text": "He won't stay hidden long. He{BR}needs to make a spectacle. He's got something planned for New Saxton, and he's{BR}still putting the pieces into place.'"
 				}
 			],
 			"flavorReference": "Burgess, Broadcast Blues One-Shot"
@@ -505,7 +505,7 @@
 			"flavorQuotes": [
 				{
 					"identifier": "Jones",
-					"text": "Last I saw o' her, she was{BR}headin' outta town, takin' that road{BR}by the forest. Tried to talk her out of it.{BR}Place gives me the creeps."
+					"text": "Last I seen o' her, she was headin'{BR}outta town on that road by the forest.{BR}Place gives me the creeps."
 				}
 			],
 			"flavorReference": "Jones, Grim Tidings: Old Forest Road"
