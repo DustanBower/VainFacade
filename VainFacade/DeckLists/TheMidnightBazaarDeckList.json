@@ -184,7 +184,7 @@
 			],
 			"body": [
 				"This card is indestructible to other cards.",
-				"The first time each turn a Threen or non-environment target deals damage to a target other than itself, increase damage dealt to the source of that damage by 1.",
+				"The first time each turn a non-Hound target deals damage to a target other than itself, increase damage dealt to the source of that damage by 1 until this card leaves play.",
 				"At the start of the environment turn, play the top card of the environment deck, then shuffle this card and a Hound from the environment trash into the environment deck."
 			],
 			"icons": [
