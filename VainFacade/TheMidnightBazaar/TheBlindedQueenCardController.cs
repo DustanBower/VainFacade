@@ -15,8 +15,8 @@ namespace VainFacadePlaytest.TheMidnightBazaar
             : base(card, turnTakerController)
         {
             AddThisCardControllerToList(CardControllerListType.MakesIndestructible);
-            // Show whether a non-Environment or Threen target has already dealt damage to a target other than itself this turn
-            SpecialStringMaker.ShowIfElseSpecialString(() => HasBeenSetToTrueThisTurn(FirstHostileDamageThisTurn), () => "A non-environment or Threen target has already dealt damage to a target other than itself this turn.", () => "No non-environment or Threen targets have dealt damage to targets other than themselves this turn.").Condition = () => base.Card.IsInPlayAndHasGameText;
+            // If in play: show whether a non-Hound target has already dealt damage to a target other than itself this turn
+            SpecialStringMaker.ShowIfElseSpecialString(() => HasBeenSetToTrueThisTurn(FirstHostileDamageThisTurn), () => "A non-Hound target has already dealt damage to a target other than itself this turn.", () => "No non-Hound targets have dealt damage to targets other than themselves this turn.").Condition = () => base.Card.IsInPlayAndHasGameText;
             // Show any Hounds in the environment trash
             SpecialStringMaker.ShowListOfCardsAtLocation(base.TurnTaker.Trash, new LinqCardCriteria((Card c) => c.DoKeywordsContain(HoundKeyword), "Hound"));
         }
@@ -45,8 +45,8 @@ namespace VainFacadePlaytest.TheMidnightBazaar
         public override void AddTriggers()
         {
             base.AddTriggers();
-            // "The first time each turn a Threen or non-environment target deals damage to a target other than itself, increase damage dealt to the source of that damage by 1 until this card leaves play."
-            AddTrigger<DealDamageAction>((DealDamageAction dda) => !HasBeenSetToTrueThisTurn(FirstHostileDamageThisTurn) && dda.DidDealDamage && dda.DamageSource != null && dda.DamageSource.Card.IsTarget && (IsThreen(dda.DamageSource.Card) || !dda.DamageSource.Card.IsEnvironmentTarget) && dda.Target != dda.DamageSource.Card, AggroResponse, TriggerType.AddStatusEffectToDamage, TriggerTiming.After);
+            // "The first time each turn a non-Hound target deals damage to a target other than itself, increase damage dealt to the source of that damage by 1 until this card leaves play."
+            AddTrigger<DealDamageAction>((DealDamageAction dda) => !HasBeenSetToTrueThisTurn(FirstHostileDamageThisTurn) && dda.DidDealDamage && dda.DamageSource != null && !dda.DamageSource.Card.DoKeywordsContain(HoundKeyword) && dda.Target != dda.DamageSource.Card, AggroResponse, TriggerType.AddStatusEffectToDamage, TriggerTiming.After);
             AddAfterLeavesPlayAction((GameAction ga) => ResetFlagAfterLeavesPlay(FirstHostileDamageThisTurn), TriggerType.Hidden);
             AddAfterLeavesPlayAction((GameAction ga) => ResetFlagAfterLeavesPlay(IsShufflingSelf), TriggerType.Hidden);
             // "At the start of the environment turn, play the top card of the environment deck, then shuffle this card and a Hound from the environment trash into the environment deck."
