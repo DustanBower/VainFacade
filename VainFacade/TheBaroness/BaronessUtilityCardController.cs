@@ -68,6 +68,23 @@ namespace VainFacadePlaytest.TheBaroness
 			{
 				base.GameController.ExhaustCoroutine(coroutine);
 			}
-		}
-	}
+        }
+
+        public SpecialString ShowResonancePerHero()
+        {
+            Func<string> output = delegate
+            {
+                List<string> list = new List<string>();
+                foreach (HeroTurnTakerController httc in base.GameController.FindHeroTurnTakerControllers())
+                {
+                    if (!httc.IsIncapacitatedOrOutOfGame)
+                    {
+                        list.Add(httc.Name + "'s resonance is " + Resonance(httc.TurnTaker).ToString());
+                    }
+                }
+                return list.ToCommaList(useWordAnd: true) + ".";
+            };
+            return SpecialStringMaker.ShowSpecialString(output, () => base.Card.IsInPlayAndHasGameText, () => base.GameController.FindCardsWhere(BloodCard(), visibleToCard: GetCardSource()));
+        }
+    }
 }

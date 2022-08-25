@@ -15,6 +15,8 @@ namespace VainFacadePlaytest.TheBaroness
             : base(card, turnTakerController)
         {
             AddThisCardControllerToList(CardControllerListType.ActivatesEffects);
+            // If in play: show number of Blood cards each hero has
+            ShowResonancePerHero();
         }
 
         protected const string GivenBlood = "HasGivenBloodThisTurn";

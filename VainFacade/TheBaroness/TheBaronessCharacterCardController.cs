@@ -24,8 +24,6 @@ namespace VainFacadePlaytest.TheBaroness
             SpecialStringMaker.ShowHeroCharacterCardWithLowestHP(ranking: 1, numberOfTargets: 2).Condition = () => !base.Card.IsFlipped;
             // Front side: show hero with highest HP
             SpecialStringMaker.ShowHeroCharacterCardWithHighestHP(ranking: 1, numberOfTargets: 1).Condition = () => !base.Card.IsFlipped;
-            // Front side: show hero with most cards in play
-            SpecialStringMaker.ShowHeroWithMostCards(false).Condition = () => !base.Card.IsFlipped;
 
             // Back side: show whether a hero card has been put face-down in the villain play area this turn
             SpecialStringMaker.ShowHasBeenUsedThisTurn(FirstBloodThisTurn, "A hero card has already been put face-down in the villain play area this turn.", "No hero cards have been put face-down in the villain play area this turn.").Condition = () => base.Card.IsFlipped;

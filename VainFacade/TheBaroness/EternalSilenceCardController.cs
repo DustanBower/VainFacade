@@ -14,7 +14,8 @@ namespace VainFacadePlaytest.TheBaroness
         public EternalSilenceCardController(Card card, TurnTakerController turnTakerController)
             : base(card, turnTakerController)
         {
-            // Show hero with highest resonance?
+            // Show each hero's resonance?
+            ShowResonancePerHero();
             // ...
         }
 

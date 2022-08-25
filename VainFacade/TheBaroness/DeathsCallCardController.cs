@@ -14,8 +14,8 @@ namespace VainFacadePlaytest.TheBaroness
         public DeathsCallCardController(Card card, TurnTakerController turnTakerController)
             : base(card, turnTakerController)
         {
-            // Show number of Blood cards each hero has?
-            // ...
+            // Show each hero's resonance
+            ShowResonancePerHero();
         }
 
         public override IEnumerator Play()
