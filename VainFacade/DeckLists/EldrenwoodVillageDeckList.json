@@ -1,0 +1,297 @@
+{
+	"name": "Eldrenwood Village",
+	"kind": "Environment",
+	"backgroundColor": "90D45D",
+	"difficulty": 1,
+	"cards": [
+		{
+			"identifier": "EldrenwoodVillage",
+			"count": 1,
+			"title": "Eldrenwood Village",
+			"body": "Quaint Country Town",
+			"backgroundColor": "90D45D",
+			"character": true,
+			"setup": "Place the Eldrenwood Village card in play, “Quaint Country Town” side up. Shuffle the environment deck.",
+			"gameplay": [
+				"When a Trigger enters play, reveal cards from the top of the environment deck until an Afflicted card is revealed. Put it into play. Shuffle the remaining cards back into the environment deck. Then flip this card.",
+				"When this card flips to this side, shuffle the environment trash into the the environment deck."
+			],
+			"icons": [
+				"Search"
+			],
+			"flippedBody": "Howls in the Distance",
+			"flippedGameplay": [
+				"Afflicted targets are Werewolves and have no game text.",
+				"Reduce damage dealt to Werewolves by 2.",
+				"At the start of the environment turn, if there are no Triggers in play, flip this card.",
+				"At the end of the environment turn, each Small Werewolf deals the non-Werewolf with the lowest HP {H - 2} irreducible melee damage.",
+				"At the end of the environment turn, each Clever Werewolf deals the non-Werewolf with the second highest HP {H + 1} melee damage.",
+				"At the end of the environment turn, each Common Werewolf deals the non-Werewolf with the second lowest HP {H} melee damage."
+			],
+			"flippedIcons": [
+				"ReduceDamageTaken",
+				"StartAndEndOfTurnAction",
+				"DealDamageMelee"
+			]
+		},
+		{
+			"identifier": "AbandonedShack",
+			"count": 2,
+			"title": "Abandoned Shack",
+			"body": [
+				"At the end of the environment turn, each player may shuffle their hand into their deck and draw 2 cards. Reduce damage dealt to heroes that do so by 2 until the start of the next environment turn.",
+				"At the start of the environment turn, destroy this card."
+			],
+			"icons": [
+				"StartAndEndOfTurnEffect",
+				"Manipulate",
+				"ReduceDamageTaken",
+				"DestroySelf"
+			],
+			"flavorText": "Burgess finished sliding the desk against the{BR}door and checked his ammo, unsure if his{BR}bullets would have any effect. With any luck,{BR}the old shack could get him through the{BR}night in one piece."
+		},
+		{
+			"identifier": "CallOfTheWild",
+			"count": 1,
+			"title": "Call of the Wild",
+			"keywords": [
+				"trigger"
+			],
+			"body": [
+				"Triggers are indestructible while there is at least 1 Werewolf in play.",
+				"Increase all damage dealt by Werewolves by 1.",
+				"At the start of the environment turn, destroy this card."
+			],
+			"icons": [
+				"MakesIndestructible",
+				"IncreaseDamageDealt",
+				"StartOfTurnAction",
+				"DestroySelf"
+			],
+			"flavorText": "A strange sensation slithered across{BR}Liana's spine. Whatever the source of that{BR}somber sound, the Fury was beginning to{BR}awaken."
+		},
+		{
+			"identifier": "EerieQuiet",
+			"count": 2,
+			"title": "Eerie Quiet",
+			"body": [
+				"Increase all psychic and sonic damage by 1.",
+				"At the end of the environment turn, each hero may deal themselves 1 psychic damage to put a card from their trash on top of their deck.",
+				"At the start of the environment turn, play the top card of the villain deck, then destroy this card."
+			],
+			"icons": [
+				"StartAndEndOfTurnAction",
+				"DealDamagePsychic",
+				"Manipulate",
+				"PlayCardNow"
+			],
+			"flavorText": "All signs of life had stopped, and there was{BR}nothing but silence. Carnaval was lost in{BR}thought when the floorboards creaked{BR}loudly beneath his feet, the sound seeming to{BR}echo for miles."
+		},
+		{
+			"identifier": "ElmerWallace",
+			"count": 1,
+			"title": "Elmer Wallace",
+			"keywords": [
+				"afflicted",
+				"small"
+			],
+			"hitpoints": 2,
+			"body": [
+				"At the end of the environment turn, one player draws a card.",
+				"If this card is reduced to 0 or fewer HP, each hero target deals itself 2 psychic damage."
+			],
+			"icons": [
+				"EndOfTurnAction",
+				"DrawCardNow",
+				"DealDamagePsychic"
+			],
+			"flavorText": "Happy to have someone new to talk to, the{BR}child took Liana's hand, enthusiastically leading{BR}her around the village and pointing out{BR}everything that struck him as interesting."
+		},
+		{
+			"identifier": "FullMoon",
+			"count": 1,
+			"title": "Full Moon",
+			"keywords": [
+				"trigger"
+			],
+			"body": [
+				"When this card enters play, put the top card of 3 hero decks under this card. This card is indestructible while there is at least 1 card under it.",
+				"At the start of the environment turn, discard 1 card from under this card. Then each Werewolf regains 1 HP. Then destroy this card."
+			],
+			"icons": [
+				"MakesIndestructible",
+				"StartOfTurnAction",
+				"GainHP",
+				"DestroySelf"
+			],
+			"flavorText": "Burgess quickly looked around. The{BR}village looked so peaceful in the moonlight, but his every hair stood on{BR}end."
+		},
+		{
+			"identifier": "JohnHadaway",
+			"count": 1,
+			"title": "John Hadaway",
+			"keywords": [
+				"afflicted",
+				"common"
+			],
+			"hitpoints": 4,
+			"body": [
+				"At the end of the environment turn, one hero target regains 1 HP.",
+				"If this card is reduced to 0 or fewer HP, the players collectively discard {H} cards."
+			],
+			"icons": [
+				""
+			],
+			"flavorText": "The gruff, weathered man was clearly not{BR}fond of visitors, but he gestured to his{BR}wares all the same. “Take a free sample.{BR}To help you on your way.”",
+			"flavorQuotes": [
+				{
+					"identifier": "John Hadaway",
+					"text": "Take a free sample.{BR}To help you on your way."
+				}
+			]
+		},
+		{
+			"identifier": "LilMarie",
+			"count": 1,
+			"title": "Lil Marie",
+			"keywords": [
+				"afflicted",
+				"small"
+			],
+			"hitpoints": 2,
+			"body": [
+				"Reduce energy, projectile, and toxic damage by 1.",
+				"At the end of the environment turn, this card deals itself or the hero with the lowest HP 1 psychic damage.",
+				"If this card is reduced to 0 or fewer HP, each non-villain target deals itself 2 irreducible psychic damage."
+			],
+			"icons": [
+				"ReduceDamageDealt",
+				"EndOfTurnAction",
+				"DealDamagePsychic"
+			],
+			"flavorText": "The whole town fawned over the child's every{BR}antic, but to Friday she just seemed inefficient.{BR}Aside from knowing some novel shortcuts, the{BR}girl's only skill was self-endangerment."
+		},
+		{
+			"identifier": "OlPegSimmons",
+			"count": 1,
+			"title": "Ol' Peg Simmons",
+			"keywords": [
+				"afflicted",
+				"clever"
+			],
+			"hitpoints": 4,
+			"body": [
+				"At the end of the environment turn, one player draws 2 cards and discards 1 card.",
+				"If this card is reduced to 0 or fewer HP, destroy a hero Ongoing card."
+			],
+			"icons": [
+				"EndOfTurnAction",
+				"DrawCardNow",
+				"Discard",
+				"DestroyOngoing"
+			],
+			"flavorText": "Glyph waited patiently at the table while the old{BR}woman prepared the food. “Folk used to come{BR}from all over t'hear Ol' Peg's stories,” the{BR}woman croaked. “Not too many visitors now,{BR}though...”",
+			"flavorQuotes": [
+				{
+					"identifier": "Ol' Peg Simmons",
+					"text": "Folk used to come{BR}from all over t'hear Ol' Peg's stories,"
+				},
+				{
+					"identifier": "Ol' Peg Simmons",
+					"text": "Not too many visitors now,{BR}though..."
+				}
+			]
+		},
+		{
+			"identifier": "OldForestRd",
+			"count": 2,
+			"title": "Old Forest Rd.",
+			"body": [
+				"When this card enters play, each target regains 1 HP.",
+				"At the start of the environment turn, reveal the top {H} cards of the environment deck. Put any revealed targets and Triggers into play. Discard the other revealed cards. Then destroy this card."
+			],
+			"icons": [
+				"GainHP",
+				"StartOfTurnAction",
+				"Manipulate",
+				"DestroySelf"
+			],
+			"flavorText": "The road stretched out languidly over{BR}the lovely countryside, ripe with the{BR}promise of things to come."
+		},
+		{
+			"identifier": "SamRichards",
+			"count": 1,
+			"title": "Sam Richards",
+			"keywords": [
+				"afflicted",
+				"common"
+			],
+			"hitpoints": 4,
+			"body": [
+				"At the end of the environment turn, one player discards or plays a card. If a card entered play this way, this card deals one hero 2 sonic damage.",
+				"If this card is reduced to 0 or fewer HP, destroy one hero Equipment card."
+			],
+			"icons": [
+				"Discard",
+				"PlayCardNow",
+				"DealDamageSonic",
+				"DestroyEquipment"
+			],
+			"flavorText": "The man was rumored to be an angry{BR}drunk, but he seemed calm for the moment.{BR}“Tell you what... Buy me a drink, I'll tell{BR}you about any place in Eldrenwood.”",
+			"flavorQuotes": [
+				{
+					"identifier": "Sam Richards",
+					"text": "Tell you what... Buy me a drink, I'll tell{BR}you about any place in Eldrenwood."
+				}
+			]
+		},
+		{
+			"identifier": "SheriffSmithy",
+			"count": 1,
+			"title": "Sheriff Smithy",
+			"keywords": [
+				"afflicted",
+				"clever"
+			],
+			"hitpoints": 6,
+			"body": [
+				"When an environment target is dealt damage or destroyed, this card deals the non-environment target with the second highest HP 2 sonic damage.",
+				"If this card is reduced to 0 or fewer HP, play the top card of the villain deck."
+			],
+			"icons": [
+				"DealDamageSonic",
+				"PlayCardNow"
+			],
+			"flavorText": "“Ain't heard nothin' 'bout no missing{BR}persons,” the sheriff said, scowling. “This{BR}here's a quiet town. You want crime, go{BR}back to Bastion City.”",
+			"flavorQuotes": [
+				{
+					"identifier": "Sheriff Smithy",
+					"text": "Ain't heard nothin' 'bout no missing{BR}persons,"
+				},
+				{
+					"identifier": "Sheriff Smithy",
+					"text": "This{BR}here's a quiet town. You want crime, go{BR}back to Bastion City."
+				}
+			]
+		},
+		{
+			"identifier": "TomBarton",
+			"count": 1,
+			"title": "Tom Barton",
+			"keywords": [
+				"recluse"
+			],
+			"hitpoints": 3,
+			"body": [
+				"Once per turn, when a Werewolf would deal damage, each player may put a card in their hand on the bottom of their deck. If {H - 2} cards are moved this way, prevent that damage.",
+				"If this card is reduced to 0 or fewer HP, each player discards a card."
+			],
+			"icons": [
+				"Manipulate",
+				"CancelledDamageGreen",
+				"Discard"
+			],
+			"flavorText": "Moonlight gleamed through the trees over the{BR}hermit's house. Barton didn't associate much{BR}with the rest of the village. As far as{BR}Burgess was concerned, that made him the{BR}most important person to find."
+		}
+	]
+}
