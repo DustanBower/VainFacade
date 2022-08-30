@@ -57,6 +57,7 @@
     <Compile Include="Burgess\UpdatedProfileCardController.cs" />
     <Compile Include="Burgess\WitnessStatementsCardController.cs" />
     <Compile Include="Burgess\WordOnTheStreetCardController.cs" />
+    <Compile Include="EldrenwoodVillage\CallOfTheWildCardController.cs" />
     <Compile Include="EldrenwoodVillage\EerieQuietCardController.cs" />
     <Compile Include="EldrenwoodVillage\EldrenwoodUtilityCardController.cs" />
     <Compile Include="EldrenwoodVillage\EldrenwoodVillageCardController.cs" />
