@@ -64,8 +64,14 @@
     <Compile Include="EldrenwoodVillage\EldrenwoodTargetCardController.cs" />
     <Compile Include="EldrenwoodVillage\EldrenwoodUtilityCardController.cs" />
     <Compile Include="EldrenwoodVillage\EldrenwoodVillageCardController.cs" />
+    <Compile Include="EldrenwoodVillage\ElmerWallaceCardController.cs" />
     <Compile Include="EldrenwoodVillage\FullMoonCardController.cs" />
+    <Compile Include="EldrenwoodVillage\JohnHadawayCardController.cs" />
+    <Compile Include="EldrenwoodVillage\LilMarieCardController.cs" />
     <Compile Include="EldrenwoodVillage\OldForestRdCardController.cs" />
+    <Compile Include="EldrenwoodVillage\OlPegSimmonsCardController.cs" />
+    <Compile Include="EldrenwoodVillage\SamRichardsCardController.cs" />
+    <Compile Include="EldrenwoodVillage\SheriffSmithyCardController.cs" />
     <Compile Include="EldrenwoodVillage\TomBartonCardController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Sphere\AlienHeartCardController.cs" />

@@ -15,7 +15,7 @@ namespace VainFacadePlaytest.EldrenwoodVillage
             : base(card, turnTakerController)
         {
             // If Howls in the Distance is face up, remind the player that text on this card doesn't matter
-            SpecialStringMaker.ShowSpecialString(() => "Howls in the Distance: Afflicted targets are Werewolves and have no game text.").Condition = () => CanActivateEffect(base.TurnTakerController, HowlsKey);
+            SpecialStringMaker.ShowSpecialString(() => "Howls in the Distance: Afflicted targets have no game text.").Condition = () => CanActivateEffect(base.TurnTakerController, HowlsKey);
         }
 
         public override IEnumerator ReducedToZeroResponse()
