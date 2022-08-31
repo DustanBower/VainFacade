@@ -77,5 +77,10 @@ namespace VainFacadePlaytest.EldrenwoodVillage
                 base.GameController.ExhaustCoroutine(statusCoroutine);
             }
         }
+
+        public override CustomDecisionText GetCustomDecisionText(IDecision decision)
+        {
+            return new CustomDecisionText("Select a player to shuffle their hand into their deck and draw 2 cards", "choosing a player to shuffle their hand into their deck and draw 2 cards", "Vote for a player to shuffle their hand into their deck and draw 2 cards", "player to shuffle their hand into their deck and draw 2 cards");
+        }
     }
 }

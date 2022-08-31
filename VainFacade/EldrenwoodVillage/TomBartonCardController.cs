@@ -69,6 +69,11 @@ namespace VainFacadePlaytest.EldrenwoodVillage
             }
         }
 
+        public override CustomDecisionText GetCustomDecisionText(IDecision decision)
+        {
+            return new CustomDecisionText("Select a player to move a card from hand on the bottom of their deck", "choosing a player to move a card from hand on the bottom of their deck", "Vote for a player to move a card from hand on the bottom of their deck", "player to move a card from hand on the bottom of their deck");
+        }
+
         private IEnumerator PlayerMovesCardResponse(TurnTaker tt, List<MoveCardAction> moves, DealDamageAction dda)
         {
             // "... may put a card in their hand on the bottom of their deck."

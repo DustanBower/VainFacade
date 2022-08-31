@@ -141,7 +141,9 @@
 				"If this card is reduced to 0 or fewer HP, the players collectively discard {H} cards."
 			],
 			"icons": [
-				""
+				"EndOfTurnAction",
+				"GainHP",
+				"Discard"
 			],
 			"flavorText": "The gruff, weathered man was clearly not{BR}fond of visitors, but he gestured to his{BR}wares all the same. “Take a free sample.{BR}To help you on your way.”",
 			"flavorQuotes": [
