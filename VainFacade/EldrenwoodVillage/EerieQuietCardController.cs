@@ -32,7 +32,7 @@ namespace VainFacadePlaytest.EldrenwoodVillage
         private IEnumerator SelectToTakeDamageStackCardResponse(PhaseChangeAction pca)
         {
             // "... each hero may deal themselves 1 psychic damage to put a card from their trash on top of their deck."
-            IEnumerator selectCoroutine = base.GameController.SelectTurnTakersAndDoAction(DecisionMaker, new LinqTurnTakerCriteria((TurnTaker tt) => tt.IsHero && !tt.ToHero().IsIncapacitatedOrOutOfGame && tt.Trash.HasCards, "heroes with cards in their trash"), SelectionType.Custom, TakeDamageToStackCardResponse, optional: true, requiredDecisions: 0, allowAutoDecide: true, cardSource: GetCardSource());
+            IEnumerator selectCoroutine = base.GameController.SelectTurnTakersAndDoAction(DecisionMaker, new LinqTurnTakerCriteria((TurnTaker tt) => tt.IsHero && !tt.ToHero().IsIncapacitatedOrOutOfGame && tt.Trash.HasCards, "heroes with cards in their trash"), SelectionType.Custom, TakeDamageToStackCardResponse, optional: false, requiredDecisions: 0, allowAutoDecide: true, cardSource: GetCardSource());
             if (base.UseUnityCoroutines)
             {
                 yield return base.GameController.StartCoroutine(selectCoroutine);
