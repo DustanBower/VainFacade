@@ -21,7 +21,7 @@ namespace VainFacadePlaytest.EldrenwoodVillage
         {
             base.AddTriggers();
             // "At the end of the environment turn, one player draws a card."
-            AddEndOfTurnTrigger((TurnTaker tt) => tt == base.TurnTaker && CanActivateEffect(base.Card, QuaintKey), (PhaseChangeAction pca) => GameController.SelectHeroToDrawCard(DecisionMaker, optionalDrawCard: false, cardSource: GetCardSource()), TriggerType.DrawCard);
+            AddEndOfTurnTrigger((TurnTaker tt) => tt == base.TurnTaker && CanActivateEffect(base.TurnTakerController, QuaintKey), (PhaseChangeAction pca) => GameController.SelectHeroToDrawCard(DecisionMaker, optionalDrawCard: false, cardSource: GetCardSource()), TriggerType.DrawCard);
         }
 
         public override IEnumerator SlainInHumanFormResponse()

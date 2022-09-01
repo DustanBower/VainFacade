@@ -21,7 +21,7 @@ namespace VainFacadePlaytest.EldrenwoodVillage
         {
             base.AddTriggers();
             // "At the end of the environment turn, one hero target regains 1 HP."
-            AddEndOfTurnTrigger((TurnTaker tt) => tt == base.TurnTaker && CanActivateEffect(base.Card, QuaintKey), (PhaseChangeAction pca) => base.GameController.SelectAndGainHP(DecisionMaker, 1, additionalCriteria: (Card c) => c.IsHero, requiredDecisions: 1, cardSource: GetCardSource()), TriggerType.GainHP);
+            AddEndOfTurnTrigger((TurnTaker tt) => tt == base.TurnTaker && CanActivateEffect(base.TurnTakerController, QuaintKey), (PhaseChangeAction pca) => base.GameController.SelectAndGainHP(DecisionMaker, 1, additionalCriteria: (Card c) => c.IsHero, requiredDecisions: 1, cardSource: GetCardSource()), TriggerType.GainHP);
         }
 
         public override IEnumerator SlainInHumanFormResponse()
