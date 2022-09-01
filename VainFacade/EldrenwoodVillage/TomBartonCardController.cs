@@ -23,7 +23,7 @@ namespace VainFacadePlaytest.EldrenwoodVillage
         {
             base.AddTriggers();
             // "Once per turn, when a Werewolf would deal damage, each player may put a card in their hand on the bottom of their deck. If {H - 2} cards are moved this way, prevent that damage."
-            AddTrigger((DealDamageAction dda) => !HasBeenSetToTrueThisTurn(TakenShelterThisTurn) && dda.DamageSource != null && dda.DamageSource.IsCard && dda.DamageSource.Card.DoKeywordsContain(WerewolfKeyword) && dda.Amount > 0 && dda.CanDealDamage, MoveCardsToPreventDamageResponse, TriggerType.WouldBeDealtDamage, TriggerTiming.Before);
+            AddTrigger((DealDamageAction dda) => !HasBeenSetToTrueThisTurn(TakenShelterThisTurn) && dda.DamageSource != null && dda.DamageSource.IsCard && base.GameController.DoesCardContainKeyword(dda.DamageSource.Card, WerewolfKeyword) && dda.Amount > 0 && dda.CanDealDamage, MoveCardsToPreventDamageResponse, TriggerType.WouldBeDealtDamage, TriggerTiming.Before);
             AddAfterLeavesPlayAction((GameAction ga) => ResetFlagAfterLeavesPlay(TakenShelterThisTurn), TriggerType.Hidden);
         }
 

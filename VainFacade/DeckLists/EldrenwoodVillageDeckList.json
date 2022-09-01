@@ -67,7 +67,7 @@
 				"At the start of the environment turn, destroy this card."
 			],
 			"icons": [
-				"MakesIndestructible",
+				"Indestructible",
 				"IncreaseDamageDealt",
 				"StartOfTurnAction",
 				"DestroySelf"
@@ -123,12 +123,12 @@
 				"At the start of the environment turn, discard 1 card from under this card. Then each Werewolf regains 1 HP. Then destroy this card."
 			],
 			"icons": [
-				"MakesIndestructible",
+				"Indestructible",
 				"StartOfTurnAction",
 				"GainHP",
 				"DestroySelf"
 			],
-			"flavorText": "Burgess quickly looked around. The{BR}village looked so peaceful in the moonlight, but his every hair stood on{BR}end."
+			"flavorText": "Burgess quickly looked around. The{BR}village looked so peaceful in the{BR}moonlight, but his every hair stood on{BR}end."
 		},
 		{
 			"identifier": "JohnHadaway",
