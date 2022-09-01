@@ -3,6 +3,9 @@
 	"kind": "Environment",
 	"backgroundColor": "90D45D",
 	"difficulty": 1,
+	"initialCardIdentifiers": [
+		"EldrenwoodVillage"
+	],
 	"cards": [
 		{
 			"identifier": "EldrenwoodVillage",
