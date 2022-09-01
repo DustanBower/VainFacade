@@ -66,6 +66,18 @@ namespace VainFacadePlaytest.EldrenwoodVillage
             ReduceDamageStatusEffect wall = new ReduceDamageStatusEffect(2);
             wall.TargetCriteria.IsHeroCharacterCard = true;
             wall.TargetCriteria.OwnedBy = tt;
+            if (tt.HasMultipleCharacterCards)
+            {
+                wall.TargetCriteria.OutputString = tt.Name + "'s hero character cards";
+                if (tt.DeckDefinition.IsPlural)
+                {
+                    wall.TargetCriteria.OutputString = tt.Name + "' hero character cards";
+                }
+            }
+            else
+            {
+                wall.TargetCriteria.OutputString = tt.CharacterCard.Title;
+            }
             wall.UntilStartOfNextTurn(base.TurnTaker);
             IEnumerator statusCoroutine = AddStatusEffect(wall);
             if (base.UseUnityCoroutines)
