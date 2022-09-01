@@ -76,7 +76,7 @@ namespace VainFacadePlaytest.EldrenwoodVillage
                 }
             }
             // "Then each Werewolf regains 1 HP."
-            IEnumerator healCoroutine = base.GameController.GainHP(DecisionMaker, (Card c) => c.DoKeywordsContain(WerewolfKeyword), 1, cardSource: GetCardSource());
+            IEnumerator healCoroutine = base.GameController.GainHP(DecisionMaker, (Card c) => base.GameController.DoesCardContainKeyword(c, WerewolfKeyword), 1, cardSource: GetCardSource());
             if (base.UseUnityCoroutines)
             {
                 yield return base.GameController.StartCoroutine(healCoroutine);
