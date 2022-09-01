@@ -17,17 +17,17 @@ namespace VainFacadePlaytest.EldrenwoodVillage
             AddThisCardControllerToList(CardControllerListType.ActivatesEffects);
             AddThisCardControllerToList(CardControllerListType.ModifiesKeywords);
             // Back side: how many Small Werewolf cards in play?
-            SpecialStringMaker.ShowNumberOfCardsInPlay(smallWerewolf).Condition = () => base.Card.IsFlipped;
+            SpecialStringMaker.ShowNumberOfCardsInPlay(SmallWerewolf()).Condition = () => base.Card.IsFlipped;
             // Back side: who is the non-Werewolf with the lowest HP?
-            SpecialStringMaker.ShowLowestHP(1, () => 1, nonWerewolf).Condition = () => base.Card.IsFlipped;
+            SpecialStringMaker.ShowLowestHP(1, () => 1, NonWerewolf()).Condition = () => base.Card.IsFlipped;
             // Back side: how many Clever Werewolf cards in play?
-            SpecialStringMaker.ShowNumberOfCardsInPlay(cleverWerewolf).Condition = () => base.Card.IsFlipped;
+            SpecialStringMaker.ShowNumberOfCardsInPlay(CleverWerewolf()).Condition = () => base.Card.IsFlipped;
             // Back side: who is the non-Werewolf with the second highest HP?
-            SpecialStringMaker.ShowHighestHP(2, () => 1, nonWerewolf).Condition = () => base.Card.IsFlipped;
+            SpecialStringMaker.ShowHighestHP(2, () => 1, NonWerewolf()).Condition = () => base.Card.IsFlipped;
             // Back side: how many Common Werewolf cards in play?
-            SpecialStringMaker.ShowNumberOfCardsInPlay(commonWerewolf).Condition = () => base.Card.IsFlipped;
+            SpecialStringMaker.ShowNumberOfCardsInPlay(CommonWerewolf()).Condition = () => base.Card.IsFlipped;
             // Back side: who is the non-Werewolf with the second lowest HP?
-            SpecialStringMaker.ShowLowestHP(2, () => 1, nonWerewolf).Condition = () => base.Card.IsFlipped;
+            SpecialStringMaker.ShowLowestHP(2, () => 1, NonWerewolf()).Condition = () => base.Card.IsFlipped;
         }
 
         protected const string HowlsKey = "HowlsEffectKey";
@@ -40,12 +40,35 @@ namespace VainFacadePlaytest.EldrenwoodVillage
         protected const string CleverKeyword = "clever";
         protected const string CommonKeyword = "common";
 
-        protected LinqCardCriteria afflictedTarget = new LinqCardCriteria((Card c) => c.IsTarget && c.DoKeywordsContain(AfflictedKeyword), "Afflicted");
-        protected LinqCardCriteria nonWerewolf = new LinqCardCriteria((Card c) => c.IsTarget && !c.DoKeywordsContain(WerewolfKeyword), "non-Werewolf");
-        protected LinqCardCriteria smallWerewolf = new LinqCardCriteria((Card c) => c.DoKeywordsContain(SmallKeyword) && c.DoKeywordsContain(WerewolfKeyword), "Small Werewolf");
-        protected LinqCardCriteria cleverWerewolf = new LinqCardCriteria((Card c) => c.DoKeywordsContain(CleverKeyword) && c.DoKeywordsContain(WerewolfKeyword), "Clever Werewolf");
-        protected LinqCardCriteria commonWerewolf = new LinqCardCriteria((Card c) => c.DoKeywordsContain(CommonKeyword) && c.DoKeywordsContain(WerewolfKeyword), "Common Werewolf");
-        protected LinqCardCriteria triggerInPlay = new LinqCardCriteria((Card c) => c.DoKeywordsContain(TriggerKeyword) && c.IsInPlayAndHasGameText, "Trigger");
+        protected LinqCardCriteria AfflictedTarget()
+        {
+            return new LinqCardCriteria((Card c) => c.IsTarget && base.GameController.DoesCardContainKeyword(c, AfflictedKeyword), "Afflicted");
+        }
+
+        protected LinqCardCriteria NonWerewolf()
+        {
+            return new LinqCardCriteria((Card c) => c.IsTarget && !base.GameController.DoesCardContainKeyword(c, WerewolfKeyword), "non-Werewolf");
+        }
+
+        protected LinqCardCriteria SmallWerewolf()
+        {
+            return new LinqCardCriteria((Card c) => base.GameController.DoesCardContainKeyword(c, SmallKeyword) && base.GameController.DoesCardContainKeyword(c, WerewolfKeyword), "Small Werewolf");
+        }
+
+        protected LinqCardCriteria CleverWerewolf()
+        {
+            return new LinqCardCriteria((Card c) => base.GameController.DoesCardContainKeyword(c, CleverKeyword) && base.GameController.DoesCardContainKeyword(c, WerewolfKeyword), "Clever Werewolf");
+        }
+
+        protected LinqCardCriteria CommonWerewolf()
+        {
+            return new LinqCardCriteria((Card c) => base.GameController.DoesCardContainKeyword(c, CommonKeyword) && base.GameController.DoesCardContainKeyword(c, WerewolfKeyword), "Common Werewolf");
+        }
+
+        protected LinqCardCriteria TriggerInPlay()
+        {
+            return new LinqCardCriteria((Card c) => base.GameController.DoesCardContainKeyword(c, TriggerKeyword) && c.IsInPlayAndHasGameText, "Trigger");
+        }
 
         public override bool? AskIfActivatesEffect(TurnTakerController turnTakerController, string effectKey)
         {
@@ -82,9 +105,9 @@ namespace VainFacadePlaytest.EldrenwoodVillage
             {
                 // Back side:
                 // "Reduce damage dealt to Werewolves by 2."
-                AddSideTrigger(AddReduceDamageTrigger((Card c) => c.DoKeywordsContain(WerewolfKeyword), 2));
+                AddSideTrigger(AddReduceDamageTrigger((Card c) => base.GameController.DoesCardContainKeyword(c, WerewolfKeyword), 2));
                 // "At the start of the environment turn, if there are no Triggers in play, flip this card."
-                AddSideTrigger(AddStartOfTurnTrigger((TurnTaker tt) => tt == base.TurnTaker, FlipThisCharacterCardResponse, TriggerType.FlipCard, (PhaseChangeAction pca) => FindCardsWhere(triggerInPlay, visibleToCard: GetCardSource()).Count() <= 0));
+                AddSideTrigger(AddStartOfTurnTrigger((TurnTaker tt) => tt == base.TurnTaker, FlipThisCharacterCardResponse, TriggerType.FlipCard, (PhaseChangeAction pca) => FindCardsWhere(TriggerInPlay(), visibleToCard: GetCardSource()).Count() <= 0));
                 // "At the end of the environment turn, each Small Werewolf deals the non-Werewolf with the lowest HP {H - 2} irreducible melee damage."
                 // "At the end of the environment turn, each Clever Werewolf deals the non-Werewolf with the second highest HP {H + 1} melee damage."
                 // "At the end of the environment turn, each Common Werewolf deals the non-Werewolf with the second lowest HP {H} melee damage."
@@ -126,7 +149,7 @@ namespace VainFacadePlaytest.EldrenwoodVillage
             if (base.Card.IsFlipped)
             {
                 // When flipped to Howls in the Distance, add Werewolf keyword where appropriate
-                List<Card> affectedCards = FindCardsWhere(afflictedTarget).ToList();
+                List<Card> affectedCards = FindCardsWhere(AfflictedTarget()).ToList();
                 IEnumerator addCoroutine = base.GameController.ModifyKeywords(WerewolfKeyword, true, affectedCards, GetCardSource());
                 if (base.UseUnityCoroutines)
                 {
@@ -140,7 +163,7 @@ namespace VainFacadePlaytest.EldrenwoodVillage
             else
             {
                 // When flipped to Quaint Country Town, remove Werewolf keyword where added
-                List<Card> affectedCards = FindCardsWhere(afflictedTarget).ToList();
+                List<Card> affectedCards = FindCardsWhere(AfflictedTarget()).ToList();
                 IEnumerator removeCoroutine = base.GameController.ModifyKeywords(WerewolfKeyword, false, affectedCards, GetCardSource());
                 if (base.UseUnityCoroutines)
                 {
@@ -203,7 +226,7 @@ namespace VainFacadePlaytest.EldrenwoodVillage
         private IEnumerator SmallCleverCommonDamageResponse(PhaseChangeAction pca)
         {
             // "... each Small Werewolf deals the non-Werewolf with the lowest HP {H - 2} irreducible melee damage."
-            IEnumerator smallCoroutine = MultipleDamageSourcesDealDamage(smallWerewolf, TargetType.LowestHP, 1, nonWerewolf, H - 2, DamageType.Melee, isIrreducible: true);
+            IEnumerator smallCoroutine = MultipleDamageSourcesDealDamage(SmallWerewolf(), TargetType.LowestHP, 1, NonWerewolf(), H - 2, DamageType.Melee, isIrreducible: true);
             if (base.UseUnityCoroutines)
             {
                 yield return base.GameController.StartCoroutine(smallCoroutine);
@@ -213,7 +236,7 @@ namespace VainFacadePlaytest.EldrenwoodVillage
                 base.GameController.ExhaustCoroutine(smallCoroutine);
             }
             // "... each Clever Werewolf deals the non-Werewolf with the second highest HP {H + 1} melee damage."
-            IEnumerator cleverCoroutine = MultipleDamageSourcesDealDamage(cleverWerewolf, TargetType.HighestHP, 2, nonWerewolf, H + 1, DamageType.Melee);
+            IEnumerator cleverCoroutine = MultipleDamageSourcesDealDamage(CleverWerewolf(), TargetType.HighestHP, 2, NonWerewolf(), H + 1, DamageType.Melee);
             if (base.UseUnityCoroutines)
             {
                 yield return base.GameController.StartCoroutine(cleverCoroutine);
@@ -223,7 +246,7 @@ namespace VainFacadePlaytest.EldrenwoodVillage
                 base.GameController.ExhaustCoroutine(cleverCoroutine);
             }
             // "... each Common Werewolf deals the non-Werewolf with the second lowest HP {H} melee damage."
-            IEnumerator commonCoroutine = MultipleDamageSourcesDealDamage(commonWerewolf, TargetType.LowestHP, 2, nonWerewolf, H, DamageType.Melee);
+            IEnumerator commonCoroutine = MultipleDamageSourcesDealDamage(CommonWerewolf(), TargetType.LowestHP, 2, NonWerewolf(), H, DamageType.Melee);
             if (base.UseUnityCoroutines)
             {
                 yield return base.GameController.StartCoroutine(commonCoroutine);
