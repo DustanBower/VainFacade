@@ -196,7 +196,7 @@
 				"Discard",
 				"DestroyOngoing"
 			],
-			"flavorText": "Glyph waited patiently at the table while the old{BR}woman prepared the food. “Folk used to come{BR}from all over t'hear Ol' Peg's stories,” the{BR}woman croaked. “Not too many visitors now,{BR}though...”",
+			"flavorText": "Glyph waited patiently at the table while the{BR}old woman prepared the food. “Folk used to{BR}come from all over t'hear Ol' Peg's stories,”{BR}the woman croaked. “Not too many visitors now,{BR}though...”",
 			"flavorQuotes": [
 				{
 					"identifier": "Ol' Peg Simmons",
