@@ -191,7 +191,7 @@ namespace VainFacadePlaytest.EldrenwoodVillage
         {
             // "... reveal cards from the top of the environment deck until an Afflicted card is revealed. Put it into play. Shuffle the remaining cards back into the environment deck."
             List<Card> revealedCards = new List<Card>();
-            IEnumerator findCoroutine = RevealCards_MoveMatching_ReturnNonMatchingCards(base.TurnTakerController, base.TurnTaker.Deck, false, true, false, new LinqCardCriteria((Card c) => c.DoKeywordsContain(AfflictedKeyword), "Afflicted"), 1, storedPlayResults: revealedCards);
+            IEnumerator findCoroutine = RevealCards_MoveMatching_ReturnNonMatchingCards(base.TurnTakerController, base.TurnTaker.Deck, false, true, false, new LinqCardCriteria((Card c) => c.DoKeywordsContain(AfflictedKeyword), "Afflicted"), 1, revealedCardDisplay: RevealedCardDisplay.Message, storedPlayResults: revealedCards);
             if (base.UseUnityCoroutines)
             {
                 yield return base.GameController.StartCoroutine(findCoroutine);
