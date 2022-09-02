@@ -110,37 +110,6 @@ namespace VainFacadePlaytest.EldrenwoodVillage
             {
                 base.GameController.ExhaustCoroutine(moveCoroutine);
             }
-            /*List<SelectCardDecision> decisions = new List<SelectCardDecision>();
-            IEnumerator selectCoroutine = base.GameController.SelectCardAndStoreResults(base.GameController.FindHeroTurnTakerController(tt.ToHero()), SelectionType.MoveCardOnBottomOfDeck, new LinqCardCriteria((Card c) => c.Location == tt.ToHero().Hand), decisions, false, cardSource: GetCardSource());
-            if (base.UseUnityCoroutines)
-            {
-                yield return base.GameController.StartCoroutine(selectCoroutine);
-            }
-            else
-            {
-                base.GameController.ExhaustCoroutine(selectCoroutine);
-            }
-            foreach(SelectCardDecision scd in decisions)
-            {
-                Log.Debug("TomBartonCardController.PlayerMovesCardResponse: scd: " + scd.ToString());
-                Log.Debug("TomBartonCardController.PlayerMovesCardResponse: scd.SelectedCard: " + scd.SelectedCard.Title);
-                Log.Debug("TomBartonCardController.PlayerMovesCardResponse: scd.Completed: " + scd.Completed.ToString());
-            }
-            SelectCardDecision choice = decisions.Where((SelectCardDecision scd) => scd.Completed && scd.SelectedCard != null).FirstOrDefault();
-            Log.Debug("TomBartonCardController.PlayerMovesCardResponse: choice: " + choice.ToString());
-            if (choice != null)
-            {
-                Log.Debug("TomBartonCardController.PlayerMovesCardResponse: moving " + choice.SelectedCard.Title + " to the bottom of " + tt.Deck.GetFriendlyName());
-                IEnumerator moveCoroutine = base.GameController.MoveCard(base.GameController.FindTurnTakerController(tt), choice.SelectedCard, tt.Deck, toBottom: true, decisionSources: decisions.CastEnumerable<SelectCardDecision, IDecision>(), responsibleTurnTaker: tt, storedResults: moves, cardSource: GetCardSource());
-                if (base.UseUnityCoroutines)
-                {
-                    yield return base.GameController.StartCoroutine(moveCoroutine);
-                }
-                else
-                {
-                    base.GameController.ExhaustCoroutine(moveCoroutine);
-                }
-            }*/
         }
 
         public override IEnumerator ReducedToZeroResponse()
