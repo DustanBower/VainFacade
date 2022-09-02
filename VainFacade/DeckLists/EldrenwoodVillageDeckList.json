@@ -47,7 +47,7 @@
 				"At the start of the environment turn, destroy this card."
 			],
 			"icons": [
-				"StartAndEndOfTurnEffect",
+				"StartAndEndOfTurnAction",
 				"Manipulate",
 				"ReduceDamageTaken",
 				"DestroySelf"
