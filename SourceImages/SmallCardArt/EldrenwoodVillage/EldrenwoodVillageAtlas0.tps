@@ -34,7 +34,7 @@
         <key>dataFormat</key>
         <string>json</string>
         <key>textureFileName</key>
-        <filename>SetupGame0.png</filename>
+        <filename>EldrenwoodVillageAtlas0.png</filename>
         <key>flipPVR</key>
         <false/>
         <key>pvrQualityLevel</key>
@@ -124,7 +124,7 @@
             <key>data</key>
             <struct type="DataFile">
                 <key>name</key>
-                <filename>SetupGame0.json</filename>
+                <filename>EldrenwoodVillageAtlas0.json</filename>
             </struct>
         </map>
         <key>multiPack</key>
@@ -173,11 +173,35 @@
         </struct>
         <key>individualSpriteSettings</key>
         <map type="IndividualSpriteSettingsMap">
-            <key type="filename">../SmallCardArt/Burgess/BurgessCharacter.png</key>
-            <key type="filename">../SmallCardArt/EldrenwoodVillage/EldrenwoodVillageDeckBack.png</key>
-            <key type="filename">../SmallCardArt/Sphere/SphereCharacter.png</key>
-            <key type="filename">../SmallCardArt/TheBaroness/TheBaronessCharacter.png</key>
-            <key type="filename">../SmallCardArt/TheMidnightBazaar/TheMidnightBazaarDeckBack.png</key>
+            <key type="filename">AbandonedShack.png</key>
+            <key type="filename">CallOfTheWild.png</key>
+            <key type="filename">EerieQuiet.png</key>
+            <key type="filename">ElmerWallace.png</key>
+            <key type="filename">FullMoon.png</key>
+            <key type="filename">JohnHadaway.png</key>
+            <key type="filename">LilMarie.png</key>
+            <key type="filename">OlPegSimmons.png</key>
+            <key type="filename">OldForestRd.png</key>
+            <key type="filename">SamRichards.png</key>
+            <key type="filename">SheriffSmithy.png</key>
+            <key type="filename">TomBarton.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>64,50,128,99</rect>
+                <key>scale9Paddings</key>
+                <rect>64,50,128,99</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">EldrenwoodVillage.png</key>
+            <key type="filename">EldrenwoodVillageBack.png</key>
+            <key type="filename">EldrenwoodVillageDeckBack.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
@@ -195,11 +219,21 @@
         </map>
         <key>fileList</key>
         <array>
-            <filename>../SmallCardArt/TheMidnightBazaar/TheMidnightBazaarDeckBack.png</filename>
-            <filename>../SmallCardArt/Sphere/SphereCharacter.png</filename>
-            <filename>../SmallCardArt/TheBaroness/TheBaronessCharacter.png</filename>
-            <filename>../SmallCardArt/Burgess/BurgessCharacter.png</filename>
-            <filename>../SmallCardArt/EldrenwoodVillage/EldrenwoodVillageDeckBack.png</filename>
+            <filename>AbandonedShack.png</filename>
+            <filename>CallOfTheWild.png</filename>
+            <filename>EerieQuiet.png</filename>
+            <filename>EldrenwoodVillageDeckBack.png</filename>
+            <filename>ElmerWallace.png</filename>
+            <filename>FullMoon.png</filename>
+            <filename>JohnHadaway.png</filename>
+            <filename>LilMarie.png</filename>
+            <filename>OlPegSimmons.png</filename>
+            <filename>OldForestRd.png</filename>
+            <filename>SamRichards.png</filename>
+            <filename>SheriffSmithy.png</filename>
+            <filename>TomBarton.png</filename>
+            <filename>EldrenwoodVillage.png</filename>
+            <filename>EldrenwoodVillageBack.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>
