@@ -18,7 +18,6 @@ namespace VainFacadePlaytest.EldrenwoodVillage
         }
 
         protected const string HowlsKey = "HowlsEffectKey";
-        protected const string QuaintKey = "QuaintEffectKey";
 
         protected const string AfflictedKeyword = "afflicted";
         protected const string TriggerKeyword = "trigger";

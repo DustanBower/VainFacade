@@ -21,19 +21,13 @@ namespace VainFacadePlaytest.EldrenwoodVillage
         {
             base.AddTriggers();
             // "At the end of the environment turn, one hero target regains 1 HP."
-            AddEndOfTurnTrigger((TurnTaker tt) => tt == base.TurnTaker && CanActivateEffect(base.TurnTakerController, QuaintKey), (PhaseChangeAction pca) => base.GameController.SelectAndGainHP(DecisionMaker, 1, additionalCriteria: (Card c) => c.IsHero, requiredDecisions: 1, cardSource: GetCardSource()), TriggerType.GainHP);
+            AddEndOfTurnTrigger((TurnTaker tt) => tt == base.TurnTaker && !CanActivateEffect(base.TurnTakerController, HowlsKey), (PhaseChangeAction pca) => base.GameController.SelectAndGainHP(DecisionMaker, 1, additionalCriteria: (Card c) => c.IsHero, requiredDecisions: 1, cardSource: GetCardSource()), TriggerType.GainHP);
         }
 
         public override IEnumerator SlainInHumanFormResponse()
         {
             // "... the players collectively discard {H} cards."
             List<DiscardCardAction> discards = new List<DiscardCardAction>();
-            /*Log.Debug("JohnHadawayCardController.SlainInHumanFormResponse: cards discarded so far: " + GetNumberOfCardsDiscarded(discards).ToString());
-            List<TurnTaker> canDiscard = base.GameController.FindTurnTakersWhere((TurnTaker tt) => base.GameController.IsTurnTakerVisibleToCardSource(tt, GetCardSource()) && tt.IsHero && tt.ToHero().HasCardsInHand).ToList();
-            foreach(TurnTaker discarder in canDiscard)
-            {
-                Log.Debug("JohnHadawayCardController.SlainInHumanFormResponse: " + discarder.Name + " can discard cards");
-            }*/
             while (GetNumberOfCardsDiscarded(discards) < H && base.GameController.FindTurnTakersWhere((TurnTaker tt) => base.GameController.IsTurnTakerVisibleToCardSource(tt, GetCardSource()) && tt.IsHero && tt.ToHero().HasCardsInHand).Count() > 0)
             {
                 IEnumerator discardCoroutine = SelectHeroToDiscardCards(DecisionMaker, 0, H - GetNumberOfCardsDiscarded(discards), storedResultsDiscard: discards, cardSource: GetCardSource());

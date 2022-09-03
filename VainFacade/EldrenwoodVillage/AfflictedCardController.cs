@@ -39,7 +39,7 @@ namespace VainFacadePlaytest.EldrenwoodVillage
 
         public override IEnumerator ReducedToZeroResponse()
         {
-            if (CanActivateEffect(base.TurnTakerController, QuaintKey))
+            if (!CanActivateEffect(base.TurnTakerController, HowlsKey))
             {
                 IEnumerator respondCoroutine = SlainInHumanFormResponse();
                 if (base.UseUnityCoroutines)

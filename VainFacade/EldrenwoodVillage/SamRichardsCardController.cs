@@ -21,7 +21,7 @@ namespace VainFacadePlaytest.EldrenwoodVillage
         {
             base.AddTriggers();
             // "At the end of the environment turn, one player discards or plays a card. If a card entered play this way, this card deals one hero 2 sonic damage."
-            AddEndOfTurnTrigger((TurnTaker tt) => tt == base.TurnTaker && CanActivateEffect(base.TurnTakerController, QuaintKey), SelectPlayerCheckResultsResponse, new TriggerType[] { TriggerType.DiscardCard, TriggerType.PlayCard, TriggerType.DealDamage });
+            AddEndOfTurnTrigger((TurnTaker tt) => tt == base.TurnTaker && !CanActivateEffect(base.TurnTakerController, HowlsKey), SelectPlayerCheckResultsResponse, new TriggerType[] { TriggerType.DiscardCard, TriggerType.PlayCard, TriggerType.DealDamage });
         }
 
         private IEnumerator SelectPlayerCheckResultsResponse(PhaseChangeAction pca)

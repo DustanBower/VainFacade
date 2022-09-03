@@ -31,7 +31,6 @@ namespace VainFacadePlaytest.EldrenwoodVillage
         }
 
         protected const string HowlsKey = "HowlsEffectKey";
-        protected const string QuaintKey = "QuaintEffectKey";
 
         protected const string AfflictedKeyword = "afflicted";
         protected const string WerewolfKeyword = "werewolf";
@@ -73,15 +72,7 @@ namespace VainFacadePlaytest.EldrenwoodVillage
         public override bool? AskIfActivatesEffect(TurnTakerController turnTakerController, string effectKey)
         {
             bool? result = null;
-            if (!base.Card.IsFlipped)
-            {
-                // If "Quaint Country Town" is up, then QuaintKey effects are active
-                if (turnTakerController == base.TurnTakerController && effectKey == QuaintKey)
-                {
-                    result = true;
-                }
-            }
-            else
+            if (base.Card.IsFlipped)
             {
                 // If "Howls in the Distance" is up, then HowlsKey effects are active
                 if (turnTakerController == base.TurnTakerController && effectKey == HowlsKey)

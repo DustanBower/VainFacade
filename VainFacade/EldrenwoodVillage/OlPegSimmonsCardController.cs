@@ -21,8 +21,7 @@ namespace VainFacadePlaytest.EldrenwoodVillage
         {
             base.AddTriggers();
             // "At the end of the environment turn, one player draws 2 cards and discards 1 card."
-            AddEndOfTurnTrigger((TurnTaker tt) => tt == base.TurnTaker && CanActivateEffect(base.TurnTakerController, QuaintKey), OnePlayerDraw2Discard1Response, new TriggerType[] { TriggerType.DrawCard, TriggerType.DiscardCard });
-            // ...
+            AddEndOfTurnTrigger((TurnTaker tt) => tt == base.TurnTaker && !CanActivateEffect(base.TurnTakerController, HowlsKey), OnePlayerDraw2Discard1Response, new TriggerType[] { TriggerType.DrawCard, TriggerType.DiscardCard });
         }
 
         private IEnumerator OnePlayerDraw2Discard1Response(PhaseChangeAction pca)

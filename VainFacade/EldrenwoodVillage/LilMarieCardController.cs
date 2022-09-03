@@ -14,17 +14,17 @@ namespace VainFacadePlaytest.EldrenwoodVillage
         public LilMarieCardController(Card card, TurnTakerController turnTakerController)
             : base(card, turnTakerController)
         {
-            // Quaint Country Town: show the hero with the lowest HP
-            SpecialStringMaker.ShowHeroCharacterCardWithLowestHP().Condition = () => CanActivateEffect(base.TurnTakerController, QuaintKey);
+            // Howls in the Distance is NOT active: show the hero with the lowest HP
+            SpecialStringMaker.ShowHeroCharacterCardWithLowestHP().Condition = () => !CanActivateEffect(base.TurnTakerController, HowlsKey);
         }
 
         public override void AddTriggers()
         {
             base.AddTriggers();
             // "Reduce energy, projectile, and toxic damage by 1."
-            AddReduceDamageTrigger((DealDamageAction dda) => (dda.DamageType == DamageType.Energy || dda.DamageType == DamageType.Projectile || dda.DamageType == DamageType.Toxic) && CanActivateEffect(base.TurnTakerController, QuaintKey), (DealDamageAction dda) => 1);
+            AddReduceDamageTrigger((DealDamageAction dda) => (dda.DamageType == DamageType.Energy || dda.DamageType == DamageType.Projectile || dda.DamageType == DamageType.Toxic) && !CanActivateEffect(base.TurnTakerController, HowlsKey), (DealDamageAction dda) => 1);
             // "At the end of the environment turn, this card deals itself or the hero with the lowest HP 1 psychic damage."
-            AddEndOfTurnTrigger((TurnTaker tt) => tt == base.TurnTaker && CanActivateEffect(base.TurnTakerController, QuaintKey), (PhaseChangeAction pca) => base.GameController.SelectTargetsAndDealDamage(DecisionMaker, new DamageSource(base.GameController, base.Card), 1, DamageType.Psychic, 1, false, 1, additionalCriteria: (Card c) => c == base.Card || CanCardBeConsideredLowestHitPoints(c, (Card x) => x.IsHeroCharacterCard), cardSource: GetCardSource()), TriggerType.DealDamage);
+            AddEndOfTurnTrigger((TurnTaker tt) => tt == base.TurnTaker && !CanActivateEffect(base.TurnTakerController, HowlsKey), (PhaseChangeAction pca) => base.GameController.SelectTargetsAndDealDamage(DecisionMaker, new DamageSource(base.GameController, base.Card), 1, DamageType.Psychic, 1, false, 1, additionalCriteria: (Card c) => c == base.Card || CanCardBeConsideredLowestHitPoints(c, (Card x) => x.IsHeroCharacterCard), cardSource: GetCardSource()), TriggerType.DealDamage);
         }
 
         public override IEnumerator SlainInHumanFormResponse()
