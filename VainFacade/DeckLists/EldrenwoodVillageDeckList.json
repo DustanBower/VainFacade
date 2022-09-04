@@ -2,7 +2,7 @@
 	"name": "Eldrenwood Village",
 	"kind": "Environment",
 	"backgroundColor": "90D45D",
-	"difficulty": 1,
+	"difficulty": 2,
 	"initialCardIdentifiers": [
 		"EldrenwoodVillage"
 	],
