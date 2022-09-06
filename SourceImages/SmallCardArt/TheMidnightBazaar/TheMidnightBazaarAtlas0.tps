@@ -202,6 +202,36 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
+            <key type="filename">Micro/ASenseOfLossMicro.png</key>
+            <key type="filename">Micro/DisquietMicro.png</key>
+            <key type="filename">Micro/GoblinFruitMicro.png</key>
+            <key type="filename">Micro/MemoriesOfTomorrowMicro.png</key>
+            <key type="filename">Micro/MrWolfMicro.png</key>
+            <key type="filename">Micro/RedEyedRonaldMicro.png</key>
+            <key type="filename">Micro/TheBlackDogMicro.png</key>
+            <key type="filename">Micro/TheBlindedQueenMicro.png</key>
+            <key type="filename">Micro/TheCloisteredPrinceMicro.png</key>
+            <key type="filename">Micro/TheDancerAtTheDawnMicro.png</key>
+            <key type="filename">Micro/TheEmptyWellMicro.png</key>
+            <key type="filename">Micro/TheMidnightBazaarDeckBackMicro.png</key>
+            <key type="filename">Micro/ThePoetOfThePaleMicro.png</key>
+            <key type="filename">Micro/TheSingerInTheSilenceMicro.png</key>
+            <key type="filename">Micro/TheWhisperScribeMicro.png</key>
+            <key type="filename">Micro/VelkinorMicro.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>27,27,54,54</rect>
+                <key>scale9Paddings</key>
+                <rect>27,27,54,54</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
             <key type="filename">TheMidnightBazaarDeckBack.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
@@ -236,6 +266,22 @@
             <filename>TheSingerInTheSilence.png</filename>
             <filename>TheWhisperScribe.png</filename>
             <filename>Velkinor.png</filename>
+            <filename>Micro/ASenseOfLossMicro.png</filename>
+            <filename>Micro/DisquietMicro.png</filename>
+            <filename>Micro/GoblinFruitMicro.png</filename>
+            <filename>Micro/MemoriesOfTomorrowMicro.png</filename>
+            <filename>Micro/MrWolfMicro.png</filename>
+            <filename>Micro/RedEyedRonaldMicro.png</filename>
+            <filename>Micro/TheBlackDogMicro.png</filename>
+            <filename>Micro/TheBlindedQueenMicro.png</filename>
+            <filename>Micro/TheCloisteredPrinceMicro.png</filename>
+            <filename>Micro/TheDancerAtTheDawnMicro.png</filename>
+            <filename>Micro/TheEmptyWellMicro.png</filename>
+            <filename>Micro/TheMidnightBazaarDeckBackMicro.png</filename>
+            <filename>Micro/ThePoetOfThePaleMicro.png</filename>
+            <filename>Micro/TheSingerInTheSilenceMicro.png</filename>
+            <filename>Micro/TheWhisperScribeMicro.png</filename>
+            <filename>Micro/VelkinorMicro.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

@@ -2,61 +2,21 @@
 
 "ASenseOfLoss.png":
 {
-	"frame": {"x":0,"y":0,"w":256,"h":198},
+	"frame": {"x":1776,"y":0,"w":256,"h":198},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":256,"h":198},
 	"sourceSize": {"w":256,"h":198}
+},
+"ASenseOfLossMicro.png":
+{
+	"frame": {"x":0,"y":0,"w":108,"h":108},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":108,"h":108},
+	"sourceSize": {"w":108,"h":108}
 },
 "Disquiet.png":
-{
-	"frame": {"x":259,"y":0,"w":256,"h":198},
-	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":256,"h":198},
-	"sourceSize": {"w":256,"h":198}
-},
-"GoblinFruit.png":
-{
-	"frame": {"x":518,"y":0,"w":256,"h":198},
-	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":256,"h":198},
-	"sourceSize": {"w":256,"h":198}
-},
-"MemoriesOfTomorrow.png":
-{
-	"frame": {"x":777,"y":0,"w":256,"h":198},
-	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":256,"h":198},
-	"sourceSize": {"w":256,"h":198}
-},
-"MrWolf.png":
-{
-	"frame": {"x":1036,"y":0,"w":256,"h":198},
-	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":256,"h":198},
-	"sourceSize": {"w":256,"h":198}
-},
-"RedEyedRonald.png":
-{
-	"frame": {"x":1295,"y":0,"w":256,"h":198},
-	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":256,"h":198},
-	"sourceSize": {"w":256,"h":198}
-},
-"TheBlackDog.png":
-{
-	"frame": {"x":1554,"y":0,"w":256,"h":198},
-	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":256,"h":198},
-	"sourceSize": {"w":256,"h":198}
-},
-"TheBlindedQueen.png":
 {
 	"frame": {"x":0,"y":201,"w":256,"h":198},
 	"rotated": false,
@@ -64,7 +24,15 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":256,"h":198},
 	"sourceSize": {"w":256,"h":198}
 },
-"TheCloisteredPrince.png":
+"DisquietMicro.png":
+{
+	"frame": {"x":111,"y":0,"w":108,"h":108},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":108,"h":108},
+	"sourceSize": {"w":108,"h":108}
+},
+"GoblinFruit.png":
 {
 	"frame": {"x":259,"y":201,"w":256,"h":198},
 	"rotated": false,
@@ -72,7 +40,15 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":256,"h":198},
 	"sourceSize": {"w":256,"h":198}
 },
-"TheDancerAtTheDawn.png":
+"GoblinFruitMicro.png":
+{
+	"frame": {"x":222,"y":0,"w":108,"h":108},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":108,"h":108},
+	"sourceSize": {"w":108,"h":108}
+},
+"MemoriesOfTomorrow.png":
 {
 	"frame": {"x":518,"y":201,"w":256,"h":198},
 	"rotated": false,
@@ -80,7 +56,15 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":256,"h":198},
 	"sourceSize": {"w":256,"h":198}
 },
-"TheEmptyWell.png":
+"MemoriesOfTomorrowMicro.png":
+{
+	"frame": {"x":333,"y":0,"w":108,"h":108},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":108,"h":108},
+	"sourceSize": {"w":108,"h":108}
+},
+"MrWolf.png":
 {
 	"frame": {"x":777,"y":201,"w":256,"h":198},
 	"rotated": false,
@@ -88,15 +72,15 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":256,"h":198},
 	"sourceSize": {"w":256,"h":198}
 },
-"TheMidnightBazaarDeckBack.png":
+"MrWolfMicro.png":
 {
-	"frame": {"x":259,"y":402,"w":177,"h":256},
+	"frame": {"x":444,"y":0,"w":108,"h":108},
 	"rotated": false,
 	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":177,"h":256},
-	"sourceSize": {"w":177,"h":256}
+	"spriteSourceSize": {"x":0,"y":0,"w":108,"h":108},
+	"sourceSize": {"w":108,"h":108}
 },
-"ThePoetOfThePale.png":
+"RedEyedRonald.png":
 {
 	"frame": {"x":1036,"y":201,"w":256,"h":198},
 	"rotated": false,
@@ -104,7 +88,15 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":256,"h":198},
 	"sourceSize": {"w":256,"h":198}
 },
-"TheSingerInTheSilence.png":
+"RedEyedRonaldMicro.png":
+{
+	"frame": {"x":555,"y":0,"w":108,"h":108},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":108,"h":108},
+	"sourceSize": {"w":108,"h":108}
+},
+"TheBlackDog.png":
 {
 	"frame": {"x":1295,"y":201,"w":256,"h":198},
 	"rotated": false,
@@ -112,7 +104,15 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":256,"h":198},
 	"sourceSize": {"w":256,"h":198}
 },
-"TheWhisperScribe.png":
+"TheBlackDogMicro.png":
+{
+	"frame": {"x":666,"y":0,"w":108,"h":108},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":108,"h":108},
+	"sourceSize": {"w":108,"h":108}
+},
+"TheBlindedQueen.png":
 {
 	"frame": {"x":1554,"y":201,"w":256,"h":198},
 	"rotated": false,
@@ -120,13 +120,141 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":256,"h":198},
 	"sourceSize": {"w":256,"h":198}
 },
-"Velkinor.png":
+"TheBlindedQueenMicro.png":
+{
+	"frame": {"x":777,"y":0,"w":108,"h":108},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":108,"h":108},
+	"sourceSize": {"w":108,"h":108}
+},
+"TheCloisteredPrince.png":
 {
 	"frame": {"x":0,"y":402,"w":256,"h":198},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":256,"h":198},
 	"sourceSize": {"w":256,"h":198}
+},
+"TheCloisteredPrinceMicro.png":
+{
+	"frame": {"x":888,"y":0,"w":108,"h":108},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":108,"h":108},
+	"sourceSize": {"w":108,"h":108}
+},
+"TheDancerAtTheDawn.png":
+{
+	"frame": {"x":259,"y":402,"w":256,"h":198},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":256,"h":198},
+	"sourceSize": {"w":256,"h":198}
+},
+"TheDancerAtTheDawnMicro.png":
+{
+	"frame": {"x":999,"y":0,"w":108,"h":108},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":108,"h":108},
+	"sourceSize": {"w":108,"h":108}
+},
+"TheEmptyWell.png":
+{
+	"frame": {"x":518,"y":402,"w":256,"h":198},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":256,"h":198},
+	"sourceSize": {"w":256,"h":198}
+},
+"TheEmptyWellMicro.png":
+{
+	"frame": {"x":1110,"y":0,"w":108,"h":108},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":108,"h":108},
+	"sourceSize": {"w":108,"h":108}
+},
+"TheMidnightBazaarDeckBack.png":
+{
+	"frame": {"x":1813,"y":402,"w":177,"h":256},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":177,"h":256},
+	"sourceSize": {"w":177,"h":256}
+},
+"TheMidnightBazaarDeckBackMicro.png":
+{
+	"frame": {"x":1221,"y":0,"w":108,"h":108},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":108,"h":108},
+	"sourceSize": {"w":108,"h":108}
+},
+"ThePoetOfThePale.png":
+{
+	"frame": {"x":777,"y":402,"w":256,"h":198},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":256,"h":198},
+	"sourceSize": {"w":256,"h":198}
+},
+"ThePoetOfThePaleMicro.png":
+{
+	"frame": {"x":1332,"y":0,"w":108,"h":108},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":108,"h":108},
+	"sourceSize": {"w":108,"h":108}
+},
+"TheSingerInTheSilence.png":
+{
+	"frame": {"x":1036,"y":402,"w":256,"h":198},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":256,"h":198},
+	"sourceSize": {"w":256,"h":198}
+},
+"TheSingerInTheSilenceMicro.png":
+{
+	"frame": {"x":1443,"y":0,"w":108,"h":108},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":108,"h":108},
+	"sourceSize": {"w":108,"h":108}
+},
+"TheWhisperScribe.png":
+{
+	"frame": {"x":1295,"y":402,"w":256,"h":198},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":256,"h":198},
+	"sourceSize": {"w":256,"h":198}
+},
+"TheWhisperScribeMicro.png":
+{
+	"frame": {"x":1554,"y":0,"w":108,"h":108},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":108,"h":108},
+	"sourceSize": {"w":108,"h":108}
+},
+"Velkinor.png":
+{
+	"frame": {"x":1554,"y":402,"w":256,"h":198},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":256,"h":198},
+	"sourceSize": {"w":256,"h":198}
+},
+"VelkinorMicro.png":
+{
+	"frame": {"x":1665,"y":0,"w":108,"h":108},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":108,"h":108},
+	"sourceSize": {"w":108,"h":108}
 }},
 "meta": {
 	"app": "https://www.codeandweb.com/texturepacker",
@@ -135,6 +263,6 @@
 	"format": "RGBA8888",
 	"size": {"w":2048,"h":2048},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:17d7a4c80286450849345399678f9ec5:d60d10b21b88dfbe3ba7d42e285dc619:7676c1984623c6731fc16a8f6fe26e45$"
+	"smartupdate": "$TexturePacker:SmartUpdate:a442493fc4a061cf6561b5816296260b:0959219f3f4b9c09497a52d22fe4db0f:7676c1984623c6731fc16a8f6fe26e45$"
 }
 }

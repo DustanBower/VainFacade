@@ -216,6 +216,35 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
+            <key type="filename">Micro/AbandonedShackMicro.png</key>
+            <key type="filename">Micro/CallOfTheWildMicro.png</key>
+            <key type="filename">Micro/EerieQuietMicro.png</key>
+            <key type="filename">Micro/EldrenwoodVillageBackMicro.png</key>
+            <key type="filename">Micro/EldrenwoodVillageDeckBackMicro.png</key>
+            <key type="filename">Micro/EldrenwoodVillageMicro.png</key>
+            <key type="filename">Micro/ElmerWallaceMicro.png</key>
+            <key type="filename">Micro/FullMoonMicro.png</key>
+            <key type="filename">Micro/JohnHadawayMicro.png</key>
+            <key type="filename">Micro/LilMarieMicro.png</key>
+            <key type="filename">Micro/OlPegSimmonsMicro.png</key>
+            <key type="filename">Micro/OldForestRdMicro.png</key>
+            <key type="filename">Micro/SamRichardsMicro.png</key>
+            <key type="filename">Micro/SheriffSmithyMicro.png</key>
+            <key type="filename">Micro/TomBartonMicro.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>27,27,54,54</rect>
+                <key>scale9Paddings</key>
+                <rect>27,27,54,54</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
         </map>
         <key>fileList</key>
         <array>
@@ -234,6 +263,21 @@
             <filename>TomBarton.png</filename>
             <filename>EldrenwoodVillage.png</filename>
             <filename>EldrenwoodVillageBack.png</filename>
+            <filename>Micro/AbandonedShackMicro.png</filename>
+            <filename>Micro/CallOfTheWildMicro.png</filename>
+            <filename>Micro/EerieQuietMicro.png</filename>
+            <filename>Micro/EldrenwoodVillageBackMicro.png</filename>
+            <filename>Micro/EldrenwoodVillageDeckBackMicro.png</filename>
+            <filename>Micro/EldrenwoodVillageMicro.png</filename>
+            <filename>Micro/ElmerWallaceMicro.png</filename>
+            <filename>Micro/FullMoonMicro.png</filename>
+            <filename>Micro/JohnHadawayMicro.png</filename>
+            <filename>Micro/LilMarieMicro.png</filename>
+            <filename>Micro/OlPegSimmonsMicro.png</filename>
+            <filename>Micro/OldForestRdMicro.png</filename>
+            <filename>Micro/SamRichardsMicro.png</filename>
+            <filename>Micro/SheriffSmithyMicro.png</filename>
+            <filename>Micro/TomBartonMicro.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

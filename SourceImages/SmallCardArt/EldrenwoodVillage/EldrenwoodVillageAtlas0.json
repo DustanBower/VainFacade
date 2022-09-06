@@ -2,31 +2,55 @@
 
 "AbandonedShack.png":
 {
-	"frame": {"x":0,"y":0,"w":256,"h":198},
+	"frame": {"x":1665,"y":0,"w":256,"h":198},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":256,"h":198},
 	"sourceSize": {"w":256,"h":198}
+},
+"AbandonedShackMicro.png":
+{
+	"frame": {"x":0,"y":0,"w":108,"h":108},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":108,"h":108},
+	"sourceSize": {"w":108,"h":108}
 },
 "CallOfTheWild.png":
 {
-	"frame": {"x":259,"y":0,"w":256,"h":198},
+	"frame": {"x":0,"y":201,"w":256,"h":198},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":256,"h":198},
 	"sourceSize": {"w":256,"h":198}
+},
+"CallOfTheWildMicro.png":
+{
+	"frame": {"x":111,"y":0,"w":108,"h":108},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":108,"h":108},
+	"sourceSize": {"w":108,"h":108}
 },
 "EerieQuiet.png":
 {
-	"frame": {"x":518,"y":0,"w":256,"h":198},
+	"frame": {"x":259,"y":201,"w":256,"h":198},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":256,"h":198},
 	"sourceSize": {"w":256,"h":198}
 },
+"EerieQuietMicro.png":
+{
+	"frame": {"x":222,"y":0,"w":108,"h":108},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":108,"h":108},
+	"sourceSize": {"w":108,"h":108}
+},
 "EldrenwoodVillage.png":
 {
-	"frame": {"x":777,"y":0,"w":177,"h":256},
+	"frame": {"x":1036,"y":402,"w":177,"h":256},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":177,"h":256},
@@ -34,91 +58,187 @@
 },
 "EldrenwoodVillageBack.png":
 {
-	"frame": {"x":957,"y":0,"w":177,"h":256},
+	"frame": {"x":1216,"y":402,"w":177,"h":256},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":177,"h":256},
 	"sourceSize": {"w":177,"h":256}
+},
+"EldrenwoodVillageBackMicro.png":
+{
+	"frame": {"x":333,"y":0,"w":108,"h":108},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":108,"h":108},
+	"sourceSize": {"w":108,"h":108}
 },
 "EldrenwoodVillageDeckBack.png":
 {
-	"frame": {"x":1137,"y":0,"w":177,"h":256},
+	"frame": {"x":1396,"y":402,"w":177,"h":256},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":177,"h":256},
 	"sourceSize": {"w":177,"h":256}
 },
+"EldrenwoodVillageDeckBackMicro.png":
+{
+	"frame": {"x":444,"y":0,"w":108,"h":108},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":108,"h":108},
+	"sourceSize": {"w":108,"h":108}
+},
+"EldrenwoodVillageMicro.png":
+{
+	"frame": {"x":555,"y":0,"w":108,"h":108},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":108,"h":108},
+	"sourceSize": {"w":108,"h":108}
+},
 "ElmerWallace.png":
 {
-	"frame": {"x":1317,"y":0,"w":256,"h":198},
+	"frame": {"x":518,"y":201,"w":256,"h":198},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":256,"h":198},
 	"sourceSize": {"w":256,"h":198}
+},
+"ElmerWallaceMicro.png":
+{
+	"frame": {"x":666,"y":0,"w":108,"h":108},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":108,"h":108},
+	"sourceSize": {"w":108,"h":108}
 },
 "FullMoon.png":
 {
-	"frame": {"x":1576,"y":0,"w":256,"h":198},
+	"frame": {"x":777,"y":201,"w":256,"h":198},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":256,"h":198},
 	"sourceSize": {"w":256,"h":198}
+},
+"FullMoonMicro.png":
+{
+	"frame": {"x":777,"y":0,"w":108,"h":108},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":108,"h":108},
+	"sourceSize": {"w":108,"h":108}
 },
 "JohnHadaway.png":
 {
-	"frame": {"x":0,"y":259,"w":256,"h":198},
+	"frame": {"x":1036,"y":201,"w":256,"h":198},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":256,"h":198},
 	"sourceSize": {"w":256,"h":198}
+},
+"JohnHadawayMicro.png":
+{
+	"frame": {"x":888,"y":0,"w":108,"h":108},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":108,"h":108},
+	"sourceSize": {"w":108,"h":108}
 },
 "LilMarie.png":
 {
-	"frame": {"x":259,"y":259,"w":256,"h":198},
+	"frame": {"x":1295,"y":201,"w":256,"h":198},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":256,"h":198},
 	"sourceSize": {"w":256,"h":198}
+},
+"LilMarieMicro.png":
+{
+	"frame": {"x":999,"y":0,"w":108,"h":108},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":108,"h":108},
+	"sourceSize": {"w":108,"h":108}
 },
 "OldForestRd.png":
 {
-	"frame": {"x":518,"y":259,"w":256,"h":198},
+	"frame": {"x":0,"y":402,"w":256,"h":198},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":256,"h":198},
 	"sourceSize": {"w":256,"h":198}
+},
+"OldForestRdMicro.png":
+{
+	"frame": {"x":1221,"y":0,"w":108,"h":108},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":108,"h":108},
+	"sourceSize": {"w":108,"h":108}
 },
 "OlPegSimmons.png":
 {
-	"frame": {"x":777,"y":259,"w":256,"h":198},
+	"frame": {"x":1554,"y":201,"w":256,"h":198},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":256,"h":198},
 	"sourceSize": {"w":256,"h":198}
+},
+"OlPegSimmonsMicro.png":
+{
+	"frame": {"x":1110,"y":0,"w":108,"h":108},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":108,"h":108},
+	"sourceSize": {"w":108,"h":108}
 },
 "SamRichards.png":
 {
-	"frame": {"x":1036,"y":259,"w":256,"h":198},
+	"frame": {"x":259,"y":402,"w":256,"h":198},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":256,"h":198},
 	"sourceSize": {"w":256,"h":198}
+},
+"SamRichardsMicro.png":
+{
+	"frame": {"x":1332,"y":0,"w":108,"h":108},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":108,"h":108},
+	"sourceSize": {"w":108,"h":108}
 },
 "SheriffSmithy.png":
 {
-	"frame": {"x":1295,"y":259,"w":256,"h":198},
+	"frame": {"x":518,"y":402,"w":256,"h":198},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":256,"h":198},
 	"sourceSize": {"w":256,"h":198}
 },
+"SheriffSmithyMicro.png":
+{
+	"frame": {"x":1443,"y":0,"w":108,"h":108},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":108,"h":108},
+	"sourceSize": {"w":108,"h":108}
+},
 "TomBarton.png":
 {
-	"frame": {"x":1554,"y":259,"w":256,"h":198},
+	"frame": {"x":777,"y":402,"w":256,"h":198},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":256,"h":198},
 	"sourceSize": {"w":256,"h":198}
+},
+"TomBartonMicro.png":
+{
+	"frame": {"x":1554,"y":0,"w":108,"h":108},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":108,"h":108},
+	"sourceSize": {"w":108,"h":108}
 }},
 "meta": {
 	"app": "https://www.codeandweb.com/texturepacker",
@@ -127,6 +247,6 @@
 	"format": "RGBA8888",
 	"size": {"w":2048,"h":2048},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:c8ee43d2cba090f5e127b6984e6133ed:34ffe6a26f4976aaa8cf353c9d231c5b:24a0f7a790c5bf289fc23a31384585c5$"
+	"smartupdate": "$TexturePacker:SmartUpdate:7ef03a09b33f5c35a6f92186c647fc3e:abad53a2d0a88acfac027da2c8f93c51:24a0f7a790c5bf289fc23a31384585c5$"
 }
 }
