@@ -8,7 +8,7 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":177,"h":256},
 	"sourceSize": {"w":177,"h":256}
 },
-"SphereCharacter.png":
+"EldrenwoodVillageDeckBack.png":
 {
 	"frame": {"x":180,"y":0,"w":177,"h":256},
 	"rotated": false,
@@ -16,7 +16,7 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":177,"h":256},
 	"sourceSize": {"w":177,"h":256}
 },
-"TheBaronessCharacter.png":
+"SphereCharacter.png":
 {
 	"frame": {"x":360,"y":0,"w":177,"h":256},
 	"rotated": false,
@@ -24,9 +24,17 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":177,"h":256},
 	"sourceSize": {"w":177,"h":256}
 },
-"TheMidnightBazaarDeckBack.png":
+"TheBaronessCharacter.png":
 {
 	"frame": {"x":540,"y":0,"w":177,"h":256},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":177,"h":256},
+	"sourceSize": {"w":177,"h":256}
+},
+"TheMidnightBazaarDeckBack.png":
+{
+	"frame": {"x":720,"y":0,"w":177,"h":256},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":177,"h":256},
@@ -39,6 +47,6 @@
 	"format": "RGBA8888",
 	"size": {"w":1024,"h":1024},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:7ca691b8ba82cc36ae07ae398428c019:9af304502443127b7af2c99b44637c6e:4ee285c32a91b7652e02ac049f918b2a$"
+	"smartupdate": "$TexturePacker:SmartUpdate:fd576c4479fc6f41493dbc2631eaf9b4:accf6ba5b0ecf551e9fbdf55f36f5be6:4ee285c32a91b7652e02ac049f918b2a$"
 }
 }

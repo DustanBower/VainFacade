@@ -88,9 +88,17 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":256,"h":198},
 	"sourceSize": {"w":256,"h":198}
 },
+"HotPursuitMicro.png":
+{
+	"frame": {"x":777,"y":259,"w":108,"h":108},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":108,"h":108},
+	"sourceSize": {"w":108,"h":108}
+},
 "LookingOut.png":
 {
-	"frame": {"x":777,"y":259,"w":256,"h":198},
+	"frame": {"x":888,"y":259,"w":256,"h":198},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":256,"h":198},
@@ -98,7 +106,7 @@
 },
 "PaperTrail.png":
 {
-	"frame": {"x":1036,"y":259,"w":256,"h":198},
+	"frame": {"x":1147,"y":259,"w":256,"h":198},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":256,"h":198},
@@ -106,7 +114,7 @@
 },
 "RidingADesk.png":
 {
-	"frame": {"x":1295,"y":259,"w":256,"h":198},
+	"frame": {"x":1406,"y":259,"w":256,"h":198},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":256,"h":198},
@@ -114,7 +122,7 @@
 },
 "S9PServicePistol.png":
 {
-	"frame": {"x":1554,"y":259,"w":256,"h":198},
+	"frame": {"x":1665,"y":259,"w":256,"h":198},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":256,"h":198},
@@ -160,17 +168,33 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":256,"h":198},
 	"sourceSize": {"w":256,"h":198}
 },
+"UpdatedProfileMicro.png":
+{
+	"frame": {"x":1295,"y":460,"w":108,"h":108},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":108,"h":108},
+	"sourceSize": {"w":108,"h":108}
+},
 "WitnessStatements.png":
 {
-	"frame": {"x":1295,"y":460,"w":256,"h":198},
+	"frame": {"x":1406,"y":460,"w":256,"h":198},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":256,"h":198},
 	"sourceSize": {"w":256,"h":198}
 },
+"WitnessStatementsMicro.png":
+{
+	"frame": {"x":1665,"y":460,"w":108,"h":108},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":108,"h":108},
+	"sourceSize": {"w":108,"h":108}
+},
 "WordOnTheStreet.png":
 {
-	"frame": {"x":1554,"y":460,"w":256,"h":198},
+	"frame": {"x":1776,"y":460,"w":256,"h":198},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":256,"h":198},
@@ -183,6 +207,6 @@
 	"format": "RGBA8888",
 	"size": {"w":2048,"h":2048},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:8cefdb238705f4c297afc246f13ee6f7:d407cf95299d9b8cb4c9dbbcf0de0eb1:1125931fb5e0ede97a5149a7b10e145e$"
+	"smartupdate": "$TexturePacker:SmartUpdate:be59d17ee94a9935b27c1bfbd7a112d4:64e42bdf61390fc0202d17243774b757:1125931fb5e0ede97a5149a7b10e145e$"
 }
 }
