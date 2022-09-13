@@ -1,0 +1,526 @@
+{
+	"name": "Grandfather",
+	"kind": "Villain",
+	"initialCardIdentifiers": [
+		"GrandfatherCharacter"
+	],
+	"cards": [
+		{
+			"identifier": "GrandfatherCharacter",
+			"count": 1,
+			"title": "Grandfather",
+			"keywords": [
+				"villain",
+				"covert"
+			],
+			"body": "Hidden Machinations",
+			"backgroundColor": "FFD407",
+			"character": true,
+			"hitpoints": 60,
+			"nemesisIdentifiers": [
+				""
+			],
+			"setup": [
+				"Put [i]Arrow of Time[/i] into play. Reveal cards from the top of the villain deck until a Design and Fulcrum are revealed. Put the first revealed Design and Fulcrum into play. Shuffle the rest into the villain deck."
+			],
+			"gameplay": [
+				"{Grandfather} is immune to damage.",
+				"When there is only 1 villain Design in play, it is indestructible.",
+				"When there are 24 or more tokens on [i]Arrow of Time[/i], {Grandfather} controls the timeline. [b]The heroes lose.[/b]",
+				"At the end of each turn, if there are {H + 1} or more environment cards in the trash, each player may discard any number of cards. If {H} or more cards are discarded this way, flip {Grandfather}'s character cards."
+			],
+			"advanced": [
+				"At the end of the villain turn, discard the top 2 cards of each hero deck."
+			],
+			"icons": [
+				"ImmuneToDamage",
+				"Indestructible",
+				"LoseTheGame",
+				"Discard"
+			],
+			"advancedIcons": [
+				""
+			],
+			"flippedBody": "Exposed Power Source",
+			"flippedKeywords": [
+				"villain"
+			],
+			"flippedGameplay": [
+				"When there is only 1 villain Design in play, it is indestructible.",
+				"When there are 24 or more tokens on [i]Arrow of Time[/i], {Grandfather} controls the timeline. [b]The heroes lose.[/b]",
+				"At the start of each player's turn, that player may discard any number of cards. For each card discarded this way, increase damage dealt to {Grandfather} by 1 this turn.",
+				"At the end of the villain turn, {Grandfather} deals each hero 3 energy damage."
+			],
+			"flippedAdvanced": [
+				"Increase damage dealt to hero targets by 1."
+			],
+			"flippedIcons": [
+				"Indestructible",
+				"LoseTheGame",
+				"EndOfTurnAction",
+				"DealDamageEnergy"
+			],
+			"flippedAdvancedIcons": [
+				""
+			],
+			"difficulty": 2,
+			"openingLines": {
+				"default": ""
+			}
+		},
+		{
+			"identifier": "FZGRayGun",
+			"count": 1,
+			"title": "4FZG Ray Gun",
+			"keywords": [
+				"device"
+			],
+			"hitpoints": 12,
+			"body": [
+				"When this card enters play, if {Grandfather} is Covert, play the top 2 cards of the villain deck and destroy this card.",
+				"At the end of the villain turn, {Grandfather} deals the hero target with the highest HP {H + 1} irreducible energy damage."
+			],
+			"icons": [
+				"PlayCardNow",
+				"DestroySelf",
+				"EndOfTurnAction",
+				"DealDamageEnergy"
+			],
+			"flavorQuotes": [
+				{
+					"identifier": "Grandfather",
+					"text": "Well, heavens, this just{BR}won't do at all! Fortunately, I{BR}came prepared."
+				}
+			],
+			"flavorReference": "Grandfather, Division X #19"
+		},
+		{
+			"identifier": "AcceleratedTimetable",
+			"count": 1,
+			"title": "Accelerated Timetable",
+			"keywords": [
+				"ongoing"
+			],
+			"body": [
+				"When this card enters play, play the top card of the villain deck.",
+				"At the start of the villain turn, play the top 2 cards of the villain deck and destroy this card."
+			],
+			"icons": [
+				"PlayCardNow",
+				"StartOfTurnAction",
+				"DestroySelf"
+			],
+			"flavorQuotes": [
+				{
+					"identifier": "Grandfather",
+					"text": "If you don't mind me saying,{BR}Baroness Bogozi, what you really need{BR}is more time..."
+				}
+			],
+			"flavorReference": "Grandfather, Repeating Yesterday One-Shot"
+		},
+		{
+			"identifier": "ArrowOfTime",
+			"count": 1,
+			"title": "Arrow of Time",
+			"keywords": [
+				"timeline"
+			],
+			"body": [
+				"This card is indestructible.",
+				"The first time each turn each villain card discards a card from a hero's deck, that hero may destroy 1 of their Ongoing or Equipment cards. If no card is destroyed this way, add a token to this card.",
+				"When a hero deck becomes empty, add a token to this card and put the bottom 5 cards of that deck's trash on top of the deck."
+			],
+			"icons": [
+				"Indestructible",
+				"AddTokens",
+				"Manipulate"
+			],
+			"flavorQuotes": [
+				{
+					"identifier": "Doctor Falls",
+					"text": "The amount of tachyons that man{BR}emits could power Bastion City!"
+				}
+			],
+			"flavorReference": "Doctor Falls, Echoes of X51 #8"
+		},
+		{
+			"identifier": "BendingTheRules",
+			"count": 1,
+			"title": "Bending the Rules",
+			"keywords": [
+				"paradox",
+				"design"
+			],
+			"hitpoints": 12,
+			"body": [
+				"When this card is dealt damage, {Grandfather} deals himself X energy damage, where X = the damage this card takes this way.",
+				"At the end of the villain turn, discard the top card of the villain deck. If a target is discarded this way, play the top card of the villain deck. Otherwise, discard the top 5 cards of each hero deck."
+			],
+			"icons": [
+				"DealDamageEnergy",
+				"EndOfTurnAction",
+				"PlayCardNow",
+				"Discard"
+			],
+			"flavorQuotes": [
+				{
+					"identifier": "Grandfather",
+					"text": "Oh, shoot! Not again..."
+				}
+			],
+			"flavorReference": "Grandfather, Division X #21"
+		},
+		{
+			"identifier": "CausalCascade",
+			"count": 1,
+			"title": "Causal Cascade",
+			"keywords": [
+				"one-shot"
+			],
+			"body": [
+				"Shuffle the villain trash into the villain deck.",
+				"Reveal cards from the top of the villain deck until a Fulcrum is revealed. Put it into play.",
+				"Shuffle the other revealed cards and this card into the villain deck."
+			],
+			"icons": [
+				"Search"
+			],
+			"flavorQuotes": [
+				{
+					"identifier": "Friday",
+					"text": "The timeline resists{BR}alterations. It's only malleable at{BR}weak points. The more weak points,{BR}the easier the change."
+				}
+			],
+			"flavorReference": "Friday, Friday #31"
+		},
+		{
+			"identifier": "ConfluenceOfEvents",
+			"count": 2,
+			"title": "Confluence of Events",
+			"keywords": [
+				"one-shot"
+			],
+			"body": [
+				"Play the top card of the environment deck.",
+				"Reveal cards from the top of the villain deck until a target is revealed. Put it into play. Discard the rest."
+			],
+			"icons": [
+				"PlayCardNow",
+				"Search"
+			],
+			"flavorQuotes": [
+				{
+					"identifier": "Sidewinder",
+					"text": "Friday's in town. Start{BR}looking out for Grandfather.{BR}Things are about to go wrong."
+				}
+			],
+			"flavorReference": "Sidewinder, Midnight Vigil #57"
+		},
+		{
+			"identifier": "CountingDown",
+			"count": 1,
+			"title": "Counting Down",
+			"keywords": [
+				"ongoing",
+				"design"
+			],
+			"body": [
+				"At the end of the villain turn, if there are fewer than 2 non-Covert non-hero targets in play, play the top card of the environment deck.",
+				"At the end of the villain turn, the non-hero target with the second highest HP deals the 2 hero targets with the highest HP {H} melee damage each."
+			],
+			"icons": [
+				"EndOfTurnAction",
+				"PlayCardNow",
+				"DealDamageMelee"
+			],
+			"flavorQuotes": [
+				{
+					"identifier": "Grandfather",
+					"text": "I'm very sorry about your{BR}friends, but I'm glad you're here with me.{BR}The timeline is almost set. Be a doll and sit{BR}this one out? For your old man?"
+				}
+			],
+			"flavorReference": "Grandfather, Back to the Beginning One-Shot"
+		},
+		{
+			"identifier": "DisasterScenario",
+			"count": 1,
+			"title": "Disaster Scenario",
+			"keywords": [
+				"fulcrum"
+			],
+			"body": [
+				"This card is indestructible while there are cards in the environment deck. When the environment deck is empty, destroy this card. Increase damage dealt by environment cards by 2.",
+				"At the end of the villain turn, discard the top card of the environment deck. If a target is discarded this way, play it. Otherwise, discard the top 5 cards of each hero deck."
+			],
+			"icons": [
+				"Indestructible",
+				"IncreaseDamageDealt",
+				"EndOfTurnAction",
+				"Discard"
+			],
+			"flavorQuotes": [
+				{
+					"identifier": "Gadhavi",
+					"text": "{sigh} I guess{BR}my vacation's over."
+				},
+				{
+					"identifier": "Grandfather",
+					"text": "Oh, I should think so!{BR}Everything goes wrong in{BR}about 5 minutes."
+				}
+			],
+			"flavorReference": "Strange Stories #470"
+		},
+		{
+			"identifier": "FallbackStrategy",
+			"count": 1,
+			"title": "Fallback Strategy",
+			"keywords": [
+				"one-shot"
+			],
+			"body": [
+				"Reveal cards from the top of the villain deck until a Design is revealed. Put it into play. Discard the rest."
+			],
+			"icons": [
+				"Search"
+			],
+			"flavorQuotes": [
+				{
+					"identifier": "Grandfather",
+					"text": "Golly Ned! That did not{BR}go according to plan. Plan B it{BR}is, then."
+				}
+			],
+			"flavorReference": "Grandfather, Keeping Time #10"
+		},
+		{
+			"identifier": "Hunter",
+			"count": 3,
+			"title": "Hunter",
+			"keywords": [
+				"minion"
+			],
+			"hitpoints": 8,
+			"body": [
+				"When this card enters play, increase damage dealt by this card by 2 this turn.",
+				"At the end of the villain turn, this card deals the hero target with the lowest HP {H - 2} melee damage."
+			],
+			"icons": [
+				"IncreaseDamageDealt",
+				"EndOfTurnAction",
+				"DealDamageMelee"
+			],
+			"flavorQuotes": [
+				{
+					"identifier": "Push",
+					"text": "You always said you{BR}wanted a closer look at{BR}a Dracimp infiltrator!"
+				},
+				{
+					"identifier": "Forge",
+					"text": "This is [b]NOT[/b] what I had in mind!"
+				}
+			],
+			"flavorReference": "Bulwark #38"
+		},
+		{
+			"identifier": "Leader",
+			"count": 1,
+			"title": "Leader",
+			"keywords": [
+				"commander"
+			],
+			"hitpoints": 10,
+			"body": [
+				"Reduce damage dealt by hero targets by 1.",
+				"At the end of the villain turn, this card deals the hero target with the highest HP {H - 2} projectile damage."
+			],
+			"icons": [
+				"ReduceDamageDealt",
+				"EndOfTurnAction",
+				"DealDamageProjectile"
+			],
+			"flavorQuotes": [
+				{
+					"identifier": "Sheriff Smithy",
+					"text": "Now, I don't want any more{BR}trouble from you folks. Come on out,{BR}now, or we're gonna have a problem."
+				}
+			],
+			"flavorReference": "Sheriff Smithy, Grim Tidings: Killing Fields"
+		},
+		{
+			"identifier": "Minion",
+			"count": 4,
+			"title": "Minion",
+			"keywords": [
+				"minion"
+			],
+			"hitpoints": 6,
+			"body": [
+				"When this card enters play, if there are no other non-Covert villain targets in play, play the top card of the environment deck and the villain deck, then destroy this card.",
+				"At the end of the villain turn, this card deals the hero target with the highest HP {H - 1} projectile damage."
+			],
+			"icons": [
+				"PlayCardNow",
+				"DestroySelf",
+				"EndOfTurnAction",
+				"DealDamageProjectile"
+			],
+			"flavorQuotes": [
+				{
+					"identifier": "Friday",
+					"text": "He'll manipulate{BR}events to get reinforcements if{BR}he can, but he'll pull them through{BR}time if he must."
+				}
+			],
+			"flavorReference": "Friday, Midnight Vigil #59"
+		},
+		{
+			"identifier": "ObstacleToProgress",
+			"count": 1,
+			"title": "Obstacle to Progress",
+			"keywords": [
+				"fulcrum"
+			],
+			"body": [
+				"This card is indestructible while a target is next to it. Play this card next to the hero with the highest HP.",
+				"The first time each turn each villain card would deal damage, redirect that damage to the target next to this card. Any player may discard 1 card to redirect that damage to one of their targets instead."
+			],
+			"icons": [
+				"Indestructible",
+				"RedirectDamage",
+				"Discard"
+			],
+			"flavorQuotes": [
+				{
+					"identifier": "Grandfather",
+					"text": "I really despise violence, but I see{BR}no way for Bastion City to survive Sphere,{BR}without even getting into what comes next."
+				}
+			],
+			"flavorReference": "Grandfather, Sphere: Grandfather Paradox #3"
+		},
+		{
+			"identifier": "OverTheLine",
+			"count": 1,
+			"title": "Over the Line",
+			"keywords": [
+				"ongoing"
+			],
+			"body": [
+				"Damage dealt by {Grandfather} is irreducible.",
+				"When this card enters play, discard the top 5 cards from each hero deck, then play the top card of the villain deck.",
+				"At the start of the villain turn, destroy this card."
+			],
+			"icons": [
+				"Discard",
+				"PlayCardNow",
+				"MakeDamageIrreducible",
+				"DestroySelf"
+			],
+			"flavorQuotes": [
+				{
+					"identifier": "Grandfather",
+					"text": "Now that is quite enough! Get{BR}away from my daughter!"
+				}
+			],
+			"flavorReference": "Grandfather, Friday #15"
+		},
+		{
+			"identifier": "PickingUpThePieces",
+			"count": 2,
+			"title": "Picking Up the Pieces",
+			"keywords": [
+				"one-shot"
+			],
+			"body": [
+				"Shuffle the villain trash and reveal cards from it until a target is revealed. Put it into play.",
+				"If no targets entered play this way, play the top card of the villain deck."
+			],
+			"icons": [
+				"Search",
+				"PlayCardNow"
+			],
+			"flavorQuotes": [
+				{
+					"identifier": "Reaper 3",
+					"text": "Why... have you...{BR}repaired...me? I...{BR}failed."
+				},
+				{
+					"identifier": "Grandfather",
+					"text": "Me too, little one. Me too. You're{BR}going to be fine. I'll look after{BR}you."
+				}
+			],
+			"flavorReference": "Sphere: Grandfather Paradox #12"
+		},
+		{
+			"identifier": "QuietMeddling",
+			"count": 1,
+			"title": "Quiet Meddling",
+			"keywords": [
+				"ongoing",
+				"design"
+			],
+			"body": [
+				"When {Grandfather} would deal a hero target energy damage, that target's player may discard any number of cards from the top of their deck. Reduce that damage by 1 for each card discarded this way.",
+				"At the end of the villain turn, {Grandfather} deals each hero 2 energy damage."
+			],
+			"icons": [
+				"Discard",
+				"ReduceDamageDealt",
+				"EndOfTurnAction",
+				"DealDamageEnergy"
+			],
+			"flavorQuotes": [
+				{
+					"identifier": "Node",
+					"text": "He's meddling{BR}from the sidelines... he...{BR}has a soft heart... He doesn't{BR}want to hurt anyone."
+				}
+			],
+			"flavorReference": "Node, Push #62"
+		},
+		{
+			"identifier": "StrangePocketwatch",
+			"count": 1,
+			"title": "Strange Pocketwatch",
+			"keywords": [
+				"device",
+				"covert"
+			],
+			"hitpoints": 24,
+			"body": [
+				"The first time each turn a card enters play from the top of the environment deck, play the top card of the villain deck."
+			],
+			"icons": [
+				"PlayCardNow"
+			],
+			"flavorQuotes": [
+				{
+					"identifier": "Geyser",
+					"text": "I know we said we wouldn't kill him, but{BR}this... We can use that converter and this watch{BR}to destroy him forever! It's the right thing to-"
+				}
+			],
+			"flavorReference": "Last words of Geyser, Back to the Beginning One-Shot"
+		},
+		{
+			"identifier": "VillainShowdown",
+			"count": 1,
+			"title": "Villain Showdown",
+			"keywords": [
+				"fulcrum"
+			],
+			"hitpoints": 40,
+			"body": [
+				"When this card enters play, select a villain from the box. Treat this card as having the same name and nemesis. This card is indestructible while it has 1 or more HP.",
+				"At the end of the villain turn, this card deals the hero target with the highest HP {H + 1} melee damage."
+			],
+			"icons": [
+				"Indestructible",
+				"EndOfTurnAction",
+				"DealDamageMelee"
+			],
+			"flavorQuotes": [
+				{
+					"identifier": "Scavenger",
+					"text": "Dracimp infiltrator: Reaper series{BR}prototype combat mimic. Only unit that{BR}survived. Dangerously unstable, Gramps.{BR}Power up at your own risk."
+				}
+			],
+			"flavorReference": "Scavenger, Sphere: Grandfather Paradox #2"
+		}
+	]
+}
