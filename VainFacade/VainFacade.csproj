@@ -73,6 +73,9 @@
     <Compile Include="EldrenwoodVillage\SamRichardsCardController.cs" />
     <Compile Include="EldrenwoodVillage\SheriffSmithyCardController.cs" />
     <Compile Include="EldrenwoodVillage\TomBartonCardController.cs" />
+    <Compile Include="Grandfather\ArrowOfTimeCardController.cs" />
+    <Compile Include="Grandfather\GrandfatherCharacterCardController.cs" />
+    <Compile Include="Grandfather\GrandfatherUtilityCardController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Sphere\AlienHeartCardController.cs" />
     <Compile Include="Sphere\AlterationWardCardController.cs" />

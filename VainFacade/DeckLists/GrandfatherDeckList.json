@@ -141,7 +141,16 @@
 					"text": "The amount of tachyons that man{BR}emits could power Bastion City!"
 				}
 			],
-			"flavorReference": "Doctor Falls, Echoes of X51 #8"
+			"flavorReference": "Doctor Falls, Echoes of X51 #8",
+			"tokenPools": [
+				{
+					"identifier": "ArrowOfTimePool",
+					"name": "Arrow of Time's Token Pool",
+					"initialValue": 0,
+					"minimumValue": 0,
+					"color": "DDD331"
+				}
+			]
 		},
 		{
 			"identifier": "BendingTheRules",
