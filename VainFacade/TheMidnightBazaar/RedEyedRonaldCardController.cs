@@ -29,7 +29,7 @@ namespace VainFacadePlaytest.TheMidnightBazaar
         {
             base.AddTriggers();
             // "When this card would deal damage, if [i]The Blinded Queen[/i] is in play, play the top card of the environment deck instead."
-            AddTrigger((DealDamageAction dda) => dda.DamageSource != null && dda.DamageSource.Card == base.Card && dda.Amount > 0 && IsBlindedQueenInPlay(), PlayEnvironmentCardInsteadResponse, new TriggerType[] { TriggerType.WouldBeDealtDamage, TriggerType.CancelAction, TriggerType.PlayCard }, TriggerTiming.Before);
+            AddTrigger((DealDamageAction dda) => dda.DamageSource != null && dda.DamageSource.IsCard && dda.DamageSource.Card == base.Card && dda.Amount > 0 && IsBlindedQueenInPlay(), PlayEnvironmentCardInsteadResponse, new TriggerType[] { TriggerType.WouldBeDealtDamage, TriggerType.CancelAction, TriggerType.PlayCard }, TriggerTiming.Before);
             // "At the end of the environment turn, this card deals the hero target with the highest HP {H + 2} melee damage."
             AddEndOfTurnTrigger((TurnTaker tt) => tt.IsEnvironment, DamageWithRedirectResponse, TriggerType.DealDamage);
             // "If a player puts a card from their hand under [i]The Empty Well[/i], redirect that damage to a target other than this card."
@@ -38,7 +38,7 @@ namespace VainFacadePlaytest.TheMidnightBazaar
 
         private bool EndOfTurnDamageCriteria(DealDamageAction dda)
         {
-            return dda.DamageSource != null && dda.DamageSource.Card == base.Card && dda.OriginalAmount == H + 2 && dda.OriginalDamageType == DamageType.Melee && dda.CardSource.Card == base.Card && Journal.GetCardPropertiesBoolean(base.Card, didMoveToRedirect) == true;
+            return dda.DamageSource != null && dda.DamageSource.IsCard && dda.DamageSource.Card == base.Card && dda.OriginalAmount == H + 2 && dda.OriginalDamageType == DamageType.Melee && dda.CardSource.Card == base.Card && Journal.GetCardPropertiesBoolean(base.Card, didMoveToRedirect) == true;
         }
 
         private IEnumerator PlayEnvironmentCardInsteadResponse(DealDamageAction dda)

@@ -101,7 +101,7 @@ namespace VainFacadePlaytest.TheBaroness
                 {
                     // Front side, Advanced:
                     // "Increase damage dealt by {TheBaroness} by 1."
-                    base.AddSideTrigger(AddIncreaseDamageTrigger((DealDamageAction dda) => dda.DamageSource != null && dda.DamageSource.Card == base.Card, (DealDamageAction dda) => 1));
+                    base.AddSideTrigger(AddIncreaseDamageTrigger((DealDamageAction dda) => dda.DamageSource != null && dda.DamageSource.IsCard && dda.DamageSource.Card == base.Card, (DealDamageAction dda) => 1));
                 }
             }
             else

@@ -46,8 +46,8 @@ namespace VainFacadePlaytest.TheBaroness
             base.AddTriggers();
             // "When a hero target would deal damage, increase that damage by 3 and redirect it to the hero target with the highest HP."
             // "Reduce damage dealt this way by 1 for each time damage has been redirected this way."
-            AddIncreaseDamageTrigger((DealDamageAction dda) => dda.DamageSource != null && dda.DamageSource.Card.IsHero && dda.DamageSource.Card.IsTarget, 3);
-            AddTrigger((DealDamageAction dda) => dda.DamageSource != null && dda.DamageSource.Card.IsHero && dda.DamageSource.Card.IsTarget, RedirectReduceResponse, TriggerType.RedirectDamage, TriggerTiming.Before);
+            AddIncreaseDamageTrigger((DealDamageAction dda) => dda.DamageSource != null && dda.DamageSource.IsCard && dda.DamageSource.Card.IsHero && dda.DamageSource.Card.IsTarget, 3);
+            AddTrigger((DealDamageAction dda) => dda.DamageSource != null && dda.DamageSource.IsCard && dda.DamageSource.Card.IsHero && dda.DamageSource.Card.IsTarget, RedirectReduceResponse, TriggerType.RedirectDamage, TriggerTiming.Before);
             // "At the start of the villain turn, destroy this card."
             AddStartOfTurnTrigger((TurnTaker tt) => tt == base.TurnTaker, (PhaseChangeAction pca) => base.GameController.DestroyCard(DecisionMaker, base.Card, responsibleCard: base.Card, cardSource: GetCardSource()), TriggerType.DestroySelf);
         }

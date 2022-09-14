@@ -32,7 +32,7 @@ namespace VainFacadePlaytest.Burgess
         {
             SetCardPropertyToTrueIfRealAction(FirstDamageThisTurn);
             // "... this card may deal the source of that damage 1 projectile damage."
-            if (dda.DamageSource.IsCard && dda.DamageSource.Card.IsTarget && dda.DamageSource.Card.IsInPlayAndHasGameText)
+            if (dda.DamageSource != null && dda.DamageSource.IsCard && dda.DamageSource.Card.IsTarget && dda.DamageSource.Card.IsInPlayAndHasGameText)
             {
                 Card attacker = dda.DamageSource.Card;
                 IEnumerator damageCoroutine = DealDamage(base.Card, attacker, 1, DamageType.Projectile, optional: true, isCounterDamage: true, cardSource: GetCardSource());

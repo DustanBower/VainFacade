@@ -21,7 +21,7 @@ namespace VainFacadePlaytest.TheMidnightBazaar
         {
             base.AddTriggers();
             // "Reduce damage dealt by this card to 0."
-            AddReduceDamageToSetAmountTrigger((DealDamageAction dda) => dda.DamageSource != null && dda.DamageSource.Card == base.Card, 0);
+            AddReduceDamageToSetAmountTrigger((DealDamageAction dda) => dda.DamageSource != null && dda.DamageSource.IsCard && dda.DamageSource.Card == base.Card, 0);
         }
     }
 }

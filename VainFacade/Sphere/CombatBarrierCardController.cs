@@ -71,7 +71,7 @@ namespace VainFacadePlaytest.Sphere
         private IEnumerator RetaliateResponse(DealDamageAction dda)
         {
             // "... {Sphere} deals the source of that damage 1 energy damage."
-            if (dda.DamageSource != null && dda.DamageSource.Card != null && dda.DamageSource.Card.IsTarget)
+            if (dda.DamageSource != null && dda.DamageSource.IsCard && dda.DamageSource.Card.IsTarget)
             {
                 Card card = dda.DamageSource.Card;
                 IEnumerator damageCoroutine = base.GameController.DealDamageToTarget(new DamageSource(base.GameController, base.CharacterCard), card, 1, DamageType.Energy, cardSource: GetCardSource());

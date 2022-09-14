@@ -42,7 +42,7 @@ namespace VainFacadePlaytest.TheMidnightBazaar
             base.AddTriggers();
             // "Increase damage dealt to and by targets in this play area by 1."
             AddIncreaseDamageTrigger((DealDamageAction dda) => dda.Target.Location.HighestRecursiveLocation == base.Card.Location.HighestRecursiveLocation, (DealDamageAction dda) => 1);
-            AddIncreaseDamageTrigger((DealDamageAction dda) => dda.DamageSource != null && dda.DamageSource.Card.IsTarget && dda.DamageSource.Card.Location.HighestRecursiveLocation == base.Card.Location.HighestRecursiveLocation, (DealDamageAction dda) => 1);
+            AddIncreaseDamageTrigger((DealDamageAction dda) => dda.DamageSource != null && dda.DamageSource.IsCard && dda.DamageSource.Card.IsTarget && dda.DamageSource.Card.Location.HighestRecursiveLocation == base.Card.Location.HighestRecursiveLocation, (DealDamageAction dda) => 1);
             // "At the end of that hero's turn, they may play a card or use a power. If they do, play the top card of the environment or villain deck."
             AddEndOfTurnTrigger((TurnTaker tt) => tt == base.Card.Location.HighestRecursiveLocation.OwnerTurnTaker && !base.Card.Location.HighestRecursiveLocation.OwnerTurnTaker.ToHero().IsIncapacitatedOrOutOfGame, PlayOrPowerWithCostResponse, new TriggerType[] { TriggerType.PlayCard, TriggerType.UsePower });
         }

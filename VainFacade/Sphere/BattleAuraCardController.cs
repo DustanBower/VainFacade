@@ -21,7 +21,7 @@ namespace VainFacadePlaytest.Sphere
         {
             base.AddTriggers();
             // "Increase energy and melee damage dealt by {Sphere} by 1."
-            AddIncreaseDamageTrigger((DealDamageAction dda) => dda.DamageSource != null && dda.DamageSource.Card == base.CharacterCard && (dda.DamageType == DamageType.Energy || dda.DamageType == DamageType.Melee), 1);
+            AddIncreaseDamageTrigger((DealDamageAction dda) => dda.DamageSource != null && dda.DamageSource.IsCard && dda.DamageSource.Card == base.CharacterCard && (dda.DamageType == DamageType.Energy || dda.DamageType == DamageType.Melee), 1);
         }
     }
 }

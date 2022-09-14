@@ -27,10 +27,10 @@ namespace VainFacadePlaytest.TheMidnightBazaar
         {
             base.AddTriggers();
             // "Damage dealt by Threens is irreducible."
-            AddMakeDamageIrreducibleTrigger((DealDamageAction dda) => dda.DamageSource != null && dda.DamageSource.Card != null && IsThreen(dda.DamageSource.Card));
+            AddMakeDamageIrreducibleTrigger((DealDamageAction dda) => dda.DamageSource != null && dda.DamageSource.IsCard && IsThreen(dda.DamageSource.Card));
             // "When a Threen would deal damage, 1 player may put 2 cards from their hand or 1 hero card from play under [i]The Empty Well[/i] to redirect that damage to a non-Threen target."
-            AddTrigger((DealDamageAction dda) => dda.DamageSource != null && dda.DamageSource.Card != null && IsThreen(dda.DamageSource.Card) && IsEmptyWellInPlay(), MoveCardsToRedirectResponse, new TriggerType[] { TriggerType.MoveCard, TriggerType.RedirectDamage }, TriggerTiming.Before);
-            AddTrigger((DealDamageAction dda) => dda.DamageSource != null && dda.DamageSource.Card != null && IsThreen(dda.DamageSource.Card) && !IsEmptyWellInPlay(), EmptyWellNotInPlayResponse, TriggerType.ShowMessage, TriggerTiming.Before);
+            AddTrigger((DealDamageAction dda) => dda.DamageSource != null && dda.DamageSource.IsCard && IsThreen(dda.DamageSource.Card) && IsEmptyWellInPlay(), MoveCardsToRedirectResponse, new TriggerType[] { TriggerType.MoveCard, TriggerType.RedirectDamage }, TriggerTiming.Before);
+            AddTrigger((DealDamageAction dda) => dda.DamageSource != null && dda.DamageSource.IsCard && IsThreen(dda.DamageSource.Card) && !IsEmptyWellInPlay(), EmptyWellNotInPlayResponse, TriggerType.ShowMessage, TriggerTiming.Before);
         }
 
         public override IEnumerator Play()

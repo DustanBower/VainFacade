@@ -26,7 +26,7 @@ namespace VainFacadePlaytest.Burgess
             // "Reduce damage dealt to this card by 1."
             AddReduceDamageTrigger((Card c) => c == base.Card, 1);
             // "Once per turn when {BurgessCharacter} or a Backup deals a target damage, this card may deal that target 3 projectile damage."
-            AddTrigger((DealDamageAction dda) => !HasBeenSetToTrueThisTurn(TakenShotThisTurn) && dda.DidDealDamage && dda.Target.IsInPlayAndHasGameText && dda.DamageSource.IsCard && (dda.DamageSource.IsSameCard(base.CharacterCard) || dda.DamageSource.Card.DoKeywordsContain(BackupKeyword)), AskToTakeShotResponse, TriggerType.DealDamage, TriggerTiming.After);
+            AddTrigger((DealDamageAction dda) => !HasBeenSetToTrueThisTurn(TakenShotThisTurn) && dda.DidDealDamage && dda.Target.IsInPlayAndHasGameText && dda.DamageSource != null && dda.DamageSource.IsCard && (dda.DamageSource.IsSameCard(base.CharacterCard) || dda.DamageSource.Card.DoKeywordsContain(BackupKeyword)), AskToTakeShotResponse, TriggerType.DealDamage, TriggerTiming.After);
             AddAfterLeavesPlayAction((GameAction ga) => ResetFlagAfterLeavesPlay(TakenShotThisTurn), TriggerType.Hidden);
         }
 

@@ -25,7 +25,7 @@ namespace VainFacadePlaytest.Burgess
         {
             base.AddTriggers();
             // "When that target deals damage to a target other than the hero target with the highest HP, you may discard 2 cards. If you do, redirect that damage to the hero target with the highest HP. Reduce damage redirected this way by 1."
-            AddTrigger((DealDamageAction dda) => dda.DamageSource.IsCard && dda.DamageSource.Card == GetCardThisCardIsNextTo() && (!CanCardBeConsideredHighestHitPoints(dda.Target, (Card c) => c.IsHero && c.IsTarget) || !IsHighestHitPointsUnique((Card c) => c.IsHero)), DiscardToRedirectReduceResponse, new TriggerType[] { TriggerType.DiscardCard, TriggerType.WouldBeDealtDamage, TriggerType.RedirectDamage, TriggerType.ReduceDamage }, TriggerTiming.Before);
+            AddTrigger((DealDamageAction dda) => dda.DamageSource != null && dda.DamageSource.IsCard && dda.DamageSource.Card == GetCardThisCardIsNextTo() && (!CanCardBeConsideredHighestHitPoints(dda.Target, (Card c) => c.IsHero && c.IsTarget) || !IsHighestHitPointsUnique((Card c) => c.IsHero)), DiscardToRedirectReduceResponse, new TriggerType[] { TriggerType.DiscardCard, TriggerType.WouldBeDealtDamage, TriggerType.RedirectDamage, TriggerType.ReduceDamage }, TriggerTiming.Before);
             // "When that target leaves play, destroy this card."
             AddIfTheTargetThatThisCardIsNextToLeavesPlayDestroyThisCardTrigger();
         }

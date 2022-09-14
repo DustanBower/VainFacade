@@ -45,7 +45,7 @@ namespace VainFacadePlaytest.TheMidnightBazaar
             {
                 IncreaseDamageAction buff = (IncreaseDamageAction)gameAction;
                 //bool? flag = gameAction.DoesFirstCardAffectSecondCard((Card c) => !c.IsEnvironment, (Card c) => c == base.Card);
-                if (buff.DealDamageAction.DamageSource != null && buff.DealDamageAction.DamageSource.Card == base.Card && buff.CardSource != null && buff.CardSource.Card != null && !buff.CardSource.Card.IsEnvironment)
+                if (buff.DealDamageAction.DamageSource != null && buff.DealDamageAction.DamageSource.IsCard && buff.DealDamageAction.DamageSource.Card == base.Card && buff.CardSource != null && buff.CardSource.Card != null && !buff.CardSource.Card.IsEnvironment)
                 {
                     return false;
                 }

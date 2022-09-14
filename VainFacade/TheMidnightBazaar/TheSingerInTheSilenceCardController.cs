@@ -27,7 +27,7 @@ namespace VainFacadePlaytest.TheMidnightBazaar
             base.AddTriggers();
             // "Increase damage dealt by Threens by the number of Threens in play."
             Func<DealDamageAction, int> amountToIncrease = (DealDamageAction dda) => FindCardsWhere((Card c) => IsThreen(c) && c.IsInPlayAndHasGameText).Count();
-            AddIncreaseDamageTrigger((DealDamageAction dda) => dda.DamageSource.IsCard && IsThreen(dda.DamageSource.Card), amountToIncrease);
+            AddIncreaseDamageTrigger((DealDamageAction dda) => dda.DamageSource != null && dda.DamageSource.IsCard && IsThreen(dda.DamageSource.Card), amountToIncrease);
             // "At the end of the environment turn, this card deals each non-Threen target 1 sonic damage, then plays a Threen and an Unbinding from the environment trash."
             AddEndOfTurnTrigger((TurnTaker tt) => tt.IsEnvironment, SingResponse, new TriggerType[] { TriggerType.DealDamage, TriggerType.PlayCard });
             // ...

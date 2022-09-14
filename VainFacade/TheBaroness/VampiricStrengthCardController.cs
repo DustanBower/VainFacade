@@ -22,7 +22,7 @@ namespace VainFacadePlaytest.TheBaroness
         {
             base.AddTriggers();
             // "Increase melee and projectile damage dealt by villain targets by 1."
-            AddIncreaseDamageTrigger((DealDamageAction dda) => dda.DamageSource != null && dda.DamageSource.Card.IsVillainTarget && (dda.DamageType == DamageType.Melee || dda.DamageType == DamageType.Projectile), 1);
+            AddIncreaseDamageTrigger((DealDamageAction dda) => dda.DamageSource != null && dda.DamageSource.IsCard && dda.DamageSource.Card.IsVillainTarget && (dda.DamageType == DamageType.Melee || dda.DamageType == DamageType.Projectile), 1);
             // "At the end of the villain turn, {TheBaroness} deals the hero target with the highest HP {H} melee damage."
             AddDealDamageAtEndOfTurnTrigger(base.TurnTaker, base.CharacterCard, (Card c) => c.IsHero, TargetType.HighestHP, H, DamageType.Melee);
         }
