@@ -79,6 +79,7 @@
     <Compile Include="Grandfather\CausalCascadeCardController.cs" />
     <Compile Include="Grandfather\ConfluenceOfEventsCardController.cs" />
     <Compile Include="Grandfather\CountingDownCardController.cs" />
+    <Compile Include="Grandfather\DisasterScenarioCardController.cs" />
     <Compile Include="Grandfather\FallbackStrategyCardController.cs" />
     <Compile Include="Grandfather\FZGRayGunCardController.cs" />
     <Compile Include="Grandfather\GrandfatherCharacterCardController.cs" />
@@ -86,6 +87,7 @@
     <Compile Include="Grandfather\HunterCardController.cs" />
     <Compile Include="Grandfather\LeaderCardController.cs" />
     <Compile Include="Grandfather\MinionCardController.cs" />
+    <Compile Include="Grandfather\ObstacleToProgressCardController.cs" />
     <Compile Include="Grandfather\OverTheLineCardController.cs" />
     <Compile Include="Grandfather\PickingUpThePiecesCardController.cs" />
     <Compile Include="Grandfather\QuietMeddlingCardController.cs" />
