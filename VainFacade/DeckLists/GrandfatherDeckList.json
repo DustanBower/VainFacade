@@ -466,7 +466,7 @@
 				"design"
 			],
 			"body": [
-				"When {Grandfather} would deal a hero target energy damage, that target's player may discard any number of cards from the top of their deck. Reduce that damage by 1 for each card discarded this way.",
+				"When {Grandfather} would deal a hero target energy damage, that target's player may discard up to X cards from the top of their deck where X = the amount of damage. Reduce that damage by 1 for each card discarded this way.",
 				"At the end of the villain turn, {Grandfather} deals each hero 2 energy damage."
 			],
 			"icons": [
