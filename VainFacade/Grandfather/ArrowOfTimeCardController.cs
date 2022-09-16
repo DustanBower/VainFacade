@@ -44,6 +44,7 @@ namespace VainFacadePlaytest.Grandfather
             base.AddTriggers();
             // "The first time each turn each villain card discards a card from a hero's deck, that hero may destroy 1 of their Ongoing or Equipment cards. If no card is destroyed this way, add a token to this card."
             AddTrigger((DiscardCardAction dca) => dca.WasCardDiscarded && dca.CardSource != null && dca.CardSource.Card != null && dca.CardSource.Card.IsVillain && !IsPropertyTrue(GeneratePerTargetKey(FirstDiscard, dca.CardSource.Card)) && dca.Origin.IsDeck && dca.Origin.IsHero, DestroyOrAddTokenResponse, new TriggerType[] { TriggerType.DestroyCard, TriggerType.AddTokensToPool }, TriggerTiming.After);
+            ResetFlagsAfterLeavesPlay(FirstDiscard);
             // "When a hero deck becomes empty, add a token to this card and put the bottom 5 cards of that deck's trash on top of the deck."
             AddTrigger((GameAction ga) => !_reactingToEmptyDeck && FindEmptyHeroDeck() != null, AddTokenResetTrashResponse, new TriggerType[] { TriggerType.AddTokensToPool, TriggerType.MoveCard }, TriggerTiming.After);
         }
