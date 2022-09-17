@@ -18,7 +18,7 @@
     "namespace": "VainFacadePlaytest",
     "dll": "VainFacadePlaytest.dll",
     "publishedFileId": 2835111137,
-    "version": "0.5",
+    "version": "0.6",
     "color": "232370",
     "manualTags": [],
     "decks": {
@@ -27,6 +27,7 @@
 		"Sphere"
 	],
       "villains": [
+		"Grandfather",
 	    "TheBaroness"
 	],
       "teamVillains": [],

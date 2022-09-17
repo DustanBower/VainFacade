@@ -29,9 +29,7 @@
 				"When there are 24 or more tokens on [i]Arrow of Time[/i], {Grandfather} controls the timeline. [b]The heroes lose.[/b]",
 				"At the end of each turn, if there are {H + 1} or more environment cards in the trash, each player may discard any number of cards. If {H} or more cards are discarded this way, flip {Grandfather}'s character cards."
 			],
-			"advanced": [
-				"At the end of the villain turn, discard the top 2 cards of each hero deck."
-			],
+			"advanced": "At the end of the villain turn, discard the top 2 cards of each hero deck.",
 			"icons": [
 				"ImmuneToDamage",
 				"Indestructible",
@@ -51,9 +49,7 @@
 				"At the start of each player's turn, that player may discard any number of cards. For each card discarded this way, increase damage dealt to {Grandfather} by 1 this turn.",
 				"At the end of the villain turn, {Grandfather} deals each hero 3 energy damage."
 			],
-			"flippedAdvanced": [
-				"Increase damage dealt to hero targets by 1."
-			],
+			"flippedAdvanced": "Increase damage dealt to hero targets by 1.",
 			"flippedIcons": [
 				"Indestructible",
 				"LoseTheGame",
@@ -61,7 +57,7 @@
 				"DealDamageEnergy"
 			],
 			"flippedAdvancedIcons": [
-				""
+				"IncreaseDamageTaken"
 			],
 			"difficulty": 2,
 			"openingLines": {
@@ -448,7 +444,7 @@
 			"flavorQuotes": [
 				{
 					"identifier": "Reaper 3",
-					"text": "Why... have you...{BR}repaired...me? I...{BR}failed."
+					"text": "Why... have you...{BR}repaired... me? I...{BR}failed."
 				},
 				{
 					"identifier": "Grandfather",
@@ -501,7 +497,7 @@
 			"flavorQuotes": [
 				{
 					"identifier": "Geyser",
-					"text": "I know we said we wouldn't kill him, but{BR}this... We can use that converter and this watch{BR}to destroy him forever! It's the right thing to-"
+					"text": "I know we said we wouldn't kill him,{BR}but this... We can use that converter and{BR}this watch to destroy him forever! It's the{BR}right thing to-"
 				}
 			],
 			"flavorReference": "Last words of Geyser, Back to the Beginning One-Shot"
