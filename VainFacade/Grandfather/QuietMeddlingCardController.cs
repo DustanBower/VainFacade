@@ -17,6 +17,11 @@ namespace VainFacadePlaytest.Grandfather
             AllowFastCoroutinesDuringPretend = false;
         }
 
+        public override CustomDecisionText GetCustomDecisionText(IDecision decision)
+        {
+            return new CustomDecisionText("Select how many cards to discard from the top of your deck", "choosing how many cards to discard from the top of their deck", "Vote for how many cards to discard from the top of the deck", "number of cards to discard from the top of the deck");
+        }
+
         public override void AddTriggers()
         {
             base.AddTriggers();
@@ -28,10 +33,14 @@ namespace VainFacadePlaytest.Grandfather
 
         private IEnumerator DiscardCardsReduceDamageResponse(DealDamageAction dda)
         {
+            if (dda.IsPretend)
+            {
+                yield break;
+            }
             // "... that target's player may discard up to X cards from the top of their deck where X = the amount of damage."
             List<MoveCardAction> discards = new List<MoveCardAction>();
             List<SelectNumberDecision> numberDecisions = new List<SelectNumberDecision>();
-            IEnumerator decideCoroutine = base.GameController.SelectNumber(FindHeroTurnTakerController(dda.Target.Owner.ToHero()), SelectionType.DiscardFromDeck, 0, dda.Amount, storedResults: numberDecisions, cardSource: GetCardSource());
+            IEnumerator decideCoroutine = base.GameController.SelectNumber(FindHeroTurnTakerController(dda.Target.Owner.ToHero()), SelectionType.Custom, 0, dda.Amount, storedResults: numberDecisions, cardSource: GetCardSource());
             if (base.UseUnityCoroutines)
             {
                 yield return base.GameController.StartCoroutine(decideCoroutine);
@@ -41,9 +50,12 @@ namespace VainFacadePlaytest.Grandfather
                 base.GameController.ExhaustCoroutine(decideCoroutine);
             }
             SelectNumberDecision choice = numberDecisions.FirstOrDefault();
+            //Log.Debug("QuietMeddlingCardController.DiscardCardsReduceDamageResponse: choice == null: " + (choice == null).ToString());
+            //Log.Debug("QuietMeddlingCardController.DiscardCardsReduceDamageResponse: choice.SelectedNumber.HasValue: " + choice.SelectedNumber.HasValue.ToString());
             if (choice != null && choice.SelectedNumber.HasValue)
             {
                 int toDiscard = choice.SelectedNumber.Value;
+                //Log.Debug("QuietMeddlingCardController.DiscardCardsReduceDamageResponse: discarding " + toDiscard.ToString() + " card(s) from the top of " + dda.Target.Owner.Name + "'s deck");
                 IEnumerator discardCoroutine = DiscardCardsFromTopOfDeck(FindTurnTakerController(dda.Target.Owner), toDiscard, storedResults: discards, showMessage: true, responsibleTurnTaker: dda.Target.Owner);
                 if (base.UseUnityCoroutines)
                 {
@@ -56,6 +68,8 @@ namespace VainFacadePlaytest.Grandfather
             }
             // "Reduce that damage by 1 for each card discarded this way."
             int moved = GetNumberOfCardsMoved(discards);
+            //Log.Debug("QuietMeddlingCardController.DiscardCardsReduceDamageResponse: moved: " + moved.ToString());
+            //Log.Debug("QuietMeddlingCardController.DiscardCardsReduceDamageResponse: calling ReduceDamage");
             IEnumerator reduceCoroutine = base.GameController.ReduceDamage(dda, moved, null, GetCardSource());
             if (base.UseUnityCoroutines)
             {
