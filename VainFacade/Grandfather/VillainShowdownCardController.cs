@@ -32,9 +32,16 @@ namespace VainFacadePlaytest.Grandfather
             yield return SetVillainIdentity();
         }
 
+        public override CustomDecisionText GetCustomDecisionText(IDecision decision)
+        {
+            return new CustomDecisionText("Select a villain", "choosing a villain", "Vote for a villain", "a villain for Villain Showdown to copy");
+        }
+
         private IEnumerator SetVillainIdentity()
         {
+            Log.Debug("VillainShowdownCardController.SetVillainIdentity: starting");
             List<List<string>> storedResults = new List<List<string>>();
+            Log.Debug("VillainShowdownCardController.SetVillainIdentity: calling SelectVillain");
             IEnumerator selectCoroutine = SelectVillain(storedResults);
             if (base.UseUnityCoroutines)
             {
@@ -50,8 +57,17 @@ namespace VainFacadePlaytest.Grandfather
             }
             List<string> villainStats = storedResults.First();
             string villainTitle = villainStats.First();
-            List<string> villainNemesisIdentifiers = villainStats.Copy();
+            Log.Debug("VillainShowdownCardController.SetVillainIdentity: villainTitle: " + villainTitle);
+            List<string> villainNemesisIdentifiers = new List<string>();
+            foreach (string item in villainStats)
+            {
+                villainNemesisIdentifiers.Add(item);
+            }
             villainNemesisIdentifiers.RemoveAt(0);
+            foreach(string nemesis in villainNemesisIdentifiers)
+            {
+                Log.Debug("VillainShowdownCardController.SetVillainIdentity: nemesis identifier: " + nemesis);
+            }
             // Now we have the stats we need, just need to splice them into a JSON object to use for a CardDefinition...
             JSONObject jsonDef = new JSONObject();
             jsonDef.Add("identifier", new JSONValue("VillainShowdownCopy"));
@@ -84,13 +100,16 @@ namespace VainFacadePlaytest.Grandfather
             jsonDef.Add("flavorQuotes", quotes);
             jsonDef.Add("flavorReference", new JSONValue("Scavenger, Sphere: Grandfather Paradox #2"));
             // Make the CardDefinition
+            Log.Debug("VillainShowdownCardController.SetVillainIdentity: creating CardDefinition copyDef");
             CardDefinition copyDef = new CardDefinition(jsonDef, base.TurnTaker.DeckDefinition, "VainFacadePlaytest.Grandfather");
             // Make the card, put it OffToTheSide
+            Log.Debug("VillainShowdownCardController.SetVillainIdentity: creating Card newCopy");
             Card newCopy = new Card(copyDef, base.TurnTaker, 1);
             base.TurnTaker.OffToTheSide.AddCard(newCopy);
             CardController copyController = CardControllerFactory.CreateInstance(newCopy, base.TurnTakerController, base.TurnTaker.Identifier);
             base.TurnTakerController.AddCardController(copyController);
             // Switch it with this one
+            Log.Debug("VillainShowdownCardController.SetVillainIdentity: calling GameController.SwitchCards");
             IEnumerator switchCoroutine = base.GameController.SwitchCards(base.Card, newCopy, cardSource: GetCardSource());
             if (base.UseUnityCoroutines)
             {
@@ -105,13 +124,16 @@ namespace VainFacadePlaytest.Grandfather
 
         private IEnumerator SelectVillain(List<List<string>> storedResults)
         {
+            Log.Debug("VillainShowdownCardController.SelectVillain: starting");
             Dictionary<string, List<string>> titleStatsDict = new Dictionary<string, List<string>>();
+            Log.Debug("VillainShowdownCardController.SelectVillain: calling LoadPlayableBaseVillainIdentifiers");
             Dictionary<string, List<string>> playableBaseIdentifiers = LoadPlayableBaseVillainIdentifiers();
             foreach (string id in playableBaseIdentifiers.Keys)
             {
                 Log.Debug("Villain character in the box: " + id);
                 titleStatsDict.Add(id, playableBaseIdentifiers[id]);
             }
+            Log.Debug("VillainShowdownCardController.SelectVillain: calling LoadAllModVillainIdentifiers");
             Dictionary<string, List<string>> modIdentifiers = LoadAllModVillainIdentifiers();
             foreach (string id2 in modIdentifiers.Keys)
             {
@@ -119,6 +141,7 @@ namespace VainFacadePlaytest.Grandfather
                 titleStatsDict.Add(id2, modIdentifiers[id2]);
             }
             string[] optionChoices = titleStatsDict.Keys.ToArray();
+            Log.Debug("VillainShowdownCardController.SelectVillain: calling GameController.SelectWord");
             List<SelectWordDecision> optionsDecisionResult = new List<SelectWordDecision>();
             IEnumerator coroutine = base.GameController.SelectWord(DecisionMaker, optionChoices, SelectionType.Custom, optionsDecisionResult, optional: false, null, GetCardSource());
             if (base.UseUnityCoroutines)
@@ -129,9 +152,11 @@ namespace VainFacadePlaytest.Grandfather
             {
                 base.GameController.ExhaustCoroutine(coroutine);
             }
+            Log.Debug("VillainShowdownCardController.SelectVillain: DidSelectWord returned " + DidSelectWord(optionsDecisionResult).ToString());
             if (DidSelectWord(optionsDecisionResult))
             {
                 string selectedVillain = GetSelectedWord(optionsDecisionResult);
+                Log.Debug("VillainShowdownCardController.SelectVillain: selectedVillain: " + selectedVillain);
                 List<string> selectedVillainStats = titleStatsDict[selectedVillain];
                 storedResults.Add(selectedVillainStats);
             }
@@ -139,6 +164,7 @@ namespace VainFacadePlaytest.Grandfather
 
         private Dictionary<string, List<string>> LoadPlayableBaseVillainIdentifiers()
         {
+            Log.Debug("VillainShowdownCardController.LoadPlayableBaseVillainIdentifiers: starting");
             Dictionary<string, List<string>> titleNemesisPairs = new Dictionary<string, List<string>>();
             Assembly assembly = (from a in AppDomain.CurrentDomain.GetAssemblies()
                                  where a.GetName().Name == "SentinelsEngine"
@@ -196,66 +222,143 @@ namespace VainFacadePlaytest.Grandfather
                 List<CardDefinition> characterCardDefinitions = def2.GetAllCardDefinitions().Where((CardDefinition cd) => cd.IsCharacter).ToList();
                 foreach (CardDefinition characterDef in characterCardDefinitions)
                 {
-                    bool addedFront = false;
-                    if (!characterDef.TargetKind.HasValue || characterDef.Keywords.Contains("villain") || characterDef.TargetKind.Value == DeckDefinition.DeckKind.Villain || characterDef.TargetKind.Value == DeckDefinition.DeckKind.VillainTeam)
+                    Log.Debug("VillainShowdownCardController.LoadPlayableBaseVillainIdentifiers: checking stats for " + characterDef.PromoIdentifierOrIdentifier);
+                    if (characterDef.PromoIdentifierOrIdentifier.Contains("OblivAeon"))
                     {
-                        // Villain on the front side? Add front side as an option
-                        string charTitle = characterDef.PromoTitleOrTitle;
-                        if (def2.PromoCardDefinitions.Contains(characterDef) || characterDef.FlippedNemesisIdentifiers.Count() > 0)
+                        Log.Debug("VillainShowdownCardController.LoadPlayableBaseVillainIdentifiers: found OblivAeon CharacterCardDefinition: " + characterDef.PromoIdentifierOrIdentifier);
+                        if (characterDef.PromoIdentifierOrIdentifier.Contains("FrontPage"))
                         {
-                            if (characterDef.PromoTitle == null)
-                            {
-                                charTitle += " (" + characterDef.Body + ")";
-                            }
-                        }
-                        Log.Debug("Adding villain character option: " + charTitle + " (front)");
-                        List<string> identifiers = new List<string>();
-                        identifiers.Add(characterDef.PromoTitleOrTitle);
-                        identifiers.AddRange(characterDef.NemesisIdentifiers);
-                        titleNemesisPairs.Add(charTitle, identifiers);
-                        addedFront = true;
-                    }
-                    if (!characterDef.FlippedTargetKind.HasValue || characterDef.FlippedKeywords.Contains("villain") || characterDef.FlippedTargetKind.Value == DeckDefinition.DeckKind.Villain || characterDef.FlippedTargetKind.Value == DeckDefinition.DeckKind.VillainTeam)
-                    {
-                        // Villain on the back side
-                        bool isBackDistinct = false;
-                        string flippedTitle = characterDef.PromoTitleOrTitle;
-                        if (characterDef.FlippedTitle != null && characterDef.FlippedTitle != characterDef.Title)
-                        {
-                            isBackDistinct = true;
-                            flippedTitle = characterDef.FlippedTitle;
-                        }
-                        if (characterDef.FlippedNemesisIdentifiers != null && characterDef.FlippedNemesisIdentifiers != characterDef.NemesisIdentifiers)
-                        {
-                            isBackDistinct = true;
-                            if (def2.PromoCardDefinitions.Contains(characterDef))
+                            string frontKey = characterDef.PromoTitleOrTitle;
+                            if (def2.PromoCardDefinitions.Contains(characterDef) || characterDef.FlippedNemesisIdentifiers.Count() > 0)
                             {
                                 if (characterDef.PromoTitle == null)
                                 {
-                                    flippedTitle = characterDef.PromoTitleOrTitle + " (" + characterDef.FlippedBody + ")";
+                                    if (characterDef.Body.Any())
+                                    {
+                                        frontKey += " (" + characterDef.Body.First() + ")";
+                                    }
+                                    else
+                                    {
+                                        frontKey += " (promo, front)";
+                                    }
                                 }
                             }
-                        }
-                        if (characterDef.FlippedBody.Contains("Incapacitated") || !characterDef.FlippedShowHitPoints)
-                        {
-                            isBackDistinct = false;
-                        }
-
-                        if (!addedFront || isBackDistinct)
-                        {
-                            // Add back side as an option
-                            Log.Debug("Adding villain character option: " + flippedTitle + " (back)");
+                            Log.Debug("VillainShowdownCardController.LoadPlayableBaseVillainIdentifiers: Adding villain character option: " + frontKey + " (front)");
                             List<string> identifiers = new List<string>();
-                            identifiers.Add(text3);
-                            if (characterDef.FlippedNemesisIdentifiers.Count() > 0)
+                            identifiers.Add(characterDef.PromoTitleOrTitle);
+                            identifiers.AddRange(characterDef.NemesisIdentifiers);
+                            titleNemesisPairs.Add(frontKey, identifiers);
+                        }
+                        else
+                        {
+                            Log.Debug("VillainShowdownCardController.LoadPlayableVillainIdentifiers: not adding any more OblivAeon CharacterCardDefinitions");
+                        }
+                    }
+                    else
+                    {
+                        bool addedFront = false;
+                        Log.Debug("VillainShowdownCardController.LoadPlayableBaseVillainIdentifiers: " + characterDef.PromoIdentifierOrIdentifier + " stats: TargetKind.HasValue: " + characterDef.TargetKind.HasValue.ToString());
+                        Log.Debug("VillainShowdownCardController.LoadPlayableBaseVillainIdentifiers: " + characterDef.PromoIdentifierOrIdentifier + " stats: keywords contain Villain: " + characterDef.Keywords.Contains("villain").ToString());
+                        if (characterDef.TargetKind.HasValue)
+                        {
+                            Log.Debug("VillainShowdownCardController.LoadPlayableBaseVillainIdentifiers: " + characterDef.PromoIdentifierOrIdentifier + " stats: TargetKind.Value == Villain: " + (characterDef.TargetKind.Value == DeckDefinition.DeckKind.Villain).ToString());
+                            Log.Debug("VillainShowdownCardController.LoadPlayableBaseVillainIdentifiers: " + characterDef.PromoIdentifierOrIdentifier + " stats: TargetKind.Value == VillainTeam: " + (characterDef.TargetKind.Value == DeckDefinition.DeckKind.VillainTeam).ToString());
+                        }
+                        if (!characterDef.TargetKind.HasValue || characterDef.Keywords.Contains("villain") || characterDef.TargetKind.Value == DeckDefinition.DeckKind.Villain || characterDef.TargetKind.Value == DeckDefinition.DeckKind.VillainTeam)
+                        {
+                            Log.Debug("VillainShowdownCardController.LoadPlayableBaseVillainIdentifiers: conclusion: " + characterDef.PromoIdentifierOrIdentifier + " is villain on front side");
+                            // Villain on the front side? Add front side as an option
+                            string frontKey = characterDef.PromoTitleOrTitle;
+                            if (def2.PromoCardDefinitions.Contains(characterDef) || characterDef.FlippedNemesisIdentifiers.Count() > 0)
                             {
-                                identifiers.AddRange(characterDef.FlippedNemesisIdentifiers);
+                                if (characterDef.PromoTitle == null)
+                                {
+                                    if (characterDef.Body.Any())
+                                    {
+                                        frontKey += " (" + characterDef.Body.First() + ")";
+                                    }
+                                    else
+                                    {
+                                        frontKey += " (promo, front)";
+                                    }
+                                }
                             }
-                            else
+                            Log.Debug("VillainShowdownCardController.LoadPlayableBaseVillainIdentifiers: Adding villain character option: " + frontKey + " (front)");
+                            List<string> identifiers = new List<string>();
+                            identifiers.Add(characterDef.PromoTitleOrTitle);
+                            identifiers.AddRange(characterDef.NemesisIdentifiers);
+                            titleNemesisPairs.Add(frontKey, identifiers);
+                            addedFront = true;
+                        }
+                        Log.Debug("VillainShowdownCardController.LoadPlayableBaseVillainIdentifiers: " + characterDef.PromoIdentifierOrIdentifier + " stats: FlippedTargetKind.HasValue: " + characterDef.FlippedTargetKind.HasValue.ToString());
+                        Log.Debug("VillainShowdownCardController.LoadPlayableBaseVillainIdentifiers: " + characterDef.PromoIdentifierOrIdentifier + " stats: FlippedKeywords contain Villain: " + characterDef.FlippedKeywords.Contains("villain").ToString());
+                        if (characterDef.FlippedTargetKind.HasValue)
+                        {
+                            Log.Debug("VillainShowdownCardController.LoadPlayableBaseVillainIdentifiers: " + characterDef.PromoIdentifierOrIdentifier + " stats: FlippedTargetKind.Value == Villain: " + (characterDef.FlippedTargetKind.Value == DeckDefinition.DeckKind.Villain).ToString());
+                            Log.Debug("VillainShowdownCardController.LoadPlayableBaseVillainIdentifiers: " + characterDef.PromoIdentifierOrIdentifier + " stats: FlippedTargetKind.Value == VillainTeam: " + (characterDef.FlippedTargetKind.Value == DeckDefinition.DeckKind.VillainTeam).ToString());
+                        }
+                        if (!characterDef.FlippedTargetKind.HasValue || characterDef.FlippedKeywords.Contains("villain") || characterDef.FlippedTargetKind.Value == DeckDefinition.DeckKind.Villain || characterDef.FlippedTargetKind.Value == DeckDefinition.DeckKind.VillainTeam)
+                        {
+                            Log.Debug("VillainShowdownCardController.LoadPlayableBaseVillainIdentifiers: conclusion: " + characterDef.PromoIdentifierOrIdentifier + " is villain on back side");
+                            // Villain on the back side
+                            Log.Debug("VillainShowdownCardController.LoadPlayableBaseVillainIdentifiers: checking if back side has distinct stats");
+                            bool isBackDistinct = false;
+                            string backKey = characterDef.PromoTitleOrTitle;
+                            Log.Debug("VillainShowdownCardController.LoadPlayableBaseVillainIdentifiers: " + characterDef.PromoIdentifierOrIdentifier + " stats: Title: \"" + characterDef.Title + "\", FlippedTitle: \"" + characterDef.FlippedTitle + "\"");
+                            if (characterDef.FlippedTitle != null && characterDef.FlippedTitle != "" && characterDef.FlippedTitle != characterDef.Title)
                             {
-                                identifiers.AddRange(characterDef.NemesisIdentifiers);
+                                Log.Debug("VillainShowdownCardController.LoadPlayableBaseVillainIdentifiers: conclusion: " + characterDef.PromoIdentifierOrIdentifier + " back side is distinct villain");
+                                isBackDistinct = true;
+                                backKey = characterDef.FlippedTitle;
                             }
-                            titleNemesisPairs.Add(flippedTitle, identifiers);
+                            foreach (string nemesis in characterDef.NemesisIdentifiers)
+                            {
+                                Log.Debug("VillainShowdownCardController.LoadPlayableBaseVillainIdentifiers: " + characterDef.PromoIdentifierOrIdentifier + " stats: nemesis: " + nemesis);
+                            }
+                            foreach (string nemesis in characterDef.FlippedNemesisIdentifiers)
+                            {
+                                Log.Debug("VillainShowdownCardController.LoadPlayableBaseVillainIdentifiers: " + characterDef.PromoIdentifierOrIdentifier + " stats: flipped nemesis: " + nemesis);
+                            }
+                            if (characterDef.FlippedNemesisIdentifiers != null && characterDef.FlippedNemesisIdentifiers.Count() > 0 && characterDef.FlippedNemesisIdentifiers != characterDef.NemesisIdentifiers)
+                            {
+                                Log.Debug("VillainShowdownCardController.LoadPlayableBaseVillainIdentifiers: conclusion: " + characterDef.PromoIdentifierOrIdentifier + " back side is distinct villain");
+                                isBackDistinct = true;
+                                if (characterDef.FlippedBody.Any())
+                                {
+                                    backKey = characterDef.PromoTitleOrTitle + " (" + characterDef.FlippedBody.First() + ")";
+                                }
+                                else
+                                {
+                                    backKey = characterDef.PromoTitleOrTitle + " (back)";
+                                }
+                            }
+                            Log.Debug("VillainShowdownCardController.LoadPlayableBaseVillainIdentifiers: " + characterDef.PromoIdentifierOrIdentifier + " stats: FlippedBody contains Incapacitated: " + characterDef.FlippedBody.Contains("Incapacitated").ToString());
+                            Log.Debug("VillainShowdownCardController.LoadPlayableBaseVillainIdentifiers: " + characterDef.PromoIdentifierOrIdentifier + " stats: FlippedShowHitPoints: " + characterDef.FlippedShowHitPoints.ToString());
+                            if (characterDef.FlippedBody.Contains("Incapacitated") || !characterDef.FlippedShowHitPoints)
+                            {
+                                Log.Debug("VillainShowdownCardController.LoadPlayableBaseVillainIdentifiers: conclusion: " + characterDef.PromoIdentifierOrIdentifier + " back side is **NOT** distinct villain");
+                                isBackDistinct = false;
+                            }
+
+
+                            Log.Debug("VillainShowdownCardController.LoadPlayableBaseVillainIdentifiers: " + characterDef.PromoIdentifierOrIdentifier + ": addedFront: " + addedFront.ToString());
+                            Log.Debug("VillainShowdownCardController.LoadPlayableBaseVillainIdentifiers: " + characterDef.PromoIdentifierOrIdentifier + ": isBackDistinct: " + isBackDistinct.ToString());
+                            if (!addedFront || isBackDistinct)
+                            {
+                                // Add back side as an option
+                                Log.Debug("Adding villain character option: " + backKey + " (back)");
+                                List<string> identifiers = new List<string>();
+                                identifiers.Add(text3);
+                                if (characterDef.FlippedNemesisIdentifiers.Count() > 0)
+                                {
+                                    identifiers.AddRange(characterDef.FlippedNemesisIdentifiers);
+                                }
+                                else
+                                {
+                                    identifiers.AddRange(characterDef.NemesisIdentifiers);
+                                }
+                                titleNemesisPairs.Add(backKey, identifiers);
+                            }
                         }
                     }
                 }
@@ -313,40 +416,55 @@ namespace VainFacadePlaytest.Grandfather
                                 if (!characterDef.TargetKind.HasValue || characterDef.Keywords.Contains("villain") || characterDef.TargetKind.Value == DeckDefinition.DeckKind.Villain || characterDef.TargetKind.Value == DeckDefinition.DeckKind.VillainTeam)
                                 {
                                     // Villain on the front side? Add front side as an option
-                                    string charTitle = characterDef.PromoTitleOrTitle;
+                                    string frontKey = characterDef.PromoTitleOrTitle;
                                     if (def2.PromoCardDefinitions.Contains(characterDef) || characterDef.FlippedNemesisIdentifiers.Count() > 0)
                                     {
                                         if (characterDef.PromoTitle == null)
                                         {
-                                            charTitle += " (" + characterDef.Body + ")";
+                                            if (characterDef.Body.Any())
+                                            {
+                                                frontKey += " (" + characterDef.Body.First() + ")";
+                                            }
+                                            else
+                                            {
+                                                frontKey += " (promo, front)";
+                                            }
                                         }
                                     }
-                                    Log.Debug("Adding villain character option: " + charTitle + " (front)");
+                                    Log.Debug("Adding villain character option: " + frontKey + " (front)");
                                     List<string> identifiers = new List<string>();
                                     identifiers.Add(characterDef.PromoTitleOrTitle);
                                     identifiers.AddRange(characterDef.NemesisIdentifiers);
-                                    titleNemesisPairs.Add(charTitle, identifiers);
-                                    addedFront = true;
+                                    if (!titleNemesisPairs.Keys.Contains(frontKey))
+                                    {
+                                        titleNemesisPairs.Add(frontKey, identifiers);
+                                        addedFront = true;
+                                    }
+                                    else
+                                    {
+                                        Log.Debug("Could not add villain character option: " + frontKey + " (duplicate key)");
+                                    }
                                 }
                                 if (!characterDef.FlippedTargetKind.HasValue || characterDef.FlippedKeywords.Contains("villain") || characterDef.FlippedTargetKind.Value == DeckDefinition.DeckKind.Villain || characterDef.FlippedTargetKind.Value == DeckDefinition.DeckKind.VillainTeam)
                                 {
                                     // Villain on the back side
                                     bool isBackDistinct = false;
-                                    string flippedTitle = characterDef.PromoTitleOrTitle;
-                                    if (characterDef.FlippedTitle != null && characterDef.FlippedTitle != characterDef.Title)
+                                    string backKey = characterDef.PromoTitleOrTitle;
+                                    if (characterDef.FlippedTitle != null && characterDef.FlippedTitle != "" && characterDef.FlippedTitle != characterDef.Title)
                                     {
                                         isBackDistinct = true;
-                                        flippedTitle = characterDef.FlippedTitle;
+                                        backKey = characterDef.FlippedTitle;
                                     }
                                     if (characterDef.FlippedNemesisIdentifiers != null && characterDef.FlippedNemesisIdentifiers != characterDef.NemesisIdentifiers)
                                     {
                                         isBackDistinct = true;
-                                        if (def2.PromoCardDefinitions.Contains(characterDef))
+                                        if (characterDef.FlippedBody.Any())
                                         {
-                                            if (characterDef.PromoTitle == null)
-                                            {
-                                                flippedTitle = characterDef.PromoTitleOrTitle + " (" + characterDef.FlippedBody + ")";
-                                            }
+                                            backKey = characterDef.PromoTitleOrTitle + " (" + characterDef.FlippedBody.First() + ")";
+                                        }
+                                        else
+                                        {
+                                            backKey = characterDef.PromoTitleOrTitle + " (back)";
                                         }
                                     }
                                     if (characterDef.FlippedBody.Contains("Incapacitated") || !characterDef.FlippedShowHitPoints)
@@ -357,7 +475,7 @@ namespace VainFacadePlaytest.Grandfather
                                     if (!addedFront || isBackDistinct)
                                     {
                                         // Add back side as an option
-                                        Log.Debug("Adding villain character option: " + flippedTitle + " (back)");
+                                        Log.Debug("Adding villain character option: " + backKey + " (back)");
                                         List<string> identifiers = new List<string>();
                                         identifiers.Add(text3);
                                         if (characterDef.FlippedNemesisIdentifiers.Count() > 0)
@@ -368,7 +486,14 @@ namespace VainFacadePlaytest.Grandfather
                                         {
                                             identifiers.AddRange(characterDef.NemesisIdentifiers);
                                         }
-                                        titleNemesisPairs.Add(flippedTitle, identifiers);
+                                        if (!titleNemesisPairs.Keys.Contains(backKey))
+                                        {
+                                            titleNemesisPairs.Add(backKey, identifiers);
+                                        }
+                                        else
+                                        {
+                                            Log.Debug("Could not add villain character option: " + backKey + " (duplicate key)");
+                                        }
                                     }
                                 }
                             }
