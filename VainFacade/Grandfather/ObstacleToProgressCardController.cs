@@ -73,12 +73,13 @@ namespace VainFacadePlaytest.Grandfather
             }
             // "Any player may discard 1 card to redirect that damage to one of their targets instead."
             List<DiscardCardAction> discards = new List<DiscardCardAction>();
+            List<SelectTurnTakerDecision> players = new List<SelectTurnTakerDecision>();
             SelectionType displayType = SelectionType.DiscardCard;
             if (!dda.IsRedirectable)
             {
                 displayType = SelectionType.DiscardCardsNoRedirect;
             }
-            IEnumerator discardCoroutine = base.GameController.SelectHeroToDiscardCard(DecisionMaker, optionalSelectHero: true, optionalDiscardCard: true, storedResultsDiscard: discards, gameAction: dda, selectionType: displayType, cardSource: GetCardSource());
+            IEnumerator discardCoroutine = base.GameController.SelectHeroToDiscardCard(DecisionMaker, optionalSelectHero: true, optionalDiscardCard: true, storedResultsTurnTaker: players, storedResultsDiscard: discards, gameAction: dda, selectionType: displayType, cardSource: GetCardSource());
             if (base.UseUnityCoroutines)
             {
                 yield return base.GameController.StartCoroutine(discardCoroutine);
@@ -87,9 +88,10 @@ namespace VainFacadePlaytest.Grandfather
             {
                 base.GameController.ExhaustCoroutine(discardCoroutine);
             }
-            IEnumerator nextCoroutine;
+            IEnumerator nextCoroutine = null;
             if (DidDiscardCards(discards))
             {
+                Log.Debug("ObstacleToProgressCardController.RedirectDamageResponse: card was discarded");
                 if (dda.IsRedirectable)
                 {
                     HeroTurnTakerController httc = discards.FirstOrDefault().HeroTurnTakerController;
@@ -111,15 +113,23 @@ namespace VainFacadePlaytest.Grandfather
             }
             else
             {
-                nextCoroutine = base.GameController.SendMessageAction(discards.First().HeroTurnTakerController.Name + " did not discard a card, so the damage is not redirected.", Priority.High, GetCardSource(), showCardSource: true);
+                Log.Debug("ObstacleToProgressCardController.RedirectDamageResponse: no card was discarded");
+                if (DidSelectTurnTaker(players))
+                {
+                    TurnTaker selected = players.FirstOrDefault((SelectTurnTakerDecision sttd) => DidSelectTurnTaker(sttd.ToEnumerable())).SelectedTurnTaker;
+                    nextCoroutine = base.GameController.SendMessageAction(selected.Name + " did not discard a card, so the damage is not redirected.", Priority.High, GetCardSource(), showCardSource: true);
+                }
             }
-            if (base.UseUnityCoroutines)
+            if (nextCoroutine != null)
             {
-                yield return base.GameController.StartCoroutine(nextCoroutine);
-            }
-            else
-            {
-                base.GameController.ExhaustCoroutine(nextCoroutine);
+                if (base.UseUnityCoroutines)
+                {
+                    yield return base.GameController.StartCoroutine(nextCoroutine);
+                }
+                else
+                {
+                    base.GameController.ExhaustCoroutine(nextCoroutine);
+                }
             }
         }
     }
