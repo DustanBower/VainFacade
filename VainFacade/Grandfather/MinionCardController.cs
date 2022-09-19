@@ -39,7 +39,7 @@ namespace VainFacadePlaytest.Grandfather
                     base.GameController.ExhaustCoroutine(messageCoroutine);
                 }
                 // "... play the top card of the environment deck..."
-                IEnumerator playEnvCoroutine = PlayTheTopCardOfTheEnvironmentDeckResponse(null);
+                IEnumerator playEnvCoroutine = base.GameController.PlayTopCard(DecisionMaker, FindEnvironment(), responsibleTurnTaker: base.TurnTaker, showMessage: true, cardSource: GetCardSource());
                 if (base.UseUnityCoroutines)
                 {
                     yield return base.GameController.StartCoroutine(playEnvCoroutine);
