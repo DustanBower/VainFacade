@@ -21,7 +21,7 @@ namespace VainFacadePlaytest.Grandfather
             // Both sides: Show message if Arrow of Time is not in play
             SpecialStringMaker.ShowSpecialString(() => "Arrow of Time is not in play.", () => true).Condition = () => !FindCard(ArrowOfTimeIdentifier).IsInPlayAndHasGameText;
             // Front side: Show number of environment cards in trashes
-            SpecialStringMaker.ShowTotalNumberOfCardsAtLocations(() => FindLocationsWhere((Location l) => l.IsTrash), "There {0} in trashes.", new LinqCardCriteria((Card c) => c.IsEnvironment, "environment"), () => true).Condition = () => !base.Card.IsFlipped;
+            SpecialStringMaker.ShowTotalNumberOfCardsAtLocations(() => FindLocationsWhere((Location l) => l.IsTrash), "There {0} in trashes.", new LinqCardCriteria((Card c) => c.IsEnvironment, "environment", useCardsSuffix: false), () => true).Condition = () => !base.Card.IsFlipped;
         }
 
         protected const string ArrowOfTimeIdentifier = "ArrowOfTime";

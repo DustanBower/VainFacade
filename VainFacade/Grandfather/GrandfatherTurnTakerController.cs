@@ -80,7 +80,7 @@ namespace VainFacadePlaytest.Grandfather
             {
                 if (c != null)
                 {
-                    IEnumerator playCoroutine = base.GameController.PlayCard(this.ToHero(), c, isPutIntoPlay: true, responsibleTurnTaker: base.TurnTaker, cardSource: new CardSource(base.CharacterCardController));
+                    IEnumerator playCoroutine = base.GameController.PlayCard(this, c, isPutIntoPlay: true, responsibleTurnTaker: base.TurnTaker, cardSource: new CardSource(base.CharacterCardController));
                     if (base.UseUnityCoroutines)
                     {
                         yield return base.GameController.StartCoroutine(playCoroutine);
@@ -93,7 +93,7 @@ namespace VainFacadePlaytest.Grandfather
             }
             // "Shuffle the rest into the villain deck."
             List<Card> otherRevealed = base.CharacterCardController.GetRevealedCards(revealed).Where((Card c) => !allMatches.Contains(c)).ToList();
-            IEnumerator shuffleCoroutine = base.GameController.ShuffleCardsIntoLocation(base.ToHero(), otherRevealed, base.TurnTaker.Deck, cardSource: new CardSource(base.CharacterCardController));
+            IEnumerator shuffleCoroutine = base.GameController.ShuffleCardsIntoLocation(base.FindDecisionMaker(), otherRevealed, base.TurnTaker.Deck, cardSource: new CardSource(base.CharacterCardController));
             if (base.UseUnityCoroutines)
             {
                 yield return base.GameController.StartCoroutine(shuffleCoroutine);
