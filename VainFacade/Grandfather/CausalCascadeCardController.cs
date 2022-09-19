@@ -94,7 +94,6 @@ namespace VainFacadePlaytest.Grandfather
             // "Shuffle the other revealed cards and this card into the villain deck."
             List<Card> toShuffle = new List<Card>();
             toShuffle.AddRange(nonMatching);
-            toShuffle.Add(base.Card);
             IEnumerator reshuffleCoroutine = base.GameController.ShuffleCardsIntoLocation(DecisionMaker, toShuffle, base.TurnTaker.Deck, cardSource: GetCardSource());
             if (base.UseUnityCoroutines)
             {
@@ -114,6 +113,15 @@ namespace VainFacadePlaytest.Grandfather
             else
             {
                 base.GameController.ExhaustCoroutine(cleanupCoroutine);
+            }
+            IEnumerator shuffleThisCoroutine = base.GameController.ShuffleCardIntoLocation(DecisionMaker, base.Card, base.TurnTaker.Deck, false, cardSource: GetCardSource());
+            if (base.UseUnityCoroutines)
+            {
+                yield return base.GameController.StartCoroutine(shuffleThisCoroutine);
+            }
+            else
+            {
+                base.GameController.ExhaustCoroutine(shuffleThisCoroutine);
             }
         }
     }
