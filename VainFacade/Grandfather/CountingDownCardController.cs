@@ -26,7 +26,7 @@ namespace VainFacadePlaytest.Grandfather
         {
             base.AddTriggers();
             // "At the end of the villain turn, if there are fewer than 2 non-Covert non-hero targets in play, play the top card of the environment deck."
-            AddEndOfTurnTrigger((TurnTaker tt) => tt == base.TurnTaker && FindCardsWhere(new LinqCardCriteria((Card c) => c.IsInPlayAndHasGameText && c.IsTarget && !c.IsHero && !c.DoKeywordsContain(CovertKeyword), "non-Covert non-hero", false, false, "target", "targets"), visibleToCard: GetCardSource()).Count() < 2, PlayTheTopCardOfTheEnvironmentDeckResponse, TriggerType.PlayCard);
+            AddEndOfTurnTrigger((TurnTaker tt) => tt == base.TurnTaker && FindCardsWhere(new LinqCardCriteria((Card c) => c.IsInPlayAndHasGameText && c.IsTarget && !c.IsHero && !c.DoKeywordsContain(CovertKeyword), "non-Covert non-hero", false, false, "target", "targets"), visibleToCard: GetCardSource()).Count() < 2, (PhaseChangeAction pca) => base.GameController.PlayTopCard(DecisionMaker, FindEnvironment(), responsibleTurnTaker: base.TurnTaker, showMessage: true, cardSource: GetCardSource()), TriggerType.PlayCard);
             // "At the end of the villain turn, the non-hero target with the second highest HP deals the 2 hero targets with the highest HP {H} melee damage each."
             AddEndOfTurnTrigger((TurnTaker tt) => tt == base.TurnTaker, SecondHighestDealsDamageResponse, TriggerType.DealDamage);
         }
