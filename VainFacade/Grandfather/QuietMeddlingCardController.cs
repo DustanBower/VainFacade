@@ -55,15 +55,18 @@ namespace VainFacadePlaytest.Grandfather
             if (choice != null && choice.SelectedNumber.HasValue)
             {
                 int toDiscard = choice.SelectedNumber.Value;
-                //Log.Debug("QuietMeddlingCardController.DiscardCardsReduceDamageResponse: discarding " + toDiscard.ToString() + " card(s) from the top of " + dda.Target.Owner.Name + "'s deck");
-                IEnumerator discardCoroutine = DiscardCardsFromTopOfDeck(FindTurnTakerController(dda.Target.Owner), toDiscard, storedResults: discards, showMessage: true, responsibleTurnTaker: dda.Target.Owner);
-                if (base.UseUnityCoroutines)
+                if (toDiscard > 0)
                 {
-                    yield return base.GameController.StartCoroutine(discardCoroutine);
-                }
-                else
-                {
-                    base.GameController.ExhaustCoroutine(discardCoroutine);
+                    //Log.Debug("QuietMeddlingCardController.DiscardCardsReduceDamageResponse: discarding " + toDiscard.ToString() + " card(s) from the top of " + dda.Target.Owner.Name + "'s deck");
+                    IEnumerator discardCoroutine = DiscardCardsFromTopOfDeck(FindTurnTakerController(dda.Target.Owner), toDiscard, storedResults: discards, showMessage: true, responsibleTurnTaker: dda.Target.Owner);
+                    if (base.UseUnityCoroutines)
+                    {
+                        yield return base.GameController.StartCoroutine(discardCoroutine);
+                    }
+                    else
+                    {
+                        base.GameController.ExhaustCoroutine(discardCoroutine);
+                    }
                 }
             }
             // "Reduce that damage by 1 for each card discarded this way."
