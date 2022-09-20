@@ -94,6 +94,8 @@ namespace VainFacadePlaytest.Grandfather
                     AddSideTrigger(AddIncreaseDamageTrigger((DealDamageAction dda) => dda.Target.IsHero, (DealDamageAction dda) => 1));
                 }
             }
+            AddDefeatedIfDestroyedTriggers();
+            AddDefeatedIfMovedOutOfGameTriggers();
         }
 
         private int ArrowOfTimeTokens()
