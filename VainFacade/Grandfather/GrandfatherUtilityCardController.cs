@@ -185,7 +185,7 @@ namespace VainFacadePlaytest.Grandfather
                     base.GameController.ExhaustCoroutine(messageCoroutine);
                 }
             }
-            IEnumerator selectCoroutine = base.GameController.SelectTurnTakersAndDoAction(DecisionMaker, new LinqTurnTakerCriteria((TurnTaker tt) => tt.IsHero && !tt.ToHero().IsIncapacitatedOrOutOfGame, "heroes with cards"), SelectionType.DiscardFromDeck, (TurnTaker tt) => DiscardCardsFromTopOfDeck(FindHeroTurnTakerController(tt.ToHero()), 2, responsibleTurnTaker: base.TurnTaker), allowAutoDecide: true, numberOfCards: 2, cardSource: GetCardSource());
+            IEnumerator selectCoroutine = base.GameController.SelectTurnTakersAndDoAction(DecisionMaker, new LinqTurnTakerCriteria((TurnTaker tt) => tt.IsHero && !tt.ToHero().IsIncapacitatedOrOutOfGame, "heroes with cards"), SelectionType.DiscardFromDeck, (TurnTaker tt) => DiscardCardsFromTopOfDeck(FindHeroTurnTakerController(tt.ToHero()), x, responsibleTurnTaker: base.TurnTaker), allowAutoDecide: true, numberOfCards: x, cardSource: GetCardSource());
             if (base.UseUnityCoroutines)
             {
                 yield return base.GameController.StartCoroutine(selectCoroutine);
