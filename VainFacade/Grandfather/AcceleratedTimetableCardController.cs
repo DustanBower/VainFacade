@@ -27,7 +27,7 @@ namespace VainFacadePlaytest.Grandfather
         public override IEnumerator Play()
         {
             // "When this card enters play, play the top card of the villain deck."
-            IEnumerator playCoroutine = base.GameController.PlayTopCard(DecisionMaker, base.TurnTakerController, responsibleTurnTaker: base.TurnTaker, cardSource: GetCardSource());
+            IEnumerator playCoroutine = base.GameController.PlayTopCard(DecisionMaker, base.TurnTakerController, responsibleTurnTaker: base.TurnTaker, showMessage: true, cardSource: GetCardSource());
             if (base.UseUnityCoroutines)
             {
                 yield return base.GameController.StartCoroutine(playCoroutine);
@@ -41,7 +41,7 @@ namespace VainFacadePlaytest.Grandfather
         private IEnumerator Play2DestructResponse(PhaseChangeAction pca)
         {
             // "... play the top 2 cards of the villain deck..."
-            IEnumerator playCoroutine = base.GameController.PlayTopCard(DecisionMaker, base.TurnTakerController, numberOfCards: 2, responsibleTurnTaker: base.TurnTaker, cardSource: GetCardSource());
+            IEnumerator playCoroutine = base.GameController.PlayTopCard(DecisionMaker, base.TurnTakerController, numberOfCards: 2, responsibleTurnTaker: base.TurnTaker, showMessage: true, cardSource: GetCardSource());
             if (base.UseUnityCoroutines)
             {
                 yield return base.GameController.StartCoroutine(playCoroutine);
