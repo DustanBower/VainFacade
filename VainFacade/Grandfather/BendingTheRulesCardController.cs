@@ -52,7 +52,7 @@ namespace VainFacadePlaytest.Grandfather
             // "If a target is discarded this way, play the top card of the villain deck."
             if (wasTargetDiscarded)
             {
-                IEnumerator playCoroutine = base.GameController.PlayTopCard(DecisionMaker, base.TurnTakerController, responsibleTurnTaker: base.TurnTaker, cardSource: GetCardSource());
+                IEnumerator playCoroutine = base.GameController.PlayTopCard(DecisionMaker, base.TurnTakerController, responsibleTurnTaker: base.TurnTaker, showMessage: true, cardSource: GetCardSource());
                 if (base.UseUnityCoroutines)
                 {
                     yield return base.GameController.StartCoroutine(playCoroutine);
