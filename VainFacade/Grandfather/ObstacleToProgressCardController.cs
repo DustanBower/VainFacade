@@ -91,7 +91,7 @@ namespace VainFacadePlaytest.Grandfather
             IEnumerator nextCoroutine = null;
             if (DidDiscardCards(discards))
             {
-                Log.Debug("ObstacleToProgressCardController.RedirectDamageResponse: card was discarded");
+                //Log.Debug("ObstacleToProgressCardController.RedirectDamageResponse: card was discarded");
                 if (dda.IsRedirectable)
                 {
                     HeroTurnTakerController httc = discards.FirstOrDefault().HeroTurnTakerController;
@@ -113,7 +113,7 @@ namespace VainFacadePlaytest.Grandfather
             }
             else
             {
-                Log.Debug("ObstacleToProgressCardController.RedirectDamageResponse: no card was discarded");
+                //Log.Debug("ObstacleToProgressCardController.RedirectDamageResponse: no card was discarded");
                 if (DidSelectTurnTaker(players))
                 {
                     TurnTaker selected = players.FirstOrDefault((SelectTurnTakerDecision sttd) => DidSelectTurnTaker(sttd.ToEnumerable())).SelectedTurnTaker;
