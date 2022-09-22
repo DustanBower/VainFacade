@@ -61,7 +61,9 @@
 			],
 			"difficulty": 2,
 			"openingLines": {
-				"default": ""
+				"default": "Oh, don't worry, this will only hurt for a second!",
+				"VainFacadePlaytest.FridayCharacter": "My dear, is there no chance you'll sit this one out and let us continue this debate another time?",
+				"VainFacadePlaytest.SphereCharacter": "Did you? Oh, shoot, sorry! I got ahead of myself. You were saying?"
 			}
 		},
 		{

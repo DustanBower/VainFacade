@@ -37,7 +37,8 @@
 			],
 			"complexity": 2,
 			"openingLines": {
-				"default": "Time for justice. No autographs, please."
+				"default": "Time for justice. No autographs, please.",
+				"VainFacadePlaytest.GrandfatherCharacter": "Back to kill me again? It'll be even harder since I destroyed your pet."
 			}
 		},
 		{
