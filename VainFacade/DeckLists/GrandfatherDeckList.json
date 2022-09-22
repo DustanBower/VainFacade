@@ -511,7 +511,7 @@
 			],
 			"hitpoints": 40,
 			"body": [
-				"When this card enters play, select a villain from the box. Treat this card as having the same name and nemesis. This card is indestructible while it has 1 or more HP.",
+				"When this card enters play, choose an active hero. This card counts as that hero's nemesis until it leaves play. This card is indestructible while it has 1 or more HP.",
 				"At the end of the villain turn, this card deals the hero target with the highest HP {H + 1} melee damage."
 			],
 			"icons": [
