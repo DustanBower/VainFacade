@@ -20,10 +20,26 @@ namespace VainFacadePlaytest.Grandfather
         public override void AddTriggers()
         {
             base.AddTriggers();
-            // "When this card is dealt damage, {Grandfather} deals himself X energy damage, where X = the damage this card takes this way."
-            AddTrigger((DealDamageAction dda) => dda.DidDealDamage && dda.Target == base.Card, (DealDamageAction dda) => base.GameController.DealDamageToSelf(DecisionMaker, (Card c) => c == base.CharacterCard, (Card c) => dda.Amount, DamageType.Energy, cardSource: GetCardSource()), TriggerType.DealDamage, TriggerTiming.After);
+            // "When this card is dealt damage, {Grandfather} deals himself X energy damage that cannot be redirected, where X = the damage this card takes this way."
+            AddTrigger((DealDamageAction dda) => dda.DidDealDamage && dda.Target == base.Card, GrampsHurtsHimselfResponse, TriggerType.DealDamage, TriggerTiming.After);
             // "At the end of the villain turn, discard the top card of the villain deck. If a target is discarded this way, play the top card of the villain deck. Otherwise, discard the top 5 cards of each hero deck."
             AddEndOfTurnTrigger((TurnTaker tt) => tt == base.TurnTaker, DiscardPlayOrDiscardResponse, new TriggerType[] { TriggerType.DiscardCard, TriggerType.PlayCard });
+        }
+
+        private IEnumerator GrampsHurtsHimselfResponse(DealDamageAction dda)
+        {
+            // "... {Grandfather} deals himself X energy damage that cannot be redirected, where X = the damage this card takes this way."
+            ITrigger tempTrigger = AddMakeDamageNotRedirectableTrigger((DealDamageAction damage) => damage != null && damage.CardSource != null && damage.CardSource.Card == base.Card);
+            IEnumerator selfDamageCoroutine = base.GameController.DealDamageToSelf(DecisionMaker, (Card c) => c == base.CharacterCard, (Card c) => dda.Amount, DamageType.Energy, cardSource: GetCardSource());
+            if (base.UseUnityCoroutines)
+            {
+                yield return base.GameController.StartCoroutine(selfDamageCoroutine);
+            }
+            else
+            {
+                base.GameController.ExhaustCoroutine(selfDamageCoroutine);
+            }
+            RemoveTrigger(tempTrigger);
         }
 
         private IEnumerator DiscardPlayOrDiscardResponse(PhaseChangeAction pca)
