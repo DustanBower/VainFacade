@@ -133,7 +133,7 @@ namespace VainFacadePlaytest.Grandfather
             }
             else
             {
-                coroutine = GameController.SendMessageAction("There were no " + cardCriteriaDescription + " in " + locationToRevealFrom.GetFriendlyName() + " to reveal.", Priority.High, GetCardSource());
+                coroutine = GameController.SendMessageAction("There were no " + cardCriteriaDescription + " cards in " + locationToRevealFrom.GetFriendlyName() + " to reveal.", Priority.High, GetCardSource());
                 if (UseUnityCoroutines)
                 {
                     yield return GameController.StartCoroutine(coroutine);
