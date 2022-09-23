@@ -18,7 +18,7 @@
 			"character": true,
 			"hitpoints": 60,
 			"nemesisIdentifiers": [
-				""
+				"VainFacadePlaytest.Friday"
 			],
 			"setup": [
 				"Put [i]Arrow of Time[/i] into play. Reveal cards from the top of the villain deck until a Design and Fulcrum are revealed. Put the first revealed Design and Fulcrum into play. Shuffle the rest into the villain deck."
