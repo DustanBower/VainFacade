@@ -208,7 +208,7 @@ namespace VainFacadePlaytest.Sphere
         {
             // "Select a target. Reduce damage dealt to that target by 1 until the start of your next turn."
             List<SelectCardDecision> storedResults = new List<SelectCardDecision>();
-            IEnumerator selectCoroutine = base.GameController.SelectCardAndStoreResults(base.HeroTurnTakerController, SelectionType.ReduceDamageTaken, new LinqCardCriteria((Card c) => c.IsTarget, "target", false, false, "target", "targets"), storedResults, false, cardSource: GetCardSource());
+            IEnumerator selectCoroutine = base.GameController.SelectCardAndStoreResults(base.HeroTurnTakerController, SelectionType.ReduceDamageTaken, new LinqCardCriteria((Card c) => c.IsTarget && c.IsInPlayAndHasGameText, "target", false, false, "target", "targets"), storedResults, false, cardSource: GetCardSource());
             if (base.UseUnityCoroutines)
             {
                 yield return base.GameController.StartCoroutine(selectCoroutine);
