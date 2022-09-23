@@ -59,7 +59,7 @@
 			"flippedAdvancedIcons": [
 				"IncreaseDamageTaken"
 			],
-			"difficulty": 2,
+			"difficulty": 3,
 			"openingLines": {
 				"default": "Oh, don't worry, this will only hurt for a second!",
 				"VainFacadePlaytest.FridayCharacter": "My dear, is there no chance you'll sit this one out and let us continue this debate another time?",
