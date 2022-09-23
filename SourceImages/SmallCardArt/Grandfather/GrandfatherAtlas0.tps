@@ -34,7 +34,7 @@
         <key>dataFormat</key>
         <string>json</string>
         <key>textureFileName</key>
-        <filename>SetupGame0.png</filename>
+        <filename>GrandfatherAtlas0.png</filename>
         <key>flipPVR</key>
         <false/>
         <key>pvrQualityLevel</key>
@@ -124,7 +124,7 @@
             <key>data</key>
             <struct type="DataFile">
                 <key>name</key>
-                <filename>SetupGame0.json</filename>
+                <filename>GrandfatherAtlas0.json</filename>
             </struct>
         </map>
         <key>multiPack</key>
@@ -173,12 +173,41 @@
         </struct>
         <key>individualSpriteSettings</key>
         <map type="IndividualSpriteSettingsMap">
-            <key type="filename">../SmallCardArt/Burgess/BurgessCharacter.png</key>
-            <key type="filename">../SmallCardArt/EldrenwoodVillage/EldrenwoodVillageDeckBack.png</key>
-            <key type="filename">../SmallCardArt/Grandfather/GrandfatherCharacter.png</key>
-            <key type="filename">../SmallCardArt/Sphere/SphereCharacter.png</key>
-            <key type="filename">../SmallCardArt/TheBaroness/TheBaronessCharacter.png</key>
-            <key type="filename">../SmallCardArt/TheMidnightBazaar/TheMidnightBazaarDeckBack.png</key>
+            <key type="filename">AcceleratedTimetable.png</key>
+            <key type="filename">ArrowOfTime.png</key>
+            <key type="filename">BendingTheRules.png</key>
+            <key type="filename">CausalCascade.png</key>
+            <key type="filename">ConfluenceOfEvents.png</key>
+            <key type="filename">CountingDown.png</key>
+            <key type="filename">DisasterScenario.png</key>
+            <key type="filename">FZGRayGun.png</key>
+            <key type="filename">FallbackStrategy.png</key>
+            <key type="filename">Hunter.png</key>
+            <key type="filename">Leader.png</key>
+            <key type="filename">Minion.png</key>
+            <key type="filename">ObstacleToProgress.png</key>
+            <key type="filename">OverTheLine.png</key>
+            <key type="filename">PickingUpThePieces.png</key>
+            <key type="filename">QuietMeddling.png</key>
+            <key type="filename">StrangePocketwatch.png</key>
+            <key type="filename">VillainShowdown.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>64,50,128,99</rect>
+                <key>scale9Paddings</key>
+                <rect>64,50,128,99</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">GrandfatherCharacter.png</key>
+            <key type="filename">GrandfatherCharacterBack.png</key>
+            <key type="filename">GrandfatherDeckBack.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
@@ -196,12 +225,27 @@
         </map>
         <key>fileList</key>
         <array>
-            <filename>../SmallCardArt/TheMidnightBazaar/TheMidnightBazaarDeckBack.png</filename>
-            <filename>../SmallCardArt/Sphere/SphereCharacter.png</filename>
-            <filename>../SmallCardArt/TheBaroness/TheBaronessCharacter.png</filename>
-            <filename>../SmallCardArt/Burgess/BurgessCharacter.png</filename>
-            <filename>../SmallCardArt/EldrenwoodVillage/EldrenwoodVillageDeckBack.png</filename>
-            <filename>../SmallCardArt/Grandfather/GrandfatherCharacter.png</filename>
+            <filename>AcceleratedTimetable.png</filename>
+            <filename>ArrowOfTime.png</filename>
+            <filename>BendingTheRules.png</filename>
+            <filename>CausalCascade.png</filename>
+            <filename>ConfluenceOfEvents.png</filename>
+            <filename>CountingDown.png</filename>
+            <filename>DisasterScenario.png</filename>
+            <filename>FZGRayGun.png</filename>
+            <filename>FallbackStrategy.png</filename>
+            <filename>GrandfatherCharacterBack.png</filename>
+            <filename>GrandfatherDeckBack.png</filename>
+            <filename>Hunter.png</filename>
+            <filename>Leader.png</filename>
+            <filename>Minion.png</filename>
+            <filename>ObstacleToProgress.png</filename>
+            <filename>OverTheLine.png</filename>
+            <filename>PickingUpThePieces.png</filename>
+            <filename>QuietMeddling.png</filename>
+            <filename>StrangePocketwatch.png</filename>
+            <filename>VillainShowdown.png</filename>
+            <filename>GrandfatherCharacter.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>
