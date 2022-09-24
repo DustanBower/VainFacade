@@ -113,7 +113,7 @@
 			"flavorQuotes": [
 				{
 					"identifier": "Grandfather",
-					"text": "If you don't mind me saying,{BR}Baroness Bogozi, what you really need{BR}is more time..."
+					"text": "If you don't mind me saying, Baroness{BR}Bogozi, what you really need is more time..."
 				}
 			],
 			"flavorReference": "Grandfather, Repeating Yesterday One-Shot"
@@ -245,10 +245,10 @@
 			"flavorQuotes": [
 				{
 					"identifier": "Grandfather",
-					"text": "I'm very sorry about your{BR}friends, but I'm glad you're here with me.{BR}The timeline is almost set. Be a doll and sit{BR}this one out? For your old man?"
+					"text": "I'm sorry about your friends, but{BR}I'm glad you're here with me. The timeline is almost set. Be a doll and sit this one out?{BR}For your old man?"
 				}
 			],
-			"flavorReference": "Grandfather, Back to the Beginning One-Shot"
+			"flavorReference": "Grandfather, Back to the Beginning"
 		},
 		{
 			"identifier": "DisasterScenario",
@@ -274,7 +274,7 @@
 				},
 				{
 					"identifier": "Grandfather",
-					"text": "Oh, I should think so!{BR}Everything goes wrong in{BR}about 5 minutes."
+					"text": "Oh, I should think so!{BR}Everything goes downhill {BR}in about 5 minutes."
 				}
 			],
 			"flavorReference": "Strange Stories #470"
@@ -448,11 +448,11 @@
 			"flavorQuotes": [
 				{
 					"identifier": "Reaper 3",
-					"text": "Why... have you...{BR}repaired... me? I...{BR}failed."
+					"text": "Why... have you...{BR}repaired... me? I... failed."
 				},
 				{
 					"identifier": "Grandfather",
-					"text": "Me too, little one. Me too. You're{BR}going to be fine. I'll look after{BR}you."
+					"text": "Me too, little one. Me too. You'll be fine. I'll look after you."
 				}
 			],
 			"flavorReference": "Sphere: Grandfather Paradox #12"
@@ -501,10 +501,10 @@
 			"flavorQuotes": [
 				{
 					"identifier": "Geyser",
-					"text": "I know we said we wouldn't kill him,{BR}but this... We can use that converter and{BR}this watch to destroy him forever! It's the{BR}right thing to-"
+					"text": "I know we said we wouldn't kill{BR}him, but this... We can use this and the watch{BR}to destroy him! It's the right thing to-"
 				}
 			],
-			"flavorReference": "Last words of Geyser, Back to the Beginning One-Shot"
+			"flavorReference": "Last words of Geyser, Back to the Beginning"
 		},
 		{
 			"identifier": "VillainShowdown",
@@ -526,7 +526,7 @@
 			"flavorQuotes": [
 				{
 					"identifier": "Scavenger",
-					"text": "Dracimp infiltrator: Reaper series{BR}prototype combat mimic. Only unit that{BR}survived. Dangerously unstable, Gramps.{BR}Power up at your own risk."
+					"text": "Dracimp infiltrator: Reaper series{BR}prototype combat mimic. Dangerously{BR}unstable. Power up at your own risk."
 				}
 			],
 			"flavorReference": "Scavenger, Sphere: Grandfather Paradox #2"
