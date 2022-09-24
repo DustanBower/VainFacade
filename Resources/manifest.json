@@ -13,12 +13,14 @@
       "  Eldrenwood Village - A quaint country town with a dark secret. Travelers often go missing there on the nights of the full moon.",
       "  The Midnight Bazaar - A goblin market style deck full of fae that will eagerly deal with the heroes or the villains. Buyer beware.",
       "",
-      "Villain: The Baroness - A vampire with centuries of experience defeating foes via physical strength and magic (difficulty 4 - intended to be very difficult but engaging and hard to predict)"
+      "Villains:",
+      "  The Baroness - A vampire with centuries of experience defeating foes via physical strength and magic (difficulty 4 - intended to be very difficult but engaging and hard to predict)",
+      "  Grandfather - A time-traveler from the future who just won't stop messing with the past (difficulty 3)"
     ],
     "namespace": "VainFacadePlaytest",
     "dll": "VainFacadePlaytest.dll",
     "publishedFileId": 2835111137,
-    "version": "0.5.2",
+    "version": "0.6",
     "color": "232370",
     "manualTags": [],
     "decks": {
@@ -27,6 +29,7 @@
 		"Sphere"
 	],
       "villains": [
+	    "Grandfather",
 	    "TheBaroness"
 	],
       "teamVillains": [],
@@ -151,6 +154,32 @@
       "card icon - eternal silence - mute - by Delapouite under CC BY 3.0",
       "card icon - ageless enmity - castle - by Lorc under CC BY 3.0",
       "card icon - bat (placeholder card for digital) - bat - by Skoll under CC BY 3.0",
-      "Music: Hollow Heart by Tonitrus (made with LMMS with instruments by Spitfire Labs)"
+      "Music: Hollow Heart by Tonitrus (made with LMMS with instruments by Spitfire Labs)",
+      "",
+      "Grandfather",
+      "Code by Bart_KF",
+      "Grandfather character portrait and cutouts by HeroMachine3",
+      "Card art icons from game-icons.net",
+      "card back - clockwork - by Lorc under CC BY 3.0",
+      "card back - arrow of time - sands of time - by Lorc under CC BY 3.0",
+      "card back - villain showdown - metal hand - by Lorc under CC BY 3.0",
+      "card back - obstacle to progress - mushroom cloud - by Lorc under CC BY 3.0",
+      "card back - disaster scenario - volcano - by Lorc under CC BY 3.0",
+      "card back - quiet meddling - time trap - by Lorc under CC BY 3.0",
+      "card back - 4fzg ray gun - ray gun - by Lorc under CC BY 3.0",
+      "card back - strange pocketwatch - pocketwatch - by Skoll under CC BY 3.0",
+      "card back - bending the rules - shadow follower - by Lorc under CC BY 3.0",
+      "card back - counting down - gears - by Lorc under CC BY 3.0",
+      "card back - causal casade - newspaper - by Delapouite under CC BY 3.0",
+      "card back - confluence of events - spy - by Delapouite under CC BY 3.0",
+      "card back - fallback strategy - diagram - by Lord Berandas under CC BY 3.0",
+      "card back - picking up the pieces - cracked mask - by Lorc under CC BY 3.0",
+      "card back - accelerated timetable - duration - by Delapouite under CC BY 3.0",
+      "card back - over the line - disintegrate - by Lorc under CC BY 3.0",
+      "card back - leader - minions - by Lorc under CC BY 3.0",
+      "card back - hunter - evil eyes - by Skoll under CC BY 3.0",
+      "card back - minion - evil minion - by Lorc under CC BY 3.0",
+      "Friday Nemesis icon, Time Keeper, and backgrounds on character cards by Tonitrus",
+      "Music: This Late Hour by Tonitrus (made with LMMS with instruments by Will Savin)"
   ]
 }
