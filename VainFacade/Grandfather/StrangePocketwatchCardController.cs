@@ -57,7 +57,7 @@ namespace VainFacadePlaytest.Grandfather
         private IEnumerator PlayVillainCardOnceResponse(CardEntersPlayAction cepa)
         {
             SetCardPropertyToTrueIfRealAction(FirstEnvPlay);
-            IEnumerator playCoroutine = PlayTheTopCardOfTheVillainDeckResponse(cepa);
+            IEnumerator playCoroutine = base.GameController.PlayTopCard(DecisionMaker, base.TurnTakerController, responsibleTurnTaker: base.TurnTaker, showMessage: true, cardSource: GetCardSource());
             if (base.UseUnityCoroutines)
             {
                 yield return base.GameController.StartCoroutine(playCoroutine);
