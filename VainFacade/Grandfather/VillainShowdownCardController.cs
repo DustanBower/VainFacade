@@ -42,11 +42,16 @@ namespace VainFacadePlaytest.Grandfather
             AddAfterLeavesPlayAction (() => base.GameController.UpdateNemesisIdentifiers(this, new string[] { }, GetCardSource()));
         }
 
+        public override CustomDecisionText GetCustomDecisionText(IDecision decision)
+        {
+            return new CustomDecisionText("Select a hero to be " + base.Card.Title + "'s nemesis", "choosing a hero to be " + base.Card.Title + "'s nemesis", "Vote for a hero to be " + base.Card.Title + "'s nemesis", "hero to be " + base.Card.Title + "'s nemesis");
+        }
+
         public override IEnumerator Play()
         {
             // "When this card enters play, choose an active hero."
             List<SelectCardDecision> choices = new List<SelectCardDecision>();
-            IEnumerator chooseCoroutine = base.GameController.SelectHeroCharacterCard(DecisionMaker, SelectionType.HeroCharacterCard, choices, cardSource: GetCardSource());
+            IEnumerator chooseCoroutine = base.GameController.SelectHeroCharacterCard(DecisionMaker, SelectionType.Custom, choices, cardSource: GetCardSource());
             if (base.UseUnityCoroutines)
             {
                 yield return base.GameController.StartCoroutine(chooseCoroutine);
