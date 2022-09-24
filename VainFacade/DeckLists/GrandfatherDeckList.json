@@ -59,6 +59,8 @@
 			"flippedAdvancedIcons": [
 				"IncreaseDamageTaken"
 			],
+			"challengeTitle": "Perfect Timing",
+			"challengeText": "At the start of the game, put [i]Strange Pocketwatch[/i] into play.",
 			"difficulty": 3,
 			"openingLines": {
 				"default": "Oh, don't worry, this will only hurt for a second!",

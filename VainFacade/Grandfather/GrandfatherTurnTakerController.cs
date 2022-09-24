@@ -102,6 +102,20 @@ namespace VainFacadePlaytest.Grandfather
             {
                 base.GameController.ExhaustCoroutine(shuffleCoroutine);
             }
+            if (base.GameController.Game.IsChallenge)
+            {
+                // "At the start of the game, put [i]Strange Pocketwatch[/i] into play."
+                Card watch = base.TurnTaker.GetCardByIdentifier("StrangePocketwatch");
+                IEnumerator challengeCoroutine = base.GameController.PlayCard(this, watch, isPutIntoPlay: true, cardSource: new CardSource(base.CharacterCardController));
+                if (base.UseUnityCoroutines)
+                {
+                    yield return base.GameController.StartCoroutine(challengeCoroutine);
+                }
+                else
+                {
+                    base.GameController.ExhaustCoroutine(challengeCoroutine);
+                }
+            }
         }
     }
 }
