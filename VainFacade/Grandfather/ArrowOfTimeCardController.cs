@@ -38,15 +38,29 @@ namespace VainFacadePlaytest.Grandfather
 
         private bool _reactingToEmptyDeck;
         protected const string FirstDiscard = "FirstDiscardFromHeroDeckThisTurn";
+        protected string[] HeroOrder = { "Hero1InTurnOrder", "Hero2InTurnOrder", "Hero3InTurnOrder", "Hero4InTurnOrder", "Hero5InTurnOrder" };
+
+        protected string[] HasDiscarded = { "HasDiscardedFromHero1ThisTurn", "HasDiscardedFromHero2ThisTurn", "HasDiscardedFromHero3ThisTurn", "HasDiscardedFromHero4ThisTurn", "HasDiscardedFromHero5ThisTurn" };
 
         public override void AddTriggers()
         {
             base.AddTriggers();
-            // "The first time each turn each villain card discards a card from a hero's deck, that hero may destroy 1 of their Ongoing or Equipment cards. If no card is destroyed this way, add a token to this card."
-            AddTrigger((DiscardCardAction dca) => dca.WasCardDiscarded && dca.CardSource != null && dca.CardSource.Card != null && dca.CardSource.Card.IsVillain && !IsPropertyTrue(GeneratePerTargetKey(FirstDiscard, dca.CardSource.Card)) && dca.Origin.IsDeck && dca.Origin.IsHero, DestroyOrAddTokenResponse, new TriggerType[] { TriggerType.DestroyCard, TriggerType.AddTokensToPool }, TriggerTiming.After);
-            AddTrigger((MoveCardAction mca) => mca.WasCardMoved && mca.CardSource != null && mca.CardSource.Card != null && mca.CardSource.Card.IsVillain && !IsPropertyTrue(GeneratePerTargetKey(FirstDiscard, mca.CardSource.Card)) && mca.Origin.IsDeck && mca.Origin.IsHero && mca.Destination.IsTrash && mca.IsDiscard, DestroyOrAddTokenResponse, new TriggerType[] { TriggerType.DestroyCard, TriggerType.AddTokensToPool }, TriggerTiming.After);
+            // Make a list of hero TurnTakers
+            List<TurnTaker> heroes = FindTurnTakersWhere((TurnTaker tt) => tt.IsHero).ToList();
+            for (int i = 0; i < heroes.Count; i++)
+            {
+                GameController.AddCardPropertyJournalEntry(base.Card, HeroOrder[i], heroes.ElementAt(i));
+            }
+
+            // "The first time each turn each villain card discards a card from each hero's deck, that hero may destroy 1 of their Ongoing or Equipment cards. If no card is destroyed this way, add a token to this card."
+            AddTrigger((DiscardCardAction dca) => dca.WasCardDiscarded && dca.CardSource != null && dca.CardSource.Card != null && dca.CardSource.Card.IsVillain && dca.Origin.IsDeck && dca.Origin.IsHero && dca.Origin.OwnerTurnTaker != null && FindInHeroOrder(dca.Origin.OwnerTurnTaker) != -1 && !IsPropertyTrue(GeneratePerTargetKey(FindPerTurnTakerKey(dca.Origin.OwnerTurnTaker), dca.CardSource.Card)), DestroyOrAddTokenResponse, new TriggerType[] { TriggerType.DestroyCard, TriggerType.AddTokensToPool }, TriggerTiming.After);
+            AddTrigger((MoveCardAction mca) => mca.WasCardMoved && mca.CardSource != null && mca.CardSource.Card != null && mca.CardSource.Card.IsVillain && mca.Origin.IsDeck && mca.Origin.IsHero && mca.Destination.IsTrash && mca.IsDiscard && mca.Origin.OwnerTurnTaker != null && FindInHeroOrder(mca.Origin.OwnerTurnTaker) != -1 && !IsPropertyTrue(GeneratePerTargetKey(FindPerTurnTakerKey(mca.Origin.OwnerTurnTaker), mca.CardSource.Card)), DestroyOrAddTokenResponse, new TriggerType[] { TriggerType.DestroyCard, TriggerType.AddTokensToPool }, TriggerTiming.After);
             AddTrigger((BulkMoveCardsAction bmca) => IsRelevant(bmca), DestroyOrAddTokenResponse, new TriggerType[] { TriggerType.DestroyCard, TriggerType.AddTokensToPool }, TriggerTiming.After);
             ResetFlagsAfterLeavesPlay(FirstDiscard);
+            for (int i = 0; i < HasDiscarded.Length; i++)
+            {
+                ResetFlagsAfterLeavesPlay(HasDiscarded[i]);
+            }
             // "When a hero deck becomes empty, add a token to this card and put the bottom 5 cards of that deck's trash on top of the deck."
             AddTrigger((GameAction ga) => !_reactingToEmptyDeck && FindEmptyHeroDeck() != null, AddTokenResetTrashResponse, new TriggerType[] { TriggerType.AddTokensToPool, TriggerType.MoveCard }, TriggerTiming.After);
         }
@@ -56,14 +70,39 @@ namespace VainFacadePlaytest.Grandfather
             return FindLocationsWhere((Location l) => l.IsHero && l.OwnerTurnTaker.CharacterCards.Any((Card c) => !c.IsFlipped && c.IsTarget) && l.IsDeck && l.Cards.Count() == 0).FirstOrDefault();
         }
 
+        private int FindInHeroOrder(TurnTaker tt)
+        {
+            for (int i = 0; i < HeroOrder.Length; i++)
+            {
+                if (Game.Journal.GetCardPropertiesTurnTaker(base.Card, HeroOrder[i]) == tt)
+                {
+                    return i;
+                }
+            }
+            return -1;
+        }
+
+        private string FindPerTurnTakerKey(TurnTaker tt)
+        {
+            int index = FindInHeroOrder(tt);
+            if (index >= 0 && index < HeroOrder.Length)
+            {
+                return HasDiscarded[index];
+            }
+            else
+            {
+                return "";
+            }
+        }
+
         private bool IsRelevant(BulkMoveCardsAction bmca)
         {
-            if (bmca.CardSource != null && bmca.CardSource.Card != null && bmca.CardSource.Card.IsVillain && !IsPropertyTrue(GeneratePerTargetKey(FirstDiscard, bmca.CardSource.Card)) && bmca.IsDiscard)
+            if (bmca.CardSource != null && bmca.CardSource.Card != null && bmca.CardSource.Card.IsVillain && bmca.IsDiscard)
             {
                 foreach (Card c in bmca.CardsToMove)
                 {
                     Location o = bmca.Origins[c];
-                    if (o != null && o.IsDeck && o.IsHero)
+                    if (o != null && o.IsDeck && o.IsHero && o.OwnerTurnTaker != null && FindInHeroOrder(o.OwnerTurnTaker) != -1 && !IsPropertyTrue(GeneratePerTargetKey(FindPerTurnTakerKey(o.OwnerTurnTaker), bmca.CardSource.Card)))
                     {
                         return true;
                     }
@@ -98,36 +137,39 @@ namespace VainFacadePlaytest.Grandfather
                     }
                 }
             }
-            if (actionSource != null && originOwners.Count > 0)
+            if (actionSource != null)
             {
-                SetCardPropertyToTrueIfRealAction(GeneratePerTargetKey(FirstDiscard, actionSource));
-                // "... that hero may destroy 1 of their Ongoing or Equipment cards."
-                List<DestroyCardAction> results = new List<DestroyCardAction>();
-                IEnumerator destroyCoroutine = base.GameController.SelectHeroToDestroyTheirCard(DecisionMaker, new LinqCardCriteria((Card c) => c.IsOngoing || IsEquipment(c), "Ongoing or Equipment"), storedResults: results, heroCriteria: new LinqTurnTakerCriteria((TurnTaker tt) => originOwners.Contains(tt)), responsibleCard: base.Card, cardSource: GetCardSource());
-                if (originOwners.Count == 1)
+                foreach (TurnTaker player in originOwners)
                 {
-                    TurnTaker player = originOwners.FirstOrDefault();
-                    destroyCoroutine = base.GameController.SelectAndDestroyCard(FindHeroTurnTakerController(player.ToHero()), new LinqCardCriteria((Card c) => c.Owner == player && (c.IsOngoing || IsEquipment(c)), "belonging to " + player.Name, false, true, "Ongoing or Equipment card", "Ongoing or Equipment cards"), true, results, responsibleCard: base.Card, cardSource: GetCardSource());
-                }
-                if (base.UseUnityCoroutines)
-                {
-                    yield return base.GameController.StartCoroutine(destroyCoroutine);
-                }
-                else
-                {
-                    base.GameController.ExhaustCoroutine(destroyCoroutine);
-                }
-                // "If no card is destroyed this way, add a token to this card."
-                if (!DidDestroyCard(results))
-                {
-                    IEnumerator tokenCoroutine = base.GameController.AddTokensToPool(TimelineTokenPool(), 1, GetCardSource());
+                    string ttKey = FindPerTurnTakerKey(player);
+                    if (ttKey == null || ttKey == "" || IsPropertyTrue(GeneratePerTargetKey(ttKey, actionSource)))
+                    {
+                        continue;
+                    }
+                    SetCardPropertyToTrueIfRealAction(GeneratePerTargetKey(FindPerTurnTakerKey(player), actionSource));
+                    // "... that hero may destroy 1 of their Ongoing or Equipment cards."
+                    List<DestroyCardAction> results = new List<DestroyCardAction>();
+                    IEnumerator destroyCoroutine = base.GameController.SelectAndDestroyCard(FindHeroTurnTakerController(player.ToHero()), new LinqCardCriteria((Card c) => c.Owner == player && (c.IsOngoing || IsEquipment(c)), "belonging to " + player.Name, false, true, "Ongoing or Equipment card", "Ongoing or Equipment cards"), true, results, responsibleCard: base.Card, cardSource: GetCardSource());
                     if (base.UseUnityCoroutines)
                     {
-                        yield return base.GameController.StartCoroutine(tokenCoroutine);
+                        yield return base.GameController.StartCoroutine(destroyCoroutine);
                     }
                     else
                     {
-                        base.GameController.ExhaustCoroutine(tokenCoroutine);
+                        base.GameController.ExhaustCoroutine(destroyCoroutine);
+                    }
+                    // "If no card is destroyed this way, add a token to this card."
+                    if (!DidDestroyCard(results))
+                    {
+                        IEnumerator tokenCoroutine = base.GameController.AddTokensToPool(TimelineTokenPool(), 1, GetCardSource());
+                        if (base.UseUnityCoroutines)
+                        {
+                            yield return base.GameController.StartCoroutine(tokenCoroutine);
+                        }
+                        else
+                        {
+                            base.GameController.ExhaustCoroutine(tokenCoroutine);
+                        }
                     }
                 }
             }
