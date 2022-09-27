@@ -34,7 +34,7 @@ namespace VainFacadePlaytest.Grandfather
         {
             base.AddTriggers();
             // "The first time each turn each villain card would deal damage, redirect that damage to the target next to this card. Any player may discard 1 card to redirect that damage to one of their targets instead."
-            AddTrigger((DealDamageAction dda) => dda.DamageSource != null && dda.DamageSource.IsCard && dda.DamageSource.Card.IsVillain && !IsPropertyTrue(GeneratePerTargetKey(FirstDamage, dda.DamageSource.Card)), RedirectDamageResponse, TriggerType.RedirectDamage, TriggerTiming.Before);
+            AddTrigger((DealDamageAction dda) => GetCardThisCardIsNextTo() != null && GetCardThisCardIsNextTo().IsTarget && dda.DamageSource != null && dda.DamageSource.IsCard && dda.DamageSource.Card.IsVillain && !IsPropertyTrue(GeneratePerTargetKey(FirstDamage, dda.DamageSource.Card)), RedirectDamageResponse, TriggerType.RedirectDamage, TriggerTiming.Before);
             ResetFlagsAfterLeavesPlay(FirstDamage);
         }
 
