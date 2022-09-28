@@ -134,7 +134,11 @@
     <Compile Include="TheBaroness\WingedTerrorCardController.cs" />
     <Compile Include="TheFury\BalancingTheScalesCardController.cs" />
     <Compile Include="TheFury\BrokenBondsCardController.cs" />
+    <Compile Include="TheFury\CraftingTheFutureCardController.cs" />
+    <Compile Include="TheFury\ForteanFoeCardController.cs" />
+    <Compile Include="TheFury\MeasurersMeterCardController.cs" />
     <Compile Include="TheFury\TheFuryUtilityCardController.cs" />
+    <Compile Include="TheFury\UnturningEmissaryCardController.cs" />
     <Compile Include="TheMidnightBazaar\ASenseOfLossCardController.cs" />
     <Compile Include="TheMidnightBazaar\DisquietCardController.cs" />
     <Compile Include="TheMidnightBazaar\GoblinFruitCardController.cs" />

@@ -14,8 +14,12 @@ namespace VainFacadePlaytest.TheFury
         public TheFuryUtilityCardController(Card card, TurnTakerController turnTakerController)
             : base(card, turnTakerController)
         {
-
+            
         }
+
+        protected const string CoincidenceKeyword = "coincidence";
+
+        public LinqCardCriteria IsCoincidence = new LinqCardCriteria((Card c) => c.DoKeywordsContain(CoincidenceKeyword), "Coincidence");
 
         public IEnumerator IncreaseNextDamageTo(Card target, int amount, CardSource cardSource)
         {
@@ -60,6 +64,22 @@ namespace VainFacadePlaytest.TheFury
                         base.GameController.ExhaustCoroutine(increaseCoroutine);
                     }
                 }
+            }
+        }
+
+        public IEnumerator ReduceNextDamageTo(Card target, int amount, CardSource cardSource)
+        {
+            ReduceDamageStatusEffect buff = new ReduceDamageStatusEffect(amount);
+            buff.TargetCriteria.IsSpecificCard = target;
+            buff.NumberOfUses = 1;
+            IEnumerator statusCoroutine = base.GameController.AddStatusEffect(buff, true, cardSource);
+            if (base.UseUnityCoroutines)
+            {
+                yield return base.GameController.StartCoroutine(statusCoroutine);
+            }
+            else
+            {
+                base.GameController.ExhaustCoroutine(statusCoroutine);
             }
         }
     }
