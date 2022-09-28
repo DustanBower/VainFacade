@@ -1,0 +1,66 @@
+﻿using Handelabra;
+using Handelabra.Sentinels.Engine.Controller;
+using Handelabra.Sentinels.Engine.Model;
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace VainFacadePlaytest.TheFury
+{
+    public class TheFuryUtilityCardController : CardController
+    {
+        public TheFuryUtilityCardController(Card card, TurnTakerController turnTakerController)
+            : base(card, turnTakerController)
+        {
+
+        }
+
+        public IEnumerator IncreaseNextDamageTo(Card target, int amount, CardSource cardSource)
+        {
+            IncreaseDamageStatusEffect debuff = new IncreaseDamageStatusEffect(amount);
+            debuff.TargetCriteria.IsSpecificCard = target;
+            debuff.NumberOfUses = 1;
+            IEnumerator statusCoroutine = base.GameController.AddStatusEffect(debuff, true, cardSource);
+            if (base.UseUnityCoroutines)
+            {
+                yield return base.GameController.StartCoroutine(statusCoroutine);
+            }
+            else
+            {
+                base.GameController.ExhaustCoroutine(statusCoroutine);
+            }
+        }
+
+        public IEnumerator SelectTargetAndIncreaseNextDamageTo(LinqCardCriteria criteria, int amount, bool optional, CardSource cardSource)
+        {
+            List<SelectCardDecision> choices = new List<SelectCardDecision>();
+            IEnumerator chooseCoroutine = base.GameController.SelectCardAndStoreResults(DecisionMaker, SelectionType.SelectTarget, criteria, choices, optional, cardSource: cardSource);
+            if (base.UseUnityCoroutines)
+            {
+                yield return base.GameController.StartCoroutine(chooseCoroutine);
+            }
+            else
+            {
+                base.GameController.ExhaustCoroutine(chooseCoroutine);
+            }
+            if (choices.Count > 0)
+            {
+                Card selectedCard = choices.First().SelectedCard;
+                if (selectedCard != null)
+                {
+                    IEnumerator increaseCoroutine = IncreaseNextDamageTo(selectedCard, amount, cardSource);
+                    if (base.UseUnityCoroutines)
+                    {
+                        yield return base.GameController.StartCoroutine(increaseCoroutine);
+                    }
+                    else
+                    {
+                        base.GameController.ExhaustCoroutine(increaseCoroutine);
+                    }
+                }
+            }
+        }
+    }
+}
