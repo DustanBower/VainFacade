@@ -98,5 +98,21 @@ namespace VainFacadePlaytest.TheFury
                 base.GameController.ExhaustCoroutine(statusCoroutine);
             }
         }
+
+        public IEnumerator MakeIndestructibleThisTurn(Card selected, CardSource cardSource)
+        {
+            MakeIndestructibleStatusEffect protection = new MakeIndestructibleStatusEffect();
+            protection.CardsToMakeIndestructible.IsSpecificCard = selected;
+            protection.UntilThisTurnIsOver(base.Game);
+            IEnumerator protectCoroutine = base.GameController.AddStatusEffect(protection, true, cardSource);
+            if (base.UseUnityCoroutines)
+            {
+                yield return base.GameController.StartCoroutine(protectCoroutine);
+            }
+            else
+            {
+                base.GameController.ExhaustCoroutine(protectCoroutine);
+            }
+        }
     }
 }
