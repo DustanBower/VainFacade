@@ -82,5 +82,21 @@ namespace VainFacadePlaytest.TheFury
                 base.GameController.ExhaustCoroutine(statusCoroutine);
             }
         }
+
+        public IEnumerator IncreaseNextDamageBy(Card target, int amount, CardSource cardSource)
+        {
+            IncreaseDamageStatusEffect buff = new IncreaseDamageStatusEffect(amount);
+            buff.SourceCriteria.IsSpecificCard = target;
+            buff.NumberOfUses = 1;
+            IEnumerator statusCoroutine = base.GameController.AddStatusEffect(buff, true, cardSource);
+            if (base.UseUnityCoroutines)
+            {
+                yield return base.GameController.StartCoroutine(statusCoroutine);
+            }
+            else
+            {
+                base.GameController.ExhaustCoroutine(statusCoroutine);
+            }
+        }
     }
 }

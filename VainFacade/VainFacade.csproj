@@ -141,6 +141,7 @@
     <Compile Include="TheFury\UnturningEmissaryCardController.cs" />
     <Compile Include="TheFury\ViciousOnslaughtCardController.cs" />
     <Compile Include="TheFury\WeaversWordsCardController.cs" />
+    <Compile Include="TheFury\WeirdLuckCardController.cs" />
     <Compile Include="TheMidnightBazaar\ASenseOfLossCardController.cs" />
     <Compile Include="TheMidnightBazaar\DisquietCardController.cs" />
     <Compile Include="TheMidnightBazaar\GoblinFruitCardController.cs" />

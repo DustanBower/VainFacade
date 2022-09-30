@@ -42,8 +42,8 @@ namespace VainFacadePlaytest.TheFury
                     Card currentTarget = targets.ElementAt(i);
                     IEnumerable<Function> functionChoices = new Function[2]
                     {
-                        new Function(DecisionMaker, "Increase by " + amtModified.ToString(), SelectionType.IncreaseDamage, () => IncreaseNextDamageTo(currentTarget, amtModified, GetCardSource())),
-                        new Function(DecisionMaker, "Reduce by " + amtModified.ToString(), SelectionType.ReduceNextDamageTaken, () => ReduceNextDamageTo(currentTarget, amtModified, GetCardSource()))
+                        new Function(DecisionMaker, "Increase the next damage dealt to " + currentTarget.Title + " by " + amtModified.ToString(), SelectionType.IncreaseDamage, () => IncreaseNextDamageTo(currentTarget, amtModified, GetCardSource())),
+                        new Function(DecisionMaker, "Reduce the next damage dealt to " + currentTarget.Title + " by " + amtModified.ToString(), SelectionType.ReduceNextDamageTaken, () => ReduceNextDamageTo(currentTarget, amtModified, GetCardSource()))
                     };
                     SelectFunctionDecision choice = new SelectFunctionDecision(base.GameController, DecisionMaker, functionChoices, false, associatedCards: currentTarget.ToEnumerable(), cardSource: GetCardSource());
                     IEnumerator chooseCoroutine = base.GameController.SelectAndPerformFunction(choice);
