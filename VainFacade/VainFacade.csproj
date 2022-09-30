@@ -137,6 +137,7 @@
     <Compile Include="TheFury\CraftingTheFutureCardController.cs" />
     <Compile Include="TheFury\ForteanFoeCardController.cs" />
     <Compile Include="TheFury\MeasurersMeterCardController.cs" />
+    <Compile Include="TheFury\TheFuryCharacterCardController.cs" />
     <Compile Include="TheFury\TheFuryUtilityCardController.cs" />
     <Compile Include="TheFury\UnturningEmissaryCardController.cs" />
     <Compile Include="TheFury\ViciousOnslaughtCardController.cs" />
