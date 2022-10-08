@@ -91,7 +91,7 @@ namespace VainFacadePlaytest.Sphere
             int numTargets = GetPowerNumeral(0, 1);
             int meleeAmt = GetPowerNumeral(1, 1);
             int energyAmt = GetPowerNumeral(2, 1);
-            // "Choose an Emanation in play and put a card with the same title into play from your trash or {Sphere} deals 1 target 1 melee damage and 1 energy damage."
+            // "Either choose an Emanation in play and put a card with the same title into play from your trash, or {Sphere} deals 1 target 1 melee damage and 1 energy damage."
             List<Function> options = new List<Function>();
             options.Add(new Function(base.HeroTurnTakerController, "Put an Emanation from your trash that matches one in play into play", SelectionType.PutIntoPlay, PlayMatchingEmanationFromTrash));
             options.Add(new Function(base.HeroTurnTakerController, "{Sphere} deals " + numTargets + " target " + meleeAmt + " melee damage and " + energyAmt + " energy damage", SelectionType.DealDamage, () => SphereDealsDamage(numTargets, meleeAmt, energyAmt)));
@@ -110,7 +110,7 @@ namespace VainFacadePlaytest.Sphere
 
         private IEnumerator PlayMatchingEmanationFromTrash()
         {
-            // "Choose an Emanation in play and put a card with the same title into play from your trash"
+            // "Either choose an Emanation in play and put a card with the same title into play from your trash,"
             List<SelectCardDecision> storedResults = new List<SelectCardDecision>();
             IEnumerator selectCoroutine = base.GameController.SelectCardAndStoreResults(base.HeroTurnTakerController, SelectionType.Custom, SphereUtilityCardController.isEmanationInPlay, storedResults, false, cardSource: GetCardSource());
             if (base.UseUnityCoroutines)
@@ -140,7 +140,7 @@ namespace VainFacadePlaytest.Sphere
 
         private IEnumerator SphereDealsDamage(int targets, int melee, int energy)
         {
-            // "{Sphere} deals 1 target 1 melee damage and 1 energy damage."
+            // ...or "{Sphere} deals 1 target 1 melee damage and 1 energy damage."
             List<DealDamageAction> hits = new List<DealDamageAction>();
             hits.Add(new DealDamageAction(GetCardSource(), new DamageSource(base.GameController, base.Card), null, melee, DamageType.Melee));
             hits.Add(new DealDamageAction(GetCardSource(), new DamageSource(base.GameController, base.Card), null, energy, DamageType.Energy));

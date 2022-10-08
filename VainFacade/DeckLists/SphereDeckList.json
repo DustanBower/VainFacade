@@ -13,7 +13,7 @@
 			"backgroundColor": "900CA1",
 			"character": true,
 			"powers": [
-				"Choose an Emanation in play and put a card with the same title into play from your trash or {Sphere} deals 1 target 1 melee damage and 1 energy damage."
+				"Either choose an Emanation in play and put a card with the same title into play from your trash, or {Sphere} deals 1 target 1 melee damage and 1 energy damage."
 			],
 			"icons": [
 				"HasPower",
