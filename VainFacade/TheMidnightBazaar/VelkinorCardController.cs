@@ -102,7 +102,7 @@ namespace VainFacadePlaytest.TheMidnightBazaar
                 if (choice != null && choice.SelectedCard != null)
                 {
                     Card heroUsingPower = choice.SelectedCard;
-                    // "Your hero deals 1 target 5 irreducible melee damage, ..."
+                    // "Your hero deals 1 target 5 irreducible melee damage. ..."
                     IEnumerator damageCoroutine = base.GameController.SelectTargetsAndDealDamage(httc, new DamageSource(base.GameController, heroUsingPower), (Card c) => damageAmt, DamageType.Melee, () => numTargets, false, numTargets, isIrreducible: true, cardSource: GetCardSource());
                     if (base.UseUnityCoroutines)
                     {
@@ -112,7 +112,7 @@ namespace VainFacadePlaytest.TheMidnightBazaar
                     {
                         base.GameController.ExhaustCoroutine(damageCoroutine);
                     }
-                    // "... then increases damage dealt to your hero by 1 until the start of your next turn."
+                    // "... Increase damage dealt to your hero by 1 until the start of your next turn."
                     IncreaseDamageStatusEffect aggro = new IncreaseDamageStatusEffect(damageIncrease);
                     aggro.TargetCriteria.IsSpecificCard = heroUsingPower;
                     aggro.UntilStartOfNextTurn(heroUsingPower.Owner);

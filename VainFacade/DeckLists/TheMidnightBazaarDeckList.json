@@ -354,7 +354,7 @@
 				"At the end of the environment turn, if there is no active hero in this play area, 1 player may move a card from their hand under [i]The Empty Well[/i] to move this card to their play area. They gain the following power:"
 			],
 			"powers": [
-				"Your hero deals 1 target 5 irreducible melee damage, then increases damage dealt to your hero by 1 until the start of your next turn."
+				"Your hero deals 1 target 5 irreducible melee damage. Increase damage dealt to your hero by 1 until the start of your next turn."
 			],
 			"icons": [
 				"HasPower",
