@@ -299,7 +299,7 @@
 				"limited"
 			],
 			"powers": [
-				"Return an Emanation to your hand. If you do, {Sphere} deals 1 target 3 energy damage."
+				"Return an Emanation from in play to your hand. If you do, {Sphere} deals 1 target 3 energy damage."
 			],
 			"icons": [
 				"HasPower",

@@ -20,7 +20,7 @@ namespace VainFacadePlaytest.Sphere
 
         public override IEnumerator UsePower(int index = 0)
         {
-            // "Return an Emanation to your hand."
+            // "Return an Emanation from in play to your hand."
             int numTargets = GetPowerNumeral(0, 1);
             int energyAmt = GetPowerNumeral(1, 3);
             List<MoveCardAction> storedResults = new List<MoveCardAction>();
