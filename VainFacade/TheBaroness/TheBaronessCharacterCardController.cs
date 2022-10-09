@@ -95,7 +95,7 @@ namespace VainFacadePlaytest.TheBaroness
                 // "When there are no villain Schemes in play, flip {TheBaroness}'s character card."
                 base.AddSideTrigger(AddTrigger((GameAction a) => a.CardSource != null && NumVillainSchemesInPlay() == 0, (GameAction a) => base.GameController.FlipCard(this, cardSource: GetCardSource()), TriggerType.FlipCard, TriggerTiming.After));
                 base.AddSideTrigger(AddTrigger((PhaseChangeAction pca) => NumVillainSchemesInPlay() == 0, (PhaseChangeAction pca) => base.GameController.FlipCard(this, cardSource: GetCardSource()), TriggerType.FlipCard, TriggerTiming.After));
-                // "At the end of the villain turn, {TheBaroness} deals the hero with the highest HP {H - 1} melee damage. Then, unless {TheBaroness} dealt a hero target damage this turn, destroy {H} hero Ongoing and/or Equipment cards."
+                // "At the end of the villain turn, {TheBaroness} deals the hero with the highest HP {H - 1} melee damage. Then, if {TheBaroness} dealt no damage to hero targets this turn, destroy {H} hero Ongoing and/or Equipment cards."
                 base.AddSideTrigger(AddEndOfTurnTrigger((TurnTaker tt) => tt == base.TurnTaker, HitHighestOrDestroyResponse, new TriggerType[] { TriggerType.DealDamage, TriggerType.DestroyCard }));
                 if (base.IsGameAdvanced)
                 {
@@ -116,7 +116,7 @@ namespace VainFacadePlaytest.TheBaroness
                 AddSideTrigger(AddTrigger((MoveCardAction mca) => !HasBeenSetToTrueThisTurn(FirstBloodThisTurn) && mca.CardToMove.IsFaceDownNonCharacter && mca.CardToMove.IsHero && mca.Destination.IsPlayAreaOf(base.TurnTaker), FirstBloodTakenResponse, TriggerType.MoveCard, TriggerTiming.After));
                 // "At the end of the villain turn, discard the top {H + 2} cards of the villain deck. Put any Schemes discarded this way into play."
                 // "Then if there is at least 1 villain Scheme in play, flip {TheBaroness}'s character card."
-                // "Then {TheBaroness} deals the hero target with the lowest HP {H - 2} melee damage. Unless {TheBaroness} dealt a hero target damage this turn, destroy {H} hero Ongoing and/or Equipment cards."
+                // "Then {TheBaroness} deals the hero target with the lowest HP {H - 2} melee damage. If {TheBaroness} dealt no damage to hero targets this turn, destroy {H} hero Ongoing and/or Equipment cards."
                 base.AddSideTrigger(AddEndOfTurnTrigger((TurnTaker tt) => tt == base.TurnTaker, DiscardSchemeFlipHitLowestOrDestroyResponse, new TriggerType[] { TriggerType.DiscardCard, TriggerType.PutIntoPlay, TriggerType.FlipCard, TriggerType.DealDamage, TriggerType.DestroyCard }));
                 if (base.IsGameAdvanced)
                 {
@@ -203,7 +203,7 @@ namespace VainFacadePlaytest.TheBaroness
             {
                 base.GameController.ExhaustCoroutine(damageCoroutine);
             }
-            // "Then, unless {TheBaroness} dealt a hero target damage this turn, destroy {H} hero Ongoing and/or Equipment cards."
+            // "Then, if {TheBaroness} dealt no damage to hero targets this turn, destroy {H} hero Ongoing and/or Equipment cards."
             if (!DidHitHeroTargetThisTurn())
             {
                 LinqCardCriteria heroOngEqp = new LinqCardCriteria((Card c) => c.IsHero && (c.IsOngoing || IsEquipment(c)) && c.IsInPlayAndHasGameText, "hero Ongoing or Equipment");
@@ -272,7 +272,7 @@ namespace VainFacadePlaytest.TheBaroness
             {
                 base.GameController.ExhaustCoroutine(damageCoroutine);
             }
-            // "Unless {TheBaroness} dealt a hero target damage this turn, destroy {H} hero Ongoing and/or Equipment cards."
+            // "If {TheBaroness} dealt no damage to hero targets this turn, destroy {H} hero Ongoing and/or Equipment cards."
             if (!DidHitHeroTargetThisTurn())
             {
                 LinqCardCriteria heroOngEqp = new LinqCardCriteria((Card c) => c.IsHero && (c.IsOngoing || IsEquipment(c)) && c.IsInPlayAndHasGameText, "hero Ongoing or Equipment");

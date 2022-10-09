@@ -33,7 +33,7 @@
 				"When {TheBaroness} is dealt 6 or more damage in a turn, play the top card of the villain deck.",
 				"When a hero card destroys a villain Scheme, {TheBaroness} deals the 2 heroes with the lowest HP {H - 2} melee damage each.",
 				"When there are no villain Schemes in play, flip {TheBaroness}'s character card.",
-				"At the end of the villain turn, {TheBaroness} deals the hero with the highest HP {H - 1} melee damage. Then, unless {TheBaroness} dealt a hero target damage this turn, destroy {H} hero Ongoing and/or Equipment cards."
+				"At the end of the villain turn, {TheBaroness} deals the hero with the highest HP {H - 1} melee damage. Then, if {TheBaroness} dealt no damage to hero targets this turn, destroy {H} hero Ongoing and/or Equipment cards."
 			],
 			"advanced": "Increase damage dealt by {TheBaroness} by 1.",
 			"icons": [
@@ -55,7 +55,7 @@
 				"The first time each turn a hero card is put face-down into the villain play area, put the top card of its associated deck face-down in the villain play area.",
 				"At the end of the villain turn, discard the top {H + 2} cards of the villain deck. Put any Schemes discarded this way into play.",
 				"Then if there is at least 1 villain Scheme in play, flip {TheBaroness}'s character card.",
-				"Then {TheBaroness} deals the hero target with the lowest HP {H - 2} melee damage. Unless {TheBaroness} dealt a hero target damage this turn, destroy {H} hero Ongoing and/or Equipment cards."
+				"Then {TheBaroness} deals the hero target with the lowest HP {H - 2} melee damage. If {TheBaroness} dealt no damage to hero targets this turn, destroy {H} hero Ongoing and/or Equipment cards."
 			],
 			"flippedAdvanced": "At the end of the villain turn, {TheBaroness} regains {H - 2} HP.",
 			"flippedIcons": [
