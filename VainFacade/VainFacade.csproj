@@ -132,9 +132,11 @@
     <Compile Include="TheBaroness\VampiricStrengthCardController.cs" />
     <Compile Include="TheBaroness\VampirismCardController.cs" />
     <Compile Include="TheBaroness\WingedTerrorCardController.cs" />
+    <Compile Include="TheFury\AbyssalGazeCardController.cs" />
     <Compile Include="TheFury\BalancingTheScalesCardController.cs" />
     <Compile Include="TheFury\BrokenBondsCardController.cs" />
     <Compile Include="TheFury\CraftingTheFutureCardController.cs" />
+    <Compile Include="TheFury\DarkJusticeCardController.cs" />
     <Compile Include="TheFury\DestroyersDirgeCardController.cs" />
     <Compile Include="TheFury\ForteanFoeCardController.cs" />
     <Compile Include="TheFury\MeasurersMeterCardController.cs" />

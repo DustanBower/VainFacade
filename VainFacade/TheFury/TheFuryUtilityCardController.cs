@@ -37,9 +37,12 @@ namespace VainFacadePlaytest.TheFury
             }
         }
 
-        public IEnumerator SelectTargetAndIncreaseNextDamageTo(LinqCardCriteria criteria, int amount, bool optional, CardSource cardSource)
+        public IEnumerator SelectTargetAndIncreaseNextDamageTo(LinqCardCriteria criteria, int amount, bool optional, CardSource cardSource, List<SelectCardDecision> choices = null)
         {
-            List<SelectCardDecision> choices = new List<SelectCardDecision>();
+            if (choices == null)
+            {
+                choices = new List<SelectCardDecision>();
+            }
             IEnumerator chooseCoroutine = base.GameController.SelectCardAndStoreResults(DecisionMaker, SelectionType.SelectTarget, criteria, choices, optional, cardSource: cardSource);
             if (base.UseUnityCoroutines)
             {
