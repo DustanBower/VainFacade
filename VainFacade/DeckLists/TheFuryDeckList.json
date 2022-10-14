@@ -290,7 +290,7 @@
 				"ongoing"
 			],
 			"body": [
-				"When a One-Shot enters play, you may destroy this card. If you do, resolve the text of that One-Shot a second time, then the character from that card's deck with the lowest HP deals itself 2 irreducible infernal damage.'"
+				"When a One-Shot enters play, you may destroy this card. If you do, resolve the text of that One-Shot a second time, then the character from that card's deck with the lowest HP deals itself 2 irreducible infernal damage."
 			],
 			"icons": [
 				"DestroySelf",
