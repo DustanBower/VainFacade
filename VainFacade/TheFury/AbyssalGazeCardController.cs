@@ -19,9 +19,9 @@ namespace VainFacadePlaytest.TheFury
             AddInhibitorException((GameAction ga) => ga is PlayCardAction && base.Card.Location.IsHand);
         }
 
-        public override void AddTriggers()
+        public override void AddStartOfGameTriggers()
         {
-            base.AddTriggers();
+            base.AddStartOfGameTriggers();
             // "When this card would be revealed or enter your hand, put it into play."
             AddTrigger((DrawCardAction dca) => dca.CardToDraw == base.Card, PutIntoPlayInsteadResponse, TriggerType.PutIntoPlay, TriggerTiming.Before, outOfPlayTrigger: true);
             AddTrigger((MoveCardAction mca) => mca.CardToMove == base.Card && (mca.Destination == base.TurnTaker.ToHero().Hand || mca.Destination.IsRevealed), PutIntoPlayInsteadResponse, TriggerType.PutIntoPlay, TriggerTiming.Before, outOfPlayTrigger: true);
@@ -30,6 +30,11 @@ namespace VainFacadePlaytest.TheFury
             // trigger on BulkMoveCardsAction?
             // Shinobi Assassin doesn't, Monster of Id doesn't
             // ...
+        }
+
+        public override void AddTriggers()
+        {
+            base.AddTriggers();
             // "Damage dealt by {TheFuryCharacter} is irreducible."
             AddMakeDamageIrreducibleTrigger((DealDamageAction dda) => dda.DamageSource != null && dda.DamageSource.Card != null && dda.DamageSource.Card == base.CharacterCard);
             // "At the start of your turn, select up to 3 targets other than {TheFuryCharacter}. Increase the next damage dealt to each of the selected targets by 1. If none of the selected targets are hero character cards, destroy this card."

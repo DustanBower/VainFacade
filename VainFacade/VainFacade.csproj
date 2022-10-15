@@ -143,6 +143,7 @@
     <Compile Include="TheFury\ImprobableImpedimentCardController.cs" />
     <Compile Include="TheFury\InfernalTwinCardController.cs" />
     <Compile Include="TheFury\MeasurersMeterCardController.cs" />
+    <Compile Include="TheFury\RuinousRampageCardController.cs" />
     <Compile Include="TheFury\TheFuryCharacterCardController.cs" />
     <Compile Include="TheFury\TheFuryUtilityCardController.cs" />
     <Compile Include="TheFury\UnturningEmissaryCardController.cs" />
