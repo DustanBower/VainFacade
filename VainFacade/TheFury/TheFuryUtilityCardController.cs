@@ -43,7 +43,7 @@ namespace VainFacadePlaytest.TheFury
             {
                 choices = new List<SelectCardDecision>();
             }
-            IEnumerator chooseCoroutine = base.GameController.SelectCardAndStoreResults(DecisionMaker, SelectionType.SelectTarget, criteria, choices, optional, cardSource: cardSource);
+            IEnumerator chooseCoroutine = base.GameController.SelectCardAndStoreResults(DecisionMaker, SelectionType.SelectTargetNoDamage, criteria, choices, optional, cardSource: cardSource);
             if (base.UseUnityCoroutines)
             {
                 yield return base.GameController.StartCoroutine(chooseCoroutine);

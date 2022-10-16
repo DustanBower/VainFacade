@@ -27,7 +27,7 @@ namespace VainFacadePlaytest.TheFury
         {
             base.AddTriggers();
             // "Once during a turn, when {TheFuryCharacter} would deal or be dealt damage, you may first put a non-character card in play on top of its deck. If you do, you may play a card or use a power."
-            AddTrigger((DealDamageAction dda) => !HasBeenSetToTrueThisTurn(UsedThisTurn) && !dda.IsPretend && (dda.Target == base.CharacterCard || (dda.DamageSource != null && dda.DamageSource.Card != null && dda.DamageSource.Card == base.CharacterCard)), MoveAndPlayOrPowerResponse, TriggerType.WouldBeDealtDamage, TriggerTiming.Before);
+            AddTrigger((DealDamageAction dda) => !HasBeenSetToTrueThisTurn(UsedThisTurn) && !dda.IsPretend && dda.Amount > 0 && dda.DamageSource.IsInPlayAndHasGameText && (dda.Target == base.CharacterCard || (dda.DamageSource != null && dda.DamageSource.Card != null && dda.DamageSource.Card == base.CharacterCard)), MoveAndPlayOrPowerResponse, TriggerType.WouldBeDealtDamage, TriggerTiming.Before);
             // "At the end of each turn, if you have put a card on top of a deck in this way, put the top card of that deck into play and destroy this card."
             AddEndOfTurnTrigger((TurnTaker tt) => true, PutDestructResponse, new TriggerType[] { TriggerType.PutIntoPlay, TriggerType.DestroySelf }, additionalCriteria: (PhaseChangeAction pca) => GetCardPropertyJournalEntryCard(CardMoved) != null);
             ResetFlagAfterLeavesPlay(CardMoved);
@@ -38,7 +38,7 @@ namespace VainFacadePlaytest.TheFury
             // "... you may first put a non-character card in play on top of its deck."
             List<MoveCardAction> moveResults = new List<MoveCardAction>();
             List<SelectCardDecision> choiceResults = new List<SelectCardDecision>();
-            IEnumerator selectCoroutine = base.GameController.SelectCardAndStoreResults(DecisionMaker, SelectionType.MoveCardOnDeck, new LinqCardCriteria((Card c) => c.IsInPlay && !c.IsCharacter), choiceResults, true, gameAction: dda, cardSource: GetCardSource());
+            IEnumerator selectCoroutine = base.GameController.SelectCardAndStoreResults(DecisionMaker, SelectionType.MoveCardOnDeck, new LinqCardCriteria((Card c) => c.IsInPlay && !c.IsCharacter), choiceResults, true, cardSource: GetCardSource());
             if (base.UseUnityCoroutines)
             {
                 yield return base.GameController.StartCoroutine(selectCoroutine);
