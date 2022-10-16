@@ -1,5 +1,6 @@
 {
 	"name": "The Fury",
+	"sortName": "Fury",
 	"kind": "Hero",
 	"initialCardIdentifiers": [
 		"TheFuryCharacter"
@@ -8,7 +9,7 @@
 		{
 			"identifier": "TheFuryCharacter",
 			"count": 1,
-			"title": "The Unrelenting Fury",
+			"title": "The Fury",
 			"body": "Hellbent",
 			"backgroundColor": "FFFFFF",
 			"character": true,
@@ -164,7 +165,7 @@
 			"flavorQuotes": [
 				{
 					"identifier": "Liana",
-					"text": "Do you have to hurt people?{BR}Is that all justice is to you?"
+					"text": "Do you have to hurt{BR}people? Is that all justice is to you?"
 				},
 				{
 					"identifier": "The Fury",
@@ -191,7 +192,7 @@
 			"flavorQuotes": [
 				{
 					"identifier": "The Fury",
-					"text": "Cease your worthless groveling.{BR}Your punishments are sufficient. Your{BR}petition has been answered; the matter closed.{BR}Do not call on me again."
+					"text": "Cease your worthless{BR}groveling. Your punishments are{BR}sufficient. Your petition has been answered;{BR}the matter closed.{BR}Do not call on me again."
 				}
 			],
 			"flavorReference": "The Fury, Grim Tidings: A Woman Scorned"
@@ -273,7 +274,7 @@
 			"flavorQuotes": [
 				{
 					"identifier": "Peacekeeper",
-					"text": "Sniper rounds were intercepted by{BR}a safe falling from a third-floor{BR}window. Who were they after?"
+					"text": "Sniper{BR}rounds were intercepted by a safe{BR}falling from a third-floor window. Who{BR}were they after?"
 				},
 				{
 					"identifier": "Burgess",
@@ -300,7 +301,7 @@
 			"flavorQuotes": [
 				{
 					"identifier": "Morgan Leroux",
-					"text": "Sisters three, take unto ye the gem{BR}of mine own heart. Grant to me the majesty to{BR}show your sacred sign! Now decree through land{BR}and sea for that once torn apart: threnodies{BR}abandoned be, this wounded world aligned."
+					"text": "Sisters three, take{BR}unto ye the gem of mine own heart.{BR}Grant to me the majesty to show your sacred{BR}sign! Now decree through land and sea for that{BR}once torn apart: threnodies abandoned be, this{BR}wounded world aligned."
 				}
 			],
 			"flavorReference": "Morgan Leroux, Bastion's Best #25"
@@ -373,7 +374,7 @@
 			"flavorQuotes": [
 				{
 					"identifier": "Grim Sebastian",
-					"text": "Now your secret{BR}power is unveiled!"
+					"text": "Now your{BR}secret power is unveiled!"
 				},
 				{
 					"identifier": "Liana",
@@ -467,7 +468,7 @@
 			"flavorQuotes": [
 				{
 					"identifier": "Brother Stevens",
-					"text": "You have failed to provide her the{BR}destiny she was promised, Brother Leroux.{BR}Shw is beginning to write her own fate."
+					"text": "You have failed to provide her the{BR}destiny she was promised, Brother Leroux.{BR}She is beginning to write her own fate."
 				}
 			],
 			"flavorReference": "Brother Stevens, Funeral for a Fiend One-Shot"
