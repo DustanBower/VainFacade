@@ -29,6 +29,11 @@ namespace VainFacadePlaytest.TheFury
             AddTrigger((DealDamageAction dda) => !dda.IsPretend && dda.InstanceIdentifier == ReactedDamage, HealDestructResponse, new TriggerType[] { TriggerType.GainHP, TriggerType.DestroySelf }, TriggerTiming.After);
         }
 
+        public override CustomDecisionText GetCustomDecisionText(IDecision decision)
+        {
+            return new CustomDecisionText("Do you want to make this target indestructible?", "deciding whether to make a target indestructible", "Vote for whether to make this target indestructible", "whether to make a target indestructible");
+        }
+
         private IEnumerator MayProtectResponse(DealDamageAction dda)
         {
             // "... you may make that target indestructible this turn."
