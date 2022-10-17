@@ -45,7 +45,7 @@ namespace VainFacadePlaytest.TheFury
             }
             alreadyChosen.AddRange(storedHeals.Select((GainHPAction gha) => gha.HpGainer));
             // "Increase the next damage dealt to a third target by 3."
-            IEnumerator increaseCoroutine = SelectTargetAndIncreaseNextDamageTo(new LinqCardCriteria((Card c) => c.IsTarget && !alreadyChosen.Contains(c)), 3, false, GetCardSource());
+            IEnumerator increaseCoroutine = SelectTargetAndIncreaseNextDamageTo(new LinqCardCriteria((Card c) => c.IsTarget && c.IsInPlayAndHasGameText && !alreadyChosen.Contains(c)), 3, false, GetCardSource());
             if (base.UseUnityCoroutines)
             {
                 yield return base.GameController.StartCoroutine(increaseCoroutine);
