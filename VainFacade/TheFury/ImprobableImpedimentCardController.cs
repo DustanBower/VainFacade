@@ -86,7 +86,18 @@ namespace VainFacadePlaytest.TheFury
                     base.GameController.ExhaustCoroutine(increaseCoroutine);
                 }
                 // "If it is a Coincidence, repeat this text."
-                Card firstCoincidence = (from PlayCardAction act in played where act.WasCardPlayed && act.CardToPlay.DoKeywordsContain(CoincidenceKeyword) select act.CardToPlay).First();
+                Card firstCoincidence = null;
+                foreach (PlayCardAction pca in played)
+                {
+                    if (pca.WasCardPlayed)
+                    {
+                        if (pca.CardToPlay.DoKeywordsContain(CoincidenceKeyword))
+                        {
+                            firstCoincidence = pca.CardToPlay;
+                            break;
+                        }
+                    }
+                }
                 if (firstCoincidence != null)
                 {
                     IEnumerator repeatCoroutine = PlayAndIncreaseNextResponse(null);
