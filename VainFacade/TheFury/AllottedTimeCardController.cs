@@ -24,7 +24,7 @@ namespace VainFacadePlaytest.TheFury
         {
             base.AddTriggers();
             // "When a target would be dealt damage, you may make that target indestructible this turn."
-            AddTrigger((DealDamageAction dda) => !dda.IsPretend && dda.IsSuccessful, MayProtectResponse, TriggerType.CreateStatusEffect, TriggerTiming.Before);
+            AddTrigger((DealDamageAction dda) => !dda.IsPretend && dda.IsSuccessful && dda.CanDealDamage, MayProtectResponse, TriggerType.CreateStatusEffect, TriggerTiming.Before);
             // "Resolve that damage normally, then that target regains X HP and destroys this card, where X = 1 plus the damage dealt this way."
             AddTrigger((DealDamageAction dda) => !dda.IsPretend && dda.InstanceIdentifier == ReactedDamage, HealDestructResponse, new TriggerType[] { TriggerType.GainHP, TriggerType.DestroySelf }, TriggerTiming.After);
         }
