@@ -41,7 +41,7 @@ namespace VainFacadePlaytest.TheFury
             }
             // "She deals herself 1 psychic damage, ..."
             List<DealDamageAction> damageResults = new List<DealDamageAction>();
-            IEnumerator psychicCoroutine = DealDamage(base.Card, base.Card, amtPsychic, DamageType.Psychic, storedResults: damageResults, cardSource: GetCardSource());
+            IEnumerator psychicCoroutine = DealDamage(base.CharacterCard, base.CharacterCard, amtPsychic, DamageType.Psychic, storedResults: damageResults, cardSource: GetCardSource());
             if (base.UseUnityCoroutines)
             {
                 yield return base.GameController.StartCoroutine(psychicCoroutine);
@@ -51,14 +51,11 @@ namespace VainFacadePlaytest.TheFury
                 base.GameController.ExhaustCoroutine(psychicCoroutine);
             }
             int amtTaken = 0;
-            if (DidDealDamage(damageResults))
+            foreach (DealDamageAction dda in damageResults)
             {
-                foreach (DealDamageAction dda in damageResults)
+                if (DidDealDamage(dda.ToEnumerable().ToList(), toSpecificTarget: base.CharacterCard, fromDamageSource: base.CharacterCard))
                 {
-                    if (DidDealDamage(dda.ToEnumerable().ToList(), toSpecificTarget: base.Card, fromDamageSource: base.Card))
-                    {
-                        amtTaken += dda.Amount;
-                    }
+                    amtTaken += dda.Amount;
                 }
             }
             int x = xBase + amtTaken;
@@ -66,7 +63,7 @@ namespace VainFacadePlaytest.TheFury
             {
                 // "... then deals 1 target X irreducible melee damage that cannot be redirected..."
                 ITrigger tempTrigger = AddMakeDamageNotRedirectableTrigger((DealDamageAction damage) => damage != null && damage.CardSource != null && damage.CardSource.Card == base.Card);
-                IEnumerator meleeCoroutine = base.GameController.SelectTargetsAndDealDamage(DecisionMaker, new DamageSource(base.GameController, base.Card), x, DamageType.Melee, numTargets, false, numTargets, cardSource: GetCardSource());
+                IEnumerator meleeCoroutine = base.GameController.SelectTargetsAndDealDamage(DecisionMaker, new DamageSource(base.GameController, base.CharacterCard), x, DamageType.Melee, numTargets, false, numTargets, cardSource: GetCardSource());
                 if (base.UseUnityCoroutines)
                 {
                     yield return base.GameController.StartCoroutine(meleeCoroutine);

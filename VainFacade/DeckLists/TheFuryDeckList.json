@@ -461,7 +461,7 @@
 			],
 			"icons": [
 				"HasPower",
-				"RegainHP",
+				"GainHP",
 				"ReduceDamageTaken",
 				"PlayCardNow"
 			],
