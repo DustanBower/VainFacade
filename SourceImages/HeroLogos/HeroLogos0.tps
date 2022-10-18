@@ -175,6 +175,7 @@
         <map type="IndividualSpriteSettingsMap">
             <key type="filename">BurgessCharacter.png</key>
             <key type="filename">SphereCharacter.png</key>
+            <key type="filename">TheFuryCharacter.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
@@ -194,6 +195,7 @@
         <array>
             <filename>SphereCharacter.png</filename>
             <filename>BurgessCharacter.png</filename>
+            <filename>TheFuryCharacter.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

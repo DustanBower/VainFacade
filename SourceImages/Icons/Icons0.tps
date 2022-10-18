@@ -177,6 +177,7 @@
             <key type="filename">FridayIcon.png</key>
             <key type="filename">GlyphIcon.png</key>
             <key type="filename">SphereIcon.png</key>
+            <key type="filename">TheFuryIcon.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
@@ -198,6 +199,7 @@
             <filename>GlyphIcon.png</filename>
             <filename>BurgessIcon.png</filename>
             <filename>FridayIcon.png</filename>
+            <filename>TheFuryIcon.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>
