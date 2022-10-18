@@ -72,7 +72,7 @@ namespace VainFacadePlaytest.TheFury
                 // "If you discard a card, return this card to your hand."
                 if (DidDiscardCards(discardResults))
                 {
-                    IEnumerator moveCoroutine = base.GameController.MoveCard(base.TurnTakerController, base.Card, base.TurnTaker.ToHero().Hand, responsibleTurnTaker: base.TurnTaker, cardSource: GetCardSource());
+                    IEnumerator moveCoroutine = base.GameController.MoveCard(base.TurnTakerController, base.Card, base.TurnTaker.ToHero().Hand, responsibleTurnTaker: base.TurnTaker, showMessage: true, cardSource: GetCardSource());
                     if (base.UseUnityCoroutines)
                     {
                         yield return base.GameController.StartCoroutine(moveCoroutine);
