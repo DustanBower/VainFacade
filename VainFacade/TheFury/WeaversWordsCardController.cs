@@ -102,6 +102,15 @@ namespace VainFacadePlaytest.TheFury
                                 }
                                 else
                                 {
+                                    IEnumerator messageCoroutine = base.GameController.SendMessageAction("The top card of " + chosen.GetFriendlyName() + " is not a One-Shot, so " + base.Card.Title + " plays it!", Priority.High, GetCardSource(), associatedCards: top.ToEnumerable());
+                                    if (base.UseUnityCoroutines)
+                                    {
+                                        yield return base.GameController.StartCoroutine(messageCoroutine);
+                                    }
+                                    else
+                                    {
+                                        base.GameController.ExhaustCoroutine(messageCoroutine);
+                                    }
                                     IEnumerator replayCoroutine = base.GameController.PlayCard(base.TurnTakerController, top, responsibleTurnTaker: base.TurnTaker, cardSource: GetCardSource());
                                     if (base.UseUnityCoroutines)
                                     {
