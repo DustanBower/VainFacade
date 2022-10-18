@@ -43,7 +43,6 @@ namespace VainFacadePlaytest.TheFury
 
         private IEnumerator PlayAgainInfernalResponse(CardEntersPlayAction cepa)
         {
-            //AddInhibitorException((GameAction ga) => true);
             // "If you do, resolve the text of that One-Shot a second time, ..."
             Card oneshot = cepa.CardEnteringPlay;
             IEnumerator messageCoroutine = base.GameController.SendMessageAction(base.Card.Title + " resolves the text of " + oneshot.Title + " an additional time...", Priority.High, GetCardSource(), associatedCards: oneshot.ToEnumerable());
@@ -88,7 +87,6 @@ namespace VainFacadePlaytest.TheFury
                     base.GameController.ExhaustCoroutine(infernalCoroutine);
                 }
             }
-            //RemoveInhibitorException();
         }
     }
 }
