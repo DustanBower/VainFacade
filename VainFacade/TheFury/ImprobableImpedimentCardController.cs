@@ -27,7 +27,7 @@ namespace VainFacadePlaytest.TheFury
         {
             base.AddTriggers();
             // "When this card is destroyed, you may return it to your hand."
-            AddWhenDestroyedTrigger(ReturnToHandResponse, TriggerType.ChangePostDestroyDestination);
+            AddAfterDestroyedAction(ReturnToHandResponse);
             // "When {TheFuryCharacter} is dealt damage on the turn this card enters play, you may play a card. If you do, increase the next damage dealt to {TheFuryCharacter} by 1. If it is a Coincidence, repeat this text."
             AddTrigger((DealDamageAction dda) => HasBeenSetToTrueThisTurn(PlayedThisTurn) && dda.Target == base.CharacterCard, PlayAndIncreaseNextResponse, new TriggerType[] { TriggerType.PlayCard, TriggerType.CreateStatusEffect }, TriggerTiming.After);
             ResetFlagAfterLeavesPlay(PlayedThisTurn);
@@ -35,11 +35,16 @@ namespace VainFacadePlaytest.TheFury
             AddTrigger((DealDamageAction dda) => dda.Target == base.CharacterCard && (dda.DamageSource == null || dda.DamageSource.Card == null || dda.DamageSource.Card != base.CharacterCard) && !base.Card.IsBeingDestroyed, PreventAndDestroyResponse, TriggerType.WouldBeDealtDamage, TriggerTiming.Before);
         }
 
-        private IEnumerator ReturnToHandResponse(DestroyCardAction dca)
+        public override CustomDecisionText GetCustomDecisionText(IDecision decision)
+        {
+            return new CustomDecisionText("Do you want to return this card to your hand?", "deciding whether to return " + base.Card.Title + " to their hand", "Vote for whether to return " + base.Card.Title + " to " + base.TurnTaker.Name + "'s hand", "whether to return " + base.Card.Title + " to their hand");
+        }
+
+        private IEnumerator ReturnToHandResponse(GameAction ga)
         {
             // "... you may return it to your hand."
             List<YesNoCardDecision> choices = new List<YesNoCardDecision>();
-            IEnumerator chooseCoroutine = base.GameController.MakeYesNoCardDecision(DecisionMaker, SelectionType.ReturnToHand, base.Card, dca, choices, cardSource: GetCardSource());
+            IEnumerator chooseCoroutine = base.GameController.MakeYesNoCardDecision(DecisionMaker, SelectionType.Custom, base.Card, storedResults: choices, cardSource: GetCardSource());
             if (base.UseUnityCoroutines)
             {
                 yield return base.GameController.StartCoroutine(chooseCoroutine);
@@ -50,7 +55,15 @@ namespace VainFacadePlaytest.TheFury
             }
             if (DidPlayerAnswerYes(choices))
             {
-                dca.SetPostDestroyDestination(base.TurnTaker.ToHero().Hand, decisionSources: choices.CastEnumerable<YesNoCardDecision, IDecision>(), cardSource: GetCardSource());
+                IEnumerator moveCoroutine = base.GameController.MoveCard(base.TurnTakerController, base.Card, base.TurnTaker.ToHero().Hand, showMessage: true, responsibleTurnTaker: base.TurnTaker, cardSource: GetCardSource());
+                if (base.UseUnityCoroutines)
+                {
+                    yield return base.GameController.StartCoroutine(moveCoroutine);
+                }
+                else
+                {
+                    base.GameController.ExhaustCoroutine(moveCoroutine);
+                }
             }
         }
 
