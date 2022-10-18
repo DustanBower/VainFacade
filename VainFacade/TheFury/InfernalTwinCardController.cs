@@ -17,11 +17,14 @@ namespace VainFacadePlaytest.TheFury
 
         }
 
+        private const string IsReacting = "IsReactingToOneShot";
+
         public override void AddTriggers()
         {
             base.AddTriggers();
             // "When a One-Shot enters play, you may destroy this card. If you do, resolve the text of that One-Shot a second time, then the character from that card's deck with the lowest HP deals itself 2 irreducible infernal damage."
-            AddTrigger((CardEntersPlayAction cepa) => cepa.CardEnteringPlay.IsOneShot && !base.Card.IsBeingDestroyed, OneShotResponse, new TriggerType[] { TriggerType.DestroySelf, TriggerType.PlayCard, TriggerType.DealDamage }, TriggerTiming.After);
+            AddTrigger((CardEntersPlayAction cepa) => cepa.CardEnteringPlay.IsOneShot && !HasBeenSetToTrueThisTurn(IsReacting) && !base.Card.IsBeingDestroyed, OneShotResponse, new TriggerType[] { TriggerType.DestroySelf, TriggerType.PlayCard, TriggerType.DealDamage }, TriggerTiming.After);
+            ResetFlagAfterLeavesPlay(IsReacting);
         }
 
         private IEnumerator OneShotResponse(CardEntersPlayAction cepa)
@@ -44,6 +47,7 @@ namespace VainFacadePlaytest.TheFury
         private IEnumerator PlayAgainInfernalResponse(CardEntersPlayAction cepa)
         {
             // "If you do, resolve the text of that One-Shot a second time, ..."
+            SetCardPropertyToTrueIfRealAction(IsReacting);
             Card oneshot = cepa.CardEnteringPlay;
             IEnumerator messageCoroutine = base.GameController.SendMessageAction(base.Card.Title + " resolves the text of " + oneshot.Title + " an additional time...", Priority.High, GetCardSource(), associatedCards: oneshot.ToEnumerable());
             if (base.UseUnityCoroutines)
