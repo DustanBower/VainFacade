@@ -17,7 +17,7 @@ namespace VainFacadePlaytest.TheFury
             // If in play, show whether a card has been moved this turn
             SpecialStringMaker.ShowHasBeenUsedThisTurn(UsedThisTurn, base.Card.Title + " has already moved a card on top of its deck this turn.", base.Card.Title + " has not moved a card on top of its deck this turn.").Condition = () => base.Card.IsInPlayAndHasGameText;
             // If in play and has moved a card, show most recently moved card
-            SpecialStringMaker.ShowSpecialString(() => "Last card moved with " + base.Card.Title + ": " + GetCardPropertyJournalEntryCard(CardMoved).Title).Condition = () => base.Card.IsInPlayAndHasGameText && GetCardPropertyJournalEntryCard(CardMoved) != null;
+            SpecialStringMaker.ShowSpecialString(() => "Last card moved with " + base.Card.Title + ": " + GetCardPropertyJournalEntryCard(CardMoved).Title + ".").Condition = () => base.Card.IsInPlayAndHasGameText && GetCardPropertyJournalEntryCard(CardMoved) != null;
         }
 
         private const string CardMoved = "MostRecentCardMoved";
@@ -50,7 +50,7 @@ namespace VainFacadePlaytest.TheFury
             Card selected = GetSelectedCard(choiceResults);
             if (selected != null)
             {
-                IEnumerator moveCoroutine = base.GameController.MoveCard(base.TurnTakerController, selected, selected.NativeDeck, responsibleTurnTaker: base.TurnTaker, storedResults: moveResults, cardSource: GetCardSource());
+                IEnumerator moveCoroutine = base.GameController.MoveCard(base.TurnTakerController, selected, selected.NativeDeck, responsibleTurnTaker: base.TurnTaker, showMessage: true, storedResults: moveResults, cardSource: GetCardSource());
                 if (base.UseUnityCoroutines)
                 {
                     yield return base.GameController.StartCoroutine(moveCoroutine);
@@ -65,6 +65,7 @@ namespace VainFacadePlaytest.TheFury
             {
                 Card moved = moveResults.Where((MoveCardAction mca) => mca.WasCardMoved).FirstOrDefault().CardToMove;
                 AddCardPropertyJournalEntry(CardMoved, moved);
+                SetCardPropertyToTrueIfRealAction(UsedThisTurn);
                 IEnumerable<Function> functionChoices = new Function[2]
                 {
                     new Function(DecisionMaker, "Play a card", SelectionType.PlayCard, () => base.GameController.SelectAndPlayCardFromHand(DecisionMaker, true, cardSource: GetCardSource()), onlyDisplayIfTrue: CanPlayCardsFromHand(base.HeroTurnTakerController)),
