@@ -21,7 +21,7 @@ namespace VainFacadePlaytest.TheFury
         {
             base.AddTriggers();
             // "When {TheFuryCharacter} deals herself damage, select a target. Increase the next damage dealt to that target by 1."
-            AddTrigger((DealDamageAction dda) => dda.Target == base.CharacterCard && dda.DamageSource != null && dda.DamageSource.IsCard && dda.DamageSource.Card == base.CharacterCard, (DealDamageAction dda) => SelectTargetAndIncreaseNextDamageTo(new LinqCardCriteria((Card c) => c.IsTarget && c.IsInPlayAndHasGameText, "targets in play", false), 1, false, GetCardSource()), TriggerType.CreateStatusEffect, TriggerTiming.After);
+            AddTrigger((DealDamageAction dda) => dda.Target == base.CharacterCard && dda.DamageSource != null && dda.DamageSource.IsCard && dda.DamageSource.Card == base.CharacterCard && dda.DidDealDamage, (DealDamageAction dda) => SelectTargetAndIncreaseNextDamageTo(new LinqCardCriteria((Card c) => c.IsTarget && c.IsInPlayAndHasGameText, "targets in play", false), 1, false, GetCardSource()), TriggerType.CreateStatusEffect, TriggerTiming.After);
             // "When a source other than {TheFuryCharacter} deals {TheFuryCharacter} damage, you may increase the next damage dealt to {TheFuryCharacter} and the source of that damage by 1 for every 2 points of damage dealt this way."
             AddTrigger((DealDamageAction dda) => dda.Target == base.CharacterCard && (dda.DamageSource == null || !dda.DamageSource.IsCard || dda.DamageSource.Card != base.CharacterCard), IncreaseNextDamageByXOver2Response, TriggerType.CreateStatusEffect, TriggerTiming.After);
         }
