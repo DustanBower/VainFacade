@@ -37,7 +37,7 @@
 				"CannotPlayCards",
 				"IncreaseDamageTaken"
 			],
-			"complexity": 2,
+			"complexity": 3,
 			"openingLines": {
 				"default": "Your [b]iniquities[/b] echo in the deep, screaming for [b]retribution[/b]!",
 				"OblivAeonFrontPageCharacter": "With your appearance unappointed, these are not your threads to cut."
