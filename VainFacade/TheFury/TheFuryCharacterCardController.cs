@@ -191,7 +191,7 @@ namespace VainFacadePlaytest.TheFury
         {
             // "Select a target. Increase the next damage dealt to that target by 2."
             List<SelectCardDecision> choices = new List<SelectCardDecision>();
-            IEnumerator chooseCoroutine = base.GameController.SelectCardAndStoreResults(DecisionMaker, SelectionType.SelectTarget, new LinqCardCriteria((Card c) => c.IsTarget && c.IsInPlayAndHasGameText), choices, false, cardSource: GetCardSource());
+            IEnumerator chooseCoroutine = base.GameController.SelectCardAndStoreResults(DecisionMaker, SelectionType.SelectTargetNoDamage, new LinqCardCriteria((Card c) => c.IsTarget && c.IsInPlayAndHasGameText), choices, false, cardSource: GetCardSource());
             if (base.UseUnityCoroutines)
             {
                 yield return base.GameController.StartCoroutine(chooseCoroutine);

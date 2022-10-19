@@ -29,6 +29,11 @@ namespace VainFacadePlaytest.TheFury
             return base.AskIfCardIsIndestructible(card);
         }
 
+        public override CustomDecisionText GetCustomDecisionText(IDecision decision)
+        {
+            return new CustomDecisionText("Do you want to search your deck?", "deciding whether to search their deck", "Vote for whether to search " + base.TurnTaker.Name + "'s deck", "whether to search their deck");
+        }
+
         public override void AddTriggers()
         {
             base.AddTriggers();
@@ -52,7 +57,7 @@ namespace VainFacadePlaytest.TheFury
                 base.GameController.ExhaustCoroutine(trashCoroutine);
             }
             // Decide whether to search your deck as well
-            YesNoDecision choice = new YesNoDecision(base.GameController, DecisionMaker, SelectionType.SearchDeck, cardSource: GetCardSource());
+            YesNoDecision choice = new YesNoDecision(base.GameController, DecisionMaker, SelectionType.Custom, cardSource: GetCardSource());
             IEnumerator chooseCoroutine = base.GameController.MakeDecisionAction(choice);
             if (base.UseUnityCoroutines)
             {
