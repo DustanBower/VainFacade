@@ -23,8 +23,8 @@ namespace VainFacadePlaytest.TheFury
         {
             base.AddStartOfGameTriggers();
             // "When this card would be revealed or enter your hand, put it into play."
-            AddTrigger((DrawCardAction dca) => dca.CardToDraw == base.Card, PutIntoPlayInsteadResponse, TriggerType.PutIntoPlay, TriggerTiming.Before, outOfPlayTrigger: true);
-            AddTrigger((MoveCardAction mca) => mca.CardToMove == base.Card && (mca.Destination == base.TurnTaker.ToHero().Hand || mca.Destination.IsRevealed), PutIntoPlayInsteadResponse, TriggerType.PutIntoPlay, TriggerTiming.Before, outOfPlayTrigger: true);
+            AddTrigger((DrawCardAction dca) => dca.CardToDraw == base.Card, PutIntoPlayInsteadResponse, new TriggerType[] { TriggerType.PutIntoPlay, TriggerType.Hidden }, TriggerTiming.Before, outOfPlayTrigger: true);
+            AddTrigger((MoveCardAction mca) => mca.CardToMove == base.Card && (mca.Destination == base.TurnTaker.ToHero().Hand || mca.Destination.IsRevealed), PutIntoPlayInsteadResponse, new TriggerType[] { TriggerType.PutIntoPlay, TriggerType.Hidden }, TriggerTiming.Before, outOfPlayTrigger: true);
             // trigger on RevealCardsAction
             AddTrigger((RevealCardsAction rca) => rca.RevealedCards.Contains(base.Card), PutIntoPlayInsteadResponse, TriggerType.PutIntoPlay, TriggerTiming.Before, outOfPlayTrigger: true);
             // trigger on BulkMoveCardsAction?
