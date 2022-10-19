@@ -135,7 +135,7 @@ namespace VainFacadePlaytest.TheFury
             for (int i = 0; i < 3; i++)
             {
                 List<SelectCardDecision> choices = new List<SelectCardDecision>();
-                IEnumerator selectCoroutine = SelectTargetAndIncreaseNextDamageTo(new LinqCardCriteria((Card c) => c.IsTarget && c.IsInPlayAndHasGameText && !selectedTargets.Contains(c), "targets in play", false), 1, true, GetCardSource(), choices);
+                IEnumerator selectCoroutine = SelectTargetAndIncreaseNextDamageTo(new LinqCardCriteria((Card c) => c.IsTarget && c.IsInPlayAndHasGameText && !selectedTargets.Contains(c) && c != base.CharacterCard, "targets in play", false), 1, true, GetCardSource(), choices);
                 if (base.UseUnityCoroutines)
                 {
                     yield return base.GameController.StartCoroutine(selectCoroutine);
