@@ -21,12 +21,12 @@ namespace VainFacadePlaytest.TheFury
         {
             base.AddStartOfGameTriggers();
             // "When this card is revealed, play it."
-            AddTrigger((MoveCardAction mca) => mca.CardToMove == base.Card && mca.Destination.IsRevealed, PlayWithMessageResponse, TriggerType.PlayCard, TriggerTiming.After, outOfPlayTrigger: true);
             AddTrigger((RevealCardsAction rca) => rca.RevealedCards.Contains(base.Card), PlayWithMessageResponse, TriggerType.PlayCard, TriggerTiming.After, outOfPlayTrigger: true);
         }
 
         private IEnumerator PlayWithMessageResponse(GameAction ga)
         {
+            //Log.Debug("RuinousRampageCardController.PlayWithMessageResponse responding to GameAction: " + ga.ToString());
             IEnumerator messageCoroutine = base.GameController.SendMessageAction(base.Card.Title + " was revealed, and plays itself!", Priority.High, GetCardSource());
             if (base.UseUnityCoroutines)
             {
@@ -35,6 +35,12 @@ namespace VainFacadePlaytest.TheFury
             else
             {
                 base.GameController.ExhaustCoroutine(messageCoroutine);
+            }
+            if (ga is RevealCardsAction rca)
+            {
+                //Log.Debug("RuinousRampageCardController.PlayWithMessageResponse: ga is RevealCardsAction: " + rca.ToString());
+                //Log.Debug("RuinousRampageCardController.PlayWithMessageResponse: removing this card from revealed cards...");
+                rca.RemoveCardFromRevealedCards(base.Card);
             }
             IEnumerator playCoroutine = base.GameController.PlayCard(base.TurnTakerController, base.Card, actionSource: ga, cardSource: GetCardSource());
             if (base.UseUnityCoroutines)
