@@ -17,27 +17,24 @@ namespace VainFacadePlaytest.TheFury
             AllowFastCoroutinesDuringPretend = false;
             // If in play, show whether this card was played this turn
             SpecialStringMaker.ShowHasBeenUsedThisTurn(PlayedThisTurn, base.Card.Title + " was played this turn.", base.Card.Title + " was not played this turn.").Condition = () => base.Card.IsInPlayAndHasGameText;
+            SpecialStringMaker.ShowHasBeenUsedThisTurn(FirstDamageThisTurn, base.CharacterCard.Title + " has already been dealt damage this turn since " + base.Card.Title + " entered play.", base.CharacterCard.Title + " has not been dealt damage this turn since " + base.Card.Title + " entered play.").Condition = () => base.Card.IsInPlayAndHasGameText && HasBeenSetToTrueThisTurn(PlayedThisTurn);
         }
 
         public Guid? DamageReacted { get; set; }
 
         private readonly string PlayedThisTurn = "ThisCardWasPlayedThisTurn";
+        private readonly string FirstDamageThisTurn = "HasBeenDealtDamageThisTurn";
 
         public override void AddTriggers()
         {
             base.AddTriggers();
             // "If this card is destroyed, return it to your hand."
             AddAfterDestroyedAction(ReturnToHandResponse);
-            // "When {TheFuryCharacter} is dealt damage on the turn this card enters play, you may play a card. If you do, increase the next damage dealt to {TheFuryCharacter} by 1. If it is a Coincidence, repeat this text."
-            AddTrigger((DealDamageAction dda) => HasBeenSetToTrueThisTurn(PlayedThisTurn) && dda.Target == base.CharacterCard && dda.DidDealDamage, PlayAndIncreaseNextResponse, new TriggerType[] { TriggerType.PlayCard, TriggerType.CreateStatusEffect }, TriggerTiming.After);
+            // "The first time {TheFuryCharacter} is dealt damage on the turn this card enters play, you may play a card. If it is a Coincidence, repeat this text."
+            AddTrigger((DealDamageAction dda) => HasBeenSetToTrueThisTurn(PlayedThisTurn) && !HasBeenSetToTrueThisTurn(FirstDamageThisTurn) && dda.Target == base.CharacterCard && dda.DidDealDamage, PlayCardResponse, new TriggerType[] { TriggerType.PlayCard }, TriggerTiming.After);
             ResetFlagAfterLeavesPlay(PlayedThisTurn);
             // "When {TheFuryCharacter} would be dealt damage by a source other than {TheFuryCharacter}, you may prevent that damage. If you do, destroy this card."
             AddTrigger((DealDamageAction dda) => dda.Target == base.CharacterCard && (dda.DamageSource == null || dda.DamageSource.Card == null || dda.DamageSource.Card != base.CharacterCard) && dda.CanDealDamage && !base.Card.IsBeingDestroyed, PreventAndDestroyResponse, TriggerType.WouldBeDealtDamage, TriggerTiming.Before);
-        }
-
-        public override CustomDecisionText GetCustomDecisionText(IDecision decision)
-        {
-            return new CustomDecisionText("Do you want to return this card to your hand?", "deciding whether to return " + base.Card.Title + " to their hand", "Vote for whether to return " + base.Card.Title + " to " + base.TurnTaker.Name + "'s hand", "whether to return " + base.Card.Title + " to their hand");
         }
 
         private IEnumerator ReturnToHandResponse(GameAction ga)
@@ -60,9 +57,10 @@ namespace VainFacadePlaytest.TheFury
             yield break;
         }
 
-        private IEnumerator PlayAndIncreaseNextResponse(DealDamageAction dda)
+        private IEnumerator PlayCardResponse(DealDamageAction dda)
         {
             // "... you may play a card."
+            SetCardPropertyToTrueIfRealAction(FirstDamageThisTurn);
             List<PlayCardAction> played = new List<PlayCardAction>();
             IEnumerator playCoroutine = base.GameController.SelectAndPlayCardFromHand(DecisionMaker, true, played, cardSource: GetCardSource());
             if (base.UseUnityCoroutines)
@@ -75,16 +73,6 @@ namespace VainFacadePlaytest.TheFury
             }
             if (DidPlayCards(played))
             {
-                // "If you do, increase the next damage dealt to {TheFuryCharacter} by 1."
-                IEnumerator increaseCoroutine = IncreaseNextDamageTo(base.CharacterCard, 1, GetCardSource());
-                if (base.UseUnityCoroutines)
-                {
-                    yield return base.GameController.StartCoroutine(increaseCoroutine);
-                }
-                else
-                {
-                    base.GameController.ExhaustCoroutine(increaseCoroutine);
-                }
                 // "If it is a Coincidence, repeat this text."
                 Card firstCoincidence = null;
                 foreach (PlayCardAction pca in played)
@@ -100,7 +88,7 @@ namespace VainFacadePlaytest.TheFury
                 }
                 if (firstCoincidence != null)
                 {
-                    IEnumerator repeatCoroutine = PlayAndIncreaseNextResponse(null);
+                    IEnumerator repeatCoroutine = PlayCardResponse(null);
                     if (base.UseUnityCoroutines)
                     {
                         yield return base.GameController.StartCoroutine(repeatCoroutine);
