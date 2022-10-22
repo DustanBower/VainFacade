@@ -33,8 +33,8 @@ namespace VainFacadePlaytest.TheFury
             // "The first time {TheFuryCharacter} is dealt damage on the turn this card enters play, you may play a card. If it is a Coincidence, repeat this text."
             AddTrigger((DealDamageAction dda) => HasBeenSetToTrueThisTurn(PlayedThisTurn) && !HasBeenSetToTrueThisTurn(FirstDamageThisTurn) && dda.Target == base.CharacterCard && dda.DidDealDamage, PlayCardResponse, new TriggerType[] { TriggerType.PlayCard }, TriggerTiming.After);
             ResetFlagAfterLeavesPlay(PlayedThisTurn);
-            // "When {TheFuryCharacter} would be dealt damage by a source other than {TheFuryCharacter}, you may prevent that damage. If you do, destroy this card."
-            AddTrigger((DealDamageAction dda) => dda.Target == base.CharacterCard && (dda.DamageSource == null || dda.DamageSource.Card == null || dda.DamageSource.Card != base.CharacterCard) && dda.CanDealDamage && !base.Card.IsBeingDestroyed, PreventAndDestroyResponse, TriggerType.WouldBeDealtDamage, TriggerTiming.Before);
+            // "When {TheFuryCharacter} would be dealt damage by another source, you may prevent it. If you do, increase the next damage dealt to her by X, where X = 1 plus the amount that damage was increased by, and discard or destroy this card."
+            AddTrigger((DealDamageAction dda) => dda.Target == base.CharacterCard && (dda.DamageSource == null || dda.DamageSource.Card == null || dda.DamageSource.Card != base.CharacterCard) && dda.CanDealDamage && !base.Card.IsBeingDestroyed, PreventIncreaseDiscardOrDestroyResponse, TriggerType.WouldBeDealtDamage, TriggerTiming.Before);
         }
 
         private IEnumerator ReturnToHandResponse(GameAction ga)
@@ -101,13 +101,13 @@ namespace VainFacadePlaytest.TheFury
             }
         }
 
-        private IEnumerator PreventAndDestroyResponse(DealDamageAction dda)
+        private IEnumerator PreventIncreaseDiscardOrDestroyResponse(DealDamageAction dda)
         {
-            // "... you may prevent that damage. If you do, destroy this card."
+            // "... you may prevent it."
             if (!DamageReacted.HasValue || DamageReacted.Value != dda.InstanceIdentifier)
             {
                 List<YesNoCardDecision> choices = new List<YesNoCardDecision>();
-                IEnumerator chooseCoroutine = base.GameController.MakeYesNoCardDecision(DecisionMaker, SelectionType.DestroyCard, base.Card, dda, choices, cardSource: GetCardSource());
+                IEnumerator chooseCoroutine = base.GameController.MakeYesNoCardDecision(DecisionMaker, SelectionType.PreventDamage, base.Card, dda, choices, cardSource: GetCardSource());
                 if (base.UseUnityCoroutines)
                 {
                     yield return base.GameController.StartCoroutine(chooseCoroutine);
@@ -134,14 +134,47 @@ namespace VainFacadePlaytest.TheFury
                 }
                 if (IsRealAction(dda))
                 {
-                    IEnumerator destructCoroutine = base.GameController.DestroyCard(DecisionMaker, base.Card, responsibleCard: base.Card, cardSource: GetCardSource());
+                    // "If you do, increase the next damage dealt to her by X, where X = 1 plus the amount that damage was increased by..."
+                    List<ModifyDealDamageAction> mods = dda.DamageModifiers.ToList();
+                    int x = 1;
+                    foreach (ModifyDealDamageAction mod in mods)
+                    {
+                        if (mod is IncreaseDamageAction plus)
+                        {
+                            x += plus.AdjustmentAmount;
+                        }
+                        else if (mod is ReduceDamageAction minus)
+                        {
+                            x -= minus.AdjustmentAmount;
+                        }
+                    }
+                    if (x > 0)
+                    {
+                        IEnumerator increaseCoroutine = IncreaseNextDamageTo(base.CharacterCard, x, GetCardSource());
+                        if (base.UseUnityCoroutines)
+                        {
+                            yield return base.GameController.StartCoroutine(increaseCoroutine);
+                        }
+                        else
+                        {
+                            base.GameController.ExhaustCoroutine(increaseCoroutine);
+                        }
+                    }
+                    // "... and discard or destroy this card."
+                    IEnumerable<Function> options = new Function[2]
+                    {
+                        new Function(DecisionMaker, "Discard " + base.Card.Title, SelectionType.DiscardCard, () => base.GameController.MoveCard(base.TurnTakerController, base.Card, base.TurnTaker.Trash, showMessage: true, responsibleTurnTaker: base.TurnTaker, isDiscard: true, cardSource: GetCardSource())),
+                        new Function(DecisionMaker, "Destroy " + base.Card.Title, SelectionType.DestroySelf, () => base.GameController.DestroyCard(DecisionMaker, base.Card, responsibleCard: base.Card, cardSource: GetCardSource()))
+                    };
+                    SelectFunctionDecision choice = new SelectFunctionDecision(base.GameController, DecisionMaker, options, false, cardSource: GetCardSource());
+                    IEnumerator chooseCoroutine = base.GameController.SelectAndPerformFunction(choice);
                     if (base.UseUnityCoroutines)
                     {
-                        yield return base.GameController.StartCoroutine(destructCoroutine);
+                        yield return base.GameController.StartCoroutine(chooseCoroutine);
                     }
                     else
                     {
-                        base.GameController.ExhaustCoroutine(destructCoroutine);
+                        base.GameController.ExhaustCoroutine(chooseCoroutine);
                     }
                 }
             }
