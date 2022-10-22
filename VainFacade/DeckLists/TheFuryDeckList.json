@@ -262,9 +262,9 @@
 				"coincidence"
 			],
 			"body": [
-				"When this card is destroyed, you may return it to your hand.",
-				"When {TheFuryCharacter} is dealt damage on the turn this card enters play, you may play a card. If you do, increase the next damage dealt to {TheFuryCharacter} by 1. If it is a Coincidence, repeat this text.",
-				"When {TheFuryCharacter} would be dealt damage by a source other than {TheFuryCharacter}, you may prevent that damage. If you do, destroy this card."
+				"If this card is destroyed, put it in your hand.",
+				"The first time {TheFuryCharacter} is dealt damage on the turn this card enters play, you may play a card. If it is a Coincidence, repeat this text.",
+				"When {TheFuryCharacter} would be dealt damage by another source, you may prevent it. If you do, increase the next damage dealt to her by X, where X = 1 plus the amount that damage was increased by, and discard or destroy this card."
 			],
 			"icons": [
 				"PlayCardNow",
