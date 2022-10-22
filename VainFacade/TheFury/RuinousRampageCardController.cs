@@ -55,20 +55,6 @@ namespace VainFacadePlaytest.TheFury
 
         public override IEnumerator Play()
         {
-            List<DealDamageAction> meleeHits = new List<DealDamageAction>();
-            IEnumerator loopCoroutine = DamageDamageHealRepeatResponse(meleeHits);
-            if (base.UseUnityCoroutines)
-            {
-                yield return base.GameController.StartCoroutine(loopCoroutine);
-            }
-            else
-            {
-                base.GameController.ExhaustCoroutine(loopCoroutine);
-            }
-        }
-
-        private IEnumerator DamageDamageHealRepeatResponse(List<DealDamageAction> meleeResults)
-        {
             // "{TheFuryCharacter} deals herself 0 psychic damage, ..."
             List<DealDamageAction> psychicHits = new List<DealDamageAction>();
             IEnumerator psychicCoroutine = DealDamage(base.CharacterCard, base.CharacterCard, 0, DamageType.Psychic, storedResults: psychicHits, cardSource: GetCardSource());
@@ -80,15 +66,30 @@ namespace VainFacadePlaytest.TheFury
             {
                 base.GameController.ExhaustCoroutine(psychicCoroutine);
             }
-            // "... then deals 1 target that has not been dealt melee damage this way this turn X melee damage, where X = 2 plus the damage dealt this way minus the number of targets dealt melee damage this way this turn."
-            int x = 2;
-            foreach(DealDamageAction dda in psychicHits)
+            int psychicAmount = 0;
+            foreach (DealDamageAction dda in psychicHits)
             {
                 if (dda.DidDealDamage)
                 {
-                    x += dda.Amount;
+                    psychicAmount += dda.Amount;
                 }
             }
+            List<DealDamageAction> meleeHits = new List<DealDamageAction>();
+            IEnumerator loopCoroutine = DamageDamageHealRepeatResponse(psychicAmount, meleeHits);
+            if (base.UseUnityCoroutines)
+            {
+                yield return base.GameController.StartCoroutine(loopCoroutine);
+            }
+            else
+            {
+                base.GameController.ExhaustCoroutine(loopCoroutine);
+            }
+        }
+
+        private IEnumerator DamageDamageHealRepeatResponse(int psychicAmount, List<DealDamageAction> meleeResults)
+        {
+            // "She then deals 1 target that has not been dealt melee damage this way this turn X melee damage, where X = 2 plus the psychic damage dealt this way minus the number of targets dealt melee damage this way this turn."
+            int x = 2 + psychicAmount;
             List<Card> meleeTargetsSoFar = (from DealDamageAction dda in meleeResults where dda.DidDealDamage && dda.DamageType == DamageType.Melee select dda.Target).Distinct().ToList();
             x -= meleeTargetsSoFar.Count;
             List<DealDamageAction> currentMeleeHits = new List<DealDamageAction>();
@@ -124,7 +125,7 @@ namespace VainFacadePlaytest.TheFury
                 }
                 // "... then repeat this text."
                 meleeResults.AddRange(currentMeleeHits);
-                IEnumerator repeatCoroutine = DamageDamageHealRepeatResponse(meleeResults);
+                IEnumerator repeatCoroutine = DamageDamageHealRepeatResponse(psychicAmount, meleeResults);
                 if (base.UseUnityCoroutines)
                 {
                     yield return base.GameController.StartCoroutine(repeatCoroutine);

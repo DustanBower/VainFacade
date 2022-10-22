@@ -365,7 +365,8 @@
 			],
 			"body": [
 				"When this card is revealed, play it.",
-				"{TheFuryCharacter} deals herself 0 psychic damage, then deals 1 target that has not been dealt melee damage this way this turn X melee damage, where X = 2 plus the damage dealt this way minus the number of targets dealt melee damage this way this turn. If melee damage is dealt this way, {TheFuryCharacter} regains 1 HP, then repeat this text."
+				"{TheFuryCharacter} deals herself 0 psychic damage.",
+				"She then deals 1 target that has not been dealt melee damage this way this turn X melee damage, where X = 2 plus the psychic damage dealt this way minus the number of targets dealt melee damage this way this turn. If melee damage is dealt this way, {TheFuryCharacter} regains 1 HP, then repeat this text."
 			],
 			"icons": [
 				"DealDamagePsychic",
