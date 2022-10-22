@@ -51,6 +51,10 @@ namespace VainFacadePlaytest.TheFury
         {
             // "... you may increase the next damage dealt to {TheFuryCharacter} and the source of that damage by 1 for every 2 points of damage dealt this way."
             int increaseAmt = dda.Amount / 2;
+            if (increaseAmt <= 0)
+            {
+                yield break;
+            }
             sourceIsTarget = false;
             YesNoAmountDecision choice = new YesNoAmountDecision(base.GameController, DecisionMaker, SelectionType.Custom, increaseAmt, cardSource: GetCardSource());
             Card source = null;
