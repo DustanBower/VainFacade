@@ -26,7 +26,7 @@ namespace VainFacadePlaytest.TheFury
         public override void AddTriggers()
         {
             base.AddTriggers();
-            // "When this card is destroyed, you may return it to your hand."
+            // "If this card is destroyed, return it to your hand."
             AddAfterDestroyedAction(ReturnToHandResponse);
             // "When {TheFuryCharacter} is dealt damage on the turn this card enters play, you may play a card. If you do, increase the next damage dealt to {TheFuryCharacter} by 1. If it is a Coincidence, repeat this text."
             AddTrigger((DealDamageAction dda) => HasBeenSetToTrueThisTurn(PlayedThisTurn) && dda.Target == base.CharacterCard && dda.DidDealDamage, PlayAndIncreaseNextResponse, new TriggerType[] { TriggerType.PlayCard, TriggerType.CreateStatusEffect }, TriggerTiming.After);
@@ -42,28 +42,15 @@ namespace VainFacadePlaytest.TheFury
 
         private IEnumerator ReturnToHandResponse(GameAction ga)
         {
-            // "... you may return it to your hand."
-            List<YesNoCardDecision> choices = new List<YesNoCardDecision>();
-            IEnumerator chooseCoroutine = base.GameController.MakeYesNoCardDecision(DecisionMaker, SelectionType.Custom, base.Card, storedResults: choices, cardSource: GetCardSource());
+            // "... return it to your hand."
+            IEnumerator moveCoroutine = base.GameController.MoveCard(base.TurnTakerController, base.Card, base.TurnTaker.ToHero().Hand, showMessage: true, responsibleTurnTaker: base.TurnTaker, cardSource: GetCardSource());
             if (base.UseUnityCoroutines)
             {
-                yield return base.GameController.StartCoroutine(chooseCoroutine);
+                yield return base.GameController.StartCoroutine(moveCoroutine);
             }
             else
             {
-                base.GameController.ExhaustCoroutine(chooseCoroutine);
-            }
-            if (DidPlayerAnswerYes(choices))
-            {
-                IEnumerator moveCoroutine = base.GameController.MoveCard(base.TurnTakerController, base.Card, base.TurnTaker.ToHero().Hand, showMessage: true, responsibleTurnTaker: base.TurnTaker, cardSource: GetCardSource());
-                if (base.UseUnityCoroutines)
-                {
-                    yield return base.GameController.StartCoroutine(moveCoroutine);
-                }
-                else
-                {
-                    base.GameController.ExhaustCoroutine(moveCoroutine);
-                }
+                base.GameController.ExhaustCoroutine(moveCoroutine);
             }
         }
 
