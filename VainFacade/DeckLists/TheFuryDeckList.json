@@ -112,7 +112,7 @@
 			"flavorQuotes": [
 				{
 					"identifier": "Aniela",
-					"text": "Noble Erinye, my evils are many,{BR}and I accept whatever punishment you{BR}deem just! Yet, while I submit for judgment,{BR}a greater evil goes unpunished!"
+					"text": "Noble Erinye, my evils are many, and{BR}I accept whatever punishment you deem just! Yet, while I submit for judgment,{BR}a greater evil goes unpunished!"
 				}
 			],
 			"flavorReference": "Aniela, Grim Tidings: A Woman Scorned"
@@ -142,7 +142,7 @@
 					"text": "Wretched golem, I have counted{BR}your betrayals! The world groans{BR}beneath their weight!"
 				}
 			],
-			"flavorReference": "The Fury, Environmental Triggers One-Shot"
+			"flavorReference": "The Fury, Environmental Triggers"
 		},
 		{
 			"identifier": "CraftingTheFuture",
@@ -193,7 +193,7 @@
 			"flavorQuotes": [
 				{
 					"identifier": "The Fury",
-					"text": "Cease your worthless{BR}groveling. Your punishments are{BR}sufficient. Your petition has been answered;{BR}the matter closed.{BR}Do not call on me again."
+					"text": "Cease your worthless groveling.{BR}Your punishments are sufficient. Your{BR}petition has been answered; the matter closed. Do not call on me again."
 				}
 			],
 			"flavorReference": "The Fury, Grim Tidings: A Woman Scorned"
@@ -282,7 +282,7 @@
 					"text": "Liana Leroux. We need to move!"
 				}
 			],
-			"flavorReference": "Target of Opportunity One-Shot"
+			"flavorReference": "Target of Opportunity"
 		},
 		{
 			"identifier": "InfernalTwin",
@@ -301,11 +301,11 @@
 			],
 			"flavorQuotes": [
 				{
-					"identifier": "Morgan Leroux",
+					"identifier": "Morgan",
 					"text": "Sisters three, take{BR}unto ye the gem of mine own heart.{BR}Grant to me the majesty to show your sacred{BR}sign! Now decree through land and sea for that{BR}once torn apart: threnodies abandoned be, this{BR}wounded world aligned."
 				}
 			],
-			"flavorReference": "Morgan Leroux, Bastion's Best #25"
+			"flavorReference": "Morgan, Bastion's Best #25"
 		},
 		{
 			"identifier": "MeasurersMeter",
@@ -351,10 +351,11 @@
 			"flavorQuotes": [
 				{
 					"identifier": "Gadhavi",
-					"text": "Victim is Dakken. Real name{BR}unknown. Apparently he believed some sort{BR}of prophecy. According to bystanders, his{BR}last words were 'No man can defeat me.'"
+					"oldtext": "Victim is Dakken. Real name unknown.{BR}Apparently he believed some sort{BR}of prophecy. According to bystanders, his{BR}last words were 'No man can defeat me.'",
+					"text": "Victim's Dakken. Believed in some sort of{BR}prophecy. Bystanders say his last{BR}words were 'No man can defeat me.'"
 				}
 			],
-			"flavorReference": "Gadhavi, Funeral for a Fiend One-Shot"
+			"flavorReference": "Gadhavi, Funeral for a Fiend"
 		},
 		{
 			"identifier": "RuinousRampage",
@@ -473,7 +474,7 @@
 					"text": "You have failed to provide her the{BR}destiny she was promised, Brother Leroux.{BR}She is beginning to write her own fate."
 				}
 			],
-			"flavorReference": "Brother Stevens, Funeral for a Fiend One-Shot"
+			"flavorReference": "Brother Stevens, Funeral for a Fiend"
 		},
 		{
 			"identifier": "WeirdLuck",
