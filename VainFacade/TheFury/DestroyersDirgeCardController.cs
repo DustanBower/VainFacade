@@ -63,7 +63,7 @@ namespace VainFacadePlaytest.TheFury
             {
                 // "... then deals 1 target X irreducible melee damage that cannot be redirected..."
                 ITrigger tempTrigger = AddMakeDamageNotRedirectableTrigger((DealDamageAction damage) => damage != null && damage.CardSource != null && damage.CardSource.Card == base.Card);
-                IEnumerator meleeCoroutine = base.GameController.SelectTargetsAndDealDamage(DecisionMaker, new DamageSource(base.GameController, base.CharacterCard), x, DamageType.Melee, numTargets, false, numTargets, cardSource: GetCardSource());
+                IEnumerator meleeCoroutine = base.GameController.SelectTargetsAndDealDamage(DecisionMaker, new DamageSource(base.GameController, base.CharacterCard), x, DamageType.Melee, numTargets, false, numTargets, isIrreducible: true, cardSource: GetCardSource());
                 if (base.UseUnityCoroutines)
                 {
                     yield return base.GameController.StartCoroutine(meleeCoroutine);
