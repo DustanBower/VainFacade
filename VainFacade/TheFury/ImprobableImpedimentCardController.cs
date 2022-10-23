@@ -104,24 +104,11 @@ namespace VainFacadePlaytest.TheFury
         private IEnumerator PreventIncreaseDiscardOrDestroyResponse(DealDamageAction dda)
         {
             // "... you may prevent it."
-            if (!DamageReacted.HasValue || DamageReacted.Value != dda.InstanceIdentifier)
-            {
-                List<YesNoCardDecision> choices = new List<YesNoCardDecision>();
-                IEnumerator chooseCoroutine = base.GameController.MakeYesNoCardDecision(DecisionMaker, SelectionType.PreventDamage, base.Card, dda, choices, cardSource: GetCardSource());
-                if (base.UseUnityCoroutines)
-                {
-                    yield return base.GameController.StartCoroutine(chooseCoroutine);
-                }
-                else
-                {
-                    base.GameController.ExhaustCoroutine(chooseCoroutine);
-                }
-                if (DidPlayerAnswerYes(choices))
-                {
-                    DamageReacted = dda.InstanceIdentifier;
-                }
-            }
-            if (DamageReacted.HasValue && DamageReacted.Value == dda.InstanceIdentifier)
+            //Log.Debug("ImprobableImpedimentCardController.PIDDResponse activated");
+            //Log.Debug("ImprobableImpedimentCardController.PIDDResponse: card index: " + base.Card.InstanceIndex.ToString());
+            //Log.Debug("ImprobableImpedimentCardController.PIDDResponse: dda: " + dda.ToString());
+            //Log.Debug("ImprobableImpedimentCardController.PIDDResponse: dda.IsPretend: " + dda.IsPretend.ToString());
+            if (dda.IsPretend)
             {
                 IEnumerator cancelCoroutine = CancelAction(dda, isPreventEffect: true);
                 if (base.UseUnityCoroutines)
@@ -132,8 +119,57 @@ namespace VainFacadePlaytest.TheFury
                 {
                     base.GameController.ExhaustCoroutine(cancelCoroutine);
                 }
+                yield break;
+            }
+            //Log.Debug("ImprobableImpedimentCardController.PIDDResponse: dda.CanDealDamage: " + dda.CanDealDamage.ToString());
+            //Log.Debug("ImprobableImpedimentCardController.PIDDResponse: DamageReacted.HasValue: " + DamageReacted.HasValue.ToString());
+            /*if (DamageReacted.HasValue)
+            {
+                Log.Debug("ImprobableImpedimentCardController.PIDDResponse: DamageReacted.Value: " + DamageReacted.Value.ToString());
+                Log.Debug("ImprobableImpedimentCardController.PIDDResponse: dda.InstanceIdentifier: " + dda.InstanceIdentifier.ToString());
+                Log.Debug("ImprobableImpedimentCardController.PIDDResponse: DamageReacted.Value == dda.InstanceIdentifier: " + (DamageReacted.Value == dda.InstanceIdentifier).ToString());
+            }*/
+            if (!DamageReacted.HasValue || DamageReacted.Value != dda.InstanceIdentifier)
+            {
+                //Log.Debug("ImprobableImpedimentCardController.PIDDResponse: DamageReacted has no value or non-matching value");
+                //Log.Debug("ImprobableImpedimentCardController.PIDDResponse: creating YesNoCardDecision");
+                List<YesNoCardDecision> choices = new List<YesNoCardDecision>();
+                IEnumerator chooseCoroutine = base.GameController.MakeYesNoCardDecision(DecisionMaker, SelectionType.PreventDamage, base.Card, dda, choices, cardSource: GetCardSource());
+                if (base.UseUnityCoroutines)
+                {
+                    yield return base.GameController.StartCoroutine(chooseCoroutine);
+                }
+                else
+                {
+                    base.GameController.ExhaustCoroutine(chooseCoroutine);
+                }
+                //Log.Debug("ImprobableImpedimentCardController.PIDDResponse: DidPlayerAnswerYes(choices): " + DidPlayerAnswerYes(choices).ToString());
+                if (DidPlayerAnswerYes(choices))
+                {
+                    //Log.Debug("ImprobableImpedimentCardController.PIDDResponse: setting DamageReacted");
+                    DamageReacted = dda.InstanceIdentifier;
+                    //Log.Debug("ImprobableImpedimentCardController.PIDDResponse: setting dda.CanDealDamage = False");
+                    dda.CanDealDamage = false;
+                }
+            }
+            if (DamageReacted.HasValue && DamageReacted.Value == dda.InstanceIdentifier)
+            {
+                //Log.Debug("ImprobableImpedimentCardController.PIDDResponse: DamageReacted has matching value");
+                //Log.Debug("ImprobableImpedimentCardController.PIDDResponse: canceling DealDamageAction");
+                IEnumerator cancelCoroutine = CancelAction(dda, isPreventEffect: true);
+                if (base.UseUnityCoroutines)
+                {
+                    yield return base.GameController.StartCoroutine(cancelCoroutine);
+                }
+                else
+                {
+                    base.GameController.ExhaustCoroutine(cancelCoroutine);
+                }
+                //Log.Debug("ImprobableImpedimentCardController.PIDDResponse: IsRealAction(dda): " + IsRealAction(dda).ToString());
                 if (IsRealAction(dda))
                 {
+                    //Log.Debug("ImprobableImpedimentCardController.PIDDResponse: dda is real action");
+                    //Log.Debug("ImprobableImpedimentCardController.PIDDResponse: calculating X");
                     // "If you do, increase the next damage dealt to her by X, where X = 1 plus the amount that damage was increased by..."
                     List<ModifyDealDamageAction> mods = dda.DamageModifiers.ToList();
                     int x = 1;
@@ -148,8 +184,11 @@ namespace VainFacadePlaytest.TheFury
                             x -= minus.AdjustmentAmount;
                         }
                     }
+                    //Log.Debug("ImprobableImpedimentCardController.PIDDResponse: X = " + x.ToString());
                     if (x > 0)
                     {
+                        //Log.Debug("ImprobableImpedimentCardController.PIDDResponse: X > 0");
+                        //Log.Debug("ImprobableImpedimentCardController.PIDDResponse: increasing next damage dealt to {TheFuryCharacter}");
                         IEnumerator increaseCoroutine = IncreaseNextDamageTo(base.CharacterCard, x, GetCardSource());
                         if (base.UseUnityCoroutines)
                         {
@@ -161,6 +200,7 @@ namespace VainFacadePlaytest.TheFury
                         }
                     }
                     // "... and discard or destroy this card."
+                    //Log.Debug("ImprobableImpedimentCardController.PIDDResponse: creating SelectFunctionDecision");
                     IEnumerable<Function> options = new Function[2]
                     {
                         new Function(DecisionMaker, "Discard " + base.Card.Title, SelectionType.DiscardCard, () => base.GameController.MoveCard(base.TurnTakerController, base.Card, base.TurnTaker.Trash, showMessage: true, responsibleTurnTaker: base.TurnTaker, isDiscard: true, cardSource: GetCardSource())),
@@ -180,6 +220,8 @@ namespace VainFacadePlaytest.TheFury
             }
             if (IsRealAction(dda))
             {
+                //Log.Debug("ImprobableImpedimentCardController.PIDDResponse: dda is real action");
+                //Log.Debug("ImprobableImpedimentCardController.PIDDResponse: clearing DamageReacted");
                 DamageReacted = null;
             }
         }
