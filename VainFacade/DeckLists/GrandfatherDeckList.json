@@ -64,6 +64,18 @@
 			"difficulty": 3,
 			"openingLines": {
 				"default": "Oh, don't worry, this will only hurt for a second!",
+				"ChronoRangerCharacter": "Ah! Another anachronism. No matter.",
+				"OmnitronUCharacter": "Hm! You're essentially a sentient time-machine. Fascinating!",
+				"OmnitronXCharacter": "Hm! You're essentially a sentient time-machine. Fascinating!",
+				"LaComodoraCharacter": "Oh, hm, hello there! Any chance we could work togteher? Otherwise this timeline is going to get confusing!",
+				"LaComodoraCurseOfTheBlackSpotCharacter": "Oh, hm, hello there! Any chance we could work togteher? Otherwise this timeline is going to get confusing!",
+				"ChronoRangerBestOfTimesCharacter": "Ah! Another anachronism. No matter.",
+				"AllInGoodTimeDriftCharacter": "Tell me about it!",
+				"Cauldron.DriftCharacter": "Not to be rude, but I really don't have time for this...",
+				"DriftingShadowDriftCharacter": "Not to be rude, but I really don't have time for this...",
+				"DualDriftCharacter": "Er, are you supposed to be here now?",
+				"TestSubjectHalberdDriftCharacter": "Not to be rude, but I really don't have time for this...",
+				"ThroughTheBreachDriftCharacter": "Not to be rude, but I really don't have time for this...",
 				"VainFacadePlaytest.FridayCharacter": "My dear, is there no chance you'll sit this one out and let us continue this debate another time?",
 				"VainFacadePlaytest.SphereCharacter": "Did you? Oh, shoot, sorry! I got ahead of myself. You were saying?"
 			}
