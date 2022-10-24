@@ -177,6 +177,8 @@
             <key type="filename">BurgessCharacterFlipped.png</key>
             <key type="filename">SphereCharacter.png</key>
             <key type="filename">SphereCharacterFlipped.png</key>
+            <key type="filename">TheFuryCharacter.png</key>
+            <key type="filename">TheFuryCharacterFlipped.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
@@ -198,6 +200,8 @@
             <filename>SphereCharacterFlipped.png</filename>
             <filename>BurgessCharacter.png</filename>
             <filename>BurgessCharacterFlipped.png</filename>
+            <filename>TheFuryCharacter.png</filename>
+            <filename>TheFuryCharacterFlipped.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

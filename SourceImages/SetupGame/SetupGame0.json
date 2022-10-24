@@ -40,9 +40,17 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":177,"h":256},
 	"sourceSize": {"w":177,"h":256}
 },
-"TheMidnightBazaarDeckBack.png":
+"TheFuryCharacter.png":
 {
 	"frame": {"x":0,"y":259,"w":177,"h":256},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":177,"h":256},
+	"sourceSize": {"w":177,"h":256}
+},
+"TheMidnightBazaarDeckBack.png":
+{
+	"frame": {"x":180,"y":259,"w":177,"h":256},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":177,"h":256},
@@ -55,6 +63,6 @@
 	"format": "RGBA8888",
 	"size": {"w":1024,"h":1024},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:46e5c2a133b2bbf556960a529c2e6e24:6e30a778cc65b30a747a720907a586ea:4ee285c32a91b7652e02ac049f918b2a$"
+	"smartupdate": "$TexturePacker:SmartUpdate:4567df6c817d68f6317468df568e4ab6:fa957d0cf4515faa9a5e3194bd296c22:4ee285c32a91b7652e02ac049f918b2a$"
 }
 }

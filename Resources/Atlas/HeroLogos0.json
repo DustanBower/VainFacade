@@ -15,6 +15,14 @@
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":330,"h":260},
 	"sourceSize": {"w":330,"h":260}
+},
+"TheFuryCharacter.png":
+{
+	"frame": {"x":666,"y":0,"w":330,"h":260},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":330,"h":260},
+	"sourceSize": {"w":330,"h":260}
 }},
 "meta": {
 	"app": "https://www.codeandweb.com/texturepacker",
@@ -23,6 +31,6 @@
 	"format": "RGBA8888",
 	"size": {"w":1024,"h":1024},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:958c6291ec7a1034132b5cd25aad7f9e:cb7faae7106bdfb079de10ad6e97e4da:abd76add2ce06cabb8b0a8e056eb9b47$"
+	"smartupdate": "$TexturePacker:SmartUpdate:39eaeeee9f9383af47c6c8d2d1a76b98:3d2671ed26ad450a05783537355e530e:abd76add2ce06cabb8b0a8e056eb9b47$"
 }
 }

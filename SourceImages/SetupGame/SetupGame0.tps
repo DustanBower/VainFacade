@@ -178,6 +178,7 @@
             <key type="filename">../SmallCardArt/Grandfather/GrandfatherCharacter.png</key>
             <key type="filename">../SmallCardArt/Sphere/SphereCharacter.png</key>
             <key type="filename">../SmallCardArt/TheBaroness/TheBaronessCharacter.png</key>
+            <key type="filename">../SmallCardArt/TheFury/TheFuryCharacter.png</key>
             <key type="filename">../SmallCardArt/TheMidnightBazaar/TheMidnightBazaarDeckBack.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
@@ -202,6 +203,7 @@
             <filename>../SmallCardArt/Burgess/BurgessCharacter.png</filename>
             <filename>../SmallCardArt/EldrenwoodVillage/EldrenwoodVillageDeckBack.png</filename>
             <filename>../SmallCardArt/Grandfather/GrandfatherCharacter.png</filename>
+            <filename>../SmallCardArt/TheFury/TheFuryCharacter.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>
