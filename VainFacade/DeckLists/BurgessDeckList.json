@@ -36,7 +36,8 @@
 			],
 			"complexity": 2,
 			"openingLines": {
-				"default": "You're all officially deputized for this operation. You want a conviction? Go by the book."
+				"default": "You're all officially deputized for this operation. You want a conviction? Go by the book.",
+				"OblivAeonFrontPageCharacter": "Calling all units..."
 			}
 		},
 		{
