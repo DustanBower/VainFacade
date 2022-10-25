@@ -80,7 +80,7 @@ namespace VainFacadePlaytest.EldrenwoodVillage
             if (damageResults.Count > 0)
             {
                 // "... to put a card from their trash on top of their deck."
-                IEnumerator stackCoroutine = SearchForCards(base.GameController.FindHeroTurnTakerController(tt.ToHero()), false, true, 1, 1, new LinqCardCriteria((Card c) => true), false, false, true);
+                IEnumerator stackCoroutine = base.GameController.SelectCardFromLocationAndMoveIt(base.GameController.FindHeroTurnTakerController(tt.ToHero()), tt.Trash, new LinqCardCriteria((Card c) => true), (new MoveCardDestination(tt.Deck)).ToEnumerable(), showOutput: true, responsibleTurnTaker: base.TurnTaker, cardSource: GetCardSource());
                 if (base.UseUnityCoroutines)
                 {
                     yield return base.GameController.StartCoroutine(stackCoroutine);
