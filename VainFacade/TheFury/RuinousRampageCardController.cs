@@ -55,7 +55,7 @@ namespace VainFacadePlaytest.TheFury
 
         public override IEnumerator Play()
         {
-            // "{TheFuryCharacter} deals herself 0 psychic damage, ..."
+            // "{TheFuryCharacter} deals herself 0 psychic damage."
             List<DealDamageAction> psychicHits = new List<DealDamageAction>();
             IEnumerator psychicCoroutine = DealDamage(base.CharacterCard, base.CharacterCard, 0, DamageType.Psychic, storedResults: psychicHits, cardSource: GetCardSource());
             if (base.UseUnityCoroutines)
@@ -88,10 +88,11 @@ namespace VainFacadePlaytest.TheFury
 
         private IEnumerator DamageDamageHealRepeatResponse(int psychicAmount, List<DealDamageAction> meleeResults)
         {
-            // "She then deals 1 target that has not been dealt melee damage this way this turn X melee damage, where X = 2 plus the psychic damage dealt this way minus the number of targets dealt melee damage this way this turn."
+            // "She then deals 1 target that has not been dealt melee damage this way this turn X melee damage, where X = 2 plus the psychic damage dealt this way minus the number of times melee damage was dealt this way this turn."
             int x = 2 + psychicAmount;
             List<Card> meleeTargetsSoFar = (from DealDamageAction dda in meleeResults where dda.DidDealDamage && dda.DamageType == DamageType.Melee select dda.Target).Distinct().ToList();
-            x -= meleeTargetsSoFar.Count;
+            List<DealDamageAction> meleeHitsSoFar = meleeResults.Where((DealDamageAction dda) => dda.DamageType == DamageType.Melee && dda.DidDealDamage).ToList();
+            x -= meleeHitsSoFar.Count;
             List<DealDamageAction> currentMeleeHits = new List<DealDamageAction>();
             IEnumerator meleeCoroutine = base.GameController.SelectTargetsAndDealDamage(DecisionMaker, new DamageSource(base.GameController, base.CharacterCard), x, DamageType.Melee, 1, false, 1, additionalCriteria: (Card c) => !meleeTargetsSoFar.Contains(c), storedResultsDamage: currentMeleeHits, cardSource: GetCardSource());
             if (base.UseUnityCoroutines)
