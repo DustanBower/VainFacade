@@ -9,7 +9,7 @@ using System.Text;
 
 namespace VainFacadePlaytest.Node
 {
-    public class CollectiveUnconsciousCardController : NodeUtilityCardController
+    public class CollectiveUnconsciousCardController : ConnectionCardController
     {
         public CollectiveUnconsciousCardController(Card card, TurnTakerController turnTakerController)
             : base(card, turnTakerController)
