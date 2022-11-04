@@ -94,6 +94,10 @@
     <Compile Include="Grandfather\QuietMeddlingCardController.cs" />
     <Compile Include="Grandfather\StrangePocketwatchCardController.cs" />
     <Compile Include="Grandfather\VillainShowdownCardController.cs" />
+    <Compile Include="Node\CollectiveUnconsciousCardController.cs" />
+    <Compile Include="Node\FaultDetectionCardController.cs" />
+    <Compile Include="Node\HealthyConnectionsCardController.cs" />
+    <Compile Include="Node\NodeUtilityCardController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Sphere\AlienHeartCardController.cs" />
     <Compile Include="Sphere\AlterationWardCardController.cs" />
