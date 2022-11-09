@@ -104,6 +104,7 @@
     <Compile Include="Node\NodeUtilityCardController.cs" />
     <Compile Include="Node\PacketSniffingCardController.cs" />
     <Compile Include="Node\PsychicLinkCardController.cs" />
+    <Compile Include="Node\PsychologicalFortitudeCardController.cs" />
     <Compile Include="Node\ResourceAllocationCardController.cs" />
     <Compile Include="Node\ReversePsychologyCardController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

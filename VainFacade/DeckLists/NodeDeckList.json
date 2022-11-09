@@ -349,7 +349,7 @@
 				"ongoing"
 			],
 			"body": [
-				"When a [i]Connected[/i] hero Ongoing or Equipment would be destroyed by a card other than itself, you may destroy another [i]Connected[/i] hero Equipment or Ongoing.",
+				"When a [i]Connected[/i] hero Ongoing or Equipment would be destroyed by a card other than itself or this card, you may destroy another [i]Connected[/i] hero Equipment or Ongoing.",
 				"When a card is destroyed by this effect, the first card is indestructible this turn."
 			],
 			"icons": [
