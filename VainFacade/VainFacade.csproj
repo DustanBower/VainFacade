@@ -94,6 +94,7 @@
     <Compile Include="Grandfather\QuietMeddlingCardController.cs" />
     <Compile Include="Grandfather\StrangePocketwatchCardController.cs" />
     <Compile Include="Grandfather\VillainShowdownCardController.cs" />
+    <Compile Include="Node\BleedingEdgeCardController.cs" />
     <Compile Include="Node\CleverHackCardController.cs" />
     <Compile Include="Node\CollectiveUnconsciousCardController.cs" />
     <Compile Include="Node\ConnectionCardController.cs" />
@@ -102,8 +103,10 @@
     <Compile Include="Node\HealthyConnectionsCardController.cs" />
     <Compile Include="Node\HyperlinkedNeuronsCardController.cs" />
     <Compile Include="Node\MentalFeedbackCardController.cs" />
+    <Compile Include="Node\NetworkAccessCardController.cs" />
     <Compile Include="Node\NodeCharacterCardController.cs" />
     <Compile Include="Node\NodeUtilityCardController.cs" />
+    <Compile Include="Node\OpenLineCardController.cs" />
     <Compile Include="Node\PacketSniffingCardController.cs" />
     <Compile Include="Node\PsychicLinkCardController.cs" />
     <Compile Include="Node\PsychologicalFortitudeCardController.cs" />
