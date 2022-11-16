@@ -323,10 +323,8 @@
 			],
 			"body": [
 				"Play this card in a non-environment play area other than {NodeCharacter}'s. Cards in this play area and {NodeCharacter}'s are [i]Connected.[/i] Play with the top card of that play area's deck face up.",
-				"The first time each turn a target in this play area would deal damage to {NodeCharacter}, increase that damage by 1."
-			],
-			"powers": [
-				"Return this card to your hand."
+				"The first time each turn a target in this play area would deal damage to {NodeCharacter}, increase that damage by 1.",
+				"[b]Power:[/b] Return this card to your hand."
 			],
 			"icons": [
 				"Manipulate",
