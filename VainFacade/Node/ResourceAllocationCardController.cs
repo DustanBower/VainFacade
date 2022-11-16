@@ -14,6 +14,7 @@ namespace VainFacadePlaytest.Node
         public ResourceAllocationCardController(Card card, TurnTakerController turnTakerController)
             : base(card, turnTakerController)
         {
+            AllowFastCoroutinesDuringPretend = false;
             // Show list of Connected hero targets
             SpecialStringMaker.ShowListOfCardsInPlay(new LinqCardCriteria((Card c) => IsConnected(c) && c.IsHero && c.IsTarget, "Connected hero targets", false, false, "target", "targets"));
         }
@@ -27,10 +28,22 @@ namespace VainFacadePlaytest.Node
 
         private IEnumerator IncreaseReduceResponse(DealDamageAction dda)
         {
+            /*Log.Debug("ResourceAllocationCardController.IncreaseReduceResponse: dda: " + dda.ToString());
+            Log.Debug("ResourceAllocationCardController.IncreaseReduceResponse: dda.CanDealDamage: " + dda.CanDealDamage.ToString());
+            Log.Debug("ResourceAllocationCardController.IncreaseReduceResponse: dda.Amount: " + dda.Amount.ToString());
+            Log.Debug("ResourceAllocationCardController.IncreaseReduceResponse: dda.DamageSource == null: " + (dda.DamageSource == null).ToString());
+            Log.Debug("ResourceAllocationCardController.IncreaseReduceResponse: dda.DamageSource.Card == null: " + (dda.DamageSource.Card == null).ToString());
+            Log.Debug("ResourceAllocationCardController.IncreaseReduceResponse: IsConnected(dda.DamageSource.Card): " + IsConnected(dda.DamageSource.Card).ToString());
+            Log.Debug("ResourceAllocationCardController.IncreaseReduceResponse: dda.DamageSource.Card.IsHero: " + dda.DamageSource.Card.IsHero.ToString());
+            Log.Debug("ResourceAllocationCardController.IncreaseReduceResponse: dda.DamageSource.Card.IsTarget: " + dda.DamageSource.Card.IsTarget.ToString());
+            Log.Debug("ResourceAllocationCardController.IncreaseReduceResponse: dda.Target: " + dda.Target.Title);
+            Log.Debug("ResourceAllocationCardController.IncreaseReduceResponse: dda.IsPretend: " + dda.IsPretend.ToString());*/
+
+            //Log.Debug("ResourceAllocationCardController.IncreaseReduceResponse:");
             // "... you may select another [i]Connected[/i] hero target."
             Card firstTarget = dda.DamageSource.Card;
             List<SelectCardDecision> choices = new List<SelectCardDecision>();
-            IEnumerator selectCoroutine = base.GameController.SelectCardAndStoreResults(DecisionMaker, SelectionType.SelectTargetNoDamage, new LinqCardCriteria((Card c) => IsConnected(c) && c.IsHero && c.IsTarget && c != firstTarget, "Connected hero", false, false, "target other than " + firstTarget.Title, "targets other than " + firstTarget.Title), choices, true, gameAction: dda, cardSource: GetCardSource());
+            IEnumerator selectCoroutine = base.GameController.SelectCardAndStoreResults(DecisionMaker, SelectionType.SelectTargetNoDamage, new LinqCardCriteria((Card c) => IsConnected(c) && c.IsHero && c.IsTarget && c != firstTarget, "Connected hero", false, false, "target other than " + firstTarget.Title, "targets other than " + firstTarget.Title), choices, true, cardSource: GetCardSource());
             if (base.UseUnityCoroutines)
             {
                 yield return base.GameController.StartCoroutine(selectCoroutine);

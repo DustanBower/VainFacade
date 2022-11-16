@@ -14,7 +14,7 @@ namespace VainFacadePlaytest.Node
         public TelepathicExtrapolationCardController(Card card, TurnTakerController turnTakerController)
             : base(card, turnTakerController)
         {
-
+            AllowFastCoroutinesDuringPretend = false;
         }
 
         public override void AddTriggers()
