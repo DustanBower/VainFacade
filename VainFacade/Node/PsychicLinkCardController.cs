@@ -20,6 +20,12 @@ namespace VainFacadePlaytest.Node
             SpecialStringMaker.ShowHasBeenUsedThisTurn(DamageThisTurn, base.Card.Title + " has already increased damage this turn.", base.Card.Title + " has not increased damage this turn.").Condition = () => base.Card.IsInPlayAndHasGameText;
         }
 
+        public override bool IsValidPlayArea(TurnTaker tt)
+        {
+            // "Play this card in a non-environment play area other than {NodeCharacter}'s."
+            return !tt.IsEnvironment && tt != base.TurnTaker;
+        }
+
         protected readonly string DamageThisTurn = "FirstDamageToNodeFromThisPlayAreaThisTurn";
 
         public override void AddTriggers()

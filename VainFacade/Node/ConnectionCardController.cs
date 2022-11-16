@@ -9,7 +9,7 @@ using System.Text;
 
 namespace VainFacadePlaytest.Node
 {
-    public class ConnectionCardController : NodeUtilityCardController
+    abstract public class ConnectionCardController : NodeUtilityCardController
     {
         public ConnectionCardController(Card card, TurnTakerController turnTakerController)
             : base(card, turnTakerController)
@@ -17,5 +17,7 @@ namespace VainFacadePlaytest.Node
             // If in play: show location of this card
             SpecialStringMaker.ShowLocationOfCards(new LinqCardCriteria(base.Card), specifyPlayAreas: true).Condition = () => base.Card.IsInPlayAndHasGameText;
         }
+
+        abstract public bool IsValidPlayArea(TurnTaker tt);
     }
 }

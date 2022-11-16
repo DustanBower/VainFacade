@@ -18,6 +18,12 @@ namespace VainFacadePlaytest.Node
             SpecialStringMaker.ShowHasBeenUsedThisTurn(PlayedThisTurn, "A card has already entered play in " + base.Card.Location.GetFriendlyName() + " this turn since " + base.Card.Title + " entered play.", "No cards have entered play in " + base.Card.Location.GetFriendlyName() + " this turn since " + base.Card.Title + " entered play.").Condition = () => base.Card.IsInPlayAndHasGameText;
         }
 
+        public override bool IsValidPlayArea(TurnTaker tt)
+        {
+            // "Play this card in a non-environment play area other than {NodeCharacter}'s."
+            return !tt.IsEnvironment && tt != base.TurnTaker;
+        }
+
         protected readonly string PlayedThisTurn = "FirstCardPlayedThisTurn";
 
         public override void AddTriggers()

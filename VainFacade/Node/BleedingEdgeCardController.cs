@@ -56,17 +56,30 @@ namespace VainFacadePlaytest.Node
             {
                 List<Card> connectedChars = FindCardsWhere(new LinqCardCriteria((Card c) => IsConnected(c) && c.IsCharacter)).ToList();
                 List<Location> connectedLocations = (from c in connectedChars where c.Location.HighestRecursiveLocation.IsPlayArea select c.Location.HighestRecursiveLocation).Distinct().ToList();
+                List<Card> connectOptions = player.Hand.Cards.Where((Card c) => isConnector.Criteria(c)).ToList();
                 if (connectedLocations.Count > 0)
                 {
                     // Choose a Connected play area to play a Connection in
-                    List<SelectLocationDecision> choices = new List<SelectLocationDecision>();
-                    List<LocationChoice> options = new List<LocationChoice>();
+                    List<SelectTurnTakerDecision> choices = new List<SelectTurnTakerDecision>();
+                    List<TurnTaker> options = new List<TurnTaker>();
                     foreach(Location l in connectedLocations)
                     {
-                        options.Add(new LocationChoice(l));
+                        bool hasValidConnection = false;
+                        foreach(Card c in connectOptions)
+                        {
+                            if (FindCardController(c) is ConnectionCardController && (FindCardController(c) as ConnectionCardController).IsValidPlayArea(l.OwnerTurnTaker))
+                            {
+                                hasValidConnection = true;
+                                break;
+                            }
+                        }
+                        if (hasValidConnection)
+                        {
+                            options.Add(l.OwnerTurnTaker);
+                        }
                     }
                     isSelectingPlayArea = true;
-                    IEnumerator locateCoroutine = base.GameController.SelectLocation(DecisionMaker, options, SelectionType.Custom, choices, cardSource: GetCardSource());
+                    IEnumerator locateCoroutine = base.GameController.SelectTurnTaker(DecisionMaker, SelectionType.Custom, choices, optional: true, additionalCriteria: (TurnTaker tt) => options.Contains(tt), cardSource: GetCardSource());
                     if (base.UseUnityCoroutines)
                     {
                         yield return base.GameController.StartCoroutine(locateCoroutine);
@@ -75,13 +88,14 @@ namespace VainFacadePlaytest.Node
                     {
                         base.GameController.ExhaustCoroutine(locateCoroutine);
                     }
-                    if (DidSelectLocation(choices))
+
+                    if (DidSelectTurnTaker(choices))
                     {
-                        Location chosenDest = GetSelectedLocation(choices);
+                        Location chosenDest = GetSelectedTurnTaker(choices).PlayArea;
 
                         // Choose a Connection from hand and play it in chosenDest
-                        List<Card> connectOptions = player.Hand.Cards.Where((Card c) => isConnector.Criteria(c)).ToList();
-                        IEnumerator selectConnectionHandCoroutine = base.GameController.SelectCardAndDoAction(new SelectCardDecision(base.GameController, DecisionMaker, SelectionType.PlayCard, connectOptions, cardSource: GetCardSource()), (SelectCardDecision scd) => base.GameController.PlayCard(base.TurnTakerController, scd.SelectedCard, overridePlayLocation: chosenDest, responsibleTurnTaker: base.TurnTaker, cardSource: GetCardSource()));
+                        List<Card> restrictedOptions = connectOptions.Where((Card c) => FindCardController(c) is ConnectionCardController && (FindCardController(c) as ConnectionCardController).IsValidPlayArea(GetSelectedTurnTaker(choices))).ToList();
+                        IEnumerator selectConnectionHandCoroutine = base.GameController.SelectCardAndDoAction(new SelectCardDecision(base.GameController, DecisionMaker, SelectionType.PlayCard, restrictedOptions, cardSource: GetCardSource()), (SelectCardDecision scd) => base.GameController.PlayCard(base.TurnTakerController, scd.SelectedCard, overridePlayLocation: chosenDest, responsibleTurnTaker: base.TurnTaker, cardSource: GetCardSource()));
                         if (base.UseUnityCoroutines)
                         {
                             yield return base.GameController.StartCoroutine(selectConnectionHandCoroutine);
@@ -119,7 +133,7 @@ namespace VainFacadePlaytest.Node
             }
             // "You may return any number of Connections to your hand."
             List<MoveCardAction> returned = new List<MoveCardAction>();
-            IEnumerator returnCoroutine = base.GameController.SelectAndReturnCards(DecisionMaker, null, isConnectionInPlay, true, false, true, 0, returned, cardSource: GetCardSource());
+            IEnumerator returnCoroutine = base.GameController.SelectAndReturnCards(DecisionMaker, null, isConnectionInPlay, true, false, false, 0, returned, cardSource: GetCardSource());
             if (base.UseUnityCoroutines)
             {
                 yield return base.GameController.StartCoroutine(returnCoroutine);

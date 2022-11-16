@@ -17,6 +17,12 @@ namespace VainFacadePlaytest.Node
 
         }
 
+        public override bool IsValidPlayArea(TurnTaker tt)
+        {
+            // "Play this card in another hero's play area."
+            return tt.IsHero && tt != base.TurnTaker;
+        }
+
         public override void AddTriggers()
         {
             base.AddTriggers();
