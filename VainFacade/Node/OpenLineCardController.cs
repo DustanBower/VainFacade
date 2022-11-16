@@ -75,7 +75,7 @@ namespace VainFacadePlaytest.Node
             base.AddTriggers();
             // "When you or that play area's owner would draw or play a card, the other may do so instead."
             AddTrigger((DrawCardAction dca) => base.TurnTaker.IsHero && base.Card.Location.HighestRecursiveLocation.OwnerTurnTaker.IsHero && (dca.HeroTurnTaker == base.TurnTaker.ToHero() || dca.HeroTurnTaker == base.Card.Location.HighestRecursiveLocation.OwnerTurnTaker.ToHero()), OfferDrawExchangeResponse, new TriggerType[] { TriggerType.CancelAction, TriggerType.DrawCard }, TriggerTiming.Before);
-            AddTrigger((PlayCardAction pca) => base.TurnTaker.IsHero && base.Card.Location.HighestRecursiveLocation.OwnerTurnTaker.IsHero && (pca.ResponsibleTurnTaker == base.TurnTaker || pca.ResponsibleTurnTaker == base.Card.Location.HighestRecursiveLocation.OwnerTurnTaker), OfferPlayExchangeResponse, new TriggerType[] { TriggerType.CancelAction, TriggerType.PlayCard }, TriggerTiming.Before);
+            AddTrigger((PlayCardAction pca) => base.TurnTaker.IsHero && base.Card.Location.HighestRecursiveLocation.OwnerTurnTaker.IsHero && (pca.ResponsibleTurnTaker == base.TurnTaker || pca.ResponsibleTurnTaker == base.Card.Location.HighestRecursiveLocation.OwnerTurnTaker) && !pca.IsPutIntoPlay, OfferPlayExchangeResponse, new TriggerType[] { TriggerType.CancelAction, TriggerType.PlayCard }, TriggerTiming.Before);
         }
 
         private IEnumerator OfferDrawExchangeResponse(DrawCardAction dca)
