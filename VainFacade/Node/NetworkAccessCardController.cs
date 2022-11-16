@@ -21,7 +21,7 @@ namespace VainFacadePlaytest.Node
         public override IEnumerator Play()
         {
             // "You may shuffle your trash into your deck."
-            YesNoDecision shuffleChoice = new YesNoDecision(base.GameController, DecisionMaker, SelectionType.ShuffleTrashIntoDeck, associatedCards: base.TurnTaker.Trash.Cards, cardSource: GetCardSource());
+            YesNoDecision shuffleChoice = new YesNoDecision(base.GameController, DecisionMaker, SelectionType.ShuffleTrashIntoDeck, cardSource: GetCardSource());
             IEnumerator chooseCoroutine = base.GameController.MakeDecisionAction(shuffleChoice);
             if (base.UseUnityCoroutines)
             {
@@ -30,6 +30,18 @@ namespace VainFacadePlaytest.Node
             else
             {
                 base.GameController.ExhaustCoroutine(chooseCoroutine);
+            }
+            if (DidPlayerAnswerYes(shuffleChoice))
+            {
+                IEnumerator trashCoroutine = base.GameController.ShuffleTrashIntoDeck(base.TurnTakerController, cardSource: GetCardSource());
+                if (base.UseUnityCoroutines)
+                {
+                    yield return base.GameController.StartCoroutine(trashCoroutine);
+                }
+                else
+                {
+                    base.GameController.ExhaustCoroutine(trashCoroutine);
+                }
             }
             // "Reveal cards from the top of your deck until 2 Connections are revealed."
             List<Card> matchingCards = new List<Card>();
