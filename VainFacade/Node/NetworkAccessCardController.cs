@@ -53,7 +53,8 @@ namespace VainFacadePlaytest.Node
             // "Put 1 into your hand and 1 into play."
             if (matchingCards.Count > 1)
             {
-                IEnumerator toHandCoroutine = base.GameController.SelectAndMoveCard(DecisionMaker, (Card c) => matchingCards.Contains(c), base.TurnTaker.ToHero().Hand, cardSource: GetCardSource());
+                SelectCardDecision choice = new SelectCardDecision(base.GameController, DecisionMaker, SelectionType.MoveCardToHand, matchingCards, cardSource: GetCardSource());
+                IEnumerator toHandCoroutine = base.GameController.SelectCardAndDoAction(choice, (SelectCardDecision d) => base.GameController.MoveCard(base.TurnTakerController, d.SelectedCard, base.TurnTaker.ToHero().Hand, responsibleTurnTaker: base.TurnTaker, cardSource: GetCardSource()));
                 if (base.UseUnityCoroutines)
                 {
                     yield return base.GameController.StartCoroutine(toHandCoroutine);
