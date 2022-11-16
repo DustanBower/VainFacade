@@ -27,13 +27,14 @@ namespace VainFacadePlaytest.Node
             base.AddTriggers();
             // "The first time each turn a [i]Connected[/i] hero target gains HP, another [i]Connected[/i] hero target gains 1 HP."
             AddTrigger((GainHPAction gha) => !HasBeenSetToTrueThisTurn(HealedThisTurn) && gha.HpGainer.IsHero && IsConnected(gha.HpGainer), HealOtherConnectedTargetResponse, TriggerType.GainHP, TriggerTiming.After);
+            AddAfterLeavesPlayAction((GameAction ga) => ResetFlagAfterLeavesPlay(HealedThisTurn), TriggerType.Hidden);
         }
 
         private IEnumerator HealOtherConnectedTargetResponse(GainHPAction gha)
         {
             SetCardPropertyToTrueIfRealAction(HealedThisTurn);
             Card healed = gha.HpGainer;
-            IEnumerator healCoroutine = base.GameController.SelectAndGainHP(DecisionMaker, 1, additionalCriteria: (Card c) => IsConnected(c) && c.IsHero, requiredDecisions: 1, cardSource: GetCardSource());
+            IEnumerator healCoroutine = base.GameController.SelectAndGainHP(DecisionMaker, 1, additionalCriteria: (Card c) => IsConnected(c) && c.IsHero && c != healed, requiredDecisions: 1, cardSource: GetCardSource());
             if (base.UseUnityCoroutines)
             {
                 yield return base.GameController.StartCoroutine(healCoroutine);
