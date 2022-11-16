@@ -15,13 +15,14 @@ namespace VainFacadePlaytest.Node
             : base(card, turnTakerController)
         {
             AllowFastCoroutinesDuringPretend = false;
+            RunModifyDamageAmountSimulationForThisCard = false;
         }
 
         public override void AddTriggers()
         {
             base.AddTriggers();
             // "When {NodeCharacter} would deal 0 or more damage to a target, you may select a keyword. ..."
-            AddTrigger((DealDamageAction dda) => dda.DamageSource != null && dda.DamageSource.Card != null && dda.DamageSource.IsSameCard(base.CharacterCard) && dda.CanDealDamage, GuessResponse, new TriggerType[] { TriggerType.RevealCard, TriggerType.IncreaseDamage, TriggerType.ReduceDamage }, TriggerTiming.Before);
+            AddTrigger((DealDamageAction dda) => dda.DamageSource != null && dda.DamageSource.Card != null && dda.DamageSource.IsSameCard(base.CharacterCard) && dda.CanDealDamage && !dda.IsPretend, GuessResponse, new TriggerType[] { TriggerType.RevealCard, TriggerType.ModifyDamageAmount }, TriggerTiming.Before);
         }
 
         private IEnumerator GuessResponse(DealDamageAction dda)
