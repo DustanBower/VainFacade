@@ -38,7 +38,26 @@
 			],
 			"complexity": 2,
 			"openingLines": {
-				"default": ""
+				"default": "Stay focused, everyone. I'll be with you all the way.",
+				"OblivAeonFrontPageCharacter": "The worse things get, the more we need to stick together!",
+				"VainFacadePlaytest.BlitzCharacter": "You could have been a hero, Wade. Just let the past go.",
+				"VainFacadePlaytest.GrandfatherCharacter": "We've all wanted to change the past, but just because you [i]can[/i] doesn't mean you [i]should[/i]. This time belongs to the people in it.",
+				"VainFacadePlaytest.TheBaronessCharacter": "We've all lost something. You've been frozen in the past for long enough. Won't you let me help you?",
+				"AmbuscadeCharacter": "Your true scars can't be seen by others. Once you see that, you'll be free.",
+				"ApostateCharacter": "We see through your lies.",
+				"BaronBladeCharacter": "Hatred is a poison that you drink yourself. You're plotting your own doom and hoping others join you.",
+				"ChokepointCharacter": "Your mind is bent and twisted, calling out for help. Answer it, instead.",
+				"CitizenDawnCharacter": "You're not fighting us. You're fighting ghosts that have long since faded from the world.",
+				"DeadlineCharacter": "How can you see the future if you can't see past your own grief?",
+				"TheDreamerCharacter": "Oh, you poor thing...",
+				"InfinitorCharacter": "Oh, you poor thing...",
+				"HeroicInfinitorCharacter": "You're not alone. We're here to help.",
+				"IronLegacyCharacter": "Your legacy is not justice, but pain.",
+				"TheMatriarchCharacter": "This is not the way! Please stop this before someone gets hurt.",
+				"MissInformationCharacter": "Who.. didn't... save... who? I'm sorry, I thought I heard another voice...",
+				"MissInformationTeamCharacter": "Don't you think one reality's burdens are more than enough to bear?",
+				"Cauldron.GrayCharacter": "If you just stop, we can help you.",
+				"Cauldron.OutlanderCharacter": "You're destroying yourself in a vain attempt to overcome the past. You've become the evil you fought against."
 			}
 		},
 		{
