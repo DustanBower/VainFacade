@@ -176,6 +176,7 @@
             <key type="filename">BurgessIcon.png</key>
             <key type="filename">FridayIcon.png</key>
             <key type="filename">GlyphIcon.png</key>
+            <key type="filename">NodeIcon.png</key>
             <key type="filename">SphereIcon.png</key>
             <key type="filename">TheFuryIcon.png</key>
             <struct type="IndividualSpriteSettings">
@@ -200,6 +201,7 @@
             <filename>BurgessIcon.png</filename>
             <filename>FridayIcon.png</filename>
             <filename>TheFuryIcon.png</filename>
+            <filename>NodeIcon.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>
