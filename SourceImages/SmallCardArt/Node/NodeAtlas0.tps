@@ -34,7 +34,7 @@
         <key>dataFormat</key>
         <string>json</string>
         <key>textureFileName</key>
-        <filename>SetupGame0.png</filename>
+        <filename>NodeAtlas0.png</filename>
         <key>flipPVR</key>
         <false/>
         <key>pvrQualityLevel</key>
@@ -124,7 +124,7 @@
             <key>data</key>
             <struct type="DataFile">
                 <key>name</key>
-                <filename>SetupGame0.json</filename>
+                <filename>NodeAtlas0.json</filename>
             </struct>
         </map>
         <key>multiPack</key>
@@ -173,14 +173,40 @@
         </struct>
         <key>individualSpriteSettings</key>
         <map type="IndividualSpriteSettingsMap">
-            <key type="filename">../SmallCardArt/Burgess/BurgessCharacter.png</key>
-            <key type="filename">../SmallCardArt/EldrenwoodVillage/EldrenwoodVillageDeckBack.png</key>
-            <key type="filename">../SmallCardArt/Grandfather/GrandfatherCharacter.png</key>
-            <key type="filename">../SmallCardArt/Node/NodeCharacter.png</key>
-            <key type="filename">../SmallCardArt/Sphere/SphereCharacter.png</key>
-            <key type="filename">../SmallCardArt/TheBaroness/TheBaronessCharacter.png</key>
-            <key type="filename">../SmallCardArt/TheFury/TheFuryCharacter.png</key>
-            <key type="filename">../SmallCardArt/TheMidnightBazaar/TheMidnightBazaarDeckBack.png</key>
+            <key type="filename">BleedingEdge.png</key>
+            <key type="filename">CleverHack.png</key>
+            <key type="filename">CollectiveUnconscious.png</key>
+            <key type="filename">DialingIn.png</key>
+            <key type="filename">FaultDetection.png</key>
+            <key type="filename">HealthyConnections.png</key>
+            <key type="filename">HyperlinkedNeurons.png</key>
+            <key type="filename">MentalFeedback.png</key>
+            <key type="filename">NetworkAccess.png</key>
+            <key type="filename">OpenLine.png</key>
+            <key type="filename">PacketSniffing.png</key>
+            <key type="filename">PsychicLink.png</key>
+            <key type="filename">PsychologicalFortitude.png</key>
+            <key type="filename">ResourceAllocation.png</key>
+            <key type="filename">ReversePsychology.png</key>
+            <key type="filename">TelepathicExtrapolation.png</key>
+            <key type="filename">TheIInTeam.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>64,50,128,99</rect>
+                <key>scale9Paddings</key>
+                <rect>64,50,128,99</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">NodeCharacter.png</key>
+            <key type="filename">NodeCharacterBack.png</key>
+            <key type="filename">NodeDeckBack.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
@@ -198,14 +224,26 @@
         </map>
         <key>fileList</key>
         <array>
-            <filename>../SmallCardArt/TheMidnightBazaar/TheMidnightBazaarDeckBack.png</filename>
-            <filename>../SmallCardArt/Sphere/SphereCharacter.png</filename>
-            <filename>../SmallCardArt/TheBaroness/TheBaronessCharacter.png</filename>
-            <filename>../SmallCardArt/Burgess/BurgessCharacter.png</filename>
-            <filename>../SmallCardArt/EldrenwoodVillage/EldrenwoodVillageDeckBack.png</filename>
-            <filename>../SmallCardArt/Grandfather/GrandfatherCharacter.png</filename>
-            <filename>../SmallCardArt/TheFury/TheFuryCharacter.png</filename>
-            <filename>../SmallCardArt/Node/NodeCharacter.png</filename>
+            <filename>BleedingEdge.png</filename>
+            <filename>CleverHack.png</filename>
+            <filename>CollectiveUnconscious.png</filename>
+            <filename>DialingIn.png</filename>
+            <filename>FaultDetection.png</filename>
+            <filename>HealthyConnections.png</filename>
+            <filename>HyperlinkedNeurons.png</filename>
+            <filename>MentalFeedback.png</filename>
+            <filename>NetworkAccess.png</filename>
+            <filename>NodeCharacterBack.png</filename>
+            <filename>NodeDeckBack.png</filename>
+            <filename>OpenLine.png</filename>
+            <filename>PacketSniffing.png</filename>
+            <filename>PsychicLink.png</filename>
+            <filename>PsychologicalFortitude.png</filename>
+            <filename>ResourceAllocation.png</filename>
+            <filename>ReversePsychology.png</filename>
+            <filename>TelepathicExtrapolation.png</filename>
+            <filename>TheIInTeam.png</filename>
+            <filename>NodeCharacter.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

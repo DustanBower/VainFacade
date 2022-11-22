@@ -175,6 +175,8 @@
         <map type="IndividualSpriteSettingsMap">
             <key type="filename">BurgessCharacter.png</key>
             <key type="filename">BurgessCharacterFlipped.png</key>
+            <key type="filename">NodeCharacter.png</key>
+            <key type="filename">NodeCharacterFlipped.png</key>
             <key type="filename">SphereCharacter.png</key>
             <key type="filename">SphereCharacterFlipped.png</key>
             <key type="filename">TheFuryCharacter.png</key>
@@ -202,6 +204,8 @@
             <filename>BurgessCharacterFlipped.png</filename>
             <filename>TheFuryCharacter.png</filename>
             <filename>TheFuryCharacterFlipped.png</filename>
+            <filename>NodeCharacter.png</filename>
+            <filename>NodeCharacterFlipped.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>
