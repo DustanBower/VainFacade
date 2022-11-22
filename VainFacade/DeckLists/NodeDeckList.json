@@ -10,7 +10,7 @@
 			"count": 1,
 			"title": "Node",
 			"body": "Line Noise",
-			"backgroundColor": "00EC00",
+			"backgroundColor": "FFB2FF",
 			"character": true,
 			"powers": [
 				"Draw a card or {NodeCharacter} deals 1 target 0 psychic damage. If damage is dealt this way, {NodeCharacter} deals that target 0 psychic damage and increases the next damage dealt to that target by 1."
