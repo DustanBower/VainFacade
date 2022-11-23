@@ -118,7 +118,8 @@
 				"When {NodeCharacter} would deal that hero psychic damage, that hero recovers that much HP instead."
 			],
 			"icons": [
-				"GainHP"
+				"GainHP",
+				"CancelledDamageGreen"
 			],
 			"flavorQuotes": [
 				{
