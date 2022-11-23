@@ -22,7 +22,7 @@ namespace VainFacadePlaytest.Node
         {
             base.AddTriggers();
             // "When a [i]Connected[/i] hero Ongoing or Equipment would be destroyed by a card other than itself or this card, you may destroy another [i]Connected[/i] hero Equipment or Ongoing."
-            AddTrigger((DestroyCardAction dca) => dca.CardToDestroy != null && dca.CardToDestroy.Card != null && IsConnected(dca.CardToDestroy.Card) && (dca.CardToDestroy.Card.IsOngoing || IsEquipment(dca.CardToDestroy.Card)) && dca.ResponsibleCard != dca.CardToDestroy.Card && dca.ResponsibleCard != base.Card, DestroyToProtectResponse, new TriggerType[] { TriggerType.DestroyCard, TriggerType.CreateStatusEffect}, TriggerTiming.Before);
+            AddTrigger((DestroyCardAction dca) => dca.CardToDestroy != null && dca.CardToDestroy.Card != null && IsConnected(dca.CardToDestroy.Card) && dca.CardToDestroy.Card.IsHero && (dca.CardToDestroy.Card.IsOngoing || IsEquipment(dca.CardToDestroy.Card)) && dca.ResponsibleCard != dca.CardToDestroy.Card && dca.ResponsibleCard != base.Card, DestroyToProtectResponse, new TriggerType[] { TriggerType.DestroyCard, TriggerType.CreateStatusEffect}, TriggerTiming.Before);
         }
 
         private IEnumerator DestroyToProtectResponse(DestroyCardAction dca)
