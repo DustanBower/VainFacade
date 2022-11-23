@@ -25,7 +25,7 @@ namespace VainFacadePlaytest.Node
             DealDamageAction onePsychic = new DealDamageAction(GetCardSource(), new DamageSource(base.GameController, base.CharacterCard), null, 1, DamageType.Psychic);
             instances.Add(onePsychic);
             instances.Add(onePsychic);
-            IEnumerator damageCoroutine = SelectTargetsAndDealMultipleInstancesOfDamage(instances, (Card c) => c.IsTarget && IsConnected(c), maxNumberOfTargets: 3);
+            IEnumerator damageCoroutine = SelectTargetsAndDealMultipleInstancesOfDamage(instances, (Card c) => c.IsTarget && IsConnected(c), minNumberOfTargets: 0, maxNumberOfTargets: 3);
             if (base.UseUnityCoroutines)
             {
                 yield return base.GameController.StartCoroutine(damageCoroutine);
