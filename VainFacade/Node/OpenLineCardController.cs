@@ -95,35 +95,38 @@ namespace VainFacadePlaytest.Node
                 ReplacingActionByNode = true;
                 couldDrawInstead = base.Card.Location.HighestRecursiveLocation.OwnerTurnTaker.ToHero();
             }
-            YesNoDecision choice = new YesNoDecision(base.GameController, FindHeroTurnTakerController(couldDrawInstead), SelectionType.Custom, cardSource: GetCardSource());
-            IEnumerator chooseCoroutine = base.GameController.MakeDecisionAction(choice);
-            if (base.UseUnityCoroutines)
+            if (!ReplacingActionByNode || !couldDrawInstead.IsIncapacitatedOrOutOfGame)
             {
-                yield return base.GameController.StartCoroutine(chooseCoroutine);
-            }
-            else
-            {
-                base.GameController.ExhaustCoroutine(chooseCoroutine);
-            }
-            if (DidPlayerAnswerYes(choice))
-            {
-                IEnumerator cancelCoroutine = CancelAction(dca);
+                YesNoDecision choice = new YesNoDecision(base.GameController, FindHeroTurnTakerController(couldDrawInstead), SelectionType.Custom, cardSource: GetCardSource());
+                IEnumerator chooseCoroutine = base.GameController.MakeDecisionAction(choice);
                 if (base.UseUnityCoroutines)
                 {
-                    yield return base.GameController.StartCoroutine(cancelCoroutine);
+                    yield return base.GameController.StartCoroutine(chooseCoroutine);
                 }
                 else
                 {
-                    base.GameController.ExhaustCoroutine(cancelCoroutine);
+                    base.GameController.ExhaustCoroutine(chooseCoroutine);
                 }
-                IEnumerator drawCoroutine = DrawCard(couldDrawInstead);
-                if (base.UseUnityCoroutines)
+                if (DidPlayerAnswerYes(choice))
                 {
-                    yield return base.GameController.StartCoroutine(drawCoroutine);
-                }
-                else
-                {
-                    base.GameController.ExhaustCoroutine(drawCoroutine);
+                    IEnumerator cancelCoroutine = CancelAction(dca);
+                    if (base.UseUnityCoroutines)
+                    {
+                        yield return base.GameController.StartCoroutine(cancelCoroutine);
+                    }
+                    else
+                    {
+                        base.GameController.ExhaustCoroutine(cancelCoroutine);
+                    }
+                    IEnumerator drawCoroutine = DrawCard(couldDrawInstead);
+                    if (base.UseUnityCoroutines)
+                    {
+                        yield return base.GameController.StartCoroutine(drawCoroutine);
+                    }
+                    else
+                    {
+                        base.GameController.ExhaustCoroutine(drawCoroutine);
+                    }
                 }
             }
         }
@@ -139,38 +142,40 @@ namespace VainFacadePlaytest.Node
                 ReplacingActionByNode = true;
                 couldPlayInstead = base.Card.Location.HighestRecursiveLocation.OwnerTurnTaker.ToHero();
             }
-            YesNoDecision choice = new YesNoDecision(base.GameController, FindHeroTurnTakerController(couldPlayInstead), SelectionType.Custom, cardSource: GetCardSource());
-            IEnumerator chooseCoroutine = base.GameController.MakeDecisionAction(choice);
-            if (base.UseUnityCoroutines)
+            if (!ReplacingActionByNode || !couldPlayInstead.IsIncapacitatedOrOutOfGame)
             {
-                yield return base.GameController.StartCoroutine(chooseCoroutine);
-            }
-            else
-            {
-                base.GameController.ExhaustCoroutine(chooseCoroutine);
-            }
-            if (DidPlayerAnswerYes(choice))
-            {
-                IEnumerator cancelCoroutine = CancelAction(pca);
+                YesNoDecision choice = new YesNoDecision(base.GameController, FindHeroTurnTakerController(couldPlayInstead), SelectionType.Custom, cardSource: GetCardSource());
+                IEnumerator chooseCoroutine = base.GameController.MakeDecisionAction(choice);
                 if (base.UseUnityCoroutines)
                 {
-                    yield return base.GameController.StartCoroutine(cancelCoroutine);
+                    yield return base.GameController.StartCoroutine(chooseCoroutine);
                 }
                 else
                 {
-                    base.GameController.ExhaustCoroutine(cancelCoroutine);
+                    base.GameController.ExhaustCoroutine(chooseCoroutine);
                 }
-                IEnumerator playCoroutine = SelectAndPlayCardFromHand(base.GameController.FindHeroTurnTakerController(couldPlayInstead), optional: false, associateCardSource: true);
-                if (base.UseUnityCoroutines)
+                if (DidPlayerAnswerYes(choice))
                 {
-                    yield return base.GameController.StartCoroutine(playCoroutine);
-                }
-                else
-                {
-                    base.GameController.ExhaustCoroutine(playCoroutine);
+                    IEnumerator cancelCoroutine = CancelAction(pca);
+                    if (base.UseUnityCoroutines)
+                    {
+                        yield return base.GameController.StartCoroutine(cancelCoroutine);
+                    }
+                    else
+                    {
+                        base.GameController.ExhaustCoroutine(cancelCoroutine);
+                    }
+                    IEnumerator playCoroutine = SelectAndPlayCardFromHand(base.GameController.FindHeroTurnTakerController(couldPlayInstead), optional: false, associateCardSource: true);
+                    if (base.UseUnityCoroutines)
+                    {
+                        yield return base.GameController.StartCoroutine(playCoroutine);
+                    }
+                    else
+                    {
+                        base.GameController.ExhaustCoroutine(playCoroutine);
+                    }
                 }
             }
-            yield break;
         }
 
         public override IEnumerator DeterminePlayLocation(List<MoveCardDestination> destination, bool isPutIntoPlay, List<IDecision> decisionSources, Location overridePlayArea = null, LinqTurnTakerCriteria additionalTurnTakerCriteria = null)
