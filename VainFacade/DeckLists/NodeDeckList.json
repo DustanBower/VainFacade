@@ -78,12 +78,7 @@
 				"DrawCardNow",
 				"IncreaseDamageTaken"
 			],
-			"flavorQuotes": [
-				{
-					"identifier": "Push",
-					"text": "{Node! I know you can hear me!{BR}Stop this! It's killing you!}"
-				}
-			],
+			"flavorText": "{Node! I know you can hear me!{BR}Stop this! It's killing you!}",
 			"flavorReference": "Push, Bastion City: A Spider Never Blinks #116"
 		},
 		{
@@ -196,12 +191,7 @@
 			"icons": [
 				"GainHP"
 			],
-			"flavorQuotes": [
-				{
-					"identifier": "Node",
-					"text": "{The serum may be killing you, but{BR}you're not going to die today.}"
-				}
-			],
+			"flavorText": "{The serum may be killing you, but{BR}you're not going to die today.}",
 			"flavorReference": "Node, Bastion City: A Spider Never Blinks #114"
 		},
 		{
@@ -223,12 +213,7 @@
 				"HasPower",
 				"DealDamagePsychic"
 			],
-			"flavorQuotes": [
-				{
-					"identifier": "Node",
-					"text": "{I know I can't make you care{BR}about the pain you cause, but I{BR}can show you how it feels.}"
-				}
-			],
+			"flavorText": "{I know I can't make you care{BR}about the pain you cause, but I{BR}can show you how it feels.}",
 			"flavorReference": "Node, Apocalypse 10: Death of Grandfather"
 		},
 		{
@@ -272,17 +257,9 @@
 				"DrawCardNow",
 				"PlayCardNow"
 			],
-			"flavorQuotes": [
-				{
-					"identifier": "Haste",
-					"text": "Lost me already? Told you."
-				},
-				{
-					"identifier": "Node",
-					"text": "{I'm inside your mind. You can't{BR}outrun yourself-- or your past--{BR}but you also don't have to.}"
-				}
-			],
-			"flavorReference": "Apocalypse 10: No More Heroes"
+			"flavorText": "{I'm in your mind. You can't outrun{BR}yourself -- or your past --{BR}but you don't have to.}"
+			,
+			"flavorReference": "Node, Apocalypse 10: No More Heroes"
 		},
 		{
 			"identifier": "OpenLine",
@@ -300,12 +277,7 @@
 				"DrawCardNow",
 				"PlayCardNow"
 			],
-			"flavorQuotes": [
-				{
-					"identifier": "Node",
-					"text": "{I'm not a hallucination,{BR}Officer. Turn here. She doesn't{BR}have much time.}"
-				}
-			],
+			"flavorText": "{I'm not a hallucination,{BR}Officer. Turn here. She doesn't{BR}have much time.}",
 			"flavorReference": "Node, Burgess #14"
 		},
 		{
@@ -380,7 +352,7 @@
 					"text": "I know you don't know me,{BR}and you have no reason to trust{BR}me, but I've got you."
 				}
 			],
-			"flavorReference": "Node, Bastion City: Secret Wars #3"
+			"flavorReference": "Node, Bastion City: Secret Wars #8"
 		},
 		{
 			"identifier": "ResourceAllocation",
@@ -460,7 +432,7 @@
 					"text": "It's a bit weird! When everything goes{BR}wrong, you always show up with exactly{BR}what I need!"
 				}
 			],
-			"flavorReference": "Push #19"
+			"flavorReference": "Push #39"
 		},
 		{
 			"identifier": "TheIInTeam",
@@ -480,13 +452,14 @@
 				"RedirectDamage",
 				"ReduceDamageDealt"
 			],
-			"flavorQuotes": [
+			"flavorText": "{BR}“Your machinations are unveiled{BR}before us, your every artifice laid bare.{BR}We see the depths of your iniquities and do{BR}not tremble. You cannot stand against us.”{BR}-Node et al., Bastion City:{BR}     A Spider Never Blinks #116",
+			"oldflavorQuotes": [
 				{
 					"identifier": "Node et al",
-					"text": "Your machinations are{BR}unveiled before us, your every artifice{BR}laid bare. We have seen the depths of your{BR}iniquities and we do not tremble. You cannot{BR}hope to stand against us."
+					"text": "Your machinations are{BR}unveiled before us, your every artifice{BR}laid bare. We see the depths of your iniquities{BR}and do not tremble. You can't stand{BR}against us."
 				}
 			],
-			"flavorReference": "Node et al, Bastion City: A Spider Never Blinks #116"
+			"oldflavorReference": "Bastion City: A Spider Never Blinks #116"
 		}
 	],
 	"promoCards": [
