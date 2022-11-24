@@ -8,7 +8,7 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":330,"h":260},
 	"sourceSize": {"w":330,"h":260}
 },
-"SphereCharacter.png":
+"NodeCharacter.png":
 {
 	"frame": {"x":333,"y":0,"w":330,"h":260},
 	"rotated": false,
@@ -16,9 +16,17 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":330,"h":260},
 	"sourceSize": {"w":330,"h":260}
 },
-"TheFuryCharacter.png":
+"SphereCharacter.png":
 {
 	"frame": {"x":666,"y":0,"w":330,"h":260},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":330,"h":260},
+	"sourceSize": {"w":330,"h":260}
+},
+"TheFuryCharacter.png":
+{
+	"frame": {"x":0,"y":263,"w":330,"h":260},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":330,"h":260},
@@ -31,6 +39,6 @@
 	"format": "RGBA8888",
 	"size": {"w":1024,"h":1024},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:39eaeeee9f9383af47c6c8d2d1a76b98:3d2671ed26ad450a05783537355e530e:abd76add2ce06cabb8b0a8e056eb9b47$"
+	"smartupdate": "$TexturePacker:SmartUpdate:663f31aec05fce4b4f349f406a50720e:b2f51f2999b44062987fde088cbc2feb:abd76add2ce06cabb8b0a8e056eb9b47$"
 }
 }

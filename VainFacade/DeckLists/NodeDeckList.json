@@ -1,0 +1,468 @@
+{
+	"name": "Node",
+	"kind": "Hero",
+	"initialCardIdentifiers": [
+		"NodeCharacter"
+	],
+	"cards": [
+		{
+			"identifier": "NodeCharacter",
+			"count": 1,
+			"title": "Node",
+			"body": "Line Noise",
+			"backgroundColor": "FFB2FF",
+			"character": true,
+			"powers": [
+				"Draw a card or {NodeCharacter} deals 1 target 0 psychic damage. If damage is dealt this way, {NodeCharacter} deals that target 0 psychic damage and increases the next damage dealt to that target by 1."
+			],
+			"icons": [
+				"HasPower",
+				"DrawCardNow",
+				"DealDamagePsychic",
+				"IncreaseDamageTaken"
+			],
+			"hitpoints": 22,
+			"nemesisIdentifiers": [
+				"VainFacadePlaytest.Node"
+			],
+			"incapacitatedAbilities": [
+				"One player may discard a card to reduce the next damage dealt to a hero character card in their play area by the number of active heroes until the start of your next turn.",
+				"Reveal the top card of a deck. Put it into play or discard it.",
+				"One player may discard up to 2 cards. For each card discarded in this way, one player may draw a card."
+			],
+			"flippedIcons": [
+				"Discard",
+				"ReduceDamageTaken",
+				"Manipulate",
+				"DrawCardNow"
+			],
+			"complexity": 2,
+			"openingLines": {
+				"default": "Stay focused, everyone. I'll be with you all the way.",
+				"OblivAeonFrontPageCharacter": "The worse things get, the more we need to stick together!",
+				"VainFacadePlaytest.BlitzCharacter": "You could have been a hero, Wade. Just let the past go.",
+				"VainFacadePlaytest.GrandfatherCharacter": "We've all wanted to change the past, but just because you [i]can[/i] doesn't mean you [i]should[/i]. This time belongs to the people in it.",
+				"VainFacadePlaytest.TheBaronessCharacter": "We've all lost something. You've been frozen in the past for long enough. Won't you let me help you?",
+				"AmbuscadeCharacter": "Your true scars can't be seen by others. Once you see that, you'll be free.",
+				"ApostateCharacter": "We see through your lies.",
+				"BaronBladeCharacter": "Hatred is a poison that you drink yourself. You're plotting your own doom and hoping others join you.",
+				"ChokepointCharacter": "Your mind is bent and twisted, calling out for help. Answer it, instead.",
+				"CitizenDawnCharacter": "You're not fighting us. You're fighting ghosts that have long since faded from the world.",
+				"DeadlineCharacter": "How can you see the future if you can't see past your own grief?",
+				"TheDreamerCharacter": "Oh, you poor thing...",
+				"InfinitorCharacter": "Oh, you poor thing...",
+				"HeroicInfinitorCharacter": "You're not alone. We're here to help.",
+				"IronLegacyCharacter": "Your legacy is not justice, but pain.",
+				"TheMatriarchCharacter": "This is not the way! Please stop this before someone gets hurt.",
+				"MissInformationCharacter": "Who.. didn't... save... who? I'm sorry, I thought I heard another voice...",
+				"MissInformationTeamCharacter": "Don't you think one reality's burdens are more than enough to bear?",
+				"Cauldron.GrayCharacter": "If you just stop, we can help you.",
+				"Cauldron.OutlanderCharacter": "You're destroying yourself in a vain attempt to overcome the past. You've become the evil you fought against."
+			}
+		},
+		{
+			"identifier": "BleedingEdge",
+			"count": 2,
+			"title": "Bleeding Edge",
+			"keywords": [
+				"one-shot"
+			],
+			"body": [
+				"You may play a Connection in a [i]Connected[/i] character's play area.",
+				"You may return any number of Connections to your hand. Draw a card for each Connection returned this way.",
+				"You may increase the next damage dealt to {NodeCharacter} by 1. If you do, repeat the entire game text of this card."
+			],
+			"icons": [
+				"PlayCardNow",
+				"Manipulate",
+				"DrawCardNow",
+				"IncreaseDamageTaken"
+			],
+			"flavorText": "{Node! I know you can hear me!{BR}Stop this! It's killing you!}",
+			"flavorReference": "Push, Bastion City: A Spider Never Blinks #116"
+		},
+		{
+			"identifier": "CleverHack",
+			"count": 2,
+			"title": "Clever Hack",
+			"keywords": [
+				"one-shot"
+			],
+			"body": [
+				"Destroy 1 Equipment or environment card or {NodeCharacter} deals 1 Device 6 irreducible lightning damage."
+			],
+			"icons": [
+				"DestroyEquipment",
+				"DestroyEnvironment",
+				"DealDamageLightning"
+			],
+			"flavorQuotes": [
+				{
+					"identifier": "Gol",
+					"text": "It doesn't matter how{BR}strong your powers are, Emma.{BR}Computer skills will always matter."
+				}
+			],
+			"flavorReference": "Gol, Y-Tech Labs #4"
+		},
+		{
+			"identifier": "CollectiveUnconscious",
+			"count": 2,
+			"title": "Collective Unconscious",
+			"keywords": [
+				"ongoing",
+				"connection"
+			],
+			"body": [
+				"Play this card in another hero's play area. Cards in this play area and {NodeCharacter}'s are [i]Connected.[/i]",
+				"When {NodeCharacter} or that hero uses a power, the other gains 1 HP.",
+				"When {NodeCharacter} would deal that hero psychic damage, that hero recovers that much HP instead."
+			],
+			"icons": [
+				"GainHP",
+				"CancelledDamageGreen"
+			],
+			"flavorQuotes": [
+				{
+					"identifier": "Forge",
+					"text": "Nice to hear your eerie,{BR}disembodied voice again."
+				}
+			],
+			"flavorReference": "Forge, Bulwark #7"
+		},
+		{
+			"identifier": "DialingIn",
+			"count": 2,
+			"title": "Dialing In",
+			"keywords": [
+				"ongoing"
+			],
+			"powers": [
+				"Reveal cards from the top of your deck until 2 Connections are revealed. Put 1 into your hand. Shuffle the rest into your deck.",
+				"Play a Connection."
+			],
+			"icons": [
+				"HasPower",
+				"Search",
+				"PlayCardNow"
+			],
+			"flavorQuotes": [
+				{
+					"identifier": "Dr. Falls",
+					"text": "I see what she means.{BR}You're doing great, Gol.{BR}There. What do you see?"
+				},
+				{
+					"identifier": "Gol",
+					"text": "I'm... so sorry... about your wife."
+				}
+			],
+			"flavorReference": "Push #41"
+		},
+		{
+			"identifier": "FaultDetection",
+			"count": 2,
+			"title": "Fault Detection",
+			"keywords": [
+				"one-shot"
+			],
+			"body": [
+				"{NodeCharacter} deals up to 3 [i]Connected[/i] targets 1 psychic damage and 1 psychic damage each."
+			],
+			"icons": [
+				"DealDamagePsychic"
+			],
+			"flavorQuotes": [
+				{
+					"identifier": "Node",
+					"text": "Minds are systems, and all{BR}systems have weak points..."
+				}
+			],
+			"flavorReference": "Node, Leftover Parts One-Shot"
+		},
+		{
+			"identifier": "HealthyConnections",
+			"count": 2,
+			"title": "Healthy Connections",
+			"keywords": [
+				"ongoing",
+				"limited"
+			],
+			"body": [
+				"The first time each turn a [i]Connected[/i] hero target gains HP, another [i]Connected[/i] hero target gains 1 HP."
+			],
+			"icons": [
+				"GainHP"
+			],
+			"flavorText": "{The serum may be killing you, but{BR}you're not going to die today.}",
+			"flavorReference": "Node, Bastion City: A Spider Never Blinks #114"
+		},
+		{
+			"identifier": "HyperlinkedNeurons",
+			"count": 3,
+			"title": "Hyperlinked Neurons",
+			"keywords": [
+				"ongoing",
+				"limited"
+			],
+			"body": [
+				"Increase damage dealt by {NodeCharacter} to [i]Connected[/i] targets other than {NodeCharacter} by 1."
+			],
+			"powers": [
+				"{NodeCharacter} deals 1 target 0 psychic damage. Select a [i]Connected[/i] hero. Increase the next damage dealt by that hero by 2."
+			],
+			"icons": [
+				"IncreaseDamageDealt",
+				"HasPower",
+				"DealDamagePsychic"
+			],
+			"flavorText": "{I know I can't make you care{BR}about the pain you cause, but I{BR}can show you how it feels.}",
+			"flavorReference": "Node, Apocalypse 10: Death of Grandfather"
+		},
+		{
+			"identifier": "MentalFeedback",
+			"count": 2,
+			"title": "Mental Feedback",
+			"keywords": [
+				"one-shot"
+			],
+			"body": [
+				"Destroy 1 [i]Connected[/i] Ongoing. {NodeCharacter} deals the character from that deck with the highest HP 0 psychic damage and 0 psychic damage."
+			],
+			"icons": [
+				"DestroyOngoing",
+				"DealDamagePsychic"
+			],
+			"flavorQuotes": [
+				{
+					"identifier": "Paragon",
+					"text": "I appreciate your help, but stay{BR}out of my head."
+				}
+			],
+			"flavorReference": "Paragon, Bastion City: Secret Wars #20"
+		},
+		{
+			"identifier": "NetworkAccess",
+			"count": 3,
+			"title": "Network Access",
+			"keywords": [
+				"one-shot"
+			],
+			"body": [
+				"You may shuffle your trash into your deck.",
+				"Reveal cards from the top of your deck until 2 Connections are revealed. Put 1 into your hand and 1 into play. Shuffle the other cards into your deck.",
+				"You may draw a card.",
+				"You may play a card."
+			],
+			"icons": [
+				"Manipulate",
+				"Search",
+				"DrawCardNow",
+				"PlayCardNow"
+			],
+			"flavorText": "{I'm in your mind. You can't outrun{BR}yourself -- or your past --{BR}but you don't have to.}"
+			,
+			"flavorReference": "Node, Apocalypse 10: No More Heroes"
+		},
+		{
+			"identifier": "OpenLine",
+			"count": 2,
+			"title": "Open Line",
+			"keywords": [
+				"ongoing",
+				"connection"
+			],
+			"body": [
+				"Play this card in another hero's play area. Cards in this play area and {NodeCharacter}'s are [i]Connected.[/i]",
+				"When you or that play area's owner would draw or play a card, the other may do so instead."
+			],
+			"icons": [
+				"DrawCardNow",
+				"PlayCardNow"
+			],
+			"flavorText": "{I'm not a hallucination,{BR}Officer. Turn here. She doesn't{BR}have much time.}",
+			"flavorReference": "Node, Burgess #14"
+		},
+		{
+			"identifier": "PacketSniffing",
+			"count": 3,
+			"title": "Packet Sniffing",
+			"keywords": [
+				"ongoing",
+				"connection"
+			],
+			"body": [
+				"Play this card in a non-environment play area other than {NodeCharacter}'s.",
+				"Cards in this play area and {NodeCharacter}'s are [i]Connected.[/i]",
+				"The first time each turn a card enters play in this area, you may draw a card."
+			],
+			"icons": [
+				"DrawCardNow"
+			],
+			"flavorQuotes": [
+				{
+					"identifier": "Node",
+					"text": "I can see him{BR}standing by an old clock...{BR}His heart is heavy. He regrets what's{BR}about to happen..."
+				}
+			],
+			"flavorReference": "Node, Push #62"
+		},
+		{
+			"identifier": "PsychicLink",
+			"count": 3,
+			"title": "Psychic Link",
+			"keywords": [
+				"ongoing",
+				"connection"
+			],
+			"body": [
+				"Play this card in a non-environment play area other than {NodeCharacter}'s. Cards in this play area and {NodeCharacter}'s are [i]Connected.[/i] Play with the top card of that play area's deck face up.",
+				"The first time each turn a target in this play area would deal damage to {NodeCharacter}, increase that damage by 1.",
+				"[b]Power:[/b] Return this card to your hand."
+			],
+			"icons": [
+				"Manipulate",
+				"IncreaseDamageTaken",
+				"HasPower"
+			],
+			"flavorQuotes": [
+				{
+					"identifier": "Node",
+					"text": "I can't see who he is... but I{BR}can see what he'll do next."
+				}
+			],
+			"flavorReference": "Node, Leftover Parts One-Shot"
+		},
+		{
+			"identifier": "PsychologicalFortitude",
+			"count": 3,
+			"title": "Psychological Fortitude",
+			"keywords": [
+				"ongoing"
+			],
+			"body": [
+				"When a [i]Connected[/i] hero Ongoing or Equipment would be destroyed by a card other than itself or this card, you may destroy another [i]Connected[/i] hero Equipment or Ongoing.",
+				"When a card is destroyed by this effect, the first card is indestructible this turn."
+			],
+			"icons": [
+				"DestroyEquipment",
+				"DestroyOngoing",
+				"Indestructible"
+			],
+			"flavorQuotes": [
+				{
+					"identifier": "Node",
+					"text": "I know you don't know me,{BR}and you have no reason to trust{BR}me, but I've got you."
+				}
+			],
+			"flavorReference": "Node, Bastion City: Secret Wars #8"
+		},
+		{
+			"identifier": "ResourceAllocation",
+			"count": 3,
+			"title": "Resource Allocation",
+			"keywords": [
+				"ongoing",
+				"limited"
+			],
+			"body": [
+				"When a [i]Connected[/i] hero target would deal damage, you may select another [i]Connected[/i] hero target. Increase the damage dealt by the first target by 1. Reduce the next damage dealt by the second target by 1."
+			],
+			"icons": [
+				"IncreaseDamageDealt",
+				"ReduceDamageDealt"
+			],
+			"flavorQuotes": [
+				{
+					"identifier": "Enforcer",
+					"text": "Not so tough{BR}now that you're all{BR}alone, little sidekick."
+				},
+				{
+					"identifier": "Node",
+					"text": "I'm never alone."
+				}
+			],
+			"flavorReference": "Node #1"
+		},
+		{
+			"identifier": "ReversePsychology",
+			"count": 2,
+			"title": "Reverse Psychology",
+			"keywords": [
+				"one-shot"
+			],
+			"body": [
+				"Put a non-character [i]Connected[/i] card in play on top of its deck.",
+				"{NodeCharacter} deals the character from that deck with the highest HP 0 psychic and 0 psychic damage, then deals herself 2 psychic damage."
+			],
+			"icons": [
+				"Manipulate",
+				"DealDamagePsychic"
+			],
+			"flavorQuotes": [
+				{
+					"identifier": "Node",
+					"text": "Think again."
+				}
+			],
+			"flavorReference": "Node, Push #65"
+		},
+		{
+			"identifier": "TelepathicExtrapolation",
+			"count": 2,
+			"title": "Telepathic Extrapolation",
+			"keywords": [
+				"ongoing",
+				"limited"
+			],
+			"body": [
+				"When {NodeCharacter} would deal 0 or more damage to a target, you may select a keyword.",
+				"If you do, reveal and replace the top card of that deck.",
+				"If the revealed card shares the selected keyword, increase that damage by 2. Otherwise, reduce that damage by 1."
+			],
+			"icons": [
+				"Manipulate",
+				"IncreaseDamageDealt",
+				"ReduceDamageDealt"
+			],
+			"flavorQuotes": [
+				{
+					"identifier": "Gol",
+					"text": "I was just in the{BR}neighborhood, that's all."
+				},
+				{
+					"identifier": "Push",
+					"text": "It's a bit weird! When everything goes{BR}wrong, you always show up with exactly{BR}what I need!"
+				}
+			],
+			"flavorReference": "Push #39"
+		},
+		{
+			"identifier": "TheIInTeam",
+			"count": 2,
+			"title": "The I in Team",
+			"keywords": [
+				"ongoing",
+				"limited"
+			],
+			"body": [
+				"At the start of your turn, {NodeCharacter} may deal herself 3 irreducible psychic damage. If she takes no damage this way, destroy this card.",
+				"When a [i]Connected[/i] hero target would be dealt damage, you may redirect that damage to another [i]Connected[/i] hero target. Reduce damage redirected this way by 1."
+			],
+			"icons": [
+				"StartOfTurnAction",
+				"DealDamagePsychic",
+				"RedirectDamage",
+				"ReduceDamageDealt"
+			],
+			"flavorText": "{BR}“Your machinations are unveiled{BR}before us, your every artifice laid bare.{BR}We see the depths of your iniquities and do{BR}not tremble. You cannot stand against us.”{BR}-Node et al., Bastion City:{BR}     A Spider Never Blinks #116",
+			"oldflavorQuotes": [
+				{
+					"identifier": "Node et al",
+					"text": "Your machinations are{BR}unveiled before us, your every artifice{BR}laid bare. We see the depths of your iniquities{BR}and do not tremble. You can't stand{BR}against us."
+				}
+			],
+			"oldflavorReference": "Bastion City: A Spider Never Blinks #116"
+		}
+	],
+	"promoCards": [
+	]
+}

@@ -176,6 +176,7 @@
             <key type="filename">../SmallCardArt/Burgess/BurgessCharacter.png</key>
             <key type="filename">../SmallCardArt/EldrenwoodVillage/EldrenwoodVillageDeckBack.png</key>
             <key type="filename">../SmallCardArt/Grandfather/GrandfatherCharacter.png</key>
+            <key type="filename">../SmallCardArt/Node/NodeCharacter.png</key>
             <key type="filename">../SmallCardArt/Sphere/SphereCharacter.png</key>
             <key type="filename">../SmallCardArt/TheBaroness/TheBaronessCharacter.png</key>
             <key type="filename">../SmallCardArt/TheFury/TheFuryCharacter.png</key>
@@ -204,6 +205,7 @@
             <filename>../SmallCardArt/EldrenwoodVillage/EldrenwoodVillageDeckBack.png</filename>
             <filename>../SmallCardArt/Grandfather/GrandfatherCharacter.png</filename>
             <filename>../SmallCardArt/TheFury/TheFuryCharacter.png</filename>
+            <filename>../SmallCardArt/Node/NodeCharacter.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>
