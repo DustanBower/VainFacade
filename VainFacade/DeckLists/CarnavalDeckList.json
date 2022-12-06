@@ -1,0 +1,507 @@
+{
+	"name": "Carnaval",
+	"kind": "Hero",
+	"initialCardIdentifiers": [
+		"CarnavalCharacter"
+	],
+	"cards": [
+		{
+			"identifier": "CarnavalCharacter",
+			"count": 1,
+			"title": "",
+			"body": "",
+			"backgroundColor": "",
+			"character": true,
+			"powers": [
+				""
+			],
+			"icons": [
+				""
+			],
+			"hitpoints": 0,
+			"nemesisIdentifiers": [
+				""
+			],
+			"incapacitatedAbilities": [
+				""
+			],
+			"flippedIcons": [
+				""
+			],
+			"complexity": 2,
+			"openingLines": {
+				"default": ""
+			}
+		},
+		{
+			"identifier": "ALittleExtra",
+			"count": 2,
+			"title": "A Little Extra",
+			"keywords": [
+				"equipment",
+				"trap"
+			],
+			"body": [
+				"Play this card next to a non-target non-character card. When that card is destroyed, you may destroy up to 2 non-character non-target cards or {CarnavalCharacter} may deal each non-hero target 1 fire damage and 1 projectile damage.",
+				"[b]Power:[/b] Destroy a hero Ongoing or Equipment card."
+			],
+			"icons": [
+				"Destroy",
+				"DealDamageFire",
+				"DealDamageProjectile",
+				"HasPower"
+			],
+			"flavorQuotes": [
+				{
+					"identifier": "Carnaval",
+					"text": "If they want to make a mess,{BR}who am I to argue?"
+				}
+			],
+			"flavorReference": "Carnaval, Division X: Friendly Fire"
+		},
+		{
+			"identifier": "AgentOfChaos",
+			"count": 3,
+			"title": "Agent of Chaos",
+			"keywords": [
+				"one-shot"
+			],
+			"body": [
+				"Play the top card of each other deck, in turn order, beginning with the environment deck."
+			],
+			"icons": [
+				"PlayCardNow"
+			],
+			"flavorQuotes": [
+				{
+					"identifier": "Peacekeeper",
+					"text": "Need a distraction."
+				},
+				{
+					"identifier": "Carnaval",
+					"text": "Thought you'd never ask..."
+				}
+			],
+			"flavorReference": "Operational Clearance One-Shot"
+		},
+		{
+			"identifier": "CombatOperative",
+			"count": 3,
+			"title": "Combat Operative",
+			"keywords": [
+				"one-shot"
+			],
+			"body": [
+				"{CarnavalCharacter} deals up to 3 targets 1 melee and 1 psychic damage each."
+			],
+			"icons": [
+				"DealDamageMelee",
+				"DealDamagePsychic"
+			],
+			"flavorQuotes": [
+				{
+					"identifier": "Carnaval",
+					"text": "Yeah, you got me. Let's dance."
+				}
+			],
+			"flavorReference": "Carnaval, Division X: Old Habits #8"
+		},
+		{
+			"identifier": "ConvincingDouble",
+			"count": 3,
+			"title": "Convincing Double",
+			"keywords": [
+				"puppet"
+			],
+			"hitpoints": 3,
+			"body": [
+				"Play this card in a hero play area.",
+				"When a hero in this area would be dealt damage, redirect that damage to this card."
+			],
+			"icons": [
+				"RedirectDamage"
+			],
+			"flavorQuotes": [
+				{
+					"identifier": "Goon",
+					"text": "How many of you{BR}are there?"
+				},
+				{
+					"identifier": "Carnaval",
+					"text": "How many do you need?"
+				}
+			],
+			"flavorReference": "Sphere: Fallen Hero #6"
+		},
+		{
+			"identifier": "ExplosiveMacguffin",
+			"count": 2,
+			"title": "Explosive Macguffin",
+			"keywords": [
+				"equipment",
+				"trap"
+			],
+			"body": [
+				"When a hero card is discarded on an environment or villain turn, the target with the lowest HP from that turn's associated deck deals each other target in its play area 1 projectile damage, then deals itself 4 irreducible fire damage. Then destroy this card."
+			],
+			"icons": [
+				"DealDamageProjectile",
+				"DealDamageFire",
+				"DestroySelf"
+			],
+			"flavorQuotes": [
+				{
+					"identifier": "Goon",
+					"text": "We recovered the package, boss.{BR}... Was it ticking before?"
+				}
+			],
+			"flavorReference": "Goon, Through the Shadows: Day of the Dead"
+		},
+		{
+			"identifier": "GotHim",
+			"count": 3,
+			"title": "Got Him!",
+			"keywords": [
+				"ongoing"
+			],
+			"body": [
+				"When another target would be dealt damage, you may destroy this card to redirect that damage to {CarnavalCharacter}. If you do, you may play 1 Trap and use 1 power."
+			],
+			"icons": [
+				"DestroySelf",
+				"RedirectDamage",
+				"PlayCardNow",
+				"UsePowerNow"
+			],
+			"flavorQuotes": [
+				{
+					"identifier": "Butcher Bill",
+					"text": "That joker wanted us to{BR}catch him."
+				}
+			],
+			"flavorReference": "Butcher Bill, Echoes of X51 #17"
+		},
+		{
+			"identifier": "ImprovisationalTheatre",
+			"count": 2,
+			"title": "Improvisational Theatre",
+			"keywords": [
+				"ongoing",
+				"limited"
+			],
+			"body": [
+				"When this card is destroyed, you may draw a card, play a card, and use a power.",
+				"At the end of your turn, you may discard a card to put the top card of a deck into play."
+			],
+			"powers": [
+				"Draw a card. Destroy this card."
+			],
+			"icons": [
+				"EndOfTurnAction",
+				"Discard",
+				"PlayCardNow",
+				"HasPower"
+			],
+			"flavorQuotes": [
+				{
+					"identifier": "Push",
+					"text": "Do you actually have a{BR}plan, or are you just making it up{BR}as you go? Because those are [b]not[/b] the{BR}same and I'm not sure you get that."
+				}
+			],
+			"flavorReference": "Push, Leftover Parts One-Shot"
+		},
+		{
+			"identifier": "ManWithAPlan",
+			"count": 3,
+			"title": "Man With a Plan",
+			"keywords": [
+				"one-shot"
+			],
+			"body": [
+				"Reveal cards from the top of your deck until 2 Traps are revealed. Put them into your hand. Shuffle the other revealed cards into your deck.",
+				"You may play a Trap."
+			],
+			"icons": [
+				"Search",
+				"PlayCardNow"
+			],
+			"flavorQuotes": [
+				{
+					"identifier": "Bombshell",
+					"text": "I'm going now, John. Don't{BR}make business personal. We had some{BR}good times, didn't we? I hope you and{BR}your friends make it out. I really do."
+				}
+			],
+			"flavorReference": "Bombshell, Division X: Old Habits #2"
+		},
+		{
+			"identifier": "Melpomene",
+			"count": 2,
+			"title": "Melpomene",
+			"keywords": [
+				"masque",
+				"comedy"
+			],
+			"body": [
+				"When this card entes play, destroy all other Masques.",
+				"At the start of your turn, up to 2 targets regain 1 HP each."
+			],
+			"powers": [
+				"Up to 2 players may draw 1 card each."
+			],
+			"icons": [
+				"Destroy",
+				"GainHP",
+				"HasPower",
+				"DrawCardNow"
+			],
+			"flavorQuotes": [
+				{
+					"identifier": "Brother Mathis",
+					"text": "Finally. Now let us{BR}see what arcane sorcery powers{BR}his magical masks... Made in China.{BR}Silence! You think this is funny?"
+				}
+			],
+			"flavorReference": "Brother Mathis, Carnaval #3"
+		},
+		{
+			"identifier": "MockingVisage",
+			"count": 2,
+			"title": "Mocking Visage",
+			"keywords": [
+				"masque",
+				"mockery"
+			],
+			"body": [
+				"When this card enters play, destroy all other Masques.",
+				"Play this card next to a target. Increase damage dealt to that target by 1.",
+				"[b]Power:[/b] Each target in this card's play area deals itself 1 psychic damage."
+			],
+			"icons": [
+				"Destroy",
+				"IncreaseDamageTaken",
+				"HasPower",
+				"DealDamagePsychic"
+			],
+			"flavorQuotes": [
+				{
+					"identifier": "Grandfather",
+					"text": "Well, now, this is just{BR}unsettling."
+				}
+			],
+			"flavorReference": "Grandfather, Division X #17"
+		},
+		{
+			"identifier": "PortableSnare",
+			"count": 2,
+			"title": "Portable Snare",
+			"keywords": [
+				"equipment",
+				"trap"
+			],
+			"body": [
+				"If this card is not next to a target, the first time a villain target would deal damage, move this card next to that target.",
+				"Reduce damage dealt by the target next to this card by 3.",
+				"At the start of that target's turn, if this card is next to a target, {CarnavalCharacter} deals that target 2 melee damage and destroys this card."
+			],
+			"icons": [
+				"ReduceDamageDealt",
+				"StartOfTurnAction",
+				"DealDamageMelee",
+				"DestroySelf"
+			],
+			"flavorQuotes": [
+				{
+					"identifier": "Carnaval",
+					"text": "Aww, did you just get{BR}outsmarted by an idiot in a clown{BR}costume, Mr. Smart McGeniusPants?"
+				}
+			],
+			"flavorReference": "Carnaval, Leftover Parts One-Shot"
+		},
+		{
+			"identifier": "ProstheticEveryman",
+			"count": 2,
+			"title": "Prosthetic Everyman",
+			"keywords": [
+				"masque",
+				"disguise"
+			],
+			"body": [
+				"When this card enters play, destroy all other Masques.",
+				"Reduce the first damage dealt to {CarnavalCharacter} each turn by 1."
+			],
+			"powers": [
+				"Reveal the top 2 cards of a non-hero deck. Put them back in any order. You may play a Trap or Masque."
+			],
+			"icons": [
+				"Destroy",
+				"ReduceDamageTaken",
+				"HasPower",
+				"Manipulate"
+			],
+			"flavorQuotes": [
+				{
+					"identifier": "General Janson",
+					"text": "That man is a ghost. If not{BR}for his love of theatrics, none of{BR}you would even know he exists."
+				}
+			],
+			"flavorReference": "General Janson, Division X #1"
+		},
+		{
+			"identifier": "RisingAction",
+			"count": 3,
+			"title": "Rising Action",
+			"keywords": [
+				"ongoing"
+			],
+			"body": [
+				"When this card is destroyed, you may draw and play a card."
+			],
+			"powers": [
+				"Reveal the top card of 2 hero decks. You may play a card revealed this way. Replace the other revealed cards."
+			],
+			"icons": [
+				"DrawCardNow",
+				"PlayCardNow",
+				"HasPower",
+				"Manipulate"
+			],
+			"flavorQuotes": [
+				{
+					"identifier": "Janson",
+					"text": "What do you want, son?"
+				},
+				{
+					"identifier": "Carnaval",
+					"text": "Couldn't sleep, Pops. Tell me a story."
+				},
+				{
+					"identifier": "Janson",
+					"text": "I know who you are."
+				},
+				{
+					"identifier": "Carnaval",
+					"text": "Me too. Tell me about Durham."
+				}
+			],
+			"flavorReference": "Echoes of X51 #1"
+		},
+		{
+			"identifier": "SupportingCast",
+			"count": 2,
+			"title": "Supporting Cast",
+			"keywords": [
+				"one-shot"
+			],
+			"body": [
+				"A player may draw a card.",
+				"A player may play a card."
+			],
+			"icons": [
+				"DrawCardNow",
+				"PlayCardNow"
+			],
+			"flavorQuotes": [
+				{
+					"identifier": "Carnaval",
+					"text": "I can't ever save{BR}them. I thought that{BR}made me a villain, but I just{BR}need a supporting actor."
+				},
+				{
+					"identifier": "Peacekeeper",
+					"text": "Please. I'd get top billing. Look at{BR}this chiseled jaw!"
+				}
+			],
+			"flavorReference": "Operational Clearance One-Shot"
+		},
+		{
+			"identifier": "SuspiciousBodyDouble",
+			"count": 2,
+			"title": "Suspicious Body Double",
+			"keywords": [
+				"equipment",
+				"trap"
+			],
+			"body": [
+				"Play this card over a target with 3 or fewer HP.",
+				"At the end of that target's turn, the 3 targets in this play area with the highest HP each deal themselves 2 toxic damage. Then destroy this card."
+			],
+			"icons": [
+				"DestroyTarget",
+				"EndOfTurnAction",
+				"DealDamageToxic",
+				"DestroySelf"
+			],
+			"flavorQuotes": [
+				{
+					"identifier": "Mr. Brzezicki",
+					"text": "Someone broke into [b]my[/b] limo,{BR}replaced the driver with a dummy rigged{BR}with knockout gas, and disabled my overpaid{BR}security, hm? See how that sounds?"
+				}
+			],
+			"flavorReference": "Mr. Brzezicki, Carnaval #22"
+		},
+		{
+			"identifier": "Thalia",
+			"count": 2,
+			"title": "Thalia",
+			"keywords": [
+				"masque",
+				"tragedy"
+			],
+			"body": [
+				"When this card enters play, destroy all other Masques.",
+				"When one of your cards would enter play, {CarnavalCharacter} may deal 1 target 1 melee or 1 psychic damage.",
+				"Increase damage dealt by {CarnavalCharacter} by 1."
+			],
+			"powers": [
+				"Play a One-Shot from your trash, then put it on the bottom of your deck."
+			],
+			"icons": [
+				"Destroy",
+				"DealDamage",
+				"IncreaseDamageDealt",
+				"HasPower"
+			],
+			"flavorQuotes": [
+				{
+					"identifier": "Portenza",
+					"text": "They're all dead.{BR}So what? Police can't{BR}touch me."
+				},
+				{
+					"identifier": "Carnaval",
+					"text": "Maybe not, but I can."
+				}
+			],
+			"flavorReference": "Through the Shadows: Day of the Dead"
+		},
+		{
+			"identifier": "WhatsYoursIsMine",
+			"count": 2,
+			"title": "What's Yours is Mine",
+			"keywords": [
+				"equipment",
+				"trap"
+			],
+			"body": [
+				"Play this card in another play area.",
+				"When another card enters play in this area, destroy this card.",
+				"When this card is destroyed, {CarnavalCharacter} deals each target in this play area 2 fire and 2 projectile damage."
+			],
+			"icons": [
+				"DestroySelf",
+				"DealDamageFire",
+				"DealDamageProjectile"
+			],
+			"flavorQuotes": [
+				{
+					"identifier": "Wolfe",
+					"text": "That you, Carnaval? What do you{BR}know, Christmas in July!"
+				},
+				{
+					"identifier": "Carnaval",
+					"text": "Don't worry, I got you something special.{BR}Heard you could use a pick-me-up!"
+				}
+			],
+			"flavorReference": "Division X: Friendly Fire"
+		}
+	],
+	"promoCards": [
+	]
+}
