@@ -8,25 +8,31 @@
 		{
 			"identifier": "CarnavalCharacter",
 			"count": 1,
-			"title": "",
-			"body": "",
-			"backgroundColor": "",
+			"title": "Carnaval",
+			"body": "The Clothes Make the Man",
+			"backgroundColor": "FFFFFF",
 			"character": true,
 			"powers": [
-				""
+				"Reveal cards from the top of your deck until 2 Masques are revealed. Put 1 into your hand or into play. Shuffle the remaining cards back into your deck."
 			],
 			"icons": [
-				""
+				"HasPower",
+				"Search"
 			],
-			"hitpoints": 0,
+			"hitpoints": 28,
 			"nemesisIdentifiers": [
-				""
+				"VainFacadePlaytest.Carnaval"
 			],
 			"incapacitatedAbilities": [
-				""
+				"Reveal the top card of a deck. Replace or discard it.",
+				"Destroy an environment card.",
+				"Select a target. The next time that target is dealt damage by a target, it deals the source of that damage 2 fire damage."
 			],
 			"flippedIcons": [
-				""
+				"Manipulate",
+				"DestroyEnvironment",
+				"CounterDamage",
+				"DealDamageFire"
 			],
 			"complexity": 2,
 			"openingLines": {
