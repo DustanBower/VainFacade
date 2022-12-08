@@ -59,6 +59,7 @@
     <Compile Include="Burgess\WordOnTheStreetCardController.cs" />
     <Compile Include="Carnaval\AgentOfChaosCardController.cs" />
     <Compile Include="Carnaval\ALittleExtraCardController.cs" />
+    <Compile Include="Carnaval\CarnavalCharacterCardController.cs" />
     <Compile Include="Carnaval\CarnavalUtilityCardController.cs" />
     <Compile Include="Carnaval\CombatOperativeCardController.cs" />
     <Compile Include="Carnaval\ConvincingDoubleCardController.cs" />
@@ -72,6 +73,8 @@
     <Compile Include="Carnaval\ProstheticEverymanCardController.cs" />
     <Compile Include="Carnaval\RisingActionCardController.cs" />
     <Compile Include="Carnaval\SupportingCastCardController.cs" />
+    <Compile Include="Carnaval\SuspiciousBodyDoubleCardController.cs" />
+    <Compile Include="Carnaval\ThaliaCardController.cs" />
     <Compile Include="Carnaval\WhatsYoursIsMineCardController.cs" />
     <Compile Include="EldrenwoodVillage\AbandonedShackCardController.cs" />
     <Compile Include="EldrenwoodVillage\AfflictedCardController.cs" />
