@@ -29,7 +29,7 @@ namespace VainFacadePlaytest.Carnaval
         {
             // "... the 3 targets in this play area with the highest HP each deal themselves 2 toxic damage."
             List<Card> storedTargets = new List<Card>();
-            IEnumerator findCoroutine = base.GameController.FindTargetsWithLowestHitPoints(1, 3, (Card c) => c.IsInPlayAndHasGameText && c.IsTarget && c.IsAtLocationRecursive(base.Card.Location.HighestRecursiveLocation), storedTargets, cardSource: GetCardSource());
+            IEnumerator findCoroutine = base.GameController.FindTargetsWithHighestHitPoints(1, 3, (Card c) => c.IsInPlayAndHasGameText && c.IsTarget && c.IsAtLocationRecursive(base.Card.Location.HighestRecursiveLocation), storedTargets, cardSource: GetCardSource());
             if (base.UseUnityCoroutines)
             {
                 yield return base.GameController.StartCoroutine(findCoroutine);
