@@ -57,7 +57,6 @@ namespace VainFacadePlaytest.TheMidnightBazaar
                     base.GameController.ExhaustCoroutine(playCoroutine);
                 }
             }
-            yield break;
         }
     }
 }

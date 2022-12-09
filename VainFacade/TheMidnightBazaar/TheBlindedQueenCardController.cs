@@ -73,7 +73,6 @@ namespace VainFacadePlaytest.TheMidnightBazaar
                     base.GameController.ExhaustCoroutine(statusCoroutine);
                 }
             }
-            yield break;
         }
 
         private IEnumerator PlayAndShuffleResponse(PhaseChangeAction pca)
@@ -130,7 +129,6 @@ namespace VainFacadePlaytest.TheMidnightBazaar
                     base.GameController.ExhaustCoroutine(shuffleCoroutine);
                 }
             }
-            yield break;
         }
     }
 }

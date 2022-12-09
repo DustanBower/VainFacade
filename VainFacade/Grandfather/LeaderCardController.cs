@@ -26,15 +26,5 @@ namespace VainFacadePlaytest.Grandfather
             // "At the end of the villain turn, this card deals the hero target with the highest HP {H - 2} projectile damage."
             AddDealDamageAtEndOfTurnTrigger(base.TurnTaker, base.Card, (Card c) => c.IsHero && c.IsTarget, TargetType.HighestHP, H - 2, DamageType.Projectile);
         }
-
-        public override IEnumerator Play()
-        {
-            yield break;
-        }
-
-        public override IEnumerator UsePower(int index = 0)
-        {
-            yield break;
-        }
     }
 }

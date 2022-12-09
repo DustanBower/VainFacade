@@ -30,7 +30,6 @@ namespace VainFacadePlaytest.TheMidnightBazaar
             AddIncreaseDamageTrigger((DealDamageAction dda) => dda.DamageSource != null && dda.DamageSource.IsCard && IsThreen(dda.DamageSource.Card), amountToIncrease);
             // "At the end of the environment turn, this card deals each non-Threen target 1 sonic damage, then plays a Threen and an Unbinding from the environment trash."
             AddEndOfTurnTrigger((TurnTaker tt) => tt.IsEnvironment, SingResponse, new TriggerType[] { TriggerType.DealDamage, TriggerType.PlayCard });
-            // ...
         }
 
         private IEnumerator SingResponse(PhaseChangeAction pca)
@@ -64,7 +63,6 @@ namespace VainFacadePlaytest.TheMidnightBazaar
             {
                 base.GameController.ExhaustCoroutine(playUnbindingCoroutine);
             }
-            yield break;
         }
     }
 }

@@ -170,7 +170,6 @@ namespace VainFacadePlaytest.TheBaroness
             {
                 base.GameController.ExhaustCoroutine(damageCoroutine);
             }
-            yield break;
         }
 
         private IEnumerator FirstBloodTakenResponse(MoveCardAction mca)
@@ -217,7 +216,6 @@ namespace VainFacadePlaytest.TheBaroness
                     base.GameController.ExhaustCoroutine(destroyCoroutine);
                 }
             }
-            yield break;
         }
 
         private IEnumerator DiscardSchemeFlipHitLowestOrDestroyResponse(PhaseChangeAction pca)
@@ -286,7 +284,6 @@ namespace VainFacadePlaytest.TheBaroness
                     base.GameController.ExhaustCoroutine(destroyCoroutine);
                 }
             }
-            yield break;
         }
     }
 }

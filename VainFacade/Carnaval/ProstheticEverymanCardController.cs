@@ -39,7 +39,6 @@ namespace VainFacadePlaytest.Carnaval
             {
                 base.GameController.ExhaustCoroutine(reduceCoroutine);
             }
-            yield break;
         }
 
         public override IEnumerator UsePower(int index = 0)

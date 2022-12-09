@@ -27,7 +27,6 @@ namespace VainFacadePlaytest.TheMidnightBazaar
             base.AddTriggers();
             // "At the end of the environment turn, discard the top 3 cards of the environment deck. Put any Threens or Unbindings discarded this way into play. Then set the HP of each Threen to the HP of the Threen with the highest HP."
             AddEndOfTurnTrigger((TurnTaker tt) => tt.IsEnvironment, DiscardPlayHealResponse, new TriggerType[] { TriggerType.DiscardCard, TriggerType.PutIntoPlay, TriggerType.GainHP });
-            // ...
         }
 
         private IEnumerator DiscardPlayHealResponse(PhaseChangeAction pca)
@@ -94,7 +93,6 @@ namespace VainFacadePlaytest.TheMidnightBazaar
                     }
                 }
             }
-            yield break;
         }
     }
 }

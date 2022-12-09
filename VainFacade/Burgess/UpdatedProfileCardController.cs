@@ -107,10 +107,6 @@ namespace VainFacadePlaytest.Burgess
                     }
                 }
             }
-            else
-            {
-                yield break;
-            }
         }
     }
 }

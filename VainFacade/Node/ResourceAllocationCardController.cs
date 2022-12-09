@@ -81,7 +81,6 @@ namespace VainFacadePlaytest.Node
                     base.GameController.ExhaustCoroutine(statusCoroutine);
                 }
             }
-            yield break;
         }
 
         public override CustomDecisionText GetCustomDecisionText(IDecision decision)

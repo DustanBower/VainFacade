@@ -45,7 +45,6 @@ namespace VainFacadePlaytest.Node
             {
                 base.GameController.ExhaustCoroutine(startCoroutine);
             }
-            yield break;
         }
 
         public IEnumerator Continue()
@@ -195,7 +194,6 @@ namespace VainFacadePlaytest.Node
                     base.GameController.ExhaustCoroutine(repeatCoroutine);
                 }
             }
-            yield break;
         }
     }
 }

@@ -58,15 +58,5 @@ namespace VainFacadePlaytest.Node
         {
             base.AddTriggers();
         }
-
-        public override IEnumerator Play()
-        {
-            yield break;
-        }
-
-        public override IEnumerator UsePower(int index = 0)
-        {
-            yield break;
-        }
     }
 }

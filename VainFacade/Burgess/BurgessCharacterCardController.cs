@@ -99,7 +99,6 @@ namespace VainFacadePlaytest.Burgess
                     }
                     break;
             }
-            yield break;
         }
 
         private IEnumerator UseIncapOption1()

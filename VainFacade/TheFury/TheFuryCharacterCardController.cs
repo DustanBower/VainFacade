@@ -136,7 +136,6 @@ namespace VainFacadePlaytest.TheFury
                     }
                     break;
             }
-            yield break;
         }
 
         private IEnumerator UseIncapOption1()

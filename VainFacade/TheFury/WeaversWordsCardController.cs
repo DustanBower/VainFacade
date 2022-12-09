@@ -126,7 +126,6 @@ namespace VainFacadePlaytest.TheFury
                     }
                     break;
             }
-            yield break;
         }
     }
 }

@@ -64,7 +64,6 @@ namespace VainFacadePlaytest.TheMidnightBazaar
             {
                 base.GameController.ExhaustCoroutine(selectCoroutine);
             }
-            yield break;
         }
 
         private IEnumerator ChooseSourceAndMoveCardsToRedirect(TurnTaker tt, List<bool> cardsMoved, DealDamageAction dda)
@@ -153,7 +152,6 @@ namespace VainFacadePlaytest.TheMidnightBazaar
                     }
                 }
             }
-            yield break;
         }
     }
 }

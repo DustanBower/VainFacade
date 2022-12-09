@@ -16,7 +16,6 @@ namespace VainFacadePlaytest.TheBaroness
         {
             // Show each hero's resonance?
             ShowResonancePerHero();
-            // ...
         }
 
         public override IEnumerator Play()

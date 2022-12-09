@@ -68,7 +68,6 @@ namespace VainFacadePlaytest.TheMidnightBazaar
                     base.GameController.ExhaustCoroutine(playCoroutine);
                 }
             }
-            yield break;
         }
 
         private IEnumerator DamageWithRedirectResponse(PhaseChangeAction pca)
@@ -149,7 +148,6 @@ namespace VainFacadePlaytest.TheMidnightBazaar
                     base.GameController.ExhaustCoroutine(damageCoroutine);
                 }
             }
-            yield break;
         }
 
         private IEnumerator MovedRedirectResponse(DealDamageAction dda)
@@ -168,7 +166,6 @@ namespace VainFacadePlaytest.TheMidnightBazaar
             {
                 SetCardProperty(didMoveToRedirect, false);
             }
-            yield break;
         }
     }
 }

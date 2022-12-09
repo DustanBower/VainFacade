@@ -77,10 +77,5 @@ namespace VainFacadePlaytest.Burgess
                 base.GameController.ExhaustCoroutine(drawCoroutine);
             }
         }
-
-        public override IEnumerator UsePower(int index = 0)
-        {
-            yield break;
-        }
     }
 }

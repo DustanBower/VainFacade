@@ -54,7 +54,6 @@ namespace VainFacadePlaytest.TheMidnightBazaar
             {
                 base.GameController.ExhaustCoroutine(selectCoroutine);
             }
-            yield break;
         }
 
         private IEnumerator DiscardAndPlayResponse(TurnTaker tt)
@@ -100,7 +99,6 @@ namespace VainFacadePlaytest.TheMidnightBazaar
                     base.GameController.ExhaustCoroutine(playCoroutine);
                 }
             }
-            yield break;
         }
     }
 }

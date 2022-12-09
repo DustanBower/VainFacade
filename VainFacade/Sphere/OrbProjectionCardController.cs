@@ -46,7 +46,6 @@ namespace VainFacadePlaytest.Sphere
             {
                 base.GameController.ExhaustCoroutine(powerCoroutine);
             }
-            yield break;
         }
 
         private IEnumerator IncreaseEnergyDamageDealt(int amt)
@@ -66,7 +65,6 @@ namespace VainFacadePlaytest.Sphere
             {
                 base.GameController.ExhaustCoroutine(statusCoroutine);
             }
-            yield break;
         }
     }
 }

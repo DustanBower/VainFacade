@@ -65,7 +65,6 @@ namespace VainFacadePlaytest.Sphere
                     }
                 }
             }
-            yield break;
         }
 
         private IEnumerator RetaliateResponse(DealDamageAction dda)
@@ -84,7 +83,6 @@ namespace VainFacadePlaytest.Sphere
                     base.GameController.ExhaustCoroutine(damageCoroutine);
                 }
             }
-            yield break;
         }
     }
 }

@@ -69,7 +69,6 @@ namespace VainFacadePlaytest.Grandfather
                     base.GameController.ExhaustCoroutine(destructCoroutine);
                 }
             }
-            yield break;
         }
     }
 }

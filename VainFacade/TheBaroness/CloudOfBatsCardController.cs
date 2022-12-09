@@ -45,7 +45,6 @@ namespace VainFacadePlaytest.TheBaroness
             AddTrigger((DestroyCardAction dca) => dca.WasCardDestroyed && dca.CardToDestroy.Card.Owner == base.TurnTaker && dca.CardToDestroy.Card.Identifier == BatIdentifier, DestroyBloodRemoveBatResponse, new TriggerType[] { TriggerType.DestroyCard, TriggerType.MoveCard }, TriggerTiming.After);
             // When a Bat leaves play another way, ???
             AddTrigger((MoveCardAction mca) => mca.CardToMove.Owner == base.TurnTaker && mca.CardToMove.Identifier == BatIdentifier && !mca.Destination.IsInPlay && !mca.Destination.IsOffToTheSide, (MoveCardAction mca) => CancelAction(mca), TriggerType.CancelAction, TriggerTiming.Before);
-            // ...
             // When this card leaves play, move all Bat placeholder cards back to OffToTheSide
             AddAfterLeavesPlayAction(() => base.GameController.BulkMoveCards(base.TurnTakerController, base.GameController.FindCardsWhere(BatToRemove()), base.TurnTaker.OffToTheSide, responsibleTurnTaker: base.TurnTaker, cardSource: GetCardSource()));
             // "At the start of the villain turn, each Bat deals each hero target 1 projectile damage. If less than 4 damage is dealt this way, destroy this card."

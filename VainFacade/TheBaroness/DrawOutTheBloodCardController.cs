@@ -39,7 +39,6 @@ namespace VainFacadePlaytest.TheBaroness
             {
                 base.GameController.ExhaustCoroutine(selectCoroutine);
             }
-            yield break;
         }
     }
 }

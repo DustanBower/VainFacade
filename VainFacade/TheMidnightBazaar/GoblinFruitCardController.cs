@@ -90,7 +90,6 @@ namespace VainFacadePlaytest.TheMidnightBazaar
                     }
                 }
             }
-            yield break;
         }
 
         private IEnumerator BottomCardResponse(TurnTaker tt, List<bool> cardsMoved)
@@ -123,7 +122,6 @@ namespace VainFacadePlaytest.TheMidnightBazaar
                     base.GameController.ExhaustCoroutine(playCoroutine);
                 }
             }
-            yield break;
         }
     }
 }

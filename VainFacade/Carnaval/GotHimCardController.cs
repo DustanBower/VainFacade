@@ -17,7 +17,7 @@ namespace VainFacadePlaytest.Carnaval
 
         }
 
-        private DealDamageAction beingRedirected = null;
+        //private DealDamageAction beingRedirected = null;
 
         public override void AddTriggers()
         {

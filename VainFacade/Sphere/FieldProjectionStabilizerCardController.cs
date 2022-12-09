@@ -66,7 +66,6 @@ namespace VainFacadePlaytest.Sphere
                     base.GameController.ExhaustCoroutine(drawPlayCoroutine);
                 }
             }
-            yield break;
         }
     }
 }

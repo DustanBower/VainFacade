@@ -61,7 +61,6 @@ namespace VainFacadePlaytest.Sphere
             }
             DamageType chosenType = typeChoice.FirstOrDefault((SelectDamageTypeDecision sdtd) => sdtd.Completed).SelectedDamageType.Value;
             base.SetCardProperty(LastChosenType, typeOptions.IndexOf(chosenType).Value);
-            yield break;
         }
     }
 }

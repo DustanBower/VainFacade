@@ -41,7 +41,6 @@ namespace VainFacadePlaytest.TheMidnightBazaar
             {
                 base.GameController.ExhaustCoroutine(selectCoroutine);
             }
-            yield break;
         }
 
         private IEnumerator GetSwordResponse(TurnTaker tt)
@@ -75,7 +74,6 @@ namespace VainFacadePlaytest.TheMidnightBazaar
                     base.GameController.ExhaustCoroutine(pickupCoroutine);
                 }
             }
-            yield break;
         }
 
         public override IEnumerator UsePower(int index = 0)
@@ -128,7 +126,6 @@ namespace VainFacadePlaytest.TheMidnightBazaar
                     }
                 }
             }
-            yield break;
         }
     }
 }

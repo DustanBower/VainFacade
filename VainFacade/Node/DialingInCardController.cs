@@ -48,7 +48,6 @@ namespace VainFacadePlaytest.Node
                     }
                     break;
             }
-            yield break;
         }
     }
 }

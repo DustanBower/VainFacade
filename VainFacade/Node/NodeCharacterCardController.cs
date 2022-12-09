@@ -69,7 +69,6 @@ namespace VainFacadePlaytest.Node
                     }
                 }
             }
-            yield break;
         }
 
         public override IEnumerator UseIncapacitatedAbility(int index)
@@ -111,7 +110,6 @@ namespace VainFacadePlaytest.Node
                     }
                     break;
             }
-            yield break;
         }
 
         private IEnumerator UseIncapOption1()
@@ -149,7 +147,6 @@ namespace VainFacadePlaytest.Node
                     }
                 }
             }
-            yield break;
         }
 
         private IEnumerator UseIncapOption2()
@@ -181,7 +178,6 @@ namespace VainFacadePlaytest.Node
                     }
                 }
             }
-            yield break;
         }
 
         private IEnumerator UseIncapOption3()
@@ -210,7 +206,6 @@ namespace VainFacadePlaytest.Node
                     base.GameController.ExhaustCoroutine(drawCoroutine);
                 }
             }
-            yield break;
         }
     }
 }

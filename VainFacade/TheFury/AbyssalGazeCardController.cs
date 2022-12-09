@@ -29,7 +29,6 @@ namespace VainFacadePlaytest.TheFury
             AddTrigger((RevealCardsAction rca) => rca.RevealedCards.Contains(base.Card), PutIntoPlayInsteadResponse, TriggerType.PutIntoPlay, TriggerTiming.Before, outOfPlayTrigger: true);
             // trigger on BulkMoveCardsAction?
             // Shinobi Assassin doesn't, Monster of Id doesn't
-            // ...
         }
 
         public override void AddTriggers()

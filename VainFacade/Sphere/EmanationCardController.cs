@@ -55,7 +55,6 @@ namespace VainFacadePlaytest.Sphere
                 // If all Emanations in play have the same title and deck identity, the player doesn't need to choose- nothing will be destroyed because there are no non-matching Emanations
                 toDestroy = new LinqCardCriteria((Card c) => c.IsInPlayAndHasGameText && c.DoKeywordsContain(emanationKeyword) && (c.Title != base.Card.Title || c.Owner != base.Card.Owner), "in play other than copies of " + base.Card.Title, false, true, "Emanation", "Emanations");
             }
-            // ...
             IEnumerator destroyCoroutine = base.GameController.DestroyCards(base.HeroTurnTakerController, toDestroy, cardSource: GetCardSource());
             if (base.UseUnityCoroutines)
             {
@@ -65,7 +64,6 @@ namespace VainFacadePlaytest.Sphere
             {
                 base.GameController.ExhaustCoroutine(destroyCoroutine);
             }
-            yield break;
         }
 
         public override CustomDecisionText GetCustomDecisionText(IDecision decision)

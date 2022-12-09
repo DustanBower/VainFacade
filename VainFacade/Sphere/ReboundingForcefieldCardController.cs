@@ -78,7 +78,6 @@ namespace VainFacadePlaytest.Sphere
                     }
                 }
             }
-            yield break;
         }
     }
 }

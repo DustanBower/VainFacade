@@ -34,7 +34,6 @@ namespace VainFacadePlaytest.Carnaval
             {
                 base.GameController.ExhaustCoroutine(damageCoroutine);
             }
-            yield break;
         }
     }
 }

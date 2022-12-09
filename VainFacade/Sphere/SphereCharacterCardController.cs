@@ -105,7 +105,6 @@ namespace VainFacadePlaytest.Sphere
             {
                 base.GameController.ExhaustCoroutine(selectCoroutine);
             }
-            yield break;
         }
 
         private IEnumerator PlayMatchingEmanationFromTrash()
@@ -135,12 +134,11 @@ namespace VainFacadePlaytest.Sphere
                     base.GameController.ExhaustCoroutine(playCoroutine);
                 }
             }
-            yield break;
         }
 
         private IEnumerator SphereDealsDamage(int targets, int melee, int energy)
         {
-            // ...or "{Sphere} deals 1 target 1 melee damage and 1 energy damage."
+            // " or {Sphere} deals 1 target 1 melee damage and 1 energy damage."
             List<DealDamageAction> hits = new List<DealDamageAction>();
             hits.Add(new DealDamageAction(GetCardSource(), new DamageSource(base.GameController, base.Card), null, melee, DamageType.Melee));
             hits.Add(new DealDamageAction(GetCardSource(), new DamageSource(base.GameController, base.Card), null, energy, DamageType.Energy));
@@ -153,8 +151,6 @@ namespace VainFacadePlaytest.Sphere
             {
                 base.GameController.ExhaustCoroutine(damageCoroutine);
             }
-            // ...
-            yield break;
         }
 
         public override CustomDecisionText GetCustomDecisionText(IDecision decision)
@@ -201,7 +197,6 @@ namespace VainFacadePlaytest.Sphere
                     }
                     break;
             }
-            yield break;
         }
 
         private IEnumerator UseIncapOption1()
@@ -233,7 +228,6 @@ namespace VainFacadePlaytest.Sphere
                     base.GameController.ExhaustCoroutine(statusCoroutine);
                 }
             }
-            yield break;
         }
 
         private IEnumerator UseIncapOption2()

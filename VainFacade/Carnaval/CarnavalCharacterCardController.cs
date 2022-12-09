@@ -76,7 +76,6 @@ namespace VainFacadePlaytest.Carnaval
                     }
                     break;
             }
-            yield break;
         }
 
         private IEnumerator UseIncapOption1()
@@ -108,7 +107,6 @@ namespace VainFacadePlaytest.Carnaval
                     }
                 }
             }
-            yield break;
         }
 
         private IEnumerator UseIncapOption2()
@@ -154,7 +152,6 @@ namespace VainFacadePlaytest.Carnaval
                     base.GameController.ExhaustCoroutine(statusCoroutine);
                 }
             }
-            yield break;
         }
 
         public IEnumerator CounterDamageResponse(DealDamageAction dda, TurnTaker hero, StatusEffect effect, int[] powerNumerals = null)
@@ -174,7 +171,6 @@ namespace VainFacadePlaytest.Carnaval
                     base.GameController.ExhaustCoroutine(damageCoroutine);
                 }
             }
-            yield break;
         }
     }
 }

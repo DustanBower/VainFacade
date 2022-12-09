@@ -54,7 +54,6 @@ namespace VainFacadePlaytest.Carnaval
                     base.GameController.ExhaustCoroutine(damageCoroutine);
                 }
             }
-            yield break;
         }
 
         public override IEnumerator UsePower(int index = 0)
@@ -93,7 +92,6 @@ namespace VainFacadePlaytest.Carnaval
                     base.GameController.ExhaustCoroutine(moveCoroutine);
                 }
             }
-            yield break;
         }
     }
 }

@@ -59,7 +59,6 @@ namespace VainFacadePlaytest.Burgess
                     base.GameController.ExhaustCoroutine(increaseCoroutine);
                 }
             }
-            yield break;
         }
 
         public override CustomDecisionText GetCustomDecisionText(IDecision decision)

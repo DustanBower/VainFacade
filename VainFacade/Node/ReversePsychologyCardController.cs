@@ -67,7 +67,6 @@ namespace VainFacadePlaytest.Node
                     base.GameController.ExhaustCoroutine(selfCoroutine);
                 }
             }
-            yield break;
         }
     }
 }

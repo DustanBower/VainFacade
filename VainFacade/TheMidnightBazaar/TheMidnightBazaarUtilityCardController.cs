@@ -88,7 +88,6 @@ namespace VainFacadePlaytest.TheMidnightBazaar
                     base.GameController.ExhaustCoroutine(shuffleCoroutine);
                 }
             }
-            yield break;
         }
 
         public IEnumerator EmptyWellNotInPlayResponse(GameAction ga)
@@ -206,7 +205,6 @@ namespace VainFacadePlaytest.TheMidnightBazaar
                     }
                 }
             }
-            yield break;
         }
 
         public override CustomDecisionText GetCustomDecisionText(IDecision decision)
