@@ -20,8 +20,8 @@ namespace VainFacadePlaytest.Carnaval
         public override IEnumerator Play()
         {
             // "Play the top card of each other deck, in turn order, beginning with the environment deck."
-            IEnumerable<Location> allDecks = FindLocationsWhere((Location l) => !l.OwnerTurnTaker.IsIncapacitatedOrOutOfGame && l.IsDeck && l.IsRealDeck && GameController.IsTurnTakerVisibleToCardSource(l.OwnerTurnTaker, GetCardSource()) && GameController.IsLocationVisibleToSource(l, GetCardSource()));
-            TurnTakerController[] controllers = GameController.FindTurnTakerControllersWhere((TurnTakerController ttc) => true, cardSource: GetCardSource()).ToArray();
+            IEnumerable<Location> allDecks = FindLocationsWhere((Location l) => !l.OwnerTurnTaker.IsIncapacitatedOrOutOfGame && l.IsDeck && l.IsRealDeck && l.OwnerTurnTaker != base.TurnTaker && GameController.IsTurnTakerVisibleToCardSource(l.OwnerTurnTaker, GetCardSource()) && GameController.IsLocationVisibleToSource(l, GetCardSource()));
+            TurnTakerController[] controllers = GameController.FindTurnTakerControllersWhere((TurnTakerController ttc) => ttc != base.TurnTakerController, cardSource: GetCardSource()).ToArray();
             int numControllers = controllers.Count();
             if (controllers.IndexOf(GameController.FindEnvironmentTurnTakerController()).HasValue)
             {
