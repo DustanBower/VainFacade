@@ -22,7 +22,7 @@ namespace VainFacadePlaytest.Carnaval
         {
             base.AddTriggers();
             // "When one of your cards would enter play, {CarnavalCharacter} may deal 1 target 1 melee or 1 psychic damage."
-            AddTrigger((CardEntersPlayAction cepa) => cepa.CardEnteringPlay.Owner == base.Card.Owner, SurpriseResponse, TriggerType.DealDamage, TriggerTiming.Before);
+            AddTrigger((CardEntersPlayAction cepa) => cepa.CardEnteringPlay.Owner == base.Card.Owner && cepa.CardEnteringPlay != base.Card, SurpriseResponse, TriggerType.DealDamage, TriggerTiming.Before);
             // "Increase damage dealt by {CarnavalCharacter} by 1."
             AddIncreaseDamageTrigger((DealDamageAction dda) => dda.DamageSource.IsSameCard(base.CharacterCard), 1);
         }
