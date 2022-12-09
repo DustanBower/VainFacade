@@ -21,7 +21,7 @@ namespace VainFacadePlaytest.Carnaval
         {
             base.AddTriggers();
             // "At the start of your turn, up to 2 targets regain 1 HP each."
-            AddStartOfTurnTrigger((TurnTaker tt) => tt == base.TurnTaker, (PhaseChangeAction pca) => base.GameController.GainHP(DecisionMaker, (Card c) => c.IsTarget && c.IsInPlayAndHasGameText, 1, 2, requiredHpGainers: 0, cardSource: GetCardSource()), TriggerType.GainHP);
+            AddStartOfTurnTrigger((TurnTaker tt) => tt == base.TurnTaker, (PhaseChangeAction pca) => base.GameController.SelectAndGainHP(DecisionMaker, 1, numberOfTargets: 2, requiredDecisions: 0, cardSource: GetCardSource()), TriggerType.GainHP);
         }
 
         public override IEnumerator UsePower(int index = 0)
