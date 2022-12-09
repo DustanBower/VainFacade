@@ -64,6 +64,7 @@
     <Compile Include="Carnaval\CombatOperativeCardController.cs" />
     <Compile Include="Carnaval\ConvincingDoubleCardController.cs" />
     <Compile Include="Carnaval\ExplosiveMacguffinCardController.cs" />
+    <Compile Include="Carnaval\GotHimCardController.cs" />
     <Compile Include="Carnaval\ImprovisationalTheatreCardController.cs" />
     <Compile Include="Carnaval\ManWithAPlanCardController.cs" />
     <Compile Include="Carnaval\MasqueCardController.cs" />
