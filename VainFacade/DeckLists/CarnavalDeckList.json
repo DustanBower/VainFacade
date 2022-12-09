@@ -377,7 +377,7 @@
 				},
 				{
 					"identifier": "Carnaval",
-					"text": "Couldn't sleep, Pops. Tell me a story."
+					"text": "Couldn't sleep, Pops.{BR}Tell me a story."
 				},
 				{
 					"identifier": "Janson",
@@ -408,11 +408,11 @@
 			"flavorQuotes": [
 				{
 					"identifier": "Carnaval",
-					"text": "I can't ever save{BR}them. I thought that{BR}made me a villain, but I just{BR}need a supporting actor."
+					"text": "I can't ever{BR}save them. I thought that{BR}made me a villain, but I just{BR}need a supporting actor."
 				},
 				{
 					"identifier": "Peacekeeper",
-					"text": "Please. I'd get top billing. Look at{BR}this chiseled jaw!"
+					"text": "Please. I'd get top billing. Look{BR}at this chiseled jaw!"
 				}
 			],
 			"flavorReference": "Operational Clearance One-Shot"
@@ -498,11 +498,11 @@
 			"flavorQuotes": [
 				{
 					"identifier": "Wolfe",
-					"text": "That you, Carnaval? What do you{BR}know, Christmas in July!"
+					"text": "That you, Carnaval?{BR}What do you know, Christmas in July!"
 				},
 				{
 					"identifier": "Carnaval",
-					"text": "Don't worry, I got you something special.{BR}Heard you could use a pick-me-up!"
+					"text": "Don't worry, I got you something{BR}special. Heard you could use a pick-me-up!"
 				}
 			],
 			"flavorReference": "Division X: Friendly Fire"
