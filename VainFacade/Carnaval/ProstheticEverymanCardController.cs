@@ -19,18 +19,34 @@ namespace VainFacadePlaytest.Carnaval
         }
 
         protected readonly string FirstDamageThisTurn = "FirstDamageThisTurn";
+        private ITrigger _reduceTrigger;
 
         public override void AddTriggers()
         {
             base.AddTriggers();
             // "Reduce the first damage dealt to {CarnavalCharacter} each turn by 1."
-            AddTrigger((DealDamageAction dda) => dda.CanDealDamage && dda.Target == base.CharacterCard && !HasBeenSetToTrueThisTurn(FirstDamageThisTurn), ReduceDamageResponse, TriggerType.ReduceDamage, TriggerTiming.Before);
+            AddTrigger((DealDamageAction dda) => true, LogDealDamageActionResponse, TriggerType.Hidden, TriggerTiming.Before);
+            //AddTrigger((DealDamageAction dda) => dda.CanDealDamage && dda.Target == base.CharacterCard && !HasBeenSetToTrueThisTurn(FirstDamageThisTurn), ReduceDamageResponse, TriggerType.ReduceDamage, TriggerTiming.Before);
+            _reduceTrigger = AddReduceDamageTrigger((DealDamageAction dda) => !IsPropertyTrue(FirstDamageThisTurn) && dda.CanDealDamage, ReduceDamageResponse, (Card c) => c == base.CharacterCard, oncePerTurn: true);
+            AddAfterLeavesPlayAction((GameAction ga) => ResetFlagAfterLeavesPlay(FirstDamageThisTurn), TriggerType.Hidden);
+        }
+
+        private IEnumerator LogDealDamageActionResponse(DealDamageAction dda)
+        {
+            Log.Debug("ProstheticEverymanCardController.LogDealDamageActionResponse activated");
+            Log.Debug("ProstheticEverymanCardController.LogDealDamageActionResponse: dda: " + dda.ToString());
+            Log.Debug("ProstheticEverymanCardController.LogDealDamageActionResponse: dda.Target: " + dda.Target.Title);
+            Log.Debug("ProstheticEverymanCardController.LogDealDamageActionResponse: dda.CanDealDamage: " + (dda.CanDealDamage).ToString());
+            Log.Debug("ProstheticEverymanCardController.LogDealDamageActionResponse: dda.Target == base.CharacterCard: " + (dda.Target == base.CharacterCard).ToString());
+            Log.Debug("ProstheticEverymanCardController.LogDealDamageActionResponse: !HasBeenSetToTrueThisTurn(FirstDamageThisTurn): " + (!HasBeenSetToTrueThisTurn(FirstDamageThisTurn)).ToString());
+            yield break;
         }
 
         private IEnumerator ReduceDamageResponse(DealDamageAction dda)
         {
-            SetCardPropertyToTrueIfRealAction(FirstDamageThisTurn, gameAction: dda);
-            IEnumerator reduceCoroutine = base.GameController.ReduceDamage(dda, 1, null, cardSource: GetCardSource());
+            Log.Debug("ProstheticEverymanCardController.ReduceDamageResponse activated");
+            SetCardPropertyToTrueIfRealAction(FirstDamageThisTurn);
+            IEnumerator reduceCoroutine = base.GameController.ReduceDamage(dda, 1, _reduceTrigger, cardSource: GetCardSource());
             if (base.UseUnityCoroutines)
             {
                 yield return base.GameController.StartCoroutine(reduceCoroutine);
