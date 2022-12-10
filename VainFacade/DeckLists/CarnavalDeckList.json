@@ -176,8 +176,8 @@
 				"After this card is destroyed, you may play 1 Trap and use 1 power."
 			],
 			"icons": [
-				"DestroySelf",
 				"RedirectDamage",
+				"DestroySelf",
 				"PlayCardNow",
 				"UsePowerNow"
 			],
