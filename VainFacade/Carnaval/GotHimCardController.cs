@@ -14,62 +14,23 @@ namespace VainFacadePlaytest.Carnaval
         public GotHimCardController(Card card, TurnTakerController turnTakerController)
             : base(card, turnTakerController)
         {
-
+            AllowFastCoroutinesDuringPretend = false;
         }
-
-        //private DealDamageAction beingRedirected = null;
 
         public override void AddTriggers()
         {
             base.AddTriggers();
-            // "When another target would be dealt damage, you may destroy this card to redirect that damage to {CarnavalCharacter}. If you do, you may play 1 Trap and use 1 power."
-            AddTrigger((DealDamageAction dda) => true, LogDealDamageActionResponse, TriggerType.Hidden, TriggerTiming.Before);
-            AddTrigger((DealDamageAction dda) => dda.Target != base.CharacterCard && !dda.IsPretend && dda.Amount > 0, OptionalDestroyRedirectResponse, TriggerType.WouldBeDealtDamage, TriggerTiming.Before);
+            // "When another target would be dealt damage, you may redirect that damage to {CarnavalCharacter}."
+            AddRedirectDamageTrigger((DealDamageAction dda) => dda.Target != base.CharacterCard, () => base.CharacterCard, optional: true);
+            // "After damage is redirected by this card, destroy this card."
+            AddTrigger((DealDamageAction dda) => dda.DamageModifiers.Any((ModifyDealDamageAction mdda) => mdda is RedirectDamageAction && mdda.CardSource != null && mdda.CardSource.Card == base.Card), DestroyThisCardResponse, TriggerType.DestroySelf, TriggerTiming.After);
+            // "After this card is destroyed, you may play 1 Trap and use 1 power."
+            AddAfterDestroyedAction(TrapPowerResponse);
         }
 
-        private IEnumerator LogDealDamageActionResponse(DealDamageAction dda)
+        private IEnumerator TrapPowerResponse(GameAction ga)
         {
-            Log.Debug("GotHimCardController.LogDealDamageActionResponse activated");
-            Log.Debug("GotHimCardController.LogDealDamageActionResponse: dda: " + dda.ToString());
-            Log.Debug("GotHimCardController.LogDealDamageActionResponse: dda.Target: " + dda.Target.Title);
-            Log.Debug("GotHimCardController.LogDealDamageActionResponse: dda.Amount: " + dda.Amount.ToString());
-            Log.Debug("GotHimCardController.LogDealDamageActionResponse: dda.Target != base.CharacterCard: " + (dda.Target != base.CharacterCard).ToString());
-            Log.Debug("GotHimCardController.LogDealDamageActionResponse: !dda.IsPretend: " + (!dda.IsPretend).ToString());
-            Log.Debug("GotHimCardController.LogDealDamageActionResponse: dda.Amount > 0: " + (dda.Amount > 0).ToString());
-            yield break;
-        }
-
-        private IEnumerator OptionalDestroyRedirectResponse(DealDamageAction dda)
-        {
-            // "... you may destroy this card to redirect that damage to {CarnavalCharacter}. If you do, you may play 1 Trap and use 1 power."
-            Log.Debug("GotHimCardController.OptionalDestroyRedirectResponse activated");
-            //List<DestroyCardAction> destroyResults = new List<DestroyCardAction>();
-            //Func<GameAction, IEnumerator> action = AddAfterDestroyedAction(TrapPowerResponse);
-            IEnumerator destructCoroutine = base.GameController.DestroyCard(DecisionMaker, base.Card, optional: true, responsibleCard: base.Card, postDestroyAction: () => TrapPowerResponse(dda), cardSource: GetCardSource());
-            if (base.UseUnityCoroutines)
-            {
-                yield return base.GameController.StartCoroutine(destructCoroutine);
-            }
-            else
-            {
-                base.GameController.ExhaustCoroutine(destructCoroutine);
-            }
-            //RemoveDestroyAction(BeforeOrAfter.After, action);
-        }
-
-        private IEnumerator TrapPowerResponse(DealDamageAction dda)
-        {
-            // "... to redirect that damage to {CarnavalCharacter}."
-            IEnumerator redirectCoroutine = base.GameController.RedirectDamage(dda, base.CharacterCard, cardSource: GetCardSource());
-            if (base.UseUnityCoroutines)
-            {
-                yield return base.GameController.StartCoroutine(redirectCoroutine);
-            }
-            else
-            {
-                base.GameController.ExhaustCoroutine(redirectCoroutine);
-            }
-            // "If you do, you may play 1 Trap..."
+            // "... you may play 1 Trap..."
             IEnumerator trapCoroutine = SelectAndPlayCardFromHand(DecisionMaker, cardCriteria: TrapCard);
             if (base.UseUnityCoroutines)
             {

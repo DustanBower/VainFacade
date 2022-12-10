@@ -171,7 +171,9 @@
 				"ongoing"
 			],
 			"body": [
-				"When another target would be dealt damage, you may destroy this card to redirect that damage to {CarnavalCharacter}. If you do, you may play 1 Trap and use 1 power."
+				"When another target would be dealt damage, you may redirect that damage to {CarnavalCharacter}.",
+				"After damage is redirected by this card, destroy this card.",
+				"After this card is destroyed, you may play 1 Trap and use 1 power."
 			],
 			"icons": [
 				"DestroySelf",
