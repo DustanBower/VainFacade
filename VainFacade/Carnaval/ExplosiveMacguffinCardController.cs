@@ -59,7 +59,7 @@ namespace VainFacadePlaytest.Carnaval
                 Card selectedCard = choice.SelectedCard;
                 // "... deals each other target in its play area 1 projectile damage, ..."
                 Location playArea = selectedCard.Location.HighestRecursiveLocation;
-                IEnumerator projectileCoroutine = DealDamage(selectedCard, (Card c) => c.IsAtLocationRecursive(playArea), 1, DamageType.Projectile);
+                IEnumerator projectileCoroutine = DealDamage(selectedCard, (Card c) => c.IsAtLocationRecursive(playArea) && c != selectedCard, 1, DamageType.Projectile);
                 if (base.UseUnityCoroutines)
                 {
                     yield return base.GameController.StartCoroutine(projectileCoroutine);
