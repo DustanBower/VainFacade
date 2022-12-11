@@ -8,7 +8,7 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":177,"h":256},
 	"sourceSize": {"w":177,"h":256}
 },
-"EldrenwoodVillageDeckBack.png":
+"CarnavalCharacter.png":
 {
 	"frame": {"x":180,"y":0,"w":177,"h":256},
 	"rotated": false,
@@ -16,7 +16,7 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":177,"h":256},
 	"sourceSize": {"w":177,"h":256}
 },
-"GrandfatherCharacter.png":
+"EldrenwoodVillageDeckBack.png":
 {
 	"frame": {"x":360,"y":0,"w":177,"h":256},
 	"rotated": false,
@@ -24,7 +24,7 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":177,"h":256},
 	"sourceSize": {"w":177,"h":256}
 },
-"NodeCharacter.png":
+"GrandfatherCharacter.png":
 {
 	"frame": {"x":540,"y":0,"w":177,"h":256},
 	"rotated": false,
@@ -32,7 +32,7 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":177,"h":256},
 	"sourceSize": {"w":177,"h":256}
 },
-"SphereCharacter.png":
+"NodeCharacter.png":
 {
 	"frame": {"x":720,"y":0,"w":177,"h":256},
 	"rotated": false,
@@ -40,7 +40,7 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":177,"h":256},
 	"sourceSize": {"w":177,"h":256}
 },
-"TheBaronessCharacter.png":
+"SphereCharacter.png":
 {
 	"frame": {"x":0,"y":259,"w":177,"h":256},
 	"rotated": false,
@@ -48,7 +48,7 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":177,"h":256},
 	"sourceSize": {"w":177,"h":256}
 },
-"TheFuryCharacter.png":
+"TheBaronessCharacter.png":
 {
 	"frame": {"x":180,"y":259,"w":177,"h":256},
 	"rotated": false,
@@ -56,9 +56,17 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":177,"h":256},
 	"sourceSize": {"w":177,"h":256}
 },
-"TheMidnightBazaarDeckBack.png":
+"TheFuryCharacter.png":
 {
 	"frame": {"x":360,"y":259,"w":177,"h":256},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":177,"h":256},
+	"sourceSize": {"w":177,"h":256}
+},
+"TheMidnightBazaarDeckBack.png":
+{
+	"frame": {"x":540,"y":259,"w":177,"h":256},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":177,"h":256},
@@ -71,6 +79,6 @@
 	"format": "RGBA8888",
 	"size": {"w":1024,"h":1024},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:1fea56368cd17433fa893408867fa166:89e9f24e6bf60f622a478becf875f765:4ee285c32a91b7652e02ac049f918b2a$"
+	"smartupdate": "$TexturePacker:SmartUpdate:78b9d51de17edd604f69cb2bcef721b1:f56711683fae46ce6ff669d57aa29bf3:4ee285c32a91b7652e02ac049f918b2a$"
 }
 }

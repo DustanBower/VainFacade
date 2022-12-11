@@ -174,6 +174,7 @@
         <key>individualSpriteSettings</key>
         <map type="IndividualSpriteSettingsMap">
             <key type="filename">../SmallCardArt/Burgess/BurgessCharacter.png</key>
+            <key type="filename">../SmallCardArt/Carnaval/CarnavalCharacter.png</key>
             <key type="filename">../SmallCardArt/EldrenwoodVillage/EldrenwoodVillageDeckBack.png</key>
             <key type="filename">../SmallCardArt/Grandfather/GrandfatherCharacter.png</key>
             <key type="filename">../SmallCardArt/Node/NodeCharacter.png</key>
@@ -206,6 +207,7 @@
             <filename>../SmallCardArt/Grandfather/GrandfatherCharacter.png</filename>
             <filename>../SmallCardArt/TheFury/TheFuryCharacter.png</filename>
             <filename>../SmallCardArt/Node/NodeCharacter.png</filename>
+            <filename>../SmallCardArt/Carnaval/CarnavalCharacter.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>
