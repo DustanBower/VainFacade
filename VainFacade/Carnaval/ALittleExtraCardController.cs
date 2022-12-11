@@ -51,7 +51,7 @@ namespace VainFacadePlaytest.Carnaval
         public override IEnumerator DeterminePlayLocation(List<MoveCardDestination> storedResults, bool isPutIntoPlay, List<IDecision> decisionSources, Location overridePlayArea = null, LinqTurnTakerCriteria additionalTurnTakerCriteria = null)
         {
             // "Play this card next to a non-target non-character card."
-            IEnumerator selectCoroutine = SelectCardThisCardWillMoveNextTo(new LinqCardCriteria((Card c) => !c.IsCharacter && !c.IsTarget, "non-character non-target"), storedResults, isPutIntoPlay, decisionSources);
+            IEnumerator selectCoroutine = SelectCardThisCardWillMoveNextTo(new LinqCardCriteria((Card c) => !c.IsCharacter && !c.IsTarget && !c.IsOneShot && c.IsInPlay, "non-character non-target"), storedResults, isPutIntoPlay, decisionSources);
             if (base.UseUnityCoroutines)
             {
                 yield return base.GameController.StartCoroutine(selectCoroutine);
