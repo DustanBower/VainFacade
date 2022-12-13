@@ -38,7 +38,7 @@ namespace VainFacadePlaytest.TheFury
             // "... you may first put a non-character card in play on top of its deck."
             List<MoveCardAction> moveResults = new List<MoveCardAction>();
             List<SelectCardDecision> choiceResults = new List<SelectCardDecision>();
-            IEnumerator selectCoroutine = base.GameController.SelectCardAndStoreResults(DecisionMaker, SelectionType.MoveCardOnDeck, new LinqCardCriteria((Card c) => c.IsInPlay && !c.IsCharacter), choiceResults, true, cardSource: GetCardSource());
+            IEnumerator selectCoroutine = base.GameController.SelectCardAndStoreResults(DecisionMaker, SelectionType.MoveCardOnDeck, new LinqCardCriteria((Card c) => c.IsInPlay && !c.IsCharacter && (!c.IsOneShot || !c.IsInPlayAndHasGameText)), choiceResults, true, cardSource: GetCardSource());
             if (base.UseUnityCoroutines)
             {
                 yield return base.GameController.StartCoroutine(selectCoroutine);
