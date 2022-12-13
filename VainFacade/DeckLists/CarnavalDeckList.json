@@ -89,7 +89,7 @@
 					"text": "Thought you'd never ask..."
 				}
 			],
-			"flavorReference": "Operational Clearance One-Shot"
+			"flavorReference": "Operational Clearance"
 		},
 		{
 			"identifier": "CombatOperative",
@@ -217,7 +217,7 @@
 					"text": "Do you actually have a{BR}plan, or are you just making it up{BR}as you go? Because those are [b]not[/b] the{BR}same and I'm not sure you get that."
 				}
 			],
-			"flavorReference": "Push, Leftover Parts One-Shot"
+			"flavorReference": "Push, Leftover Parts"
 		},
 		{
 			"identifier": "ManWithAPlan",
@@ -234,13 +234,7 @@
 				"Search",
 				"PlayCardNow"
 			],
-			"flavorQuotes": [
-				{
-					"identifier": "Bombshell",
-					"text": "I'm going now, John. Don't{BR}make business personal. We had some{BR}good times, didn't we? I hope you and{BR}your friends make it out. I really do."
-				}
-			],
-			"flavorReference": "Bombshell, Division X: Old Habits #2"
+		        "flavorText": "{BR}“I'm going now, John. Don't{BR}make business personal. We had some good{BR}times, didn't we? I hope you and your friends{BR}make it out. I really do.”{BR}- Bombshell, Division X: Old Habits #2"
 		},
 		{
 			"identifier": "Melpomene",
@@ -251,7 +245,7 @@
 				"comedy"
 			],
 			"body": [
-				"When this card entes play, destroy all other Masques.",
+				"When this card enters play, destroy all other Masques.",
 				"At the start of your turn, up to 2 targets regain 1 HP each."
 			],
 			"powers": [
@@ -323,7 +317,7 @@
 					"text": "Aww, did you just get{BR}outsmarted by an idiot in a clown{BR}costume, Mr. Smart McGeniusPants?"
 				}
 			],
-			"flavorReference": "Carnaval, Leftover Parts One-Shot"
+			"flavorReference": "Carnaval, Leftover Parts"
 		},
 		{
 			"identifier": "ProstheticEveryman",
@@ -418,7 +412,7 @@
 					"text": "Please. I'd get top billing. Look{BR}at this chiseled jaw!"
 				}
 			],
-			"flavorReference": "Operational Clearance One-Shot"
+			"flavorReference": "Operational Clearance"
 		},
 		{
 			"identifier": "SuspiciousBodyDouble",
@@ -471,7 +465,7 @@
 			"flavorQuotes": [
 				{
 					"identifier": "Portenza",
-					"text": "They're all dead.{BR}So what? Police can't{BR}touch me."
+					"text": "They're all dead. So{BR}what? Police can't touch me."
 				},
 				{
 					"identifier": "Carnaval",
