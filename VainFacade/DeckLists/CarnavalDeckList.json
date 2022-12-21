@@ -234,7 +234,7 @@
 				"Search",
 				"PlayCardNow"
 			],
-		        "flavorText": "{BR}“I'm going now, John. Don't{BR}make business personal. We had some good{BR}times, didn't we? I hope you and your friends{BR}make it out. I really do.”{BR}- Bombshell, Division X: Old Habits #2"
+			"flavorText": "{BR}“I'm going now, John. Don't{BR}make business personal. We had some good{BR}times, didn't we? I hope you and your friends{BR}make it out. I really do.”{BR}- Bombshell, Division X: Old Habits #2"
 		},
 		{
 			"identifier": "Melpomene",
@@ -242,28 +242,33 @@
 			"title": "Melpomene",
 			"keywords": [
 				"masque",
-				"comedy"
+				"tragedy"
 			],
 			"body": [
 				"When this card enters play, destroy all other Masques.",
-				"At the start of your turn, up to 2 targets regain 1 HP each."
+				"When one of your cards would enter play, {CarnavalCharacter} may deal 1 target 1 melee or 1 psychic damage.",
+				"Increase damage dealt by {CarnavalCharacter} by 1."
 			],
 			"powers": [
-				"Up to 2 players may draw 1 card each."
+				"Play a One-Shot from your trash, then put it on the bottom of your deck."
 			],
 			"icons": [
 				"Destroy",
-				"GainHP",
-				"HasPower",
-				"DrawCardNow"
+				"DealDamage",
+				"IncreaseDamageDealt",
+				"HasPower"
 			],
 			"flavorQuotes": [
 				{
-					"identifier": "Brother Mathis",
-					"text": "Finally. Now let us{BR}see what arcane sorcery powers{BR}his magical masks... Made in China.{BR}Silence! You think this is funny?"
+					"identifier": "Portenza",
+					"text": "They're all dead. So{BR}what? Police can't touch me."
+				},
+				{
+					"identifier": "Carnaval",
+					"text": "Maybe not, but I can."
 				}
 			],
-			"flavorReference": "Brother Mathis, Carnaval #3"
+			"flavorReference": "Through the Shadows: Day of the Dead"
 		},
 		{
 			"identifier": "MockingVisage",
@@ -446,33 +451,28 @@
 			"title": "Thalia",
 			"keywords": [
 				"masque",
-				"tragedy"
+				"comedy"
 			],
 			"body": [
 				"When this card enters play, destroy all other Masques.",
-				"When one of your cards would enter play, {CarnavalCharacter} may deal 1 target 1 melee or 1 psychic damage.",
-				"Increase damage dealt by {CarnavalCharacter} by 1."
+				"At the start of your turn, up to 2 targets regain 1 HP each."
 			],
 			"powers": [
-				"Play a One-Shot from your trash, then put it on the bottom of your deck."
+				"Up to 2 players may draw 1 card each."
 			],
 			"icons": [
 				"Destroy",
-				"DealDamage",
-				"IncreaseDamageDealt",
-				"HasPower"
+				"GainHP",
+				"HasPower",
+				"DrawCardNow"
 			],
 			"flavorQuotes": [
 				{
-					"identifier": "Portenza",
-					"text": "They're all dead. So{BR}what? Police can't touch me."
-				},
-				{
-					"identifier": "Carnaval",
-					"text": "Maybe not, but I can."
+					"identifier": "Brother Mathis",
+					"text": "Finally. Now let us{BR}see what arcane sorcery powers{BR}his magical masks... Made in China.{BR}Silence! You think this is funny?"
 				}
 			],
-			"flavorReference": "Through the Shadows: Day of the Dead"
+			"flavorReference": "Brother Mathis, Carnaval #3"
 		},
 		{
 			"identifier": "WhatsYoursIsMine",

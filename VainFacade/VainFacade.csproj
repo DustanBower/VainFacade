@@ -68,14 +68,14 @@
     <Compile Include="Carnaval\ImprovisationalTheatreCardController.cs" />
     <Compile Include="Carnaval\ManWithAPlanCardController.cs" />
     <Compile Include="Carnaval\MasqueCardController.cs" />
-    <Compile Include="Carnaval\MelpomeneCardController.cs" />
+    <Compile Include="Carnaval\ThaliaCardController.cs" />
     <Compile Include="Carnaval\MockingVisageCardController.cs" />
     <Compile Include="Carnaval\PortableSnareCardController.cs" />
     <Compile Include="Carnaval\ProstheticEverymanCardController.cs" />
     <Compile Include="Carnaval\RisingActionCardController.cs" />
     <Compile Include="Carnaval\SupportingCastCardController.cs" />
     <Compile Include="Carnaval\SuspiciousBodyDoubleCardController.cs" />
-    <Compile Include="Carnaval\ThaliaCardController.cs" />
+    <Compile Include="Carnaval\MelpomeneCardController.cs" />
     <Compile Include="Carnaval\WhatsYoursIsMineCardController.cs" />
     <Compile Include="EldrenwoodVillage\AbandonedShackCardController.cs" />
     <Compile Include="EldrenwoodVillage\AfflictedCardController.cs" />
