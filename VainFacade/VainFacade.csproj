@@ -98,6 +98,8 @@
     <Compile Include="Ember\EverythingBurnsCardController.cs" />
     <Compile Include="Ember\FlamingSlashCardController.cs" />
     <Compile Include="Ember\InnerWarmthCardController.cs" />
+    <Compile Include="Ember\OffThePathCardController.cs" />
+    <Compile Include="Ember\ReasonableParanoiaCardController.cs" />
     <Compile Include="Grandfather\AcceleratedTimetableCardController.cs" />
     <Compile Include="Grandfather\ArrowOfTimeCardController.cs" />
     <Compile Include="Grandfather\BendingTheRulesCardController.cs" />
