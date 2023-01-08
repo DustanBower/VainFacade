@@ -93,6 +93,11 @@
     <Compile Include="EldrenwoodVillage\SamRichardsCardController.cs" />
     <Compile Include="EldrenwoodVillage\SheriffSmithyCardController.cs" />
     <Compile Include="EldrenwoodVillage\TomBartonCardController.cs" />
+    <Compile Include="Ember\BlazeOfGloryCardController.cs" />
+    <Compile Include="Ember\DreamsOfFaerieCardController.cs" />
+    <Compile Include="Ember\EverythingBurnsCardController.cs" />
+    <Compile Include="Ember\FlamingSlashCardController.cs" />
+    <Compile Include="Ember\InnerWarmthCardController.cs" />
     <Compile Include="Grandfather\AcceleratedTimetableCardController.cs" />
     <Compile Include="Grandfather\ArrowOfTimeCardController.cs" />
     <Compile Include="Grandfather\BendingTheRulesCardController.cs" />
