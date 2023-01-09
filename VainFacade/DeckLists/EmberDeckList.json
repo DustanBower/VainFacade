@@ -391,7 +391,7 @@
 				"limited"
 			],
 			"body": [
-				"The first time each turn {EmberCharacter} deals a target fire damage, you may reduce the next damage dealt by that target by 1 for each Blaze card in play."
+				"The first time each turn {EmberCharacter} deals each target fire damage, you may reduce the next damage dealt by that target by 1 for each Blaze card in play."
 			],
 			"powers": [
 				"You may discard a card to play a card. Then {EmberCharacter} deals a target 1 melee and 1 fire damage."

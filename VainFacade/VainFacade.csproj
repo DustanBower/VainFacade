@@ -96,11 +96,15 @@
     <Compile Include="Ember\BlazeOfGloryCardController.cs" />
     <Compile Include="Ember\DreamsOfFaerieCardController.cs" />
     <Compile Include="Ember\EmberCharacterCardController.cs" />
+    <Compile Include="Ember\EmberUtilityCardController.cs" />
     <Compile Include="Ember\EverythingBurnsCardController.cs" />
     <Compile Include="Ember\FlamingSlashCardController.cs" />
+    <Compile Include="Ember\FromTheAshesCardController.cs" />
     <Compile Include="Ember\InnerWarmthCardController.cs" />
     <Compile Include="Ember\OffThePathCardController.cs" />
     <Compile Include="Ember\ReasonableParanoiaCardController.cs" />
+    <Compile Include="Ember\ScorchingShriekCardController.cs" />
+    <Compile Include="Ember\SearingTalonsCardController.cs" />
     <Compile Include="Grandfather\AcceleratedTimetableCardController.cs" />
     <Compile Include="Grandfather\ArrowOfTimeCardController.cs" />
     <Compile Include="Grandfather\BendingTheRulesCardController.cs" />
