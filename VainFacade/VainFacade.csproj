@@ -95,6 +95,7 @@
     <Compile Include="EldrenwoodVillage\TomBartonCardController.cs" />
     <Compile Include="Ember\BlazeOfGloryCardController.cs" />
     <Compile Include="Ember\DreamsOfFaerieCardController.cs" />
+    <Compile Include="Ember\EmberCharacterCardController.cs" />
     <Compile Include="Ember\EverythingBurnsCardController.cs" />
     <Compile Include="Ember\FlamingSlashCardController.cs" />
     <Compile Include="Ember\InnerWarmthCardController.cs" />
