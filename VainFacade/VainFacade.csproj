@@ -93,7 +93,10 @@
     <Compile Include="EldrenwoodVillage\SamRichardsCardController.cs" />
     <Compile Include="EldrenwoodVillage\SheriffSmithyCardController.cs" />
     <Compile Include="EldrenwoodVillage\TomBartonCardController.cs" />
+    <Compile Include="Ember\BirdOfPreyCardController.cs" />
     <Compile Include="Ember\BlazeOfGloryCardController.cs" />
+    <Compile Include="Ember\BrimstoneDownCardController.cs" />
+    <Compile Include="Ember\BurningWingsCardController.cs" />
     <Compile Include="Ember\DreamsOfFaerieCardController.cs" />
     <Compile Include="Ember\EmberCharacterCardController.cs" />
     <Compile Include="Ember\EmberUtilityCardController.cs" />

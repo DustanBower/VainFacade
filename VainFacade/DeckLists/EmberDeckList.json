@@ -119,7 +119,7 @@
 				"limited"
 			],
 			"body": [
-				"When {EmberCharacter} would deal a target damage and that damage would be reduced, increase that damage by 1."
+				"The first time each instance of damage dealt by {EmberCharacter} would be reduced, increase that damage by 1."
 			],
 			"powers": [
 				"For each Blaze card in play, reveal and replace the top card of a deck. You may discard the top card of a deck. You may play a card or you may discard a card to use a power."
