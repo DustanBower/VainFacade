@@ -63,11 +63,11 @@ namespace VainFacadePlaytest.Ember
             int healAmt = GetPowerNumeral(0, 1);
             int increaseAmt = GetPowerNumeral(1, 1);
             // "Until the start of your next turn, whenever {EmberCharacter} is dealt fire damage, she regains 1 HP for each Blaze card in play, then increases the next damage she deals by 1."
-            OnDealDamageStatusEffect reaction = new OnDealDamageStatusEffect(CardWithoutReplacements, nameof(FireDamageResponse), "Until the start of " + base.TurnTaker.Name + "'s next turn, whenever " + base.CharacterCard.Title + " is dealt fire damage, she regains " + healAmt.ToString() + " HP for each Blaze card in play, then increases the next damage she deals by " + increaseAmt.ToString() + ".", new TriggerType[] { TriggerType.GainHP, TriggerType.CreateStatusEffect }, base.TurnTaker, base.Card, new int[] {healAmt, increaseAmt});
+            OnDealDamageStatusEffect reaction = new OnDealDamageStatusEffect(CardWithoutReplacements, nameof(FireDamageResponse), "Whenever " + base.CharacterCard.Title + " is dealt fire damage, she regains " + healAmt.ToString() + " HP for each Blaze card in play, then increases the next damage she deals by " + increaseAmt.ToString() + ".", new TriggerType[] { TriggerType.GainHP, TriggerType.CreateStatusEffect }, base.TurnTaker, base.Card, new int[] {healAmt, increaseAmt});
             reaction.TargetCriteria.IsSpecificCard = base.CharacterCard;
             reaction.DamageAmountCriteria.GreaterThan = 0;
             reaction.DamageTypeCriteria.AddType(DamageType.Fire);
-            reaction.UntilCardLeavesPlay(base.CharacterCard);
+            reaction.UntilTargetLeavesPlay(base.CharacterCard);
             reaction.UntilStartOfNextTurn(base.TurnTaker);
             reaction.BeforeOrAfter = BeforeOrAfter.After;
             IEnumerator statusCoroutine = AddStatusEffect(reaction);

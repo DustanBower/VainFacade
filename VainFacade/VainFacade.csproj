@@ -105,6 +105,9 @@
     <Compile Include="Ember\ReasonableParanoiaCardController.cs" />
     <Compile Include="Ember\ScorchingShriekCardController.cs" />
     <Compile Include="Ember\SearingTalonsCardController.cs" />
+    <Compile Include="Ember\TheBrightestFlameCardController.cs" />
+    <Compile Include="Ember\WhatIHaveBecomeCardController.cs" />
+    <Compile Include="Ember\WreathedInFlameCardController.cs" />
     <Compile Include="Grandfather\AcceleratedTimetableCardController.cs" />
     <Compile Include="Grandfather\ArrowOfTimeCardController.cs" />
     <Compile Include="Grandfather\BendingTheRulesCardController.cs" />
