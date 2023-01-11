@@ -150,7 +150,7 @@
 				"When {EmberCharacter} would deal a target fire damage, that target may regain that much HP instead. Reduce HP gained this way by 1 for each time HP has been regained this way this turn, to a minimum of 1."
 			],
 			"icons": [
-				"PreventDamageGreen",
+				"CancelledDamageGreen",
 				"GainHP"
 			],
 			"flavorQuotes": [
@@ -254,7 +254,7 @@
 			"flavorQuotes": [
 				{
 					"identifier": "Banshee",
-					"text": "I can hear her. I{BR}don't think she's dead."
+					"text": "I can hear her.{BR}I don't think she's dead."
 				},
 				{
 					"identifier": "Gadhavi",
@@ -377,7 +377,7 @@
 			"flavorQuotes": [
 				{
 					"identifier": "General Janson",
-					"text": "Cloudwalker One, you are clear to{BR}engage. Light it up! I want 'em to see it from{BR}space!"
+					"text": "Cloudwalker One, you are clear to{BR}engage. Light it up! I want 'em to see it{BR}from space!"
 				}
 			],
 			"flavorReference": "General Janson, Apex Incursion: Operation Icarus #4"
@@ -481,13 +481,13 @@
 			"icons": [
 				"IncreaseDamageDealtFire",
 				"HasPower",
-				"DealCounterDamage",
+				"CounterDamage",
 				"Discard"
 			],
 			"flavorQuotes": [
 				{
 					"identifier": "The Fury",
-					"text": "You have been garbed in resplendent{BR}glory, yet don lowly rags to cloak your{BR}riches. Cast off the trappings of your lessers!"
+					"text": "You have been garbed in{BR}resplendent glory, yet don lowly rags to{BR}cloak your riches. Cast off the trappings{BR}of your lessers!"
 				}
 			],
 			"flavorReference": "The Fury, Strange Stories: Dead Men's Tales One-Shot"
