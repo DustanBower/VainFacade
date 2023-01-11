@@ -23,13 +23,14 @@
     "namespace": "VainFacadePlaytest",
     "dll": "VainFacadePlaytest.dll",
     "publishedFileId": 2835111137,
-    "version": "0.9",
+    "version": "0.9.1",
     "color": "232370",
     "manualTags": [],
     "decks": {
       "heroes": [
 	    "Burgess",
 		"Carnaval",
+		"Ember",
 	    "TheFury",
 	    "Node",
 		"Sphere"
