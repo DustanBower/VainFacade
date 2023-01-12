@@ -19,6 +19,7 @@ namespace VainFacadePlaytest.Ember
         }
 
         private readonly string FirstBurnThisTurn = "FirstBurnThisTurn";
+        private Card relevant;
 
         public override void AddTriggers()
         {
@@ -30,7 +31,12 @@ namespace VainFacadePlaytest.Ember
 
         public override CustomDecisionText GetCustomDecisionText(IDecision decision)
         {
-            return new CustomDecisionText("Do you want to reduce the next damage dealt by this target by " + NumBlazeCardsInPlay().ToString() + "? ", "deciding whether to reduce the next damage dealt by this target by " + NumBlazeCardsInPlay().ToString(), "Vote for whether to reduce the next damage dealt by this target by " + NumBlazeCardsInPlay().ToString(), "whether to reduce the next damage dealt by this target by " + NumBlazeCardsInPlay().ToString());
+            string target = "this target";
+            if (relevant != null)
+            {
+                target = relevant.Title;
+            }
+            return new CustomDecisionText("Do you want to reduce the next damage dealt by " + target + " by " + NumBlazeCardsInPlay().ToString() + "? ", "deciding whether to reduce the next damage dealt by " + target + " by " + NumBlazeCardsInPlay().ToString(), "Vote for whether to reduce the next damage dealt by " + target + " by " + NumBlazeCardsInPlay().ToString(), "whether to reduce the next damage dealt by " + target + " by " + NumBlazeCardsInPlay().ToString());
         }
 
         private IEnumerator BlazeStunResponse(DealDamageAction dda)
@@ -38,8 +44,9 @@ namespace VainFacadePlaytest.Ember
             SetCardPropertyToTrueIfRealAction(GeneratePerTargetKey(FirstBurnThisTurn, dda.Target));
             // "... you may reduce the next damage dealt by that target by 1 for each Blaze card in play."
             int blazeCount = NumBlazeCardsInPlay();
+            relevant = dda.Target;
             List<YesNoCardDecision> choices = new List<YesNoCardDecision>();
-            IEnumerator chooseCoroutine = base.GameController.MakeYesNoCardDecision(DecisionMaker, SelectionType.Custom, dda.Target, storedResults: choices, associatedCards: base.Card.ToEnumerable(), cardSource: GetCardSource());
+            IEnumerator chooseCoroutine = base.GameController.MakeYesNoCardDecision(DecisionMaker, SelectionType.Custom, dda.Target, storedResults: choices, associatedCards: dda.Target.ToEnumerable(), cardSource: GetCardSource());
             if (base.UseUnityCoroutines)
             {
                 yield return base.GameController.StartCoroutine(chooseCoroutine);
