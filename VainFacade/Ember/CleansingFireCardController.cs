@@ -16,7 +16,7 @@ namespace VainFacadePlaytest.Ember
         {
             AllowFastCoroutinesDuringPretend = false;
             // If in play: show number of times targets have healed this turn
-            SpecialStringMaker.ShowIfElseSpecialString(() => TimesHealedThisTurn() > 0, () => "HP has been regained " + TimesHealedThisTurn().ToString_SingularOrPlural("time", "times") + " with " + base.Card.Title + " this turn.", () => "HP has not been regained with " + base.Card.Title + " this turn.").Condition = () => base.Card.IsInPlayAndHasGameText;
+            SpecialStringMaker.ShowIfElseSpecialString(() => TimesHealedThisTurn() > 0, () => "HP has been regained " + TimesHealedThisTurn().ToString() + " " + TimesHealedThisTurn().ToString_SingularOrPlural("time", "times") + " with " + base.Card.Title + " this turn.", () => "HP has not been regained with " + base.Card.Title + " this turn.").Condition = () => base.Card.IsInPlayAndHasGameText;
         }
 
         public override void AddTriggers()
@@ -28,7 +28,7 @@ namespace VainFacadePlaytest.Ember
 
         public int TimesHealedThisTurn()
         {
-            return base.GameController.Game.Journal.GainHPEntriesThisTurn().Where((GainHPJournalEntry g) => g.CardSource == base.Card).Count();
+            return base.GameController.Game.Journal.GainHPEntriesThisTurn().Where((GainHPJournalEntry g) => g.SourceCard != null && g.SourceCard.Identifier == Identifier).Count();
         }
 
         // Further code copied from CauterizeCardController from the Cauldron, with modifications to determine the appropriate amount of healing
