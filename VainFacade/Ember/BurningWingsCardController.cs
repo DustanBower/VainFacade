@@ -44,7 +44,7 @@ namespace VainFacadePlaytest.Ember
                 Location deck = GetSelectedLocation(selectResults);
                 if (deck != null)
                 {
-                    IEnumerator revealReplaceCoroutine = RevealCards_MoveMatching_ReturnNonMatchingCards(base.TurnTakerController, deck, false, false, false, new LinqCardCriteria((Card c) => false), 1, 1, revealedCardDisplay: RevealedCardDisplay.ShowRevealedCards);
+                    IEnumerator revealReplaceCoroutine = RevealCards_MoveMatching_ReturnNonMatchingCards(base.TurnTakerController, deck, false, false, false, new LinqCardCriteria((Card c) => false), 1, 1, shuffleSourceAfterwards: false, revealedCardDisplay: RevealedCardDisplay.ShowRevealedCards);
                     if (base.UseUnityCoroutines)
                     {
                         yield return base.GameController.StartCoroutine(revealReplaceCoroutine);
