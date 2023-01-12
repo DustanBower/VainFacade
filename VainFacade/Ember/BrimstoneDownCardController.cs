@@ -28,7 +28,7 @@ namespace VainFacadePlaytest.Ember
         private IEnumerator FireDamageResponse(PhaseChangeAction pca)
         {
             // "... {EmberCharacter} deals up to X plus 1 targets 1 fire damage each, where X is the number of decks that have had cards revealed by your cards or powers this turn."
-            IEnumerator damageCoroutine = base.GameController.SelectTargetsAndDealDamage(DecisionMaker, new DamageSource(base.GameController, base.CharacterCard), 1, DamageType.Fire, NumberOfDecksRevealedFromThisTurn(), false, 0, cardSource: GetCardSource());
+            IEnumerator damageCoroutine = base.GameController.SelectTargetsAndDealDamage(DecisionMaker, new DamageSource(base.GameController, base.CharacterCard), 1, DamageType.Fire, NumberOfDecksRevealedFromThisTurn() + 1, false, 0, cardSource: GetCardSource());
             if (base.UseUnityCoroutines)
             {
                 yield return base.GameController.StartCoroutine(damageCoroutine);
