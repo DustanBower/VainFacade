@@ -116,7 +116,8 @@ namespace VainFacadePlaytest.Ember
             if (damageDealer != null)
             {
                 // "... deals a target 1 fire damage, ..."
-                IEnumerator firstCoroutine = base.GameController.SelectTargetsAndDealDamage(DecisionMaker, new DamageSource(base.GameController, damageDealer), 1, DamageType.Fire, 1, false, 1, cardSource: GetCardSource());
+                HeroTurnTakerController selector = FindTurnTakerController(damageDealer.Owner).ToHero();
+                IEnumerator firstCoroutine = base.GameController.SelectTargetsAndDealDamage(selector, new DamageSource(base.GameController, damageDealer), 1, DamageType.Fire, 1, false, 1, cardSource: GetCardSource());
                 if (base.UseUnityCoroutines)
                 {
                     yield return base.GameController.StartCoroutine(firstCoroutine);
@@ -126,7 +127,7 @@ namespace VainFacadePlaytest.Ember
                     base.GameController.ExhaustCoroutine(firstCoroutine);
                 }
                 // "... then deals a target 1 fire damage."
-                IEnumerator secondCoroutine = base.GameController.SelectTargetsAndDealDamage(DecisionMaker, new DamageSource(base.GameController, damageDealer), 1, DamageType.Fire, 1, false, 1, cardSource: GetCardSource());
+                IEnumerator secondCoroutine = base.GameController.SelectTargetsAndDealDamage(selector, new DamageSource(base.GameController, damageDealer), 1, DamageType.Fire, 1, false, 1, cardSource: GetCardSource());
                 if (base.UseUnityCoroutines)
                 {
                     yield return base.GameController.StartCoroutine(secondCoroutine);
