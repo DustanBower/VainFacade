@@ -2,9 +2,9 @@
 <data version="1.0">
     <struct type="Settings">
         <key>fileFormatVersion</key>
-        <int>5</int>
+        <int>6</int>
         <key>texturePackerVersion</key>
-        <string>6.0.2</string>
+        <string>7.0.0</string>
         <key>autoSDSettings</key>
         <array>
             <struct type="AutoSDSettings">
@@ -127,8 +127,8 @@
                 <filename>Icons0.json</filename>
             </struct>
         </map>
-        <key>multiPack</key>
-        <false/>
+        <key>multiPackMode</key>
+        <enum type="SettingsBase::MultiPackMode">MultiPackOff</enum>
         <key>forceIdenticalLayout</key>
         <false/>
         <key>outputFormat</key>
@@ -175,6 +175,7 @@
         <map type="IndividualSpriteSettingsMap">
             <key type="filename">BurgessIcon.png</key>
             <key type="filename">CarnavalIcon.png</key>
+            <key type="filename">EmberIcon.png</key>
             <key type="filename">FridayIcon.png</key>
             <key type="filename">GlyphIcon.png</key>
             <key type="filename">NodeIcon.png</key>
@@ -195,16 +196,23 @@
                 <false/>
             </struct>
         </map>
-        <key>fileList</key>
-        <array>
-            <filename>SphereIcon.png</filename>
-            <filename>GlyphIcon.png</filename>
-            <filename>BurgessIcon.png</filename>
-            <filename>FridayIcon.png</filename>
-            <filename>TheFuryIcon.png</filename>
-            <filename>NodeIcon.png</filename>
-            <filename>CarnavalIcon.png</filename>
-        </array>
+        <key>fileLists</key>
+        <map type="SpriteSheetMap">
+            <key>default</key>
+            <struct type="SpriteSheet">
+                <key>files</key>
+                <array>
+                    <filename>SphereIcon.png</filename>
+                    <filename>GlyphIcon.png</filename>
+                    <filename>BurgessIcon.png</filename>
+                    <filename>FridayIcon.png</filename>
+                    <filename>TheFuryIcon.png</filename>
+                    <filename>NodeIcon.png</filename>
+                    <filename>CarnavalIcon.png</filename>
+                    <filename>EmberIcon.png</filename>
+                </array>
+            </struct>
+        </map>
         <key>ignoreFileList</key>
         <array/>
         <key>replaceList</key>
