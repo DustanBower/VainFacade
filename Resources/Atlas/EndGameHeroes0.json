@@ -18,7 +18,7 @@
 },
 "CarnavalCharacter.png":
 {
-	"frame": {"x":0,"y":203,"w":400,"h":200},
+	"frame": {"x":806,"y":0,"w":400,"h":200},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":400,"h":200},
@@ -26,7 +26,23 @@
 },
 "CarnavalCharacterFlipped.png":
 {
-	"frame": {"x":403,"y":203,"w":400,"h":200},
+	"frame": {"x":1209,"y":0,"w":400,"h":200},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":400,"h":200},
+	"sourceSize": {"w":400,"h":200}
+},
+"EmberCharacter.png":
+{
+	"frame": {"x":1612,"y":0,"w":400,"h":200},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":400,"h":200},
+	"sourceSize": {"w":400,"h":200}
+},
+"EmberCharacterFlipped.png":
+{
+	"frame": {"x":0,"y":203,"w":400,"h":200},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":400,"h":200},
@@ -34,7 +50,7 @@
 },
 "NodeCharacter.png":
 {
-	"frame": {"x":0,"y":406,"w":400,"h":200},
+	"frame": {"x":403,"y":203,"w":400,"h":200},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":400,"h":200},
@@ -42,7 +58,7 @@
 },
 "NodeCharacterFlipped.png":
 {
-	"frame": {"x":403,"y":406,"w":400,"h":200},
+	"frame": {"x":806,"y":203,"w":400,"h":200},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":400,"h":200},
@@ -50,7 +66,7 @@
 },
 "SphereCharacter.png":
 {
-	"frame": {"x":0,"y":609,"w":400,"h":200},
+	"frame": {"x":1209,"y":203,"w":400,"h":200},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":400,"h":200},
@@ -58,7 +74,7 @@
 },
 "SphereCharacterFlipped.png":
 {
-	"frame": {"x":403,"y":609,"w":400,"h":200},
+	"frame": {"x":1612,"y":203,"w":400,"h":200},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":400,"h":200},
@@ -66,7 +82,7 @@
 },
 "TheFuryCharacter.png":
 {
-	"frame": {"x":0,"y":812,"w":400,"h":200},
+	"frame": {"x":0,"y":406,"w":400,"h":200},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":400,"h":200},
@@ -74,7 +90,7 @@
 },
 "TheFuryCharacterFlipped.png":
 {
-	"frame": {"x":403,"y":812,"w":400,"h":200},
+	"frame": {"x":403,"y":406,"w":400,"h":200},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":400,"h":200},
@@ -85,8 +101,8 @@
 	"version": "1.0",
 	"image": "EndGameHeroes0.png",
 	"format": "RGBA8888",
-	"size": {"w":1024,"h":1024},
+	"size": {"w":2048,"h":2048},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:a5aa3ba03687fb3df249a336e6bae0c3:13192517625a3390f85e679810ad85c4:e92652cff04ed6c8e37f7bc0458ec814$"
+	"smartupdate": "$TexturePacker:SmartUpdate:027c89e1f316b256f2fe402ae4e05bc3:4d4033f8502730a861b0b2b6fb095cf1:e92652cff04ed6c8e37f7bc0458ec814$"
 }
 }
