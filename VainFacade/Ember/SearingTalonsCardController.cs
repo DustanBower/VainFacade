@@ -25,7 +25,7 @@ namespace VainFacadePlaytest.Ember
         {
             base.AddTriggers();
             // "The first time each turn {EmberCharacter} deals each target fire damage, you may reduce the next damage dealt by that target by 1 for each Blaze card in play."
-            AddTrigger((DealDamageAction dda) => dda.DamageSource != null && dda.DamageSource.Card != null && dda.DamageSource.Card == base.CharacterCard && dda.DidDealDamage && dda.DamageType == DamageType.Fire && !IsPropertyTrue(GeneratePerTargetKey(FirstBurnThisTurn, dda.Target)), BlazeStunResponse, TriggerType.CreateStatusEffect, TriggerTiming.After);
+            AddTrigger((DealDamageAction dda) => dda.DamageSource != null && dda.DamageSource.Card != null && dda.DamageSource.Card == base.CharacterCard && dda.DidDealDamage && dda.DamageType == DamageType.Fire && dda.Target.IsInPlayAndHasGameText && !IsPropertyTrue(GeneratePerTargetKey(FirstBurnThisTurn, dda.Target)), BlazeStunResponse, TriggerType.CreateStatusEffect, TriggerTiming.After);
             AddAfterLeavesPlayAction((GameAction ga) => ResetFlagsAfterLeavesPlay(FirstBurnThisTurn), TriggerType.Hidden);
         }
 
