@@ -21,14 +21,30 @@ namespace VainFacadePlaytest.Ember
         public override void AddTriggers()
         {
             base.AddTriggers();
-            // "At the end of each turn, {EmberCharacter} deals up to X plus 1 targets 1 fire damage each, where X is the number of decks that have had cards revealed by your cards or powers this turn."
-            AddEndOfTurnTrigger((TurnTaker tt) => base.GameController.IsTurnTakerVisibleToCardSource(tt, GetCardSource()), FireDamageResponse, TriggerType.DealDamage);
+            // "When you use a power, {EmberCharacter} may deal 1 target 1 fire damage."
+            AddTrigger((UsePowerAction upa) => upa.HeroUsingPower == base.TurnTakerController.ToHero(), BurnOneResponse, TriggerType.DealDamage, TriggerTiming.After);
+            // "At the end of each turn, {EmberCharacter} deals up to X targets 1 fire damage each, where X is the number of decks that have had cards revealed by your cards or powers this turn."
+            AddEndOfTurnTrigger((TurnTaker tt) => base.GameController.IsTurnTakerVisibleToCardSource(tt, GetCardSource()), BurnXResponse, TriggerType.DealDamage);
         }
 
-        private IEnumerator FireDamageResponse(PhaseChangeAction pca)
+        private IEnumerator BurnOneResponse(UsePowerAction upa)
         {
-            // "... {EmberCharacter} deals up to X plus 1 targets 1 fire damage each, where X is the number of decks that have had cards revealed by your cards or powers this turn."
-            IEnumerator damageCoroutine = base.GameController.SelectTargetsAndDealDamage(DecisionMaker, new DamageSource(base.GameController, base.CharacterCard), 1, DamageType.Fire, NumberOfDecksRevealedFromThisTurn() + 1, false, 0, cardSource: GetCardSource());
+            // "... {EmberCharacter} may deal 1 target 1 fire damage."
+            IEnumerator damageCoroutine = base.GameController.SelectTargetsAndDealDamage(DecisionMaker, new DamageSource(base.GameController, base.CharacterCard), 1, DamageType.Fire, 1, false, 0, cardSource: GetCardSource());
+            if (base.UseUnityCoroutines)
+            {
+                yield return base.GameController.StartCoroutine(damageCoroutine);
+            }
+            else
+            {
+                base.GameController.ExhaustCoroutine(damageCoroutine);
+            }
+        }
+
+        private IEnumerator BurnXResponse(PhaseChangeAction pca)
+        {
+            // "... {EmberCharacter} deals up to X targets 1 fire damage each, where X is the number of decks that have had cards revealed by your cards or powers this turn."
+            IEnumerator damageCoroutine = base.GameController.SelectTargetsAndDealDamage(DecisionMaker, new DamageSource(base.GameController, base.CharacterCard), 1, DamageType.Fire, NumberOfDecksRevealedFromThisTurn(), false, 0, cardSource: GetCardSource());
             if (base.UseUnityCoroutines)
             {
                 yield return base.GameController.StartCoroutine(damageCoroutine);

@@ -96,11 +96,12 @@
 				"limited"
 			],
 			"body": [
-				"At the end of each turn, {EmberCharacter} deals up to X plus 1 targets 1 fire damage each, where X is the number of decks that have had cards revealed by your cards or powers this turn."
+				"When you use a power, {EmberCharacter} may deal 1 target 1 fire damage.",
+				"At the end of each turn, {EmberCharacter} deals up to X targets 1 fire damage each, where X is the number of decks that have had cards revealed by your cards or powers this turn."
 			],
 			"icons": [
-				"EndOfTurnAction",
-				"DealDamageFire"
+				"DealDamageFire",
+				"EndOfTurnAction"
 			],
 			"flavorQuotes": [
 				{
