@@ -61,7 +61,7 @@
 			"flavorQuotes": [
 				{
 					"identifier": "Judge Rustici",
-					"text": "She enjoys hunting them, no matter{BR}what she tells you- or herself."
+					"text": "She enjoys hunting them, no matter{BR}what she tells you -- or herself."
 				}
 			],
 			"flavorReference": "Judge Rustici, Guardians at the Gate #53"
@@ -82,7 +82,7 @@
 			"flavorQuotes": [
 				{
 					"identifier": "Sir Elisedd the Green",
-					"text": "Craven Gilodeth, your ambition{BR}burns hotter than your honor, but{BR}not so hotly as your men!"
+					"text": "Craven Gilodeth, your ambition{BR}burned hotter than your honor, but{BR}not so hotly as your men!"
 				}
 			],
 			"flavorReference": "Sir Elisedd the Green, Valderion Shadows #7"
@@ -230,7 +230,7 @@
 					"text": "We are in pursuit of echoes of{BR}catalogued anomaly 52 south on Highway{BR}411, requesting reinforce-"
 				}
 			],
-			"flavorReference": "Agent Snow, Project Q: Numbered Days One-Shot"
+			"flavorReference": "Agent Snow, Project Q: Numbered Days"
 		},
 		{
 			"identifier": "FromTheAshes",
@@ -256,23 +256,23 @@
 			"flavorQuotes": [
 				{
 					"identifier": "Banshee",
-					"text": "I can hear her.{BR}I don't think she's dead."
+					"text": "I can't hear her.{BR}I don't think she's dead."
 				},
 				{
 					"identifier": "Gadhavi",
-					"text": "She's a pile of ash-"
+					"text": "She's a pile of ash--"
 				},
 				{
 					"identifier": "Glyph",
-					"text": "Ash and an ember-"
+					"text": "Ash and an ember--"
 				},
 				{
 					"identifier": "Banshee",
-					"text": "Of the fire-"
+					"text": "Of the fire--"
 				},
 				{
 					"identifier": "Glyph",
-					"text": "- and the magic."
+					"text": "-- and the magic."
 				}
 			],
 			"flavorReference": "Guardians at the Gate #77"
@@ -321,13 +321,7 @@
 				"HasPower",
 				"Manipulate"
 			],
-			"flavorQuotes": [
-				{
-					"identifier": "Ember",
-					"text": "I don't want this curse-{BR}this, this evil inside me! I just want to{BR}find my way back to the narrow path! Ye{BR}can't ask me to do this!"
-				}
-			],
-			"flavorReference": "Ember, Guardians at the Gate #47"
+			"flavorText": "“I don't want this curse-- this,{BR}this evil inside me! I just want{BR}to find my way back to the narrow{BR}path! Ye can't ask me to do this!”{BR}- Ember, Guardians at the Gate #47"
 		},
 		{
 			"identifier": "ReasonableParanoia",
@@ -360,7 +354,7 @@
 					"text": "Project Q! We've got to move!"
 				}
 			],
-			"flavorReference": "Project Q: Numbered Days One-Shot"
+			"flavorReference": "Project Q: Numbered Days"
 		},
 		{
 			"identifier": "ScorchingShriek",
@@ -486,13 +480,7 @@
 				"CounterDamage",
 				"Discard"
 			],
-			"flavorQuotes": [
-				{
-					"identifier": "The Fury",
-					"text": "You have been garbed in{BR}resplendent glory, yet don lowly rags to{BR}cloak your riches. Cast off the trappings{BR}of your lessers!"
-				}
-			],
-			"flavorReference": "The Fury, Strange Stories: Dead Men's Tales One-Shot"
+			"flavorText": "{BR}“You have been garbed in{BR}resplendent glory, yet don lowly{BR}rags to cloak your riches. Cast off{BR}the trappings of your lessers!”{BR}- The Fury,{BR}Strange Stories: Dead Men's Tales"
 		}
 	],
 	"promoCards": [
