@@ -36,6 +36,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Blitz\GoLongCardController.cs" />
+    <Compile Include="Blitz\OffsidesCardController.cs" />
+    <Compile Include="Blitz\PersonalFoulCardController.cs" />
+    <Compile Include="Blitz\TooManyMenOnTheFieldCardController.cs" />
+    <Compile Include="Blitz\UnsportsmanlikeConductCardController.cs" />
     <Compile Include="Burgess\AQuestionableSourceCardController.cs" />
     <Compile Include="Burgess\BastionPDVestCardController.cs" />
     <Compile Include="Burgess\BurgessCharacterCardController.cs" />
