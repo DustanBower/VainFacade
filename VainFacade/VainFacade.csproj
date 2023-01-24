@@ -36,6 +36,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Blitz\BlitzUtilityCardController.cs" />
+    <Compile Include="Blitz\FiredUpCardController.cs" />
     <Compile Include="Blitz\GoLongCardController.cs" />
     <Compile Include="Blitz\OffsidesCardController.cs" />
     <Compile Include="Blitz\PersonalFoulCardController.cs" />
