@@ -15,7 +15,7 @@ namespace VainFacadePlaytest.Blitz
             : base(card, turnTakerController)
         {
             // If in play: show whether Blitz has already been dealt damage by another target this turn
-            SpecialStringMaker.ShowHasBeenUsedThisTurn(FirstNonSelfDamageThisTurn, base.CharacterCard.Title + " has already been dealt damage by another target this turn.", base.CharacterCard.Title + " has not been dealt damage by any other target this turn.").Condition = () => base.Card.IsInPlayAndHasGameText;
+            SpecialStringMaker.ShowHasBeenUsedThisTurn(FirstNonSelfDamageThisTurn, base.CharacterCard.Title + " has already been dealt damage by another target this turn since " + base.Card.Title + " entered play.", base.CharacterCard.Title + " has not been dealt damage by any other target this turn since " + base.Card.Title + " entered play.").Condition = () => base.Card.IsInPlayAndHasGameText;
         }
 
         protected readonly string FirstNonSelfDamageThisTurn = "FirstNonSelfDamageThisTurn";
@@ -25,6 +25,7 @@ namespace VainFacadePlaytest.Blitz
             base.AddTriggers();
             // "The first time each turn {BlitzCharacter} is dealt damage by a target other than {BlitzCharacter}, he deals the source of that damage 3 lightning damage."
             AddTrigger((DealDamageAction dda) => dda.Target == base.CharacterCard && dda.DidDealDamage && dda.DamageSource != null && dda.DamageSource.IsCard && dda.DamageSource.Card != null && dda.DamageSource.Card != base.CharacterCard && !HasBeenSetToTrueThisTurn(FirstNonSelfDamageThisTurn), RetaliateResponse, TriggerType.DealDamage, TriggerTiming.After);
+            AddAfterLeavesPlayAction((GameAction ga) => ResetFlagAfterLeavesPlay(FirstNonSelfDamageThisTurn), TriggerType.Hidden);
             // "At the start of the villain turn, destroy this card."
             AddStartOfTurnTrigger((TurnTaker tt) => tt == base.TurnTaker, DestroyThisCardResponse, TriggerType.DestroySelf);
         }
