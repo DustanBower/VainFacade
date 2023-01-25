@@ -36,8 +36,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Blitz\ArcProjectorCardController.cs" />
     <Compile Include="Blitz\BlitzCharacterCardController.cs" />
     <Compile Include="Blitz\BlitzUtilityCardController.cs" />
+    <Compile Include="Blitz\CallingAnAudibleCardController.cs" />
     <Compile Include="Blitz\EMChargeStabilizerCardController.cs" />
     <Compile Include="Blitz\FiredUpCardController.cs" />
     <Compile Include="Blitz\GoLongCardController.cs" />
@@ -46,6 +48,7 @@
     <Compile Include="Blitz\PersonalFoulCardController.cs" />
     <Compile Include="Blitz\PlaybookCardController.cs" />
     <Compile Include="Blitz\PowerSourceCardController.cs" />
+    <Compile Include="Blitz\PulseModulatorCardController.cs" />
     <Compile Include="Blitz\RechargeCardController.cs" />
     <Compile Include="Blitz\RushingCardController.cs" />
     <Compile Include="Blitz\SweepRightCardController.cs" />
