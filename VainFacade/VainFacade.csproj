@@ -46,6 +46,7 @@
     <Compile Include="Blitz\PersonalFoulCardController.cs" />
     <Compile Include="Blitz\PlaybookCardController.cs" />
     <Compile Include="Blitz\PowerSourceCardController.cs" />
+    <Compile Include="Blitz\RechargeCardController.cs" />
     <Compile Include="Blitz\RushingCardController.cs" />
     <Compile Include="Blitz\SweepRightCardController.cs" />
     <Compile Include="Blitz\TooManyMenOnTheFieldCardController.cs" />
