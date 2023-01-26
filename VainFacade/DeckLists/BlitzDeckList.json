@@ -28,21 +28,23 @@
 				"When {BlitzCharacter} is dealt lightning damage, increase the next lightning damage dealt by {BlitzCharacter} by X minus 1, where X = the damage taken.",
 				"At the end of the villain turn, if there are no villain Circuit cards in play, flip this card. Otherwise, the environment deals {BlitzCharacter} 3 lightning damage."
 			],
-			"advanced": [
-				"Increase damage dealt by {BlitzCharacter} by 1."
-			],
+			"advanced": "Increase damage dealt by {BlitzCharacter} by 1.",
 			"icons": [
 				"MakeDamageIrreducible",
-				"RedirectDamage",
 				"Discard",
-				"IncreaseDamageDealt",
+				"RedirectDamage",
+				"IncreaseDamageDealtLightning",
 				"EndOfTurnAction",
 				"FlipCard",
 				"DealDamageLightning"
 			],
 			"advancedIcons": [
+				"IncreaseDamageDealt"
 			],
 			"flippedBody": "Strong Offense",
+			"flippedNemesisIdentifiers": [
+				"VainFacadePlaytest.Sphere"
+			],
 			"flippedGameplay": [
 				"Lightning damage cannot have its type changed. Lightning damage dealt to {BlitzCharacter} is irreducible.",
 				"When a target other than {BlitzCharacter} would be dealt lightning damage by a source other than {BlitzCharacter}, 1 player discards a card or that damage is redirected to {BlitzCharacter}.",
@@ -50,15 +52,13 @@
 				"At the end of the villain turn, if there is at least 1 villain Circuit in play, flip this card.",
 				"At the end of the villain turn, the environment deals {BlitzCharacter} 3 lightning damage, then {BlitzCharacter} deals the hero target with the highest HP {H + 1} melee damage and plays the top card of the villain deck."
 			],
-			"flippedAdvanced": [
-				"At the end of the villain turn, {BlitzCharacter} deals the hero target with the highest HP {H - 1} melee damage."
-			],
+			"flippedAdvanced": "At the end of the villain turn, {BlitzCharacter} deals the hero target with the highest HP {H - 1} melee damage.",
 			"flippedIcons": [
 
 				"MakeDamageIrreducible",
-				"RedirectDamage",
 				"Discard",
-				"IncreaseDamageDealt",
+				"RedirectDamage",
+				"IncreaseDamageDealtLightning",
 				"EndOfTurnAction",
 				"FlipCard",
 				"DealDamageLightning",
