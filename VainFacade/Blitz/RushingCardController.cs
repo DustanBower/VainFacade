@@ -5,6 +5,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 
 namespace VainFacadePlaytest.Blitz
@@ -31,7 +32,7 @@ namespace VainFacadePlaytest.Blitz
         private IEnumerator DiscardPlayResponse(DealDamageAction dda)
         {
             // "... {H - 2} players discard a card, ..."
-            IEnumerator discardCoroutine = base.GameController.EachPlayerDiscardsCards(1, 1, requiredNumberOfHeroes: H - 2, showCounter: true, cardSource: GetCardSource());
+            IEnumerator discardCoroutine = base.GameController.SelectTurnTakersAndDoAction(null, new LinqTurnTakerCriteria((TurnTaker tt) => tt.IsHero && !tt.IsIncapacitatedOrOutOfGame && (tt as HeroTurnTaker).HasCardsInHand && (tt as HeroTurnTaker).Hand.Cards.Count() > 0, $"heroes with cards in hand"), SelectionType.DiscardCard, (TurnTaker tt) => base.GameController.SelectAndDiscardCards(FindHeroTurnTakerController((HeroTurnTaker)tt), 1, optional: false, 1, allowAutoDecide: false, selectionType: SelectionType.DiscardCard, responsibleTurnTaker: tt, cardSource: GetCardSource()), H - 2, optional: false, requiredDecisions: H - 2, cardSource: GetCardSource());
             if (base.UseUnityCoroutines)
             {
                 yield return base.GameController.StartCoroutine(discardCoroutine);
