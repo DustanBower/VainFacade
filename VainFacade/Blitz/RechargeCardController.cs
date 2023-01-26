@@ -24,7 +24,7 @@ namespace VainFacadePlaytest.Blitz
             // "When {BlitzCharacter} is dealt lightning damage, he regains the same amount of HP.{BR}Then, he regains 5 HP. If he did not regain HP this way, increase the next lightning damage dealt by {BlitzCharacter} by 1."
             AddTrigger((DealDamageAction dda) => dda.Target == base.CharacterCard && dda.DamageType == DamageType.Lightning && dda.DidDealDamage, HealHealOrBoostResponse, new TriggerType[] { TriggerType.GainHP, TriggerType.CreateStatusEffect }, TriggerTiming.After);
             // "At the end of the villain turn, {BlitzCharacter} deals the hero target with the highest HP 1 irreducible lightning damage. If no damage is dealt this way, each player destroys 1 of their Ongoings."
-            // ...
+            AddEndOfTurnTrigger((TurnTaker tt) => tt == base.TurnTaker, DealOrDestroyResponse, new TriggerType[] { TriggerType.DealDamage, TriggerType.DestroyCard });
         }
 
         private IEnumerator HealHealOrBoostResponse(DealDamageAction dda)
