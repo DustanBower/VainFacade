@@ -23,7 +23,7 @@ namespace VainFacadePlaytest.Blitz
         public override IEnumerator Play()
         {
             // "{BlitzCharacter} deals the hero target with the highest HP X melee damage, where X = the number of hero targets in play."
-            IEnumerator damageCoroutine = DealDamageToHighestHP(base.CharacterCard, 1, (Card c) => c.IsHero && c.IsTarget, (Card c) => base.GameController.FindCardsWhere((Card c2) => c2.IsHero && c2.IsTarget, visibleToCard: GetCardSource()).Count(), DamageType.Melee);
+            IEnumerator damageCoroutine = DealDamageToHighestHP(base.CharacterCard, 1, (Card c) => c.IsHero && c.IsTarget, (Card c) => base.GameController.FindCardsWhere((Card c2) => c2.IsHero && c2.IsTarget && c2.IsInPlayAndHasGameText, visibleToCard: GetCardSource()).Count(), DamageType.Melee);
             if (base.UseUnityCoroutines)
             {
                 yield return base.GameController.StartCoroutine(damageCoroutine);
