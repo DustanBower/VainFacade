@@ -14,6 +14,7 @@ namespace VainFacadePlaytest.Blitz
         public SweepRightCardController(Card card, TurnTakerController turnTakerController)
             : base(card, turnTakerController)
         {
+            AllowFastCoroutinesDuringPretend = false;
             // Show hero target with second lowest HP
             SpecialStringMaker.ShowHeroTargetWithLowestHP(2);
             // If in play: show whether Blitz has been dealt damage this turn
@@ -32,7 +33,7 @@ namespace VainFacadePlaytest.Blitz
             AddTrigger((DealDamageAction dda) => dda.Target == base.CharacterCard && dda.DidDealDamage && !HasBeenSetToTrueThisTurn(FirstDamageToBlitzThisTurn), OnePlayerDiscardsResponse, TriggerType.DiscardCard, TriggerTiming.After);
             AddAfterLeavesPlayAction((GameAction ga) => ResetFlagAfterLeavesPlay(FirstDamageToBlitzThisTurn), TriggerType.Hidden);
             // "The first time {BlitzCharacter} would deal damage to a target other than {BlitzCharacter} each turn, redirect that damage to the hero target with the second lowest HP."
-            AddTrigger((DealDamageAction dda) => dda.DamageSource != null && dda.DamageSource.Card != null && dda.DamageSource.Card == base.CharacterCard && dda.Target != base.CharacterCard && dda.Amount > 0 && !HasBeenSetToTrueThisTurn(FirstDamageByBlitzToOthersThisTurn), RedirectToSecondLowestResponse, TriggerType.WouldBeDealtDamage, TriggerTiming.Before);
+            AddTrigger((DealDamageAction dda) => dda.DamageSource != null && dda.DamageSource.Card != null && dda.DamageSource.Card == base.CharacterCard && dda.Target != base.CharacterCard && dda.Amount > 0 && !HasBeenSetToTrueThisTurn(FirstDamageByBlitzToOthersThisTurn), RedirectToSecondLowestResponse, TriggerType.RedirectDamage, TriggerTiming.Before);
             AddAfterLeavesPlayAction((GameAction ga) => ResetFlagAfterLeavesPlay(FirstDamageByBlitzToOthersThisTurn), TriggerType.Hidden);
         }
 
@@ -53,12 +54,14 @@ namespace VainFacadePlaytest.Blitz
 
         private IEnumerator RedirectToSecondLowestResponse(DealDamageAction dda)
         {
+            Log.Debug("SweepRightCardController.RedirectToSecondLowestResponse: dda: " + dda.ToString());
+            Log.Debug("SweepRightCardController.RedirectToSecondLowestResponse: HasBeenSetToTrueThisTurn(FirstDamageByBlitzToOthersThisTurn): " + HasBeenSetToTrueThisTurn(FirstDamageByBlitzToOthersThisTurn).ToString());
             SetCardPropertyToTrueIfRealAction(FirstDamageByBlitzToOthersThisTurn);
             // "... redirect that damage to the hero target with the second lowest HP."
             if (dda.IsRedirectable)
             {
                 List<Card> results = new List<Card>();
-                IEnumerator findCoroutine = base.GameController.FindTargetWithLowestHitPoints(2, (Card c) => c.IsHero && c.IsTarget && base.GameController.IsCardVisibleToCardSource(c, GetCardSource()), results, null, new DealDamageAction[1] {dda}, true, cardSource: GetCardSource());
+                IEnumerator findCoroutine = base.GameController.FindTargetWithLowestHitPoints(2, (Card c) => c.IsHero && c.IsTarget && base.GameController.IsCardVisibleToCardSource(c, GetCardSource()), results, cardSource: GetCardSource());
                 if (base.UseUnityCoroutines)
                 {
                     yield return base.GameController.StartCoroutine(findCoroutine);
