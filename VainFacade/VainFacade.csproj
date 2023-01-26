@@ -93,6 +93,25 @@
     <Compile Include="EldrenwoodVillage\SamRichardsCardController.cs" />
     <Compile Include="EldrenwoodVillage\SheriffSmithyCardController.cs" />
     <Compile Include="EldrenwoodVillage\TomBartonCardController.cs" />
+    <Compile Include="Ember\BirdOfPreyCardController.cs" />
+    <Compile Include="Ember\BlazeOfGloryCardController.cs" />
+    <Compile Include="Ember\BrimstoneDownCardController.cs" />
+    <Compile Include="Ember\BurningWingsCardController.cs" />
+    <Compile Include="Ember\CleansingFireCardController.cs" />
+    <Compile Include="Ember\DreamsOfFaerieCardController.cs" />
+    <Compile Include="Ember\EmberCharacterCardController.cs" />
+    <Compile Include="Ember\EmberUtilityCardController.cs" />
+    <Compile Include="Ember\EverythingBurnsCardController.cs" />
+    <Compile Include="Ember\FlamingSlashCardController.cs" />
+    <Compile Include="Ember\FromTheAshesCardController.cs" />
+    <Compile Include="Ember\InnerWarmthCardController.cs" />
+    <Compile Include="Ember\OffThePathCardController.cs" />
+    <Compile Include="Ember\ReasonableParanoiaCardController.cs" />
+    <Compile Include="Ember\ScorchingShriekCardController.cs" />
+    <Compile Include="Ember\SearingTalonsCardController.cs" />
+    <Compile Include="Ember\TheBrightestFlameCardController.cs" />
+    <Compile Include="Ember\WhatIHaveBecomeCardController.cs" />
+    <Compile Include="Ember\WreathedInFlameCardController.cs" />
     <Compile Include="Grandfather\AcceleratedTimetableCardController.cs" />
     <Compile Include="Grandfather\ArrowOfTimeCardController.cs" />
     <Compile Include="Grandfather\BendingTheRulesCardController.cs" />
@@ -235,6 +254,9 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="DeckLists\CarnavalDeckList.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="DeckLists\EmberDeckList.json" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

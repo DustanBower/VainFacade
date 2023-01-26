@@ -2,9 +2,9 @@
 <data version="1.0">
     <struct type="Settings">
         <key>fileFormatVersion</key>
-        <int>5</int>
+        <int>6</int>
         <key>texturePackerVersion</key>
-        <string>6.0.2</string>
+        <string>7.0.0</string>
         <key>autoSDSettings</key>
         <array>
             <struct type="AutoSDSettings">
@@ -127,8 +127,8 @@
                 <filename>SetupGame0.json</filename>
             </struct>
         </map>
-        <key>multiPack</key>
-        <false/>
+        <key>multiPackMode</key>
+        <enum type="SettingsBase::MultiPackMode">MultiPackOff</enum>
         <key>forceIdenticalLayout</key>
         <false/>
         <key>outputFormat</key>
@@ -176,6 +176,7 @@
             <key type="filename">../SmallCardArt/Burgess/BurgessCharacter.png</key>
             <key type="filename">../SmallCardArt/Carnaval/CarnavalCharacter.png</key>
             <key type="filename">../SmallCardArt/EldrenwoodVillage/EldrenwoodVillageDeckBack.png</key>
+            <key type="filename">../SmallCardArt/Ember/EmberCharacter.png</key>
             <key type="filename">../SmallCardArt/Grandfather/GrandfatherCharacter.png</key>
             <key type="filename">../SmallCardArt/Node/NodeCharacter.png</key>
             <key type="filename">../SmallCardArt/Sphere/SphereCharacter.png</key>
@@ -197,18 +198,25 @@
                 <false/>
             </struct>
         </map>
-        <key>fileList</key>
-        <array>
-            <filename>../SmallCardArt/TheMidnightBazaar/TheMidnightBazaarDeckBack.png</filename>
-            <filename>../SmallCardArt/Sphere/SphereCharacter.png</filename>
-            <filename>../SmallCardArt/TheBaroness/TheBaronessCharacter.png</filename>
-            <filename>../SmallCardArt/Burgess/BurgessCharacter.png</filename>
-            <filename>../SmallCardArt/EldrenwoodVillage/EldrenwoodVillageDeckBack.png</filename>
-            <filename>../SmallCardArt/Grandfather/GrandfatherCharacter.png</filename>
-            <filename>../SmallCardArt/TheFury/TheFuryCharacter.png</filename>
-            <filename>../SmallCardArt/Node/NodeCharacter.png</filename>
-            <filename>../SmallCardArt/Carnaval/CarnavalCharacter.png</filename>
-        </array>
+        <key>fileLists</key>
+        <map type="SpriteSheetMap">
+            <key>default</key>
+            <struct type="SpriteSheet">
+                <key>files</key>
+                <array>
+                    <filename>../SmallCardArt/TheMidnightBazaar/TheMidnightBazaarDeckBack.png</filename>
+                    <filename>../SmallCardArt/Sphere/SphereCharacter.png</filename>
+                    <filename>../SmallCardArt/TheBaroness/TheBaronessCharacter.png</filename>
+                    <filename>../SmallCardArt/Burgess/BurgessCharacter.png</filename>
+                    <filename>../SmallCardArt/EldrenwoodVillage/EldrenwoodVillageDeckBack.png</filename>
+                    <filename>../SmallCardArt/Grandfather/GrandfatherCharacter.png</filename>
+                    <filename>../SmallCardArt/TheFury/TheFuryCharacter.png</filename>
+                    <filename>../SmallCardArt/Node/NodeCharacter.png</filename>
+                    <filename>../SmallCardArt/Carnaval/CarnavalCharacter.png</filename>
+                    <filename>../SmallCardArt/Ember/EmberCharacter.png</filename>
+                </array>
+            </struct>
+        </map>
         <key>ignoreFileList</key>
         <array/>
         <key>replaceList</key>

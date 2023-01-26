@@ -1,0 +1,488 @@
+{
+	"name": "Ember",
+	"kind": "Hero",
+	"initialCardIdentifiers": [
+		"EmberCharacter"
+	],
+	"cards": [
+		{
+			"identifier": "EmberCharacter",
+			"count": 1,
+			"title": "Ember",
+			"body": "Burning Heart",
+			"backgroundColor": "BB3333",
+			"character": true,
+			"powers": [
+				"{EmberCharacter} deals 1 target 1 fire damage. You may draw a card."
+			],
+			"icons": [
+				"HasPower",
+				"DealDamageFire",
+				"DrawCardNow"
+			],
+			"hitpoints": 26,
+			"nemesisIdentifiers": [
+				"VainFacadePlaytest.Ember"
+			],
+			"incapacitatedAbilities": [
+				"Destroy an environment card.",
+				"A hero target deals a target 1 fire damage, then deals a target 1 fire damage.",
+				"One target regains 2 HP."
+			],
+			"flippedIcons": [
+				"DestroyEnvironment",
+				"DealDamageFire",
+				"GainHP"
+			],
+			"complexity": 2,
+			"openingLines": {
+				"default": "Do ya have nothing better ta be doin'?",
+				"OblivAeonFrontPageCharacter": "Sure he's a big lad, I'm sure he can take a beating."
+			}
+		},
+		{
+			"identifier": "BirdOfPrey",
+			"count": 2,
+			"title": "Bird of Prey",
+			"keywords": [
+				"ongoing",
+				"limited"
+			],
+			"body": [
+				"When {EmberCharacter} destroys a target, you may play a card or use a power.",
+				"At the start of your turn, destroy this card."
+			],
+			"icons": [
+				"PlayCardNow",
+				"UsePowerNow",
+				"StartOfTurnAction",
+				"DestroySelf"
+			],
+			"flavorQuotes": [
+				{
+					"identifier": "Judge Rustici",
+					"text": "She enjoys hunting them, no matter{BR}what she tells you -- or herself."
+				}
+			],
+			"flavorReference": "Judge Rustici, Guardians at the Gate #53"
+		},
+		{
+			"identifier": "BlazeOfGlory",
+			"count": 2,
+			"title": "Blaze of Glory",
+			"keywords": [
+				"one-shot"
+			],
+			"body": [
+				"{EmberCharacter} deals each target 1 irreducible fire damage."
+			],
+			"icons": [
+				"DealDamageFire"
+			],
+			"flavorQuotes": [
+				{
+					"identifier": "Sir Elisedd the Green",
+					"text": "Craven Gilodeth, your ambition{BR}burned hotter than your honor, but{BR}not so hotly as your men!"
+				}
+			],
+			"flavorReference": "Sir Elisedd the Green, Valderion Shadows #7"
+		},
+		{
+			"identifier": "BrimstoneDown",
+			"count": 2,
+			"title": "Brimstone Down",
+			"keywords": [
+				"ongoing",
+				"limited"
+			],
+			"body": [
+				"When you use a power, {EmberCharacter} may deal 1 target 1 fire damage.",
+				"At the end of each turn, {EmberCharacter} deals up to X targets 1 fire damage each, where X is the number of decks that have had cards revealed by your cards or powers this turn."
+			],
+			"icons": [
+				"DealDamageFire",
+				"EndOfTurnAction"
+			],
+			"flavorQuotes": [
+				{
+					"identifier": "Bolt",
+					"text": "That so? A lil' birdie told me{BR}the cavalry ain't comin'."
+				}
+			],
+			"flavorReference": "Bolt, Bulwark #127"
+		},
+		{
+			"identifier": "BurningWings",
+			"count": 2,
+			"title": "Burning Wings",
+			"keywords": [
+				"ongoing",
+				"blaze",
+				"limited"
+			],
+			"body": [
+				"The first time each instance of damage dealt by {EmberCharacter} would be reduced, increase that damage by 1."
+			],
+			"powers": [
+				"For each Blaze card in play, reveal and replace the top card of a deck. You may discard the top card of a deck. You may play a card or you may discard a card to use a power."
+			],
+			"icons": [
+				"IncreaseDamageDealt",
+				"HasPower",
+				"Manipulate",
+				"PlayCardNow"
+			],
+			"flavorQuotes": [
+				{
+					"identifier": "Node",
+					"text": "Don't tell her I said this, but she{BR}looks just like an angel! It's uncanny!"
+				}
+			],
+			"flavorReference": "Node, Strange Stories: The Broken Realm #8"
+		},
+		{
+			"identifier": "CleansingFire",
+			"count": 2,
+			"title": "Cleansing Fire",
+			"keywords": [
+				"ongoing",
+				"limited"
+			],
+			"body": [
+				"When {EmberCharacter} would deal a target fire damage, that target may regain that much HP instead. Reduce HP gained this way by 1 for each time HP has been regained this way this turn, to a minimum of 1."
+			],
+			"icons": [
+				"CancelledDamageGreen",
+				"GainHP"
+			],
+			"flavorQuotes": [
+				{
+					"identifier": "Ember",
+					"text": "Are ye both injured? Will I{BR}burn away yeer wounds?"
+				}
+			],
+			"flavorReference": "Ember, Y-Tech: Infernal Medicine #12"
+		},
+		{
+			"identifier": "DreamsOfFaerie",
+			"count": 3,
+			"title": "Dreams of Faerie",
+			"keywords": [
+				"one-shot"
+			],
+			"body": [
+				"Draw a card.",
+				"{EmberCharacter} deals herself 2 psychic damage.",
+				"Reveal cards from the top of your deck until 3 Ongoings are revealed. Put 1 into your hand. Shuffle the other revealed cards back into your deck."
+			],
+			"icons": [
+				"DrawCardNow",
+				"DealDamagePsychic",
+				"Search"
+			],
+			"flavorQuotes": [
+				{
+					"identifier": "Liana",
+					"text": "Claudia! Jen! She's on fire!{BR}[b]Everything's[/b] on fire!"
+				}
+			],
+			"flavorReference": "Liana, Guardians at the Gate #37"
+		},
+		{
+			"identifier": "EverythingBurns",
+			"count": 3,
+			"title": "Everything Burns",
+			"keywords": [
+				"one-shot"
+			],
+			"body": [
+				"Destroy an Ongoing or environment card."
+			],
+			"icons": [
+				"DestroyOngoing",
+				"DestroyEnvironment"
+			],
+			"flavorQuotes": [
+				{
+					"identifier": "Doomsayer",
+					"text": "[b]T[/b]h[b]e[/b]r[b]e[/b] i[b]s[/b] n[b]o[/b]t[b]h[/b]i[b]n[/b]g[b] y[/b]o[b]u[/b] c[b]a[/b]n[b]{BR}d[/b]o[b].[/b] Y[b]o[/b]u[b] c[/b]a[b]n[/b]'[b]t[/b] f[b]i[/b]g[b]h[/b]t[b] f[/b]a[b]t[/b]e[b].[/b]"
+				}
+			],
+			"flavorReference": "Doomsayer, Ember #18"
+		},
+		{
+			"identifier": "FlamingSlash",
+			"count": 2,
+			"title": "Flaming Slash",
+			"keywords": [
+				"one-shot"
+			],
+			"body": [
+				"{EmberCharacter} deals up to 3 targets 2 melee and 1 fire damage each."
+			],
+			"icons": [
+				"DealDamageMelee",
+				"DealDamageFire"
+			],
+			"flavorQuotes": [
+				{
+					"identifier": "Agent Snow",
+					"text": "We are in pursuit of echoes of{BR}catalogued anomaly 52 south on Highway{BR}411, requesting reinforce-"
+				}
+			],
+			"flavorReference": "Agent Snow, Project Q: Numbered Days"
+		},
+		{
+			"identifier": "FromTheAshes",
+			"count": 2,
+			"title": "From the Ashes",
+			"keywords": [
+				"ongoing",
+				"blaze",
+				"limited"
+			],
+			"body": [
+				"When {EmberCharacter} drops to 0 or fewer HP, restore her to 7 HP, then remove this card from the game."
+			],
+			"powers": [
+				"Until the start of your next turn, whenever {EmberCharacter} is dealt fire damage, she regains 1 HP for each Blaze card in play, then increases the next damage she deals by 1. You may discard a card to use a power."
+			],
+			"icons": [
+				"GainHP",
+				"HasPower",
+				"Discard",
+				"UsePowerNow"
+			],
+			"flavorQuotes": [
+				{
+					"identifier": "Banshee",
+					"text": "I can't hear her.{BR}I don't think she's dead."
+				},
+				{
+					"identifier": "Gadhavi",
+					"text": "She's a pile of ash--"
+				},
+				{
+					"identifier": "Glyph",
+					"text": "Ash and an ember--"
+				},
+				{
+					"identifier": "Banshee",
+					"text": "Of the fire--"
+				},
+				{
+					"identifier": "Glyph",
+					"text": "-- and the magic."
+				}
+			],
+			"flavorReference": "Guardians at the Gate #77"
+		},
+		{
+			"identifier": "InnerWarmth",
+			"count": 3,
+			"title": "Inner Warmth",
+			"keywords": [
+				"one-shot"
+			],
+			"body": [
+				"1 target regains 4 HP."
+			],
+			"icons": [
+				"GainHP"
+			],
+			"flavorQuotes": [
+				{
+					"identifier": "Liana",
+					"text": "It's too late. I'm sorry. You{BR}couldn't have saved him, Roisin."
+				},
+				{
+					"identifier": "Roisin",
+					"text": "I could've and I can."
+				}
+			],
+			"flavorReference": "Apex Incursion: The Ketalion Incident #8"
+		},
+		{
+			"identifier": "OffThePath",
+			"count": 3,
+			"title": "Off the Path",
+			"keywords": [
+				"ongoing"
+			],
+			"body": [
+				"The first time each turn {EmberCharacter} is dealt toxic, psychic, or infernal damage, you may draw or play a card."
+			],
+			"powers": [
+				"Reveal the top 2 cards of a deck. Put one on the top and one on the bottom."
+			],
+			"icons": [
+				"DrawCardNow",
+				"PlayCardNow",
+				"HasPower",
+				"Manipulate"
+			],
+			"flavorText": "“I don't want this curse-- this,{BR}this evil inside me! I just want{BR}to find my way back to the narrow{BR}path! Ye can't ask me to do this!”{BR}- Ember, Guardians at the Gate #47"
+		},
+		{
+			"identifier": "ReasonableParanoia",
+			"count": 2,
+			"title": "Reasonable Paranoia",
+			"keywords": [
+				"ongoing"
+			],
+			"body": [
+				"Reduce damage dealt to {EmberCharacter} by 1.",
+				"At the start of your turn, draw a card, play a card, and destroy this card."
+			],
+			"icons": [
+				"ReduceDamageTaken",
+				"StartOfTurnAction",
+				"DrawCardNow",
+				"PlayCardNow"
+			],
+			"flavorQuotes": [
+				{
+					"identifier": "Ember",
+					"text": "There's a team here.{BR}Newspaper fella, bike{BR}messenger, and a couple."
+				},
+				{
+					"identifier": "Dr. Falls",
+					"text": "Not everyone is after you, Roisin."
+				},
+				{
+					"identifier": "Carnaval",
+					"text": "Project Q! We've got to move!"
+				}
+			],
+			"flavorReference": "Project Q: Numbered Days"
+		},
+		{
+			"identifier": "ScorchingShriek",
+			"count": 3,
+			"title": "Scorching Shriek",
+			"keywords": [
+				"one-shot"
+			],
+			"body": [
+				"{EmberCharacter} deals each non-hero target 1 sonic damage and 1 fire damage."
+			],
+			"icons": [
+				"DealDamageSonic",
+				"DealDamageFire"
+			],
+			"flavorQuotes": [
+				{
+					"identifier": "General Janson",
+					"text": "Cloudwalker One, you are clear to{BR}engage. Light it up! I want 'em to see it{BR}from space!"
+				}
+			],
+			"flavorReference": "General Janson, Apex Incursion: Operation Icarus #4"
+		},
+		{
+			"identifier": "SearingTalons",
+			"count": 2,
+			"title": "Searing Talons",
+			"keywords": [
+				"ongoing",
+				"blaze",
+				"limited"
+			],
+			"body": [
+				"The first time each turn {EmberCharacter} deals each target fire damage, you may reduce the next damage dealt by that target by 1 for each Blaze card in play."
+			],
+			"powers": [
+				"You may discard a card to play a card. Then {EmberCharacter} deals a target 1 melee and 1 fire damage."
+			],
+			"icons": [
+				"ReduceDamageDealt",
+				"HasPower",
+				"Discard",
+				"PlayCardNow"
+			],
+			"flavorQuotes": [
+				{
+					"identifier": "The Baroness",
+					"text": "You are playing{BR}vis fire, little vun."
+				},
+				{
+					"identifier": "Ember",
+					"text": "I [b]am[/b] fire, creature of ash!"
+				}
+			],
+			"flavorReference": "Ember #87"
+		},
+		{
+			"identifier": "TheBrightestFlame",
+			"count": 2,
+			"title": "The Brightest Flame",
+			"keywords": [
+				"one-shot"
+			],
+			"body": [
+				"{EmberCharacter} deals 1 target 2 fire damage. {EmberCharacter} may deal herself 2 irreducible fire damage. If she takes damage this way, you may discard a card to repeat the text of this card."
+			],
+			"icons": [
+				"DealDamageFire",
+				"Discard"
+			],
+			"flavorQuotes": [
+				{
+					"identifier": "Enrinwal",
+					"text": "There can be no{BR}victory, no escape. To{BR}oppose me is to defy the{BR}Sidhe. I am your doom."
+				},
+				{
+					"identifier": "Ember",
+					"text": "You're not. You're just{BR}another moth to the flame."
+				}
+			],
+			"flavorReference": "Ember #48"
+		},
+		{
+			"identifier": "WhatIHaveBecome",
+			"count": 3,
+			"title": "What I Have Become",
+			"keywords": [
+				"one-shot"
+			],
+			"body": [
+				"{EmberCharacter} deals herself up to X psychic damage, where X = the number of Blaze cards in play. For each point of damage she takes this way, you may use a power on a Blaze card."
+			],
+			"icons": [
+				"DealDamagePsychic",
+				"UsePowerNow"
+			],
+			"flavorQuotes": [
+				{
+					"identifier": "Ember",
+					"text": "You've shown me your nightmares.{BR}Now come see mine."
+				}
+			],
+			"flavorReference": "Ember, Grim Tidings: An Ember in the Ashes"
+		},
+		{
+			"identifier": "WreathedInFlame",
+			"count": 2,
+			"title": "Wreathed in Flame",
+			"keywords": [
+				"ongoing",
+				"blaze",
+				"limited"
+			],
+			"body": [
+				"Increase fire damage dealt by {EmberCharacter} by 1 for each Blaze card in play."
+			],
+			"powers": [
+				"Until the start of your next turn, the first time each turn {EmberCharacter} is dealt damage, she may deal the source of that damage 1 fire damage. You may discard a card to use a power."
+			],
+			"icons": [
+				"IncreaseDamageDealtFire",
+				"HasPower",
+				"CounterDamage",
+				"Discard"
+			],
+			"flavorText": "{BR}“You have been garbed in{BR}resplendent glory, yet don lowly{BR}rags to cloak your riches. Cast off{BR}the trappings of your lessers!”{BR}- The Fury,{BR}Strange Stories: Dead Men's Tales"
+		}
+	],
+	"promoCards": [
+	]
+}

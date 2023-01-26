@@ -453,14 +453,7 @@
 				"RedirectDamage",
 				"ReduceDamageDealt"
 			],
-			"flavorText": "{BR}“Your machinations are unveiled{BR}before us, your every artifice laid bare.{BR}We see the depths of your iniquities and do{BR}not tremble. You cannot stand against us.”{BR}-Node et al., Bastion City:{BR}     A Spider Never Blinks #116",
-			"oldflavorQuotes": [
-				{
-					"identifier": "Node et al",
-					"text": "Your machinations are{BR}unveiled before us, your every artifice{BR}laid bare. We see the depths of your iniquities{BR}and do not tremble. You can't stand{BR}against us."
-				}
-			],
-			"oldflavorReference": "Bastion City: A Spider Never Blinks #116"
+			"flavorText": "{BR}“Your machinations are unveiled{BR}before us, your every artifice laid bare.{BR}We see the depths of your iniquities and do{BR}not tremble. You cannot stand against us.”{BR}-Node et al., Bastion City:{BR}     A Spider Never Blinks #116"
 		}
 	],
 	"promoCards": [

@@ -2,9 +2,9 @@
 <data version="1.0">
     <struct type="Settings">
         <key>fileFormatVersion</key>
-        <int>5</int>
+        <int>6</int>
         <key>texturePackerVersion</key>
-        <string>6.0.2</string>
+        <string>7.0.0</string>
         <key>autoSDSettings</key>
         <array>
             <struct type="AutoSDSettings">
@@ -127,8 +127,8 @@
                 <filename>EndGameHeroes0.json</filename>
             </struct>
         </map>
-        <key>multiPack</key>
-        <false/>
+        <key>multiPackMode</key>
+        <enum type="SettingsBase::MultiPackMode">MultiPackOff</enum>
         <key>forceIdenticalLayout</key>
         <false/>
         <key>outputFormat</key>
@@ -177,6 +177,8 @@
             <key type="filename">BurgessCharacterFlipped.png</key>
             <key type="filename">CarnavalCharacter.png</key>
             <key type="filename">CarnavalCharacterFlipped.png</key>
+            <key type="filename">EmberCharacter.png</key>
+            <key type="filename">EmberCharacterFlipped.png</key>
             <key type="filename">NodeCharacter.png</key>
             <key type="filename">NodeCharacterFlipped.png</key>
             <key type="filename">SphereCharacter.png</key>
@@ -198,19 +200,27 @@
                 <false/>
             </struct>
         </map>
-        <key>fileList</key>
-        <array>
-            <filename>SphereCharacter.png</filename>
-            <filename>SphereCharacterFlipped.png</filename>
-            <filename>BurgessCharacter.png</filename>
-            <filename>BurgessCharacterFlipped.png</filename>
-            <filename>TheFuryCharacter.png</filename>
-            <filename>TheFuryCharacterFlipped.png</filename>
-            <filename>NodeCharacter.png</filename>
-            <filename>NodeCharacterFlipped.png</filename>
-            <filename>CarnavalCharacter.png</filename>
-            <filename>CarnavalCharacterFlipped.png</filename>
-        </array>
+        <key>fileLists</key>
+        <map type="SpriteSheetMap">
+            <key>default</key>
+            <struct type="SpriteSheet">
+                <key>files</key>
+                <array>
+                    <filename>SphereCharacter.png</filename>
+                    <filename>SphereCharacterFlipped.png</filename>
+                    <filename>BurgessCharacter.png</filename>
+                    <filename>BurgessCharacterFlipped.png</filename>
+                    <filename>TheFuryCharacter.png</filename>
+                    <filename>TheFuryCharacterFlipped.png</filename>
+                    <filename>NodeCharacter.png</filename>
+                    <filename>NodeCharacterFlipped.png</filename>
+                    <filename>CarnavalCharacter.png</filename>
+                    <filename>CarnavalCharacterFlipped.png</filename>
+                    <filename>EmberCharacter.png</filename>
+                    <filename>EmberCharacterFlipped.png</filename>
+                </array>
+            </struct>
+        </map>
         <key>ignoreFileList</key>
         <array/>
         <key>replaceList</key>
