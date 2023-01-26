@@ -58,9 +58,8 @@ namespace VainFacadePlaytest.Blitz
                 // "When {BlitzCharacter} is dealt lightning damage, increase the next lightning damage dealt by {BlitzCharacter} by X minus 1, where X = the damage taken."
                 AddSideTrigger(AddTrigger((DealDamageAction dda) => dda.DamageType == DamageType.Lightning && dda.Target == base.Card && dda.DidDealDamage, ChargeUpResponse, TriggerType.CreateStatusEffect, TriggerTiming.After));
                 // "At the end of the villain turn, if there is at least 1 villain Circuit in play, flip this card."
-                AddSideTrigger(AddEndOfTurnTrigger((TurnTaker tt) => tt == base.TurnTaker && FindCardsWhere(IsVillainCircuitInPlay, GetCardSource()).Count() > 0, (PhaseChangeAction pca) => base.GameController.FlipCard(this, cardSource: GetCardSource()), TriggerType.FlipCard));
                 // "At the end of the villain turn, the environment deals {BlitzCharacter} 3 lightning damage, then {BlitzCharacter} deals the hero target with the highest HP {H + 1} melee damage and plays the top card of the villain deck."
-                AddSideTrigger(AddEndOfTurnTrigger((TurnTaker tt) => tt == base.TurnTaker, ZappedTacklePlayResponse, new TriggerType[] { TriggerType.DealDamage, TriggerType.PlayCard }));
+                AddSideTrigger(AddEndOfTurnTrigger((TurnTaker tt) => tt == base.TurnTaker, FlipOrZappedTacklePlayResponse, new TriggerType[] { TriggerType.DealDamage, TriggerType.PlayCard }));
                 if (base.IsGameAdvanced)
                 {
                     // Back side, Advanced:
@@ -150,8 +149,21 @@ namespace VainFacadePlaytest.Blitz
             }
         }
 
-        private IEnumerator ZappedTacklePlayResponse(PhaseChangeAction pca)
+        private IEnumerator FlipOrZappedTacklePlayResponse(PhaseChangeAction pca)
         {
+            // "... if there is at least 1 villain Circuit in play, flip this card."
+            if (FindCardsWhere(IsVillainCircuitInPlay, GetCardSource()).Count() >= 1)
+            {
+                IEnumerator flipCoroutine = base.GameController.FlipCard(this, cardSource: GetCardSource());
+                if (base.UseUnityCoroutines)
+                {
+                    yield return base.GameController.StartCoroutine(flipCoroutine);
+                }
+                else
+                {
+                    base.GameController.ExhaustCoroutine(flipCoroutine);
+                }
+            }
             // "... the environment deals {BlitzCharacter} 3 lightning damage, ..."
             IEnumerator zapCoroutine = base.GameController.DealDamageToTarget(new DamageSource(base.GameController, FindEnvironment().TurnTaker), base.Card, 3, DamageType.Lightning, cardSource: GetCardSource());
             if (base.UseUnityCoroutines)
