@@ -81,9 +81,8 @@ namespace VainFacadePlaytest.Blitz
         private IEnumerator DamageDiscardResponse(PhaseChangeAction pca)
         {
             // "... {BlitzCharacter} deals the X hero targets with the highest HP {H - 2} lightning damage, where X = the number of cards beneath this card."
-            // "When a target is dealt damage this way, discard a card from beneath this card."
-            ITrigger discardTrigger = AddTrigger((DealDamageAction dda) => dda.DamageSource != null && dda.DamageSource.Card != null && dda.DamageSource.Card == base.CharacterCard && dda.CardSource.Card == base.Card && dda.DidDealDamage, (DealDamageAction dda) => base.GameController.DiscardTopCard(base.Card.UnderLocation, null, responsibleTurnTaker: base.TurnTaker, cardSource: GetCardSource()), TriggerType.DiscardCard, TriggerTiming.After);
-            IEnumerator damageCoroutine = DealDamageToHighestHP(base.CharacterCard, 1, (Card c) => c.IsHero && c.IsTarget, (Card c) => H - 2, DamageType.Lightning, numberOfTargets: () => base.Card.UnderLocation.NumberOfCards);
+            List<DealDamageAction> results = new List<DealDamageAction>();
+            IEnumerator damageCoroutine = DealDamageToHighestHP(base.CharacterCard, 1, (Card c) => c.IsHero && c.IsTarget, (Card c) => H - 2, DamageType.Lightning, storedResults: results, numberOfTargets: () => base.Card.UnderLocation.NumberOfCards);
             if (base.UseUnityCoroutines)
             {
                 yield return base.GameController.StartCoroutine(damageCoroutine);
@@ -92,7 +91,36 @@ namespace VainFacadePlaytest.Blitz
             {
                 base.GameController.ExhaustCoroutine(damageCoroutine);
             }
-            RemoveTrigger(discardTrigger);
+            // "Then, discard a card from under this card for each each time damage was dealt this way."
+            int numToDiscard = results.Where((DealDamageAction dda) => dda.DidDealDamage).Count();
+            string messageText = "No damage was dealt, so no cards are discarded.";
+            List<Card> cardsToDiscard = new List<Card>();
+            if (numToDiscard > 0)
+            {
+                messageText = "Damage was dealt " + numToDiscard.ToString() + " " + numToDiscard.ToString_SingularOrPlural("time", "times") + ", so " + base.Card.Title + " discards " + numToDiscard.ToString() + " " + numToDiscard.ToString_SingularOrPlural("card", "cards") + " from under itself.";
+                cardsToDiscard = base.Card.UnderLocation.GetTopCards(numToDiscard).ToList();
+            }
+            IEnumerator messageCoroutine = base.GameController.SendMessageAction(messageText, Priority.Medium, GetCardSource(), associatedCards: cardsToDiscard, showCardSource: true);
+            if (base.UseUnityCoroutines)
+            {
+                yield return base.GameController.StartCoroutine(messageCoroutine);
+            }
+            else
+            {
+                base.GameController.ExhaustCoroutine(messageCoroutine);
+            }
+            if (numToDiscard > 0)
+            {
+                IEnumerator discardCoroutine = base.GameController.MoveCards(base.TurnTakerController, cardsToDiscard, (Card c) => FindCardController(c).GetTrashDestination(), responsibleTurnTaker: base.TurnTaker, isDiscard: true, cardSource: GetCardSource());
+                if (base.UseUnityCoroutines)
+                {
+                    yield return base.GameController.StartCoroutine(discardCoroutine);
+                }
+                else
+                {
+                    base.GameController.ExhaustCoroutine(discardCoroutine);
+                }
+            }
         }
     }
 }

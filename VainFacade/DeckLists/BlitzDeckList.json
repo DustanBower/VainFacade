@@ -83,7 +83,7 @@
 			"hitpoints": 12,
 			"body": [
 				"When {BlitzCharacter} is dealt lightning damage, put 1 card from the villain trash beneath this card for each point of damage dealt.",
-				"At the end of the villain turn, {BlitzCharacter} deals the X hero targets with the highest HP {H - 2} lightning damage, where X = the number of cards beneath this card. When a target is dealt damage this way, discard a card from beneath this card."
+				"At the end of the villain turn, {BlitzCharacter} deals the X hero targets with the highest HP {H - 2} lightning damage, where X = the number of cards beneath this card. Then, discard a card from under this card for each time damage was dealt this way."
 			],
 			"icons": [
 				"Manipulate",
