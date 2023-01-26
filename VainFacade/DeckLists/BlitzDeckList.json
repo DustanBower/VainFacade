@@ -162,7 +162,7 @@
 			],
 			"icons": [
 				"Search",
-				"DealCounterDamage",
+				"CounterDamage",
 				"StartOfTurnAction",
 				"DestroySelf"
 			],
