@@ -38,6 +38,7 @@
   <ItemGroup>
     <Compile Include="Blitz\ArcProjectorCardController.cs" />
     <Compile Include="Blitz\BlitzCharacterCardController.cs" />
+    <Compile Include="Blitz\BlitzTurnTakerController.cs" />
     <Compile Include="Blitz\BlitzUtilityCardController.cs" />
     <Compile Include="Blitz\CallingAnAudibleCardController.cs" />
     <Compile Include="Blitz\EMChargeStabilizerCardController.cs" />
