@@ -116,6 +116,10 @@ namespace VainFacadePlaytest.Blitz
             {
                 oneShotCoroutine = base.GameController.PlayCard(base.TurnTakerController, oneShotDiscarded, isPutIntoPlay: true, responsibleTurnTaker: base.TurnTaker, associateCardSource: true, cardSource: GetCardSource());
             }
+            else if (results.Where((MoveCardAction mca) => mca.WasCardMoved && mca.IsDiscard).Count() <= 0)
+            {
+                oneShotCoroutine = base.GameController.SendMessageAction("No cards were discarded.", Priority.Medium, GetCardSource(), showCardSource: true);
+            }
             if (base.UseUnityCoroutines)
             {
                 yield return base.GameController.StartCoroutine(oneShotCoroutine);
