@@ -67,6 +67,7 @@ namespace VainFacadePlaytest.Blitz
                     AddSideTrigger(AddDealDamageAtEndOfTurnTrigger(base.TurnTaker, base.Card, (Card c) => c.IsHero && c.IsTarget, TargetType.HighestHP, H - 1, DamageType.Melee));
                 }
             }
+            AddDefeatedIfDestroyedTriggers();
         }
 
         private IEnumerator DiscardOrRedirectResponse(DealDamageAction dda)
@@ -164,35 +165,38 @@ namespace VainFacadePlaytest.Blitz
                     base.GameController.ExhaustCoroutine(flipCoroutine);
                 }
             }
-            // "... the environment deals {BlitzCharacter} 3 lightning damage, ..."
-            IEnumerator zapCoroutine = base.GameController.DealDamageToTarget(new DamageSource(base.GameController, FindEnvironment().TurnTaker), base.Card, 3, DamageType.Lightning, cardSource: GetCardSource());
-            if (base.UseUnityCoroutines)
-            {
-                yield return base.GameController.StartCoroutine(zapCoroutine);
-            }
             else
             {
-                base.GameController.ExhaustCoroutine(zapCoroutine);
-            }
-            // "... then {BlitzCharacter} deals the hero target with the highest HP {H + 1} melee damage..."
-            IEnumerator meleeCoroutine = DealDamageToHighestHP(base.Card, 1, (Card c) => c.IsHero && c.IsTarget, (Card c) => H + 1, DamageType.Melee);
-            if (base.UseUnityCoroutines)
-            {
-                yield return base.GameController.StartCoroutine(meleeCoroutine);
-            }
-            else
-            {
-                base.GameController.ExhaustCoroutine(meleeCoroutine);
-            }
-            // "... and plays the top card of the villain deck."
-            IEnumerator playCoroutine = PlayTheTopCardOfTheVillainDeckResponse(pca);
-            if (base.UseUnityCoroutines)
-            {
-                yield return base.GameController.StartCoroutine(playCoroutine);
-            }
-            else
-            {
-                base.GameController.ExhaustCoroutine(playCoroutine);
+                // "... the environment deals {BlitzCharacter} 3 lightning damage, ..."
+                IEnumerator zapCoroutine = base.GameController.DealDamageToTarget(new DamageSource(base.GameController, FindEnvironment().TurnTaker), base.Card, 3, DamageType.Lightning, cardSource: GetCardSource());
+                if (base.UseUnityCoroutines)
+                {
+                    yield return base.GameController.StartCoroutine(zapCoroutine);
+                }
+                else
+                {
+                    base.GameController.ExhaustCoroutine(zapCoroutine);
+                }
+                // "... then {BlitzCharacter} deals the hero target with the highest HP {H + 1} melee damage..."
+                IEnumerator meleeCoroutine = DealDamageToHighestHP(base.Card, 1, (Card c) => c.IsHero && c.IsTarget, (Card c) => H + 1, DamageType.Melee);
+                if (base.UseUnityCoroutines)
+                {
+                    yield return base.GameController.StartCoroutine(meleeCoroutine);
+                }
+                else
+                {
+                    base.GameController.ExhaustCoroutine(meleeCoroutine);
+                }
+                // "... and plays the top card of the villain deck."
+                IEnumerator playCoroutine = PlayTheTopCardOfTheVillainDeckResponse(pca);
+                if (base.UseUnityCoroutines)
+                {
+                    yield return base.GameController.StartCoroutine(playCoroutine);
+                }
+                else
+                {
+                    base.GameController.ExhaustCoroutine(playCoroutine);
+                }
             }
         }
     }
