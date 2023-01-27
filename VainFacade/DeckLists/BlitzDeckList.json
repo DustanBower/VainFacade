@@ -348,7 +348,7 @@
 			"flavorQuotes": [
 				{
 					"identifier": "The Whisper Scribe",
-					"text": "You may have stolen thunder, Mr. Solomon,{BR}but the storm is coming all the same. You would{BR}do well to remember that fact."
+					"text": "You may have stolen thunder, Mr. Solomon,{BR}but the storm is coming all the same. You{BR}would do well to remember that fact."
 				}
 			],
 			"flavorReference": "The Whisper Scribe, Strange Stories: The Midnight Bazaar #19"
@@ -388,8 +388,7 @@
 				"playbook"
 			],
 			"body": [
-				"When this card enters play, destroy all other Playbooks.",
-				"When this card is destroyed, play the top card of the villain deck.",
+				"When this card enters play, destroy all other Playbooks. When this card is destroyed, play the top card of the villain deck.",
 				"The first time {BlitzCharacter} is dealt damage each turn, 1 player discards a card.",
 				"The first time {BlitzCharacter} would deal damage to a target other than {BlitzCharacter} each turn, redirect that damage to the hero target with the second lowest HP."
 			],
