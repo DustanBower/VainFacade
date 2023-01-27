@@ -54,8 +54,8 @@ namespace VainFacadePlaytest.Blitz
 
         private IEnumerator RedirectToSecondLowestResponse(DealDamageAction dda)
         {
-            Log.Debug("SweepRightCardController.RedirectToSecondLowestResponse: dda: " + dda.ToString());
-            Log.Debug("SweepRightCardController.RedirectToSecondLowestResponse: HasBeenSetToTrueThisTurn(FirstDamageByBlitzToOthersThisTurn): " + HasBeenSetToTrueThisTurn(FirstDamageByBlitzToOthersThisTurn).ToString());
+            //Log.Debug("SweepRightCardController.RedirectToSecondLowestResponse: dda: " + dda.ToString());
+            //Log.Debug("SweepRightCardController.RedirectToSecondLowestResponse: HasBeenSetToTrueThisTurn(FirstDamageByBlitzToOthersThisTurn): " + HasBeenSetToTrueThisTurn(FirstDamageByBlitzToOthersThisTurn).ToString());
             SetCardPropertyToTrueIfRealAction(FirstDamageByBlitzToOthersThisTurn);
             // "... redirect that damage to the hero target with the second lowest HP."
             if (dda.IsRedirectable)
