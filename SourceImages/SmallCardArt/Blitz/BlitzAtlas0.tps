@@ -34,7 +34,7 @@
         <key>dataFormat</key>
         <string>json</string>
         <key>textureFileName</key>
-        <filename>SetupGame0.png</filename>
+        <filename>BlitzAtlas0.png</filename>
         <key>flipPVR</key>
         <false/>
         <key>pvrQualityLevel</key>
@@ -124,7 +124,7 @@
             <key>data</key>
             <struct type="DataFile">
                 <key>name</key>
-                <filename>SetupGame0.json</filename>
+                <filename>BlitzAtlas0.json</filename>
             </struct>
         </map>
         <key>multiPackMode</key>
@@ -173,17 +173,40 @@
         </struct>
         <key>individualSpriteSettings</key>
         <map type="IndividualSpriteSettingsMap">
-            <key type="filename">../SmallCardArt/Blitz/BlitzCharacter.png</key>
-            <key type="filename">../SmallCardArt/Burgess/BurgessCharacter.png</key>
-            <key type="filename">../SmallCardArt/Carnaval/CarnavalCharacter.png</key>
-            <key type="filename">../SmallCardArt/EldrenwoodVillage/EldrenwoodVillageDeckBack.png</key>
-            <key type="filename">../SmallCardArt/Ember/EmberCharacter.png</key>
-            <key type="filename">../SmallCardArt/Grandfather/GrandfatherCharacter.png</key>
-            <key type="filename">../SmallCardArt/Node/NodeCharacter.png</key>
-            <key type="filename">../SmallCardArt/Sphere/SphereCharacter.png</key>
-            <key type="filename">../SmallCardArt/TheBaroness/TheBaronessCharacter.png</key>
-            <key type="filename">../SmallCardArt/TheFury/TheFuryCharacter.png</key>
-            <key type="filename">../SmallCardArt/TheMidnightBazaar/TheMidnightBazaarDeckBack.png</key>
+            <key type="filename">ArcProjector.png</key>
+            <key type="filename">CallingAnAudible.png</key>
+            <key type="filename">EMChargeStabilizer.png</key>
+            <key type="filename">FiredUp.png</key>
+            <key type="filename">GoLong.png</key>
+            <key type="filename">InstantReplay.png</key>
+            <key type="filename">Offsides.png</key>
+            <key type="filename">PersonalFoul.png</key>
+            <key type="filename">PowerSource.png</key>
+            <key type="filename">PulseModulator.png</key>
+            <key type="filename">Recharge.png</key>
+            <key type="filename">Rushing.png</key>
+            <key type="filename">SweepRight.png</key>
+            <key type="filename">TooManyMenOnTheField.png</key>
+            <key type="filename">UnnecessaryRoughness.png</key>
+            <key type="filename">UnsportsmanlikeConduct.png</key>
+            <key type="filename">UpTheMiddle.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>64,50,128,99</rect>
+                <key>scale9Paddings</key>
+                <rect>64,50,128,99</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">BlitzCharacter.png</key>
+            <key type="filename">BlitzCharacterBack.png</key>
+            <key type="filename">BlitzDeckBack.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
@@ -205,17 +228,26 @@
             <struct type="SpriteSheet">
                 <key>files</key>
                 <array>
-                    <filename>../SmallCardArt/TheMidnightBazaar/TheMidnightBazaarDeckBack.png</filename>
-                    <filename>../SmallCardArt/Sphere/SphereCharacter.png</filename>
-                    <filename>../SmallCardArt/TheBaroness/TheBaronessCharacter.png</filename>
-                    <filename>../SmallCardArt/Burgess/BurgessCharacter.png</filename>
-                    <filename>../SmallCardArt/EldrenwoodVillage/EldrenwoodVillageDeckBack.png</filename>
-                    <filename>../SmallCardArt/Grandfather/GrandfatherCharacter.png</filename>
-                    <filename>../SmallCardArt/TheFury/TheFuryCharacter.png</filename>
-                    <filename>../SmallCardArt/Node/NodeCharacter.png</filename>
-                    <filename>../SmallCardArt/Carnaval/CarnavalCharacter.png</filename>
-                    <filename>../SmallCardArt/Ember/EmberCharacter.png</filename>
-                    <filename>../SmallCardArt/Blitz/BlitzCharacter.png</filename>
+                    <filename>ArcProjector.png</filename>
+                    <filename>BlitzDeckBack.png</filename>
+                    <filename>CallingAnAudible.png</filename>
+                    <filename>EMChargeStabilizer.png</filename>
+                    <filename>FiredUp.png</filename>
+                    <filename>GoLong.png</filename>
+                    <filename>InstantReplay.png</filename>
+                    <filename>Offsides.png</filename>
+                    <filename>PersonalFoul.png</filename>
+                    <filename>PowerSource.png</filename>
+                    <filename>PulseModulator.png</filename>
+                    <filename>Recharge.png</filename>
+                    <filename>Rushing.png</filename>
+                    <filename>SweepRight.png</filename>
+                    <filename>TooManyMenOnTheField.png</filename>
+                    <filename>UnnecessaryRoughness.png</filename>
+                    <filename>UnsportsmanlikeConduct.png</filename>
+                    <filename>UpTheMiddle.png</filename>
+                    <filename>BlitzCharacter.png</filename>
+                    <filename>BlitzCharacterBack.png</filename>
                 </array>
             </struct>
         </map>

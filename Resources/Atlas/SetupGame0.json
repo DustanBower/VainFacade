@@ -1,6 +1,6 @@
 {"frames": {
 
-"BurgessCharacter.png":
+"BlitzCharacter.png":
 {
 	"frame": {"x":0,"y":0,"w":177,"h":256},
 	"rotated": false,
@@ -8,7 +8,7 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":177,"h":256},
 	"sourceSize": {"w":177,"h":256}
 },
-"CarnavalCharacter.png":
+"BurgessCharacter.png":
 {
 	"frame": {"x":180,"y":0,"w":177,"h":256},
 	"rotated": false,
@@ -16,7 +16,7 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":177,"h":256},
 	"sourceSize": {"w":177,"h":256}
 },
-"EldrenwoodVillageDeckBack.png":
+"CarnavalCharacter.png":
 {
 	"frame": {"x":360,"y":0,"w":177,"h":256},
 	"rotated": false,
@@ -24,7 +24,7 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":177,"h":256},
 	"sourceSize": {"w":177,"h":256}
 },
-"EmberCharacter.png":
+"EldrenwoodVillageDeckBack.png":
 {
 	"frame": {"x":540,"y":0,"w":177,"h":256},
 	"rotated": false,
@@ -32,7 +32,7 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":177,"h":256},
 	"sourceSize": {"w":177,"h":256}
 },
-"GrandfatherCharacter.png":
+"EmberCharacter.png":
 {
 	"frame": {"x":720,"y":0,"w":177,"h":256},
 	"rotated": false,
@@ -40,7 +40,7 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":177,"h":256},
 	"sourceSize": {"w":177,"h":256}
 },
-"NodeCharacter.png":
+"GrandfatherCharacter.png":
 {
 	"frame": {"x":0,"y":259,"w":177,"h":256},
 	"rotated": false,
@@ -48,7 +48,7 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":177,"h":256},
 	"sourceSize": {"w":177,"h":256}
 },
-"SphereCharacter.png":
+"NodeCharacter.png":
 {
 	"frame": {"x":180,"y":259,"w":177,"h":256},
 	"rotated": false,
@@ -56,7 +56,7 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":177,"h":256},
 	"sourceSize": {"w":177,"h":256}
 },
-"TheBaronessCharacter.png":
+"SphereCharacter.png":
 {
 	"frame": {"x":360,"y":259,"w":177,"h":256},
 	"rotated": false,
@@ -64,7 +64,7 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":177,"h":256},
 	"sourceSize": {"w":177,"h":256}
 },
-"TheFuryCharacter.png":
+"TheBaronessCharacter.png":
 {
 	"frame": {"x":540,"y":259,"w":177,"h":256},
 	"rotated": false,
@@ -72,9 +72,17 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":177,"h":256},
 	"sourceSize": {"w":177,"h":256}
 },
-"TheMidnightBazaarDeckBack.png":
+"TheFuryCharacter.png":
 {
 	"frame": {"x":720,"y":259,"w":177,"h":256},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":177,"h":256},
+	"sourceSize": {"w":177,"h":256}
+},
+"TheMidnightBazaarDeckBack.png":
+{
+	"frame": {"x":0,"y":518,"w":177,"h":256},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":177,"h":256},
@@ -87,6 +95,6 @@
 	"format": "RGBA8888",
 	"size": {"w":1024,"h":1024},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:68755971fb18c33be81270a775b86c06:d78ded6fb36054581cb717f4eaf16dff:4ee285c32a91b7652e02ac049f918b2a$"
+	"smartupdate": "$TexturePacker:SmartUpdate:6151ae9e8ef996d5b6a603b87a3ef371:752356917f04cc8d5f79ff9676a2e11e:4ee285c32a91b7652e02ac049f918b2a$"
 }
 }
