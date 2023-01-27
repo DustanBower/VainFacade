@@ -31,6 +31,7 @@ namespace VainFacadePlaytest.Blitz
 
         private IEnumerator DiscardPlayResponse(DealDamageAction dda)
         {
+            SetCardPropertyToTrueIfRealAction(FirstHeroZappedThisTurn);
             // "... {H - 2} players discard a card, ..."
             IEnumerator discardCoroutine = base.GameController.SelectTurnTakersAndDoAction(null, new LinqTurnTakerCriteria((TurnTaker tt) => tt.IsHero && !tt.IsIncapacitatedOrOutOfGame && (tt as HeroTurnTaker).HasCardsInHand && (tt as HeroTurnTaker).Hand.Cards.Count() > 0, $"heroes with cards in hand"), SelectionType.DiscardCard, (TurnTaker tt) => base.GameController.SelectAndDiscardCards(FindHeroTurnTakerController((HeroTurnTaker)tt), 1, optional: false, 1, allowAutoDecide: false, selectionType: SelectionType.DiscardCard, responsibleTurnTaker: tt, cardSource: GetCardSource()), H - 2, optional: false, requiredDecisions: H - 2, cardSource: GetCardSource());
             if (base.UseUnityCoroutines)
