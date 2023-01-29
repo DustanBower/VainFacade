@@ -21,7 +21,7 @@ namespace VainFacadePlaytest.Node
         {
             // "Put a non-character [i]Connected[/i] card in play on top of its deck."
             List<SelectCardDecision> choices = new List<SelectCardDecision>();
-            IEnumerator selectCoroutine = base.GameController.SelectCardAndStoreResults(DecisionMaker, SelectionType.MoveCardOnDeck, new LinqCardCriteria((Card c) => !c.IsCharacter && IsConnected(c), "non-character Connected"), choices, false, cardSource: GetCardSource());
+            IEnumerator selectCoroutine = base.GameController.SelectCardAndStoreResults(DecisionMaker, SelectionType.MoveCardOnDeck, new LinqCardCriteria((Card c) => !c.IsCharacter && IsConnected(c) && !c.IsOneShot, "non-character Connected", singular: "card in play", plural: "cards in play"), choices, false, cardSource: GetCardSource());
             if (base.UseUnityCoroutines)
             {
                 yield return base.GameController.StartCoroutine(selectCoroutine);
