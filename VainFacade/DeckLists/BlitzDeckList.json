@@ -114,13 +114,7 @@
 			"icons": [
 				"Search"
 			],
-			"flavorQuotes": [
-				{
-					"identifier": "Blitz",
-					"text": "I'll give you a choice: you run{BR}out in front of them cameras yellin' that{BR}Blitz stole all your jewels, or I'm gonna{BR}fold you into a pretzel right here."
-				}
-			],
-			"flavorReference": "Blitz, Sphere: Fallen Hero #3"
+			"flavorText": "{BR}“I'll give you a choice: you run{BR}out in front of them cameras yellin' that{BR}Blitz stole all your jewels, or I'm gonna{BR}fold you into a pretzel right here.”{BR}{BR}-Blitz, Sphere: Fallen Hero #3"
 		},
 		{
 			"identifier": "EMChargeStabilizer",
@@ -171,7 +165,7 @@
 			"flavorQuotes": [
 				{
 					"identifier": "Wade",
-					"text": "You... {zap}...{BR}gotta make a...{BR}{zap}... Faraday cage!"
+					"text": "Make a... {zap}... Faraday cage!"
 				},
 				{
 					"identifier": "Doctor",
