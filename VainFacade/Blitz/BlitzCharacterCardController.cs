@@ -19,18 +19,20 @@ namespace VainFacadePlaytest.Blitz
         }
 
         protected const string CircuitKeyword = "circuit";
-        protected const string PowerSourceIdentifier = "PowerSource";
         public LinqCardCriteria IsCircuit = new LinqCardCriteria((Card c) => c.DoKeywordsContain(CircuitKeyword), "Circuit");
         public LinqCardCriteria IsVillainCircuit = new LinqCardCriteria((Card c) => c.IsVillain && c.DoKeywordsContain(CircuitKeyword), "villain Circuit");
         public LinqCardCriteria IsVillainCircuitInPlay = new LinqCardCriteria((Card c) => c.IsVillain && c.DoKeywordsContain(CircuitKeyword) && c.IsInPlayAndHasGameText, "villain Circuit", singular: "card in play", plural: "cards in play");
+
+        protected const string DeviceKeyword = "device";
+        public LinqCardCriteria IsCircuitOrDevice = new LinqCardCriteria((Card c) => c.DoKeywordsContain(CircuitKeyword) || c.DoKeywordsContain(DeviceKeyword), "Circuit or Device");
 
         public override void AddTriggers()
         {
             base.AddTriggers();
             if (base.IsGameChallenge)
             {
-                // "At the end of the villain turn, discard the top card of the villain deck. If Power Source is discarded this way, put it into play."
-                AddEndOfTurnTrigger((TurnTaker tt) => tt == base.TurnTaker, DiscardPutPowerSourceResponse, new TriggerType[] { TriggerType.DiscardCard, TriggerType.PutIntoPlay });
+                // "At the end of the villain turn, discard the top card of the villain deck. If a Circuit or Device card is discarded this way, put it into play."
+                AddEndOfTurnTrigger((TurnTaker tt) => tt == base.TurnTaker, DiscardPutCircuitDeviceResponse, new TriggerType[] { TriggerType.DiscardCard, TriggerType.PutIntoPlay });
             }
         }
 
@@ -211,7 +213,7 @@ namespace VainFacadePlaytest.Blitz
             }
         }
 
-        private IEnumerator DiscardPutPowerSourceResponse(PhaseChangeAction pca)
+        private IEnumerator DiscardPutCircuitDeviceResponse(PhaseChangeAction pca)
         {
             // "... discard the top card of the villain deck."
             List<MoveCardAction> results = new List<MoveCardAction>();
@@ -224,9 +226,9 @@ namespace VainFacadePlaytest.Blitz
             {
                 base.GameController.ExhaustCoroutine(discardCoroutine);
             }
-            // "If Power Source is discarded this way, put it into play."
+            // "If a Circuit or Device card is discarded this way, put it into play."
             MoveCardAction result = results.FirstOrDefault();
-            if (result != null && result.CardToMove != null && result.CardToMove.Identifier == PowerSourceIdentifier)
+            if (result != null && result.CardToMove != null && IsCircuitOrDevice.Criteria(result.CardToMove))
             {
                 IEnumerator putCoroutine = base.GameController.PlayCard(base.TurnTakerController, result.CardToMove, isPutIntoPlay: true, responsibleTurnTaker: base.TurnTaker, associateCardSource: true, cardSource: GetCardSource());
                 if (base.UseUnityCoroutines)

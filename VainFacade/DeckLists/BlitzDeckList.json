@@ -70,7 +70,7 @@
 			"difficulty": 1,
 			"challengeTitle": "Live Wire",
 			"challengeText": [
-				"At the end of the villain turn, discard the top card of the villain deck. If Power Source is discarded this way, put it into play."
+				"At the end of the villain turn, discard the top card of the villain deck. If a Circuit or Device card is discarded this way, put it into play."
 			],
 			"challengeIcons": [
 				"EndOfTurnAction",
