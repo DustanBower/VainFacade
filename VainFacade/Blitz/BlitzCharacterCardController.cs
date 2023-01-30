@@ -19,9 +19,20 @@ namespace VainFacadePlaytest.Blitz
         }
 
         protected const string CircuitKeyword = "circuit";
+        protected const string PowerSourceIdentifier = "PowerSource";
         public LinqCardCriteria IsCircuit = new LinqCardCriteria((Card c) => c.DoKeywordsContain(CircuitKeyword), "Circuit");
         public LinqCardCriteria IsVillainCircuit = new LinqCardCriteria((Card c) => c.IsVillain && c.DoKeywordsContain(CircuitKeyword), "villain Circuit");
         public LinqCardCriteria IsVillainCircuitInPlay = new LinqCardCriteria((Card c) => c.IsVillain && c.DoKeywordsContain(CircuitKeyword) && c.IsInPlayAndHasGameText, "villain Circuit", singular: "card in play", plural: "cards in play");
+
+        public override void AddTriggers()
+        {
+            base.AddTriggers();
+            if (base.IsGameChallenge)
+            {
+                // "At the end of the villain turn, discard the top card of the villain deck. If Power Source is discarded this way, put it into play."
+                AddEndOfTurnTrigger((TurnTaker tt) => tt == base.TurnTaker, DiscardPutPowerSourceResponse, new TriggerType[] { TriggerType.DiscardCard, TriggerType.PutIntoPlay });
+            }
+        }
 
         public override void AddSideTriggers()
         {
@@ -196,6 +207,35 @@ namespace VainFacadePlaytest.Blitz
                 else
                 {
                     base.GameController.ExhaustCoroutine(playCoroutine);
+                }
+            }
+        }
+
+        private IEnumerator DiscardPutPowerSourceResponse(PhaseChangeAction pca)
+        {
+            // "... discard the top card of the villain deck."
+            List<MoveCardAction> results = new List<MoveCardAction>();
+            IEnumerator discardCoroutine = base.GameController.DiscardTopCard(base.TurnTaker.Deck, results, (Card c) => true, responsibleTurnTaker: base.TurnTaker, cardSource: GetCardSource());
+            if (base.UseUnityCoroutines)
+            {
+                yield return base.GameController.StartCoroutine(discardCoroutine);
+            }
+            else
+            {
+                base.GameController.ExhaustCoroutine(discardCoroutine);
+            }
+            // "If Power Source is discarded this way, put it into play."
+            MoveCardAction result = results.FirstOrDefault();
+            if (result != null && result.CardToMove != null && result.CardToMove.Identifier == PowerSourceIdentifier)
+            {
+                IEnumerator putCoroutine = base.GameController.PlayCard(base.TurnTakerController, result.CardToMove, isPutIntoPlay: true, responsibleTurnTaker: base.TurnTaker, associateCardSource: true, cardSource: GetCardSource());
+                if (base.UseUnityCoroutines)
+                {
+                    yield return base.GameController.StartCoroutine(putCoroutine);
+                }
+                else
+                {
+                    base.GameController.ExhaustCoroutine(putCoroutine);
                 }
             }
         }

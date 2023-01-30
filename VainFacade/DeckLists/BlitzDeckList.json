@@ -68,6 +68,15 @@
 			"flippedAdvancedIcons": [
 			],
 			"difficulty": 1,
+			"challengeTitle": "Live Wire",
+			"challengeText": [
+				"At the end of the villain turn, discard the top card of the villain deck. If Power Source is discarded this way, put it into play."
+			],
+			"challengeIcons": [
+				"EndOfTurnAction",
+				"Discard",
+				"PlayCardNow"
+			],
 			"openingLines": {
 				"default": "More phonies, huh? Time for some necessary roughness!",
 				"VainFacadePlaytest.SphereCharacter": "Game on! Time to show the world what a fake you are.",
