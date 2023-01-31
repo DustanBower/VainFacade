@@ -1,0 +1,510 @@
+{
+	"name": "Blitz",
+	"kind": "Villain",
+	"initialCardIdentifiers": [
+		"BlitzCharacter"
+	],
+	"cards": [
+		{
+			"identifier": "BlitzCharacter",
+			"count": 1,
+			"title": "Blitz",
+			"keywords": [
+				"villain"
+			],
+			"body": "Friday Night Lightning",
+			"backgroundColor": "04BAE4",
+			"character": true,
+			"hitpoints": 100,
+			"nemesisIdentifiers": [
+				"VainFacadePlaytest.Sphere"
+			],
+			"setup": [
+				"Put {BlitzCharacter}'s character cards into play [i]Friday Night Lightning[/i] side up. Shuffle the villain deck. Reveal cards from the top of the villain deck until a Circuit is revealed. Put it into play. Shuffle the remaining cards into the deck."
+			],
+			"gameplay": [
+				"Lightning damage cannot have its type changed. Lightning damage dealt to {BlitzCharacter} is irreducible.",
+				"When a target other than {BlitzCharacter} would be dealt lightning damage by a source other than {BlitzCharacter}, 1 player discards a card or that damage is redirected to {BlitzCharacter}.",
+				"When {BlitzCharacter} is dealt lightning damage, increase the next lightning damage dealt by {BlitzCharacter} by X minus 1, where X = the damage taken.",
+				"At the end of the villain turn, if there are no villain Circuit cards in play, flip this card. Otherwise, the environment deals {BlitzCharacter} 3 lightning damage."
+			],
+			"advanced": "Increase damage dealt by {BlitzCharacter} by 1.",
+			"icons": [
+				"MakeDamageIrreducible",
+				"Discard",
+				"RedirectDamage",
+				"IncreaseDamageDealtLightning",
+				"EndOfTurnAction",
+				"FlipCard",
+				"DealDamageLightning"
+			],
+			"advancedIcons": [
+				"IncreaseDamageDealt"
+			],
+			"flippedBody": "Strong Offense",
+			"flippedNemesisIdentifiers": [
+				"VainFacadePlaytest.Sphere"
+			],
+			"flippedGameplay": [
+				"Lightning damage cannot have its type changed. Lightning damage dealt to {BlitzCharacter} is irreducible.",
+				"When a target other than {BlitzCharacter} would be dealt lightning damage by a source other than {BlitzCharacter}, 1 player discards a card or that damage is redirected to {BlitzCharacter}.",
+				"When {BlitzCharacter} is dealt lightning damage, increase the next lightning damage dealt by {BlitzCharacter} by X minus 1, where X = the damage taken.",
+				"At the end of the villain turn, if there is at least 1 villain Circuit in play, flip this card.",
+				"At the end of the villain turn, the environment deals {BlitzCharacter} 3 lightning damage, then {BlitzCharacter} deals the hero target with the highest HP {H + 1} melee damage and plays the top card of the villain deck."
+			],
+			"flippedAdvanced": "At the end of the villain turn, {BlitzCharacter} deals the hero target with the highest HP {H - 1} melee damage.",
+			"flippedIcons": [
+
+				"MakeDamageIrreducible",
+				"Discard",
+				"RedirectDamage",
+				"IncreaseDamageDealtLightning",
+				"EndOfTurnAction",
+				"FlipCard",
+				"DealDamageLightning",
+				"DealDamageMelee",
+				"PlayCardNow"
+			],
+			"flippedAdvancedIcons": [
+			],
+			"difficulty": 2,
+			"challengeTitle": "Live Wire",
+			"challengeText": [
+				"At the end of the villain turn, discard the top card of the villain deck. If a Circuit or Device card is discarded this way, put it into play."
+			],
+			"challengeIcons": [
+				"EndOfTurnAction",
+				"Discard",
+				"PlayCardNow"
+			],
+			"openingLines": {
+				"default": "More phonies, huh? Time for some necessary roughness!",
+				"VainFacadePlaytest.SphereCharacter": "Game on! Time to show the world what a fake you are.",
+				"VainFacadePlaytest.NodeCharacter": "Hey cap! Your odds of winnin' don't look too good."
+			}
+		},
+		{
+			"identifier": "ArcProjector",
+			"count": 2,
+			"title": "Arc Projector",
+			"keywords": [
+				"device",
+				"circuit"
+			],
+			"hitpoints": 12,
+			"body": [
+				"When {BlitzCharacter} is dealt lightning damage, put 1 card from the villain trash beneath this card for each point of damage dealt.",
+				"At the end of the villain turn, {BlitzCharacter} deals the X hero targets with the highest HP {H - 2} lightning damage, where X = the number of cards beneath this card. Then, discard a card from under this card for each time damage was dealt this way."
+			],
+			"icons": [
+				"Manipulate",
+				"EndOfTurnAction",
+				"DealDamageLightning",
+				"Discard"
+			],
+			"flavorQuotes": [
+				{
+					"identifier": "Blitz",
+					"text": "Just y'all? Gonna need more."
+				}
+			],
+			"flavorReference": "Blitz, Arctis #25"
+		},
+		{
+			"identifier": "CallingAnAudible",
+			"count": 2,
+			"title": "Calling an Audible",
+			"keywords": [
+				"one-shot"
+			],
+			"body": [
+				"Reveal the top {H} cards of the villain deck. Put the first revealed One-Shot and the first revealed Playbook into play. Discard the other revealed cards."
+			],
+			"icons": [
+				"Search"
+			],
+			"flavorText": "{BR}“I'll give you a choice: you run{BR}out in front of them cameras yellin' that{BR}Blitz stole all your jewels, or I'm gonna{BR}fold you into a pretzel right here.”{BR}{BR}-Blitz, Sphere: Fallen Hero #3"
+		},
+		{
+			"identifier": "EMChargeStabilizer",
+			"count": 1,
+			"title": "EM-Charge Stabilizer",
+			"keywords": [
+				"device",
+				"circuit"
+			],
+			"hitpoints": 15,
+			"body": [
+				"Increase lightning damage dealt by 1.",
+				"When {BlitzCharacter} is dealt lightning damage, he regains 3 HP.",
+				"At the end of the villain turn, {BlitzCharacter} deals the hero target with the highest HP 1 lightning damage."
+			],
+			"icons": [
+				"IncreaseDamageDealtLightning",
+				"GainHP",
+				"EndOfTurnAction",
+				"DealDamageLightning"
+			],
+			"flavorQuotes": [
+				{
+					"identifier": "Blitz",
+					"text": "Welcome to my life, Sparkles."
+				}
+			],
+			"flavorReference": "Blitz to Friday, Division X #41"
+		},
+		{
+			"identifier": "FiredUp",
+			"count": 2,
+			"title": "Fired Up",
+			"keywords": [
+				"ongoing"
+			],
+			"body": [
+				"When this card enters play, reveal cards from the top of the villain deck until a Circuit is revealed. Put it into play. Discard the other revealed cards.",
+				"The first time each turn {BlitzCharacter} is dealt damage by a target other than {BlitzCharacter}, he deals the source of that damage 3 lightning damage.",
+				"At the start of the villain turn, destroy this card."
+			],
+			"icons": [
+				"Search",
+				"CounterDamage",
+				"StartOfTurnAction",
+				"DestroySelf"
+			],
+			"flavorQuotes": [
+				{
+					"identifier": "Wade",
+					"text": "Make a... {zap}... Faraday cage!"
+				},
+				{
+					"identifier": "Doctor",
+					"text": "Just try to relax! {zap} We'll take{BR}care of this! {zap}"
+				}
+			],
+			"flavorReference": "Sphere: Guardian of Bastion #43"
+		},
+		{
+			"identifier": "GoLong",
+			"count": 2,
+			"title": "Go Long",
+			"keywords": [
+				"one-shot"
+			],
+			"body": [
+				"{BlitzCharacter} deals the hero target with the lowest HP {H - 1} lightning damage."
+			],
+			"icons": [
+				"DealDamageLightning"
+			],
+			"flavorQuotes": [
+				{
+					"identifier": "Blitz",
+					"text": "You look shocked. Didn't see{BR}that comin'?"
+				}
+			],
+			"flavorReference": "Blitz, Away Game One-Shot"
+		},
+		{
+			"identifier": "InstantReplay",
+			"count": 1,
+			"title": "Instant Replay",
+			"keywords": [
+				"ongoing",
+				"playbook"
+			],
+			"body": [
+				"When this card enters play, destroy all other Playbooks.",
+				"When this card is destroyed, play the top card of the villain deck.",
+				"The first time each turn {BlitzCharacter} deals a target other than himself damage, {BlitzCharacter} deals that target 2 melee and 2 lightning damage."
+			],
+			"icons": [
+				"Destroy",
+				"PlayCardNow",
+				"DealDamageMelee",
+				"DealDamageLightning"
+			],
+			"flavorQuotes": [
+				{
+					"identifier": "Blitz",
+					"text": "Yeah, Sphere, [b]I'm[/b] the bad{BR}one. Why's nobody ever come{BR}back from the future t'kill [b]me?[/b]"
+				}
+			],
+			"flavorReference": "Blitz, Sphere: Fallen Hero #56"
+		},
+		{
+			"identifier": "Offsides",
+			"count": 2,
+			"title": "Offsides",
+			"keywords": [
+				"one-shot"
+			],
+			"body": [
+				"Destroy all non-character non-villain cards in the villain play area. {BlitzCharacter} deals each hero target X plus 1 lightning damage, where X = the number of cards destroyed in this way."
+			],
+			"icons": [
+				"Destroy",
+				"DealDamageLightning"
+			],
+			"flavorQuotes": [
+				{
+					"identifier": "Node",
+					"text": "{You could have been{BR}a hero. He didn't make you{BR}a villain.} {scream}"
+				},
+				{
+					"identifier": "Blitz",
+					"text": "Careful baby, high voltage!"
+				}
+			],
+			"flavorReference": "Sphere: Grudge Match #9"
+		},
+		{
+			"identifier": "PersonalFoul",
+			"count": 2,
+			"title": "Personal Foul",
+			"keywords": [
+				"one-shot"
+			],
+			"body": [
+				"{BlitzCharacter} deals the hero target with the highest HP {H + 1} lightning damage. Destroy {H - 2} hero Ongoing and/or Equipment cards."
+			],
+			"icons": [
+				"DealDamageLightning",
+				"DestroyOngoing",
+				"DestroyEquipment"
+			],
+			"flavorQuotes": [
+				{
+					"identifier": "Blitz",
+					"text": "You don't know what 'fury' is."
+				}
+			],
+			"flavorReference": "Blitz, Fury: Sins of the Siblings #12"
+		},
+		{
+			"identifier": "PowerSource",
+			"count": 1,
+			"title": "Power Source",
+			"keywords": [
+				"device"
+			],
+			"hitpoints": 10,
+			"body": [
+				"At the end of the villain turn, this card deals {BlitzCharacter} {H} lightning damage."
+			],
+			"icons": [
+				"EndOfTurnAction",
+				"DealDamageLightning"
+			],
+			"flavorQuotes": [
+				{
+					"identifier": "Blitz",
+					"text": "Arrrgggh! I [b]hate[/b] power{BR}lines! Soon y'all gon' hate 'em as{BR}much as me!"
+				}
+			],
+			"flavorReference": "Blitz, Section 9: Domestic Threats"
+		},
+		{
+			"identifier": "PulseModulator",
+			"count": 1,
+			"title": "Pulse Modulator",
+			"keywords": [
+				"device",
+				"circuit"
+			],
+			"hitpoints": 8,
+			"body": [
+				"When {BlitzCharacter} is dealt lightning damage, move a card from the top of the villain deck beneath this card for each point of damage dealt this way.",
+				"At the start of the villain turn, shuffle the cards beneath this one and discard cards from under this card until a One-Shot is discarded. If a One-Shot is discarded this way, put it into play."
+			],
+			"icons": [
+				"Manipulate",
+				"StartOfTurnAction",
+				"Discard",
+				"PlayCardNow"
+			],
+			"flavorQuotes": [
+				{
+					"identifier": "Blitz",
+					"text": "Why'd I need fire in my blood when{BR}I'm ridin' lightnin'?"
+				}
+			],
+			"flavorReference": "Blitz, Strange Stories: The Midnight Bazaar #21"
+		},
+		{
+			"identifier": "Recharge",
+			"count": 2,
+			"title": "Recharge",
+			"keywords": [
+				"ongoing",
+				"circuit"
+			],
+			"body": [
+				"When {BlitzCharacter} is dealt lightning damage, he regains the same amount of HP.{BR}Then, he regains 5 HP. If he did not regain HP this way, increase the next lightning damage dealt by {BlitzCharacter} by 1.",
+				"At the end of the villain turn, {BlitzCharacter} deals the hero target with the highest HP 1 irreducible lightning damage. If no damage is dealt this way, each player destroys 1 of their Ongoings."
+			],
+			"icons": [
+				"GainHP",
+				"IncreaseDamageDealtLightning",
+				"EndOfTurnAction",
+				"DealDamageLightning"
+			],
+			"flavorQuotes": [
+				{
+					"identifier": "The Whisper Scribe",
+					"text": "You may have stolen thunder, Mr. Solomon,{BR}but the storm is coming all the same. You{BR}would do well to remember that fact."
+				}
+			],
+			"flavorReference": "The Whisper Scribe, Strange Stories: The Midnight Bazaar #19"
+		},
+		{
+			"identifier": "Rushing",
+			"count": 1,
+			"title": "Rushing",
+			"keywords": [
+				"ongoing",
+				"playbook"
+			],
+			"body": [
+				"When this card enters play, destroy all other Playbooks.",
+				"When this card is destroyed, play the top card of the villain deck.",
+				"The first time each turn {BlitzCharacter} deals a hero target lightning damage, {H - 2} players discard a card, then play the top card of the villain deck."
+			],
+			"icons": [
+				"Destroy",
+				"PlayCardNow",
+				"Discard"
+			],
+			"flavorQuotes": [
+				{
+					"identifier": "Blitz",
+					"text": "Put up or shut up, mascot-man."
+				}
+			],
+			"flavorReference": "Blitz, Echoes of X51 #20"
+		},
+		{
+			"identifier": "SweepRight",
+			"count": 1,
+			"title": "Sweep Right",
+			"keywords": [
+				"ongoing",
+				"playbook"
+			],
+			"body": [
+				"When this card enters play, destroy all other Playbooks. When this card is destroyed, play the top card of the villain deck.",
+				"The first time {BlitzCharacter} is dealt damage each turn, 1 player discards a card.",
+				"The first time {BlitzCharacter} would deal damage to a target other than {BlitzCharacter} each turn, redirect that damage to the hero target with the second lowest HP."
+			],
+			"icons": [
+				"Destroy",
+				"PlayCardNow",
+				"Discard",
+				"RedirectDamage"
+			],
+			"flavorQuotes": [
+				{
+					"identifier": "Blitz",
+					"text": "He's past the line of scrimmage!{BR}He. Could. Go. All. The. Way!"
+				}
+			],
+			"flavorReference": "Blitz, Blitz: First and Ten One-Shot"
+		},
+		{
+			"identifier": "TooManyMenOnTheField",
+			"count": 2,
+			"title": "Too Many Men on the Field",
+			"keywords": [
+				"one-shot"
+			],
+			"body": [
+				"{BlitzCharacter} deals the hero target with the highest HP X melee damage, where X = the number of hero targets in play."
+			],
+			"icons": [
+				"DealDamageMelee"
+			],
+			"flavorQuotes": [
+				{
+					"identifier": "Blitz",
+					"text": "Got no time for y'all. Stay{BR}down."
+				}
+			],
+			"flavorReference": "Blitz, Sphere: Fallen Hero #96"
+		},
+		{
+			"identifier": "UnnecessaryRoughness",
+			"count": 1,
+			"title": "Unnecessary Roughness",
+			"keywords": [
+				"ongoing",
+				"playbook"
+			],
+			"body": [
+				"When this card enters play, destroy all other Playbooks.",
+				"When this card is destroyed, play the top card of the villain deck.",
+				"At the end of the villain turn, destroy 1 environment card and {H - 2} hero Ongoing and/or Equipment cards. For each card destroyed this way, increase the next lightning damage dealt by {BlitzCharacter} by 1."
+			],
+			"icons": [
+				"Destroy",
+				"PlayCardNow",
+				"EndOfTurnAction",
+				"IncreaseDamageDealtLightning"
+			],
+			"flavorQuotes": [
+				{
+					"identifier": "Blitz",
+					"text": "You're out-of-bounds, old man.{BR}I don't wanna kill Sphere. Not 'til the{BR}whole world sees what a fake he is."
+				}
+			],
+			"flavorReference": "Blitz, Sphere: Grandfather Paradox #1"
+		},
+		{
+			"identifier": "UnsportsmanlikeConduct",
+			"count": 1,
+			"title": "Unsportsmanlike Conduct",
+			"keywords": [
+				"one-shot"
+			],
+			"body": [
+				"{BlitzCharacter} deals the hero target with the lowest HP {H - 1} melee damage and {H - 1} lightning damage."
+			],
+			"icons": [
+				"DealDamageMelee",
+				"DealDamageLightning"
+			],
+			"flavorQuotes": [
+				{
+					"identifier": "Blitz",
+					"text": "You don't fool me. You're team captain.{BR}Enjoy the bench."
+				}
+			],
+			"flavorReference": "Blitz to Node, Y-Tech Laboratories: Power Surge One-Shot"
+		},
+		{
+			"identifier": "UpTheMiddle",
+			"count": 1,
+			"title": "Up the Middle",
+			"keywords": [
+				"ongoing",
+				"playbook"
+			],
+			"body": [
+				"When this card enters play, destroy all other Playbooks.",
+				"When this card is destroyed, play the top card of the villain deck.",
+				"At the end of the villain turn, {BlitzCharacter} deals the hero target with the second highest HP {H - 2} melee damage and {H - 2} lightning damage."
+			],
+			"icons": [
+				"Destroy",
+				"PlayCardNow",
+				"EndOfTurnAction",
+				"DealDamageMelee"
+			],
+			"flavorQuotes": [
+				{
+					"identifier": "Blitz",
+					"text": "First down!"
+				}
+			],
+			"flavorReference": "Blitz, Division X #44"
+		}
+	]
+}
