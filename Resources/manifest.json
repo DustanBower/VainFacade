@@ -3,7 +3,9 @@
     "author": "Tonitrus",
     "description": [
       "Playtesting mod for Vain Facade custom expansion.",
-      "Placeholder art.",
+      "Decks on this mod are considered to be in Beta. They've been extensively tested by me and tested by others as well. They have placeholder art, including all cutouts. They may require minor tweaks but are not expected to change unless issues arise. I am conservative on my designations, so what I call Beta, most would probably consider finalized. Additionally, I won't consider any deck finalized until it's fully arted. As I am not an artist, this will be quite a while.",
+      "Music for Environments and Villains is done.",
+      "Decks in earlier states are available on my TTS mod. Once decks are finalized, I'll put them up on another mod.",
       "Currently available:",
       "Heroes:",
       "  Burgess - A police detective trying to do his job in the hectic world of heroes and villains.",
@@ -19,13 +21,13 @@
       "",
       "Villains:",
       "  The Baroness - A vampire with centuries of experience defeating foes via physical strength and magic (difficulty 4 - intended to be very difficult but engaging and hard to predict)",
-      "  Blitz - A former college football player doomed to attract electricity, who now directs his rage toward taking down 'fake heroes' like the one who caused his predicament.",
+      "  Blitz - A former college football player doomed to attract electricity, who now directs his rage toward taking down 'fake heroes' like the one who caused his predicament. (difficulty 2)",
       "  Grandfather - A time-traveler from the future who just won't stop messing with the past (difficulty 3)"
     ],
     "namespace": "VainFacadePlaytest",
     "dll": "VainFacadePlaytest.dll",
     "publishedFileId": 2835111137,
-    "version": "0.11",
+    "version": "0.11.1",
     "color": "232370",
     "manualTags": [],
     "decks": {
