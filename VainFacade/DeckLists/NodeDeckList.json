@@ -68,9 +68,10 @@
 				"one-shot"
 			],
 			"body": [
-				"You may play a Connection in a [i]Connected[/i] character's play area.",
-				"You may return any number of Connections to your hand. Draw a card for each Connection returned this way.",
-				"You may increase the next damage dealt to {NodeCharacter} by 1. If you do, repeat the entire game text of this card."
+				"You may play a card.",
+				"Return any number of Connections in play to your hand.",
+				"For each Connection returned this way, you may draw a card, then you may play a card.",
+				"Increase the next damage dealt to {NodeCharacter} by X, where X is the number of hero cards played since this card entered play."
 			],
 			"icons": [
 				"PlayCardNow",
