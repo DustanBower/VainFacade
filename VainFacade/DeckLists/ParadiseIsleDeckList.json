@@ -1,0 +1,458 @@
+{
+	"name": "Paradise Isle",
+	"kind": "Environment",
+	"backgroundColor": "D5CD5F",
+	"difficulty": 1,
+	"cards": [
+		{
+			"identifier": "Bombshell",
+			"count": 1,
+			"title": "Bombshell",
+			"keywords": [
+				"conspirator"
+			],
+			"nemesisIdentifiers": [
+				"VainFacadePlaytest.Carnaval"
+			],
+			"hitpoints": 10,
+			"body": [
+				"This card is immune to damage if it has not dealt damage since entering play.",
+				"The first time a Conspirator deals damage to a target each turn, {Bombshell} deals that target {H} projectile damage.",
+				"The first time multiple targets are dealt damage during each environment turn, {Bombshell} deals each non-Conspirator target 2 fire damage."
+			],
+			"icons": [
+				"ImmuneToDamage",
+				"DealDamageProjectile",
+				"CounterDamage",
+				"DealDamageFire"
+			],
+			"flavorText": "Carnaval smirked. “Time for fireworks{BR}already?” The woman laughed. “Perhaps if you{BR}play your cards right, Mr. Rooke. Or if you{BR}play them wrong. Stanek wants to see you.”",
+			"flavorQuotes": [
+				{
+					"identifier": "Carnaval",
+					"text": "Time for fireworks{BR}already?"
+				},
+				{
+					"identifier": "Bombshell",
+					"text": "Perhaps if you{BR}play your cards right, Mr. Rooke. Or if you{BR}play them wrong. Stanek wants to see you."
+				}
+			]
+		},
+		{
+			"identifier": "DiningWithADevil",
+			"count": 1,
+			"title": "Dining with a Devil",
+			"body": [
+				"Increase damage dealt to non-environment targets by 1.",
+				"Increase HP recovery by 2.",
+				"At the start of the environment turn, play the top card of the environment deck and destroy this card."
+			],
+			"icons": [
+				"IncreaseDamageTaken",
+				"IncreaseGainHP",
+				"StartOfTurnAction",
+				"PlayCardNow",
+				"DestroySelf"
+			],
+			"flavorText": "Stanek glanced at Carnaval. “I'm glad you{BR}could join me, Mr. Rooke. I apologize for the{BR}incident last time.” He glared at Bombshell.{BR}“Things would have gone quite differently had I{BR}had competent help at the time.”",
+			"flavorQuotes": [
+				{
+					"identifier": "Stanek",
+					"text": "I'm glad you{BR}could join me, Mr. Rooke. I apologize for the{BR}incident last time."
+				},
+				{
+					"identifier": "Stanek",
+					"text": "Things would have gone quite differently had I{BR}had competent help at the time."
+				}
+			]
+		},
+		{
+			"identifier": "DrWendigo",
+			"count": 1,
+			"title": "Dr. Wendigo",
+			"keywords": [
+				"conspirator"
+			],
+			"hitpoints": 14,
+			"body": [
+				"Reduce damage dealt to {DrWendigo} by 1.",
+				"When {DrWendigo} deals damage, add a token to this card.",
+				"At the end of the environment turn, {DrWendigo} deals the target other than himself with the second highest HP X melee damage, where X = 2 plus the number of tokens on this card."
+			],
+			"icons": [
+				"ReduceDamageTaken",
+				"AddTokens",
+				"EndOfTurnAction",
+				"DealDamageMelee"
+			],
+			"tokenPools": [
+				{
+					"identifier": "DrWendigoPool",
+					"name": "Dr. Wendigo's Token Pool",
+					"initialValue": 0,
+					"minimumValue": 0,
+					"color": "D20E26"
+				}
+			],
+			"flavorText": "Stanek smiled faintly. “Mr. Rooke, I don't{BR}believe I've introduced you to Doctor{BR}Wendigo. He is quite the scientist. A{BR}veritable miracle-worker.”",
+			"flavorQuotes": [
+				{
+					"identifier": "Stanek",
+					"text": "Mr. Rooke, I don't{BR}believe I've introduced you to Doctor{BR}Wendigo. He is quite the scientist. A{BR}veritable miracle-worker."
+				}
+			]
+		},
+		{
+			"identifier": "GiselaCaro",
+			"count": 1,
+			"title": "Gisela Caro",
+			"hitpoints": 7,
+			"targetKind": "Hero",
+			"body": [
+				"This card is a hero target.",
+				"Reduce damage dealt to this card by 3. Increase damage dealt to this card by 1 for each card in the environment trash.",
+				"When this card is destroyed, remove it from the game.",
+				"At the end of the environment turn, you may reveal the top card of a deck. Discard it or replace it."
+			],
+			"icons": [
+				"ReduceDamageTaken",
+				"IncreaseDamageTaken",
+				"EndOfTurnAction",
+				"Manipulate"
+			],
+			"flavorText": "Peacekeeper grinned. “Don't worry, she's{BR}not your type anyway. Too sane.”",
+			"flavorQuotes": [
+				{
+					"identifier": "Peacekeeper",
+					"text": "Don't worry, she's{BR}not your type anyway. Too sane."
+				}
+			]
+		},
+		{
+			"identifier": "GrandHotelRoof",
+			"count": 1,
+			"title": "Grand Hotel Roof",
+			"keywords": [
+				"area"
+			],
+			"body": [
+				"When this card enters play, destroy all other Areas.",
+				"Increase damage dealt by 1.",
+				"At the start of the environment turn, each player may discard a card to destroy this card.",
+				"At the end of the environment turn, 1 player discards a card."
+			],
+			"icons": [
+				"DestroyEnvironment",
+				"IncreaseDamageDealt",
+				"StartAndEndOfTurnAction",
+				"Discard",
+				"DestroySelf"
+			],
+			"flavorText": "Peacekeeper checked his weapon and{BR}muttered to himself. “Great. Just great.{BR}Open sightlines, little cover, high{BR}visibility.”",
+			"flavorQuotes": [
+				{
+					"identifier": "Peacekeeper",
+					"text": "“Great. Just great.{BR}Open sightlines, little cover, high{BR}visibility."
+				}
+			]
+		},
+		{
+			"identifier": "LastCall",
+			"count": 1,
+			"title": "Last Call",
+			"keywords": [
+				"countdown"
+			],
+			"body": [
+				"When this card is destroyed, destroy all environment cards, then deal each target X fire damage and X projectile damage, where X = 1 plus the number of cards destroyed this way.",
+				"When this card has no tokens on it, destroy it.",
+				"When this card enters play, put 3 tokens on it.",
+				"At the end of the environment turn, remove a token from this card."
+			],
+			"icons": [
+				"DestroyEnvironment",
+				"DealDamageFire",
+				"DealDamageProjectile",
+				"DestroySelf",
+				"AddTokens",
+				"EndOfTurnAction",
+				"RemoveTokens"
+			],
+			"tokenPools": [
+				{
+					"identifier": "LastCallPool",
+					"name": "Last Call's Token Pool",
+					"initialValue": 3,
+					"minimumValue": 0,
+					"color": "D20E26"
+				}
+			],
+			"flavorText": "Carnaval fiddled with his earpiece.{BR}“Beneath the craps table? No, I didn't put{BR}a bomb [b]there[/b].” He paused. “Out of{BR}curiosity, why do you ask?”",
+			"flavorQuotes": [
+				{
+					"identifier": "Carnaval",
+					"text": "Beneath the craps table? No, I didn't put{BR}a bomb [b]there[/b]."
+				},
+				{
+					"identifier": "Carnaval",
+					"text": "Out of{BR}curiosity, why do you ask?"
+				}
+			]
+		},
+		{
+			"identifier": "MercenarySquad",
+			"count": 1,
+			"title": "Mercenary Squad",
+			"keywords": [
+				"conspirator"
+			],
+			"hitpoints": 6,
+			"body": [
+				"When this card enters play, place the top {H} cards of the environment deck beneath it.",
+				"When this card would be dealt damage, discard a card beneath it. If you do, prevent that damage.",
+				"At the start of the environment turn, this card deals the non-Conspirator target with the second highest HP X projectile damage, where X = 2 plus the number of cards beneath this one."
+			],
+			"icons": [
+				"Manipulate",
+				"CancelledDamageRed",
+				"StartOfTurnAction",
+				"DealDamageProjectile"
+			],
+			"flavorText": "Push frowned. “Do you think she'll be{BR}alright?” Node's disembodied voice filled{BR}her mind. {She is... having fun.}",
+			"flavorQuotes": [
+				{
+					"identifier": "Push",
+					"text": "Do you think she'll be{BR}alright?"
+				},
+				{
+					"identifier": "Node",
+					"text": "She is... having fun."
+				}
+			]
+		},
+		{
+			"identifier": "NoMrRookeIExpectYouToDie",
+			"count": 1,
+			"title": "No, Mr. Rooke, I Expect You to Die",
+			"body": [
+				"At the end of the environment turn, the Conspirator with the highest HP deals the hero target with the highest HP X energy damage, where X = the number of cards in the environment trash.",
+				"If no damage was dealt this way, discard the top card of the environment deck. If a Conspirator is discarded this way, put it into play."
+			],
+			"icons": [
+				"EndOfTurnAction",
+				"DealDamageEnergy",
+				"Discard",
+				"PlayCardNow"
+			],
+			"flavorText": "Burgess struggled to disengage the{BR}restraints. “I don't want to rush you, but if{BR}you take much longer, I'll need two seats{BR}for the flight home,”, Carnaval said dryly.",
+			"flavorQuotes": [
+				{
+					"identifier": "Carnaval",
+					"text": "I don't want to rush you, but if{BR}you take much longer, I'll need two seats{BR}for the flight home,"
+				}
+			]
+		},
+		{
+			"identifier": "SecretLair",
+			"count": 1,
+			"title": "Secret Lair",
+			"keywords": [
+				"area"
+			],
+			"body": [
+				"When this card enters play, destroy all other Areas.",
+				"The first time each turn an environment card enters play, if it is a Conspirator, it deals the hero target with the highest HP {H - 1} projectile damage. Otherwise, play the top card of the environment deck, then 1 player may draw a card."
+			],
+			"icons": [
+				"DestroyEnvironment",
+				"DealDamageProjectile",
+				"PlayCardNow",
+				"DrawCardNow"
+			],
+			"flavorText": "Carnaval pressed on. “Ah, so he didn't tell{BR}you the whole building would blow this time?{BR}Guess you're meant to stay behind with us.”{BR}Bombshell shook her head. “You're lying.”",
+			"flavorQuotes": [
+				{
+					"identifier": "Carnaval",
+					"text": "Ah, so he didn't tell{BR}you the whole building would blow this time?{BR}Guess you're meant to stay behind with us."
+				},
+				{
+					"identifier": "Bombshell",
+					"text": "You're lying."
+				}
+			]
+		},
+		{
+			"identifier": "SinisterLaboratory",
+			"count": 1,
+			"title": "Sinister Laboratory",
+			"keywords": [
+				"area"
+			],
+			"body": [
+				"When this card enters play, destroy all other Areas.",
+				"Increase toxic and psychic damage dealt by 1.",
+				"At the end of the environment turn, reveal the top card of the environment deck. If that card is {TestSubjects}, put it into play, otherwise discard it and deal each hero target 1 toxic damage."
+			],
+			"icons": [
+				"DestroyEnvironment",
+				"IncreaseDamageDealtToxic",
+				"IncreaseDamageDealtPsychic",
+				"EndOfTurnAction",
+				"PlayCardNow",
+				"Discard",
+				"DealDamageToxic"
+			],
+			"flavorText": "Peacekeeper discreetly activated his{BR}earpiece. “Listen, next time we do this,{BR}you get the creepy scientist. I had{BR}enough of that in the military.”",
+			"flavorQuotes": [
+				{
+					"identifier": "Peacekeeper",
+					"text": "Listen, next time we do this,{BR}you get the creepy scientist. I had{BR}enough of that in the military."
+				}
+			]
+		},
+		{
+			"identifier": "SpiritsNearAndFar",
+			"count": 1,
+			"title": "Spirits Near and Far",
+			"keywords": [
+				"strong drink"
+			],
+			"body": [
+				"At the end of the environment turn, you may move this card next to a hero. That hero gains the following power:"
+			],
+			"powers": [
+				"Put a card from your trash into your hand. Destroy this card."
+			],
+			"icons": [
+				"EndOfTurnAction",
+				"HasPower",
+				"Manipulate",
+				"DestroySelf"
+			],
+			"flavorText": "“We've all lost someone,” Janson{BR}muttered. “Now you've roped Varano into{BR}this. I'll say this once: if he doesn't come{BR}back, you don't either.”",
+			"flavorQuotes": [
+				{
+					"identifier": "Janson",
+					"text": "We've all lost someone,"
+				},
+				{
+					"identifier": "Janson",
+					"text": "Now you've roped Varano into{BR}this. I'll say this once: if he doesn't come{BR}back, you don't either."
+				}
+			]
+		},
+		{
+			"identifier": "StaneksGoons",
+			"count": 1,
+			"title": "Stanek's Goons",
+			"keywords": [
+				"conspirator"
+			],
+			"hitpoints": 5,
+			"body": [
+				"Increase damage dealt by this card by 1 if there is a Conspirator in play with higher HP than this card.",
+				"At the end of the environment turn, this card deals the 2 non-Conspirator targets with the lowest HP 2 projectile damage each."
+			],
+			"icons": [
+				"IncreaseDamageDealt",
+				"EndOfTurnAction",
+				"DealDamageProjectile"
+			],
+			"flavorText": "One of the men shrugged as he attached{BR}a suppressor. “Nothing personal... but{BR}the boss... he doesn't like witnesses.”",
+			"flavorQuotes": [
+				{
+					"identifier": "Goon",
+					"text": "Nothing personal... but{BR}the boss... he doesn't like witnesses."
+				}
+			]
+		},
+		{
+			"identifier": "TestSubjects",
+			"count": 1,
+			"title": "Test Subjects",
+			"hitpoints": 8,
+			"targetKind": "Hero",
+			"body": [
+				"This card is a hero target.",
+				"At the end of the environment turn, {DrWendigo} deals this card 2 toxic damage. If {DrWendigo} deals damage this way, he regains 2 HP. Then 1 player may draw a card.",
+				"When this card is reduced to 0 or fewer HP, each hero deals themself 2 psychic damage."
+			],
+			"icons": [
+				"EndOfTurnAction",
+				"DealDamageToxic",
+				"GainHP",
+				"DrawCardNow",
+				"DealDamagePsychic"
+			],
+			"flavorText": "Dr. Wendigo rounded on Peacekeeper{BR}suddenly. “What would you know?!” he{BR}shrieked. “Science demands sacrifice! These{BR}undesirables pave the way for future{BR}greatness!”",
+			"flavorQuotes": [
+				{
+					"identifier": "Dr. Wendigo",
+					"text": "What would you know?!"
+				},
+				{
+					"identifier": "Dr. Wendigo",
+					"text": "Science demands sacrifice! These{BR}undesirables pave the way for future{BR}greatness!"
+				}
+			]
+		},
+		{
+			"identifier": "TheGoldenDawnCasino",
+			"count": 1,
+			"title": "The Golden Dawn Casino",
+			"keywords": [
+				"area"
+			],
+			"body": [
+				"When this card enters play, destroy all other Areas.",
+				"At the end of the environment turn, 1 player chooses a number between 1 and 4, selects a keyword, and discards the top card of their deck. If that card has the selected keyword, that hero draws X cards, otherwise they deal themselves X psychic damage, where X = the chosen number."
+			],
+			"icons": [
+				"DestroyEnvironment",
+				"EndOfTurnAction",
+				"DrawCardNow",
+				"DealDamagePsychic"
+			],
+			"flavorText": "“I think we can help. I'm Grandfather. This is my{BR}girl Friday.” The woman smiled and offered her{BR}hand to Arctis. “Pleased to meet you,” she said{BR}warmly. Arctis only scowled.",
+			"flavorQuotes": [
+				{
+					"identifier": "Grandfather",
+					"text": "I think we can help. I'm Grandfather. This is my{BR}girl Friday."
+				},
+				{
+					"identifier": "Friday",
+					"text": "Pleased to meet you,"
+				}
+			]
+		},
+		{
+			"identifier": "TightHallways",
+			"count": 1,
+			"title": "Tight Hallways",
+			"keywords": [
+				"area"
+			],
+			"body": [
+				"When this card enters play, destroy all other Areas.",
+				"Reduce damage dealt by targets by 1.",
+				"Increase projectile damage dealt by 2.",
+				"At the end of the environment turn, each player discards a card and draws a card."
+			],
+			"icons": [
+				"DestroyEnvironment",
+				"ReduceDamageDealt",
+				"IncreaseDamageDealtProjectile",
+				"EndOfTurnAction",
+				"Discard",
+				"DrawCardNow"
+			],
+			"flavorText": "“No more!” Push shouted. Her voice shook the{BR}walls and floor, then it impacted Roiya's{BR}forces, knocking them end over end as every{BR}piece of glass within hundreds of feet shattered.",
+			"flavorQuotes": [
+				{
+					"identifier": "Push",
+					"text": "No more!"
+				}
+			]
+		}
+	]
+}
