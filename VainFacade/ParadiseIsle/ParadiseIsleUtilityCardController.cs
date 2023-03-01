@@ -23,6 +23,5 @@ namespace VainFacadePlaytest.ParadiseIsle
         public static LinqCardCriteria isConspiratorInPlay = new LinqCardCriteria((Card c) => c.IsInPlayAndHasGameText && c.DoKeywordsContain(ConspiratorKeyword), "Conspirator in play", false, false, "Conspirator in play", "Conspirators in play");
 
         public static readonly string DrWendigoIdentifier = "DrWendigo";
-        public static readonly string TestSubjectsIdentifier = "TestSubjects";
     }
 }
