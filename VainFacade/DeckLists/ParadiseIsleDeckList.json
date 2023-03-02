@@ -374,14 +374,14 @@
 			"targetKind": "Hero",
 			"body": [
 				"This card is a hero target.",
-				"At the end of the environment turn, {DrWendigo} deals this card 2 toxic damage. If {DrWendigo} deals damage this way, he regains 2 HP. Then 1 player may draw a card.",
+				"At the end of the environment turn, 1 player may draw a card. Then, {DrWendigo} deals this card 2 toxic damage. If {DrWendigo} deals damage this way, he regains 2 HP.",
 				"When this card is reduced to 0 or fewer HP, each hero deals themself 2 psychic damage."
 			],
 			"icons": [
 				"EndOfTurnAction",
+				"DrawCardNow",
 				"DealDamageToxic",
 				"GainHP",
-				"DrawCardNow",
 				"DealDamagePsychic"
 			],
 			"flavorText": "Dr. Wendigo rounded on Peacekeeper{BR}suddenly. “What would you know?!” he{BR}shrieked. “Science demands sacrifice! These{BR}undesirables pave the way for future{BR}greatness!”",
