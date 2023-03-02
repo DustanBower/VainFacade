@@ -175,6 +175,7 @@
     <Compile Include="Node\TelepathicExtrapolationCardController.cs" />
     <Compile Include="Node\TheIInTeamCardController.cs" />
     <Compile Include="ParadiseIsle\AreaCardController.cs" />
+    <Compile Include="ParadiseIsle\BombshellCardController.cs" />
     <Compile Include="ParadiseIsle\DiningWithADevilCardController.cs" />
     <Compile Include="ParadiseIsle\DrWendigoCardController.cs" />
     <Compile Include="ParadiseIsle\GiselaCaroCardController.cs" />
@@ -185,7 +186,9 @@
     <Compile Include="ParadiseIsle\ParadiseIsleUtilityCardController.cs" />
     <Compile Include="ParadiseIsle\SecretLairCardController.cs" />
     <Compile Include="ParadiseIsle\SinisterLaboratoryCardController.cs" />
+    <Compile Include="ParadiseIsle\SpiritsNearAndFarCardController.cs" />
     <Compile Include="ParadiseIsle\StaneksGoonsCardController.cs" />
+    <Compile Include="ParadiseIsle\TestSubjectsCardController.cs" />
     <Compile Include="ParadiseIsle\TheGoldenDawnCasinoCardController.cs" />
     <Compile Include="ParadiseIsle\TightHallwaysCardController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
