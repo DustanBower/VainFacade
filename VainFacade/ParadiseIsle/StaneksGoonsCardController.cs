@@ -22,7 +22,7 @@ namespace VainFacadePlaytest.ParadiseIsle
 
         private bool HasTougherBackup()
         {
-            return FindCardsWhere((Card c) => c.DoKeywordsContain(ConspiratorKeyword) && c.IsTarget && c.HitPoints > base.Card.HitPoints).Any();
+            return FindCardsWhere((Card c) => c.DoKeywordsContain(ConspiratorKeyword) && c.IsTarget && c.HitPoints.HasValue && base.Card.HitPoints.HasValue && c.HitPoints.Value > base.Card.HitPoints.Value).Any();
         }
 
         public override void AddTriggers()
