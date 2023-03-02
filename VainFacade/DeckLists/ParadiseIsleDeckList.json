@@ -107,6 +107,7 @@
 			"count": 1,
 			"title": "Gisela Caro",
 			"hitpoints": 7,
+			"kind": "Hero",
 			"targetKind": "Hero",
 			"body": [
 				"This card is a hero target.",
@@ -371,6 +372,7 @@
 			"count": 1,
 			"title": "Test Subjects",
 			"hitpoints": 8,
+			"kind": "Hero",
 			"targetKind": "Hero",
 			"body": [
 				"This card is a hero target.",
