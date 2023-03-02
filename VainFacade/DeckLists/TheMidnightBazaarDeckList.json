@@ -1,6 +1,6 @@
 {
 	"name": "The Midnight Bazaar",
-	"listname":  "Midnight Bazaar",
+	"sortName":  "Midnight Bazaar",
 	"kind": "Environment",
 	"backgroundColor": "538B15",
 	"difficulty": 2,
