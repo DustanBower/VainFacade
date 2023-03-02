@@ -17,12 +17,12 @@ namespace VainFacadePlaytest.ParadiseIsle
             // Show whether there is a Conspirator in play with higher HP than this card
             SpecialStringMaker.ShowIfElseSpecialString(HasTougherBackup, () => "There is a Conspirator in play with more HP than " + base.Card.Title + ".", () => "There are no Conspirators in play with more HP than " + base.Card.Title + ".");
             // Show 2 non-Conspirator targets with lowest HP
-            SpecialStringMaker.ShowLowestHP(numberOfTargets: () => 2, cardCriteria: new LinqCardCriteria((Card c) => !c.DoKeywordsContain(ConspiratorKeyword), "non-Conspirator"));
+            SpecialStringMaker.ShowLowestHP(numberOfTargets: () => 2, cardCriteria: new LinqCardCriteria((Card c) => !c.DoKeywordsContain(ConspiratorKeyword), "non-Conspirator", singular: "target", plural: "targets"));
         }
 
         private bool HasTougherBackup()
         {
-            return FindCardsWhere((Card c) => c.DoKeywordsContain(ConspiratorKeyword) && c.IsTarget && c.HitPoints.HasValue && base.Card.HitPoints.HasValue && c.HitPoints.Value > base.Card.HitPoints.Value).Any();
+            return FindCardsWhere((Card c) => c.IsInPlayAndHasGameText && c.DoKeywordsContain(ConspiratorKeyword) && c.IsTarget && c.HitPoints.HasValue && base.Card.HitPoints.HasValue && c.HitPoints.Value > base.Card.HitPoints.Value).Any();
         }
 
         public override void AddTriggers()
