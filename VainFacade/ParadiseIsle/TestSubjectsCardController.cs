@@ -14,8 +14,8 @@ namespace VainFacadePlaytest.ParadiseIsle
         public TestSubjectsCardController(Card card, TurnTakerController turnTakerController)
             : base(card, turnTakerController)
         {
-            // Show location of Dr. Wendigo
-            SpecialStringMaker.ShowLocationOfCards(new LinqCardCriteria(FindCard(DrWendigoIdentifier)));
+            // Show current location of Dr. Wendigo
+            SpecialStringMaker.ShowLocationOfCards(new LinqCardCriteria((Card c) => c.Identifier == DrWendigoIdentifier, "Dr. Wendigo", false, false));
         }
 
         public static readonly string DrWendigoIdentifier = "DrWendigo";
