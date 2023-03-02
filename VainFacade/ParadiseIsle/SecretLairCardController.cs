@@ -16,8 +16,10 @@ namespace VainFacadePlaytest.ParadiseIsle
         {
             // Show number of Conspirator cards in the environment deck
             SpecialStringMaker.ShowNumberOfCardsAtLocation(base.TurnTaker.Deck, isConspirator);
+            // Show hero target with highest HP
+            SpecialStringMaker.ShowHeroTargetWithHighestHP();
             // If in play: show whether this card has seen an environment card enter play this turn
-            SpecialStringMaker.ShowHasBeenUsedThisTurn(FirstEnvCard, "{0} has already been activated this turn.", "{0} has not been activated this turn.").Condition = () => base.Card.IsInPlayAndHasGameText;
+            SpecialStringMaker.ShowHasBeenUsedThisTurn(FirstEnvCard, "An environment card has already entered play this turn since {0} entered play.", "No environment cards have entered play this turn since {0} entered play.").Condition = () => base.Card.IsInPlayAndHasGameText;
         }
 
         private readonly string FirstEnvCard = "FirstEnvironmentCardPlayedThisTurn";
@@ -32,6 +34,7 @@ namespace VainFacadePlaytest.ParadiseIsle
 
         private IEnumerator ShootOrPlayDrawResponse(CardEntersPlayAction cepa)
         {
+            SetCardPropertyToTrueIfRealAction(FirstEnvCard);
             // "... if it is a Conspirator, it deals the hero target with the highest HP {H - 1} projectile damage."
             if (cepa.CardEnteringPlay.DoKeywordsContain(ConspiratorKeyword))
             {
