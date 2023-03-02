@@ -35,11 +35,27 @@ namespace VainFacadePlaytest.ParadiseIsle
         public bool HasDealtDamageSinceEnteringPlay()
         {
             PlayCardJournalEntry enteredPlay = base.GameController.Game.Journal.QueryJournalEntries((PlayCardJournalEntry e) => e.CardPlayed == base.Card).LastOrDefault();
-            DealDamageJournalEntry dealtDamage = base.GameController.Game.Journal.MostRecentDealDamageEntry((DealDamageJournalEntry e) => e.SourceCard == base.CharacterCard && e.Amount > 0);
+            DealDamageJournalEntry dealtDamage = base.GameController.Game.Journal.MostRecentDealDamageEntry((DealDamageJournalEntry e) => e.SourceCard == base.Card && e.Amount > 0);
             if (enteredPlay != null)
             {
                 int? entranceIndex = base.GameController.Game.Journal.GetEntryIndex(enteredPlay);
                 int? damageIndex = base.GameController.Game.Journal.GetEntryIndex(dealtDamage);
+                /*if (entranceIndex.HasValue)
+                {
+                    Log.Debug("BombshellCardController.HasDealtDamageSinceEnteringPlay: entranceIndex = " + entranceIndex.Value.ToString());
+                }
+                else
+                {
+                    Log.Debug("BombshellCardController.HasDealtDamageSinceEnteringPlay: entranceIndex.HasValue is false");
+                }
+                if (damageIndex.HasValue)
+                {
+                    Log.Debug("BombshellCardController.HasDealtDamageSinceEnteringPlay: damageIndex = " + damageIndex.Value.ToString());
+                }
+                else
+                {
+                    Log.Debug("BombshellCardController.HasDealtDamageSinceEnteringPlay: damageIndex.HasValue is false");
+                }*/
                 if (damageIndex.HasValue && entranceIndex.HasValue && damageIndex.Value > entranceIndex.Value)
                 {
                     return true;
