@@ -18,7 +18,7 @@ namespace VainFacadePlaytest.ParadiseIsle
             SpecialStringMaker.ShowHighestHP(2, cardCriteria: new LinqCardCriteria((Card c) => c != base.Card, "other than " + base.Card.Title, false, true, "target", "targets"));
         }
 
-        public static readonly string TokenPoolIdentifier = "DrWendigoPool";
+        private readonly string TokenPoolIdentifier = "DrWendigoPool";
 
         private TokenPool DrWendigoTokenPool()
         {

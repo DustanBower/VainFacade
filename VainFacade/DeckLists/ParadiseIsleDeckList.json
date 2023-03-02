@@ -182,7 +182,7 @@
 				{
 					"identifier": "LastCallPool",
 					"name": "Last Call's Token Pool",
-					"initialValue": 3,
+					"initialValue": 0,
 					"minimumValue": 0,
 					"color": "D20E26"
 				}
