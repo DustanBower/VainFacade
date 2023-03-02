@@ -9,7 +9,7 @@ using System.Text;
 
 namespace VainFacadePlaytest.ParadiseIsle
 {
-    public class TheGoldenDawnCasinoCardController : CardController
+    public class TheGoldenDawnCasinoCardController : AreaCardController
     {
         public TheGoldenDawnCasinoCardController(Card card, TurnTakerController turnTakerController)
             : base(card, turnTakerController)
