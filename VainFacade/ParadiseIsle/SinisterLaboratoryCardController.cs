@@ -33,7 +33,8 @@ namespace VainFacadePlaytest.ParadiseIsle
         {
             // "... reveal the top card of the environment deck. If that card is {TestSubjects}, put it into play, otherwise discard it..."
             List<Card> revealed = new List<Card>();
-            IEnumerator checkCoroutine = RevealCards_PutSomeIntoPlay_DiscardRemaining(base.DecisionMaker, base.TurnTaker.Deck, 1, new LinqCardCriteria(FindCard(TestSubjectsIdentifier)), revealedCards: revealed);
+            //Log.Debug("SinisterLaboratoryCardController.PlayOrDiscardDamageResponse: ");
+            IEnumerator checkCoroutine = RevealCards_PutSomeIntoPlay_DiscardRemaining(base.TurnTakerController, base.TurnTaker.Deck, 1, new LinqCardCriteria((Card c) => c.Identifier == TestSubjectsIdentifier, "Test Subjects", false, false), revealedCards: revealed);
             if (base.UseUnityCoroutines)
             {
                 yield return base.GameController.StartCoroutine(checkCoroutine);
