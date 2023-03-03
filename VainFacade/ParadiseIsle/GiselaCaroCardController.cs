@@ -76,9 +76,11 @@ namespace VainFacadePlaytest.ParadiseIsle
             {
                 base.GameController.ExhaustCoroutine(decideCoroutine);
             }
+            //Log.Debug("GiselaCaroCardController.ReplaceDiscardResponse: DidPlayerAnswerYes: " + DidPlayerAnswerYes(yesNo).ToString());
             if (DidPlayerAnswerYes(yesNo))
             {
-                IEnumerator discardCoroutine = base.GameController.DiscardCard(DecisionMaker, revealedCard, decisionSources, base.TurnTaker, cardSource: GetCardSource());
+                //Log.Debug("GiselaCaroCardController.ReplaceDiscardResponse: running MoveCard");
+                IEnumerator discardCoroutine = base.GameController.MoveCard(base.TurnTakerController, revealedCard, base.TurnTaker.Trash, responsibleTurnTaker: base.TurnTaker, isDiscard: true, cardSource: GetCardSource());
                 if (base.UseUnityCoroutines)
                 {
                     yield return base.GameController.StartCoroutine(discardCoroutine);
@@ -88,11 +90,19 @@ namespace VainFacadePlaytest.ParadiseIsle
                     base.GameController.ExhaustCoroutine(discardCoroutine);
                 }
             }
+            /*Log.Debug("GiselaCaroCardController.ReplaceDiscardResponse: yesNo == null: " + (yesNo == null).ToString());
+            if (yesNo != null)
+            {
+                Log.Debug("GiselaCaroCardController.ReplaceDiscardResponse: yesNo.Completed: " + yesNo.Completed.ToString());
+                Log.Debug("GiselaCaroCardController.ReplaceDiscardResponse: yesNo.Answer: " + yesNo.Answer.ToString());
+                Log.Debug("GiselaCaroCardController.ReplaceDiscardResponse: yesNo.Answer.HasValue: " + yesNo.Answer.HasValue.ToString());
+            }*/
             if (yesNo != null && yesNo.Completed && yesNo.Answer.HasValue)
             {
                 decisionSources.Add(yesNo);
                 if (!yesNo.Answer.Value)
                 {
+                    //Log.Debug("GiselaCaroCardController.ReplaceDiscardResponse: running MoveCard to replace revealedCard on top of deck");
                     IEnumerator replaceCoroutine = base.GameController.MoveCard(base.TurnTakerController, revealedCard, deck, toBottom: false, isPutIntoPlay: false, playCardIfMovingToPlayArea: true, null, showMessage: false, decisionSources, base.TurnTaker, null, evenIfIndestructible: false, flipFaceDown: false, null, isDiscard: false, evenIfPretendGameOver: false, shuffledTrashIntoDeck: false, doesNotEnterPlay: false, GetCardSource());
                     if (base.UseUnityCoroutines)
                     {
@@ -105,6 +115,7 @@ namespace VainFacadePlaytest.ParadiseIsle
                 }
             }
             List<Location> list = new List<Location> { deck.OwnerTurnTaker.Revealed };
+            //Log.Debug("GiselaCaroCardController.ReplaceDiscardResponse: running CleanupCardsAtLocations");
             IEnumerator cleanupCoroutine = CleanupCardsAtLocations(list, deck, toBottom: false, addInhibitorException: true, shuffleAfterwards: false, sendMessage: false, isDiscard: false, isReturnedToOriginalLocation: true, cards);
             if (base.UseUnityCoroutines)
             {
