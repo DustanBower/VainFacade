@@ -15,6 +15,10 @@ namespace VainFacadePlaytest.ParadiseIsle
             : base(card, turnTakerController)
         {
             AddAsPowerContributor();
+            // Show number of cards in each hero trash
+            SpecialStringMaker.ShowNumberOfCardsAtLocations(() => from httc in base.GameController.FindHeroTurnTakerControllers()
+                                                                  where !httc.IsIncapacitatedOrOutOfGame
+                                                                  select httc.TurnTaker.Trash);
         }
 
         public override void AddTriggers()
