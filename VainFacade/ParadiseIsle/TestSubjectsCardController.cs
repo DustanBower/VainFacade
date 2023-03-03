@@ -86,17 +86,25 @@ namespace VainFacadePlaytest.ParadiseIsle
 
         private IEnumerator HeroGriefResponse(GameAction ga)
         {
-            if (base.Card.HitPoints.Value <= 0)
+            //Log.Debug("TestSubjectsCardController.HeroGriefResponse: ");
+            //Log.Debug("TestSubjectsCardController.HeroGriefResponse: base.Card.HitPoints.HasValue: " + base.Card.HitPoints.HasValue.ToString());
+            if (base.Card.HitPoints.HasValue)
             {
-                // "... each hero deals themself 2 psychic damage."
-                IEnumerator damageCoroutine = base.GameController.SelectTargetsToDealDamageToSelf(DecisionMaker, 2, DamageType.Psychic, null, false, null, allowAutoDecide: true, additionalCriteria: (Card c) => c.IsHeroCharacterCard, cardSource: GetCardSource());
-                if (base.UseUnityCoroutines)
+                //Log.Debug("TestSubjectsCardController.HeroGriefResponse: base.Card.HitPoints.Value: " + base.Card.HitPoints.Value.ToString());
+                //Log.Debug("TestSubjectsCardController.HeroGriefResponse: base.Card.HitPoints.Value <= 0: " + (base.Card.HitPoints.Value <= 0).ToString());
+                if (base.Card.HitPoints.Value <= 0)
                 {
-                    yield return base.GameController.StartCoroutine(damageCoroutine);
-                }
-                else
-                {
-                    base.GameController.ExhaustCoroutine(damageCoroutine);
+                    // "... each hero deals themself 2 psychic damage."
+                    //Log.Debug("TestSubjectsCardController.HeroGriefResponse: running DealDamageToSelf");
+                    IEnumerator damageCoroutine = base.GameController.DealDamageToSelf(DecisionMaker, (Card c) => c.IsHeroCharacterCard, 2, DamageType.Psychic, cardSource: GetCardSource());
+                    if (base.UseUnityCoroutines)
+                    {
+                        yield return base.GameController.StartCoroutine(damageCoroutine);
+                    }
+                    else
+                    {
+                        base.GameController.ExhaustCoroutine(damageCoroutine);
+                    }
                 }
             }
         }
