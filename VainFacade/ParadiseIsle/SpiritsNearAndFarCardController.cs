@@ -57,7 +57,7 @@ namespace VainFacadePlaytest.ParadiseIsle
             // "That hero gains the following power:"
             if (cardController.HeroTurnTakerController != null && cardController.Card.IsHeroCharacterCard && cardController.Card.Owner.IsHero && !cardController.Card.Owner.IsIncapacitatedOrOutOfGame && ! cardController.Card.IsFlipped && cardController.Card == GetCardThisCardIsNextTo())
             {
-                Power drinking = new Power(cardController.HeroTurnTakerController, cardController, "Put a card from your trash into your hand. Destroy " + base.Card.Title + ".", ReturnDestructResponse(cardController.HeroTurnTakerController), 0, null, GetCardSource());
+                Power drinking = new Power(cardController.HeroTurnTakerController, cardController, "Put a card from your trash into your hand. Destroy [i]" + base.Card.Title + "[/i].", ReturnDestructResponse(cardController.HeroTurnTakerController), 0, null, GetCardSource());
                 return new Power[] { drinking };
             }
             return null;
