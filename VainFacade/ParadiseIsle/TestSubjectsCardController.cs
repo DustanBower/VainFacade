@@ -69,6 +69,19 @@ namespace VainFacadePlaytest.ParadiseIsle
                     }
                 }
             }
+            else
+            {
+                // Let the players know that this effect won't work because Dr. Wendigo is not in play
+                IEnumerator messageCoroutine = base.GameController.SendMessageAction("{" + DrWendigoIdentifier + "} is not in play, so he can't deal damage to {" + base.Card.Identifier + "}.", Priority.Medium, GetCardSource(), showCardSource: true);
+                if (base.UseUnityCoroutines)
+                {
+                    yield return base.GameController.StartCoroutine(messageCoroutine);
+                }
+                else
+                {
+                    base.GameController.ExhaustCoroutine(messageCoroutine);
+                }
+            }
         }
 
         private IEnumerator HeroGriefResponse(GameAction ga)
