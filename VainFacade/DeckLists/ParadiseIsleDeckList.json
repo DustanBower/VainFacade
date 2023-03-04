@@ -392,15 +392,15 @@
 				"GainHP",
 				"DealDamagePsychic"
 			],
-			"flavorText": "Dr. Wendigo rounded on Peacekeeper{BR}suddenly. “What would you know?!” he{BR}shrieked. “Science demands sacrifice! These{BR}undesirables pave the way for future{BR}greatness!”",
+			"flavorText": "Dr. Wendigo rounded on{BR}Peacekeeper suddenly. “What would you{BR}know?!” he shrieked. “Science demands{BR}sacrifice! These undesirables pave the way for{BR}future greatness!”",
 			"flavorQuotes": [
 				{
 					"identifier": "Dr. Wendigo",
-					"text": "What would you know?!"
+					"text": "What would you{BR}know?!"
 				},
 				{
 					"identifier": "Dr. Wendigo",
-					"text": "Science demands sacrifice! These{BR}undesirables pave the way for future{BR}greatness!"
+					"text": "Science demands{BR}sacrifice! These undesirables pave the way for{BR}future greatness!"
 				}
 			]
 		},
