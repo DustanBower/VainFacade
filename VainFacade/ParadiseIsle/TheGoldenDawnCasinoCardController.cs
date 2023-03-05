@@ -61,7 +61,7 @@ namespace VainFacadePlaytest.ParadiseIsle
                         string chosenWord = GetSelectedWord(wordChoices);
                         // "... and discards the top card of their deck."
                         List<MoveCardAction> discardResults = new List<MoveCardAction>();
-                        IEnumerator discardCoroutine = DiscardCardsFromTopOfDeck(base.GameController.FindTurnTakerController(tt), 1, storedResults: discardResults, showMessage: true, responsibleTurnTaker: base.TurnTaker);
+                        IEnumerator discardCoroutine = DiscardCardsFromTopOfDeck(base.GameController.FindTurnTakerController(tt), 1, storedResults: discardResults, showMessage: true);
                         if (base.UseUnityCoroutines)
                         {
                             yield return base.GameController.StartCoroutine(discardCoroutine);

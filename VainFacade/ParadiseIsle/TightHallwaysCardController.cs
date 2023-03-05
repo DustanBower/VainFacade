@@ -34,7 +34,7 @@ namespace VainFacadePlaytest.ParadiseIsle
             if (tt.IsHero)
             {
                 // "... discards a card..."
-                IEnumerator discardCoroutine = SelectAndDiscardCards(base.GameController.FindHeroTurnTakerController(tt.ToHero()), 1, requiredDecisions: 1, responsibleTurnTaker: base.TurnTaker);
+                IEnumerator discardCoroutine = SelectAndDiscardCards(base.GameController.FindHeroTurnTakerController(tt.ToHero()), 1, requiredDecisions: 1);
                 if (base.UseUnityCoroutines)
                 {
                     yield return base.GameController.StartCoroutine(discardCoroutine);
