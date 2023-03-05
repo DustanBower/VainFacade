@@ -56,7 +56,7 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":177,"h":256},
 	"sourceSize": {"w":177,"h":256}
 },
-"SphereCharacter.png":
+"ParadiseIsleDeckBack.png":
 {
 	"frame": {"x":360,"y":259,"w":177,"h":256},
 	"rotated": false,
@@ -64,7 +64,7 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":177,"h":256},
 	"sourceSize": {"w":177,"h":256}
 },
-"TheBaronessCharacter.png":
+"SphereCharacter.png":
 {
 	"frame": {"x":540,"y":259,"w":177,"h":256},
 	"rotated": false,
@@ -72,7 +72,7 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":177,"h":256},
 	"sourceSize": {"w":177,"h":256}
 },
-"TheFuryCharacter.png":
+"TheBaronessCharacter.png":
 {
 	"frame": {"x":720,"y":259,"w":177,"h":256},
 	"rotated": false,
@@ -80,9 +80,17 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":177,"h":256},
 	"sourceSize": {"w":177,"h":256}
 },
-"TheMidnightBazaarDeckBack.png":
+"TheFuryCharacter.png":
 {
 	"frame": {"x":0,"y":518,"w":177,"h":256},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":177,"h":256},
+	"sourceSize": {"w":177,"h":256}
+},
+"TheMidnightBazaarDeckBack.png":
+{
+	"frame": {"x":180,"y":518,"w":177,"h":256},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":177,"h":256},
@@ -95,6 +103,6 @@
 	"format": "RGBA8888",
 	"size": {"w":1024,"h":1024},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:6151ae9e8ef996d5b6a603b87a3ef371:752356917f04cc8d5f79ff9676a2e11e:4ee285c32a91b7652e02ac049f918b2a$"
+	"smartupdate": "$TexturePacker:SmartUpdate:61f631a1cd54d5d26d3faef7a40bae8a:9e9b4ed16c84076b44692c9c785bbc87:4ee285c32a91b7652e02ac049f918b2a$"
 }
 }

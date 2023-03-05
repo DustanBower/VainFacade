@@ -34,7 +34,7 @@
         <key>dataFormat</key>
         <string>json</string>
         <key>textureFileName</key>
-        <filename>SetupGame0.png</filename>
+        <filename>ParadiseIsleAtlas0.png</filename>
         <key>flipPVR</key>
         <false/>
         <key>pvrQualityLevel</key>
@@ -124,7 +124,7 @@
             <key>data</key>
             <struct type="DataFile">
                 <key>name</key>
-                <filename>SetupGame0.json</filename>
+                <filename>ParadiseIsleAtlas0.json</filename>
             </struct>
         </map>
         <key>multiPackMode</key>
@@ -173,18 +173,66 @@
         </struct>
         <key>individualSpriteSettings</key>
         <map type="IndividualSpriteSettingsMap">
-            <key type="filename">../SmallCardArt/Blitz/BlitzCharacter.png</key>
-            <key type="filename">../SmallCardArt/Burgess/BurgessCharacter.png</key>
-            <key type="filename">../SmallCardArt/Carnaval/CarnavalCharacter.png</key>
-            <key type="filename">../SmallCardArt/EldrenwoodVillage/EldrenwoodVillageDeckBack.png</key>
-            <key type="filename">../SmallCardArt/Ember/EmberCharacter.png</key>
-            <key type="filename">../SmallCardArt/Grandfather/GrandfatherCharacter.png</key>
-            <key type="filename">../SmallCardArt/Node/NodeCharacter.png</key>
-            <key type="filename">../SmallCardArt/ParadiseIsle/ParadiseIsleDeckBack.png</key>
-            <key type="filename">../SmallCardArt/Sphere/SphereCharacter.png</key>
-            <key type="filename">../SmallCardArt/TheBaroness/TheBaronessCharacter.png</key>
-            <key type="filename">../SmallCardArt/TheFury/TheFuryCharacter.png</key>
-            <key type="filename">../SmallCardArt/TheMidnightBazaar/TheMidnightBazaarDeckBack.png</key>
+            <key type="filename">Bombshell.png</key>
+            <key type="filename">DiningWithADevil.png</key>
+            <key type="filename">DrWendigo.png</key>
+            <key type="filename">GiselaCaro.png</key>
+            <key type="filename">GrandHotelRoof.png</key>
+            <key type="filename">LastCall.png</key>
+            <key type="filename">MercenarySquad.png</key>
+            <key type="filename">NoMrRookeIExpectYouToDie.png</key>
+            <key type="filename">SecretLair.png</key>
+            <key type="filename">SinisterLaboratory.png</key>
+            <key type="filename">SpiritsNearAndFar.png</key>
+            <key type="filename">StaneksGoons.png</key>
+            <key type="filename">TestSubjects.png</key>
+            <key type="filename">TheGoldenDawnCasino.png</key>
+            <key type="filename">TightHallways.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>64,50,128,99</rect>
+                <key>scale9Paddings</key>
+                <rect>64,50,128,99</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">Micro/BombshellMicro.png</key>
+            <key type="filename">Micro/DiningWithADevilMicro.png</key>
+            <key type="filename">Micro/DrWendigoMicro.png</key>
+            <key type="filename">Micro/GiselaCaroMicro.png</key>
+            <key type="filename">Micro/GrandHotelRoofMicro.png</key>
+            <key type="filename">Micro/LastCallMicro.png</key>
+            <key type="filename">Micro/MercenarySquadMicro.png</key>
+            <key type="filename">Micro/NoMrRookeIExpectYouToDieMicro.png</key>
+            <key type="filename">Micro/ParadiseIsleDeckBackMicro.png</key>
+            <key type="filename">Micro/SecretLairMicro.png</key>
+            <key type="filename">Micro/SinisterLaboratoryMicro.png</key>
+            <key type="filename">Micro/SpiritsNearAndFarMicro.png</key>
+            <key type="filename">Micro/StaneksGoonsMicro.png</key>
+            <key type="filename">Micro/TestSubjectsMicro.png</key>
+            <key type="filename">Micro/TheGoldenDawnCasinoMicro.png</key>
+            <key type="filename">Micro/TightHallwaysMicro.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>27,27,54,54</rect>
+                <key>scale9Paddings</key>
+                <rect>27,27,54,54</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">ParadiseIsleDeckBack.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
@@ -206,18 +254,38 @@
             <struct type="SpriteSheet">
                 <key>files</key>
                 <array>
-                    <filename>../SmallCardArt/TheMidnightBazaar/TheMidnightBazaarDeckBack.png</filename>
-                    <filename>../SmallCardArt/Sphere/SphereCharacter.png</filename>
-                    <filename>../SmallCardArt/TheBaroness/TheBaronessCharacter.png</filename>
-                    <filename>../SmallCardArt/Burgess/BurgessCharacter.png</filename>
-                    <filename>../SmallCardArt/EldrenwoodVillage/EldrenwoodVillageDeckBack.png</filename>
-                    <filename>../SmallCardArt/Grandfather/GrandfatherCharacter.png</filename>
-                    <filename>../SmallCardArt/TheFury/TheFuryCharacter.png</filename>
-                    <filename>../SmallCardArt/Node/NodeCharacter.png</filename>
-                    <filename>../SmallCardArt/Carnaval/CarnavalCharacter.png</filename>
-                    <filename>../SmallCardArt/Ember/EmberCharacter.png</filename>
-                    <filename>../SmallCardArt/Blitz/BlitzCharacter.png</filename>
-                    <filename>../SmallCardArt/ParadiseIsle/ParadiseIsleDeckBack.png</filename>
+                    <filename>Bombshell.png</filename>
+                    <filename>DiningWithADevil.png</filename>
+                    <filename>DrWendigo.png</filename>
+                    <filename>GiselaCaro.png</filename>
+                    <filename>GrandHotelRoof.png</filename>
+                    <filename>LastCall.png</filename>
+                    <filename>MercenarySquad.png</filename>
+                    <filename>NoMrRookeIExpectYouToDie.png</filename>
+                    <filename>SecretLair.png</filename>
+                    <filename>SinisterLaboratory.png</filename>
+                    <filename>SpiritsNearAndFar.png</filename>
+                    <filename>StaneksGoons.png</filename>
+                    <filename>TestSubjects.png</filename>
+                    <filename>TheGoldenDawnCasino.png</filename>
+                    <filename>TightHallways.png</filename>
+                    <filename>Micro/BombshellMicro.png</filename>
+                    <filename>Micro/DiningWithADevilMicro.png</filename>
+                    <filename>Micro/DrWendigoMicro.png</filename>
+                    <filename>Micro/GiselaCaroMicro.png</filename>
+                    <filename>Micro/GrandHotelRoofMicro.png</filename>
+                    <filename>Micro/LastCallMicro.png</filename>
+                    <filename>Micro/MercenarySquadMicro.png</filename>
+                    <filename>Micro/NoMrRookeIExpectYouToDieMicro.png</filename>
+                    <filename>Micro/SecretLairMicro.png</filename>
+                    <filename>Micro/SinisterLaboratoryMicro.png</filename>
+                    <filename>Micro/SpiritsNearAndFarMicro.png</filename>
+                    <filename>Micro/StaneksGoonsMicro.png</filename>
+                    <filename>Micro/TestSubjectsMicro.png</filename>
+                    <filename>Micro/TheGoldenDawnCasinoMicro.png</filename>
+                    <filename>Micro/TightHallwaysMicro.png</filename>
+                    <filename>ParadiseIsleDeckBack.png</filename>
+                    <filename>Micro/ParadiseIsleDeckBackMicro.png</filename>
                 </array>
             </struct>
         </map>
