@@ -26,8 +26,8 @@ namespace VainFacadePlaytest.ParadiseIsle
         public override void AddTriggers()
         {
             base.AddTriggers();
-            // "At the end of the environment turn, the Conspirator with the highest HP deals the hero target with the highest HP X energy damage, where X = the number of cards in the environment trash. If no damage was dealt this way, discard the top card of the environment deck. If a Conspirator is discarded this way, put it into play."
-            AddEndOfTurnTrigger((TurnTaker tt) => tt == base.TurnTaker, DamageDiscardPlayResponse, new TriggerType[] { TriggerType.DealDamage, TriggerType.DiscardCard, TriggerType.PutIntoPlay });
+            // "At the start of the environment turn, the Conspirator with the highest HP deals the hero target with the highest HP X energy damage, where X = the number of cards in the environment trash. If no damage was dealt this way, discard the top card of the environment deck. If a Conspirator is discarded this way, put it into play."
+            AddStartOfTurnTrigger((TurnTaker tt) => tt == base.TurnTaker, DamageDiscardPlayResponse, new TriggerType[] { TriggerType.DealDamage, TriggerType.DiscardCard, TriggerType.PutIntoPlay });
         }
 
         private IEnumerator DamageDiscardPlayResponse(PhaseChangeAction pca)
