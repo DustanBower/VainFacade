@@ -383,7 +383,7 @@
 			"body": [
 				"This card is a hero card.",
 				"At the end of the environment turn, 1 player may draw a card. Then, {DrWendigo} deals this card 2 toxic damage. If {DrWendigo} deals damage this way, he regains 2 HP.",
-				"When this card is reduced to 0 or fewer HP, each hero deals themself 2 psychic damage."
+				"When this card is reduced to 0 or fewer HP, each hero deals themself 1 psychic damage."
 			],
 			"icons": [
 				"EndOfTurnAction",

@@ -94,9 +94,9 @@ namespace VainFacadePlaytest.ParadiseIsle
                 //Log.Debug("TestSubjectsCardController.HeroGriefResponse: base.Card.HitPoints.Value <= 0: " + (base.Card.HitPoints.Value <= 0).ToString());
                 if (base.Card.HitPoints.Value <= 0)
                 {
-                    // "... each hero deals themself 2 psychic damage."
+                    // "... each hero deals themself 1 psychic damage."
                     //Log.Debug("TestSubjectsCardController.HeroGriefResponse: running DealDamageToSelf");
-                    IEnumerator damageCoroutine = base.GameController.DealDamageToSelf(DecisionMaker, (Card c) => c.IsHeroCharacterCard, 2, DamageType.Psychic, cardSource: GetCardSource());
+                    IEnumerator damageCoroutine = base.GameController.DealDamageToSelf(DecisionMaker, (Card c) => c.IsHeroCharacterCard, 1, DamageType.Psychic, cardSource: GetCardSource());
                     if (base.UseUnityCoroutines)
                     {
                         yield return base.GameController.StartCoroutine(damageCoroutine);
