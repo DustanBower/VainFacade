@@ -1,5 +1,5 @@
 {
-	"name": "Paradise Isle",
+	"name": "Paradise Isle Grand Hotel",
 	"kind": "Environment",
 	"backgroundColor": "D5CD5F",
 	"difficulty": 1,
@@ -54,7 +54,7 @@
 				"PlayCardNow",
 				"DestroySelf"
 			],
-			"flavorText": "Stanek glanced at Carnaval. “I'm glad you{BR}could join me, Mr. Rooke. I apologize for the{BR}incident last time.” He glared at Bombshell.{BR}“Things would have gone quite differently had I{BR}had competent help at the time.”",
+			"flavorText": "Stanek glanced at Carnaval. “I'm glad you{BR}could join me, Mr. Rooke. I apologize for the{BR}incident last time. Things would have gone{BR}quite differently had I competent help at the time.”",
 			"flavorQuotes": [
 				{
 					"identifier": "Stanek",
@@ -212,9 +212,8 @@
 			],
 			"hitpoints": 6,
 			"body": [
-				"When this card enters play, place the top {H} cards of the environment deck beneath it.",
-				"When this card would be dealt damage, discard a card beneath it. If you do, prevent that damage.",
-				"At the start of the environment turn, this card deals the non-Conspirator target with the second highest HP X projectile damage, where X = 2 plus the number of cards beneath this one."
+				"When this card enters play, put the top {H} cards of the environment deck under it. When this card would be dealt damage, discard a card under it. If you do, prevent that damage.",
+				"At the start of the environment turn, this card deals the non-Conspirator target with the second highest HP X projectile damage, where X = 2 plus the number of cards under this one."
 			],
 			"icons": [
 				"Manipulate",
