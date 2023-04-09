@@ -88,7 +88,7 @@ namespace VainFacadePlaytest.Carnaval
                 }
                 List<Location> toClean = new List<Location>();
                 toClean.Add(deck.OwnerTurnTaker.Revealed);
-                IEnumerator cleanupCoroutine = CleanupCardsAtLocations(toClean, deck, cardsInList: revealedCards);
+                IEnumerator cleanupCoroutine = base.GameController.CleanupCardsAtLocations(base.TurnTakerController, toClean, deck, cardsInList: revealedCards);
                 if (base.UseUnityCoroutines)
                 {
                     yield return base.GameController.StartCoroutine(cleanupCoroutine);

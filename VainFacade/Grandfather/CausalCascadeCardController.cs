@@ -105,7 +105,7 @@ namespace VainFacadePlaytest.Grandfather
             }
             List<Location> itinerary = new List<Location>();
             itinerary.Add(base.TurnTaker.Revealed);
-            IEnumerator cleanupCoroutine = CleanupCardsAtLocations(itinerary, base.TurnTaker.Deck, isReturnedToOriginalLocation: true, cardsInList: matching.Union(nonMatching).ToList());
+            IEnumerator cleanupCoroutine = base.GameController.CleanupCardsAtLocations(base.TurnTakerController, itinerary, base.TurnTaker.Deck, isReturnedToOriginalLocation: true, cardsInList: matching.Union(nonMatching).ToList());
             if (base.UseUnityCoroutines)
             {
                 yield return base.GameController.StartCoroutine(cleanupCoroutine);

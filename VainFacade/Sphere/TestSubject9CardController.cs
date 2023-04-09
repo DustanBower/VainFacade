@@ -56,7 +56,7 @@ namespace VainFacadePlaytest.Sphere
             // "Discard the other revealed cards."
             List<Location> toClean = new List<Location>();
             toClean.Add(base.TurnTaker.Revealed);
-            IEnumerator cleanupCoroutine = CleanupCardsAtLocations(toClean, base.TurnTaker.Trash, isDiscard: true, isReturnedToOriginalLocation: false, cardsInList: revealedCards);
+            IEnumerator cleanupCoroutine = base.GameController.CleanupCardsAtLocations(base.TurnTakerController, toClean, base.TurnTaker.Trash, isDiscard: true, isReturnedToOriginalLocation: false, cardsInList: revealedCards);
             if (base.UseUnityCoroutines)
             {
                 yield return base.GameController.StartCoroutine(cleanupCoroutine);

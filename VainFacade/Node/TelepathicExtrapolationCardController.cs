@@ -57,7 +57,7 @@ namespace VainFacadePlaytest.Node
                 }
                 List<Location> locations = new List<Location>();
                 locations.Add(deck.OwnerTurnTaker.Revealed);
-                IEnumerator replaceCoroutine = CleanupCardsAtLocations(locations, deck, cardsInList: revealed);
+                IEnumerator replaceCoroutine = base.GameController.CleanupCardsAtLocations(base.TurnTakerController, locations, deck, cardsInList: revealed);
                 if (base.UseUnityCoroutines)
                 {
                     yield return base.GameController.StartCoroutine(replaceCoroutine);

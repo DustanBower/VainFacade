@@ -193,7 +193,7 @@ namespace VainFacadePlaytest.EldrenwoodVillage
             }
             List<Location> places = new List<Location>();
             places.Add(base.TurnTaker.Revealed);
-            IEnumerator cleanupCoroutine = CleanupCardsAtLocations(places, base.TurnTaker.Deck, cardsInList: revealedCards);
+            IEnumerator cleanupCoroutine = base.GameController.CleanupCardsAtLocations(base.TurnTakerController, places, base.TurnTaker.Deck, cardsInList: revealedCards);
             if (base.UseUnityCoroutines)
             {
                 yield return base.GameController.StartCoroutine(cleanupCoroutine);

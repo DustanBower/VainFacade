@@ -73,7 +73,7 @@ namespace VainFacadePlaytest.Grandfather
             List<Location> places = new List<Location>();
             places.Add(base.TurnTaker.Revealed);
             List<Card> toCleanup = revealed.SelectMany((RevealCardsAction rca) => rca.RevealedCards).ToList();
-            IEnumerator cleanupCoroutine = CleanupCardsAtLocations(places, base.TurnTaker.Trash, cardsInList: toCleanup);
+            IEnumerator cleanupCoroutine = base.GameController.CleanupCardsAtLocations(base.TurnTakerController, places, base.TurnTaker.Trash, cardsInList: toCleanup);
             if (base.UseUnityCoroutines)
             {
                 yield return base.GameController.StartCoroutine(cleanupCoroutine);

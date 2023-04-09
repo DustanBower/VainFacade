@@ -86,7 +86,7 @@ namespace VainFacadePlaytest.Blitz
             }
             List<Location> toClean = new List<Location>();
             toClean.Add(base.TurnTaker.Revealed);
-            IEnumerator cleanupCoroutine = CleanupCardsAtLocations(toClean, base.TurnTaker.Deck, cardsInList: revealedCards);
+            IEnumerator cleanupCoroutine = base.GameController.CleanupCardsAtLocations(base.TurnTakerController, toClean, base.TurnTaker.Deck, cardsInList: revealedCards);
             if (base.UseUnityCoroutines)
             {
                 yield return base.GameController.StartCoroutine(cleanupCoroutine);

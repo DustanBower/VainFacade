@@ -116,7 +116,7 @@ namespace VainFacadePlaytest.ParadiseIsle
             }
             List<Location> list = new List<Location> { deck.OwnerTurnTaker.Revealed };
             //Log.Debug("GiselaCaroCardController.ReplaceDiscardResponse: running CleanupCardsAtLocations");
-            IEnumerator cleanupCoroutine = CleanupCardsAtLocations(list, deck, toBottom: false, addInhibitorException: true, shuffleAfterwards: false, sendMessage: false, isDiscard: false, isReturnedToOriginalLocation: true, cards);
+            IEnumerator cleanupCoroutine = base.GameController.CleanupCardsAtLocations(base.TurnTakerController, list, deck, toBottom: false, addInhibitorException: true, shuffleAfterwards: false, sendMessage: false, isDiscard: false, isReturnedToOriginalLocation: true, cards);
             if (base.UseUnityCoroutines)
             {
                 yield return base.GameController.StartCoroutine(cleanupCoroutine);

@@ -215,7 +215,7 @@ namespace VainFacadePlaytest.Burgess
             List<Location> list = new List<Location>();
             list.Add(locationToRevealFrom.OwnerTurnTaker.Revealed);
             List<Card> cardsInList = revealedCards.SelectMany((RevealCardsAction rc) => rc.RevealedCards).ToList();
-            coroutine = CleanupCardsAtLocations(list, locationToRevealFrom.OwnerTurnTaker.Trash, toBottom: false, addInhibitorException: true, shuffleAfterwards: false, sendMessage: false, isDiscard: true, isReturnedToOriginalLocation: false, cardsInList);
+            coroutine = base.GameController.CleanupCardsAtLocations(base.TurnTakerController, list, locationToRevealFrom.OwnerTurnTaker.Trash, toBottom: false, addInhibitorException: true, shuffleAfterwards: false, sendMessage: false, isDiscard: true, isReturnedToOriginalLocation: false, cardsInList);
             if (UseUnityCoroutines)
             {
                 yield return GameController.StartCoroutine(coroutine);

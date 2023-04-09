@@ -72,7 +72,7 @@ namespace VainFacadePlaytest.Ember
 
                 List<Location> locations = new List<Location>();
                 locations.Add(deck.OwnerTurnTaker.Revealed);
-                IEnumerator cleanupCoroutine = CleanupCardsAtLocations(locations, deck, cardsInList: storedCards);
+                IEnumerator cleanupCoroutine = base.GameController.CleanupCardsAtLocations(base.TurnTakerController, locations, deck, cardsInList: storedCards);
                 if (base.UseUnityCoroutines)
                 {
                     yield return base.GameController.StartCoroutine(cleanupCoroutine);
