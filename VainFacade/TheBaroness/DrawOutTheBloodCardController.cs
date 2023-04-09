@@ -20,7 +20,7 @@ namespace VainFacadePlaytest.TheBaroness
         public override IEnumerator Play()
         {
             // "{TheBaroness} deals each non-villain target 1 infernal damage."
-            IEnumerator damageCoroutine = DealDamage(base.CharacterCard, (Card c) => c.IsTarget && !c.IsVillain, 1, DamageType.Infernal);
+            IEnumerator damageCoroutine = DealDamage(base.CharacterCard, (Card c) => c.IsTarget && !IsVillainTarget(c), 1, DamageType.Infernal);
             if (base.UseUnityCoroutines)
             {
                 yield return base.GameController.StartCoroutine(damageCoroutine);

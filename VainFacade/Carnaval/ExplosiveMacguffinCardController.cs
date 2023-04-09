@@ -21,7 +21,7 @@ namespace VainFacadePlaytest.Carnaval
         {
             base.AddTriggers();
             // "When a hero card is discarded on an environment or villain turn, the target with the lowest HP from that turn's associated deck deals each other target in its play area 1 projectile damage, then deals itself 4 irreducible fire damage. Then destroy this card."
-            AddTrigger((MoveCardAction mca) => mca.IsDiscard && IsHero(mca.CardToMove) && (GameController.ActiveTurnTaker.IsEnvironment || GameController.ActiveTurnTaker.IsVillain), ExplodeResponse, new TriggerType[] { TriggerType.DealDamage, TriggerType.DestroyCard }, TriggerTiming.After);
+            AddTrigger((MoveCardAction mca) => mca.IsDiscard && IsHero(mca.CardToMove) && (GameController.ActiveTurnTaker.IsEnvironment || IsVillain(GameController.ActiveTurnTaker)), ExplodeResponse, new TriggerType[] { TriggerType.DealDamage, TriggerType.DestroyCard }, TriggerTiming.After);
         }
 
         private IEnumerator ExplodeResponse(MoveCardAction mca)

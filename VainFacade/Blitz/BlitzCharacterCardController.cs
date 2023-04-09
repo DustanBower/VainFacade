@@ -13,15 +13,21 @@ namespace VainFacadePlaytest.Blitz
         public BlitzCharacterCardController(Card card, TurnTakerController turnTakerController) : base(card, turnTakerController)
         {
             // Both sides: show number of villain Circuit cards in play
-            SpecialStringMaker.ShowNumberOfCardsInPlay(IsVillainCircuit, () => true);
+            SpecialStringMaker.ShowNumberOfCardsInPlay(IsVillainCircuit(), () => true);
             // If flipped: show hero target with highest HP
             SpecialStringMaker.ShowHeroTargetWithHighestHP().Condition = () => base.Card.IsFlipped;
         }
 
         protected const string CircuitKeyword = "circuit";
         public LinqCardCriteria IsCircuit = new LinqCardCriteria((Card c) => c.DoKeywordsContain(CircuitKeyword), "Circuit");
-        public LinqCardCriteria IsVillainCircuit = new LinqCardCriteria((Card c) => c.IsVillain && c.DoKeywordsContain(CircuitKeyword), "villain Circuit");
-        public LinqCardCriteria IsVillainCircuitInPlay = new LinqCardCriteria((Card c) => c.IsVillain && c.DoKeywordsContain(CircuitKeyword) && c.IsInPlayAndHasGameText, "villain Circuit", singular: "card in play", plural: "cards in play");
+        public LinqCardCriteria IsVillainCircuit()
+        {
+            return new LinqCardCriteria((Card c) => IsVillain(c) && c.DoKeywordsContain(CircuitKeyword), "villain Circuit");
+        }
+        public LinqCardCriteria IsVillainCircuitInPlay()
+        {
+            return new LinqCardCriteria((Card c) => IsVillain(c) && c.DoKeywordsContain(CircuitKeyword) && c.IsInPlayAndHasGameText, "villain Circuit", singular: "card in play", plural: "cards in play");
+        }
 
         protected const string DeviceKeyword = "device";
         public LinqCardCriteria IsCircuitOrDevice = new LinqCardCriteria((Card c) => c.DoKeywordsContain(CircuitKeyword) || c.DoKeywordsContain(DeviceKeyword), "Circuit or Device");
@@ -81,6 +87,7 @@ namespace VainFacadePlaytest.Blitz
                 }
             }
             AddDefeatedIfDestroyedTriggers();
+            AddDefeatedIfMovedOutOfGameTriggers();
         }
 
         private IEnumerator DiscardOrRedirectResponse(DealDamageAction dda)
@@ -136,7 +143,7 @@ namespace VainFacadePlaytest.Blitz
         private IEnumerator FlipOrZappedResponse(PhaseChangeAction pca)
         {
             // "... if there are no villain Circuit cards in play, flip this card."
-            if (FindCardsWhere(IsVillainCircuitInPlay, GetCardSource()).Count() <= 0)
+            if (FindCardsWhere(IsVillainCircuitInPlay(), GetCardSource()).Count() <= 0)
             {
                 IEnumerator flipCoroutine = base.GameController.FlipCard(this, cardSource: GetCardSource());
                 if (base.UseUnityCoroutines)
@@ -166,7 +173,7 @@ namespace VainFacadePlaytest.Blitz
         private IEnumerator FlipOrZappedTacklePlayResponse(PhaseChangeAction pca)
         {
             // "... if there is at least 1 villain Circuit in play, flip this card."
-            if (FindCardsWhere(IsVillainCircuitInPlay, GetCardSource()).Count() >= 1)
+            if (FindCardsWhere(IsVillainCircuitInPlay(), GetCardSource()).Count() >= 1)
             {
                 IEnumerator flipCoroutine = base.GameController.FlipCard(this, cardSource: GetCardSource());
                 if (base.UseUnityCoroutines)

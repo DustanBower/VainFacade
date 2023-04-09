@@ -27,7 +27,7 @@ namespace VainFacadePlaytest.Grandfather
         public override IEnumerator Play()
         {
             // "When this card enters play, if there are no other non-Covert villain targets in play..."
-            if (!FindCardsWhere(new LinqCardCriteria((Card c) => c != base.Card && c.IsInPlayAndHasGameText && c.IsTarget && c.IsVillainTarget && !c.DoKeywordsContain(CovertKeyword), "non-Covert villain", false, false, "target other than " + base.Card.Title, "targets other than " + base.Card.Title), visibleToCard: GetCardSource()).Any())
+            if (!FindCardsWhere(new LinqCardCriteria((Card c) => c != base.Card && c.IsInPlayAndHasGameText && IsVillainTarget(c) && !c.DoKeywordsContain(CovertKeyword), "non-Covert villain", true, false, "target other than " + base.Card.Title, "targets other than " + base.Card.Title), visibleToCard: GetCardSource()).Any())
             {
                 IEnumerator messageCoroutine = base.GameController.SendMessageAction(base.Card.Title + " has no other non-Covert villain targets in play to report to!", Priority.High, cardSource: GetCardSource(), showCardSource: true);
                 if (base.UseUnityCoroutines)

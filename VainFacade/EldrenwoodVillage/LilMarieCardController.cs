@@ -30,7 +30,7 @@ namespace VainFacadePlaytest.EldrenwoodVillage
         public override IEnumerator SlainInHumanFormResponse()
         {
             // "... each non-villain target deals itself 2 irreducible psychic damage."
-            yield return base.GameController.DealDamageToSelf(DecisionMaker, (Card c) => !c.IsVillainTarget, 2, DamageType.Psychic, isIrreducible: true, cardSource: GetCardSource());
+            yield return base.GameController.DealDamageToSelf(DecisionMaker, (Card c) => !IsVillainTarget(c), 2, DamageType.Psychic, isIrreducible: true, cardSource: GetCardSource());
         }
     }
 }

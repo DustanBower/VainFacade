@@ -19,7 +19,7 @@ namespace VainFacadePlaytest.TheBaroness
             // Show list of Scheme cards in play
             SpecialStringMaker.ShowListOfCardsInPlay(SchemeCard());
             // Show number of villain Scheme cards in play
-            SpecialStringMaker.ShowNumberOfCardsInPlay(SchemeCard(), owners: base.GameController.FindTurnTakersWhere((TurnTaker tt) => tt.IsVillain));
+            SpecialStringMaker.ShowNumberOfCardsInPlay(SchemeCard(), owners: base.GameController.FindTurnTakersWhere((TurnTaker tt) => IsVillain(tt)));
         }
 
         protected LinqCardCriteria SchemeCard()
@@ -60,7 +60,7 @@ namespace VainFacadePlaytest.TheBaroness
                 base.GameController.ExhaustCoroutine(destroyCoroutine);
             }
             // "If there are {H - 2} or fewer villain Schemes in play, discard the top 5 cards of the villain deck. Put any Schemes discarded this way into play."
-            if (base.GameController.FindCardsWhere(new LinqCardCriteria((Card c) => c.IsInPlayAndHasGameText && c.IsVillain && c.DoKeywordsContain(SchemeKeyword), "villain Scheme"), visibleToCard: GetCardSource()).Count() <= H - 2)
+            if (base.GameController.FindCardsWhere(new LinqCardCriteria((Card c) => c.IsInPlayAndHasGameText && IsVillain(c) && c.DoKeywordsContain(SchemeKeyword), "villain Scheme"), visibleToCard: GetCardSource()).Count() <= H - 2)
             {
                 List<MoveCardAction> results = new List<MoveCardAction>();
                 IEnumerator discardCoroutine = DiscardCardsFromTopOfDeck(base.TurnTakerController, 5, storedResults: results, responsibleTurnTaker: base.TurnTaker);

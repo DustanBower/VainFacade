@@ -24,7 +24,7 @@ namespace VainFacadePlaytest.Burgess
         {
             base.AddTriggers();
             // "The first time a villain card enters play each turn, you may draw a card."
-            AddTrigger((CardEntersPlayAction cepa) => !HasBeenSetToTrueThisTurn(FirstVillainCardThisTurn) && cepa.CardEnteringPlay.IsVillain, DrawResponse, TriggerType.DrawCard, TriggerTiming.After);
+            AddTrigger((CardEntersPlayAction cepa) => !HasBeenSetToTrueThisTurn(FirstVillainCardThisTurn) && IsVillain(cepa.CardEnteringPlay), DrawResponse, TriggerType.DrawCard, TriggerTiming.After);
             AddAfterLeavesPlayAction((GameAction ga) => ResetFlagAfterLeavesPlay(FirstVillainCardThisTurn), TriggerType.Hidden);
         }
 

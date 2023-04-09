@@ -15,7 +15,7 @@ namespace VainFacadePlaytest.Grandfather
         {
             AddThisCardControllerToList(CardControllerListType.MakesIndestructible);
             // Both sides: Show number of villain Designs in play
-            SpecialStringMaker.ShowNumberOfCardsInPlay(new LinqCardCriteria((Card c) => c.IsVillain && c.DoKeywordsContain(DesignKeyword), "villain Design"));
+            SpecialStringMaker.ShowNumberOfCardsInPlay(new LinqCardCriteria((Card c) => IsVillain(c) && c.DoKeywordsContain(DesignKeyword), "villain Design"));
             // Both sides: Show number of tokens on Arrow of Time (if in play)
             SpecialStringMaker.ShowTokenPool(ArrowOfTimeIdentifier, ArrowOfTimePoolIdentifier).Condition = () => FindCard(ArrowOfTimeIdentifier).IsInPlayAndHasGameText;
             // Both sides: Show message if Arrow of Time is not in play
@@ -34,9 +34,9 @@ namespace VainFacadePlaytest.Grandfather
             {
                 // Front side:
                 // "When there is only 1 villain Design in play, it is indestructible."
-                if (card.IsVillain && card.DoKeywordsContain(DesignKeyword))
+                if (IsVillain(card) && card.DoKeywordsContain(DesignKeyword))
                 {
-                    if (FindCardsWhere(new LinqCardCriteria((Card c) => c.IsVillain && c.DoKeywordsContain(DesignKeyword) && c.IsInPlayAndHasGameText), visibleToCard: GetCardSource()).Count() == 1)
+                    if (FindCardsWhere(new LinqCardCriteria((Card c) => IsVillain(c) && c.DoKeywordsContain(DesignKeyword) && c.IsInPlayAndHasGameText), visibleToCard: GetCardSource()).Count() == 1)
                     {
                         return true;
                     }
@@ -46,9 +46,9 @@ namespace VainFacadePlaytest.Grandfather
             {
                 // Back side:
                 // "When there is only 1 villain Design in play, it is indestructible."
-                if (card.IsVillain && card.DoKeywordsContain(DesignKeyword))
+                if (IsVillain(card) && card.DoKeywordsContain(DesignKeyword))
                 {
-                    if (FindCardsWhere(new LinqCardCriteria((Card c) => c.IsVillain && c.DoKeywordsContain(DesignKeyword) && c.IsInPlayAndHasGameText), visibleToCard: GetCardSource()).Count() == 1)
+                    if (FindCardsWhere(new LinqCardCriteria((Card c) => IsVillain(c) && c.DoKeywordsContain(DesignKeyword) && c.IsInPlayAndHasGameText), visibleToCard: GetCardSource()).Count() == 1)
                     {
                         return true;
                     }

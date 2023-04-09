@@ -28,7 +28,7 @@ namespace VainFacadePlaytest.TheBaroness
             // Back side: show whether a hero card has been put face-down in the villain play area this turn
             SpecialStringMaker.ShowHasBeenUsedThisTurn(FirstBloodThisTurn, "A hero card has already been put face-down in the villain play area this turn.", "No hero cards have been put face-down in the villain play area this turn.").Condition = () => base.Card.IsFlipped;
             // Back side: show number of villain Schemes in play
-            SpecialStringMaker.ShowNumberOfCardsInPlay(new LinqCardCriteria((Card c) => c.IsVillain && c.DoKeywordsContain(SchemeKeyword), "villain Scheme")).Condition = () => base.Card.IsFlipped;
+            SpecialStringMaker.ShowNumberOfCardsInPlay(new LinqCardCriteria((Card c) => IsVillain(c) && c.DoKeywordsContain(SchemeKeyword), "villain Scheme")).Condition = () => base.Card.IsFlipped;
             // Back side: show hero target with lowest HP
             SpecialStringMaker.ShowHeroTargetWithLowestHP(ranking: 1, numberOfTargets: 1).Condition = () => base.Card.IsFlipped;
 
@@ -54,7 +54,7 @@ namespace VainFacadePlaytest.TheBaroness
 
         private int NumVillainSchemesInPlay()
         {
-            return FindCardsWhere(new LinqCardCriteria((Card c) => c.IsVillain && c.DoKeywordsContain(SchemeKeyword) && c.IsInPlayAndHasGameText, "villain Scheme"), visibleToCard: GetCardSource()).Count();
+            return FindCardsWhere(new LinqCardCriteria((Card c) => IsVillain(c) && c.DoKeywordsContain(SchemeKeyword) && c.IsInPlayAndHasGameText, "villain Scheme"), visibleToCard: GetCardSource()).Count();
         }
 
         private bool DidHitHeroTargetThisTurn()
@@ -91,7 +91,7 @@ namespace VainFacadePlaytest.TheBaroness
                 AddSideTrigger(AddTrigger((DealDamageAction dda) => !HasBeenSetToTrueThisTurn(PlayedBonusThisTurn) && dda.Target == base.Card && dda.DidDealDamage && DamageTakenThisTurn() > 5, PlayCardForDamageResponse, TriggerType.PlayCard, TriggerTiming.After));
 
                 // "When a hero card destroys a villain Scheme, {TheBaroness} deals the 2 heroes with the lowest HP {H - 2} melee damage each."
-                base.AddSideTrigger(AddTrigger((DestroyCardAction dca) => dca.CardToDestroy.Card.IsVillain && dca.CardToDestroy.Card.DoKeywordsContain(SchemeKeyword) && dca.WasCardDestroyed && dca.CardSource != null && IsHero(dca.CardSource.Card), HitTwoLowestResponse, TriggerType.DealDamage, TriggerTiming.After));
+                base.AddSideTrigger(AddTrigger((DestroyCardAction dca) => IsVillain(dca.CardToDestroy.Card) && dca.CardToDestroy.Card.DoKeywordsContain(SchemeKeyword) && dca.WasCardDestroyed && dca.CardSource != null && IsHero(dca.CardSource.Card), HitTwoLowestResponse, TriggerType.DealDamage, TriggerTiming.After));
                 // "When there are no villain Schemes in play, flip {TheBaroness}'s character card."
                 base.AddSideTrigger(AddTrigger((GameAction a) => a.CardSource != null && NumVillainSchemesInPlay() == 0, (GameAction a) => base.GameController.FlipCard(this, cardSource: GetCardSource()), TriggerType.FlipCard, TriggerTiming.After));
                 base.AddSideTrigger(AddTrigger((PhaseChangeAction pca) => NumVillainSchemesInPlay() == 0, (PhaseChangeAction pca) => base.GameController.FlipCard(this, cardSource: GetCardSource()), TriggerType.FlipCard, TriggerTiming.After));
