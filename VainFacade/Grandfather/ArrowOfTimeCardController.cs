@@ -149,7 +149,7 @@ namespace VainFacadePlaytest.Grandfather
                     SetCardPropertyToTrueIfRealAction(GeneratePerTargetKey(FindPerTurnTakerKey(player), actionSource));
                     // "... that hero may destroy 1 of their Ongoing or Equipment cards."
                     List<DestroyCardAction> results = new List<DestroyCardAction>();
-                    IEnumerator destroyCoroutine = base.GameController.SelectAndDestroyCard(FindHeroTurnTakerController(player.ToHero()), new LinqCardCriteria((Card c) => c.Owner == player && (c.IsOngoing || IsEquipment(c)), "belonging to " + player.Name, false, true, "Ongoing or Equipment card", "Ongoing or Equipment cards"), true, results, responsibleCard: base.Card, cardSource: GetCardSource());
+                    IEnumerator destroyCoroutine = base.GameController.SelectAndDestroyCard(FindHeroTurnTakerController(player.ToHero()), new LinqCardCriteria((Card c) => c.Owner == player && (IsOngoing(c) || IsEquipment(c)), "belonging to " + player.Name, false, true, "Ongoing or Equipment card", "Ongoing or Equipment cards"), true, results, responsibleCard: base.Card, cardSource: GetCardSource());
                     if (base.UseUnityCoroutines)
                     {
                         yield return base.GameController.StartCoroutine(destroyCoroutine);

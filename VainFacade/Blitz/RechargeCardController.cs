@@ -89,7 +89,7 @@ namespace VainFacadePlaytest.Blitz
             // "If no damage is dealt this way, each player destroys 1 of their Ongoings."
             if (!DidDealDamage(results, fromDamageSource: base.CharacterCard))
             {
-                IEnumerator destroyCoroutine = EachPlayerDestroysTheirCards(new LinqTurnTakerCriteria((TurnTaker tt) => true, "heroes with Ongoing cards in play"), new LinqCardCriteria((Card c) => c.IsHero && c.IsOngoing, "hero Ongoing"));
+                IEnumerator destroyCoroutine = EachPlayerDestroysTheirCards(new LinqTurnTakerCriteria((TurnTaker tt) => true, "heroes with Ongoing cards in play"), new LinqCardCriteria((Card c) => c.IsHero && IsOngoing(c), "hero Ongoing"));
                 if (base.UseUnityCoroutines)
                 {
                     yield return base.GameController.StartCoroutine(destroyCoroutine);

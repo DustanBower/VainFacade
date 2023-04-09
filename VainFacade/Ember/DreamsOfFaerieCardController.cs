@@ -15,7 +15,7 @@ namespace VainFacadePlaytest.Ember
             : base(card, turnTakerController)
         {
             // Show list of Ongoing cards in Ember's deck
-            SpecialStringMaker.ShowListOfCardsAtLocation(base.TurnTaker.Deck, new LinqCardCriteria((Card c) => c.IsOngoing, "Ongoing"));
+            SpecialStringMaker.ShowListOfCardsAtLocation(base.TurnTaker.Deck, new LinqCardCriteria((Card c) => IsOngoing(c), "Ongoing"));
         }
 
         public override IEnumerator Play()
@@ -41,7 +41,7 @@ namespace VainFacadePlaytest.Ember
                 base.GameController.ExhaustCoroutine(psychicCoroutine);
             }
             // "Reveal cards from the top of your deck until 3 Ongoings are revealed. Put 1 into your hand. Shuffle the other revealed cards back into your deck."
-            IEnumerator revealCoroutine = RevealCards_SelectSome_MoveThem_ReturnTheRest(DecisionMaker, base.TurnTakerController, base.TurnTaker.Deck, (Card c) => c.IsOngoing, 3, 1, true, false, false, "Ongoing");
+            IEnumerator revealCoroutine = RevealCards_SelectSome_MoveThem_ReturnTheRest(DecisionMaker, base.TurnTakerController, base.TurnTaker.Deck, (Card c) => IsOngoing(c), 3, 1, true, false, false, "Ongoing");
             if (base.UseUnityCoroutines)
             {
                 yield return base.GameController.StartCoroutine(revealCoroutine);

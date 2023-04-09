@@ -239,7 +239,7 @@ namespace VainFacadePlaytest.Sphere
         private IEnumerator UseIncapOption3()
         {
             // "Destroy an Ongoing card."
-            yield return base.GameController.SelectAndDestroyCard(base.HeroTurnTakerController, new LinqCardCriteria((Card c) => c.IsOngoing, "ongoing"), false, responsibleCard: base.Card, cardSource: GetCardSource());
+            yield return base.GameController.SelectAndDestroyCard(base.HeroTurnTakerController, new LinqCardCriteria((Card c) => IsOngoing(c), "ongoing"), false, responsibleCard: base.Card, cardSource: GetCardSource());
         }
     }
 }

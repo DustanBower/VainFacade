@@ -61,7 +61,7 @@ namespace VainFacadePlaytest.EldrenwoodVillage
         public override IEnumerator SlainInHumanFormResponse()
         {
             // "...destroy a hero Ongoing card."
-            yield return base.GameController.SelectAndDestroyCard(DecisionMaker, new LinqCardCriteria((Card c) => c.IsHero && c.IsOngoing, "hero Ongoing"), false, responsibleCard: base.Card, cardSource: GetCardSource());
+            yield return base.GameController.SelectAndDestroyCard(DecisionMaker, new LinqCardCriteria((Card c) => c.IsHero && IsOngoing(c), "hero Ongoing"), false, responsibleCard: base.Card, cardSource: GetCardSource());
         }
     }
 }

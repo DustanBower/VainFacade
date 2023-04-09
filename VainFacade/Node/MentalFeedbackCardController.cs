@@ -15,14 +15,14 @@ namespace VainFacadePlaytest.Node
             : base(card, turnTakerController)
         {
             // Show Connected Ongoing cards in play
-            SpecialStringMaker.ShowListOfCardsInPlay(new LinqCardCriteria((Card c) => c.IsOngoing && IsConnected(c), "Connected Ongoing"));
+            SpecialStringMaker.ShowListOfCardsInPlay(new LinqCardCriteria((Card c) => IsOngoing(c) && IsConnected(c), "Connected Ongoing"));
         }
 
         public override IEnumerator Play()
         {
             // "Destroy 1 [i]Connected[/i] Ongoing."
             List<DestroyCardAction> chosen = new List<DestroyCardAction>();
-            IEnumerator destroyCoroutine = base.GameController.SelectAndDestroyCard(DecisionMaker, new LinqCardCriteria((Card c) => c.IsOngoing && IsConnected(c), "Connected Ongoing"), false, chosen, base.Card, GetCardSource());
+            IEnumerator destroyCoroutine = base.GameController.SelectAndDestroyCard(DecisionMaker, new LinqCardCriteria((Card c) => IsOngoing(c) && IsConnected(c), "Connected Ongoing"), false, chosen, base.Card, GetCardSource());
             if (base.UseUnityCoroutines)
             {
                 yield return base.GameController.StartCoroutine(destroyCoroutine);

@@ -205,7 +205,7 @@ namespace VainFacadePlaytest.TheBaroness
             // "Then, if {TheBaroness} dealt no damage to hero targets this turn, destroy {H} hero Ongoing and/or Equipment cards."
             if (!DidHitHeroTargetThisTurn())
             {
-                LinqCardCriteria heroOngEqp = new LinqCardCriteria((Card c) => c.IsHero && (c.IsOngoing || IsEquipment(c)) && c.IsInPlayAndHasGameText, "hero Ongoing or Equipment");
+                LinqCardCriteria heroOngEqp = new LinqCardCriteria((Card c) => c.IsHero && (IsOngoing(c) || IsEquipment(c)) && c.IsInPlayAndHasGameText, "hero Ongoing or Equipment");
                 IEnumerator destroyCoroutine = base.GameController.SelectAndDestroyCards(DecisionMaker, heroOngEqp, H, requiredDecisions: H, allowAutoDecide: H >= base.GameController.FindCardsWhere(heroOngEqp, visibleToCard: GetCardSource()).Count(), responsibleCard: base.Card, cardSource: GetCardSource());
                 if (base.UseUnityCoroutines)
                 {
@@ -273,7 +273,7 @@ namespace VainFacadePlaytest.TheBaroness
             // "If {TheBaroness} dealt no damage to hero targets this turn, destroy {H} hero Ongoing and/or Equipment cards."
             if (!DidHitHeroTargetThisTurn())
             {
-                LinqCardCriteria heroOngEqp = new LinqCardCriteria((Card c) => c.IsHero && (c.IsOngoing || IsEquipment(c)) && c.IsInPlayAndHasGameText, "hero Ongoing or Equipment");
+                LinqCardCriteria heroOngEqp = new LinqCardCriteria((Card c) => c.IsHero && (IsOngoing(c) || IsEquipment(c)) && c.IsInPlayAndHasGameText, "hero Ongoing or Equipment");
                 IEnumerator destroyCoroutine = base.GameController.SelectAndDestroyCards(DecisionMaker, heroOngEqp, H, requiredDecisions: H, allowAutoDecide: H >= base.GameController.FindCardsWhere(heroOngEqp, visibleToCard: GetCardSource()).Count(), responsibleCard: base.Card, cardSource: GetCardSource());
                 if (base.UseUnityCoroutines)
                 {

@@ -20,7 +20,7 @@ namespace VainFacadePlaytest.Burgess
         public override IEnumerator Play()
         {
             // "Destroy an environment or Ongoing card."
-            IEnumerator destroyCoroutine = base.GameController.SelectAndDestroyCard(base.HeroTurnTakerController, new LinqCardCriteria((Card c) => c.IsEnvironment || c.IsOngoing, "environment or Ongoing"), false, responsibleCard: base.Card, cardSource: GetCardSource());
+            IEnumerator destroyCoroutine = base.GameController.SelectAndDestroyCard(base.HeroTurnTakerController, new LinqCardCriteria((Card c) => c.IsEnvironment || IsOngoing(c), "environment or Ongoing"), false, responsibleCard: base.Card, cardSource: GetCardSource());
             if (base.UseUnityCoroutines)
             {
                 yield return base.GameController.StartCoroutine(destroyCoroutine);
