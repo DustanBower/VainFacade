@@ -27,7 +27,7 @@ namespace VainFacadePlaytest.Node
 
         private IEnumerator GuessResponse(DealDamageAction dda)
         {
-            Location deck = dda.Target.NativeDeck;
+            Location deck = GetNativeDeck(dda.Target);
             // "... you may select a keyword."
             IOrderedEnumerable<string> keywords = from s in deck.Cards.SelectMany((Card c) => base.GameController.GetAllKeywords(c)).Distinct() orderby s select s;
             string autofail = "Another keyword - always fails to match";

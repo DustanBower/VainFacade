@@ -50,7 +50,7 @@ namespace VainFacadePlaytest.TheFury
             Card selected = GetSelectedCard(choiceResults);
             if (selected != null)
             {
-                IEnumerator moveCoroutine = base.GameController.MoveCard(base.TurnTakerController, selected, selected.NativeDeck, responsibleTurnTaker: base.TurnTaker, showMessage: true, storedResults: moveResults, cardSource: GetCardSource());
+                IEnumerator moveCoroutine = base.GameController.MoveCard(base.TurnTakerController, selected, GetNativeDeck(selected), responsibleTurnTaker: base.TurnTaker, showMessage: true, storedResults: moveResults, cardSource: GetCardSource());
                 if (base.UseUnityCoroutines)
                 {
                     yield return base.GameController.StartCoroutine(moveCoroutine);
@@ -88,7 +88,7 @@ namespace VainFacadePlaytest.TheFury
         {
             // "... put the top card of that deck into play..."
             Card wasMoved = GetCardPropertyJournalEntryCard(CardMoved);
-            Location deck = wasMoved.NativeDeck;
+            Location deck = GetNativeDeck(wasMoved);
             IEnumerator putCoroutine = base.GameController.PlayTopCardOfLocation(DecisionMaker, deck, isPutIntoPlay: true, responsibleTurnTaker: base.TurnTaker, cardSource: GetCardSource(), showMessage: true);
             if (base.UseUnityCoroutines)
             {

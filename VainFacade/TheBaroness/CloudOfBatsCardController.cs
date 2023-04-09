@@ -184,7 +184,7 @@ namespace VainFacadePlaytest.TheBaroness
                         if (batIntendedDest.OwnerTurnTaker == base.TurnTaker)
                         {
                             //Log.Debug("CloudOfBatsCardController.DestroyBloodRemoveBatResponse: batIntendedDest is The Baroness's deck => bloodDest is the Blood card's deck");
-                            bloodDest = associatedBlood.NativeDeck;
+                            bloodDest = GetNativeDeck(associatedBlood);
                         }
                         else
                         {

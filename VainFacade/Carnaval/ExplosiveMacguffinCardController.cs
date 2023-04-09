@@ -32,7 +32,7 @@ namespace VainFacadePlaytest.Carnaval
             foreach(Location deck in associatedDecks)
             {
                 List<Card> lowestFromDeck = new List<Card>();
-                IEnumerator findCoroutine = base.GameController.FindTargetWithLowestHitPoints(1, (Card c) => c.NativeDeck == deck, lowestFromDeck, cardSource: GetCardSource());
+                IEnumerator findCoroutine = base.GameController.FindTargetWithLowestHitPoints(1, (Card c) => GetNativeDeck(c) == deck, lowestFromDeck, cardSource: GetCardSource());
                 if (base.UseUnityCoroutines)
                 {
                     yield return base.GameController.StartCoroutine(findCoroutine);
