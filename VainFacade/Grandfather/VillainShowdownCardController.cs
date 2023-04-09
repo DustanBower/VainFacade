@@ -37,7 +37,7 @@ namespace VainFacadePlaytest.Grandfather
         {
             base.AddTriggers();
             // "At the end of the villain turn, this card deals the hero target with the highest HP {H + 1} melee damage."
-            AddDealDamageAtEndOfTurnTrigger(base.TurnTaker, base.Card, (Card c) => c.IsHero, TargetType.HighestHP, H + 1, DamageType.Melee);
+            AddDealDamageAtEndOfTurnTrigger(base.TurnTaker, base.Card, (Card c) => IsHeroTarget(c), TargetType.HighestHP, H + 1, DamageType.Melee);
             // After leaving play, reset nemesis identifiers
             AddAfterLeavesPlayAction (() => base.GameController.UpdateNemesisIdentifiers(this, new string[] { }, GetCardSource()));
         }

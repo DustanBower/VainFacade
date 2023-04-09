@@ -157,7 +157,7 @@ namespace VainFacadePlaytest.TheFury
             bool selectedHero = false;
             foreach (Card selected in selectedTargets)
             {
-                if (selected.IsHeroCharacterCard)
+                if (IsHeroCharacterCard(selected))
                 {
                     selectedHero = true;
                 }

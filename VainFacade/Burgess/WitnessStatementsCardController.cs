@@ -48,7 +48,7 @@ namespace VainFacadePlaytest.Burgess
         public override IEnumerator DeterminePlayLocation(List<MoveCardDestination> storedResults, bool isPutIntoPlay, List<IDecision> decisionSources, Location overridePlayArea = null, LinqTurnTakerCriteria additionalTurnTakerCriteria = null)
         {
             // "Play this card next to a non-hero target."
-            IEnumerator selectCoroutine = SelectCardThisCardWillMoveNextTo(new LinqCardCriteria((Card c) => c.IsTarget && !c.IsHero, "non-hero targets", useCardsSuffix: false), storedResults, isPutIntoPlay, decisionSources);
+            IEnumerator selectCoroutine = SelectCardThisCardWillMoveNextTo(new LinqCardCriteria((Card c) => c.IsTarget && !IsHeroTarget(c), "non-hero targets", useCardsSuffix: false), storedResults, isPutIntoPlay, decisionSources);
             if (base.UseUnityCoroutines)
             {
                 yield return base.GameController.StartCoroutine(selectCoroutine);

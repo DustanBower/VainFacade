@@ -33,7 +33,7 @@ namespace VainFacadePlaytest.Blitz
             }
             int x = 1 + GetNumberOfCardsDestroyed(destroyResults);
             // "{BlitzCharacter} deals each hero target X plus 1 lightning damage, where X = the number of cards destroyed in this way."
-            IEnumerator damageCoroutine = DealDamage(base.CharacterCard, (Card c) => c.IsHero && c.IsTarget, x, DamageType.Lightning);
+            IEnumerator damageCoroutine = DealDamage(base.CharacterCard, (Card c) => IsHeroTarget(c), x, DamageType.Lightning);
             if (base.UseUnityCoroutines)
             {
                 yield return base.GameController.StartCoroutine(damageCoroutine);

@@ -37,7 +37,7 @@ namespace VainFacadePlaytest.EldrenwoodVillage
         public override IEnumerator Play()
         {
             // "When this card enters play, put the top card of 3 hero decks under this card."
-            yield return SelectTurnTakersAndDoAction(DecisionMaker, new LinqTurnTakerCriteria((TurnTaker tt) => tt.IsHero && !tt.ToHero().IsIncapacitatedOrOutOfGame && tt.Deck.HasCards, "heroes with cards in their decks"), SelectionType.MoveCardToUnderCard, (TurnTaker tt) => base.GameController.MoveCard(base.TurnTakerController, tt.Deck.TopCard, base.Card.UnderLocation, showMessage: true, responsibleTurnTaker: base.TurnTaker, cardSource: GetCardSource()), 3, requiredDecisions: 3, allowAutoDecide: true, numberOfCards: 1, cardSource: GetCardSource());
+            yield return SelectTurnTakersAndDoAction(DecisionMaker, new LinqTurnTakerCriteria((TurnTaker tt) => IsHero(tt) && !tt.ToHero().IsIncapacitatedOrOutOfGame && tt.Deck.HasCards, "heroes with cards in their decks"), SelectionType.MoveCardToUnderCard, (TurnTaker tt) => base.GameController.MoveCard(base.TurnTakerController, tt.Deck.TopCard, base.Card.UnderLocation, showMessage: true, responsibleTurnTaker: base.TurnTaker, cardSource: GetCardSource()), 3, requiredDecisions: 3, allowAutoDecide: true, numberOfCards: 1, cardSource: GetCardSource());
         }
 
         // Copied from GameController

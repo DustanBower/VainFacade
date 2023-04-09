@@ -14,6 +14,8 @@ namespace VainFacadePlaytest.TheBaroness
         public AgelessEnmityCardController(Card card, TurnTakerController turnTakerController)
             : base(card, turnTakerController)
         {
+            // Show hero target with highest HP
+            SpecialStringMaker.ShowHeroTargetWithHighestHP(1);
             // Show list of Scheme cards in play
             SpecialStringMaker.ShowListOfCardsInPlay(SchemeCard());
             // Show number of villain Scheme cards in play
@@ -28,7 +30,7 @@ namespace VainFacadePlaytest.TheBaroness
         public override IEnumerator Play()
         {
             // "{TheBaroness} deals the hero target with the highest HP 5 melee damage."
-            IEnumerator damageCoroutine = DealDamageToHighestHP(base.CharacterCard, 1, (Card c) => c.IsHero, (Card c) => 5, DamageType.Melee, numberOfTargets: () => 1);
+            IEnumerator damageCoroutine = DealDamageToHighestHP(base.CharacterCard, 1, (Card c) => IsHeroTarget(c), (Card c) => 5, DamageType.Melee, numberOfTargets: () => 1);
             if (base.UseUnityCoroutines)
             {
                 yield return base.GameController.StartCoroutine(damageCoroutine);

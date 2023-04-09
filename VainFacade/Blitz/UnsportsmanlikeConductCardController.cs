@@ -24,7 +24,7 @@ namespace VainFacadePlaytest.Blitz
             List<DealDamageAction> instances = new List<DealDamageAction>();
             instances.Add(new DealDamageAction(GetCardSource(), new DamageSource(base.GameController, base.CharacterCard), null, H - 1, DamageType.Melee));
             instances.Add(new DealDamageAction(GetCardSource(), new DamageSource(base.GameController, base.CharacterCard), null, H - 1, DamageType.Lightning));
-            IEnumerator damageCoroutine = DealMultipleInstancesOfDamageToHighestLowestHP(instances, (Card c) => c.IsHero && c.IsTarget, HighestLowestHP.LowestHP);
+            IEnumerator damageCoroutine = DealMultipleInstancesOfDamageToHighestLowestHP(instances, (Card c) => IsHeroTarget(c), HighestLowestHP.LowestHP);
             if (base.UseUnityCoroutines)
             {
                 yield return base.GameController.StartCoroutine(damageCoroutine);

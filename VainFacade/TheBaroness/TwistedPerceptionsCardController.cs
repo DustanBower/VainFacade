@@ -22,7 +22,7 @@ namespace VainFacadePlaytest.TheBaroness
         {
             get 
             {
-                return IsHighestHitPointsUnique((Card c) => c.IsHero);
+                return IsHighestHitPointsUnique((Card c) => IsHeroTarget(c));
             } 
         }
 
@@ -46,8 +46,8 @@ namespace VainFacadePlaytest.TheBaroness
             base.AddTriggers();
             // "When a hero target would deal damage, increase that damage by 3 and redirect it to the hero target with the highest HP."
             // "Reduce damage dealt this way by 1 for each time damage has been redirected this way."
-            AddIncreaseDamageTrigger((DealDamageAction dda) => dda.DamageSource != null && dda.DamageSource.IsCard && dda.DamageSource.Card.IsHero && dda.DamageSource.Card.IsTarget, 3);
-            AddTrigger((DealDamageAction dda) => dda.DamageSource != null && dda.DamageSource.IsCard && dda.DamageSource.Card.IsHero && dda.DamageSource.Card.IsTarget, RedirectReduceResponse, TriggerType.RedirectDamage, TriggerTiming.Before);
+            AddIncreaseDamageTrigger((DealDamageAction dda) => dda.DamageSource != null && dda.DamageSource.IsCard && IsHeroTarget(dda.DamageSource.Card), 3);
+            AddTrigger((DealDamageAction dda) => dda.DamageSource != null && dda.DamageSource.IsCard && IsHeroTarget(dda.DamageSource.Card), RedirectReduceResponse, TriggerType.RedirectDamage, TriggerTiming.Before);
             // "At the start of the villain turn, destroy this card."
             AddStartOfTurnTrigger((TurnTaker tt) => tt == base.TurnTaker, (PhaseChangeAction pca) => base.GameController.DestroyCard(DecisionMaker, base.Card, responsibleCard: base.Card, cardSource: GetCardSource()), TriggerType.DestroySelf);
         }
@@ -55,7 +55,7 @@ namespace VainFacadePlaytest.TheBaroness
         public override IEnumerator Play()
         {
             // "When this card enters play, play the top card of each hero deck."
-            IEnumerator playCoroutine = base.GameController.SelectTurnTakersAndDoAction(DecisionMaker, new LinqTurnTakerCriteria((TurnTaker tt) => tt.IsHero && !tt.IsIncapacitatedOrOutOfGame), SelectionType.PlayTopCard, (TurnTaker tt) => base.GameController.PlayTopCard(DecisionMaker, FindTurnTakerController(tt), responsibleTurnTaker: base.TurnTaker, cardSource: GetCardSource()), allowAutoDecide: true, cardSource: GetCardSource());
+            IEnumerator playCoroutine = base.GameController.SelectTurnTakersAndDoAction(DecisionMaker, new LinqTurnTakerCriteria((TurnTaker tt) => IsHero(tt) && !tt.IsIncapacitatedOrOutOfGame), SelectionType.PlayTopCard, (TurnTaker tt) => base.GameController.PlayTopCard(DecisionMaker, FindTurnTakerController(tt), responsibleTurnTaker: base.TurnTaker, cardSource: GetCardSource()), allowAutoDecide: true, cardSource: GetCardSource());
             if (base.UseUnityCoroutines)
             {
                 yield return base.GameController.StartCoroutine(playCoroutine);
@@ -70,7 +70,7 @@ namespace VainFacadePlaytest.TheBaroness
         {
             // "... redirect it to the hero target with the highest HP."
             List<Card> results = new List<Card>();
-            IEnumerator findCoroutine = base.GameController.FindTargetWithHighestHitPoints(1, (Card c) => c.IsHero, results, dda, evenIfCannotDealDamage: true, cardSource: GetCardSource());
+            IEnumerator findCoroutine = base.GameController.FindTargetWithHighestHitPoints(1, (Card c) => IsHeroTarget(c), results, dda, evenIfCannotDealDamage: true, cardSource: GetCardSource());
             if (base.UseUnityCoroutines)
             {
                 yield return base.GameController.StartCoroutine(findCoroutine);

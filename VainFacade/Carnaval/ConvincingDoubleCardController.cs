@@ -17,7 +17,7 @@ namespace VainFacadePlaytest.Carnaval
             // If this card is in play, make sure the player can tell where it is...
             SpecialStringMaker.ShowSpecialString(() => "This card is in " + base.Card.Location.GetFriendlyName() + ".").Condition = () => base.Card.IsInPlayAndHasGameText;
             // ... and who it's protecting.
-            SpecialStringMaker.ShowListOfCardsAtLocationOfCard(base.Card, new LinqCardCriteria((Card c) => c.IsTarget, "target", false, false, "target", "targets")).Condition = () => base.Card.IsInPlayAndHasGameText;
+            SpecialStringMaker.ShowListOfCardsAtLocationOfCard(base.Card, new LinqCardCriteria((Card c) => IsHeroCharacterCard(c), "", false, false, "hero", "heroes")).Condition = () => base.Card.IsInPlayAndHasGameText;
         }
 
         public override IEnumerator DeterminePlayLocation(List<MoveCardDestination> destination, bool isPutIntoPlay, List<IDecision> decisionSources, Location overridePlayArea = null, LinqTurnTakerCriteria additionalTurnTakerCriteria = null)
@@ -25,7 +25,7 @@ namespace VainFacadePlaytest.Carnaval
             // "Play this card in a hero play area."
             // Adapted from SergeantSteelTeam.MissionObjectiveCardController
             List<SelectTurnTakerDecision> storedResults = new List<SelectTurnTakerDecision>();
-            IEnumerator coroutine = base.GameController.SelectTurnTaker(DecisionMaker, SelectionType.MoveCardToPlayArea, storedResults, optional: false, allowAutoDecide: false, (TurnTaker tt) => tt.IsHero, null, null, checkExtraTurnTakersInstead: false, canBeCancelled: true, ignoreBattleZone: false, GetCardSource());
+            IEnumerator coroutine = base.GameController.SelectTurnTaker(DecisionMaker, SelectionType.MoveCardToPlayArea, storedResults, optional: false, allowAutoDecide: false, (TurnTaker tt) => IsHero(tt), null, null, checkExtraTurnTakersInstead: false, canBeCancelled: true, ignoreBattleZone: false, GetCardSource());
             if (base.UseUnityCoroutines)
             {
                 yield return base.GameController.StartCoroutine(coroutine);
@@ -56,7 +56,7 @@ namespace VainFacadePlaytest.Carnaval
         {
             base.AddTriggers();
             // "When a hero in this area would be dealt damage, redirect that damage to this card."
-            AddRedirectDamageTrigger((DealDamageAction dda) => dda.Target.IsHeroCharacterCard && dda.Target.IsAtLocationRecursive(base.Card.Location.HighestRecursiveLocation), () => base.Card);
+            AddRedirectDamageTrigger((DealDamageAction dda) => IsHeroCharacterCard(dda.Target) && dda.Target.IsAtLocationRecursive(base.Card.Location.HighestRecursiveLocation), () => base.Card);
         }
     }
 }

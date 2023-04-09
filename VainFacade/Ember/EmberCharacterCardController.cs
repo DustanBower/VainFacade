@@ -103,7 +103,7 @@ namespace VainFacadePlaytest.Ember
         {
             // "A hero target..."
             List<SelectCardDecision> selected = new List<SelectCardDecision>();
-            IEnumerator selectCoroutine = base.GameController.SelectCardAndStoreResults(DecisionMaker, SelectionType.CardToDealDamage, new LinqCardCriteria((Card c) => c.IsHero && c.IsTarget && c.IsInPlayAndHasGameText, "", false, false, "hero target", "hero targets"), selected, false, cardSource: GetCardSource());
+            IEnumerator selectCoroutine = base.GameController.SelectCardAndStoreResults(DecisionMaker, SelectionType.CardToDealDamage, new LinqCardCriteria((Card c) => IsHeroTarget(c) && c.IsInPlayAndHasGameText, "hero", false, false, "target", "targets"), selected, false, cardSource: GetCardSource());
             if (base.UseUnityCoroutines)
             {
                 yield return base.GameController.StartCoroutine(selectCoroutine);

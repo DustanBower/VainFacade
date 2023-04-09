@@ -30,7 +30,7 @@ namespace VainFacadePlaytest.TheBaroness
                 base.GameController.ExhaustCoroutine(damageCoroutine);
             }
             // "Put the top card of each hero deck face-down in the villain play area."
-            IEnumerator selectCoroutine = base.GameController.SelectTurnTakersAndDoAction(DecisionMaker, new LinqTurnTakerCriteria((TurnTaker tt) => tt.IsHero && !tt.IsIncapacitatedOrOutOfGame && tt.Deck.HasCards, "heroes with cards in their decks"), SelectionType.MoveCardFaceDownToVillainPlayArea, (TurnTaker tt) => MoveFaceDownToVillainPlayArea(tt.Deck.TopCard), allowAutoDecide: true, cardSource: GetCardSource());
+            IEnumerator selectCoroutine = base.GameController.SelectTurnTakersAndDoAction(DecisionMaker, new LinqTurnTakerCriteria((TurnTaker tt) => IsHero(tt) && !tt.IsIncapacitatedOrOutOfGame && tt.Deck.HasCards, "heroes with cards in their decks"), SelectionType.MoveCardFaceDownToVillainPlayArea, (TurnTaker tt) => MoveFaceDownToVillainPlayArea(tt.Deck.TopCard), allowAutoDecide: true, cardSource: GetCardSource());
             if (base.UseUnityCoroutines)
             {
                 yield return base.GameController.StartCoroutine(selectCoroutine);

@@ -25,7 +25,7 @@ namespace VainFacadePlaytest.Carnaval
         {
             base.AddTriggers();
             // "Reduce the first damage dealt to {CarnavalCharacter} each turn by 1."
-            AddTrigger((DealDamageAction dda) => true, LogDealDamageActionResponse, TriggerType.Hidden, TriggerTiming.Before);
+            //AddTrigger((DealDamageAction dda) => true, LogDealDamageActionResponse, TriggerType.Hidden, TriggerTiming.Before);
             //AddTrigger((DealDamageAction dda) => dda.CanDealDamage && dda.Target == base.CharacterCard && !HasBeenSetToTrueThisTurn(FirstDamageThisTurn), ReduceDamageResponse, TriggerType.ReduceDamage, TriggerTiming.Before);
             _reduceTrigger = AddReduceDamageTrigger((DealDamageAction dda) => !IsPropertyTrue(FirstDamageThisTurn) && dda.CanDealDamage, ReduceDamageResponse, (Card c) => c == base.CharacterCard, oncePerTurn: true);
             AddAfterLeavesPlayAction((GameAction ga) => ResetFlagAfterLeavesPlay(FirstDamageThisTurn), TriggerType.Hidden);
@@ -44,7 +44,7 @@ namespace VainFacadePlaytest.Carnaval
 
         private IEnumerator ReduceDamageResponse(DealDamageAction dda)
         {
-            Log.Debug("ProstheticEverymanCardController.ReduceDamageResponse activated");
+            //Log.Debug("ProstheticEverymanCardController.ReduceDamageResponse activated");
             SetCardPropertyToTrueIfRealAction(FirstDamageThisTurn);
             IEnumerator reduceCoroutine = base.GameController.ReduceDamage(dda, 1, _reduceTrigger, cardSource: GetCardSource());
             if (base.UseUnityCoroutines)

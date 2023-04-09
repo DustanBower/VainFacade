@@ -76,7 +76,7 @@ namespace VainFacadePlaytest.TheMidnightBazaar
             List<Card> highest = new List<Card>();
             DealDamageAction earlyPreview = new DealDamageAction(GetCardSource(), new DamageSource(base.GameController, base.Card), null, H + 2, DamageType.Melee);
             IEnumerable<Card> cardsInHand = base.GameController.FindCardsWhere(new LinqCardCriteria((Card c) => c.Location.IsHand), visibleToCard: GetCardSource());
-            IEnumerator findCoroutine = base.GameController.FindTargetWithHighestHitPoints(1, (Card c) => c.IsHero, highest, gameAction: earlyPreview, cardSource: GetCardSource());
+            IEnumerator findCoroutine = base.GameController.FindTargetWithHighestHitPoints(1, (Card c) => IsHeroTarget(c), highest, gameAction: earlyPreview, cardSource: GetCardSource());
             if (base.UseUnityCoroutines)
             {
                 yield return base.GameController.StartCoroutine(findCoroutine);
@@ -98,7 +98,7 @@ namespace VainFacadePlaytest.TheMidnightBazaar
                     List<SelectTurnTakerDecision> selection = new List<SelectTurnTakerDecision>();
                     currentMode = CustomMode.PlayerToDropCard;
                     //Log.Debug("RedEyedRonaldCardController.DamageWithRedirectResponse: calling SelectTurnTaker");
-                    IEnumerator selectCoroutine = base.GameController.SelectTurnTaker(DecisionMaker, SelectionType.Custom, selection, optional: true, additionalCriteria: (TurnTaker tt) => tt.IsHero && tt.ToHero().HasCardsInHand, dealDamageInfo: targetPreview.ToEnumerable(), cardSource: GetCardSource());
+                    IEnumerator selectCoroutine = base.GameController.SelectTurnTaker(DecisionMaker, SelectionType.Custom, selection, optional: true, additionalCriteria: (TurnTaker tt) => IsHero(tt) && tt.ToHero().HasCardsInHand, dealDamageInfo: targetPreview.ToEnumerable(), cardSource: GetCardSource());
                     if (base.UseUnityCoroutines)
                     {
                         yield return base.GameController.StartCoroutine(selectCoroutine);

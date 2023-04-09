@@ -15,7 +15,7 @@ namespace VainFacadePlaytest.Blitz
             : base(card, turnTakerController)
         {
             // If in play with >0 cards under: show list of hero targets with highest HP with length equal to number of cards under this card
-            SpecialStringMaker.ShowHighestHP(1, () => base.Card.UnderLocation.NumberOfCards, new LinqCardCriteria((Card c) => c.IsHero && c.IsTarget, "hero", singular: "target", plural: "targets")).Condition = () => base.Card.IsInPlayAndHasGameText && base.Card.UnderLocation.HasCards;
+            SpecialStringMaker.ShowHighestHP(1, () => base.Card.UnderLocation.NumberOfCards, new LinqCardCriteria((Card c) => IsHeroTarget(c), "hero", singular: "target", plural: "targets")).Condition = () => base.Card.IsInPlayAndHasGameText && base.Card.UnderLocation.HasCards;
         }
 
         public override void AddTriggers()
@@ -82,7 +82,7 @@ namespace VainFacadePlaytest.Blitz
         {
             // "... {BlitzCharacter} deals the X hero targets with the highest HP {H - 2} lightning damage, where X = the number of cards beneath this card."
             List<DealDamageAction> results = new List<DealDamageAction>();
-            IEnumerator damageCoroutine = DealDamageToHighestHP(base.CharacterCard, 1, (Card c) => c.IsHero && c.IsTarget, (Card c) => H - 2, DamageType.Lightning, storedResults: results, numberOfTargets: () => base.Card.UnderLocation.NumberOfCards);
+            IEnumerator damageCoroutine = DealDamageToHighestHP(base.CharacterCard, 1, (Card c) => IsHeroTarget(c), (Card c) => H - 2, DamageType.Lightning, storedResults: results, numberOfTargets: () => base.Card.UnderLocation.NumberOfCards);
             if (base.UseUnityCoroutines)
             {
                 yield return base.GameController.StartCoroutine(damageCoroutine);

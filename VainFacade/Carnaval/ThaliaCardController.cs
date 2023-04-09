@@ -29,7 +29,7 @@ namespace VainFacadePlaytest.Carnaval
             // "Up to 2 players may draw 1 card each."
             int numPlayers = GetPowerNumeral(0, 2);
             int numCards = GetPowerNumeral(1, 1);
-            IEnumerator drawCoroutine = base.GameController.SelectTurnTakersAndDoAction(DecisionMaker, new LinqTurnTakerCriteria((TurnTaker tt) => !tt.IsIncapacitatedOrOutOfGame && tt.IsHero), SelectionType.DrawCard, (TurnTaker tt) => DrawCards(FindHeroTurnTakerController(tt.ToHero()), numCards), numPlayers, requiredDecisions: 0, numberOfCards: numCards, cardSource: GetCardSource());
+            IEnumerator drawCoroutine = base.GameController.SelectTurnTakersAndDoAction(DecisionMaker, new LinqTurnTakerCriteria((TurnTaker tt) => !tt.IsIncapacitatedOrOutOfGame && IsHero(tt)), SelectionType.DrawCard, (TurnTaker tt) => DrawCards(FindHeroTurnTakerController(tt.ToHero()), numCards), numPlayers, requiredDecisions: 0, numberOfCards: numCards, cardSource: GetCardSource());
             if (base.UseUnityCoroutines)
             {
                 yield return base.GameController.StartCoroutine(drawCoroutine);

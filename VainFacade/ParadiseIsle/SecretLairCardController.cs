@@ -38,7 +38,7 @@ namespace VainFacadePlaytest.ParadiseIsle
             // "... if it is a Conspirator, it deals the hero target with the highest HP {H - 1} projectile damage."
             if (cepa.CardEnteringPlay.DoKeywordsContain(ConspiratorKeyword))
             {
-                IEnumerator damageCoroutine = DealDamageToHighestHP(cepa.CardEnteringPlay, 1, (Card c) => c.IsHero, (Card c) => H - 1, DamageType.Projectile);
+                IEnumerator damageCoroutine = DealDamageToHighestHP(cepa.CardEnteringPlay, 1, (Card c) => IsHeroTarget(c), (Card c) => H - 1, DamageType.Projectile);
                 if (base.UseUnityCoroutines)
                 {
                     yield return base.GameController.StartCoroutine(damageCoroutine);

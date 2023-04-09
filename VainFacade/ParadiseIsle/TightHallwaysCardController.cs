@@ -26,7 +26,7 @@ namespace VainFacadePlaytest.ParadiseIsle
             // "Increase projectile damage dealt by 2."
             AddIncreaseDamageTrigger((DealDamageAction dda) => dda.DamageType == DamageType.Projectile, 2);
             // "At the end of the environment turn, each player discards a card and draws a card."
-            AddEndOfTurnTrigger((TurnTaker tt) => tt == base.TurnTaker, (PhaseChangeAction pca) => base.GameController.SelectTurnTakersAndDoAction(DecisionMaker, new LinqTurnTakerCriteria((TurnTaker tt) => tt.IsHero && !tt.IsIncapacitatedOrOutOfGame, "hero"), SelectionType.DiscardAndDrawCard, DiscardAndDrawResponse, optional: false, allowAutoDecide: true, cardSource: GetCardSource()), new TriggerType[] { TriggerType.DiscardCard, TriggerType.DrawCard });
+            AddEndOfTurnTrigger((TurnTaker tt) => tt == base.TurnTaker, (PhaseChangeAction pca) => base.GameController.SelectTurnTakersAndDoAction(DecisionMaker, new LinqTurnTakerCriteria((TurnTaker tt) => IsHero(tt) && !tt.IsIncapacitatedOrOutOfGame, "hero"), SelectionType.DiscardAndDrawCard, DiscardAndDrawResponse, optional: false, allowAutoDecide: true, cardSource: GetCardSource()), new TriggerType[] { TriggerType.DiscardCard, TriggerType.DrawCard });
         }
 
         private IEnumerator DiscardAndDrawResponse(TurnTaker tt)

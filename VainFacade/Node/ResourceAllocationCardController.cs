@@ -17,14 +17,14 @@ namespace VainFacadePlaytest.Node
             AllowFastCoroutinesDuringPretend = false;
             RunModifyDamageAmountSimulationForThisCard = false;
             // Show list of Connected hero targets
-            SpecialStringMaker.ShowListOfCardsInPlay(new LinqCardCriteria((Card c) => IsConnected(c) && c.IsHero && c.IsTarget, "Connected hero targets", false, false, "target", "targets"));
+            SpecialStringMaker.ShowListOfCardsInPlay(new LinqCardCriteria((Card c) => IsConnected(c) && IsHeroTarget(c), "Connected hero", true, false, "target", "targets"));
         }
 
         public override void AddTriggers()
         {
             base.AddTriggers();
             // "When a [i]Connected[/i] hero target would deal damage, you may select another [i]Connected[/i] hero target. Increase the damage dealt by the first target by 1. Reduce the next damage dealt by the second target by 1."
-            AddTrigger((DealDamageAction dda) => dda.CanDealDamage && dda.Amount > 0 && dda.DamageSource != null && dda.DamageSource.Card != null && IsConnected(dda.DamageSource.Card) && dda.DamageSource.Card.IsHero && dda.DamageSource.Card.IsTarget && !dda.IsPretend, IncreaseReduceResponse, new TriggerType[] { TriggerType.WouldBeDealtDamage, TriggerType.IncreaseDamage, TriggerType.CreateStatusEffect }, TriggerTiming.Before);
+            AddTrigger((DealDamageAction dda) => dda.CanDealDamage && dda.Amount > 0 && dda.DamageSource != null && dda.DamageSource.Card != null && IsConnected(dda.DamageSource.Card) && IsHeroTarget(dda.DamageSource.Card) && !dda.IsPretend, IncreaseReduceResponse, new TriggerType[] { TriggerType.WouldBeDealtDamage, TriggerType.IncreaseDamage, TriggerType.CreateStatusEffect }, TriggerTiming.Before);
         }
 
         private IEnumerator IncreaseReduceResponse(DealDamageAction dda)
@@ -44,7 +44,7 @@ namespace VainFacadePlaytest.Node
             // "... you may select another [i]Connected[/i] hero target."
             Card firstTarget = dda.DamageSource.Card;
             List<SelectCardDecision> choices = new List<SelectCardDecision>();
-            IEnumerator selectCoroutine = base.GameController.SelectCardAndStoreResults(DecisionMaker, SelectionType.Custom, new LinqCardCriteria((Card c) => IsConnected(c) && c.IsHero && c.IsTarget && c != firstTarget, "Connected hero", false, false, "target other than " + firstTarget.Title, "targets other than " + firstTarget.Title), choices, true, cardSource: GetCardSource());
+            IEnumerator selectCoroutine = base.GameController.SelectCardAndStoreResults(DecisionMaker, SelectionType.Custom, new LinqCardCriteria((Card c) => IsConnected(c) && IsHeroTarget(c) && c != firstTarget, "Connected hero", false, false, "target other than " + firstTarget.Title, "targets other than " + firstTarget.Title), choices, true, cardSource: GetCardSource());
             if (base.UseUnityCoroutines)
             {
                 yield return base.GameController.StartCoroutine(selectCoroutine);

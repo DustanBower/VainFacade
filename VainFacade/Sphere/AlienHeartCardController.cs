@@ -130,16 +130,16 @@ namespace VainFacadePlaytest.Sphere
 
             // "The first time each turn a non-hero card prevents you from playing a card, you may use a power."
             // PlayCardAction canceled? You may use a power
-            AddTrigger((CancelAction ca) => !HasBeenSetToTrueThisTurn(PlayPrevented) && ca.CardSource != null && !ca.CardSource.Card.IsHero && ca.ActionToCancel is PlayCardAction && (ca.ActionToCancel as PlayCardAction).ResponsibleTurnTaker == base.TurnTaker, PreventedPlayResponse, TriggerType.UsePower, TriggerTiming.After);
+            AddTrigger((CancelAction ca) => !HasBeenSetToTrueThisTurn(PlayPrevented) && ca.CardSource != null && !IsHero(ca.CardSource.Card) && ca.ActionToCancel is PlayCardAction && (ca.ActionToCancel as PlayCardAction).ResponsibleTurnTaker == base.TurnTaker, PreventedPlayResponse, TriggerType.UsePower, TriggerTiming.After);
             // MakeDecisionAction for which card to play canceled? You may use a power
-            AddTrigger((CancelAction ca) => !HasBeenSetToTrueThisTurn(PlayPrevented) && ca.CardSource != null && !ca.CardSource.Card.IsHero && ca.ActionToCancel is MakeDecisionAction && (ca.ActionToCancel as MakeDecisionAction).Decision.DecisionMaker == base.HeroTurnTaker && (ca.ActionToCancel as MakeDecisionAction).Decision.SelectionType == SelectionType.PlayCard, PreventedPlayResponse, TriggerType.UsePower, TriggerTiming.After);
+            AddTrigger((CancelAction ca) => !HasBeenSetToTrueThisTurn(PlayPrevented) && ca.CardSource != null && !IsHero(ca.CardSource.Card) && ca.ActionToCancel is MakeDecisionAction && (ca.ActionToCancel as MakeDecisionAction).Decision.DecisionMaker == base.HeroTurnTaker && (ca.ActionToCancel as MakeDecisionAction).Decision.SelectionType == SelectionType.PlayCard, PreventedPlayResponse, TriggerType.UsePower, TriggerTiming.After);
             // SetPhaseActionCountAction setting Sphere's play phase count to 0? You may use a power
-            AddTrigger((SetPhaseActionCountAction spca) => !HasBeenSetToTrueThisTurn(PlayPrevented) && spca.CardSource != null && !spca.CardSource.Card.IsHero && spca.TurnPhase.TurnTaker == base.TurnTaker && spca.TurnPhase.Phase == Phase.PlayCard && (!spca.AmountToSet.HasValue || spca.AmountToSet.HasValueLessThan(1)), PreventedPlayResponse, TriggerType.UsePower, TriggerTiming.After);
+            AddTrigger((SetPhaseActionCountAction spca) => !HasBeenSetToTrueThisTurn(PlayPrevented) && spca.CardSource != null && !IsHero(spca.CardSource.Card) && spca.TurnPhase.TurnTaker == base.TurnTaker && spca.TurnPhase.Phase == Phase.PlayCard && (!spca.AmountToSet.HasValue || spca.AmountToSet.HasValueLessThan(1)), PreventedPlayResponse, TriggerType.UsePower, TriggerTiming.After);
             // PhaseChangeAction skipping Sphere's play phase due to a status effect from a non-hero card? You may use a power
             AddPhaseChangeTrigger((TurnTaker tt) => tt == base.TurnTaker, (Phase p) => !HasBeenSetToTrueThisTurn(PlayPrevented), PlayPhaseCriteria, PreventedPlayResponse, new TriggerType[] { TriggerType.UsePower }, TriggerTiming.After);
             AddPhaseChangeTrigger((TurnTaker tt) => true, (Phase p) => !HasBeenSetToTrueThisTurn(PlayPrevented), (PhaseChangeAction pca) => pca.ToPhase.WasSkipped && pca.ToPhase.Phase == Phase.PlayCard && pca.ToPhase.TurnTaker == base.TurnTaker, PreventedPlayResponse, new TriggerType[] {TriggerType.UsePower}, TriggerTiming.After);
             // MakeDecisionAction for which hero gets to play a card where Sphere was an option canceled? Ask if they would've chosen Sphere- if so, you may use a power
-            AddTrigger((CancelAction ca) => !HasBeenSetToTrueThisTurn(PlayPrevented) && ca.CardSource != null && !ca.CardSource.Card.IsHero && ca.ActionToCancel is MakeDecisionAction && playing.Contains((ca.ActionToCancel as MakeDecisionAction).Decision.SelectionType) && ((ca.ActionToCancel as MakeDecisionAction).Decision is SelectTurnTakerDecision || (ca.ActionToCancel as MakeDecisionAction).Decision is SelectTurnTakersDecision), PreventedPlayChoiceResponse, TriggerType.UsePower, TriggerTiming.After);
+            AddTrigger((CancelAction ca) => !HasBeenSetToTrueThisTurn(PlayPrevented) && ca.CardSource != null && !IsHero(ca.CardSource.Card) && ca.ActionToCancel is MakeDecisionAction && playing.Contains((ca.ActionToCancel as MakeDecisionAction).Decision.SelectionType) && ((ca.ActionToCancel as MakeDecisionAction).Decision is SelectTurnTakerDecision || (ca.ActionToCancel as MakeDecisionAction).Decision is SelectTurnTakersDecision), PreventedPlayChoiceResponse, TriggerType.UsePower, TriggerTiming.After);
             // A hero is being chosen to play a card and Sphere can't be chosen? Ask if they would've chosen Sphere- if so, you may use a power (and no one may play a card)
             AddTrigger((MakeDecisionAction mda) => !HasBeenSetToTrueThisTurn(PlayPrevented) && mda.Decision is SelectTurnTakerDecision && (mda.CardSource == null || base.GameController.IsCardVisibleToCardSource(base.CharacterCard, mda.CardSource)) && playing.Contains(mda.Decision.SelectionType) && (!CanPlayCards(base.TurnTakerController) || !CanPlayCardsFromHand(base.HeroTurnTakerController)), UnlistedPlayChoiceResponse, new TriggerType[] { TriggerType.CancelAction, TriggerType.UsePower }, TriggerTiming.Before);
             // SelectHeroToPlayCard sends a failure message instead of letting a hero be chosen to play a card? Ask if they would've chosen Sphere- if so, you may use a power
@@ -150,29 +150,29 @@ namespace VainFacadePlaytest.Sphere
 
             // "The first time each turn a non-hero card prevents you from drawing a card, you may play a card."
             // DrawCardAction canceled? You may play a card
-            AddTrigger((CancelAction ca) => !HasBeenSetToTrueThisTurn(DrawPrevented) && ca.CardSource != null && !ca.CardSource.Card.IsHero && ca.ActionToCancel is DrawCardAction && (ca.ActionToCancel as DrawCardAction).HeroTurnTaker == base.HeroTurnTaker, PreventedDrawResponse, TriggerType.PlayCard, TriggerTiming.After);
+            AddTrigger((CancelAction ca) => !HasBeenSetToTrueThisTurn(DrawPrevented) && ca.CardSource != null && !IsHero(ca.CardSource.Card) && ca.ActionToCancel is DrawCardAction && (ca.ActionToCancel as DrawCardAction).HeroTurnTaker == base.HeroTurnTaker, PreventedDrawResponse, TriggerType.PlayCard, TriggerTiming.After);
             // SetPhaseActionCountAction setting Sphere's draw phase count to 0? You may play a card
-            AddTrigger((SetPhaseActionCountAction spca) => !HasBeenSetToTrueThisTurn(DrawPrevented) && spca.CardSource != null && !spca.CardSource.Card.IsHero && spca.TurnPhase.TurnTaker == base.TurnTaker && spca.TurnPhase.Phase == Phase.DrawCard && (!spca.AmountToSet.HasValue || spca.AmountToSet.HasValueLessThan(1)), PreventedDrawResponse, TriggerType.PlayCard, TriggerTiming.After);
+            AddTrigger((SetPhaseActionCountAction spca) => !HasBeenSetToTrueThisTurn(DrawPrevented) && spca.CardSource != null && !IsHero(spca.CardSource.Card) && spca.TurnPhase.TurnTaker == base.TurnTaker && spca.TurnPhase.Phase == Phase.DrawCard && (!spca.AmountToSet.HasValue || spca.AmountToSet.HasValueLessThan(1)), PreventedDrawResponse, TriggerType.PlayCard, TriggerTiming.After);
             // PhaseChangeAction skipping Sphere's draw phase due to a status effect from a non-hero card? You may play a card
             AddPhaseChangeTrigger((TurnTaker tt) => tt == base.TurnTaker, (Phase p) => !HasBeenSetToTrueThisTurn(DrawPrevented), DrawPhaseCriteria, PreventedDrawResponse, new TriggerType[] { TriggerType.PlayCard }, TriggerTiming.After);
             AddPhaseChangeTrigger((TurnTaker tt) => true, (Phase p) => !HasBeenSetToTrueThisTurn(DrawPrevented), (PhaseChangeAction pca) => pca.ToPhase.WasSkipped && pca.ToPhase.Phase == Phase.DrawCard && pca.ToPhase.TurnTaker == base.TurnTaker && (base.TurnTaker.Deck.HasCards || base.TurnTaker.Trash.HasCards), PreventedDrawResponse, new TriggerType[] { TriggerType.PlayCard }, TriggerTiming.After);
             // MakeDecisionAction for which hero gets to draw a card where Sphere was an option canceled? Ask if they would've chosen Sphere- if so, you may play a card
-            AddTrigger((CancelAction ca) => !HasBeenSetToTrueThisTurn(DrawPrevented) && ca.CardSource != null && !ca.CardSource.Card.IsHero && ca.ActionToCancel is MakeDecisionAction && (ca.ActionToCancel as MakeDecisionAction).Decision.SelectionType == SelectionType.DrawCard && ((ca.ActionToCancel as MakeDecisionAction).Decision is SelectTurnTakerDecision || (ca.ActionToCancel as MakeDecisionAction).Decision is SelectTurnTakersDecision), PreventedDrawChoiceResponse, TriggerType.PlayCard, TriggerTiming.After);
+            AddTrigger((CancelAction ca) => !HasBeenSetToTrueThisTurn(DrawPrevented) && ca.CardSource != null && !IsHero(ca.CardSource.Card) && ca.ActionToCancel is MakeDecisionAction && (ca.ActionToCancel as MakeDecisionAction).Decision.SelectionType == SelectionType.DrawCard && ((ca.ActionToCancel as MakeDecisionAction).Decision is SelectTurnTakerDecision || (ca.ActionToCancel as MakeDecisionAction).Decision is SelectTurnTakersDecision), PreventedDrawChoiceResponse, TriggerType.PlayCard, TriggerTiming.After);
             // A hero is being chosen to draw a card and Sphere can't draw cards? Ask if they would've chosen Sphere- if so, you may play a card (and no one may draw a card)
             AddTrigger((MakeDecisionAction mda) => !HasBeenSetToTrueThisTurn(DrawPrevented) && mda.Decision is SelectTurnTakerDecision && (mda.CardSource == null || base.GameController.IsCardVisibleToCardSource(base.CharacterCard, mda.CardSource)) && mda.Decision.SelectionType == SelectionType.DrawCard && !CanDrawCards(base.HeroTurnTakerController), UnlistedDrawChoiceResponse, new TriggerType[] { TriggerType.CancelAction, TriggerType.PlayCard }, TriggerTiming.Before);
             
             // "The first time each turn a non-hero card prevents you from using a power, you may draw a card."
             // UsePowerAction canceled? You may draw a card
-            AddTrigger((CancelAction ca) => !HasBeenSetToTrueThisTurn(PowerPrevented) && ca.CardSource != null && !ca.CardSource.Card.IsHero && ca.ActionToCancel is UsePowerAction && (ca.ActionToCancel as UsePowerAction).HeroUsingPower == base.HeroTurnTakerController, PreventedPowerResponse, TriggerType.DrawCard, TriggerTiming.After);
+            AddTrigger((CancelAction ca) => !HasBeenSetToTrueThisTurn(PowerPrevented) && ca.CardSource != null && !IsHero(ca.CardSource.Card) && ca.ActionToCancel is UsePowerAction && (ca.ActionToCancel as UsePowerAction).HeroUsingPower == base.HeroTurnTakerController, PreventedPowerResponse, TriggerType.DrawCard, TriggerTiming.After);
             // MakeDecisionAction for which power to use canceled? You may draw a card
-            AddTrigger((CancelAction ca) => !HasBeenSetToTrueThisTurn(PowerPrevented) && ca.CardSource != null && !ca.CardSource.Card.IsHero && ca.ActionToCancel is MakeDecisionAction && (ca.ActionToCancel as MakeDecisionAction).DecisionMaker == base.HeroTurnTakerController && (ca.ActionToCancel as MakeDecisionAction).Decision.SelectionType == SelectionType.UsePower, PreventedPowerResponse, TriggerType.DrawCard, TriggerTiming.After);
+            AddTrigger((CancelAction ca) => !HasBeenSetToTrueThisTurn(PowerPrevented) && ca.CardSource != null && !IsHero(ca.CardSource.Card) && ca.ActionToCancel is MakeDecisionAction && (ca.ActionToCancel as MakeDecisionAction).DecisionMaker == base.HeroTurnTakerController && (ca.ActionToCancel as MakeDecisionAction).Decision.SelectionType == SelectionType.UsePower, PreventedPowerResponse, TriggerType.DrawCard, TriggerTiming.After);
             // SetPhaseActionCountAction setting Sphere's power phase count to 0? You may draw a card
-            AddTrigger((SetPhaseActionCountAction spca) => !HasBeenSetToTrueThisTurn(PowerPrevented) && spca.CardSource != null && !spca.CardSource.Card.IsHero && spca.TurnPhase.TurnTaker == base.TurnTaker && spca.TurnPhase.Phase == Phase.UsePower && (!spca.AmountToSet.HasValue || spca.AmountToSet.HasValueLessThan(1)), PreventedPowerResponse, TriggerType.DrawCard, TriggerTiming.After);
+            AddTrigger((SetPhaseActionCountAction spca) => !HasBeenSetToTrueThisTurn(PowerPrevented) && spca.CardSource != null && !IsHero(spca.CardSource.Card) && spca.TurnPhase.TurnTaker == base.TurnTaker && spca.TurnPhase.Phase == Phase.UsePower && (!spca.AmountToSet.HasValue || spca.AmountToSet.HasValueLessThan(1)), PreventedPowerResponse, TriggerType.DrawCard, TriggerTiming.After);
             // PhaseChangeAction skipping Sphere's power phase due to a status effect from a non-hero card? You may draw a card
             AddPhaseChangeTrigger((TurnTaker tt) => tt == base.TurnTaker, (Phase p) => !HasBeenSetToTrueThisTurn(PowerPrevented), PowerPhaseCriteria, PreventedPowerResponse, new TriggerType[] { TriggerType.DrawCard }, TriggerTiming.After);
             AddPhaseChangeTrigger((TurnTaker tt) => true, (Phase p) => !HasBeenSetToTrueThisTurn(PowerPrevented), (PhaseChangeAction pca) => pca.ToPhase.WasSkipped && pca.ToPhase.Phase == Phase.UsePower && pca.ToPhase.TurnTaker == base.TurnTaker && UnusedPowersThisTurn().Count() > 0 && !base.GameController.CanPerformAction<UsePowerAction>(base.TurnTakerController, GetCardSource()), PreventedPowerResponse, new TriggerType[] { TriggerType.DrawCard }, TriggerTiming.After);
             // MakeDecisionAction for which hero gets to use a power where Sphere was an option canceled? Ask if they would've chosen Sphere- if so, you may draw a card
-            AddTrigger((CancelAction ca) => !HasBeenSetToTrueThisTurn(PowerPrevented) && ca.CardSource != null && !ca.CardSource.Card.IsHero && ca.ActionToCancel is MakeDecisionAction && usingPower.Contains((ca.ActionToCancel as MakeDecisionAction).Decision.SelectionType) && ((ca.ActionToCancel as MakeDecisionAction).Decision is SelectTurnTakerDecision || (ca.ActionToCancel as MakeDecisionAction).Decision is SelectTurnTakersDecision), PreventedPowerChoiceResponse, TriggerType.DrawCard, TriggerTiming.After);
+            AddTrigger((CancelAction ca) => !HasBeenSetToTrueThisTurn(PowerPrevented) && ca.CardSource != null && !IsHero(ca.CardSource.Card) && ca.ActionToCancel is MakeDecisionAction && usingPower.Contains((ca.ActionToCancel as MakeDecisionAction).Decision.SelectionType) && ((ca.ActionToCancel as MakeDecisionAction).Decision is SelectTurnTakerDecision || (ca.ActionToCancel as MakeDecisionAction).Decision is SelectTurnTakersDecision), PreventedPowerChoiceResponse, TriggerType.DrawCard, TriggerTiming.After);
             // A hero is being chosen to use a power and Sphere can't use powers? Ask if they would've chosen Sphere- if so, you may draw a card (and no one may use a power)
             AddTrigger((MakeDecisionAction mda) => !HasBeenSetToTrueThisTurn(PowerPrevented) && mda.Decision is SelectTurnTakerDecision && (mda.CardSource == null || base.GameController.IsCardVisibleToCardSource(base.CharacterCard, mda.CardSource)) && usingPower.Contains(mda.Decision.SelectionType) && !base.GameController.CanPerformAction<UsePowerAction>(base.TurnTakerController, GetCardSource()), UnlistedPowerChoiceResponse, new TriggerType[] { TriggerType.CancelAction, TriggerType.DrawCard }, TriggerTiming.Before);
             // Something behind the scenes sends a failure message instead of letting Sphere use a power? You may draw a card
@@ -191,7 +191,7 @@ namespace VainFacadePlaytest.Sphere
             TurnPhase nextTurnPhase = GameController.FindNextTurnPhase(pca.FromPhase);
             if (nextTurnPhase.Phase == Phase.PlayCard && nextTurnPhase.TurnTaker == base.TurnTaker)
             {
-                if (GameController.StatusEffectControllers.Any(c => c.StatusEffect is PreventPhaseActionStatusEffect s && s.ToTurnPhaseCriteria.Phase == Phase.PlayCard && s.ToTurnPhaseCriteria.TurnTaker == base.TurnTaker && !s.CardSource.IsHero))
+                if (GameController.StatusEffectControllers.Any(c => c.StatusEffect is PreventPhaseActionStatusEffect s && s.ToTurnPhaseCriteria.Phase == Phase.PlayCard && s.ToTurnPhaseCriteria.TurnTaker == base.TurnTaker && !IsHero(s.CardSource)))
                 {
                     return true;
                 }
@@ -204,7 +204,7 @@ namespace VainFacadePlaytest.Sphere
             TurnPhase nextTurnPhase = GameController.FindNextTurnPhase(pca.FromPhase);
             if (nextTurnPhase.Phase == Phase.UsePower && nextTurnPhase.TurnTaker == base.TurnTaker)
             {
-                if (GameController.StatusEffectControllers.Any(c => c.StatusEffect is PreventPhaseActionStatusEffect s && s.ToTurnPhaseCriteria.Phase == Phase.UsePower && s.ToTurnPhaseCriteria.TurnTaker == base.TurnTaker && !s.CardSource.IsHero))
+                if (GameController.StatusEffectControllers.Any(c => c.StatusEffect is PreventPhaseActionStatusEffect s && s.ToTurnPhaseCriteria.Phase == Phase.UsePower && s.ToTurnPhaseCriteria.TurnTaker == base.TurnTaker && !IsHero(s.CardSource)))
                 {
                     return true;
                 }
@@ -217,7 +217,7 @@ namespace VainFacadePlaytest.Sphere
             TurnPhase nextTurnPhase = GameController.FindNextTurnPhase(pca.FromPhase);
             if (nextTurnPhase.Phase == Phase.DrawCard && nextTurnPhase.TurnTaker == base.TurnTaker)
             {
-                if (GameController.StatusEffectControllers.Any(c => c.StatusEffect is PreventPhaseActionStatusEffect s && s.ToTurnPhaseCriteria.Phase == Phase.DrawCard && s.ToTurnPhaseCriteria.TurnTaker == base.TurnTaker && !s.CardSource.IsHero))
+                if (GameController.StatusEffectControllers.Any(c => c.StatusEffect is PreventPhaseActionStatusEffect s && s.ToTurnPhaseCriteria.Phase == Phase.DrawCard && s.ToTurnPhaseCriteria.TurnTaker == base.TurnTaker && !IsHero(s.CardSource)))
                 {
                     return true;
                 }
@@ -252,7 +252,7 @@ namespace VainFacadePlaytest.Sphere
             if (ca.CardSource != null)
             {
                 Log.Debug("AlienHeartCardController.LogCancelAction: ca.CardSource: " + ca.CardSource.ToString());
-                Log.Debug("AlienHeartCardController.LogCancelAction: ca.CardSource.Card.IsHero: " + ca.CardSource.Card.IsHero.ToString());
+                Log.Debug("AlienHeartCardController.LogCancelAction: IsHero(ca.CardSource.Card): " + IsHero(ca.CardSource.Card).ToString());
             }
             else
             {
@@ -324,11 +324,10 @@ namespace VainFacadePlaytest.Sphere
                     Log.Debug("AlienHeartCardController.LogSetPhaseActionCountAction: spca.TurnPhase.Phase == Phase.DrawCard");
                     break;
             }
-            Log.Debug("AlienHeartCardController.LogSetPhaseActionCountAction activated");
             if (spca.CardSource != null)
             {
                 Log.Debug("AlienHeartCardController.LogSetPhaseActionCountAction: spca.CardSource: " + spca.CardSource.ToString());
-                Log.Debug("AlienHeartCardController.LogSetPhaseActionCountAction: spca.CardSource.Card.IsHero: " + spca.CardSource.Card.IsHero.ToString());
+                Log.Debug("AlienHeartCardController.LogSetPhaseActionCountAction: IsHero(spca.CardSource.Card): " + IsHero(spca.CardSource.Card).ToString());
             }
             else
             {
@@ -729,8 +728,8 @@ namespace VainFacadePlaytest.Sphere
                 YesNoCardDecision choice = results.FirstOrDefault();
                 if (choice != null && choice.Answer.HasValue && choice.Answer.Value)
                 {
-                    // Decision maker verified that Sphere was prevented from drawing a card!
-                    // Run PreventedPlayResponse
+                    // Decision maker verified that Sphere was prevented from using a power!
+                    // Run PreventedPowerResponse
                     IEnumerator respondCoroutine = PreventedPowerResponse(ga);
                     if (base.UseUnityCoroutines)
                     {

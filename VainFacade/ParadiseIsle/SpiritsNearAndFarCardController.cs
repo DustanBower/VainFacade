@@ -32,7 +32,7 @@ namespace VainFacadePlaytest.ParadiseIsle
         {
             // "... you may move this card next to a hero."
             List<SelectCardDecision> choices = new List<SelectCardDecision>();
-            IEnumerator selectCoroutine = base.GameController.SelectCardAndStoreResults(DecisionMaker, SelectionType.MoveCardNextToCard, new LinqCardCriteria((Card c) => c.IsHeroCharacterCard, "hero character"), choices, true, cardSource: GetCardSource());
+            IEnumerator selectCoroutine = base.GameController.SelectCardAndStoreResults(DecisionMaker, SelectionType.MoveCardNextToCard, new LinqCardCriteria((Card c) => IsHeroCharacterCard(c), "hero character"), choices, true, cardSource: GetCardSource());
             if (base.UseUnityCoroutines)
             {
                 yield return base.GameController.StartCoroutine(selectCoroutine);
@@ -59,7 +59,7 @@ namespace VainFacadePlaytest.ParadiseIsle
         public override IEnumerable<Power> AskIfContributesPowersToCardController(CardController cardController)
         {
             // "That hero gains the following power:"
-            if (cardController.HeroTurnTakerController != null && cardController.Card.IsHeroCharacterCard && cardController.Card.Owner.IsHero && !cardController.Card.Owner.IsIncapacitatedOrOutOfGame && ! cardController.Card.IsFlipped && cardController.Card == GetCardThisCardIsNextTo())
+            if (cardController.HeroTurnTakerController != null && IsHeroCharacterCard(cardController.Card) && IsHero(cardController.Card.Owner) && !cardController.Card.Owner.IsIncapacitatedOrOutOfGame && ! cardController.Card.IsFlipped && cardController.Card == GetCardThisCardIsNextTo())
             {
                 Power drinking = new Power(cardController.HeroTurnTakerController, cardController, "Put a card from your trash into your hand. Destroy [i]" + base.Card.Title + "[/i].", ReturnDestructResponse(cardController.HeroTurnTakerController), 0, null, GetCardSource());
                 return new Power[] { drinking };

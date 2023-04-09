@@ -21,7 +21,7 @@ namespace VainFacadePlaytest.Burgess
         {
             base.AddTriggers();
             // "At the start of each player's turn, you may discard 2 cards. If you do, damage dealt by that player's targets is irreducible until the end of the turn."
-            AddStartOfTurnTrigger((TurnTaker tt) => tt.IsHero, DiscardToMakeIrreducibleResponse, new TriggerType[] { TriggerType.DiscardCard, TriggerType.CreateStatusEffect });
+            AddStartOfTurnTrigger((TurnTaker tt) => IsHero(tt), DiscardToMakeIrreducibleResponse, new TriggerType[] { TriggerType.DiscardCard, TriggerType.CreateStatusEffect });
         }
 
         private IEnumerator DiscardToMakeIrreducibleResponse(PhaseChangeAction pca)

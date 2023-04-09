@@ -16,7 +16,7 @@ namespace VainFacadePlaytest.Grandfather
         {
             AddThisCardControllerToList(CardControllerListType.MakesIndestructible);
             // Show number of cards in each hero deck
-            SpecialStringMaker.ShowNumberOfCardsAtLocations(() => from tt in FindTurnTakersWhere((TurnTaker tt) => tt.IsHero && !tt.ToHero().IsIncapacitatedOrOutOfGame) select tt.Deck, new LinqCardCriteria());
+            SpecialStringMaker.ShowNumberOfCardsAtLocations(() => from tt in FindTurnTakersWhere((TurnTaker tt) => IsHero(tt) && !tt.ToHero().IsIncapacitatedOrOutOfGame) select tt.Deck, new LinqCardCriteria());
         }
 
         protected const string TokenPoolIdentifier = "ArrowOfTimePool";
@@ -46,7 +46,7 @@ namespace VainFacadePlaytest.Grandfather
         {
             base.AddTriggers();
             // Make a list of hero TurnTakers
-            List<TurnTaker> heroes = FindTurnTakersWhere((TurnTaker tt) => tt.IsHero).ToList();
+            List<TurnTaker> heroes = FindTurnTakersWhere((TurnTaker tt) => IsHero(tt)).ToList();
             for (int i = 0; i < heroes.Count; i++)
             {
                 GameController.AddCardPropertyJournalEntry(base.Card, HeroOrder[i], heroes.ElementAt(i));

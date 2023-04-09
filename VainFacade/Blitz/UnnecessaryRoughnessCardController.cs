@@ -38,7 +38,7 @@ namespace VainFacadePlaytest.Blitz
                 base.GameController.ExhaustCoroutine(destroyEnvCoroutine);
             }
             // "... and {H - 2} hero Ongoing and/or Equipment cards."
-            IEnumerator destroyHeroCoroutine = base.GameController.SelectAndDestroyCards(DecisionMaker, new LinqCardCriteria((Card c) => c.IsHero && (IsOngoing(c) || IsEquipment(c)), "hero Ongoing or Equipment"), H - 2, requiredDecisions: H - 2, storedResultsAction: results, responsibleCard: base.Card, cardSource: GetCardSource());
+            IEnumerator destroyHeroCoroutine = base.GameController.SelectAndDestroyCards(DecisionMaker, new LinqCardCriteria((Card c) => IsHero(c) && (IsOngoing(c) || IsEquipment(c)), "hero Ongoing or Equipment"), H - 2, requiredDecisions: H - 2, storedResultsAction: results, responsibleCard: base.Card, cardSource: GetCardSource());
             if (base.UseUnityCoroutines)
             {
                 yield return base.GameController.StartCoroutine(destroyHeroCoroutine);

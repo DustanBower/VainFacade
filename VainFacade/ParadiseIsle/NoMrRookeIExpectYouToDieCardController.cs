@@ -61,7 +61,7 @@ namespace VainFacadePlaytest.ParadiseIsle
                 }
                 else
                 {
-                    IEnumerator damageCoroutine = DealDamageToHighestHP(highestConspirator, 1, (Card c) => c.IsHero, (Card c) => base.TurnTaker.Trash.NumberOfCards, DamageType.Energy, storedResults: damageResults);
+                    IEnumerator damageCoroutine = DealDamageToHighestHP(highestConspirator, 1, (Card c) => IsHeroTarget(c), (Card c) => base.TurnTaker.Trash.NumberOfCards, DamageType.Energy, storedResults: damageResults);
                     if (base.UseUnityCoroutines)
                     {
                         yield return base.GameController.StartCoroutine(damageCoroutine);

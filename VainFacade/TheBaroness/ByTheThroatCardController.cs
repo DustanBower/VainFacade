@@ -20,7 +20,7 @@ namespace VainFacadePlaytest.TheBaroness
         public override IEnumerator DeterminePlayLocation(List<MoveCardDestination> storedResults, bool isPutIntoPlay, List<IDecision> decisionSources, Location overridePlayArea = null, LinqTurnTakerCriteria additionalTurnTakerCriteria = null)
         {
             // "Play this card next to an active hero."
-            yield return SelectCardThisCardWillMoveNextTo(new LinqCardCriteria((Card c) => c.IsHeroCharacterCard && c.IsActive, "active hero character"), storedResults, isPutIntoPlay, decisionSources);
+            yield return SelectCardThisCardWillMoveNextTo(new LinqCardCriteria((Card c) => IsHeroCharacterCard(c) && c.IsActive, "active hero character"), storedResults, isPutIntoPlay, decisionSources);
         }
 
         public override void AddTriggers()

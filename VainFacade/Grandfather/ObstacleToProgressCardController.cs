@@ -42,7 +42,7 @@ namespace VainFacadePlaytest.Grandfather
         {
             // "Play this card next to the hero with the highest HP."
             List<Card> found = new List<Card>();
-            IEnumerator findCoroutine = base.GameController.FindTargetWithHighestHitPoints(1, (Card c) => c.IsHeroCharacterCard, found, evenIfCannotDealDamage: true, cardSource: GetCardSource());
+            IEnumerator findCoroutine = base.GameController.FindTargetWithHighestHitPoints(1, (Card c) => IsHeroCharacterCard(c), found, evenIfCannotDealDamage: true, cardSource: GetCardSource());
             if (base.UseUnityCoroutines)
             {
                 yield return base.GameController.StartCoroutine(findCoroutine);

@@ -290,7 +290,7 @@ namespace VainFacadePlaytest.TheBaroness
         {
             // "...each Bat deals each hero target 1 projectile damage."
             List<DealDamageAction> results = new List<DealDamageAction>();
-            IEnumerator damageCoroutine = MultipleDamageSourcesDealDamage(new LinqCardCriteria((Card c) => c.DoKeywordsContain(BatKeyword), "Bat"), TargetType.All, null, new LinqCardCriteria((Card c) => c.IsHero && c.IsTarget), 1, DamageType.Projectile, damageResults: results);
+            IEnumerator damageCoroutine = MultipleDamageSourcesDealDamage(new LinqCardCriteria((Card c) => c.DoKeywordsContain(BatKeyword), "Bat"), TargetType.All, null, new LinqCardCriteria((Card c) => IsHeroTarget(c)), 1, DamageType.Projectile, damageResults: results);
             if (base.UseUnityCoroutines)
             {
                 yield return base.GameController.StartCoroutine(damageCoroutine);

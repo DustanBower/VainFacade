@@ -21,7 +21,7 @@ namespace VainFacadePlaytest.TheBaroness
         {
             base.AddTriggers();
             // "Each time {TheBaroness} deals a hero target melee damage, put the top card of that target's deck face-down in the villain play area."
-            AddTrigger<DealDamageAction>((DealDamageAction dda) => dda.DamageSource != null && dda.DamageSource.IsCard && dda.DamageSource.Card == base.CharacterCard && dda.DamageType == DamageType.Melee && dda.DidDealDamage && dda.Target.IsHero, (DealDamageAction dda) => MoveFaceDownToVillainPlayArea(GetNativeDeck(dda.Target).TopCard), TriggerType.MoveCard, TriggerTiming.After);
+            AddTrigger<DealDamageAction>((DealDamageAction dda) => dda.DamageSource != null && dda.DamageSource.IsCard && dda.DamageSource.Card == base.CharacterCard && dda.DamageType == DamageType.Melee && dda.DidDealDamage && IsHeroTarget(dda.Target), (DealDamageAction dda) => MoveFaceDownToVillainPlayArea(GetNativeDeck(dda.Target).TopCard), TriggerType.MoveCard, TriggerTiming.After);
         }
     }
 }

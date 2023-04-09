@@ -47,7 +47,7 @@ namespace VainFacadePlaytest.ParadiseIsle
             if (result != null && result != FindCard(TestSubjectsIdentifier))
             {
                 // "... and deal each hero target 1 toxic damage."
-                IEnumerator damageCoroutine = DealDamage(base.Card, (Card c) => c.IsHero, 1, DamageType.Toxic);
+                IEnumerator damageCoroutine = DealDamage(base.Card, (Card c) => IsHeroTarget(c), 1, DamageType.Toxic);
                 if (base.UseUnityCoroutines)
                 {
                     yield return base.GameController.StartCoroutine(damageCoroutine);

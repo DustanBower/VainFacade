@@ -21,14 +21,14 @@ namespace VainFacadePlaytest.EldrenwoodVillage
         {
             base.AddTriggers();
             // "At the end of the environment turn, one hero target regains 1 HP."
-            AddEndOfTurnTrigger((TurnTaker tt) => tt == base.TurnTaker && !CanActivateEffect(base.TurnTakerController, HowlsKey), (PhaseChangeAction pca) => base.GameController.SelectAndGainHP(DecisionMaker, 1, additionalCriteria: (Card c) => c.IsHero, requiredDecisions: 1, cardSource: GetCardSource()), TriggerType.GainHP);
+            AddEndOfTurnTrigger((TurnTaker tt) => tt == base.TurnTaker && !CanActivateEffect(base.TurnTakerController, HowlsKey), (PhaseChangeAction pca) => base.GameController.SelectAndGainHP(DecisionMaker, 1, additionalCriteria: (Card c) => IsHeroTarget(c), requiredDecisions: 1, cardSource: GetCardSource()), TriggerType.GainHP);
         }
 
         public override IEnumerator SlainInHumanFormResponse()
         {
             // "... the players collectively discard {H} cards."
             List<DiscardCardAction> discards = new List<DiscardCardAction>();
-            while (GetNumberOfCardsDiscarded(discards) < H && base.GameController.FindTurnTakersWhere((TurnTaker tt) => base.GameController.IsTurnTakerVisibleToCardSource(tt, GetCardSource()) && tt.IsHero && tt.ToHero().HasCardsInHand).Count() > 0)
+            while (GetNumberOfCardsDiscarded(discards) < H && base.GameController.FindTurnTakersWhere((TurnTaker tt) => base.GameController.IsTurnTakerVisibleToCardSource(tt, GetCardSource()) && IsHero(tt) && tt.ToHero().HasCardsInHand).Count() > 0)
             {
                 IEnumerator discardCoroutine = SelectHeroToDiscardCards(DecisionMaker, 0, H - GetNumberOfCardsDiscarded(discards), storedResultsDiscard: discards, cardSource: GetCardSource());
                 if (base.UseUnityCoroutines)
@@ -59,7 +59,7 @@ namespace VainFacadePlaytest.EldrenwoodVillage
                 }
                 additionalHeroCriteria = new LinqTurnTakerCriteria((TurnTaker httc) => true, text);
             }
-            LinqTurnTakerCriteria heroCriteria = new LinqTurnTakerCriteria((TurnTaker httc) => httc.IsHero && !httc.ToHero().IsIncapacitatedOrOutOfGame && !httc.ToHero().Hand.IsEmpty && additionalHeroCriteria.Criteria(httc), additionalHeroCriteria.Description);
+            LinqTurnTakerCriteria heroCriteria = new LinqTurnTakerCriteria((TurnTaker httc) => IsHero(httc) && !httc.ToHero().IsIncapacitatedOrOutOfGame && !httc.ToHero().Hand.IsEmpty && additionalHeroCriteria.Criteria(httc), additionalHeroCriteria.Description);
             int value = (maxNumberOfCards.HasValue ? maxNumberOfCards.Value : minNumberOfCards);
             Func<String> counter = () => "Cards discarded so far: " + (from en in Game.Journal.DiscardCardEntriesThisTurn()
                                                                        where en.Card.Owner.IsHero && en.CardSource == cardSource.Card && en.CardSourcePlayIndex == cardSource.Card.PlayIndex
@@ -76,7 +76,7 @@ namespace VainFacadePlaytest.EldrenwoodVillage
             TurnTaker turnTaker = (from d in storedResultsTurnTaker
                                    where d.Completed
                                    select d.SelectedTurnTaker).FirstOrDefault();
-            if (turnTaker != null && turnTaker.IsHero)
+            if (turnTaker != null && IsHero(turnTaker))
             {
                 LinqCardCriteria cardCriteria = null;
                 if (additionalCardCriteria != null)
@@ -104,7 +104,7 @@ namespace VainFacadePlaytest.EldrenwoodVillage
         // This allows me to show a count of how many cards have already been discarded, like Handelabra does for cards like The Challenge of Fire
         public IEnumerator SelectHeroTurnTaker(HeroTurnTakerController hero, SelectionType selectionType, bool optional, bool allowAutoDecide, List<SelectTurnTakerDecision> storedResults, LinqTurnTakerCriteria heroCriteria = null, int? numberOfCards = null, bool allowIncapacitatedHeroes = false, GameAction gameAction = null, IEnumerable<DealDamageAction> dealDamageInfo = null, Func<String> extraInfo = null, bool canBeCancelled = true, IEnumerable<Card> associatedCards = null, CardSource cardSource = null)
         {
-            IEnumerable<TurnTaker> enumerable = Game.TurnTakers.Where((TurnTaker t) => t.IsHero);
+            IEnumerable<TurnTaker> enumerable = Game.TurnTakers.Where((TurnTaker t) => IsHero(t));
             IEnumerable<TurnTaker> enumerable2 = enumerable;
             if (!allowIncapacitatedHeroes)
             {

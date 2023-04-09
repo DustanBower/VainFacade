@@ -28,7 +28,7 @@ namespace VainFacadePlaytest.EldrenwoodVillage
         {
             // "... one player discards or plays a card."
             List<PlayCardAction> plays = new List<PlayCardAction>();
-            SelectTurnTakerDecision selection = new SelectTurnTakerDecision(base.GameController, DecisionMaker, GameController.FindTurnTakersWhere((TurnTaker tt) => tt.IsHero && tt.ToHero().HasCardsInHand && GameController.IsTurnTakerVisibleToCardSource(tt, GetCardSource())), SelectionType.Custom, cardSource: GetCardSource());
+            SelectTurnTakerDecision selection = new SelectTurnTakerDecision(base.GameController, DecisionMaker, GameController.FindTurnTakersWhere((TurnTaker tt) => IsHero(tt) && tt.ToHero().HasCardsInHand && GameController.IsTurnTakerVisibleToCardSource(tt, GetCardSource())), SelectionType.Custom, cardSource: GetCardSource());
             IEnumerator selectCoroutine = base.GameController.SelectTurnTakerAndDoAction(selection, (TurnTaker tt) => DiscardOrPlayResponse(tt, plays));
             if (base.UseUnityCoroutines)
             {
@@ -41,7 +41,7 @@ namespace VainFacadePlaytest.EldrenwoodVillage
             // "If a card entered play this way, this card deals one hero 2 sonic damage."
             if (plays.Any((PlayCardAction playing) => playing.WasCardPlayed))
             {
-                IEnumerator damageCoroutine = base.GameController.SelectTargetsAndDealDamage(DecisionMaker, new DamageSource(base.GameController, base.Card), 2, DamageType.Sonic, 1, false, 1, additionalCriteria: (Card c) => c.IsHeroCharacterCard, cardSource: GetCardSource());
+                IEnumerator damageCoroutine = base.GameController.SelectTargetsAndDealDamage(DecisionMaker, new DamageSource(base.GameController, base.Card), 2, DamageType.Sonic, 1, false, 1, additionalCriteria: (Card c) => IsHeroCharacterCard(c), cardSource: GetCardSource());
                 if (base.UseUnityCoroutines)
                 {
                     yield return base.GameController.StartCoroutine(damageCoroutine);
@@ -80,7 +80,7 @@ namespace VainFacadePlaytest.EldrenwoodVillage
         public override IEnumerator SlainInHumanFormResponse()
         {
             // "... destroy one hero Equipment card."
-            yield return base.GameController.SelectAndDestroyCard(DecisionMaker, new LinqCardCriteria((Card c) => c.IsHero && IsEquipment(c), "hero Equipment"), false, responsibleCard: base.Card, cardSource: GetCardSource());
+            yield return base.GameController.SelectAndDestroyCard(DecisionMaker, new LinqCardCriteria((Card c) => IsHero(c) && IsEquipment(c), "hero Equipment"), false, responsibleCard: base.Card, cardSource: GetCardSource());
         }
     }
 }

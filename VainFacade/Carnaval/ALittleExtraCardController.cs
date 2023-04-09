@@ -35,7 +35,7 @@ namespace VainFacadePlaytest.Carnaval
             instances.Add(new DealDamageAction(GetCardSource(), new DamageSource(base.GameController, base.CharacterCard), null, 1, DamageType.Projectile));
             List<Function> options = new List<Function>();
             options.Add(new Function(DecisionMaker, "Destroy up to 2 non-character non-target cards", SelectionType.DestroyCard, () => base.GameController.SelectAndDestroyCards(DecisionMaker, new LinqCardCriteria((Card c) => !c.IsCharacter && !c.IsTarget, "non-character non-target"), 2, requiredDecisions: 0, responsibleCard: base.Card, cardSource: GetCardSource())));
-            options.Add(new Function(DecisionMaker, base.CharacterCard.Title + " deals each non-hero target 1 fire damage and 1 projectile damage", SelectionType.DealDamage, () => DealMultipleInstancesOfDamage(instances, (Card c) => c.IsTarget && !c.IsHero)));
+            options.Add(new Function(DecisionMaker, base.CharacterCard.Title + " deals each non-hero target 1 fire damage and 1 projectile damage", SelectionType.DealDamage, () => DealMultipleInstancesOfDamage(instances, (Card c) => c.IsTarget && !IsHeroTarget(c))));
             SelectFunctionDecision choice = new SelectFunctionDecision(base.GameController, DecisionMaker, options, true, cardSource: GetCardSource());
             IEnumerator selectCoroutine = base.GameController.SelectAndPerformFunction(choice);
             if (base.UseUnityCoroutines)
@@ -83,7 +83,7 @@ namespace VainFacadePlaytest.Carnaval
         private IEnumerator UseGrantedPower()
         {
             // "Destroy a hero Ongoing or Equipment card."
-            IEnumerator destroyCoroutine = base.GameController.SelectAndDestroyCard(DecisionMaker, new LinqCardCriteria((Card c) => c.IsHero && (IsOngoing(c) || IsEquipment(c)), "hero Ongoing or Equipment"), false, responsibleCard: base.Card, cardSource: GetCardSource());
+            IEnumerator destroyCoroutine = base.GameController.SelectAndDestroyCard(DecisionMaker, new LinqCardCriteria((Card c) => IsHero(c) && (IsOngoing(c) || IsEquipment(c)), "hero Ongoing or Equipment"), false, responsibleCard: base.Card, cardSource: GetCardSource());
             if (base.UseUnityCoroutines)
             {
                 yield return base.GameController.StartCoroutine(destroyCoroutine);

@@ -21,7 +21,7 @@ namespace VainFacadePlaytest.Blitz
         public override IEnumerator Play()
         {
             // "{BlitzCharacter} deals the hero target with the lowest HP {H - 1} lightning damage."
-            IEnumerator damageCoroutine = DealDamageToLowestHP(base.CharacterCard, 1, (Card c) => c.IsHero && c.IsTarget, (Card c) => H - 1, DamageType.Lightning);
+            IEnumerator damageCoroutine = DealDamageToLowestHP(base.CharacterCard, 1, (Card c) => IsHeroTarget(c), (Card c) => H - 1, DamageType.Lightning);
             if (base.UseUnityCoroutines)
             {
                 yield return base.GameController.StartCoroutine(damageCoroutine);

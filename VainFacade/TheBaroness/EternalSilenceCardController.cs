@@ -22,7 +22,7 @@ namespace VainFacadePlaytest.TheBaroness
         {
             // "Destroy all Blood cards belonging to the hero with the highest resonance."
             List<TurnTaker> found = new List<TurnTaker>();
-            IEnumerator findCoroutine = base.GameController.DetermineTurnTakersWithMostOrFewest(true, 1, 1, (TurnTaker tt) => tt.IsHero && !tt.IsIncapacitatedOrOutOfGame, (TurnTaker tt) => Resonance(tt), SelectionType.MostCardsInPlay, found, evenIfCannotDealDamage: true, cardSource: GetCardSource());
+            IEnumerator findCoroutine = base.GameController.DetermineTurnTakersWithMostOrFewest(true, 1, 1, (TurnTaker tt) => IsHero(tt) && !tt.IsIncapacitatedOrOutOfGame, (TurnTaker tt) => Resonance(tt), SelectionType.MostCardsInPlay, found, evenIfCannotDealDamage: true, cardSource: GetCardSource());
             if (base.UseUnityCoroutines)
             {
                 yield return base.GameController.StartCoroutine(findCoroutine);

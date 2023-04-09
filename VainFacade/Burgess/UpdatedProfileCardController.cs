@@ -25,7 +25,7 @@ namespace VainFacadePlaytest.Burgess
         {
             base.AddTriggers();
             // "When that target deals damage to a target other than the hero target with the highest HP, you may discard 2 cards. If you do, redirect that damage to the hero target with the highest HP. Reduce damage redirected this way by 1."
-            AddTrigger((DealDamageAction dda) => dda.DamageSource != null && dda.DamageSource.IsCard && dda.DamageSource.Card == GetCardThisCardIsNextTo() && (!CanCardBeConsideredHighestHitPoints(dda.Target, (Card c) => c.IsHero && c.IsTarget) || !IsHighestHitPointsUnique((Card c) => c.IsHero)), DiscardToRedirectReduceResponse, new TriggerType[] { TriggerType.DiscardCard, TriggerType.WouldBeDealtDamage, TriggerType.RedirectDamage, TriggerType.ReduceDamage }, TriggerTiming.Before);
+            AddTrigger((DealDamageAction dda) => dda.DamageSource != null && dda.DamageSource.IsCard && dda.DamageSource.Card == GetCardThisCardIsNextTo() && (!CanCardBeConsideredHighestHitPoints(dda.Target, (Card c) => IsHeroTarget(c)) || !IsHighestHitPointsUnique((Card c) => IsHeroTarget(c))), DiscardToRedirectReduceResponse, new TriggerType[] { TriggerType.DiscardCard, TriggerType.WouldBeDealtDamage, TriggerType.RedirectDamage, TriggerType.ReduceDamage }, TriggerTiming.Before);
             // "When that target leaves play, destroy this card."
             AddIfTheTargetThatThisCardIsNextToLeavesPlayDestroyThisCardTrigger();
         }
@@ -33,7 +33,7 @@ namespace VainFacadePlaytest.Burgess
         public override IEnumerator DeterminePlayLocation(List<MoveCardDestination> storedResults, bool isPutIntoPlay, List<IDecision> decisionSources, Location overridePlayArea = null, LinqTurnTakerCriteria additionalTurnTakerCriteria = null)
         {
             // "Play this card next to a non-hero target."
-            IEnumerator selectCoroutine = SelectCardThisCardWillMoveNextTo(new LinqCardCriteria((Card c) => c.IsTarget && !c.IsHero, "non-hero", singular: "target", plural: "targets"), storedResults, isPutIntoPlay, decisionSources);
+            IEnumerator selectCoroutine = SelectCardThisCardWillMoveNextTo(new LinqCardCriteria((Card c) => c.IsTarget && !IsHeroTarget(c), "non-hero", singular: "target", plural: "targets"), storedResults, isPutIntoPlay, decisionSources);
             if (base.UseUnityCoroutines)
             {
                 yield return base.GameController.StartCoroutine(selectCoroutine);
@@ -73,7 +73,7 @@ namespace VainFacadePlaytest.Burgess
                 if (DidDiscardCards(discards, 2))
                 {
                     List<Card> chosenHighest = new List<Card>();
-                    IEnumerator findCoroutine = base.GameController.FindTargetWithHighestHitPoints(1, (Card c) => c.IsHero && c != dda.Target && base.GameController.IsCardVisibleToCardSource(c, GetCardSource()), chosenHighest, dda, cardSource: GetCardSource());
+                    IEnumerator findCoroutine = base.GameController.FindTargetWithHighestHitPoints(1, (Card c) => IsHeroTarget(c)  && base.GameController.IsCardVisibleToCardSource(c, GetCardSource()), chosenHighest, dda, cardSource: GetCardSource());
                     if (base.UseUnityCoroutines)
                     {
                         yield return base.GameController.StartCoroutine(findCoroutine);

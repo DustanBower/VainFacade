@@ -25,7 +25,7 @@ namespace VainFacadePlaytest.ParadiseIsle
             base.AddTriggers();
             // "At the end of the environment turn, 1 player may draw a card. Then, {DrWendigo} deals this card 2 toxic damage. If {DrWendigo} deals damage this way, he regains 2 HP."
             AddEndOfTurnTrigger((TurnTaker tt) => tt == base.TurnTaker, DrawDamageHealResponse, new TriggerType[] { TriggerType.DrawCard, TriggerType.DealDamage, TriggerType.GainHP });
-            // "When this card is reduced to 0 or fewer HP, each hero deals themself 2 psychic damage."
+            // "When this card is reduced to 0 or fewer HP, each hero deals themself 1 psychic damage."
             AddBeforeDestroyAction(HeroGriefResponse);
         }
 
@@ -96,7 +96,7 @@ namespace VainFacadePlaytest.ParadiseIsle
                 {
                     // "... each hero deals themself 1 psychic damage."
                     //Log.Debug("TestSubjectsCardController.HeroGriefResponse: running DealDamageToSelf");
-                    IEnumerator damageCoroutine = base.GameController.DealDamageToSelf(DecisionMaker, (Card c) => c.IsHeroCharacterCard, 1, DamageType.Psychic, cardSource: GetCardSource());
+                    IEnumerator damageCoroutine = base.GameController.DealDamageToSelf(DecisionMaker, (Card c) => IsHeroCharacterCard(c), 1, DamageType.Psychic, cardSource: GetCardSource());
                     if (base.UseUnityCoroutines)
                     {
                         yield return base.GameController.StartCoroutine(damageCoroutine);

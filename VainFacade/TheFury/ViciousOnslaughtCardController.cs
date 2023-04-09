@@ -50,7 +50,7 @@ namespace VainFacadePlaytest.TheFury
                 base.GameController.ExhaustCoroutine(chooseCoroutine);
             }
             // "If a hero target is dealt damage this way, you may play a card, use a power, or discard a card."
-            if (damageResults.Where((DealDamageAction dda) => dda.DidDealDamage && dda.Target.IsHero).Any())
+            if (damageResults.Where((DealDamageAction dda) => dda.DidDealDamage && IsHeroTarget(dda.Target)).Any())
             {
                 List<DiscardCardAction> discardResults = new List<DiscardCardAction>();
                 options = new Function[3]

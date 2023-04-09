@@ -77,7 +77,7 @@ namespace VainFacadePlaytest.Blitz
         {
             // "... {BlitzCharacter} deals the hero target with the highest HP 1 irreducible lightning damage."
             List<DealDamageAction> results = new List<DealDamageAction>();
-            IEnumerator damageCoroutine = DealDamageToHighestHP(base.CharacterCard, 1, (Card c) => c.IsHero && c.IsTarget, (Card c) => 1, DamageType.Lightning, isIrreducible: true, storedResults: results);
+            IEnumerator damageCoroutine = DealDamageToHighestHP(base.CharacterCard, 1, (Card c) => IsHeroTarget(c), (Card c) => 1, DamageType.Lightning, isIrreducible: true, storedResults: results);
             if (base.UseUnityCoroutines)
             {
                 yield return base.GameController.StartCoroutine(damageCoroutine);
@@ -89,7 +89,7 @@ namespace VainFacadePlaytest.Blitz
             // "If no damage is dealt this way, each player destroys 1 of their Ongoings."
             if (!DidDealDamage(results, fromDamageSource: base.CharacterCard))
             {
-                IEnumerator destroyCoroutine = EachPlayerDestroysTheirCards(new LinqTurnTakerCriteria((TurnTaker tt) => true, "heroes with Ongoing cards in play"), new LinqCardCriteria((Card c) => c.IsHero && IsOngoing(c), "hero Ongoing"));
+                IEnumerator destroyCoroutine = EachPlayerDestroysTheirCards(new LinqTurnTakerCriteria((TurnTaker tt) => true, "heroes with Ongoing cards in play"), new LinqCardCriteria((Card c) => IsOngoing(c), "Ongoing"));
                 if (base.UseUnityCoroutines)
                 {
                     yield return base.GameController.StartCoroutine(destroyCoroutine);

@@ -22,7 +22,7 @@ namespace VainFacadePlaytest.Grandfather
         {
             base.AddTriggers();
             // "At the end of the villain turn, {Grandfather} deals the hero target with the highest HP {H + 1} irreducible energy damage."
-            AddEndOfTurnTrigger((TurnTaker tt) => tt == base.TurnTaker, (PhaseChangeAction pca) => DealDamageToHighestHP(base.CharacterCard, 1, (Card c) => c.IsHero, (Card c) => H + 1, DamageType.Energy, isIrreducible: true), TriggerType.DealDamage);
+            AddEndOfTurnTrigger((TurnTaker tt) => tt == base.TurnTaker, (PhaseChangeAction pca) => DealDamageToHighestHP(base.CharacterCard, 1, (Card c) => IsHeroTarget(c), (Card c) => H + 1, DamageType.Energy, isIrreducible: true), TriggerType.DealDamage);
         }
 
         public override IEnumerator Play()

@@ -27,7 +27,7 @@ namespace VainFacadePlaytest.EldrenwoodVillage
         public override IEnumerator SlainInHumanFormResponse()
         {
             // "... each hero target deals itself 2 psychic damage."
-            yield return base.GameController.DealDamageToSelf(DecisionMaker, (Card c) => c.IsHero, 2, DamageType.Psychic, cardSource: GetCardSource());
+            yield return base.GameController.DealDamageToSelf(DecisionMaker, (Card c) => IsHeroTarget(c), 2, DamageType.Psychic, cardSource: GetCardSource());
         }
     }
 }

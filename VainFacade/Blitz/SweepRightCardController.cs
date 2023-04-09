@@ -61,7 +61,7 @@ namespace VainFacadePlaytest.Blitz
             if (dda.IsRedirectable)
             {
                 List<Card> results = new List<Card>();
-                IEnumerator findCoroutine = base.GameController.FindTargetWithLowestHitPoints(2, (Card c) => c.IsHero && c.IsTarget && base.GameController.IsCardVisibleToCardSource(c, GetCardSource()), results, cardSource: GetCardSource());
+                IEnumerator findCoroutine = base.GameController.FindTargetWithLowestHitPoints(2, (Card c) => IsHeroTarget(c) && base.GameController.IsCardVisibleToCardSource(c, GetCardSource()), results, cardSource: GetCardSource());
                 if (base.UseUnityCoroutines)
                 {
                     yield return base.GameController.StartCoroutine(findCoroutine);

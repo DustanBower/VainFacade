@@ -25,7 +25,7 @@ namespace VainFacadePlaytest.Ember
             DealDamageAction oneFire = new DealDamageAction(GetCardSource(), new DamageSource(base.GameController, base.CharacterCard), null, 1, DamageType.Fire);
             instances.Add(oneSonic);
             instances.Add(oneFire);
-            IEnumerator damageCoroutine = DealMultipleInstancesOfDamage(instances, (Card c) => !c.IsHero);
+            IEnumerator damageCoroutine = DealMultipleInstancesOfDamage(instances, (Card c) => c.IsTarget && !IsHeroTarget(c));
             if (base.UseUnityCoroutines)
             {
                 yield return base.GameController.StartCoroutine(damageCoroutine);

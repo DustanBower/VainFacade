@@ -59,7 +59,7 @@ namespace VainFacadePlaytest.TheBaroness
 
         private bool DidHitHeroTargetThisTurn()
         {
-            IEnumerable<DealDamageJournalEntry> list = Journal.DealDamageEntriesThisTurn().Where((DealDamageJournalEntry ddje) => ddje.SourceCard != null && ddje.SourceCard == base.Card && ddje.TargetCard != null && ddje.TargetCard.IsHero && ddje.Amount > 0);
+            IEnumerable<DealDamageJournalEntry> list = Journal.DealDamageEntriesThisTurn().Where((DealDamageJournalEntry ddje) => ddje.SourceCard != null && ddje.SourceCard == base.Card && ddje.TargetCard != null && IsHeroTarget(ddje.TargetCard) && ddje.Amount > 0);
             return list.Any();
         }
 
@@ -91,7 +91,7 @@ namespace VainFacadePlaytest.TheBaroness
                 AddSideTrigger(AddTrigger((DealDamageAction dda) => !HasBeenSetToTrueThisTurn(PlayedBonusThisTurn) && dda.Target == base.Card && dda.DidDealDamage && DamageTakenThisTurn() > 5, PlayCardForDamageResponse, TriggerType.PlayCard, TriggerTiming.After));
 
                 // "When a hero card destroys a villain Scheme, {TheBaroness} deals the 2 heroes with the lowest HP {H - 2} melee damage each."
-                base.AddSideTrigger(AddTrigger((DestroyCardAction dca) => dca.CardToDestroy.Card.IsVillain && dca.CardToDestroy.Card.DoKeywordsContain(SchemeKeyword) && dca.WasCardDestroyed && dca.CardSource != null && dca.CardSource.Card.IsHero, HitTwoLowestResponse, TriggerType.DealDamage, TriggerTiming.After));
+                base.AddSideTrigger(AddTrigger((DestroyCardAction dca) => dca.CardToDestroy.Card.IsVillain && dca.CardToDestroy.Card.DoKeywordsContain(SchemeKeyword) && dca.WasCardDestroyed && dca.CardSource != null && IsHero(dca.CardSource.Card), HitTwoLowestResponse, TriggerType.DealDamage, TriggerTiming.After));
                 // "When there are no villain Schemes in play, flip {TheBaroness}'s character card."
                 base.AddSideTrigger(AddTrigger((GameAction a) => a.CardSource != null && NumVillainSchemesInPlay() == 0, (GameAction a) => base.GameController.FlipCard(this, cardSource: GetCardSource()), TriggerType.FlipCard, TriggerTiming.After));
                 base.AddSideTrigger(AddTrigger((PhaseChangeAction pca) => NumVillainSchemesInPlay() == 0, (PhaseChangeAction pca) => base.GameController.FlipCard(this, cardSource: GetCardSource()), TriggerType.FlipCard, TriggerTiming.After));
@@ -113,7 +113,7 @@ namespace VainFacadePlaytest.TheBaroness
                 AddSideTrigger(AddTrigger((DealDamageAction dda) => !HasBeenSetToTrueThisTurn(PlayedBonusThisTurn) && dda.Target == base.Card && dda.DidDealDamage && DamageTakenThisTurn() > 5, PlayCardForDamageResponse, TriggerType.PlayCard, TriggerTiming.After));
 
                 // "The first time each turn a hero card is put face-down into the villain play area, put the top card of its associated deck face-down in the villain play area."
-                AddSideTrigger(AddTrigger((MoveCardAction mca) => !HasBeenSetToTrueThisTurn(FirstBloodThisTurn) && mca.CardToMove.IsFaceDownNonCharacter && mca.CardToMove.IsHero && mca.Destination.IsPlayAreaOf(base.TurnTaker), FirstBloodTakenResponse, TriggerType.MoveCard, TriggerTiming.After));
+                AddSideTrigger(AddTrigger((MoveCardAction mca) => !HasBeenSetToTrueThisTurn(FirstBloodThisTurn) && mca.CardToMove.IsFaceDownNonCharacter && IsHero(mca.CardToMove) && mca.Destination.IsPlayAreaOf(base.TurnTaker), FirstBloodTakenResponse, TriggerType.MoveCard, TriggerTiming.After));
                 // "At the end of the villain turn, discard the top {H + 2} cards of the villain deck. Put any Schemes discarded this way into play."
                 // "Then if there is at least 1 villain Scheme in play, flip {TheBaroness}'s character card."
                 // "Then {TheBaroness} deals the hero target with the lowest HP {H - 2} melee damage. If {TheBaroness} dealt no damage to hero targets this turn, destroy {H} hero Ongoing and/or Equipment cards."
@@ -126,6 +126,7 @@ namespace VainFacadePlaytest.TheBaroness
                 }
             }
             AddDefeatedIfDestroyedTriggers();
+            AddDefeatedIfMovedOutOfGameTriggers();
         }
 
         private IEnumerator PlayCardForSchemeResponse(CardEntersPlayAction cepa)
@@ -161,7 +162,7 @@ namespace VainFacadePlaytest.TheBaroness
         private IEnumerator HitTwoLowestResponse(DestroyCardAction dca)
         {
             // "... {TheBaroness} deals the 2 heroes with the lowest HP {H - 2} melee damage each."
-            IEnumerator damageCoroutine = DealDamageToLowestHP(base.Card, 1, (Card c) => c.IsHeroCharacterCard, (Card c) => H - 2, DamageType.Melee, numberOfTargets: 2);
+            IEnumerator damageCoroutine = DealDamageToLowestHP(base.Card, 1, (Card c) => IsHeroCharacterCard(c), (Card c) => H - 2, DamageType.Melee, numberOfTargets: 2);
             if (base.UseUnityCoroutines)
             {
                 yield return base.GameController.StartCoroutine(damageCoroutine);
@@ -193,7 +194,7 @@ namespace VainFacadePlaytest.TheBaroness
         private IEnumerator HitHighestOrDestroyResponse(PhaseChangeAction pca)
         {
             // "... {TheBaroness} deals the hero with the highest HP {H - 1} melee damage."
-            IEnumerator damageCoroutine = DealDamageToHighestHP(base.Card, 1, (Card c) => c.IsHeroCharacterCard, (Card c) => H - 1, DamageType.Melee);
+            IEnumerator damageCoroutine = DealDamageToHighestHP(base.Card, 1, (Card c) => IsHeroCharacterCard(c), (Card c) => H - 1, DamageType.Melee);
             if (base.UseUnityCoroutines)
             {
                 yield return base.GameController.StartCoroutine(damageCoroutine);
@@ -205,7 +206,7 @@ namespace VainFacadePlaytest.TheBaroness
             // "Then, if {TheBaroness} dealt no damage to hero targets this turn, destroy {H} hero Ongoing and/or Equipment cards."
             if (!DidHitHeroTargetThisTurn())
             {
-                LinqCardCriteria heroOngEqp = new LinqCardCriteria((Card c) => c.IsHero && (IsOngoing(c) || IsEquipment(c)) && c.IsInPlayAndHasGameText, "hero Ongoing or Equipment");
+                LinqCardCriteria heroOngEqp = new LinqCardCriteria((Card c) => IsHero(c) && (IsOngoing(c) || IsEquipment(c)) && c.IsInPlayAndHasGameText, "hero Ongoing or Equipment");
                 IEnumerator destroyCoroutine = base.GameController.SelectAndDestroyCards(DecisionMaker, heroOngEqp, H, requiredDecisions: H, allowAutoDecide: H >= base.GameController.FindCardsWhere(heroOngEqp, visibleToCard: GetCardSource()).Count(), responsibleCard: base.Card, cardSource: GetCardSource());
                 if (base.UseUnityCoroutines)
                 {
@@ -261,7 +262,7 @@ namespace VainFacadePlaytest.TheBaroness
                 yield break;
             }
             // "Then {TheBaroness} deals the hero target with the lowest HP {H - 2} melee damage."
-            IEnumerator damageCoroutine = DealDamageToLowestHP(base.Card, 1, (Card c) => c.IsHero && c.IsTarget, (Card c) => H - 2, DamageType.Melee);
+            IEnumerator damageCoroutine = DealDamageToLowestHP(base.Card, 1, (Card c) => IsHeroTarget(c), (Card c) => H - 2, DamageType.Melee);
             if (base.UseUnityCoroutines)
             {
                 yield return base.GameController.StartCoroutine(damageCoroutine);
@@ -273,7 +274,7 @@ namespace VainFacadePlaytest.TheBaroness
             // "If {TheBaroness} dealt no damage to hero targets this turn, destroy {H} hero Ongoing and/or Equipment cards."
             if (!DidHitHeroTargetThisTurn())
             {
-                LinqCardCriteria heroOngEqp = new LinqCardCriteria((Card c) => c.IsHero && (IsOngoing(c) || IsEquipment(c)) && c.IsInPlayAndHasGameText, "hero Ongoing or Equipment");
+                LinqCardCriteria heroOngEqp = new LinqCardCriteria((Card c) => IsHero(c) && (IsOngoing(c) || IsEquipment(c)) && c.IsInPlayAndHasGameText, "hero Ongoing or Equipment");
                 IEnumerator destroyCoroutine = base.GameController.SelectAndDestroyCards(DecisionMaker, heroOngEqp, H, requiredDecisions: H, allowAutoDecide: H >= base.GameController.FindCardsWhere(heroOngEqp, visibleToCard: GetCardSource()).Count(), responsibleCard: base.Card, cardSource: GetCardSource());
                 if (base.UseUnityCoroutines)
                 {

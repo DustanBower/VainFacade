@@ -29,7 +29,7 @@ namespace VainFacadePlaytest.EldrenwoodVillage
         private IEnumerator SelectPlayersResponse(PhaseChangeAction pca)
         {
             // "... each player may shuffle their hand into their deck and draw 2 cards. Reduce damage dealt to heroes that do so by 2 until the start of the next environment turn."
-            IEnumerator selectCoroutine = base.GameController.SelectTurnTakersAndDoAction(DecisionMaker, new LinqTurnTakerCriteria((TurnTaker tt) => tt.IsHero && !tt.IsIncapacitatedOrOutOfGame), SelectionType.Custom, ShuffleHandDrawReduceDamageResponse, requiredDecisions: 0, cardSource: GetCardSource());
+            IEnumerator selectCoroutine = base.GameController.SelectTurnTakersAndDoAction(DecisionMaker, new LinqTurnTakerCriteria((TurnTaker tt) => IsHero(tt) && !tt.IsIncapacitatedOrOutOfGame), SelectionType.Custom, ShuffleHandDrawReduceDamageResponse, requiredDecisions: 0, cardSource: GetCardSource());
             if (base.UseUnityCoroutines)
             {
                 yield return base.GameController.StartCoroutine(selectCoroutine);

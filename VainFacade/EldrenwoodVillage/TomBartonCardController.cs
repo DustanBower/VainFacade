@@ -57,7 +57,7 @@ namespace VainFacadePlaytest.EldrenwoodVillage
                 SetCardPropertyToTrueIfRealAction(TakenShelterThisTurn);
                 // "... each player may put a card in their hand on the bottom of their deck."
                 List<MoveCardAction> moved = new List<MoveCardAction>();
-                IEnumerator selectCoroutine = base.GameController.SelectTurnTakersAndDoAction(DecisionMaker, new LinqTurnTakerCriteria((TurnTaker tt) => tt.IsHero && !tt.ToHero().IsIncapacitatedOrOutOfGame && tt.ToHero().HasCardsInHand), SelectionType.MoveCardOnBottomOfDeck, (TurnTaker tt) => PlayerMovesCardResponse(tt, moved), requiredDecisions: 0, dealDamageInfo: dda.ToEnumerable(), cardSource: GetCardSource());
+                IEnumerator selectCoroutine = base.GameController.SelectTurnTakersAndDoAction(DecisionMaker, new LinqTurnTakerCriteria((TurnTaker tt) => IsHero(tt) && !tt.ToHero().IsIncapacitatedOrOutOfGame && tt.ToHero().HasCardsInHand), SelectionType.MoveCardOnBottomOfDeck, (TurnTaker tt) => PlayerMovesCardResponse(tt, moved), requiredDecisions: 0, dealDamageInfo: dda.ToEnumerable(), cardSource: GetCardSource());
                 if (base.UseUnityCoroutines)
                 {
                     yield return base.GameController.StartCoroutine(selectCoroutine);
@@ -66,15 +66,15 @@ namespace VainFacadePlaytest.EldrenwoodVillage
                 {
                     base.GameController.ExhaustCoroutine(selectCoroutine);
                 }
-                foreach (MoveCardAction mca in moved)
+                /*foreach (MoveCardAction mca in moved)
                 {
                     Log.Debug("TomBartonCardController.MoveCardsToPreventDamageResponse: mca.Origin: " + mca.Origin.GetFriendlyName());
                     Log.Debug("TomBartonCardController.MoveCardsToPreventDamageResponse: mca.CardToMove: " + mca.CardToMove.Title);
                     Log.Debug("TomBartonCardController.MoveCardsToPreventDamageResponse: mca.WasCardMoved: " + mca.WasCardMoved.ToString());
-                }
+                }*/
                 if (moved.Where((MoveCardAction mca) => mca.WasCardMoved).Count() >= H - 2)
                 {
-                    Log.Debug("TomBartonCardController.MoveCardsToPreventDamageResponse: preventing damage");
+                    //Log.Debug("TomBartonCardController.MoveCardsToPreventDamageResponse: preventing damage");
                     // "If {H - 2} cards are moved this way, prevent that damage."
                     IEnumerator preventCoroutine = CancelAction(dda, isPreventEffect: true);
                     if (base.UseUnityCoroutines)

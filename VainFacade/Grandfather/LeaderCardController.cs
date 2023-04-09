@@ -22,9 +22,9 @@ namespace VainFacadePlaytest.Grandfather
         {
             base.AddTriggers();
             // "Reduce damage dealt by hero targets by 1."
-            AddReduceDamageTrigger((DealDamageAction dda) => dda.DamageSource != null && dda.DamageSource.IsTarget && dda.DamageSource.IsHero, (DealDamageAction dda) => 1);
+            AddReduceDamageTrigger((DealDamageAction dda) => dda.DamageSource != null && dda.DamageSource.IsTarget && IsHeroTarget(dda.DamageSource.Card), (DealDamageAction dda) => 1);
             // "At the end of the villain turn, this card deals the hero target with the highest HP {H - 2} projectile damage."
-            AddDealDamageAtEndOfTurnTrigger(base.TurnTaker, base.Card, (Card c) => c.IsHero && c.IsTarget, TargetType.HighestHP, H - 2, DamageType.Projectile);
+            AddDealDamageAtEndOfTurnTrigger(base.TurnTaker, base.Card, (Card c) => IsHeroTarget(c), TargetType.HighestHP, H - 2, DamageType.Projectile);
         }
     }
 }

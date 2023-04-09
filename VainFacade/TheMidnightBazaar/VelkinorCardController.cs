@@ -15,15 +15,15 @@ namespace VainFacadePlaytest.TheMidnightBazaar
             : base(card, turnTakerController)
         {
             // Show which active hero character cards, if any, are in the same play area as this card
-            SpecialStringMaker.ShowListOfCardsAtLocation(base.Card.Location.HighestRecursiveLocation, new LinqCardCriteria((Card c) => c.IsHeroCharacterCard && c.IsActive, "active hero character")).Condition = () => base.Card.IsInPlayAndHasGameText;
+            SpecialStringMaker.ShowListOfCardsAtLocation(base.Card.Location.HighestRecursiveLocation, new LinqCardCriteria((Card c) => IsHeroCharacterCard(c) && c.IsActive, "active hero character")).Condition = () => base.Card.IsInPlayAndHasGameText;
         }
 
         public override void AddTriggers()
         {
             base.AddTriggers();
             // "At the end of the environment turn, if there is no active hero in this play area, 1 player may move a card from their hand under [i]The Empty Well[/i] to move this card to their play area."
-            AddEndOfTurnTrigger((TurnTaker tt) => tt.IsEnvironment && !base.GameController.FindCardsWhere(new LinqCardCriteria((Card c) => c.IsHeroCharacterCard && c.IsActive && c.Location.HighestRecursiveLocation == base.Card.Location.HighestRecursiveLocation)).Any() && IsEmptyWellInPlay(), SelectPlayerResponse, TriggerType.MoveCard);
-            AddEndOfTurnTrigger((TurnTaker tt) => tt.IsEnvironment && !base.GameController.FindCardsWhere(new LinqCardCriteria((Card c) => c.IsHeroCharacterCard && c.IsActive && c.Location.HighestRecursiveLocation == base.Card.Location.HighestRecursiveLocation)).Any() && !IsEmptyWellInPlay(), EmptyWellNotInPlayResponse, TriggerType.ShowMessage);
+            AddEndOfTurnTrigger((TurnTaker tt) => tt.IsEnvironment && !base.GameController.FindCardsWhere(new LinqCardCriteria((Card c) => IsHeroCharacterCard(c) && c.IsActive && c.Location.HighestRecursiveLocation == base.Card.Location.HighestRecursiveLocation)).Any() && IsEmptyWellInPlay(), SelectPlayerResponse, TriggerType.MoveCard);
+            AddEndOfTurnTrigger((TurnTaker tt) => tt.IsEnvironment && !base.GameController.FindCardsWhere(new LinqCardCriteria((Card c) => IsHeroCharacterCard(c) && c.IsActive && c.Location.HighestRecursiveLocation == base.Card.Location.HighestRecursiveLocation)).Any() && !IsEmptyWellInPlay(), EmptyWellNotInPlayResponse, TriggerType.ShowMessage);
         }
 
         private IEnumerator SelectPlayerResponse(PhaseChangeAction pca)
@@ -31,7 +31,7 @@ namespace VainFacadePlaytest.TheMidnightBazaar
             // "... 1 player may move a card from their hand under [i]The Empty Well[/i] to move this card to their play area."
             List<bool> cardsMoved = new List<bool>();
             currentMode = CustomMode.PlayerToDropCard;
-            SelectTurnTakerDecision selection = new SelectTurnTakerDecision(base.GameController, null, GameController.FindTurnTakersWhere((TurnTaker tt) => tt.IsHero && tt.ToHero().HasCardsInHand && GameController.IsTurnTakerVisibleToCardSource(tt, GetCardSource())), SelectionType.MoveCard, isOptional: true, cardSource: GetCardSource());
+            SelectTurnTakerDecision selection = new SelectTurnTakerDecision(base.GameController, null, GameController.FindTurnTakersWhere((TurnTaker tt) => IsHero(tt) && tt.ToHero().HasCardsInHand && GameController.IsTurnTakerVisibleToCardSource(tt, GetCardSource())), SelectionType.MoveCard, isOptional: true, cardSource: GetCardSource());
             IEnumerator selectCoroutine = base.GameController.SelectTurnTakerAndDoAction(selection, (TurnTaker tt) => GetSwordResponse(tt));
             if (base.UseUnityCoroutines)
             {
@@ -85,7 +85,7 @@ namespace VainFacadePlaytest.TheMidnightBazaar
             {
                 List<SelectCardDecision> selection = new List<SelectCardDecision>();
                 HeroTurnTakerController httc = DecisionMaker;
-                if (base.Card.Location.OwnerTurnTaker.IsHero)
+                if (IsHero(base.Card.Location.OwnerTurnTaker))
                     httc = base.GameController.FindTurnTakerController(base.Card.Location.OwnerTurnTaker).ToHero();
                 IEnumerator findCoroutine = base.GameController.SelectCardAndStoreResults(httc, SelectionType.HeroToUsePower, new LinqCardCriteria((Card c) => c.IsHeroCharacterCard && c.IsActive && c.Location.HighestRecursiveLocation == base.Card.Location.HighestRecursiveLocation), selection, false, cardSource: GetCardSource());
                 if (base.UseUnityCoroutines)

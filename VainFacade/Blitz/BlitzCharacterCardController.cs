@@ -77,7 +77,7 @@ namespace VainFacadePlaytest.Blitz
                 {
                     // Back side, Advanced:
                     // "At the end of the villain turn, {BlitzCharacter} deals the hero target with the highest HP {H - 1} melee damage."
-                    AddSideTrigger(AddDealDamageAtEndOfTurnTrigger(base.TurnTaker, base.Card, (Card c) => c.IsHero && c.IsTarget, TargetType.HighestHP, H - 1, DamageType.Melee));
+                    AddSideTrigger(AddDealDamageAtEndOfTurnTrigger(base.TurnTaker, base.Card, (Card c) => IsHeroTarget(c), TargetType.HighestHP, H - 1, DamageType.Melee));
                 }
             }
             AddDefeatedIfDestroyedTriggers();
@@ -191,7 +191,7 @@ namespace VainFacadePlaytest.Blitz
                     base.GameController.ExhaustCoroutine(zapCoroutine);
                 }
                 // "... then {BlitzCharacter} deals the hero target with the highest HP {H + 1} melee damage..."
-                IEnumerator meleeCoroutine = DealDamageToHighestHP(base.Card, 1, (Card c) => c.IsHero && c.IsTarget, (Card c) => H + 1, DamageType.Melee);
+                IEnumerator meleeCoroutine = DealDamageToHighestHP(base.Card, 1, (Card c) => IsHeroTarget(c), (Card c) => H + 1, DamageType.Melee);
                 if (base.UseUnityCoroutines)
                 {
                     yield return base.GameController.StartCoroutine(meleeCoroutine);

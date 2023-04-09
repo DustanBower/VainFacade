@@ -21,7 +21,7 @@ namespace VainFacadePlaytest.Node
         public override bool IsValidPlayArea(TurnTaker tt)
         {
             // "Play this card in another hero's play area."
-            return tt.IsHero && tt != base.TurnTaker;
+            return IsHero(tt) && tt != base.TurnTaker;
         }
 
         private bool ReplacingActionByNode = false;
@@ -183,7 +183,7 @@ namespace VainFacadePlaytest.Node
             // "Play this card in another hero's play area."
             // Adapted from SergeantSteelTeam.MissionObjectiveCardController
             List<SelectTurnTakerDecision> storedResults = new List<SelectTurnTakerDecision>();
-            IEnumerator coroutine = base.GameController.SelectTurnTaker(DecisionMaker, SelectionType.MoveCardToPlayArea, storedResults, optional: false, allowAutoDecide: false, (TurnTaker tt) => tt.IsHero && tt != base.TurnTaker, null, null, checkExtraTurnTakersInstead: false, canBeCancelled: true, ignoreBattleZone: false, GetCardSource());
+            IEnumerator coroutine = base.GameController.SelectTurnTaker(DecisionMaker, SelectionType.MoveCardToPlayArea, storedResults, optional: false, allowAutoDecide: false, (TurnTaker tt) => IsHero(tt) && tt != base.TurnTaker, null, null, checkExtraTurnTakersInstead: false, canBeCancelled: true, ignoreBattleZone: false, GetCardSource());
             if (base.UseUnityCoroutines)
             {
                 yield return base.GameController.StartCoroutine(coroutine);

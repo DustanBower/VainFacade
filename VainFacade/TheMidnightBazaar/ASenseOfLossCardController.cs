@@ -65,7 +65,7 @@ namespace VainFacadePlaytest.TheMidnightBazaar
             if (dealingDamage)
             {
                 Dictionary<Card, int> cardAttacks = new Dictionary<Card, int>();
-                foreach (Card character in FindCardsWhere((Card c) => c.IsHeroCharacterCard && c.IsTarget && c.IsInPlay))
+                foreach (Card character in FindCardsWhere((Card c) => IsHeroCharacterCard(c) && c.IsTarget && c.IsInPlay))
                 {
                     int count = FindCard(EmptyWellIdentifier).UnderLocation.Cards.Where((Card u) => u.Owner == character.Owner).Count();
                     if (count > 0)

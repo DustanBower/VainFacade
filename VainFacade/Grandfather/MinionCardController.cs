@@ -21,7 +21,7 @@ namespace VainFacadePlaytest.Grandfather
         {
             base.AddTriggers();
             // "At the end of the villain turn, this card deals the hero target with the highest HP {H - 1} projectile damage."
-            AddDealDamageAtEndOfTurnTrigger(base.TurnTaker, base.Card, (Card c) => c.IsHero && c.IsTarget, TargetType.HighestHP, H - 1, DamageType.Projectile);
+            AddDealDamageAtEndOfTurnTrigger(base.TurnTaker, base.Card, (Card c) => IsHeroTarget(c), TargetType.HighestHP, H - 1, DamageType.Projectile);
         }
 
         public override IEnumerator Play()

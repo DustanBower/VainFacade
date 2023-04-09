@@ -35,7 +35,7 @@ namespace VainFacadePlaytest.Sphere
             // "When {Sphere} would be dealt exactly 1 damage, prevent it."
             AddPreventDamageTrigger((DealDamageAction dda) => dda.Target == base.CharacterCard && dda.Amount == 1, isPreventEffect: true);
             // "The first time each turn {Sphere} is dealt damage by a non-hero target, draw a card."
-            AddTrigger((DealDamageAction dda) => !HasBeenSetToTrueThisTurn(FirstDamageThisTurn) && dda.Target == base.CharacterCard && dda.DamageSource != null && dda.DamageSource.IsTarget && !dda.DamageSource.IsHero && dda.DidDealDamage, DrawResponse, TriggerType.DrawCard, TriggerTiming.After);
+            AddTrigger((DealDamageAction dda) => !HasBeenSetToTrueThisTurn(FirstDamageThisTurn) && dda.Target == base.CharacterCard && dda.DamageSource != null && dda.DamageSource.IsTarget && !IsHeroTarget(dda.DamageSource.Card) && dda.DidDealDamage, DrawResponse, TriggerType.DrawCard, TriggerTiming.After);
             AddAfterLeavesPlayAction(() => ResetFlagAfterLeavesPlay(FirstDamageThisTurn));
         }
 

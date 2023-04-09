@@ -15,9 +15,9 @@ namespace VainFacadePlaytest.Node
             : base(card, turnTakerController)
         {
             // Show Connected targets other than Node in play
-            SpecialStringMaker.ShowListOfCardsInPlay(new LinqCardCriteria((Card c) => c.IsTarget && IsConnected(c) && c != base.CharacterCard, "Connected targets other than Node", false, false, "Connected target other than Node", "Connected targets other than Node"), () => base.Card.IsInPlayAndHasGameText);
+            SpecialStringMaker.ShowListOfCardsInPlay(new LinqCardCriteria((Card c) => c.IsTarget && IsConnected(c) && c != base.CharacterCard, "other than Node", false, true, "Connected target", "Connected targets"), () => base.Card.IsInPlayAndHasGameText);
             // Show Connected heroes
-            SpecialStringMaker.ShowListOfCardsInPlay(new LinqCardCriteria((Card c) => c.IsHeroCharacterCard && c.IsTarget && IsConnected(c), "active Connected hero character"));
+            SpecialStringMaker.ShowListOfCardsInPlay(new LinqCardCriteria((Card c) => IsHeroCharacterCard(c) && c.IsTarget && IsConnected(c), "active Connected hero character"));
         }
 
         public override void AddTriggers()
@@ -44,7 +44,7 @@ namespace VainFacadePlaytest.Node
             }
             // "Select a [i]Connected[/i] hero. Increase the next damage dealt by that hero by 2."
             //if (FindCardsWhere(new LinqCardCriteria((Card c) => c.IsHeroCharacterCard && c.IsTarget && IsConnected(c), "Connected hero character"), visibleToCard: GetCardSource()).Any())
-            IEnumerator increaseCoroutine = base.GameController.SelectTargetAndIncreaseNextDamage(DecisionMaker, increaseAmt, additionalCriteria: new LinqCardCriteria((Card c) => c.IsHeroCharacterCard && c.IsTarget && IsConnected(c), "active Connected hero character"), cardSource: GetCardSource());
+            IEnumerator increaseCoroutine = base.GameController.SelectTargetAndIncreaseNextDamage(DecisionMaker, increaseAmt, additionalCriteria: new LinqCardCriteria((Card c) => IsHeroCharacterCard(c) && c.IsTarget && IsConnected(c), "active Connected hero character"), cardSource: GetCardSource());
             if (base.UseUnityCoroutines)
             {
                 yield return base.GameController.StartCoroutine(increaseCoroutine);

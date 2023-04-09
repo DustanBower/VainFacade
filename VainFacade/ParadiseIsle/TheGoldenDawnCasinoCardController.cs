@@ -26,7 +26,7 @@ namespace VainFacadePlaytest.ParadiseIsle
 
         private IEnumerator GambleResponse(TurnTaker tt)
         {
-            if (tt.IsHero)
+            if (IsHero(tt))
             {
                 // "... chooses a number between 1 and 4, ..."
                 List<SelectNumberDecision> numberChoices = new List<SelectNumberDecision>();
@@ -89,7 +89,7 @@ namespace VainFacadePlaytest.ParadiseIsle
                             else
                             {
                                 // "... otherwise they deal themselves X psychic damage, where X = the chosen number."
-                                IEnumerator damageCoroutine = base.GameController.SelectTargetsToDealDamageToSelf(base.GameController.FindHeroTurnTakerController(tt.ToHero()), x, DamageType.Psychic, 1, false, 1, additionalCriteria: (Card c) => c.IsHeroCharacterCard && c.Owner == tt, selectTargetsEvenIfCannotDealDamage: true, cardSource: GetCardSource());
+                                IEnumerator damageCoroutine = base.GameController.SelectTargetsToDealDamageToSelf(base.GameController.FindHeroTurnTakerController(tt.ToHero()), x, DamageType.Psychic, 1, false, 1, additionalCriteria: (Card c) => IsHeroCharacterCard(c) && c.Owner == tt, selectTargetsEvenIfCannotDealDamage: true, cardSource: GetCardSource());
                                 if (base.UseUnityCoroutines)
                                 {
                                     yield return base.GameController.StartCoroutine(damageCoroutine);

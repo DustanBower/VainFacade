@@ -83,15 +83,15 @@ namespace VainFacadePlaytest.Grandfather
                 // "When there are 24 or more tokens on [i]Arrow of Time[/i], {Grandfather} controls the timeline. [b]The heroes lose.[/b]"
                 AddSideTrigger(AddTrigger((ModifyTokensAction mta) => ArrowOfTimeTokens() >= 24, TimelineGameOverResponse, TriggerType.GameOver, TriggerTiming.After));
                 // "At the start of each player's turn, that player may discard any number of cards. For each card discarded this way, increase damage dealt to {Grandfather} by 1 this turn."
-                AddSideTrigger(AddStartOfTurnTrigger((TurnTaker tt) => tt.IsHero && !tt.IsIncapacitatedOrOutOfGame, DiscardCardsToIncreaseDamageResponse, new TriggerType[] { TriggerType.DiscardCard, TriggerType.CreateStatusEffect }));
+                AddSideTrigger(AddStartOfTurnTrigger((TurnTaker tt) => IsHero(tt) && !tt.IsIncapacitatedOrOutOfGame, DiscardCardsToIncreaseDamageResponse, new TriggerType[] { TriggerType.DiscardCard, TriggerType.CreateStatusEffect }));
                 // "At the end of the villain turn, {Grandfather} deals each hero 3 energy damage."
-                AddSideTrigger(AddDealDamageAtEndOfTurnTrigger(base.TurnTaker, base.Card, (Card c) => c.IsHeroCharacterCard, TargetType.All, 3, DamageType.Energy));
+                AddSideTrigger(AddDealDamageAtEndOfTurnTrigger(base.TurnTaker, base.Card, (Card c) => IsHeroCharacterCard(c), TargetType.All, 3, DamageType.Energy));
 
                 if (base.IsGameAdvanced)
                 {
                     // Back side, Advanced:
                     // "Increase damage dealt to hero targets by 1."
-                    AddSideTrigger(AddIncreaseDamageTrigger((DealDamageAction dda) => dda.Target.IsHero, (DealDamageAction dda) => 1));
+                    AddSideTrigger(AddIncreaseDamageTrigger((DealDamageAction dda) => IsHeroTarget(dda.Target), (DealDamageAction dda) => 1));
                 }
             }
             AddDefeatedIfDestroyedTriggers();
@@ -176,7 +176,7 @@ namespace VainFacadePlaytest.Grandfather
             {
                 base.GameController.ExhaustCoroutine(messageCoroutine);
             }
-            IEnumerator selectCoroutine = base.GameController.SelectTurnTakersAndDoAction(DecisionMaker, new LinqTurnTakerCriteria((TurnTaker tt) => tt.IsHero && !tt.ToHero().IsIncapacitatedOrOutOfGame, "heroes with cards"), SelectionType.DiscardFromDeck, (TurnTaker tt) => DiscardCardsFromTopOfDeck(FindHeroTurnTakerController(tt.ToHero()), 2, responsibleTurnTaker: base.TurnTaker), allowAutoDecide: true, numberOfCards: 2, cardSource: GetCardSource());
+            IEnumerator selectCoroutine = base.GameController.SelectTurnTakersAndDoAction(DecisionMaker, new LinqTurnTakerCriteria((TurnTaker tt) => IsHero(tt) && !tt.ToHero().IsIncapacitatedOrOutOfGame, "heroes with cards"), SelectionType.DiscardFromDeck, (TurnTaker tt) => DiscardCardsFromTopOfDeck(FindHeroTurnTakerController(tt.ToHero()), 2, responsibleTurnTaker: base.TurnTaker), allowAutoDecide: true, numberOfCards: 2, cardSource: GetCardSource());
             if (base.UseUnityCoroutines)
             {
                 yield return base.GameController.StartCoroutine(selectCoroutine);

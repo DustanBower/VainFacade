@@ -23,7 +23,7 @@ namespace VainFacadePlaytest.TheBaroness
         public override IEnumerator Play()
         {
             // "{TheBaroness} deals the 2 hero targets with the highest HP {H} melee damage each..."
-            IEnumerator clawsCoroutine = DealDamageToHighestHP(base.CharacterCard, 1, (Card c) => c.IsHero, (Card c) => H, DamageType.Melee, numberOfTargets: () => 2);
+            IEnumerator clawsCoroutine = DealDamageToHighestHP(base.CharacterCard, 1, (Card c) => IsHeroTarget(c), (Card c) => H, DamageType.Melee, numberOfTargets: () => 2);
             if (base.UseUnityCoroutines)
             {
                 yield return base.GameController.StartCoroutine(clawsCoroutine);
@@ -33,7 +33,7 @@ namespace VainFacadePlaytest.TheBaroness
                 base.GameController.ExhaustCoroutine(clawsCoroutine);
             }
             // "... then deals the hero target with the lowest HP {H - 2} melee damage."
-            IEnumerator fangscoroutine = DealDamageToLowestHP(base.CharacterCard, 1, (Card c) => c.IsHero, (Card c) => H - 2, DamageType.Melee);
+            IEnumerator fangscoroutine = DealDamageToLowestHP(base.CharacterCard, 1, (Card c) => IsHeroTarget(c), (Card c) => H - 2, DamageType.Melee);
             if (base.UseUnityCoroutines)
             {
                 yield return base.GameController.StartCoroutine(fangscoroutine);

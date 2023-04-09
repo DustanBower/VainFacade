@@ -15,7 +15,7 @@ namespace VainFacadePlaytest.Node
             : base(card, turnTakerController)
         {
             // Show list of Connected hero targets
-            SpecialStringMaker.ShowListOfCardsInPlay(new LinqCardCriteria((Card c) => IsConnected(c) && c.IsHero && c.IsTarget, "Connected hero targets", false, false, "target", "targets"));
+            SpecialStringMaker.ShowListOfCardsInPlay(new LinqCardCriteria((Card c) => IsConnected(c) && IsHeroTarget(c), "Connected hero", true, false, "target", "targets"));
         }
 
         public override void AddTriggers()
@@ -24,7 +24,7 @@ namespace VainFacadePlaytest.Node
             // "At the start of your turn, {NodeCharacter} may deal herself 3 irreducible psychic damage. If she takes no damage this way, destroy this card."
             AddStartOfTurnTrigger((TurnTaker tt) => tt == base.TurnTaker, (PhaseChangeAction p) => DealDamageOrDestroySelfResponse(p, base.CharacterCard, base.CharacterCard, 3, DamageType.Psychic, true), new TriggerType[] { TriggerType.DealDamage, TriggerType.DestroySelf });
             // "When a [i]Connected[/i] hero target would be dealt damage, you may redirect that damage to another [i]Connected[/i] hero target. Reduce damage redirected this way by 1."
-            AddTrigger((DealDamageAction dda) => dda.CanDealDamage && dda.IsRedirectable && IsConnected(dda.Target) && dda.Target.IsHero, RedirectReduceResponse, new TriggerType[] { TriggerType.RedirectDamage, TriggerType.ReduceDamage }, TriggerTiming.Before);
+            AddTrigger((DealDamageAction dda) => dda.CanDealDamage && dda.IsRedirectable && IsConnected(dda.Target) && IsHeroTarget(dda.Target), RedirectReduceResponse, new TriggerType[] { TriggerType.RedirectDamage, TriggerType.ReduceDamage }, TriggerTiming.Before);
         }
 
         private IEnumerator DealDamageOrDestroySelfResponse(GameAction gameAction, Card damageSource, Card target, int amount, DamageType damageType, bool isIrreducible = false)
@@ -58,7 +58,7 @@ namespace VainFacadePlaytest.Node
         {
             // "... you may redirect that damage to another [i]Connected[/i] hero target."
             List<SelectCardDecision> choices = new List<SelectCardDecision>();
-            IEnumerator redirectCoroutine = base.GameController.SelectTargetAndRedirectDamage(DecisionMaker, (Card c) => IsConnected(c) && c.IsHero && c.IsTarget && c != dda.Target, dda, optional: true, storedResults: choices, cardSource: GetCardSource());
+            IEnumerator redirectCoroutine = base.GameController.SelectTargetAndRedirectDamage(DecisionMaker, (Card c) => IsConnected(c) && IsHeroTarget(c) && c != dda.Target, dda, optional: true, storedResults: choices, cardSource: GetCardSource());
             if (base.UseUnityCoroutines)
             {
                 yield return base.GameController.StartCoroutine(redirectCoroutine);

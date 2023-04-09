@@ -54,7 +54,7 @@ namespace VainFacadePlaytest.TheMidnightBazaar
             List<DealDamageAction> damageList = new List<DealDamageAction>();
             damageList.Add(dda);
             currentMode = CustomMode.PlayerToDropCards;
-            SelectTurnTakerDecision selection = new SelectTurnTakerDecision(base.GameController, DecisionMaker, GameController.FindTurnTakersWhere((TurnTaker tt) => tt.IsHero && (tt.ToHero().HasCardsInHand || tt.ToHero().HasDestroyableCards) && GameController.IsTurnTakerVisibleToCardSource(tt, GetCardSource())), SelectionType.Custom, isOptional: true, gameAction: dda, dealDamageInfo: damageList, cardSource: GetCardSource());
+            SelectTurnTakerDecision selection = new SelectTurnTakerDecision(base.GameController, DecisionMaker, GameController.FindTurnTakersWhere((TurnTaker tt) => IsHero(tt) && (tt.ToHero().HasCardsInHand || tt.ToHero().HasDestroyableCards) && GameController.IsTurnTakerVisibleToCardSource(tt, GetCardSource())), SelectionType.Custom, isOptional: true, gameAction: dda, dealDamageInfo: damageList, cardSource: GetCardSource());
             IEnumerator selectCoroutine = base.GameController.SelectTurnTakerAndDoAction(selection, (TurnTaker tt) => ChooseSourceAndMoveCardsToRedirect(tt, cardsMoved, dda));
             if (base.UseUnityCoroutines)
             {
@@ -71,7 +71,7 @@ namespace VainFacadePlaytest.TheMidnightBazaar
             // "... 1 player may put 2 cards from their hand or 1 hero non-character card from play and not under [i]The Empty Well[/i] under [i]The Empty Well[/i]..."
             List<Function> options = new List<Function>();
             options.Add(new Function(GameController.FindTurnTakerController(tt).ToHero(), "Move 2 cards from hand", SelectionType.MoveCard, () => DropCardsFromHand(tt, 2, false, true, cardsMoved, GetCardSource()), tt.ToHero().Hand.Cards.Count() > 1));
-            options.Add(new Function(GameController.FindTurnTakerController(tt).ToHero(), "Move 1 card from play", SelectionType.MoveCard, () => DropCardFromPlay(cardsMoved), GameController.FindCardsWhere(new LinqCardCriteria((Card c) => c.IsHero && !c.IsCharacter && c.IsInPlay && c.Location != FindCard(EmptyWellIdentifier).UnderLocation), visibleToCard: GetCardSource()).Any()));
+            options.Add(new Function(GameController.FindTurnTakerController(tt).ToHero(), "Move 1 card from play", SelectionType.MoveCard, () => DropCardFromPlay(cardsMoved), GameController.FindCardsWhere(new LinqCardCriteria((Card c) => IsHero(c) && !c.IsCharacter && c.IsInPlay && c.Location != FindCard(EmptyWellIdentifier).UnderLocation), visibleToCard: GetCardSource()).Any()));
             SelectFunctionDecision select = new SelectFunctionDecision(GameController, FindTurnTakerController(tt).ToHero(), options, true, gameAction: dda, "There are no non-character hero cards in play, and " + tt.Name + " does not have two cards in hand to put under [i]The Empty Well.[/i]", cardSource: GetCardSource());
             IEnumerator selectCoroutine = base.GameController.SelectAndPerformFunction(select);
             if (base.UseUnityCoroutines)
@@ -127,7 +127,7 @@ namespace VainFacadePlaytest.TheMidnightBazaar
                 List<SelectCardDecision> choices = new List<SelectCardDecision>();
                 currentMode = CustomMode.CardToDrop;
                 // Have the players select and move a card
-                IEnumerator moveCoroutine = base.GameController.SelectAndMoveCard(DecisionMaker, (Card c) => c.IsHero && !c.IsCharacter && c.IsInPlay && c.Location != FindCard(EmptyWellIdentifier).UnderLocation, FindCard(EmptyWellIdentifier).UnderLocation, optional: true, playIfMovingToPlayArea: false, storedResults: choices, cardSource: GetCardSource());
+                IEnumerator moveCoroutine = base.GameController.SelectAndMoveCard(DecisionMaker, (Card c) => IsHero(c) && !c.IsCharacter && c.IsInPlay && c.Location != FindCard(EmptyWellIdentifier).UnderLocation, FindCard(EmptyWellIdentifier).UnderLocation, optional: true, playIfMovingToPlayArea: false, storedResults: choices, cardSource: GetCardSource());
                 if (base.UseUnityCoroutines)
                 {
                     yield return base.GameController.StartCoroutine(moveCoroutine);

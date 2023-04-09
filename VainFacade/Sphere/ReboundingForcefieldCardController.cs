@@ -55,7 +55,7 @@ namespace VainFacadePlaytest.Sphere
             {
                 // "... to redirect that damage to the non-hero target with the lowest HP."
                 List<Card> targets = new List<Card>();
-                IEnumerator findCoroutine = base.GameController.FindTargetWithLowestHitPoints(1, (Card c) => !c.IsHero, targets, dealDamageInfo: dda.ToEnumerable(), evenIfCannotDealDamage: true, optional: false, cardSource: GetCardSource());
+                IEnumerator findCoroutine = base.GameController.FindTargetWithLowestHitPoints(1, (Card c) => c.IsTarget && !IsHeroTarget(c), targets, dealDamageInfo: dda.ToEnumerable(), evenIfCannotDealDamage: true, optional: false, cardSource: GetCardSource());
                 if (base.UseUnityCoroutines)
                 {
                     yield return base.GameController.StartCoroutine(findCoroutine);

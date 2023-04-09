@@ -25,7 +25,7 @@ namespace VainFacadePlaytest.Blitz
         {
             base.AddTriggers();
             // "The first time each turn {BlitzCharacter} deals a hero target lightning damage, {H - 2} players discard a card, then play the top card of the villain deck."
-            AddTrigger((DealDamageAction dda) => dda.DamageSource != null && dda.DamageSource.Card != null && dda.DamageSource.Card == base.CharacterCard && dda.Target.IsHero && dda.DamageType == DamageType.Lightning && dda.DidDealDamage && !HasBeenSetToTrueThisTurn(FirstHeroZappedThisTurn), DiscardPlayResponse, new TriggerType[] { TriggerType.DiscardCard, TriggerType.PlayCard }, TriggerTiming.After);
+            AddTrigger((DealDamageAction dda) => dda.DamageSource != null && dda.DamageSource.Card != null && dda.DamageSource.Card == base.CharacterCard && IsHeroTarget(dda.Target) && dda.DamageType == DamageType.Lightning && dda.DidDealDamage && !HasBeenSetToTrueThisTurn(FirstHeroZappedThisTurn), DiscardPlayResponse, new TriggerType[] { TriggerType.DiscardCard, TriggerType.PlayCard }, TriggerTiming.After);
             AddAfterLeavesPlayAction((GameAction ga) => ResetFlagAfterLeavesPlay(FirstHeroZappedThisTurn), TriggerType.Hidden);
         }
 
@@ -33,7 +33,7 @@ namespace VainFacadePlaytest.Blitz
         {
             SetCardPropertyToTrueIfRealAction(FirstHeroZappedThisTurn);
             // "... {H - 2} players discard a card, ..."
-            IEnumerator discardCoroutine = base.GameController.SelectTurnTakersAndDoAction(null, new LinqTurnTakerCriteria((TurnTaker tt) => tt.IsHero && !tt.IsIncapacitatedOrOutOfGame && (tt as HeroTurnTaker).HasCardsInHand && (tt as HeroTurnTaker).Hand.Cards.Count() > 0, $"heroes with cards in hand"), SelectionType.DiscardCard, (TurnTaker tt) => base.GameController.SelectAndDiscardCards(FindHeroTurnTakerController((HeroTurnTaker)tt), 1, optional: false, 1, allowAutoDecide: false, selectionType: SelectionType.DiscardCard, responsibleTurnTaker: tt, cardSource: GetCardSource()), H - 2, optional: false, requiredDecisions: H - 2, cardSource: GetCardSource());
+            IEnumerator discardCoroutine = base.GameController.SelectTurnTakersAndDoAction(null, new LinqTurnTakerCriteria((TurnTaker tt) => IsHero(tt) && !tt.IsIncapacitatedOrOutOfGame && tt.ToHero().HasCardsInHand && tt.ToHero().Hand.Cards.Count() > 0, $"heroes with cards in hand"), SelectionType.DiscardCard, (TurnTaker tt) => base.GameController.SelectAndDiscardCards(FindHeroTurnTakerController(tt.ToHero()), 1, optional: false, 1, allowAutoDecide: false, selectionType: SelectionType.DiscardCard, responsibleTurnTaker: tt, cardSource: GetCardSource()), H - 2, optional: false, requiredDecisions: H - 2, cardSource: GetCardSource());
             if (base.UseUnityCoroutines)
             {
                 yield return base.GameController.StartCoroutine(discardCoroutine);

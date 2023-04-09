@@ -20,7 +20,7 @@ namespace VainFacadePlaytest.Node
         public override bool IsValidPlayArea(TurnTaker tt)
         {
             // "Play this card in another hero's play area."
-            return tt.IsHero && tt != base.TurnTaker;
+            return IsHero(tt) && tt != base.TurnTaker;
         }
 
         public override void AddTriggers()
@@ -29,7 +29,7 @@ namespace VainFacadePlaytest.Node
             // "When {NodeCharacter} or that hero uses a power, the other gains 1 HP."
             AddTrigger((UsePowerAction upa) => IsRelevantPower(upa), ExchangeHealResponse, TriggerType.GainHP, TriggerTiming.After);
             // "When {NodeCharacter} would deal that hero psychic damage, that hero recovers that much HP instead."
-            AddPreventDamageTrigger((DealDamageAction dda) => dda.DamageSource != null && dda.DamageSource.Card != null && dda.DamageSource.Card == base.CharacterCard && dda.Target.IsHeroCharacterCard && dda.Target.Owner == base.Card.Location.HighestRecursiveLocation.OwnerTurnTaker && dda.CanDealDamage && dda.DamageType == DamageType.Psychic, (DealDamageAction dda) => base.GameController.GainHP(dda.Target, dda.Amount, cardSource: GetCardSource()), new TriggerType[] { TriggerType.GainHP }, isPreventEffect: true);
+            AddPreventDamageTrigger((DealDamageAction dda) => dda.DamageSource != null && dda.DamageSource.Card != null && dda.DamageSource.Card == base.CharacterCard && IsHeroCharacterCard(dda.Target) && dda.Target.Owner == base.Card.Location.HighestRecursiveLocation.OwnerTurnTaker && dda.CanDealDamage && dda.DamageType == DamageType.Psychic, (DealDamageAction dda) => base.GameController.GainHP(dda.Target, dda.Amount, cardSource: GetCardSource()), new TriggerType[] { TriggerType.GainHP }, isPreventEffect: true);
         }
 
         private bool IsRelevantPower(UsePowerAction upa)
@@ -50,7 +50,7 @@ namespace VainFacadePlaytest.Node
             // "Play this card in another hero's play area."
             // Adapted from SergeantSteelTeam.MissionObjectiveCardController
             List<SelectTurnTakerDecision> storedResults = new List<SelectTurnTakerDecision>();
-            IEnumerator coroutine = base.GameController.SelectTurnTaker(DecisionMaker, SelectionType.MoveCardToPlayArea, storedResults, optional: false, allowAutoDecide: false, (TurnTaker tt) => tt.IsHero && tt != base.TurnTaker, null, null, checkExtraTurnTakersInstead: false, canBeCancelled: true, ignoreBattleZone: false, GetCardSource());
+            IEnumerator coroutine = base.GameController.SelectTurnTaker(DecisionMaker, SelectionType.MoveCardToPlayArea, storedResults, optional: false, allowAutoDecide: false, (TurnTaker tt) => IsHero(tt) && tt != base.TurnTaker, null, null, checkExtraTurnTakersInstead: false, canBeCancelled: true, ignoreBattleZone: false, GetCardSource());
             if (base.UseUnityCoroutines)
             {
                 yield return base.GameController.StartCoroutine(coroutine);
@@ -85,7 +85,7 @@ namespace VainFacadePlaytest.Node
             if (user == base.CharacterCard)
             {
                 // Node used a power, so a hero in this play area heals
-                healCoroutine = base.GameController.SelectAndGainHP(DecisionMaker, 1, additionalCriteria: (Card c) => c.IsHeroCharacterCard && c.Location.HighestRecursiveLocation == base.Card.Location.HighestRecursiveLocation, requiredDecisions: 1, cardSource: GetCardSource());
+                healCoroutine = base.GameController.SelectAndGainHP(DecisionMaker, 1, additionalCriteria: (Card c) => IsHeroCharacterCard(c) && c.Location.HighestRecursiveLocation == base.Card.Location.HighestRecursiveLocation, requiredDecisions: 1, cardSource: GetCardSource());
             }
             if (base.UseUnityCoroutines)
             {

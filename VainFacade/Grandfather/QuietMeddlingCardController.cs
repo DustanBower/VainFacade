@@ -26,9 +26,9 @@ namespace VainFacadePlaytest.Grandfather
         {
             base.AddTriggers();
             // "When {Grandfather} would deal a hero target energy damage, that target's player may discard up to X cards from the top of their deck where X = the amount of damage. Reduce that damage by 1 for each card discarded this way."
-            AddTrigger((DealDamageAction dda) => dda.DamageSource != null && dda.DamageSource.IsCard && dda.DamageSource.Card == base.CharacterCard && dda.DamageType == DamageType.Energy && dda.Amount > 0 && dda.Target.IsHero && dda.Target.Owner.IsHero, DiscardCardsReduceDamageResponse, new TriggerType[] { TriggerType.DiscardCard, TriggerType.ReduceDamage, TriggerType.WouldBeDealtDamage }, TriggerTiming.Before, orderMatters: true);
+            AddTrigger((DealDamageAction dda) => dda.DamageSource != null && dda.DamageSource.IsCard && dda.DamageSource.Card == base.CharacterCard && dda.DamageType == DamageType.Energy && dda.Amount > 0 && IsHeroTarget(dda.Target) && dda.Target.Owner.IsHero, DiscardCardsReduceDamageResponse, new TriggerType[] { TriggerType.DiscardCard, TriggerType.ReduceDamage, TriggerType.WouldBeDealtDamage }, TriggerTiming.Before, orderMatters: true);
             // "At the end of the villain turn, {Grandfather} deals each hero 2 energy damage."
-            AddDealDamageAtEndOfTurnTrigger(base.TurnTaker, base.CharacterCard, (Card c) => c.IsHeroCharacterCard, TargetType.All, 2, DamageType.Energy);
+            AddDealDamageAtEndOfTurnTrigger(base.TurnTaker, base.CharacterCard, (Card c) => IsHeroCharacterCard(c), TargetType.All, 2, DamageType.Energy);
         }
 
         private IEnumerator DiscardCardsReduceDamageResponse(DealDamageAction dda)

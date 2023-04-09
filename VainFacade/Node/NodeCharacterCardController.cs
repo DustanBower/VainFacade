@@ -131,7 +131,7 @@ namespace VainFacadePlaytest.Node
                 TurnTaker tt = dca.ResponsibleTurnTaker;
                 if (tt.IsHero)
                 {
-                    ReduceDamageStatusEffect protection = new ReduceDamageStatusEffect(FindCardsWhere(new LinqCardCriteria((Card c) => c.IsHeroCharacterCard && !c.IsIncapacitatedOrOutOfGame, "active hero character"), visibleToCard: GetCardSource()).Count());
+                    ReduceDamageStatusEffect protection = new ReduceDamageStatusEffect(FindCardsWhere(new LinqCardCriteria((Card c) => IsHeroCharacterCard(c) && !c.IsIncapacitatedOrOutOfGame, "active hero character"), visibleToCard: GetCardSource()).Count());
                     protection.TargetCriteria.IsHeroCharacterCard = true;
                     protection.TargetCriteria.IsAtLocation = tt.PlayArea;
                     protection.NumberOfUses = 1;

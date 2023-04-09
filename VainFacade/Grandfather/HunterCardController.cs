@@ -22,7 +22,7 @@ namespace VainFacadePlaytest.Grandfather
         {
             base.AddTriggers();
             // "At the end of the villain turn, this card deals the hero target with the lowest HP {H - 2} melee damage."
-            AddDealDamageAtEndOfTurnTrigger(base.TurnTaker, base.Card, (Card c) => c.IsHero && c.IsTarget, TargetType.LowestHP, H - 2, DamageType.Melee);
+            AddDealDamageAtEndOfTurnTrigger(base.TurnTaker, base.Card, (Card c) => IsHeroTarget(c), TargetType.LowestHP, H - 2, DamageType.Melee);
         }
 
         public override IEnumerator Play()
