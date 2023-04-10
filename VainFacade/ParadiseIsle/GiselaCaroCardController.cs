@@ -14,8 +14,23 @@ namespace VainFacadePlaytest.ParadiseIsle
         public GiselaCaroCardController(Card card, TurnTakerController turnTakerController)
             : base(card, turnTakerController)
         {
+            AddThisCardControllerToList(CardControllerListType.ModifiesDeckKind);
             // Show number of cards in the environment trash
             SpecialStringMaker.ShowNumberOfCardsAtLocation(base.TurnTaker.Trash);
+        }
+
+        public override bool? AskIfIsHero(Card card, CardSource cardSource)
+        {
+            if (card == base.Card)
+                return true;
+            return base.AskIfIsHero(card, cardSource);
+        }
+
+        public override bool? AskIfIsHeroTarget(Card card, CardSource cardSource)
+        {
+            if (card == base.Card)
+                return true;
+            return base.AskIfIsHeroTarget(card, cardSource);
         }
 
         public override void AddTriggers()

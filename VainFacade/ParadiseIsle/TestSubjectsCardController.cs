@@ -14,11 +14,26 @@ namespace VainFacadePlaytest.ParadiseIsle
         public TestSubjectsCardController(Card card, TurnTakerController turnTakerController)
             : base(card, turnTakerController)
         {
+            AddThisCardControllerToList(CardControllerListType.ModifiesDeckKind);
             // Show current location of Dr. Wendigo
             SpecialStringMaker.ShowLocationOfCards(new LinqCardCriteria((Card c) => c.Identifier == DrWendigoIdentifier, "Dr. Wendigo", false, false));
         }
 
         public static readonly string DrWendigoIdentifier = "DrWendigo";
+
+        public override bool? AskIfIsHero(Card card, CardSource cardSource)
+        {
+            if (card == base.Card)
+                return true;
+            return base.AskIfIsHero(card, cardSource);
+        }
+
+        public override bool? AskIfIsHeroTarget(Card card, CardSource cardSource)
+        {
+            if (card == base.Card)
+                return true;
+            return base.AskIfIsHeroTarget(card, cardSource);
+        }
 
         public override void AddTriggers()
         {
