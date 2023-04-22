@@ -37,7 +37,7 @@ namespace VainFacadePlaytest.Node
         {
             base.AddTriggers();
             base.AddAsPowerContributor();
-            // "The first time each turn a target in this play area would deal damage to {NodeCharacter}, increase that damage by 1."
+            // "The first time each turn any target in this play area would deal damage to {NodeCharacter}, increase that damage by 1."
             AddTrigger((DealDamageAction dda) => !HasBeenSetToTrueThisTurn(DamageThisTurn) && dda.Target == base.CharacterCard && dda.DamageSource != null && dda.DamageSource.Card != null && dda.DamageSource.Card.IsTarget && dda.DamageSource.Card.Location.IsPlayAreaOf(base.Card.Location.HighestRecursiveLocation.OwnerTurnTaker), IncreaseResponse, TriggerType.IncreaseDamage, TriggerTiming.Before);
             AddAfterLeavesPlayAction((GameAction ga) => ResetFlagAfterLeavesPlay(DamageThisTurn), TriggerType.Hidden);
         }

@@ -307,7 +307,7 @@
 			"flavorQuotes": [
 				{
 					"identifier": "Grandfather",
-					"text": "Golly Ned! That did not{BR}go according to plan. Plan B it{BR}is, then."
+					"text": "Golly, Ned! That did not{BR}go according to plan. Plan B it{BR}is, then."
 				}
 			],
 			"flavorReference": "Grandfather, Keeping Time #10"
@@ -425,7 +425,7 @@
 			],
 			"body": [
 				"Damage dealt by {Grandfather} is irreducible.",
-				"When this card enters play, discard the top 5 cards from each hero deck, then play the top card of the villain deck.",
+				"When this card enters play, discard the top 5 cards of each hero deck, then play the top card of the villain deck.",
 				"At the start of the villain turn, destroy this card."
 			],
 			"icons": [

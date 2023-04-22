@@ -28,7 +28,7 @@ namespace VainFacadePlaytest.Grandfather
 
         public override IEnumerator Play()
         {
-            // "When this card enters play, discard the top 5 cards from each hero deck..."
+            // "When this card enters play, discard the top 5 cards of each hero deck..."
             IEnumerator massDiscardCoroutine = DiscardTopXCardsOfEachHeroDeckResponse(5, null);
             if (base.UseUnityCoroutines)
             {

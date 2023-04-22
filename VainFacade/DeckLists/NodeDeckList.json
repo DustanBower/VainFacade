@@ -28,7 +28,7 @@
 			"incapacitatedAbilities": [
 				"One player may discard a card to reduce the next damage dealt to a hero character card in their play area by the number of active heroes until the start of your next turn.",
 				"Reveal the top card of a deck. Put it into play or discard it.",
-				"One player may discard up to 2 cards. For each card discarded in this way, one player may draw a card."
+				"One player discards up to 2 cards. For each card discarded in this way, one player may draw a card."
 			],
 			"flippedIcons": [
 				"Discard",
@@ -69,7 +69,7 @@
 			],
 			"body": [
 				"You may play a Connection in a [i]Connected[/i] character's play area.",
-				"You may return any number of Connections to your hand. Draw a card for each Connection returned this way.",
+				"Return any number of Connections to your hand. Draw a card for each Connection returned this way.",
 				"You may increase the next damage dealt to {NodeCharacter} by 1. If you do, repeat the entire game text of this card."
 			],
 			"icons": [
@@ -187,7 +187,7 @@
 				"limited"
 			],
 			"body": [
-				"The first time each turn a [i]Connected[/i] hero target gains HP, another [i]Connected[/i] hero target gains 1 HP."
+				"The first time each turn any [i]Connected[/i] hero target gains HP, another [i]Connected[/i] hero target gains 1 HP."
 			],
 			"icons": [
 				"GainHP"
@@ -315,7 +315,7 @@
 			],
 			"body": [
 				"Play this card in a non-environment play area other than {NodeCharacter}'s. Cards in this play area and {NodeCharacter}'s are [i]Connected.[/i] Play with the top card of that play area's deck face up.",
-				"The first time each turn a target in this play area would deal damage to {NodeCharacter}, increase that damage by 1.",
+				"The first time each turn any target in this play area would deal damage to {NodeCharacter}, increase that damage by 1.",
 				"[b]Power:[/b] Return this card to your hand."
 			],
 			"icons": [

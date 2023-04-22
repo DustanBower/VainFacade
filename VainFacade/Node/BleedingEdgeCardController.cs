@@ -130,7 +130,7 @@ namespace VainFacadePlaytest.Node
                     base.GameController.ExhaustCoroutine(noConnectionsHandCoroutine);
                 }
             }
-            // "You may return any number of Connections to your hand."
+            // "Return any number of Connections to your hand."
             List<MoveCardAction> returned = new List<MoveCardAction>();
             IEnumerator returnCoroutine = base.GameController.SelectAndReturnCards(DecisionMaker, null, isConnectionInPlay, true, false, false, 0, returned, cardSource: GetCardSource());
             if (base.UseUnityCoroutines)

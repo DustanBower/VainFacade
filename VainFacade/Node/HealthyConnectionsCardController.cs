@@ -25,7 +25,7 @@ namespace VainFacadePlaytest.Node
         public override void AddTriggers()
         {
             base.AddTriggers();
-            // "The first time each turn a [i]Connected[/i] hero target gains HP, another [i]Connected[/i] hero target gains 1 HP."
+            // "The first time each turn any [i]Connected[/i] hero target gains HP, another [i]Connected[/i] hero target gains 1 HP."
             AddTrigger((GainHPAction gha) => !HasBeenSetToTrueThisTurn(HealedThisTurn) && IsHero(gha.HpGainer) && IsConnected(gha.HpGainer), HealOtherConnectedTargetResponse, TriggerType.GainHP, TriggerTiming.After);
             AddAfterLeavesPlayAction((GameAction ga) => ResetFlagAfterLeavesPlay(HealedThisTurn), TriggerType.Hidden);
         }

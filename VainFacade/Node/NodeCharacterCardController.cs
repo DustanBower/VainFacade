@@ -182,7 +182,7 @@ namespace VainFacadePlaytest.Node
 
         private IEnumerator UseIncapOption3()
         {
-            // "One player may discard up to 2 cards."
+            // "One player discards up to 2 cards."
             List<DiscardCardAction> discards = new List<DiscardCardAction>();
             IEnumerator discardCoroutine = base.GameController.SelectHeroToDiscardCards(DecisionMaker, 0, 2, storedResultsDiscard: discards, forDiscardEffect: true, cardSource: GetCardSource());
             if (base.UseUnityCoroutines)
