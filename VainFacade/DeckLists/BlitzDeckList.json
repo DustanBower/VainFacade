@@ -202,7 +202,7 @@
 					"text": "You look shocked. Didn't see{BR}that comin'?"
 				}
 			],
-			"flavorReference": "Blitz, Away Game One-Shot"
+			"flavorReference": "Blitz, Away Game"
 		},
 		{
 			"identifier": "InstantReplay",
@@ -328,7 +328,7 @@
 					"text": "Why'd I need fire in my blood when{BR}I'm ridin' lightnin'?"
 				}
 			],
-			"flavorReference": "Blitz, Strange Stories: The Midnight Bazaar #21"
+			"flavorReference": "[y=0.85]Blitz, Strange Stories: The Midnight Bazaar #21"
 		},
 		{
 			"identifier": "Recharge",
@@ -407,7 +407,7 @@
 					"text": "He's past the line of scrimmage!{BR}He. Could. Go. All. The. Way!"
 				}
 			],
-			"flavorReference": "Blitz, Blitz: First and Ten One-Shot"
+			"flavorReference": "Blitz, Blitz: First and Ten"
 		},
 		{
 			"identifier": "TooManyMenOnTheField",
@@ -477,7 +477,7 @@
 					"text": "You don't fool me. You're team captain.{BR}Enjoy the bench."
 				}
 			],
-			"flavorReference": "Blitz to Node, Y-Tech Laboratories: Power Surge One-Shot"
+			"flavorReference": "[y=0.85]Blitz to Node, Y-Tech Laboratories: Power Surge"
 		},
 		{
 			"identifier": "UpTheMiddle",

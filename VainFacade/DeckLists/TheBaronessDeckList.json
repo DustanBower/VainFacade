@@ -107,7 +107,7 @@
 					"text": "I tire of your games, Bruzer{BR}Stevens. Surely you cannot sink to oppose{BR}me, who mastered zee game before your{BR}great-grandfahzer vas born?"
 				}
 			],
-			"flavorReference": "The Baroness, Bastion City: A Spider Never Blinks #17"
+			"flavorReference": "[y=0.85]      - The Baroness, Bastion City: A Spider Never Blinks #17"
 		},
 		{
 			"identifier": "ArcaneVeins",
@@ -132,7 +132,7 @@
 					"text": "Your spells are painted on your skin,{BR}mine etched vissin my veins."
 				}
 			],
-			"flavorReference": "The Baroness, Bastion City: A Spider Never Blinks #23"
+			"flavorReference": "[y=0.75]The Baroness, Bastion City: A Spider Never Blinks #23"
 		},
 		{
 			"identifier": "ByTheThroat",
@@ -161,7 +161,7 @@
 					"text": "I don't know! Shoot her! Shoot me! Do{BR}[b]something![/b]"
 				}
 			],
-			"flavorReference": "Burgess, Bastion's Best: Dark October One-Shot"
+			"flavorReference": "Burgess, Bastion's Best: Dark October"
 		},
 		{
 			"identifier": "CloudOfBats",
@@ -188,7 +188,7 @@
 					"text": "Everything was going fine until that{BR}weird lady exploded into an endless{BR}swarm of bats."
 				}
 			],
-			"flavorReference": "Burgess, Bastion's Best: Dark October One-Shot"
+			"flavorReference": "Burgess, Bastion's Best: Dark October"
 		},
 		{
 			"identifier": "DeathsCall",
@@ -282,7 +282,7 @@
 					"text": "Hush, hush... soon zere will be{BR}only zee sveetest silence."
 				}
 			],
-			"flavorReference": "The Baroness, Fury: Sins of the Siblings #15"
+			"flavorReference": "[y=0.85]The Baroness, Fury: Sins of the Siblings #15"
 		},
 		{
 			"identifier": "FangAndClaw",
@@ -303,7 +303,7 @@
 					"text": "You are not alive... how fascinating!{BR}Let's see what makes you tick."
 				}
 			],
-			"flavorReference": "The Baroness, Bastion's Best: Black Thorn Academy #15"
+			"flavorReference": "[y=0.75]The Baroness, Bastion's Best: Black Thorn Academy #15"
 		},
 		{
 			"identifier": "TwistedPerceptions",
@@ -383,7 +383,7 @@
 					"text": "Vorssless cretin! Your limbs are{BR}as veak as your manners!"
 				}
 			],
-			"flavorReference": "The Baroness, Bastion City: Secret Wars #15"
+			"flavorReference": "[y=0.85]The Baroness, Bastion City: Secret Wars #15"
 		},
 		{
 			"identifier": "Vampirism",

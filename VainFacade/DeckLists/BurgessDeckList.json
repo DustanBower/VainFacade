@@ -216,11 +216,11 @@
 			],
 			"flavorQuotes": [
 				{
-					"identifier": "Burgess",
-					"text": "Cause of death was... exsanguination.{BR}Huh."
+					"identifier": "[y=0.85]Burgess",
+					"text": "[y=0.85]Cause of death was... exsanguination. Huh."
 				}
 			],
-			"flavorReference": "Burgess, Bastion's Best: Dark October One-Shot"
+			"flavorReference": "[y=0.75]Burgess, Bastion's Best: Dark October One-Shot"
 		},
 		{
 			"identifier": "HotPursuit",
@@ -291,15 +291,15 @@
 			],
 			"flavorQuotes": [
 				{
-					"identifier": "Burgess",
-					"text": "You have to be{BR}careful leaving paper trails, or you{BR}might get cut."
+					"identifier": "[y=0.85]Burgess",
+					"text": "[y=0.85]You have to be{BR}careful leaving paper trails, or you{BR}might get cut."
 				},
 				{
-					"identifier": "Butcher Bill",
-					"text": "You're a funny guy, Burgess.{BR}Looking forward to talking about it at your{BR}funeral."
+					"identifier": "[y=0.85]Butcher Bill",
+					"text": "[y=0.85]You're a funny guy, Burgess.{BR}Looking forward to talking about it at your{BR}funeral."
 				}
 			],
-			"flavorReference": "Burgess #25"
+			"flavorReference": "[y=0.85]Burgess #25"
 		},
 		{
 			"identifier": "RidingADesk",

@@ -162,7 +162,7 @@
 					"text": "We recovered the package, boss.{BR}... Was it ticking before?"
 				}
 			],
-			"flavorReference": "Goon, Through the Shadows: Day of the Dead"
+			"flavorReference": "[y=0.75]Goon, Through the Shadows: Day of the Dead"
 		},
 		{
 			"identifier": "GotHim",

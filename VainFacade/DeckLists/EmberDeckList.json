@@ -138,7 +138,7 @@
 					"text": "Don't tell her I said this, but she{BR}looks just like an angel! It's uncanny!"
 				}
 			],
-			"flavorReference": "Node, Strange Stories: The Broken Realm #8"
+			"flavorReference": "[y=0.85]Node, Strange Stories: The Broken Realm #8"
 		},
 		{
 			"identifier": "CleansingFire",
@@ -205,7 +205,7 @@
 			"flavorQuotes": [
 				{
 					"identifier": "Doomsayer",
-					"text": "[b]T[/b]h[b]e[/b]r[b]e[/b] i[b]s[/b] n[b]o[/b]t[b]h[/b]i[b]n[/b]g[b] y[/b]o[b]u[/b] c[b]a[/b]n[b]{BR}d[/b]o[b].[/b] Y[b]o[/b]u[b] c[/b]a[b]n[/b]'[b]t[/b] f[b]i[/b]g[b]h[/b]t[b] f[/b]a[b]t[/b]e[b].[/b]"
+					"text": "[y=1.15]T[y=0.85]h[y=1.15]e[y=0.85]r[y=1.15]e[y=0.85] i[y=1.15]s[y=0.85] n[y=1.15]o[y=0.85]t[y=1.15]h[y=0.85]i[y=1.15]n[y=0.85]g[y=1.15] y[y=0.85]o[y=1.15]u[y=0.85] c[y=1.15]a[y=0.85]n[y=1.15]{BR}d[y=0.85]o[y=1.15].[y=0.85] Y[y=1.15]o[y=0.85]u[y=1.15] c[y=0.85]a[y=1.15]n[y=0.85]'[y=1.15]t[y=0.85] f[y=1.15]i[y=0.85]g[y=1.15]h[y=0.85]t[y=1.15] f[y=0.85]a[y=1.15]t[y=0.85]e[y=1.15].[y=0.85]"
 				}
 			],
 			"flavorReference": "Doomsayer, Ember #18"
@@ -255,27 +255,27 @@
 			],
 			"flavorQuotes": [
 				{
-					"identifier": "Banshee",
-					"text": "I can't hear her.{BR}I don't think she's dead."
+					"identifier": "[y=90]Banshee",
+					"text": "[y=90]I can't hear her.{BR}I don't think she's dead."
 				},
 				{
-					"identifier": "Gadhavi",
-					"text": "She's a pile of ash--"
+					"identifier": "[y=90]Gadhavi",
+					"text": "[y=90]She's a pile of ash--"
 				},
 				{
-					"identifier": "Glyph",
-					"text": "Ash and an ember--"
+					"identifier": "[y=90]Glyph",
+					"text": "[y=90]Ash and an ember--"
 				},
 				{
-					"identifier": "Banshee",
-					"text": "Of the fire--"
+					"identifier": "[y=90]Banshee",
+					"text": "[y=90]Of the fire--"
 				},
 				{
-					"identifier": "Glyph",
-					"text": "-- and the magic."
+					"identifier": "[y=90]Glyph",
+					"text": "[y=90]-- and the magic."
 				}
 			],
-			"flavorReference": "Guardians at the Gate #77"
+			"flavorReference": "[y=90]Guardians at the Gate #77"
 		},
 		{
 			"identifier": "InnerWarmth",
@@ -427,15 +427,15 @@
 			],
 			"flavorQuotes": [
 				{
-					"identifier": "Enrinwal",
-					"text": "There can be no{BR}victory, no escape. To{BR}oppose me is to defy the{BR}Sidhe. I am your doom."
+					"identifier": "[y=0.90]Enrinwal",
+					"text": "[y=0.90]There can be no{BR}victory, no escape. To{BR}oppose me is to defy the{BR}Sidhe. I am your doom."
 				},
 				{
-					"identifier": "Ember",
-					"text": "You're not. You're just{BR}another moth to the flame."
+					"identifier": "[y=0.90]Ember",
+					"text": "[y=0.90]You're not. You're just{BR}another moth to the flame."
 				}
 			],
-			"flavorReference": "Ember #48"
+			"flavorReference": "[y=0.90]Ember #48"
 		},
 		{
 			"identifier": "WhatIHaveBecome",

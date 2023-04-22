@@ -79,7 +79,7 @@
 				"IncreaseDamageTaken"
 			],
 			"flavorText": "{Node! I know you can hear me!{BR}Stop this! It's killing you!}",
-			"flavorReference": "Push, Bastion City: A Spider Never Blinks #116"
+			"flavorReference": "[y=0.75]Push, Bastion City: A Spider Never Blinks #116"
 		},
 		{
 			"identifier": "CleverHack",
@@ -193,7 +193,7 @@
 				"GainHP"
 			],
 			"flavorText": "{The serum may be killing you, but{BR}you're not going to die today.}",
-			"flavorReference": "Node, Bastion City: A Spider Never Blinks #114"
+			"flavorReference": "[y=0.75]Node, Bastion City: A Spider Never Blinks #114"
 		},
 		{
 			"identifier": "HyperlinkedNeurons",
