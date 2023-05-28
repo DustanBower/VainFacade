@@ -6,6 +6,7 @@
       "Decks on this mod are considered to be in Beta. They've been extensively tested by me and tested by others as well. They have placeholder art, including all cutouts. They may require minor tweaks but are not expected to change unless issues arise. I am conservative on my designations, so what I call Beta, most would probably consider finalized. Additionally, I won't consider any deck finalized until it's fully arted. As I am not an artist, this will be quite a while.",
       "Music for Environments and Villains is done.",
       "Decks in earlier states are available on my TTS mod. Once decks are finalized, I'll put them up on another mod.",
+      "Discord for bugs, etc.: https://discord.gg/xP5h3cVR3s",
       "Currently available:",
       "Heroes:",
       "  Burgess - A police detective trying to do his job in the hectic world of heroes and villains.",
@@ -28,7 +29,7 @@
     "namespace": "VainFacadePlaytest",
     "dll": "VainFacadePlaytest.dll",
     "publishedFileId": 2835111137,
-    "version": "0.12.1.2",
+    "version": "0.12.1.4",
     "color": "232370",
     "manualTags": [],
     "decks": {
