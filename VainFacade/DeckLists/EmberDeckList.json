@@ -255,27 +255,27 @@
 			],
 			"flavorQuotes": [
 				{
-					"identifier": "[y=90]Banshee",
-					"text": "[y=90]I can't hear her.{BR}I don't think she's dead."
+					"identifier": "[y=0.90]Banshee",
+					"text": "[y=0.90]I can't hear her.{BR}I don't think she's dead."
 				},
 				{
-					"identifier": "[y=90]Gadhavi",
-					"text": "[y=90]She's a pile of ash--"
+					"identifier": "[y=0.90]Gadhavi",
+					"text": "[y=0.90]She's a pile of ash--"
 				},
 				{
-					"identifier": "[y=90]Glyph",
-					"text": "[y=90]Ash and an ember--"
+					"identifier": "[y=0.90]Glyph",
+					"text": "[y=0.90]Ash and an ember--"
 				},
 				{
-					"identifier": "[y=90]Banshee",
-					"text": "[y=90]Of the fire--"
+					"identifier": "[y=0.90]Banshee",
+					"text": "[y=0.90]Of the fire--"
 				},
 				{
-					"identifier": "[y=90]Glyph",
-					"text": "[y=90]-- and the magic."
+					"identifier": "[y=0.90]Glyph",
+					"text": "[y=0.90]-- and the magic."
 				}
 			],
-			"flavorReference": "[y=90]Guardians at the Gate #77"
+			"flavorReference": "[y=0.90]Guardians at the Gate #77"
 		},
 		{
 			"identifier": "InnerWarmth",
