@@ -32,19 +32,57 @@ namespace VainFacadePlaytest.Node
                 base.GameController.ExhaustCoroutine(destroyCoroutine);
             }
             // "{NodeCharacter} deals the character from that deck with the highest HP 0 psychic damage and 0 psychic damage."
-            Card chosenOngoing = chosen.Where((DestroyCardAction dca) => dca.CardToDestroy != null).FirstOrDefault().CardToDestroy.Card;
-            List<DealDamageAction> instances = new List<DealDamageAction>();
-            DealDamageAction zeroPsychic = new DealDamageAction(GetCardSource(), new DamageSource(base.GameController, base.CharacterCard), null, 0, DamageType.Psychic);
-            instances.Add(zeroPsychic);
-            instances.Add(zeroPsychic);
-            IEnumerator damageCoroutine = DealMultipleInstancesOfDamageToHighestLowestHP(instances, (Card c) => c.ParentDeck == chosenOngoing.ParentDeck, HighestLowestHP.HighestHP);
-            if (base.UseUnityCoroutines)
+            //Log.Debug("MentalFeedbackCardController.Play: creating destroyChoice");
+            DestroyCardAction destroyChoice = chosen.Where((DestroyCardAction dca) => dca.CardToDestroy != null).FirstOrDefault();
+            //Log.Debug("MentalFeedbackCardController.Play: checking whether destroyChoice == null");
+            if (destroyChoice != null)
             {
-                yield return base.GameController.StartCoroutine(damageCoroutine);
+                //Log.Debug("MentalFeedbackCardController.Play: destroyChoice != null, creating chosenOngoing");
+                Card chosenOngoing = destroyChoice.CardToDestroy.Card;
+                //Log.Debug("MentalFeedbackCardController.Play: checking whether chosenOngoing == null");
+                if (chosenOngoing != null)
+                {
+                    //Log.Debug("MentalFeedbackCardController.Play: chosenOngoing != null, selecting target and dealing damage");
+                    List<DealDamageAction> instances = new List<DealDamageAction>();
+                    DealDamageAction zeroPsychic = new DealDamageAction(GetCardSource(), new DamageSource(base.GameController, base.CharacterCard), null, 0, DamageType.Psychic);
+                    instances.Add(zeroPsychic);
+                    instances.Add(zeroPsychic);
+                    IEnumerator damageCoroutine = DealMultipleInstancesOfDamageToHighestLowestHP(instances, (Card c) => c.ParentDeck == chosenOngoing.ParentDeck, HighestLowestHP.HighestHP);
+                    if (base.UseUnityCoroutines)
+                    {
+                        yield return base.GameController.StartCoroutine(damageCoroutine);
+                    }
+                    else
+                    {
+                        base.GameController.ExhaustCoroutine(damageCoroutine);
+                    }
+                }
+                else
+                {
+                    //Log.Debug("MentalFeedbackCardController.Play: chosenOngoing == null, sending message");
+                    IEnumerator messageCoroutine = base.GameController.SendMessageAction("No Connected Ongoing card was selected, so " + base.CharacterCard.Title + " does not deal damage.", Priority.Medium, GetCardSource());
+                    if (base.UseUnityCoroutines)
+                    {
+                        yield return base.GameController.StartCoroutine(messageCoroutine);
+                    }
+                    else
+                    {
+                        base.GameController.ExhaustCoroutine(messageCoroutine);
+                    }
+                }
             }
             else
             {
-                base.GameController.ExhaustCoroutine(damageCoroutine);
+                //Log.Debug("MentalFeedbackCardController.Play: destroyChoice == null, sending message");
+                IEnumerator messageCoroutine = base.GameController.SendMessageAction("No Connected Ongoing card was selected, so " + base.CharacterCard.Title + " does not deal damage.", Priority.Medium, GetCardSource());
+                if (base.UseUnityCoroutines)
+                {
+                    yield return base.GameController.StartCoroutine(messageCoroutine);
+                }
+                else
+                {
+                    base.GameController.ExhaustCoroutine(messageCoroutine);
+                }
             }
         }
     }
