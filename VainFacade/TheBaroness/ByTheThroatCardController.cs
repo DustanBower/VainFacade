@@ -25,15 +25,16 @@ namespace VainFacadePlaytest.TheBaroness
 
         public override void AddTriggers()
         {
+            //Log.Debug("ByTheThroatCardController.AddTriggers: ")
             base.AddTriggers();
             // "When that target leaves play, destroy this card."
             AddIfTheTargetThatThisCardIsNextToLeavesPlayDestroyThisCardTrigger();
             // "Increase damage dealt to that hero by 1."
             AddIncreaseDamageTrigger((DealDamageAction dda) => IsThisCardNextToCard(dda.Target), 1);
             // "At the start of that hero's turn, {TheBaroness} deals them 2 melee damage and regains 2 HP."
-            AddStartOfTurnTrigger((TurnTaker tt) => tt == GetCardThisCardIsNextTo().Owner, DrinkResponse, new TriggerType[] { TriggerType.DealDamage, TriggerType.GainHP });
+            AddStartOfTurnTrigger((TurnTaker tt) => GetCardThisCardIsNextTo() != null && GetCardThisCardIsNextTo().Owner == tt, DrinkResponse, new TriggerType[] { TriggerType.DealDamage, TriggerType.GainHP });
             // "When {TheBaroness} is dealt {H} or more damage from a single source, destroy this card."
-            AddTrigger<DealDamageAction>((DealDamageAction dda) => dda.DidDealDamage && dda.Target == base.CharacterCard && dda.Amount >= H, DestroyThisCardResponse, TriggerType.DestroySelf, TriggerTiming.After);
+            AddTrigger<DealDamageAction>((DealDamageAction dda) => dda.DidDealDamage && dda.Target == base.CharacterCard && dda.Target.Owner.IsVillain && dda.Amount >= H, DestroyThisCardResponse, TriggerType.DestroySelf, TriggerTiming.After);
         }
 
         private IEnumerator DrinkResponse(PhaseChangeAction pca)
