@@ -14,7 +14,7 @@
 			"backgroundColor": "FFFFFF",
 			"character": true,
 			"powers": [
-				"{TheFuryCharacter} regains 2 HP and is indestructible this turn. She deals herself 0 psychic damage, then deals 1 target X melee damage and increases the next damage dealt to {TheFuryCharacter} by X, where X = 1 plus the damage she takes this way."
+				"{TheFuryCharacter} regains 2 HP and is indestructible this turn. She deals herself 0 psychic damage, then deals 1 target X melee damage. Increase the next damage dealt to {TheFuryCharacter} by X, where X = 1 plus the damage she takes this way."
 			],
 			"icons": [
 				"HasPower",
@@ -185,7 +185,7 @@
 			],
 			"body": [
 				"When {TheFuryCharacter} deals herself damage, select a target. Increase the next damage dealt to that target by 1.",
-				"When a source other than {TheFuryCharacter} deals {TheFuryCharacter} damage, you may increase the next damage dealt to {TheFuryCharacter} and the source of that damage by 1 for every 2 points of damage dealt this way."
+				"When a source other than {TheFuryCharacter} deals {TheFuryCharacter} damage, you may increase the next damage dealt to {TheFuryCharacter} and the source of that damage by 1 for every 2 damage dealt this way."
 			],
 			"icons": [
 				"IncreaseDamageTaken"
@@ -193,7 +193,7 @@
 			"flavorQuotes": [
 				{
 					"identifier": "The Fury",
-					"text": "Cease your worthless groveling.{BR}Your punishments are sufficient. Your{BR}petition has been answered; the matter closed. Do not call on me again."
+					"text": "Cease your worthless groveling.{BR}Your punishments are sufficient. Your{BR}petition has been answered, the matter closed. Do not call on me again."
 				}
 			],
 			"flavorReference": "The Fury, Grim Tidings: A Woman Scorned"
@@ -210,7 +210,7 @@
 				"Increase damage dealt by {TheFuryCharacter} by 1 for each Coincidence in your trash."
 			],
 			"powers": [
-				"{TheFuryCharacter} is indestructible this turn. She deals herself 1 psychic damage, then deals 1 target X irreducible melee damage that cannot be redirected and increases the next damage dealt to {TheFuryCharacter} by X, where X = 2 plus the damage she takes this way."
+				"{TheFuryCharacter} is indestructible this turn. She deals herself 1 psychic damage, then deals 1 target X irreducible melee damage that cannot be redirected. Increase the next damage dealt to {TheFuryCharacter} by X, where X = 2 plus the damage she takes this way."
 			],
 			"icons": [
 				"IncreaseDamageDealt",
@@ -339,7 +339,7 @@
 				"ongoing"
 			],
 			"body": [
-				"Once during a turn, when {TheFuryCharacter} would deal or be dealt damage, you may first put a non-character card in play on top of its deck. If you do, you may play a card or use a power.",
+				"Once per turn, when {TheFuryCharacter} would deal or be dealt damage, you may first put a non-character card in play on top of its deck. If you do, you may play a card or use a power.",
 				"At the end of each turn, if you have put a card on top of a deck in this way, put the top card of that deck into play and destroy this card."
 			],
 			"icons": [

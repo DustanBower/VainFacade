@@ -63,7 +63,7 @@
 			],
 			"body": [
 				"Triggers are indestructible while there is at least 1 Werewolf in play.",
-				"Increase all damage dealt by Werewolves by 1.",
+				"Increase damage dealt by Werewolves by 1.",
 				"At the start of the environment turn, destroy this card."
 			],
 			"icons": [
