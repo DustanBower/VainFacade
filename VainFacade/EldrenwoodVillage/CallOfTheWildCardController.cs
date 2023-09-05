@@ -34,7 +34,7 @@ namespace VainFacadePlaytest.EldrenwoodVillage
         public override void AddTriggers()
         {
             base.AddTriggers();
-            // "Increase all damage dealt by Werewolves by 1."
+            // "Increase damage dealt by Werewolves by 1."
             AddIncreaseDamageTrigger((DealDamageAction dda) => dda.DamageSource != null && dda.DamageSource.IsCard && base.GameController.DoesCardContainKeyword(dda.DamageSource.Card, WerewolfKeyword), 1);
             // "At the start of the environment turn, destroy this card."
             AddStartOfTurnTrigger((TurnTaker tt) => tt == base.TurnTaker, DestroyThisCardResponse, TriggerType.DestroySelf);

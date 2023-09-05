@@ -20,7 +20,7 @@ namespace VainFacadePlaytest.EldrenwoodVillage
         public override void AddTriggers()
         {
             base.AddTriggers();
-            // "Increase all psychic and sonic damage by 1."
+            // "Increase psychic and sonic damage by 1."
             AddIncreaseDamageTrigger((DealDamageAction dda) => dda.DamageType == DamageType.Psychic, 1);
             AddIncreaseDamageTrigger((DealDamageAction dda) => dda.DamageType == DamageType.Sonic, 1);
             // "At the end of the environment turn, each hero may deal themselves 1 psychic damage to put a card from their trash on top of their deck."

@@ -79,7 +79,7 @@
 			"count": 2,
 			"title": "Eerie Quiet",
 			"body": [
-				"Increase all psychic and sonic damage by 1.",
+				"Increase psychic and sonic damage by 1.",
 				"At the end of the environment turn, each hero may deal themselves 1 psychic damage to put a card from their trash on top of their deck.",
 				"At the start of the environment turn, play the top card of the villain deck, then destroy this card."
 			],
