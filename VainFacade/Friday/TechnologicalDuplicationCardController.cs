@@ -36,7 +36,7 @@ namespace VainFacadePlaytest.Friday
 
         public override IEnumerator DeterminePlayLocation(List<MoveCardDestination> storedResults, bool isPutIntoPlay, List<IDecision> decisionSources, Location overridePlayArea = null, LinqTurnTakerCriteria additionalTurnTakerCriteria = null)
         {
-            IEnumerator coroutine = SelectCardThisCardWillMoveNextTo(new LinqCardCriteria((Card c) => c.IsRealCard && c.IsInPlayAndHasGameText && IsEquipment(c) && c.Owner != this.Card.Owner, "equipment"), storedResults, isPutIntoPlay, decisionSources);
+            IEnumerator coroutine = SelectCardThisCardWillMoveNextTo(new LinqCardCriteria((Card c) => c.IsRealCard && c.IsInPlayAndHasGameText && IsEquipment(c) && c.Owner != this.Card.Owner && !c.GetAllNextToCards(false).Any((Card cc) => cc.Identifier == this.Card.Identifier), "available equipment"), storedResults, isPutIntoPlay, decisionSources);
             if (base.UseUnityCoroutines)
             {
                 yield return base.GameController.StartCoroutine(coroutine);
