@@ -1,0 +1,505 @@
+{
+	"name": "Friday",
+	"kind": "Hero",
+	"initialCardIdentifiers": [
+		"FridayCharacter"
+	],
+	"cards": [
+		{
+			"identifier": "FridayCharacter",
+			"count": 1,
+			"title": "Friday",
+			"body": "Adaptive Weaponry",
+			"backgroundColor": "07EB03",
+			"character": true,
+			"powers": [
+				"{Friday} deals 1 target 2 melee or projectile damage or 3 damage of a type that has been dealt since the end of your last turn."
+			],
+			"icons": [
+				"HasPower",
+				"DealDamage"
+			],
+			"hitpoints": 32,
+			"nemesisIdentifiers": [
+				"VainFacadePlaytest.Friday"
+			],
+			"incapacitatedAbilities": [
+				"Once before the start of your next turn, when a target deals damage, it may deal 1 damage of the same type to the same target.",
+				"One player may put the top card of their trash into play if that card is an ongoing or one-shot. If they do, discard the top card of that deck.",
+				"One hero may use a power."
+			],
+			"flippedIcons": [
+				"DealDamage",
+				"PlayCardNow",
+				"UsePowerNow"
+			],
+			"complexity": 3,
+			"openingLines": {
+				"default": "[Threat detected... Analyzing strengths and weaknesses... Calibrating...]",
+				"VainFacadePlaytest.GrandfatherCharacter": "You've meddled in the timeline enough.",
+				"VainFacadePlaytest.TheBaronessCharacter": "Copy.",
+				"VainFacadePlaytest.BlitzCharacter": "[Threat detec!4%*$d/// Error: Power malfunction... Recalibrating.//#%$aea4!4...]",
+				"ChokepointCharacter": "Copy.",
+				"IronLegacyCharacter": "Incorrect.",
+				"TheDreamerCharacter": "Objectives unclear: Why do we need the girl?",
+				"Cauldron.TheRamCharacter": "Ditto.",
+				"Cauldron.MenagerieCharacter": "Wise.",
+				"OblivAeonFrontPageCharacter": "Show me."
+			},
+			"openingLineRequests": {
+				"OblivAeonFrontPageCharacter": "ChronoRangerCharacter",
+				"ChokepointCharacter": "UnityFreedomSixCharacter",
+				"IronLegacyCharacter": "UnityFreedomSixCharacter",
+				"Cauldron.MenagerieCharacter": "Cauldron.StarlightCharacter"
+			}
+		},
+		{
+			"identifier": "AdaptiveEndoskeleton",
+			"count": 3,
+			"title": "Adaptive Endoskeleton",
+			"keywords": [
+				"ongoing",
+				"mimicry"
+			],
+			"body": [
+				"[y=0.999]Increase lightning damage dealt to {Friday} by 1.[/y]",
+				"When {Friday} would be dealt damage by a source other than {Friday}, you may attune this card to that damage's type.",
+				"Each time {Friday} is dealt damage of a type this card is attuned to, reduce damage of that type dealt to {Friday} by 1 until this card is attuned to another type or this card leaves play."
+			],
+			"icons": [
+				"IncreaseDamageTakenLightning",
+				"ReduceDamageTaken"
+			],
+			"flavorQuotes": [
+				{
+					"identifier": "Butcher Bill",
+					"text": "Enough fisticuffs,{BR}boys. She can't adapt to [b]bullets[/b]."
+				},
+				{
+					"identifier": "Friday",
+					"text": "Incorrect."
+				}
+			],
+			"flavorReference": "Burgess #18"
+		},
+		{
+			"identifier": "AnythingYouCanDo",
+			"count": 2,
+			"title": "Anything You Can Do...",
+			"keywords": [
+				"ongoing",
+				"mimicry"
+			],
+			"body": [
+				"[y=0.999]Increase lightning damage dealt to {Friday} by 1.[/y]",
+				"Play this card next to a character other than {Friday}. The first time each turn that character regains HP, {Friday} regains 1 hp.",
+				"The second time each turn...{BR}} a card is drawn from that character's deck, you may draw a card.{BR}} a card from that character's deck enters play, you may play a card."
+			],
+			"icons": [
+				"IncreaseDamageTakenLightning",
+				"GainHP",
+				"DrawCardNow",
+				"PlayCardNow"
+			],
+			"flavorQuotes": [
+				{
+					"identifier": "Carnaval",
+					"text": "They're [b]all[/b] Friday!{BR}The receptionist, the janitor, your{BR}personal assistant... We have no{BR}payroll. We have no employees!"
+				}
+			],
+			"flavorReference": "Carnaval, Division X #5"
+		},
+		{
+			"identifier": "BuiltForWar",
+			"count": 2,
+			"title": "Built for War",
+			"keywords": [
+				"ongoing",
+				"limited"
+			],
+			"body": [
+				"When {Friday} would be dealt 5 or more damage from a single source, you may reduce that damage by up to 3."
+			],
+			"powers": [
+				"Reveal cards from the top of your deck until 2 Mimicries are revealed. Put one into your hand or into play. Shuffle the remaining revealed cards into your deck. If a card entered play this way, destroy this card."
+			],
+			"icons": [
+				"ReduceDamageTaken",
+				"HasPower",
+				"Manipulate",
+				"DestroySelf"
+			],
+			"flavorQuotes": [
+				{
+					"identifier": "Scavenger",
+					"text": "Entire frame is a durable alloy.{BR}Weaker, malleable form for infiltration{BR}overtop. To compensate, battle armor stored{BR}in extra-dimensional space."
+				}
+			],
+			"flavorReference": "Scavenger, Sphere: Grandfather Paradox #2"
+		},
+		{
+			"identifier": "DamselInDistress",
+			"count": 2,
+			"title": "Damsel in Distress",
+			"keywords": [
+				"ongoing"
+			],
+			"body": [
+				"When the hero target with the lowest HP would be dealt damage, redirect that damage to {Friday}.",
+				"When {Friday} is dealt damage by a target, you may destroy this card. If you do, {Friday} deals the source of that damage 4 melee damage."
+			],
+			"icons": [
+				"RedirectDamage",
+				"DestroySelf",
+				"DealDamageMelee"
+			],
+			"flavorQuotes": [
+				{
+					"identifier": "Goon",
+					"text": "Put down the weapons,{BR}or the secretary gets it."
+				},
+				{
+					"identifier": "Carnaval",
+					"text": "For the last time, we don't have a{BR}secretary! {sigh} Friday, you're in.{BR}Do your thing."
+				}
+			],
+			"flavorReference": "Division X #9"
+		},
+		{
+			"identifier": "Doppelganger",
+			"count": 3,
+			"title": "Doppelganger",
+			"keywords": [
+				"one-shot"
+			],
+			"body": [
+				"Select a deck.",
+				"You may destroy a target with 4 or fewer hp from that deck.",
+				"Reveal the top 3 cards of that deck. You may play or discard one of the revealed cards. Replace the other cards in order."
+			],
+			"icons": [
+				"DestroyTarget",
+				"Manipulate"
+			],
+			"flavorQuotes": [
+				{
+					"identifier": "Carnaval",
+					"text": "None of you will survive. She's{BR}already here. You just talked to her. If{BR}you give up the watch, I can protect you. If{BR}you don't, nothing can."
+				}
+			],
+			"flavorReference": "Grim Tidings: Daddy's Little REAPER"
+		},
+		{
+			"identifier": "DracimpR9A3ArmCannon",
+			"count": 2,
+			"title": "Dracimp R9-A3 Arm Cannon",
+			"keywords": [
+				"equipment",
+				"limited"
+			],
+			"body": [
+				"When {Friday} would deal a type of damage that has been dealt by a source other than {Friday} since the end of your last turn, you may increase that damage by 1."
+			],
+			"powers": [
+				"Select a damage type, then repeat the following text 3 times: {Friday} deals 1 target 1 damage of that type. Reduce damage dealt to that target by 1 this turn."
+			],
+			"icons": [
+				"IncreaseDamageDealt",
+				"HasPower",
+				"DealDamage",
+				"ReduceDamageTaken"
+			],
+			"flavorQuotes": [
+				{
+					"identifier": "Scavenger",
+					"text": "Like the armor, it's folded in{BR}extra-dimensional space around the arm.{BR}It can generate any kind of energy it's been{BR}exposed to."
+				}
+			],
+			"flavorReference": "Scavenger, Grandfather Paradox #2"
+		},
+		{
+			"identifier": "EnergyReplication",
+			"count": 3,
+			"title": "Energy Replication",
+			"keywords": [
+				"ongoing",
+				"mimicry",
+				"limited"
+			],
+			"body": [
+				"[y=0.999]Increase Lightning Damage dealt to {Friday} by 1.[/y]",
+				"Once per round, when another target deals damage, {Friday} may deal 1 target X damage of the same type, where X = the amount of damage dealt or 3, whichever is lower."
+			],
+			"icons": [
+				"IncreaseDamageTakenLightning",
+				"DealDamage"
+			],
+			"flavorQuotes": [
+				{
+					"identifier": "Peacekeeper",
+					"text": "Friday, buy us some time.{BR}No fatalities."
+				}
+			],
+			"flavorReference": "Peacekeeper, Division X #49"
+		},
+		{
+			"identifier": "GrimReflection",
+			"count": 3,
+			"title": "Grim Reflection",
+			"keywords": [
+				"ongoing",
+				"mimicry",
+				"limited"
+			],
+			"body": [
+				"[y=0.99]Treat this card as having the game-text of each ongoing card with one of your cards under it, replacing the name of any other characters with {Friday} and treating 'you' as {Friday}'s player.[/y]",
+				"At the start of your turn, destroy one of your ongoing cards."
+			],
+			"powers": [
+				"Put any number of cards in your hand under ongoing cards from another deck. Draw a card or use a power."
+			],
+			"icons": [
+				"StartOfTurnAction",
+				"DestroyOngoing",
+				"HasPower",
+				"PlayCardNow"
+			],
+			"flavorQuotes": [
+				{
+					"identifier": "Push",
+					"text": "Friday, no! No, you can't!"
+				}
+			],
+			"flavorReference": "Push, All Smiles one-shot"
+		},
+		{
+			"identifier": "ICanDoBetter",
+			"count": 2,
+			"title": "I Can Do Better",
+			"keywords": [
+				"ongoing",
+				"mimicry"
+			],
+			"body": [
+				"When a target deals {Friday} damage, {Friday} may deal the source of that damage X plus 2 damage of the same type, where X = the amount of damage dealt to {Friday}. If {Friday} deals damage this way, destroy this card."
+			],
+			"powers": [
+				"Play a mimicry or draw 2 cards."
+			],
+			"icons": [
+				"CounterDamage",
+				"DestroySelf",
+				"HasPower",
+				"PlayCardNow"
+			],
+			"flavorQuotes": [
+				{
+					"identifier": "Haste",
+					"text": "We know who{BR}you are... and we know what you are."
+				},
+				{
+					"identifier": "Arctis",
+					"text": "You'll pay for what you did to{BR}Geyser."
+				}
+			],
+			"flavorReference": "Back to the Beginning one-shot"
+		},
+		{
+			"identifier": "ProteanDoom",
+			"count": 2,
+			"title": "Protean Doom",
+			"keywords": [
+				"ongoing",
+				"limited"
+			],
+			"body": [
+				"Play this card next to a target. Damage dealt to that target by {Friday} is irreducible and increased by 1."
+			],
+			"powers": [
+				"Reveal the top 3 cards of your deck. Put one into your hand. Put the other revealed cards on the bottom of your deck in any order."
+			],
+			"icons": [
+				"MakeDamageIrreducible",
+				"IncreaseDamageDealt",
+				"HasPower",
+				"Manipulate"
+			],
+			"flavorQuotes": [
+				{
+					"identifier": "Friday",
+					"text": "[Unknown hostile detected...{BR}Weaknesses analyzed...{BR}Calibrating weapons systems...]"
+				}
+			],
+			"flavorReference": "Friday, Environmental Triggers one-shot"
+		},
+		{
+			"identifier": "PrototypeCombatMimic",
+			"count": 3,
+			"title": "Prototype Combat Mimic",
+			"keywords": [
+				"ongoing",
+				"mimicry",
+				"limited"
+			],
+			"body": [
+				"Once per round, at the end of another hero's turn, {Friday} may deal that hero 2 lightning damage.",
+				"When a hero other than {Friday} is dealt damage this way, {Friday} may use a power in that hero's play area, replacing the name of that hero on that card with {Friday} and with “You” on that card referring to {Friday}'s player."
+			],
+			"icons": [
+				"EndOfTurnAction",
+				"DealDamageLightning",
+				"UsePowerNow"
+			],
+			"flavorQuotes": [
+				{
+					"identifier": "Node/Friday",
+					"text": "{Am I connecting to you...{BR}or are you connecting to me?}"
+				}
+			],
+			"flavorReference": "Node/Friday, All Smiles one-shot"
+		},
+		{
+			"identifier": "RuthlessMachine",
+			"count": 2,
+			"title": "Ruthless Machine",
+			"keywords": [
+				"ongoing"
+			],
+			"body": [
+				"When a card from another deck would cause {Friday} to deal herself damage, you may discard a card from your hand to prevent that damage."
+			],
+			"powers": [
+				"{Friday} deals 1 Target 2 melee or 2 projectile damage. Draw a card."
+			],
+			"icons": [
+				"Discard",
+				"CancelledDamageGreen",
+				"HasPower",
+				"DealDamage"
+			],
+			"flavorQuotes": [
+				{
+					"identifier": "Friday",
+					"text": "Y[b]o[/b]u [b]d[/b]i[b]d[/b] t[b]h[/b]e [b]b[/b]e[b]s[/b]t [b]y[/b]o[b]u[/b] c[b]o[/b]u[b]l[/b]d{BR}t[b]o[/b] g[b]u[/b]i[b]d[/b]e [b]t[/b]h[b]e[/b] t[b]i[/b]m[b]e[/b]l[b]i[/b]n[b]e[/b], [b]b[/b]u[b]t[/b] s[b]o[/b]m[b]e[/b] t[b]h[/b]i[b]n[/b]g[b]s[/b]{BR}c[b]a[/b]n[b]'[/b]t [b]b[/b]e [b]c[/b]o[b]n[/b]t[b]r[/b]o[b]l[/b]l[b]e[/b]d. Y[b]o[/b]u[b]'[/b]r[b]e[/b] a[b]n[/b] o[b]l[/b]d [b]m[/b]a[b]n[/b].{BR}[b]I[/b]t[b]'[/b]s [b]t[/b]i[b]m[/b]e [b]f[/b]o[b]r[/b] y[b]o[/b]u [b]t[/b]o [b]r[/b]e[b]s[/b]t."
+				}
+			],
+			"flavorReference": "Friday to Doomsayer, Retcon: Lost and Found"
+		},
+		{
+			"identifier": "T913ExdimReaperArmor",
+			"count": 2,
+			"title": "T9-13 Exdim Reaper Armor",
+			"keywords": [
+				"equipment",
+				"limited"
+			],
+			"body": [
+				"Reduce damage dealt to {Friday} by 1.",
+				"Once per turn when {Friday} deals damage, she may deal 1 damage of the same type to the same target.",
+				"At the end of your turn, you may discard a card. If you do not, {Friday} deals each other target 1 psychic damage."
+			],
+			"icons": [
+				"ReduceDamageTaken",
+				"DealDamage",
+				"EndOfTurnAction",
+				"Discard"
+			],
+			"flavorQuotes": [
+				{
+					"identifier": "Carnaval",
+					"text": "She can do it, but don't{BR}be surprised if your men run from [b]her[/b]."
+				},
+				{
+					"identifier": "Janson",
+					"text": "A risk I'm willing to take. Let's see{BR}what she's got. {click} Friday,{BR}release the kraken!"
+				}
+			],
+			"flavorReference": "Apex Incursion: Hold the Line"
+		},
+		{
+			"identifier": "TechnologicalDuplication",
+			"count": 3,
+			"title": "Technological Duplication",
+			"keywords": [
+				"ongoing",
+				"mimicry"
+			],
+			"body": [
+				"[y=0.999]Increase lightning damage dealt to {Friday} by 1.[/y]",
+				"Play this card next to an equipment card from another deck without a copy of this card beside it. This card gains the text of that card. Treat the name of the hero on that card as {Friday}, and “you” on that card as {Friday}'s player.",
+				"When that card leaves play, destroy this card."
+			],
+			"icons": [
+				"IncreaseDamageTakenLightning",
+				"DestroySelf"
+			],
+			"flavorQuotes": [
+				{
+					"identifier": "Sphere",
+					"text": "Are you REAPER 3?"
+				},
+				{
+					"identifier": "Friday",
+					"text": "Do you want me to be?"
+				}
+			],
+			"flavorReference": "Overwhelming Force one-shot"
+		},
+		{
+			"identifier": "UnstableCircuitry",
+			"count": 4,
+			"title": "Unstable Circuitry",
+			"keywords": [
+				"one-shot",
+				"glitch"
+			],
+			"body": [
+				"When this card enters your hand, put it into play.",
+				"{Friday} deals herself 1 irreducible lightning damage.",
+				"You may draw 2 cards. If you do, shuffle this card into your deck."
+			],
+			"icons": [
+				"DealDamageLightning",
+				"DrawCardNow",
+				"Manipulate"
+			],
+			"flavorQuotes": [
+				{
+					"identifier": "Carnaval",
+					"text": "He adopted the most{BR}dangerous, unstable weapon of{BR}Apocalypse 4 and raised it as a child.{BR}It was never a child. It's a weapon of{BR}mass destruction."
+				}
+			],
+			"flavorReference": "Carnaval, Grim Tidings: Daddy's Little REAPER"
+		},
+		{
+			"identifier": "VesselOfDestruction",
+			"count": 2,
+			"title": "Vessel of Destruction",
+			"keywords": [
+				"ongoing",
+				"limited"
+			],
+			"body": [
+				"When this card is destroyed, {Friday} deals 1 target 1 irreducible fire damage or destroys 1 environment or ongoing card."
+			],
+			"powers": [
+				"Select a hero. Destroy any number of their ongoing or equipment cards. For each card destroyed this way, {Friday} deals 1 target 1 irreducible fire damage or destroys an ongoing or environment card. Destroy this card."
+			],
+			"icons": [
+				"DealDamageFire",
+				"HasPower",
+				"DestroyOngoing",
+				"DestroyEquipment"
+			],
+			"flavorQuotes": [
+				{
+					"identifier": "Grandfather",
+					"text": "You win this round,{BR}dear. I'm positively flummoxed! What a{BR}mess! Will you be staying for dinner? I can{BR}whip up something for you and your hero{BR}friends."
+				}
+			],
+			"flavorReference": "Grandfather, Division X #27"
+		}
+	],
+	"promoCards": [
+	]
+}
