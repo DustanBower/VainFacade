@@ -40,6 +40,14 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":177,"h":256},
 	"sourceSize": {"w":177,"h":256}
 },
+"FridayCharacter.png":
+{
+	"frame": {"x":360,"y":518,"w":178,"h":256},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":178,"h":256},
+	"sourceSize": {"w":178,"h":256}
+},
 "GrandfatherCharacter.png":
 {
 	"frame": {"x":0,"y":259,"w":177,"h":256},
@@ -103,6 +111,6 @@
 	"format": "RGBA8888",
 	"size": {"w":1024,"h":1024},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:61f631a1cd54d5d26d3faef7a40bae8a:9e9b4ed16c84076b44692c9c785bbc87:4ee285c32a91b7652e02ac049f918b2a$"
+	"smartupdate": "$TexturePacker:SmartUpdate:fa9167129ad8371a2812be778ca2ecaa:1fead8e18f27df74532782c867f9628f:4ee285c32a91b7652e02ac049f918b2a$"
 }
 }
