@@ -230,6 +230,12 @@ namespace Handelabra.Sentinels.UnitTest
         protected TurnTakerController scionOne { get { return this.GameController.FindTurnTakerController(bzOne.FindScion()); } }
         protected TurnTakerController scionTwo { get { return this.GameController.FindTurnTakerController(bzTwo.FindScion()); } }
 
+        //These locations added for ease of testing cards that manipulate decks in OblivAeon mode
+        protected Location aeonDeck { get { return oblivaeon.TurnTaker.FindSubDeck("AeonMenDeck"); } }
+        protected Location aeonTrash { get { return oblivaeon.TurnTaker.FindSubTrash("AeonMenDeck"); } }
+        protected Location scionDeck { get { return oblivaeon.TurnTaker.FindSubDeck("ScionDeck"); } }
+        protected Location scionTrash { get { return oblivaeon.TurnTaker.FindSubTrash("ScionDeck"); } }
+
         protected Card aeonScion { get { return GetCard("AeonMasterCharacter"); } }
         protected Card borrScion { get { return GetCard("BorrTheUnstableCharacter"); } }
         protected Card mindScion { get { return GetCard("DarkMindCharacter"); } }
@@ -1217,6 +1223,7 @@ namespace Handelabra.Sentinels.UnitTest
                     else if (this.DecisionSelectPower != null)
                     {
                         var powers = power.Choices.Where(p => p.CardController.Card == this.DecisionSelectPower);
+                        
                         if (this.DecisionSelectPowerIndex < powers.Count())
                         {
                             power.SelectedPower = powers.ElementAt(this.DecisionSelectPowerIndex);
@@ -1229,6 +1236,7 @@ namespace Handelabra.Sentinels.UnitTest
 
                     if (power.SelectedPower == null)
                     {
+                        Console.WriteLine("Choosing power from " + power.Choices.ToCommaList());
                         power.SelectedPower = power.Choices.ElementAt(this.DecisionPowerIndex);
                     }
 
