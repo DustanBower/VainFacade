@@ -129,13 +129,7 @@
 				"Manipulate",
 				"DestroySelf"
 			],
-			"flavorQuotes": [
-				{
-					"identifier": "Scavenger",
-					"text": "Entire frame is a durable alloy.{BR}Weaker, malleable form for infiltration{BR}overtop. To compensate, battle armor stored{BR}in extra-dimensional space."
-				}
-			],
-			"flavorReference": "Scavenger, Sphere: Grandfather Paradox #2"
+			"flavorText": "{BR}“Entire frame is a durable alloy.{BR}Weaker, malleable form for infiltration{BR}overtop. To compensate, battle armor stored{BR}in extra-dimensional space.”{BR} - Scavenger,{BR}Sphere: Grandfather Paradox #2"
 		},
 		{
 			"identifier": "DamselInDistress",
@@ -181,13 +175,7 @@
 				"DestroyTarget",
 				"Manipulate"
 			],
-			"flavorQuotes": [
-				{
-					"identifier": "Carnaval",
-					"text": "None of you will survive. She's{BR}already here. You just talked to her. If{BR}you give up the watch, I can protect you. If{BR}you don't, nothing can."
-				}
-			],
-			"flavorReference": "Grim Tidings: Daddy's Little REAPER"
+			"flavorText": "{BR}“None of you will survive. She's{BR}already here. You just talked to her. If{BR}you give up the watch, I can protect you. If{BR}you don't, nothing can.”{BR} - Carnaval, Grim Tidings:{BR}Daddy's Little REAPER"
 		},
 		{
 			"identifier": "DracimpR9A3ArmCannon",
@@ -209,13 +197,7 @@
 				"DealDamage",
 				"ReduceDamageTaken"
 			],
-			"flavorQuotes": [
-				{
-					"identifier": "Scavenger",
-					"text": "Like the armor, it's folded in{BR}extra-dimensional space around the arm.{BR}It can generate any kind of energy it's been{BR}exposed to."
-				}
-			],
-			"flavorReference": "Scavenger, Grandfather Paradox #2"
+			"flavorText": "{BR}“Like the armor, it's folded in{BR}extra-dimensional space around the{BR}arm. It can generate any kind of{BR}energy it's been exposed to.”{BR} - Scavenger,{BR}Sphere: Grandfather Paradox #2"
 		},
 		{
 			"identifier": "EnergyReplication",
@@ -270,7 +252,7 @@
 					"text": "Friday, no! No, you can't!"
 				}
 			],
-			"flavorReference": "Push, All Smiles one-shot"
+			"flavorReference": "Push, All Smiles"
 		},
 		{
 			"identifier": "ICanDoBetter",
@@ -302,7 +284,7 @@
 					"text": "You'll pay for what you did to{BR}Geyser."
 				}
 			],
-			"flavorReference": "Back to the Beginning one-shot"
+			"flavorReference": "Back to the Beginning"
 		},
 		{
 			"identifier": "ProteanDoom",
@@ -330,7 +312,7 @@
 					"text": "[Unknown hostile detected...{BR}Weaknesses analyzed...{BR}Calibrating weapons systems...]"
 				}
 			],
-			"flavorReference": "Friday, Environmental Triggers one-shot"
+			"flavorReference": "Friday, Environmental Triggers"
 		},
 		{
 			"identifier": "PrototypeCombatMimic",
@@ -350,13 +332,7 @@
 				"DealDamageLightning",
 				"UsePowerNow"
 			],
-			"flavorQuotes": [
-				{
-					"identifier": "Node/Friday",
-					"text": "{Am I connecting to you...{BR}or are you connecting to me?}"
-				}
-			],
-			"flavorReference": "Node/Friday, All Smiles one-shot"
+			"flavorText": "{BR}{Am I connecting to you...{BR}or are you connecting to me?}{BR} - Node/Friday, All Smiles"
 		},
 		{
 			"identifier": "RuthlessMachine",
@@ -377,13 +353,7 @@
 				"HasPower",
 				"DealDamage"
 			],
-			"flavorQuotes": [
-				{
-					"identifier": "Friday",
-					"text": "Y[b]o[/b]u [b]d[/b]i[b]d[/b] t[b]h[/b]e [b]b[/b]e[b]s[/b]t [b]y[/b]o[b]u[/b] c[b]o[/b]u[b]l[/b]d{BR}t[b]o[/b] g[b]u[/b]i[b]d[/b]e [b]t[/b]h[b]e[/b] t[b]i[/b]m[b]e[/b]l[b]i[/b]n[b]e[/b], [b]b[/b]u[b]t[/b] s[b]o[/b]m[b]e[/b] t[b]h[/b]i[b]n[/b]g[b]s[/b]{BR}c[b]a[/b]n[b]'[/b]t [b]b[/b]e [b]c[/b]o[b]n[/b]t[b]r[/b]o[b]l[/b]l[b]e[/b]d. Y[b]o[/b]u[b]'[/b]r[b]e[/b] a[b]n[/b] o[b]l[/b]d [b]m[/b]a[b]n[/b].{BR}[b]I[/b]t[b]'[/b]s [b]t[/b]i[b]m[/b]e [b]f[/b]o[b]r[/b] y[b]o[/b]u [b]t[/b]o [b]r[/b]e[b]s[/b]t."
-				}
-			],
-			"flavorReference": "Friday to Doomsayer, Retcon: Lost and Found"
+			"flavorText": "{BR}“Y[y=1.15]o[y=0.85]u [y=1.15]d[y=0.85]i[y=1.15]d[y=0.85] t[y=1.15]h[y=0.85]e [y=1.15]b[y=0.85]e[y=1.15]s[y=0.85]t [y=1.15]y[y=0.85]o[y=1.15]u[y=0.85] c[y=1.15]o[y=0.85]u[y=1.15]l[y=0.85]d{BR}t[y=1.15]o[y=0.85] g[y=1.15]u[y=0.85]i[y=1.15]d[y=0.85]e [y=1.15]t[y=0.85]h[y=1.15]e[y=0.85] t[y=1.15]i[y=0.85]m[y=1.15]e[y=0.85]l[y=1.15]i[y=0.85]n[y=1.15]e[y=0.85], [y=1.15]b[y=0.85]u[y=1.15]t[y=0.85] s[y=1.15]o[y=0.85]m[y=1.15]e[y=0.85] t[y=1.15]h[y=0.85]i[y=1.15]n[y=0.85]g[y=1.15]s[y=0.85]{BR}c[y=1.15]a[y=0.85]n[y=1.15]'[y=0.85]t [y=1.15]b[y=0.85]e [y=1.15]c[y=0.85]o[y=1.15]n[y=0.85]t[y=1.15]r[y=0.85]o[y=1.15]l[y=0.85]l[y=1.15]e[y=0.85]d. Y[y=1.15]o[y=0.85]u[y=1.15]'[y=0.85]r[y=1.15]e[y=0.85] a[y=1.15]n[y=0.85] o[y=1.15]l[y=0.85]d [y=1.15]m[y=0.85]a[y=1.15]n[y=0.85].{BR}[y=1.15]I[y=0.85]t[y=1.15]'[y=0.85]s [y=1.15]t[y=0.85]i[y=1.15]m[y=0.85]e [y=1.15]f[y=0.85]o[y=1.15]r[y=0.85] y[y=1.15]o[y=0.85]u [y=1.15]t[y=0.85]o [y=1.15]r[y=0.85]e[y=1.15]s[y=0.85]t.”{BR} - Friday to Doomsayer, Retcon: Lost and Found"
 		},
 		{
 			"identifier": "T913ExdimReaperArmor",
@@ -407,14 +377,14 @@
 			"flavorQuotes": [
 				{
 					"identifier": "Carnaval",
-					"text": "She can do it, but don't{BR}be surprised if your men run from [b]her[/b]."
+					"text": "[y=0.90]She can do it, but don't{BR}be surprised if your men run from [b]her[/b]."
 				},
 				{
 					"identifier": "Janson",
-					"text": "A risk I'm willing to take. Let's see{BR}what she's got. {click} Friday,{BR}release the kraken!"
+					"text": "[y=0.90]A risk I'm willing to take. Let's see{BR}what she's got. {click} Friday,{BR}release the kraken!"
 				}
 			],
-			"flavorReference": "Apex Incursion: Hold the Line"
+			"flavorReference": "[y=0.90]Apex Incursion: Hold the Line"
 		},
 		{
 			"identifier": "TechnologicalDuplication",
@@ -443,7 +413,7 @@
 					"text": "Do you want me to be?"
 				}
 			],
-			"flavorReference": "Overwhelming Force one-shot"
+			"flavorReference": "Overwhelming Force"
 		},
 		{
 			"identifier": "UnstableCircuitry",
@@ -463,13 +433,7 @@
 				"DrawCardNow",
 				"Manipulate"
 			],
-			"flavorQuotes": [
-				{
-					"identifier": "Carnaval",
-					"text": "He adopted the most{BR}dangerous, unstable weapon of{BR}Apocalypse 4 and raised it as a child.{BR}It was never a child. It's a weapon of{BR}mass destruction."
-				}
-			],
-			"flavorReference": "Carnaval, Grim Tidings: Daddy's Little REAPER"
+			"flavorText": "{BR}“He adopted the most{BR}dangerous, unstable weapon of{BR}Apocalypse 4 and raised it as a child.{BR}It was never a child. It's a weapon of{BR}mass destruction.”{BR} - Carnaval, Grim Tidings:{BR}Daddy's Little REAPER"
 		},
 		{
 			"identifier": "VesselOfDestruction",

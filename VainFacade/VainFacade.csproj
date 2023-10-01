@@ -136,6 +136,24 @@
     <Compile Include="Ember\TheBrightestFlameCardController.cs" />
     <Compile Include="Ember\WhatIHaveBecomeCardController.cs" />
     <Compile Include="Ember\WreathedInFlameCardController.cs" />
+    <Compile Include="Friday\AdaptiveEndoskeletonCardController.cs" />
+    <Compile Include="Friday\AnythingYouCanDoCardController.cs" />
+    <Compile Include="Friday\AttuneStatusEffect.cs" />
+    <Compile Include="Friday\BuiltForWarCardController.cs" />
+    <Compile Include="Friday\DamselInDistressCardController.cs" />
+    <Compile Include="Friday\DoppelgangerCardController.cs" />
+    <Compile Include="Friday\DracimpR9A3ArmCannonCardController.cs" />
+    <Compile Include="Friday\EnergyReplicationCardController.cs" />
+    <Compile Include="Friday\FridayCharacterCardController.cs" />
+    <Compile Include="Friday\GrimReflectionCardController.cs" />
+    <Compile Include="Friday\ICanDoBetterCardController.cs" />
+    <Compile Include="Friday\ProteanDoomCardController.cs" />
+    <Compile Include="Friday\PrototypeCombatMimicCardController.cs" />
+    <Compile Include="Friday\RuthlessMachineCardController.cs" />
+    <Compile Include="Friday\T913ExdimReaperArmorCardController.cs" />
+    <Compile Include="Friday\TechnologicalDuplicationCardController.cs" />
+    <Compile Include="Friday\UnstableCircuitryCardController.cs" />
+    <Compile Include="Friday\VesselOfDestructionCardController.cs" />
     <Compile Include="Grandfather\AcceleratedTimetableCardController.cs" />
     <Compile Include="Grandfather\ArrowOfTimeCardController.cs" />
     <Compile Include="Grandfather\BendingTheRulesCardController.cs" />
@@ -304,6 +322,9 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="DeckLists\ParadiseIsleDeckList.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="DeckLists\FridayDeckList.json" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

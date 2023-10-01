@@ -59,7 +59,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\VainFacade\VainFacade.csproj">
-      <Project>{44F8C838-553C-482C-B389-2B375B8590C9}</Project>
+      <Project>{44f8c838-553c-482c-b389-2b375b8590c9}</Project>
       <Name>VainFacade</Name>
     </ProjectReference>
   </ItemGroup>
