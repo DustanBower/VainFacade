@@ -87,12 +87,42 @@ namespace VainFacadePlaytest.Friday
 
         public override CustomDecisionText GetCustomDecisionText(IDecision decision)
         {
-            return new CustomDecisionText(
-            $"Do you want to increase this damage by 1?",
-            $"{decision.DecisionMaker.Name} is deciding whether to increase this damage by 1.",
-            $"Vote for whether to increase this damage by 1.",
-            $"whether to increase this damage by 1."
-            );
+            if (decision is YesNoCardDecision)
+            {
+                return new CustomDecisionText(
+                $"Do you want to increase this damage by 1?",
+                $"{decision.DecisionMaker.Name} is deciding whether to increase this damage by 1.",
+                $"Vote for whether to increase this damage by 1.",
+                $"whether to increase this damage by 1."
+                );
+            }
+            else if (decision is SelectDamageTypeDecision)
+            {
+                string message = "";
+                if (GetDamageTypesSinceLastTurn().Count() > 0)
+                {
+                    string types = GetDamageTypesSinceLastTurn().Select((DamageType t) => t.ToString()).ToCommaList();
+                    message = " " + types + " can be increased.";
+                }
+
+                //Console.WriteLine($"Returning custom decision text for Arm Cannon: choose a damage type.{message}");
+
+                return new CustomDecisionText(
+                $"choose a damage type.{message}",
+                $"{decision.DecisionMaker.Name} is choosing a damage type.{message}",
+                $"Vote for a damage type.{message}",
+                $"a damage type.{message}"
+                );
+
+                //return new CustomDecisionText(
+                //$"choose a damage type. Extra text",
+                //$"Friday is choosing a damage type.",
+                //$"Vote for a damage type.",
+                //$"a damage type."
+                //);
+            }
+            return null;
+            
         }
 
         public override IEnumerator UsePower(int index = 0)
@@ -104,7 +134,7 @@ namespace VainFacadePlaytest.Friday
             int num4 = GetPowerNumeral(3, 1);
 
             List<SelectDamageTypeDecision> results = new List<SelectDamageTypeDecision>();
-            IEnumerator coroutine = base.GameController.SelectDamageType(DecisionMaker, results, cardSource: GetCardSource());
+            IEnumerator coroutine = base.GameController.SelectDamageType(DecisionMaker, results, selectionType: SelectionType.Custom, cardSource: GetCardSource());
             if (base.UseUnityCoroutines)
             {
                 yield return base.GameController.StartCoroutine(coroutine);

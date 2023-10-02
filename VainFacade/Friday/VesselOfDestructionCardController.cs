@@ -25,7 +25,7 @@ namespace VainFacadePlaytest.Friday
         {
             //Select a hero. Destroy any number of their ongoing or equipment cards. For each card destroyed this way, {Friday} deals 1 target 1 irreducible fire damage or destroys an ongoing or environment card. Destroy this card.
             int num1 = GetPowerNumeral(0, 1);
-            int num2 = GetPowerNumeral(0, 1);
+            int num2 = GetPowerNumeral(1, 1);
             SelectTurnTakerDecision decision = new SelectTurnTakerDecision(base.GameController, DecisionMaker, FindTurnTakersWhere((TurnTaker tt) => IsHero(tt) && FindCardsWhere((Card c) => (IsOngoing(c) || IsEquipment(c)) && c.Owner == tt).Any()), SelectionType.DestroyCard, true, cardSource:GetCardSource());
             IEnumerator coroutine = base.GameController.SelectTurnTakerAndDoAction(decision, (TurnTaker tt) => DestroyHerosCards(tt, num1, num2));
             if (base.UseUnityCoroutines)

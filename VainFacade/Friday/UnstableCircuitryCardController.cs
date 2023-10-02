@@ -85,21 +85,12 @@ namespace VainFacadePlaytest.Friday
                 base.GameController.ExhaustCoroutine(coroutine);
             }
 
-            //You may draw 2 cards. If you do, shuffle this card into your deck.
-            List<DrawCardAction> results = new List<DrawCardAction>();
-            coroutine = DrawCards(DecisionMaker, 2, true, false, results, false);
-            if (base.UseUnityCoroutines)
+            //For some reason, if the damage incaps Friday, it still asks to draw 2 cards unless this check is here.
+            if (!this.TurnTaker.IsIncapacitatedOrOutOfGame)
             {
-                yield return base.GameController.StartCoroutine(coroutine);
-            }
-            else
-            {
-                base.GameController.ExhaustCoroutine(coroutine);
-            }
-
-            if (DidDrawCards(results))
-            {
-                coroutine = base.GameController.ShuffleCardIntoLocation(DecisionMaker, this.Card, this.TurnTaker.Deck, false, cardSource: GetCardSource());
+                //You may draw 2 cards. If you do, shuffle this card into your deck.
+                List<DrawCardAction> results = new List<DrawCardAction>();
+                coroutine = DrawCards(DecisionMaker, 2, true, false, results, false);
                 if (base.UseUnityCoroutines)
                 {
                     yield return base.GameController.StartCoroutine(coroutine);
@@ -107,6 +98,19 @@ namespace VainFacadePlaytest.Friday
                 else
                 {
                     base.GameController.ExhaustCoroutine(coroutine);
+                }
+
+                if (DidDrawCards(results))
+                {
+                    coroutine = base.GameController.ShuffleCardIntoLocation(DecisionMaker, this.Card, this.TurnTaker.Deck, false, cardSource: GetCardSource());
+                    if (base.UseUnityCoroutines)
+                    {
+                        yield return base.GameController.StartCoroutine(coroutine);
+                    }
+                    else
+                    {
+                        base.GameController.ExhaustCoroutine(coroutine);
+                    }
                 }
             }
         }

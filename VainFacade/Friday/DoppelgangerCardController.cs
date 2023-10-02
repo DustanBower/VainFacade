@@ -171,13 +171,13 @@ namespace VainFacadePlaytest.Friday
 
         public override CustomDecisionText GetCustomDecisionText(IDecision decision)
         {
+            //Console.WriteLine("Returning custom selection text");
             return new CustomDecisionText(
             $"Select a card to play or discard.",
             $"{decision.DecisionMaker.Name} is selecting a card to play or discard.",
             $"Vote for a card to play or discard.",
             $"a card to play or discard."
             );
-
         }
 
         //Modified to play or discard the selected card, and move the other cards back to the deck
@@ -232,8 +232,8 @@ namespace VainFacadePlaytest.Friday
                 //}
 
                 SelectionType selectionType = SelectionType.Custom;
-
-                IEnumerator coroutine3 = GameController.SelectCardAndStoreResults(hero, selectionType, actuallyRevealedCards, selectCardDecision, optional: false, allowAutoDecide: false, null, null, null, null, null, maintainCardOrder: false, ignoreBattleZone: true);
+                //Console.WriteLine("Performing Card Selection, selection type " + SelectionType.Custom.ToString());
+                IEnumerator coroutine3 = GameController.SelectCardAndStoreResults(hero, selectionType, actuallyRevealedCards, selectCardDecision, optional: false, allowAutoDecide: false, null, null, null, null, null, maintainCardOrder: false, ignoreBattleZone: true, cardSource:GetCardSource());
                 if (UseUnityCoroutines)
                 {
                     yield return GameController.StartCoroutine(coroutine3);
