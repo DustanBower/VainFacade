@@ -121,7 +121,7 @@
 				"When {Friday} would be dealt 5 or more damage from a single source, you may reduce that damage by up to 3."
 			],
 			"powers": [
-				"Reveal cards from the top of your deck until 2 Mimicries are revealed. Put one into your hand or into play. Shuffle the remaining revealed cards into your deck. If a card entered play this way, destroy this card."
+				"Reveal cards from the top of your deck until 2 mimicries are revealed. Put one into your hand or into play. Shuffle the remaining revealed cards into your deck. If a card entered play this way, destroy this card."
 			],
 			"icons": [
 				"ReduceDamageTaken",
@@ -345,7 +345,7 @@
 				"When a card from another deck would cause {Friday} to deal herself damage, you may discard a card from your hand to prevent that damage."
 			],
 			"powers": [
-				"{Friday} deals 1 Target 2 melee or 2 projectile damage. Draw a card."
+				"{Friday} deals 1 target 2 melee or 2 projectile damage. Draw a card."
 			],
 			"icons": [
 				"Discard",
