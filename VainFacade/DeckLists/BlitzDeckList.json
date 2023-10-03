@@ -20,7 +20,7 @@
 				"VainFacadePlaytest.Sphere"
 			],
 			"setup": [
-				"Put {BlitzCharacter}'s character cards into play [i]Friday Night Lightning[/i] side up. Shuffle the villain deck. Reveal cards from the top of the villain deck until a Circuit is revealed. Put it into play. Shuffle the remaining cards into the deck."
+				"Put {BlitzCharacter}'s character cards into play, [i]Friday Night Lightning[/i] side up. Shuffle the villain deck. Reveal cards from the top of the villain deck until a Circuit is revealed. Put it into play. Shuffle the remaining cards into the deck."
 			],
 			"gameplay": [
 				"Lightning damage cannot have its type changed. Lightning damage dealt to {BlitzCharacter} is irreducible.",
@@ -50,7 +50,7 @@
 				"When a target other than {BlitzCharacter} would be dealt lightning damage by a source other than {BlitzCharacter}, 1 player discards a card or that damage is redirected to {BlitzCharacter}.",
 				"When {BlitzCharacter} is dealt lightning damage, increase the next lightning damage dealt by {BlitzCharacter} by X minus 1, where X = the damage taken.",
 				"At the end of the villain turn, if there is at least 1 villain Circuit in play, flip this card.",
-				"At the end of the villain turn, the environment deals {BlitzCharacter} 3 lightning damage, then {BlitzCharacter} deals the hero target with the highest HP {H + 1} melee damage and plays the top card of the villain deck."
+				"At the end of the villain turn, the environment deals {BlitzCharacter} 3 lightning damage and {BlitzCharacter} deals the hero target with the highest HP {H + 1} melee damage. Then play the top card of the villain deck."
 			],
 			"flippedAdvanced": "At the end of the villain turn, {BlitzCharacter} deals the hero target with the highest HP {H - 1} melee damage.",
 			"flippedIcons": [
@@ -163,7 +163,7 @@
 			],
 			"body": [
 				"When this card enters play, reveal cards from the top of the villain deck until a Circuit is revealed. Put it into play. Discard the other revealed cards.",
-				"The first time each turn {BlitzCharacter} is dealt damage by a target other than {BlitzCharacter}, he deals the source of that damage 3 lightning damage.",
+				"The first time each turn {BlitzCharacter} is dealt damage by any target other than himself, he deals the source of that damage 3 lightning damage.",
 				"At the start of the villain turn, destroy this card."
 			],
 			"icons": [
@@ -246,17 +246,7 @@
 				"Destroy",
 				"DealDamageLightning"
 			],
-			"flavorQuotes": [
-				{
-					"identifier": "Node",
-					"text": "{You could have been{BR}a hero. He didn't make you{BR}a villain.} {scream}"
-				},
-				{
-					"identifier": "Blitz",
-					"text": "Careful baby, high voltage!"
-				}
-			],
-			"flavorReference": "Sphere: Grudge Match #9"
+			"flavorText": "{BR}[b]Node[/b]: {You could have been{BR}a hero. He didn't make you{BR}a villain.} *scream*{BR}[b]Blitz[/b]: “Careful, baby, high voltage!”{BR}{BR}-Blitz, Sphere: Grudge Match #9"
 		},
 		{
 			"identifier": "PersonalFoul",
@@ -315,7 +305,7 @@
 			"hitpoints": 8,
 			"body": [
 				"When {BlitzCharacter} is dealt lightning damage, move a card from the top of the villain deck beneath this card for each point of damage dealt this way.",
-				"At the start of the villain turn, shuffle the cards beneath this one and discard cards from under this card until a One-Shot is discarded. If a One-Shot is discarded this way, put it into play."
+				"At the start of the villain turn, shuffle the cards beneath this one and discard cards from under this card until a One-Shot is discarded. When a One-Shot is discarded this way, put it into play."
 			],
 			"icons": [
 				"Manipulate",
@@ -368,7 +358,7 @@
 			"body": [
 				"When this card enters play, destroy all other Playbooks.",
 				"When this card is destroyed, play the top card of the villain deck.",
-				"The first time each turn {BlitzCharacter} deals a hero target lightning damage, {H - 2} players discard a card, then play the top card of the villain deck."
+				"The first time each turn {BlitzCharacter} deals any hero target lightning damage, {H - 2} players discard a card, then play the top card of the villain deck."
 			],
 			"icons": [
 				"Destroy",
@@ -394,7 +384,7 @@
 			"body": [
 				"When this card enters play, destroy all other Playbooks. When this card is destroyed, play the top card of the villain deck.",
 				"The first time {BlitzCharacter} is dealt damage each turn, 1 player discards a card.",
-				"The first time {BlitzCharacter} would deal damage to a target other than {BlitzCharacter} each turn, redirect that damage to the hero target with the second lowest HP."
+				"The first time {BlitzCharacter} would deal damage to any target other than himself each turn, redirect that damage to the hero target with the second lowest HP."
 			],
 			"icons": [
 				"Destroy",

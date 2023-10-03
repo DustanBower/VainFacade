@@ -105,7 +105,7 @@
 			],
 			"body": [
 				"When this card enters play, discard any number of cards and draw a card for each card discarded this way. Then put any number of Backups from your hand into play.",
-				"At the end of your turn, you may destroy this card. Otherwise, you may put a Backup from your trash into play. Then discard X minus 2 cards, where X = the number of Backups in play."
+				"At the end of your turn, you may destroy this card. If you do not, you may put a Backup from your trash into play. Then discard X minus 2 cards, where X = the number of Backups in play."
 			],
 			"icons": [
 				"Discard",
@@ -182,7 +182,7 @@
 				"one-shot"
 			],
 			"body": [
-				"Discard any number of cards. Increase the next damage dealt by Burgess by X plus 1, where X is the amount of cards discarded in this way."
+				"Discard any number of cards. Increase the next damage dealt by Burgess by X plus 1, where X is the amount of cards discarded this way."
 			],
 			"icons": [
 				"Discard",
@@ -209,7 +209,7 @@
 				"clue"
 			],
 			"body": [
-				"The first time each turn a villain target deals damage, you may draw a card."
+				"The first time each turn any villain target deals damage, you may draw a card."
 			],
 			"icons": [
 				"DrawCardNow"
@@ -231,8 +231,9 @@
 				"limited"
 			],
 			"body": [
-				"Play this card next to a target that has dealt {BurgessCharacter} damage since the end of your last turn. When this card is not next to a target, destroy it. Redirect all damage dealt by that target to {BurgessCharacter} and increase that damage by 1.",
-				"[b]Power:[/b] {BurgessCharacter} deals the target next to this{BR}        card 3 projectile damage or destroys{BR}        this card."
+				"Play this card next to a target that has dealt {BurgessCharacter} damage since the end of your last turn. Redirect all damage dealt by that target to {BurgessCharacter} and increase that damage by 1.",
+				"When this card is not next to a target, destroy it.",
+				"[b]Power:[/b] Either {BurgessCharacter} deals the target next{BR}        to this card 3 projectile damage or{BR}        destroys this card."
 			],
 			"icons": [
 				"RedirectDamage",
@@ -339,7 +340,7 @@
 				"limited"
 			],
 			"body": [
-				"The first time each turn {BurgessCharacter} or a Backup is dealt damage, {BurgessCharacter} may deal the source of that damage 1 psychic or 2 projectile damage."
+				"The first time each turn {BurgessCharacter} or any Backup is dealt damage, {BurgessCharacter} may deal the source of that damage 1 psychic or 2 projectile damage."
 			],
 			"icons": [
 				"CounterDamage",
@@ -363,7 +364,7 @@
 			],
 			"hitpoints": 10,
 			"body": [
-				"Reduce damage dealt to this card by 1. Once per turn when {BurgessCharacter} or a Backup deals a target damage, this card may deal that target 3 projectile damage. When this card enters play, discard up to 5 cards. Set this card's HP to twice the number of cards discarded."
+				"Reduce damage dealt to this card by 1. Once per turn when {BurgessCharacter} or any Backup deals a target damage, this card may deal that target 3 projectile damage. When this card enters play, discard up to 5 cards. Set this card's HP to twice the number of cards discarded."
 			],
 			"powers": [
 				"Discard a card. Increase damage dealt by {BurgessCharacter} and Backups by 1 until the start of your next turn."
@@ -392,7 +393,7 @@
 				"limited"
 			],
 			"body": [
-				"Once per round when {BurgessCharacter} or a Backup would deal damage, you may increase that damage by 1 plus the number of Backup in play. If damage is dealt this way, discard 3 cards or destroy this card."
+				"Once per round when {BurgessCharacter} or any Backup would deal damage, you may increase that damage by 1 plus the number of Backup in play. If damage is dealt this way, discard 3 cards or destroy this card."
 			],
 			"icons": [
 				"IncreaseDamageDealt",
@@ -446,7 +447,7 @@
 			],
 			"hitpoints": 3,
 			"body": [
-				"The first time each turn {BurgessCharacter} or a Backup is dealt damage, this card may deal the source of that damage 1 projectile damage.",
+				"The first time each turn {BurgessCharacter} or any Backup is dealt damage, this card may deal the source of that damage 1 projectile damage.",
 				"When this card enters play, you may draw a card."
 			],
 			"icons": [
