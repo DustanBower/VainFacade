@@ -1,5 +1,6 @@
 ﻿using Handelabra;
 using Handelabra.Sentinels.Engine.Controller;
+using Handelabra.Sentinels.Engine.Controller.OblivAeon;
 using Handelabra.Sentinels.Engine.Model;
 using System;
 using System.Collections;
@@ -21,7 +22,7 @@ namespace VainFacadePlaytest.Node
         {
             // "Put a non-character [i]Connected[/i] card in play on top of its deck."
             List<SelectCardDecision> choices = new List<SelectCardDecision>();
-            IEnumerator selectCoroutine = base.GameController.SelectCardAndStoreResults(DecisionMaker, SelectionType.MoveCardOnDeck, new LinqCardCriteria((Card c) => !c.IsCharacter && IsConnected(c) && !c.IsOneShot, "non-character Connected", singular: "card in play", plural: "cards in play"), choices, false, cardSource: GetCardSource());
+            IEnumerator selectCoroutine = base.GameController.SelectCardAndStoreResults(DecisionMaker, SelectionType.MoveCardOnDeck, new LinqCardCriteria((Card c) => !c.IsCharacter && IsConnected(c) && !c.IsOneShot && base.GameController.IsCardVisibleToCardSource(c, GetCardSource()) && (FindCardController(c) is MissionCardController ? c.IsFlipped : true), "non-character Connected", singular: "card in play", plural: "cards in play"), choices, false, cardSource: GetCardSource());
             if (base.UseUnityCoroutines)
             {
                 yield return base.GameController.StartCoroutine(selectCoroutine);

@@ -70,14 +70,17 @@ namespace VainFacadePlaytest.Node
         {
             SetCardPropertyToTrueIfRealAction(PlayedThisTurn);
             // "... you may draw a card."
-            IEnumerator drawCoroutine = DrawCard(base.HeroTurnTaker, optional: true);
-            if (base.UseUnityCoroutines)
+            if (this.Card.BattleZone == this.TurnTaker.BattleZone)
             {
-                yield return base.GameController.StartCoroutine(drawCoroutine);
-            }
-            else
-            {
-                base.GameController.ExhaustCoroutine(drawCoroutine);
+                IEnumerator drawCoroutine = DrawCard(base.HeroTurnTaker, optional: true);
+                if (base.UseUnityCoroutines)
+                {
+                    yield return base.GameController.StartCoroutine(drawCoroutine);
+                }
+                else
+                {
+                    base.GameController.ExhaustCoroutine(drawCoroutine);
+                }
             }
         }
     }

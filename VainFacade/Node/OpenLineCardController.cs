@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
+using static System.Collections.Specialized.BitVector32;
 
 namespace VainFacadePlaytest.Node
 {
@@ -80,8 +81,8 @@ namespace VainFacadePlaytest.Node
         {
             base.AddTriggers();
             // "When you or that play area's owner would draw or play a card, the other may do so instead."
-            AddTrigger((DrawCardAction dca) => base.TurnTaker.IsHero && base.Card.Location.HighestRecursiveLocation.OwnerTurnTaker.IsHero && (dca.HeroTurnTaker == base.TurnTaker.ToHero() || dca.HeroTurnTaker == base.Card.Location.HighestRecursiveLocation.OwnerTurnTaker.ToHero()), OfferDrawExchangeResponse, new TriggerType[] { TriggerType.CancelAction, TriggerType.DrawCard }, TriggerTiming.Before);
-            AddTrigger((PlayCardAction pca) => base.TurnTaker.IsHero && base.Card.Location.HighestRecursiveLocation.OwnerTurnTaker.IsHero && (pca.ResponsibleTurnTaker == base.TurnTaker || pca.ResponsibleTurnTaker == base.Card.Location.HighestRecursiveLocation.OwnerTurnTaker) && !pca.IsPutIntoPlay, OfferPlayExchangeResponse, new TriggerType[] { TriggerType.CancelAction, TriggerType.PlayCard }, TriggerTiming.Before);
+            AddTrigger((DrawCardAction dca) => base.TurnTaker.IsHero && base.Card.Location.HighestRecursiveLocation.OwnerTurnTaker.IsHero && (dca.HeroTurnTaker == base.TurnTaker.ToHero() || dca.HeroTurnTaker == base.Card.Location.HighestRecursiveLocation.OwnerTurnTaker.ToHero()) && this.Card.BattleZone == this.TurnTaker.BattleZone, OfferDrawExchangeResponse, new TriggerType[] { TriggerType.CancelAction, TriggerType.DrawCard }, TriggerTiming.Before);
+            AddTrigger((PlayCardAction pca) => base.TurnTaker.IsHero && base.Card.Location.HighestRecursiveLocation.OwnerTurnTaker.IsHero && (pca.ResponsibleTurnTaker == base.TurnTaker || pca.ResponsibleTurnTaker == base.Card.Location.HighestRecursiveLocation.OwnerTurnTaker) && !pca.IsPutIntoPlay && this.Card.BattleZone == this.TurnTaker.BattleZone, OfferPlayExchangeResponse, new TriggerType[] { TriggerType.CancelAction, TriggerType.PlayCard }, TriggerTiming.Before);
         }
 
         private IEnumerator OfferDrawExchangeResponse(DrawCardAction dca)
@@ -165,6 +166,33 @@ namespace VainFacadePlaytest.Node
                     {
                         base.GameController.ExhaustCoroutine(cancelCoroutine);
                     }
+
+                    //This section added so that the card actually moves back to hand, instead of hanging out in the play area
+                    //Copied from Superimposed Realities card from FSC Continuance Wanderer
+                    Location origin = pca.Origin;
+                    if (origin.IsRevealed)
+                    {
+                        //If the card was revealed and played, put it back where it was revealed from so it doesn't get stuck in the Revealed area
+                        //based on PrimordialSeedCardController
+                        MoveCardJournalEntry entry = (from mc in base.Journal.MoveCardEntriesThisTurn()
+                                                      where mc.Card == pca.CardToPlay && mc.ToLocation.IsRevealed
+                                                      select mc).LastOrDefault();
+                        if (entry != null)
+                        {
+                            origin = entry.FromLocation;
+                        }
+                    }
+                    IEnumerator moveCoroutine = GameController.MoveCard(null, pca.CardToPlay, origin, pca.FromBottom, false, evenIfIndestructible: true, doesNotEnterPlay: true, cardSource: GetCardSource());
+                    if (base.UseUnityCoroutines)
+                    {
+                        yield return base.GameController.StartCoroutine(moveCoroutine);
+                    }
+                    else
+                    {
+                        base.GameController.ExhaustCoroutine(moveCoroutine);
+                    }
+
+
                     IEnumerator playCoroutine = SelectAndPlayCardFromHand(base.GameController.FindHeroTurnTakerController(couldPlayInstead), optional: false, associateCardSource: true);
                     if (base.UseUnityCoroutines)
                     {

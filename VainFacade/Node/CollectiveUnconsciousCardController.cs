@@ -27,7 +27,7 @@ namespace VainFacadePlaytest.Node
         {
             base.AddTriggers();
             // "When {NodeCharacter} or that hero uses a power, the other gains 1 HP."
-            AddTrigger((UsePowerAction upa) => IsRelevantPower(upa), ExchangeHealResponse, TriggerType.GainHP, TriggerTiming.After);
+            AddTrigger((UsePowerAction upa) => IsRelevantPower(upa) && this.Card.BattleZone == this.TurnTaker.BattleZone, ExchangeHealResponse, TriggerType.GainHP, TriggerTiming.After);
             // "When {NodeCharacter} would deal that hero psychic damage, that hero recovers that much HP instead."
             AddPreventDamageTrigger((DealDamageAction dda) => dda.DamageSource != null && dda.DamageSource.Card != null && dda.DamageSource.Card == base.CharacterCard && IsHeroCharacterCard(dda.Target) && dda.Target.Owner == base.Card.Location.HighestRecursiveLocation.OwnerTurnTaker && dda.CanDealDamage && dda.DamageType == DamageType.Psychic, (DealDamageAction dda) => base.GameController.GainHP(dda.Target, dda.Amount, cardSource: GetCardSource()), new TriggerType[] { TriggerType.GainHP }, isPreventEffect: true);
         }
