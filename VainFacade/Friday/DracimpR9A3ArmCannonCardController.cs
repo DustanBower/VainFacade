@@ -14,6 +14,7 @@ namespace VainFacadePlaytest.Friday
             : base(card, turnTakerController)
         {
             //Show all damage types that have been dealt since the end of your last turn
+            AllowFastCoroutinesDuringPretend = false;
             base.SpecialStringMaker.ShowSpecialString(() => HadLastTurn() ? SpecialStringText() : TextIfNoLastTurn());
         }
 
@@ -44,7 +45,7 @@ namespace VainFacadePlaytest.Friday
         public override void AddTriggers()
         {
             //When {Friday} would deal a type of damage that has been dealt by a source other than {Friday} since the end of your last turn, you may increase that damage by 1.
-            AddTrigger<DealDamageAction>((DealDamageAction dd) => dd.DamageSource.IsCard && dd.DamageSource.Card == this.CharacterCard && GetDamageTypesSinceLastTurn().Count() > 0 && GetDamageTypesSinceLastTurn().Contains(dd.DamageType) && !dd.IsUnincreasable, IncreaseResponse, new TriggerType[2] { TriggerType.WouldBeDealtDamage, TriggerType.IncreaseDamage }, TriggerTiming.Before);
+            AddTrigger<DealDamageAction>((DealDamageAction dd) => dd.DamageSource.IsCard && dd.DamageSource.Card == this.CharacterCard && GetDamageTypesSinceLastTurn().Count() > 0 && GetDamageTypesSinceLastTurn().Contains(dd.DamageType) && !dd.IsUnincreasable, IncreaseResponse, new TriggerType[1] { TriggerType.IncreaseDamage }, TriggerTiming.Before);
         }
 
         private IEnumerator IncreaseResponse(DealDamageAction dd)
