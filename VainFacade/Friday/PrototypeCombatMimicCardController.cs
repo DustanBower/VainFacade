@@ -30,7 +30,7 @@ namespace VainFacadePlaytest.Friday
 		{
             //Once per round, at the end of another hero's turn, {Friday} may deal that hero 2 lightning damage.
             //When a hero other than {Friday} is dealt damage this way, {Friday} may use a power in that hero's play area, replacing the name of that hero on that card with {Friday}. “You” on that card refers to that hero's player.
-            AddEndOfTurnTrigger((TurnTaker tt) => tt.IsPlayer && tt != this.TurnTaker && !HasBeenSetToTrueThisRound(OneTimePerRoundKey), EndOfTurnResponse, new TriggerType[2] { TriggerType.DealDamage, TriggerType.UsePower });
+            AddEndOfTurnTrigger((TurnTaker tt) => tt.IsPlayer && tt != this.TurnTaker && !HasBeenSetToTrueThisRound(OneTimePerRoundKey) && !tt.IsIncapacitatedOrOutOfGame, EndOfTurnResponse, new TriggerType[2] { TriggerType.DealDamage, TriggerType.UsePower });
         }
 
         private IEnumerator EndOfTurnResponse(PhaseChangeAction pca)
