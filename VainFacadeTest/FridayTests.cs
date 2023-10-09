@@ -1035,7 +1035,7 @@ namespace VainFacadeTest
             StartGame();
 
             //Once per round, at the end of another hero's turn, {Friday} may deal that hero 2 lightning damage.
-            //When a hero other than {Friday} is dealt damage this way, {Friday} may use a power in that hero's play area, replacing the name of that hero on that card with {Friday} and with “You” on that card referring to {Friday}'s player.
+            //When a hero other than {Friday} is dealt damage this way, {Friday} may use a power in that hero's play area, replacing the name of the hero on that card with {Friday} and with “You” on that card referring to {Friday}'s player.
             Card proto = PlayCard("PrototypeCombatMimic");
             DecisionYesNo = true;
 
@@ -1073,7 +1073,7 @@ namespace VainFacadeTest
             StartGame();
 
             //Once per round, at the end of another hero's turn, {Friday} may deal that hero 2 lightning damage.
-            //When a hero other than {Friday} is dealt damage this way, {Friday} may use a power in that hero's play area, replacing the name of that hero on that card with {Friday} and with “You” on that card referring to {Friday}'s player.
+            //When a hero other than {Friday} is dealt damage this way, {Friday} may use a power in that hero's play area, replacing the name of the hero on that card with {Friday} and with “You” on that card referring to {Friday}'s player.
             Card proto = PlayCard("PrototypeCombatMimic");
             DecisionSelectCard = bunker.CharacterCard;
             Card link = PlayCard("MicroAssembler");
