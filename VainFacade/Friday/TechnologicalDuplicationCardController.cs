@@ -482,7 +482,9 @@ namespace VainFacadePlaytest.Friday
                             cardSource.AddAssociatedCardSource(powerCC.GetCardSource());
                             string powerDescription = card.GetPowerDescription(j);
                             string oldValue = "{" + card.Owner.Identifier + "}";
-                            powerDescription = powerDescription.Replace(oldValue, "{" + this.TurnTaker.Name + "}");
+                            string oldValue2 = "{" + card.Owner.Identifier + "Character}";
+                            powerDescription = powerDescription.Replace(oldValue, "{" + this.Card.Owner.Name + "}");
+                            powerDescription = powerDescription.Replace(oldValue2, "{" + this.Card.Owner.Name + "}");
                             powerDescription = powerDescription.Replace(card.Title, this.Card.Title);
                             int powerIndex = j;
                             Power item = new Power(DecisionMaker, cardController, powerDescription, () => powerCC.UsePower(powerIndex), num, powerCC, cardSource);
@@ -531,7 +533,9 @@ namespace VainFacadePlaytest.Friday
                                 cardSource.AddAssociatedCardSource(powerCC.GetCardSource());
                                 string powerDescription = p.Description;
                                 string oldValue = "{" + card.Owner.Identifier + "}";
+                                string oldValue2 = "{" + card.Owner.Identifier + "Character}";
                                 powerDescription = powerDescription.Replace(oldValue, "{" + this.Card.Owner.Name + "}");
+                                powerDescription = powerDescription.Replace(oldValue2, "{" + this.Card.Owner.Name + "}");
                                 powerDescription = powerDescription.Replace(card.Title, this.Card.Title);
                                 Power item = new Power(cardController.HeroTurnTakerController, cardController, powerDescription, p.MethodCall, num, powerCC, cardSource);
                                 list.Add(item);
@@ -567,7 +571,9 @@ namespace VainFacadePlaytest.Friday
                         cardSource.AddAssociatedCardSource(abilityCC.GetCardSource());
                         string description = ability.Description;
                         string oldValue = "{" + card.Owner.Identifier + "}";
-                        description = description.Replace(oldValue, "{" + this.TurnTaker.Name +"}");
+                        string oldValue2 = "{" + card.Owner.Identifier + "Character}";
+                        description = description.Replace(oldValue, "{" + this.Card.Owner.Name + "}");
+                        description = description.Replace(oldValue2, "{" + this.Card.Owner.Name + "}");
                         ActivatableAbility item = new ActivatableAbility(DecisionMaker, this, ability.Definition, () => abilityCC.ActivateAbilityEx(ability.Definition), num, abilityCC, activatingTurnTaker, cardSource, description);
                         list.Add(item);
                     }
