@@ -1413,14 +1413,21 @@ namespace Handelabra.Sentinels.UnitTest
                 {
                     SelectNumberDecision selectNumber = decision as SelectNumberDecision;
                     Console.WriteLine("Make a SelectNumberDecision: [" + selectNumber.Choices.ToCommaList() + "]");
-
+                    
                     if (this.DecisionSelectNumber != null)
                     {
                         selectNumber.SelectedNumber = this.DecisionSelectNumber.Value;
                     }
                     else
                     {
-                        selectNumber.SelectedNumber = selectNumber.Choices.FirstOrDefault();
+                        if (selectNumber.IsOptional)
+                        {
+                            selectNumber.FinishedSelecting = true;
+                        }
+                        else
+                        {
+                            selectNumber.SelectedNumber = selectNumber.Choices.FirstOrDefault();
+                        }
                     }
                     Console.WriteLine("Selected: " + selectNumber.SelectedNumber);
                 }
