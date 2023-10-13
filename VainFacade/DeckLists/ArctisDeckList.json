@@ -1,0 +1,512 @@
+﻿{
+  "name": "Arctis",
+  "kind": "Hero",
+  "initialCardIdentifiers": [
+    "ArctisCharacter"
+  ],
+  "cards": [
+    {
+      "identifier": "ArctisCharacter",
+      "count": 1,
+      "title": "Arctis",
+      "body": "Adaptive Weaponry",
+      "backgroundColor": "9999FF",
+      "character": true,
+      "powers": [
+        "You may draw a card. If you don't, then until the end of your next turn, when cold damage would be dealt to a target, you may reduce that damage by 1 and put an icework from your hand into play."
+      ],
+      "icons": [
+        "HasPower",
+        "DrawCardNow",
+        "ReduceDamageDealtCold",
+        "PlayCardNow"
+      ],
+      "hitpoints": 29,
+      "nemesisIdentifiers": [
+        "VainFacadePlaytest.Arctis"
+      ],
+      "incapacitatedAbilities": [
+        "Select a target. Reduce the next damage dealt to that target by 2.",
+        "1 hero may use a power.",
+        "Destroy an ongoing card."
+      ],
+      "flippedIcons": [
+        "ReduceDamageTaken",
+        "UsePowerNow",
+        "DestroyOngoing"
+      ],
+      "complexity": 2,
+      "openingLines": {
+        "default": "Freeze!",
+        "TheDreamerCharacter": "Be careful, everyone, and stay focused!",
+        "OblivAeonFrontPageCharacter": "You stand for nothing, and that is why you'll fail."
+      },
+      "openingLineRequests": {
+        "OblivAeonFrontPageCharacter": "ExpatrietteCharacter"
+      }
+    },
+    {
+      "identifier": "ChildOfTheSnow",
+      "count": 3,
+      "title": "Child of the Snow",
+      "keywords": [
+        "one-shot"
+      ],
+      "body": [
+        "Draw a card.",
+        "Search your deck for an icework and put it into your hand. Shuffle your deck.",
+        "You may play a card.",
+        "{Arctis} deals himself 1 cold damage."
+      ],
+      "icons": [
+        "DrawCardNow",
+        "Search",
+        "PlayCardNow",
+        "DealDamageCold"
+      ],
+      "flavorQuotes": [
+        {
+          "identifier": "Edwin Yarwick",
+          "text": "He's been so sick for so long. I wish you'd seen him. The wonder in his eyes, snowflakes freezing on his skin. I've never seen him smile like that..."
+        }
+      ],
+      "flavorReference": "Edwin Yarwick, Arctis #1"
+    },
+    {
+      "identifier": "ChillTouch",
+      "count": 3,
+      "title": "Chill Touch",
+      "keywords": [
+        "one-shot"
+      ],
+      "body": [
+        "{Arctis} deals 1 target 1 melee and 1 cold damage.",
+        "Destroy an ongoing or reduce damage dealt by a target dealt cold damage this way by 2 until the start of your next turn."
+      ],
+      "icons": [
+        "DealDamageMelee",
+        "DealDamageCold",
+        "DestroyOngoing",
+        "ReduceDamageDealt"
+      ],
+      "flavorQuotes": [
+        {
+          "identifier": "Blitz",
+          "text": "Didn't y'all check the forecast? Thunderstorms all day long."
+        },
+        {
+          "identifier": "Arctis",
+          "text": "Funny. I heard it'd be too cold."
+        }
+      ],
+      "flavorReference": "Arctis #26"
+    },
+    {
+      "identifier": "ColdAsIce",
+      "count": 3,
+      "title": "Cold as Ice",
+      "keywords": [
+        "ongoing"
+      ],
+      "body": [
+        "When {Arctis} is dealt cold damage, he regains 1 hp.",
+        "The first time he regains hp this way each turn, you may draw a card or put a card from your hand into play. If you do neither, {Arctis} regains 1 hp.",
+        "When this card enters play, {Arctis} deals himself 1 cold damage."
+      ],
+      "icons": [
+        "GainHP",
+        "DrawCardNow",
+        "PlayCardNow",
+        "DealDamageCold"
+      ],
+      "flavorQuotes": [
+        {
+          "identifier": "Lowe",
+          "text": "Kid, you're freezing. Got frostbite from touching you. How are you alive?"
+        }
+      ],
+      "flavorReference": "Lowe, Strange Stories #43"
+    },
+    {
+      "identifier": "ColdFront",
+      "count": 2,
+      "title": "Cold Front",
+      "keywords": [
+        "ongoing"
+      ],
+      "body": [
+        "When cold damage would be dealt to a target, you may reduce that damage by 1 or 2 to put an icework into play from your hand."
+      ],
+      "icons": [
+        "ReduceDamageTakenCold",
+        "PlayCardNow"
+      ],
+      "flavorQuotes": [
+        {
+          "identifier": "Amalgam",
+          "text": "Snowflake melting in the sun, we are as you always feared, but can ensure you never lose another."
+        },
+        {
+          "identifier": "Arctis",
+          "text": "Feared? I've waited so long for this."
+        }
+      ],
+      "flavorReference": "Apocalypse 10: No More Heroes"
+    },
+    {
+      "identifier": "CryogenicBlood",
+      "count": 3,
+      "title": "Cryogenic Blood",
+      "keywords": [
+        "ongoing",
+        "limited"
+      ],
+      "body": [
+        "Increase damage dealt by {Arctis} by 1.",
+        "At the end of your turn, {Arctis} may deal himself up to 2 cold damage. If he is dealt no damage this way, destroy this card."
+      ],
+      "icons": [
+        "IncreaseDamageDealt",
+        "EndOfTurnAction",
+        "DealDamageCold",
+        "DestroySelf"
+      ],
+      "flavorQuotes": [
+        {
+          "identifier": "Dr. Vargha",
+          "text": "Your theory is correct. The child is stable at 28 degrees."
+        }
+      ],
+      "flavorReference": "Dr. Vargha, Strange Stories #42"
+    },
+    {
+      "identifier": "CrystalArmor",
+      "count": 2,
+      "title": "Crystal Armor",
+      "keywords": [
+        "icework"
+      ],
+      "hitpoints": 5,
+      "body": [
+        "When this card is played, destroy it.",
+        "When this card enters play, destroy all other copies of this card.",
+        "When this card is destroyed, draw 2 cards.",
+        "When {Arctis} would be dealt damage, you may redirect it to this card."
+      ],
+      "icons": [
+        "DestroyHero",
+        "DrawCardNow",
+        "RedirectDamage"
+      ],
+      "flavorQuotes": [
+        {
+          "identifier": "Forge",
+          "text": "Stay behind me. Things are about to get hairy."
+        },
+        {
+          "identifier": "Arctis",
+          "text": "Thanks, but I think I'll be alright."
+        }
+      ],
+      "flavorReference": "Portal in Paradise #4"
+    },
+    {
+      "identifier": "DefensiveCombat",
+      "count": 2,
+      "title": "Defensive Combat",
+      "keywords": [
+        "ongoing"
+      ],
+      "body": [
+        "When {Arctis} would be dealt cold damage, you may have an icework regain that much hp instead.",
+        "When {Arctis} would be dealt non-cold damage, you may increase that damage by 1 and redirect it to an icework."
+      ],
+      "icons": [
+        "CancelledDamageGreen",
+        "GainHP",
+        "IncreaseDamageTaken",
+        "RedirectDamage"
+      ],
+      "flavorQuotes": [
+        {
+          "identifier": "Cassandra",
+          "text": "I'll take you beyond the Veil either way. If you answer my riddle, I'll bring you back."
+        }
+      ],
+      "flavorReference": "Cassandra, Arctis #127"
+    },
+    {
+      "identifier": "FreezingVeins",
+      "count": 3,
+      "title": "Freezing Veins",
+      "keywords": [
+        "ongoing",
+        "limited"
+      ],
+      "body": [
+        "Increase cold damage dealt by {Arctis} by 1.",
+        "When {Arctis} deals non-cold damage to a target, he then deals that target 1 cold damage. The type of this damage cannot be changed.",
+        "At the end of your turn, {Arctis} deals himself 1 cold damage."
+      ],
+      "icons": [
+        "IncreaseDamageDealtCold",
+        "DealDamageCold",
+        "EndOfTurnAction"
+      ],
+      "flavorQuotes": [
+        {
+          "identifier": "Julian",
+          "text": "My blood is nearly ice, but I could never be as cold as you."
+        },
+        {
+          "identifier": "Wesley Pryor",
+          "text": "Come now, Julian. Is that any way to speak to your Godfather?"
+        }
+      ],
+      "flavorReference": "Arctis #141"
+    },
+    {
+      "identifier": "FrostLance",
+      "count": 2,
+      "title": "Frost Lance",
+      "keywords": [
+        "icework"
+      ],
+      "hitpoints": 3,
+      "body": [
+        "When this card is played, destroy it.",
+        "When this card is destroyed, draw 2 cards."
+      ],
+      "activatableAbilities": [
+        {
+          "name": "{ice}",
+          "text": "Discard any number of cards. {Arctis} deals 1 target X plus 2 melee damage, where X = the number of cards discarded this way. Destroy this card."
+        }
+      ],
+      "powers": [
+        "If you have activated no {iceSmall} effects this turn, activate up to two {iceSmall} effects."
+      ],
+      "icons": [
+        "DestroySelf",
+        "DrawCardNow",
+        "VainFacadePlaytest.ice",
+        "Discard"
+      ],
+      "flavorQuotes": [
+        {
+          "identifier": "Julian",
+          "text": "This is for Geyser, you metal @#$%&!!"
+        }
+      ],
+      "flavorReference": "Arctis, Back to the Beginning"
+    },
+    {
+      "identifier": "FrozenHelm",
+      "count": 2,
+      "title": "Frozen Helm",
+      "keywords": [
+        "icework"
+      ],
+      "hitpoints": 3,
+      "body": [
+        "When this card is played, destroy it.",
+        "When this card enters play, destroy all other copies of this card.",
+        "When this card is destroyed, draw 2 cards.",
+        "When {Arctis} would be dealt damage by a target other than {Arctis}, reduce that damage by 1."
+      ],
+      "icons": [
+        "DestroyHero",
+        "DrawCardNow",
+        "ReduceDamageTaken"
+      ],
+      "flavorQuotes": [
+        {
+          "identifier": "Nightlife",
+          "text": "I hate to say I told you so..."
+        }
+      ],
+      "flavorReference": "Nightlife, Beyond the Forest one-shot"
+    },
+    {
+      "identifier": "GlacialShield",
+      "count": 2,
+      "title": "Glacial Shield",
+      "keywords": [
+        "icework"
+      ],
+      "hitpoints": 3,
+      "body": [
+        "When this card is played, destroy it.",
+        "When this card is destroyed, draw 2 cards."
+      ],
+      "activatableAbilities": [
+        {
+          "name": "{ice}",
+          "text": "Until the start of your next turn, when a target other than {Arctis} would deal damage to one of your targets, reduce that damage by 1."
+        }
+      ],
+      "powers": [
+        "If you have activated no {iceSmall} effects this turn, activate up to two {iceSmall} effects."
+      ],
+      "icons": [
+        "DestroySelf",
+        "DrawCardNow",
+        "VainFacadePlaytest.ice",
+        "ReduceDamageTaken"
+      ],
+      "flavorQuotes": [
+        {
+          "identifier": "Merope",
+          "text": "The old roads are barred to you, mortal!"
+        }
+      ],
+      "flavorReference": "Merope, Wanderers' Way one-shot"
+    },
+    {
+      "identifier": "IceAxe",
+      "count": 2,
+      "title": "Ice Axe",
+      "keywords": [
+        "icework"
+      ],
+      "hitpoints": 3,
+      "body": [
+        "When this card is played, destroy it.",
+        "When this card is destroyed, draw 2 cards."
+      ],
+      "activatableAbilities": [
+        {
+          "name": "{ice}",
+          "text": "{Arctis} deals 1 target 3 melee damage."
+        }
+      ],
+      "powers": [
+        "If you have activated no {iceSmall} effects this turn, activate up to two {iceSmall} effects."
+      ],
+      "icons": [
+        "DestroySelf",
+        "DrawCardNow",
+        "VainFacadePlaytest.ice",
+        "DealDamageMelee"
+      ],
+      "flavorQuotes": [
+        {
+          "identifier": "Shieldbearer",
+          "text": "Finally, a proper foe. I shall grant thee a quick death, and relay tales of our battle forever."
+        }
+      ],
+      "flavorReference": "Shieldbearer, Strange Stories #83"
+    },
+    {
+      "identifier": "IcicleVolley",
+      "count": 3,
+      "title": "Icicle Volley",
+      "keywords": [
+        "icework"
+      ],
+      "hitpoints": 3,
+      "body": [
+        "When this card is played, destroy it.",
+        "When this card is destroyed, draw 2 cards."
+      ],
+      "activatableAbilities": [
+        {
+          "name": "{ice}",
+          "text": "{Arctis} deals up to 3 targets 2 projectile damage each. Destroy this card."
+        }
+      ],
+      "powers": [
+        "If you have activated no {iceSmall} effects this turn, activate up to two {iceSmall} effects."
+      ],
+      "icons": [
+        "DestroySelf",
+        "DrawCardNow",
+        "VainFacadePlaytest.ice",
+        "DealDamageMelee"
+      ],
+      "flavorQuotes": [
+        {
+          "identifier": "Broadcast",
+          "text": "Bear witness now to the end of the Khaen! The Santaiyin shall overrun this feeble rock!"
+        }
+      ],
+      "flavorReference": "Broadcast, Storm of the Century: Primetime"
+    },
+    {
+      "identifier": "ShardStorm",
+      "count": 3,
+      "title": "Shard Storm",
+      "keywords": [
+        "one-shot"
+      ],
+      "body": [
+        "You may destroy any number of iceworks.",
+        "{Arctis} deals 1 target X plus 1 projectile damage or X targets 2 projectile damage each, where X = the number of cards destroyed this way."
+      ],
+      "icons": [
+        "DestroyHero",
+        "DealDamageProjectile"
+      ],
+      "flavorQuotes": [
+        {
+          "identifier": "Geyser",
+          "text": "You can't beat him, run!"
+        },
+        {
+          "identifier": "Arctis",
+          "text": "I'm not leaving you behind!"
+        }
+      ],
+      "flavorReference": "The Madness of Dr. Voigt one-shot"
+    },
+    {
+      "identifier": "SublimeCascade",
+      "count": 2,
+      "title": "Sublime Cascade",
+      "keywords": [
+        "ongoing",
+        "limited"
+      ],
+      "body": [
+        "Once per turn, when {Arctis} is dealt cold damage, you may put a card from your hand into play for each point of damage {Arctis} is dealt this way."
+      ],
+      "icons": [
+        "PlayCardNow"
+      ],
+      "flavorQuotes": [
+        {
+          "identifier": "Spectre",
+          "text": "What sorcery is this?!"
+        }
+      ],
+      "flavorReference": "Spectre, Future Comcs #57"
+    },
+    {
+      "identifier": "WintersWrath",
+      "count": 3,
+      "title": "Winter's Wrath",
+      "keywords": [
+        "ongoing",
+        "limited"
+      ],
+      "body": [
+        "When an icework would be dealt damage that would reduce its hp below 1, destroy it instead.",
+        "When an icework is destroyed, {Arctis} deals 1 target X cold damage, where X = that card's hp before it was destroyed."
+      ],
+      "icons": [
+        "CancelledDamageGreen",
+        "DestroyHero",
+        "DealDamageCold"
+      ],
+      "flavorQuotes": [
+        {
+          "identifier": "Arctis",
+          "text": "Hey, Zeno! Catch!"
+        }
+      ],
+      "flavorReference": "Arctis, Arctis #56"
+    }
+  ],
+  "promoCards": [
+  ]
+}
