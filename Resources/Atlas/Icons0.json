@@ -1,6 +1,6 @@
 {"frames": {
 
-"BurgessIcon.png":
+"ArctisIcon.png":
 {
 	"frame": {"x":0,"y":0,"w":128,"h":128},
 	"rotated": false,
@@ -8,7 +8,7 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":128,"h":128},
 	"sourceSize": {"w":128,"h":128}
 },
-"CarnavalIcon.png":
+"BurgessIcon.png":
 {
 	"frame": {"x":131,"y":0,"w":128,"h":128},
 	"rotated": false,
@@ -16,7 +16,7 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":128,"h":128},
 	"sourceSize": {"w":128,"h":128}
 },
-"EmberIcon.png":
+"CarnavalIcon.png":
 {
 	"frame": {"x":262,"y":0,"w":128,"h":128},
 	"rotated": false,
@@ -24,7 +24,7 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":128,"h":128},
 	"sourceSize": {"w":128,"h":128}
 },
-"FridayIcon.png":
+"EmberIcon.png":
 {
 	"frame": {"x":0,"y":131,"w":128,"h":128},
 	"rotated": false,
@@ -32,7 +32,7 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":128,"h":128},
 	"sourceSize": {"w":128,"h":128}
 },
-"GlyphIcon.png":
+"FridayIcon.png":
 {
 	"frame": {"x":131,"y":131,"w":128,"h":128},
 	"rotated": false,
@@ -40,7 +40,7 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":128,"h":128},
 	"sourceSize": {"w":128,"h":128}
 },
-"NodeIcon.png":
+"GlyphIcon.png":
 {
 	"frame": {"x":262,"y":131,"w":128,"h":128},
 	"rotated": false,
@@ -48,7 +48,15 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":128,"h":128},
 	"sourceSize": {"w":128,"h":128}
 },
-"SphereIcon.png":
+"ice.png":
+{
+	"frame": {"x":393,"y":131,"w":64,"h":64},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":64,"h":64},
+	"sourceSize": {"w":64,"h":64}
+},
+"NodeIcon.png":
 {
 	"frame": {"x":0,"y":262,"w":128,"h":128},
 	"rotated": false,
@@ -56,9 +64,17 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":128,"h":128},
 	"sourceSize": {"w":128,"h":128}
 },
-"TheFuryIcon.png":
+"SphereIcon.png":
 {
 	"frame": {"x":131,"y":262,"w":128,"h":128},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":128,"h":128},
+	"sourceSize": {"w":128,"h":128}
+},
+"TheFuryIcon.png":
+{
+	"frame": {"x":262,"y":262,"w":128,"h":128},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":128,"h":128},
@@ -71,6 +87,6 @@
 	"format": "RGBA8888",
 	"size": {"w":512,"h":512},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:2a64531c3737e19bca378c83b520857a:871a113c6a117cccc4faaca974ee1433:c680398f21d101d0a1ae6d7fc2a23608$"
+	"smartupdate": "$TexturePacker:SmartUpdate:746fced0987ca31e0bceb7bed6552b7c:44ece2c068d5b927c5621bf17751844f:c680398f21d101d0a1ae6d7fc2a23608$"
 }
 }
