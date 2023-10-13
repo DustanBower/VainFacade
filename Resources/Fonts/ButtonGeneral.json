@@ -1,0 +1,36 @@
+{"frames": {
+
+"button-labels.png":
+{
+	"frame": {"x":0,"y":0,"w":678,"h":649},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":678,"h":649},
+	"sourceSize": {"w":678,"h":649}
+},
+"ice.png":
+{
+	"frame": {"x":681,"y":0,"w":90,"h":90},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":90,"h":90},
+	"sourceSize": {"w":90,"h":90}
+},
+"iceSmall.png":
+{
+	"frame": {"x":774,"y":0,"w":90,"h":90},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":90,"h":90},
+	"sourceSize": {"w":90,"h":90}
+}},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "ButtonGeneral.png",
+	"format": "RGBA8888",
+	"size": {"w":1024,"h":1024},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:7ee0e6aa6a36c7ce5a2f6f1fe6301fa0:8ecdc09f0b602fe79d421e21484c8c60:a18e781645faf149cbba388043440a07$"
+}
+}

@@ -1,0 +1,36 @@
+{"frames": {
+
+"cardbodies_full.png":
+{
+	"frame": {"x":0,"y":93,"w":401,"h":344},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":401,"h":344},
+	"sourceSize": {"w":401,"h":344}
+},
+"ice.png":
+{
+	"frame": {"x":48,"y":0,"w":90,"h":90},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":90,"h":90},
+	"sourceSize": {"w":90,"h":90}
+},
+"iceSmall.png":
+{
+	"frame": {"x":0,"y":0,"w":45,"h":45},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":45,"h":45},
+	"sourceSize": {"w":45,"h":45}
+}},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "FullCardBody.png",
+	"format": "RGBA8888",
+	"size": {"w":512,"h":512},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:0f36ba25bb937e4c8d4341ac2418eea4:7a02194d86390bc7c03961ba8358c01e:89c55f552016e3f6c8c145d926629d90$"
+}
+}
