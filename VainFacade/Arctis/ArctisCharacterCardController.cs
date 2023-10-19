@@ -40,11 +40,28 @@ namespace VainFacadePlaytest.Arctis
             if (GetNumberOfCardsDrawn(drawResults) == 0)
             {
                 //If you don't, then until the end of your next turn, when cold damage would be dealt to a target, you may reduce that damage by 1 and put an icework from your hand into play.
-                OnDealDamageStatusEffect effect = new OnDealDamageStatusEffect(this.CardWithoutReplacements, "PowerResponse", "When cold damage would be dealt, " + this.TurnTaker.Name + " may reduce that damage by " + num + " and put an icework from their hand into play.", new TriggerType[] {TriggerType.ReduceDamage, TriggerType.PutIntoPlay }, this.TurnTaker, this.Card, new int[] { num });
-                effect.UntilEndOfNextTurn(this.TurnTaker);
-                effect.BeforeOrAfter = BeforeOrAfter.Before;
-                effect.DamageTypeCriteria.AddType(DamageType.Cold);
-                coroutine = AddStatusEffect(effect);
+                OnDealDamageStatusEffect effect1 = new OnDealDamageStatusEffect(this.CardWithoutReplacements, "PowerResponse", "When cold damage would be dealt to " + this.Card.Title + ", " + this.TurnTaker.Name + " may reduce that damage by " + num + " and put an icework from their hand into play.", new TriggerType[] {TriggerType.ReduceDamage, TriggerType.PutIntoPlay }, this.TurnTaker, this.Card, new int[] { num });
+                effect1.UntilEndOfNextTurn(this.TurnTaker);
+                effect1.BeforeOrAfter = BeforeOrAfter.Before;
+                effect1.DamageTypeCriteria.AddType(DamageType.Cold);
+                effect1.SourceCriteria.IsSpecificCard = this.Card;
+                coroutine = AddStatusEffect(effect1);
+                if (base.UseUnityCoroutines)
+                {
+                    yield return base.GameController.StartCoroutine(coroutine);
+                }
+                else
+                {
+                    base.GameController.ExhaustCoroutine(coroutine);
+                }
+
+                OnDealDamageStatusEffect effect2 = new OnDealDamageStatusEffect(this.CardWithoutReplacements, "PowerResponse", "When cold damage would be dealt by " + this.Card.Title + ", " + this.TurnTaker.Name + " may reduce that damage by " + num + " and put an icework from their hand into play.", new TriggerType[] { TriggerType.ReduceDamage, TriggerType.PutIntoPlay }, this.TurnTaker, this.Card, new int[] { num });
+                effect2.UntilEndOfNextTurn(this.TurnTaker);
+                effect2.BeforeOrAfter = BeforeOrAfter.Before;
+                effect2.DamageTypeCriteria.AddType(DamageType.Cold);
+                effect2.SourceCriteria.IsNotSpecificCard = this.Card; //Only trigger one effect when Arctis hits himself with cold
+                effect2.TargetCriteria.IsSpecificCard = this.Card;
+                coroutine = AddStatusEffect(effect2);
                 if (base.UseUnityCoroutines)
                 {
                     yield return base.GameController.StartCoroutine(coroutine);

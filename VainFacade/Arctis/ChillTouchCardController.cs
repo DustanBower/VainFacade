@@ -32,7 +32,7 @@ namespace VainFacadePlaytest.Arctis
                 base.GameController.ExhaustCoroutine(coroutine);
             }
 
-            IEnumerable<Card> targets = damageResults.Where((DealDamageAction dd) => dd.DidDealDamage && dd.DamageType == DamageType.Cold).Select((DealDamageAction dd) => dd.Target).Distinct();
+            IEnumerable<Card> targets = damageResults.Where((DealDamageAction dd) => dd.DidDealDamage && dd.DamageType == DamageType.Cold && dd.Target.IsInPlayAndHasGameText).Select((DealDamageAction dd) => dd.Target).Distinct();
             //Destroy an ongoing or reduce damage dealt by a target dealt cold damage this way by 2 until the start of your next turn.
             string reduceMessage = "";
             if (targets.Count() > 0)
