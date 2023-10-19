@@ -56,7 +56,27 @@ namespace VainFacadeTest
         }
 
         [Test()]
-        public void TestInnatePowerReduce()
+        public void TestInnatePowerReduceByArctis()
+        {
+            SetupGameController("AkashBhuta", "VainFacadePlaytest.Arctis", "Legacy", "Bunker", "TheScholar", "Megalopolis");
+            StartGame();
+
+            //You may draw a card. If you don't, then until the end of your next turn, when cold damage would be dealt to a target, you may reduce that damage by 1 and put an icework from your hand into play.
+            Card axe = PutInHand("IceAxe");
+            QuickHandStorage(arctis);
+            DecisionYesNo = false;
+            DecisionSelectCardToPlay = axe;
+            UsePower(arctis);
+            QuickHandCheck(0);
+            QuickHPStorage(akash);
+            DecisionYesNo = true;
+            DealDamage(arctis, akash, 2, DamageType.Cold);
+            QuickHPCheck(-1);
+            AssertIsInPlay(axe);
+        }
+
+        [Test()]
+        public void TestInnatePowerReduceToArctis()
         {
             SetupGameController("AkashBhuta", "VainFacadePlaytest.Arctis", "Legacy", "Bunker", "TheScholar", "Megalopolis");
             StartGame();
@@ -70,9 +90,29 @@ namespace VainFacadeTest
             QuickHandCheck(0);
             QuickHPStorage(arctis);
             DecisionYesNo = true;
-            DealDamage(arctis, arctis, 2, DamageType.Cold);
+            DealDamage(akash, arctis, 2, DamageType.Cold);
             QuickHPCheck(-1);
             AssertIsInPlay(axe);
+        }
+
+        [Test()]
+        public void TestInnatePowerOtherTarget()
+        {
+            SetupGameController("AkashBhuta", "VainFacadePlaytest.Arctis", "Legacy", "Bunker", "TheScholar", "Megalopolis");
+            StartGame();
+
+            //You may draw a card. If you don't, then until the end of your next turn, when cold damage would be dealt to a target, you may reduce that damage by 1 and put an icework from your hand into play.
+            Card axe = PutInHand("IceAxe");
+            QuickHandStorage(arctis);
+            DecisionYesNo = false;
+            DecisionSelectCardToPlay = axe;
+            UsePower(arctis);
+            QuickHandCheck(0);
+            QuickHPStorage(legacy);
+            DecisionYesNo = true;
+            DealDamage(akash, legacy, 2, DamageType.Cold);
+            QuickHPCheck(-2);
+            AssertInHand(axe);
         }
 
         [Test()]
@@ -442,6 +482,42 @@ namespace VainFacadeTest
 
             QuickHPStorage(arctis);
             DealDamage(akash, arctis, 3, DamageType.Cold);
+            QuickHPCheck(-3);
+            AssertInHand(axe);
+        }
+
+        [Test()]
+        public void TestColdFrontByArctis()
+        {
+            SetupGameController("AkashBhuta", "VainFacadePlaytest.Arctis", "Legacy", "Bunker", "TheScholar", "Megalopolis");
+            StartGame();
+            //When cold damage would be dealt to a target, you may reduce that damage by 1 or 2 to put an icework into play from your hand.
+            Card axe = PutInHand("IceAxe");
+            DecisionSelectCardToPlay = axe;
+            DecisionSelectFunction = 0;
+            AssertDecisionIsOptional(SelectionType.SelectFunction);
+            Card cold = PlayCard("ColdFront");
+
+            QuickHPStorage(akash);
+            DealDamage(arctis, akash, 3, DamageType.Cold);
+            QuickHPCheck(-2);
+            AssertIsInPlay(axe);
+        }
+
+        [Test()]
+        public void TestColdFrontOtherTargets()
+        {
+            SetupGameController("AkashBhuta", "VainFacadePlaytest.Arctis", "Legacy", "Bunker", "TheScholar", "Megalopolis");
+            StartGame();
+            //When cold damage would be dealt to a target, you may reduce that damage by 1 or 2 to put an icework into play from your hand.
+            Card axe = PutInHand("IceAxe");
+            DecisionSelectCardToPlay = axe;
+            DecisionSelectFunction = 0;
+            AssertDecisionIsOptional(SelectionType.SelectFunction);
+            Card cold = PlayCard("ColdFront");
+
+            QuickHPStorage(akash);
+            DealDamage(legacy, akash, 3, DamageType.Cold);
             QuickHPCheck(-3);
             AssertInHand(axe);
         }
