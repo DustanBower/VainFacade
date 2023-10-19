@@ -13,7 +13,7 @@
       "backgroundColor": "9999FF",
       "character": true,
       "powers": [
-        "You may draw a card. If you don't, then until the end of your next turn, when cold damage would be dealt to a target, you may reduce that damage by 1 and put an icework from your hand into play."
+        "You may draw a card. If you don't, then until the end of your next turn, when cold damage would be dealt to or by {Arctis}, you may reduce that damage by 1 and put an icework from your hand into play."
       ],
       "icons": [
         "HasPower",
@@ -135,7 +135,7 @@
         "ongoing"
       ],
       "body": [
-        "When cold damage would be dealt to a target, you may reduce that damage by 1 or 2 to put an icework into play from your hand."
+        "When cold damage would be dealt to or by {Arctis}, you may reduce that damage by 1 or 2 to put an icework into play from your hand."
       ],
       "icons": [
         "ReduceDamageTakenCold",
