@@ -45,6 +45,7 @@ namespace VainFacadePlaytest.Arctis
                 effect1.BeforeOrAfter = BeforeOrAfter.Before;
                 effect1.DamageTypeCriteria.AddType(DamageType.Cold);
                 effect1.SourceCriteria.IsSpecificCard = this.Card;
+                effect1.UntilTargetLeavesPlay(this.Card);
                 coroutine = AddStatusEffect(effect1);
                 if (base.UseUnityCoroutines)
                 {
@@ -61,6 +62,7 @@ namespace VainFacadePlaytest.Arctis
                 effect2.DamageTypeCriteria.AddType(DamageType.Cold);
                 effect2.SourceCriteria.IsNotSpecificCard = this.Card; //Only trigger one effect when Arctis hits himself with cold
                 effect2.TargetCriteria.IsSpecificCard = this.Card;
+                effect2.UntilTargetLeavesPlay(this.Card);
                 coroutine = AddStatusEffect(effect2);
                 if (base.UseUnityCoroutines)
                 {
