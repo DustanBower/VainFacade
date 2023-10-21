@@ -67,7 +67,7 @@
       "flavorQuotes": [
         {
           "identifier": "Edwin Yarwick",
-          "text": "He's been so sick for so long. I wish you'd seen him. The wonder in his eyes, snowflakes freezing on his skin. I've never seen him smile like that..."
+          "text": "He's been so sick for so long.{BR}I wish you'd seen him. The wonder in{BR}his eyes, snowflakes freezing on his skin.{BR}I've never seen him smile like that..."
         }
       ],
       "flavorReference": "Edwin Yarwick, Arctis #1"
@@ -122,7 +122,7 @@
       "flavorQuotes": [
         {
           "identifier": "Lowe",
-          "text": "Kid, you're freezing. Got frostbite from touching you. How are you alive?"
+          "text": "Kid, you're freezing. Got frostbite{BR}from touching you. How are you alive?"
         }
       ],
       "flavorReference": "Lowe, Strange Stories #43"
@@ -144,11 +144,11 @@
       "flavorQuotes": [
         {
           "identifier": "Amalgam",
-          "text": "Snowflake melting in the sun, we are as you always feared, but can ensure you never lose another."
+          "text": "Snowflake melting in{BR} the sun, we are as you always feared,{BR}but can ensure you never lose another."
         },
         {
           "identifier": "Arctis",
-          "text": "Feared? I've waited so long for this."
+          "text": "Feared? I've waited{BR}so long for this."
         }
       ],
       "flavorReference": "Apocalypse 10: No More Heroes"
@@ -174,7 +174,7 @@
       "flavorQuotes": [
         {
           "identifier": "Dr. Vargha",
-          "text": "Your theory is correct. The child is stable at 28 degrees."
+          "text": "Your theory is correct. The child is{BR}stable at 28 degrees."
         }
       ],
       "flavorReference": "Dr. Vargha, Strange Stories #42"
@@ -201,7 +201,7 @@
       "flavorQuotes": [
         {
           "identifier": "Forge",
-          "text": "Stay behind me. Things are about to get hairy."
+          "text": "Stay behind me. Things are{BR}about to get hairy."
         },
         {
           "identifier": "Arctis",
@@ -230,7 +230,7 @@
       "flavorQuotes": [
         {
           "identifier": "Cassandra",
-          "text": "I'll take you beyond the Veil either way. If you answer my riddle, I'll bring you back."
+          "text": "I'll take you beyond the Veil either{BR}way. If you answer my riddle, I'll bring{BR}you back."
         }
       ],
       "flavorReference": "Cassandra, Arctis #127"
@@ -256,11 +256,11 @@
       "flavorQuotes": [
         {
           "identifier": "Julian",
-          "text": "My blood is nearly ice, but I could never be as cold as you."
+          "text": "My blood is nearly ice,{BR}but I could never be as cold as you."
         },
         {
           "identifier": "Wesley Pryor",
-          "text": "Come now, Julian. Is that any way to speak to your Godfather?"
+          "text": "Come now, Julian. Is that any{BR}way to speak to your Godfather?"
         }
       ],
       "flavorReference": "Arctis #141"
@@ -357,7 +357,7 @@
       "flavorQuotes": [
         {
           "identifier": "Merope",
-          "text": "The old roads are barred to you, mortal!"
+          "text": "The old roads are{BR}barred to you, mortal!"
         }
       ],
       "flavorReference": "Merope, Wanderers' Way one-shot"
@@ -392,7 +392,7 @@
       "flavorQuotes": [
         {
           "identifier": "Shieldbearer",
-          "text": "Finally, a proper foe. I shall grant thee a quick death, and relay tales of our battle forever."
+          "text": "Finally, a proper foe. I shall grant{BR}thee a quick death, and relay{BR}tales of our battle forever."
         }
       ],
       "flavorReference": "Shieldbearer, Strange Stories #83"
@@ -427,7 +427,7 @@
       "flavorQuotes": [
         {
           "identifier": "Broadcast",
-          "text": "Bear witness now to the end of the Khaen! The Santaiyin shall overrun this feeble rock!"
+          "text": "Bear witness now to the end of{BR}the Khaen! The Santaiyin shall{BR}overrun this feeble rock!"
         }
       ],
       "flavorReference": "Broadcast, Storm of the Century: Primetime"

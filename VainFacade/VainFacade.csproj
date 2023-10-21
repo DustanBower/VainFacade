@@ -39,6 +39,27 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Arctis\ArctisCharacterCardController.cs" />
+    <Compile Include="Arctis\CardUtilities\ArctisCardUtilities.cs" />
+    <Compile Include="Arctis\CardUtilities\GlacialShieldStatusEffect.cs" />
+    <Compile Include="Arctis\CardUtilities\IceworkCardController.cs" />
+    <Compile Include="Arctis\CardUtilities\IceworkWithAbilityCardController.cs" />
+    <Compile Include="Arctis\ChildOfTheSnowCardController.cs" />
+    <Compile Include="Arctis\ChillTouchCardController.cs" />
+    <Compile Include="Arctis\ColdAsIceCardController.cs" />
+    <Compile Include="Arctis\ColdFrontCardController.cs" />
+    <Compile Include="Arctis\CryogenicBloodCardController.cs" />
+    <Compile Include="Arctis\CrystalArmorCardController.cs" />
+    <Compile Include="Arctis\DefensiveCombatCardController.cs" />
+    <Compile Include="Arctis\FreezingVeinsCardController.cs" />
+    <Compile Include="Arctis\FrostLanceCardController.cs" />
+    <Compile Include="Arctis\FrozenHelmCardController.cs" />
+    <Compile Include="Arctis\GlacialShieldCardController.cs" />
+    <Compile Include="Arctis\IceAxeCardController.cs" />
+    <Compile Include="Arctis\IcicleVolleyCardController.cs" />
+    <Compile Include="Arctis\ShardStormCardController.cs" />
+    <Compile Include="Arctis\SublimeCascadeCardController.cs" />
+    <Compile Include="Arctis\WintersWrathCardController.cs" />
     <Compile Include="Blitz\ArcProjectorCardController.cs" />
     <Compile Include="Blitz\BlitzCharacterCardController.cs" />
     <Compile Include="Blitz\BlitzTurnTakerController.cs" />
@@ -325,6 +346,9 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="DeckLists\FridayDeckList.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="DeckLists\ArctisDeckList.json" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
