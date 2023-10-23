@@ -36,7 +36,6 @@ namespace VainFacadePlaytest.Grandfather
             return base.AskIfCardIsIndestructible(card);
         }
 
-        private bool _reactingToEmptyDeck;
         protected const string FirstDiscard = "FirstDiscardFromHeroDeckThisTurn";
         protected string[] HeroOrder = { "Hero1InTurnOrder", "Hero2InTurnOrder", "Hero3InTurnOrder", "Hero4InTurnOrder", "Hero5InTurnOrder" };
 
@@ -62,12 +61,9 @@ namespace VainFacadePlaytest.Grandfather
                 ResetFlagsAfterLeavesPlay(HasDiscarded[i]);
             }
             // "When a hero deck becomes empty, add a token to this card and put the bottom 5 cards of that deck's trash on top of the deck."
-            AddTrigger((GameAction ga) => !_reactingToEmptyDeck && FindEmptyHeroDeck() != null, AddTokenResetTrashResponse, new TriggerType[] { TriggerType.AddTokensToPool, TriggerType.MoveCard }, TriggerTiming.After);
-        }
-
-        private Location FindEmptyHeroDeck()
-        {
-            return FindLocationsWhere((Location l) => l.IsHero && l.OwnerTurnTaker.CharacterCards.Any((Card c) => !c.IsFlipped && c.IsTarget) && l.IsDeck && l.Cards.Count() == 0).FirstOrDefault();
+            AddTrigger<MoveCardAction>((MoveCardAction mc) => mc.WasCardMoved && mc.Origin.IsDeck && mc.Origin.IsHero && !mc.Origin.Cards.Any(),(MoveCardAction mc) => AddTokenResetTrashResponse(mc.Origin), new TriggerType[] { TriggerType.AddTokensToPool, TriggerType.MoveCard }, TriggerTiming.After);
+            AddTrigger<DrawCardAction>((DrawCardAction dc) => dc.DidDrawCard && !dc.HeroTurnTaker.Deck.Cards.Any(), (DrawCardAction dc) => AddTokenResetTrashResponse(dc.HeroTurnTaker.Deck), new TriggerType[] { TriggerType.AddTokensToPool, TriggerType.MoveCard }, TriggerTiming.After);
+            AddTrigger<BulkMoveCardsAction>((BulkMoveCardsAction bmc) => bmc.CardsToMove.Any((Card c) => bmc.Origins[c].IsDeck && bmc.Origins[c].IsHero && !bmc.Origins[c].OwnerTurnTaker.IsIncapacitatedOrOutOfGame && !bmc.Origins[c].Cards.Any()), BulkMoveEmptyResponse, new TriggerType[] { TriggerType.AddTokensToPool, TriggerType.MoveCard }, TriggerTiming.After);
         }
 
         private int FindInHeroOrder(TurnTaker tt)
@@ -175,94 +171,105 @@ namespace VainFacadePlaytest.Grandfather
             }
         }
 
-        private IEnumerator AddTokenResetTrashResponse(GameAction ga)
+        private IEnumerator AddTokenResetTrashResponse(Location deckToRefill)
         {
-            _reactingToEmptyDeck = true;
-            while (FindEmptyHeroDeck() != null)
+            IEnumerator messageCoroutine = base.GameController.SendMessageAction(deckToRefill.GetFriendlyName() + " is empty! " + base.CharacterCard.Title + " solidifies his grip on the timeline!", Priority.High, GetCardSource(), showCardSource: true);
+            if (base.UseUnityCoroutines)
             {
-                Location deckToRefill = FindEmptyHeroDeck();
-                IEnumerator messageCoroutine = base.GameController.SendMessageAction(deckToRefill.GetFriendlyName() + " is empty! " + base.CharacterCard.Title + " solidifies his grip on the timeline!", Priority.High, GetCardSource(), showCardSource: true);
+                yield return base.GameController.StartCoroutine(messageCoroutine);
+            }
+            else
+            {
+                base.GameController.ExhaustCoroutine(messageCoroutine);
+            }
+            // "... add a token to this card..."
+            IEnumerator tokenCoroutine = base.GameController.AddTokensToPool(TimelineTokenPool(), 1, GetCardSource());
+            if (base.UseUnityCoroutines)
+            {
+                yield return base.GameController.StartCoroutine(tokenCoroutine);
+            }
+            else
+            {
+                base.GameController.ExhaustCoroutine(tokenCoroutine);
+            }
+            // "... and put the bottom 5 cards of that deck's trash on top of the deck."
+            Location trash = FindTrashFromDeck(deckToRefill);
+            if (trash.NumberOfCards >= 5)
+            {
+                // Take the bottom 5 cards in trash and put them on top of deckToRefill, in order
+                IEnumerator moveCoroutine = base.GameController.BulkMoveCards(base.TurnTakerController, trash.GetBottomCards(5).Reverse(), deckToRefill, responsibleTurnTaker: base.TurnTaker, cardSource: GetCardSource());
                 if (base.UseUnityCoroutines)
                 {
-                    yield return base.GameController.StartCoroutine(messageCoroutine);
+                    yield return base.GameController.StartCoroutine(moveCoroutine);
                 }
                 else
                 {
-                    base.GameController.ExhaustCoroutine(messageCoroutine);
-                }
-                // "... add a token to this card..."
-                IEnumerator tokenCoroutine = base.GameController.AddTokensToPool(TimelineTokenPool(), 1, GetCardSource());
-                if (base.UseUnityCoroutines)
-                {
-                    yield return base.GameController.StartCoroutine(tokenCoroutine);
-                }
-                else
-                {
-                    base.GameController.ExhaustCoroutine(tokenCoroutine);
-                }
-                // "... and put the bottom 5 cards of that deck's trash on top of the deck."
-                Location trash = FindTrashFromDeck(deckToRefill);
-                if (trash.NumberOfCards >= 5)
-                {
-                    // Take the bottom 5 cards in trash and put them on top of deckToRefill, in order
-                    IEnumerator moveCoroutine = base.GameController.BulkMoveCards(base.TurnTakerController, trash.GetBottomCards(5).Reverse(), deckToRefill, responsibleTurnTaker: base.TurnTaker, cardSource: GetCardSource());
-                    if (base.UseUnityCoroutines)
-                    {
-                        yield return base.GameController.StartCoroutine(moveCoroutine);
-                    }
-                    else
-                    {
-                        base.GameController.ExhaustCoroutine(moveCoroutine);
-                    }
-                }
-                else if (trash.NumberOfCards >= 1)
-                {
-                    // Inform players that fewer cards than usual are being moved
-                    string message = "There ";
-                    if (trash.NumberOfCards > 1)
-                    {
-                        message += "are only " + trash.NumberOfCards.ToString() + " cards";
-                    }
-                    else
-                    {
-                        message += "is only 1 card";
-                    }
-                    message += " in " + trash.GetFriendlyName() + " to move.";
-                    IEnumerator reportCoroutine = base.GameController.SendMessageAction(message, Priority.Medium, GetCardSource());
-                    if (base.UseUnityCoroutines)
-                    {
-                        yield return base.GameController.StartCoroutine(reportCoroutine);
-                    }
-                    else
-                    {
-                        base.GameController.ExhaustCoroutine(reportCoroutine);
-                    }
-                    // Take all the cards in trash and put them on top of deckToRefill, in order
-                    IEnumerator moveCoroutine = base.GameController.BulkMoveCards(base.TurnTakerController, trash.Cards.Reverse(), deckToRefill, responsibleTurnTaker: base.TurnTaker, cardSource: GetCardSource());
-                    if (base.UseUnityCoroutines)
-                    {
-                        yield return base.GameController.StartCoroutine(moveCoroutine);
-                    }
-                    else
-                    {
-                        base.GameController.ExhaustCoroutine(moveCoroutine);
-                    }
-                }
-                else
-                {
-                    // Inform players that no cards are being moved
-                    IEnumerator reportCoroutine = base.GameController.SendMessageAction("There are no cards in " + trash.GetFriendlyName() + " to move.", Priority.High, GetCardSource());
-                    if (base.UseUnityCoroutines)
-                    {
-                        yield return base.GameController.StartCoroutine(reportCoroutine);
-                    }
-                    else
-                    {
-                        base.GameController.ExhaustCoroutine(reportCoroutine);
-                    }
+                    base.GameController.ExhaustCoroutine(moveCoroutine);
                 }
             }
-            _reactingToEmptyDeck = false;
+            else if (trash.NumberOfCards >= 1)
+            {
+                // Inform players that fewer cards than usual are being moved
+                string message = "There ";
+                if (trash.NumberOfCards > 1)
+                {
+                    message += "are only " + trash.NumberOfCards.ToString() + " cards";
+                }
+                else
+                {
+                    message += "is only 1 card";
+                }
+                message += " in " + trash.GetFriendlyName() + " to move.";
+                IEnumerator reportCoroutine = base.GameController.SendMessageAction(message, Priority.Medium, GetCardSource());
+                if (base.UseUnityCoroutines)
+                {
+                    yield return base.GameController.StartCoroutine(reportCoroutine);
+                }
+                else
+                {
+                    base.GameController.ExhaustCoroutine(reportCoroutine);
+                }
+                // Take all the cards in trash and put them on top of deckToRefill, in order
+                IEnumerator moveCoroutine = base.GameController.BulkMoveCards(base.TurnTakerController, trash.Cards.Reverse(), deckToRefill, responsibleTurnTaker: base.TurnTaker, cardSource: GetCardSource());
+                if (base.UseUnityCoroutines)
+                {
+                    yield return base.GameController.StartCoroutine(moveCoroutine);
+                }
+                else
+                {
+                    base.GameController.ExhaustCoroutine(moveCoroutine);
+                }
+            }
+            else
+            {
+                // Inform players that no cards are being moved
+                IEnumerator reportCoroutine = base.GameController.SendMessageAction("There are no cards in " + trash.GetFriendlyName() + " to move.", Priority.High, GetCardSource());
+                if (base.UseUnityCoroutines)
+                {
+                    yield return base.GameController.StartCoroutine(reportCoroutine);
+                }
+                else
+                {
+                    base.GameController.ExhaustCoroutine(reportCoroutine);
+                }
+            }
+        }
+
+        private IEnumerator BulkMoveEmptyResponse(BulkMoveCardsAction bmc)
+        {
+            List<Location> locations = bmc.CardsToMove.Where((Card c) => bmc.Origins[c].IsDeck && bmc.Origins[c].IsHero && !bmc.Origins[c].Cards.Any()).Select((Card c) => bmc.Origins[c]).Distinct().ToList();
+            foreach (Location L in locations)
+            {
+                IEnumerator coroutine = AddTokenResetTrashResponse(L);
+                if (base.UseUnityCoroutines)
+                {
+                    yield return base.GameController.StartCoroutine(coroutine);
+                }
+                else
+                {
+                    base.GameController.ExhaustCoroutine(coroutine);
+                }
+            }
         }
     }
 }
