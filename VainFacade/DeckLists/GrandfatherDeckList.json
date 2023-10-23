@@ -140,7 +140,7 @@
 			"body": [
 				"This card is indestructible.",
 				"The first time each turn each villain card discards a card from each hero's deck, that hero may destroy 1 of their Ongoing or Equipment cards. If no card is destroyed this way, add a token to this card.",
-				"When a hero deck becomes empty, add a token to this card and put the bottom 5 cards of that deck's trash on top of the deck."
+				"[y=0.99]When an active hero's deck becomes empty, add a token to this card and put the bottom 5 cards of that deck's trash on top of the deck.[/y]"
 			],
 			"icons": [
 				"Indestructible",
