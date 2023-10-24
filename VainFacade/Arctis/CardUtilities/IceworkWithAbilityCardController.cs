@@ -78,6 +78,7 @@ namespace VainFacadePlaytest.Arctis
             IEnumerator coroutine;
             if (CanActivateIceEffect())
             {
+                AddInhibitorException((GameAction a) => a is MessageAction);
                 coroutine = base.GameController.SelectAndActivateAbility(base.HeroTurnTakerController, FirstAbilityKey, null, storedResults, AllowLessThanTwoActivations, GetCardSource());
                 if (base.UseUnityCoroutines)
                 {
@@ -87,6 +88,7 @@ namespace VainFacadePlaytest.Arctis
                 {
                     base.GameController.ExhaustCoroutine(coroutine);
                 }
+                RemoveInhibitorException();
                 bool flag = false;
                 if ((!AllowSameCardTwice && AllowLessThanTwoActivations && storedResults.Count() == 0) || (storedResults.Count() > 0 && storedResults.First().SelectedAbility == null))
                 {
@@ -101,6 +103,7 @@ namespace VainFacadePlaytest.Arctis
                 {
                     cardCriteria = new LinqCardCriteria((Card c) => c != storedResults.First().SelectedAbility.CardController.Card);
                 }
+                AddInhibitorException((GameAction a) => a is MessageAction);
                 coroutine = base.GameController.SelectAndActivateAbility(base.HeroTurnTakerController, SecondAbilityKey, cardCriteria, storedResults, AllowLessThanTwoActivations, GetCardSource());
                 if (base.UseUnityCoroutines)
                 {
@@ -110,6 +113,7 @@ namespace VainFacadePlaytest.Arctis
                 {
                     base.GameController.ExhaustCoroutine(coroutine);
                 }
+                RemoveInhibitorException();
             }
             else
             {
