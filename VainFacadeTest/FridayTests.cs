@@ -431,7 +431,7 @@ namespace VainFacadeTest
         }
 
         [Test()]
-        public void TestDamselInDistressNonTargetSource()
+        public void TestDamselInDistressNonTargetSource1()
         {
             SetupGameController("AkashBhuta", "VainFacadePlaytest.Friday", "Legacy", "Bunker", "TheScholar", "Megalopolis");
             StartGame();
@@ -444,7 +444,59 @@ namespace VainFacadeTest
             QuickHPStorage(friday, bunker, akash);
 
             DealDamage(allies, bunker.CharacterCard, 1, DamageType.Melee);
+            QuickHPCheck(0, -1, 0);
+            AssertIsInPlay(damsel);
+        }
+
+        [Test()]
+        public void TestDamselInDistressNonTargetSource2()
+        {
+            SetupGameController("AkashBhuta", "VainFacadePlaytest.Friday", "Legacy", "Bunker", "TheScholar", "Megalopolis");
+            StartGame();
+
+            //When the hero target with the lowest HP would be dealt damage, redirect that damage to {Friday}.
+            //When {Friday} is dealt damage by a target, you may destroy this card. If you do, {Friday} deals the source of that damage 4 melee damage.
+            Card damsel = PlayCard("DamselInDistress");
+            Card allies = PlayCard("AlliesOfTheEarth");
+            DecisionYesNo = true;
+            QuickHPStorage(friday, bunker, akash);
+
+            DealDamage(allies, friday.CharacterCard, 1, DamageType.Melee);
             QuickHPCheck(-1, 0, 0);
+            AssertIsInPlay(damsel);
+        }
+
+        [Test()]
+        public void TestDamselInDistressFridaySource1()
+        {
+            SetupGameController("AkashBhuta", "VainFacadePlaytest.Friday", "Legacy", "Bunker", "TheScholar", "Megalopolis");
+            StartGame();
+
+            //When the hero target with the lowest HP would be dealt damage, redirect that damage to {Friday}.
+            //When {Friday} is dealt damage by a target, you may destroy this card. If you do, {Friday} deals the source of that damage 4 melee damage.
+            Card damsel = PlayCard("DamselInDistress");
+            DecisionYesNo = true;
+            QuickHPStorage(friday, bunker);
+
+            DealDamage(friday, bunker, 1, DamageType.Melee);
+            QuickHPCheck(0, -1);
+            AssertIsInPlay(damsel);
+        }
+
+        [Test()]
+        public void TestDamselInDistressFridaySource2()
+        {
+            SetupGameController("AkashBhuta", "VainFacadePlaytest.Friday", "Legacy", "Bunker", "TheScholar", "Megalopolis");
+            StartGame();
+
+            //When the hero target with the lowest HP would be dealt damage, redirect that damage to {Friday}.
+            //When {Friday} is dealt damage by a target, you may destroy this card. If you do, {Friday} deals the source of that damage 4 melee damage.
+            Card damsel = PlayCard("DamselInDistress");
+            DecisionYesNo = true;
+            QuickHPStorage(friday);
+
+            DealDamage(friday, friday, 1, DamageType.Melee);
+            QuickHPCheck(-1);
             AssertIsInPlay(damsel);
         }
 
@@ -819,6 +871,22 @@ namespace VainFacadeTest
         }
 
         [Test()]
+        public void TestICanDoBetterFridayDamage()
+        {
+            SetupGameController("AkashBhuta", "VainFacadePlaytest.Friday", "Legacy", "Bunker", "TheScholar", "Megalopolis");
+            StartGame();
+
+            //When a target deals {Friday} damage, {Friday} may deal the source of that damage X plus 2 damage of the same type, where X = the amount of damage dealt to {Friday}. If {Friday} deals damage this way, destroy this card.
+            //Power: Play a mimicry or draw 2 cards.
+            Card better = PlayCard("ICanDoBetter");
+            DecisionYesNo = true;
+            QuickHPStorage(friday);
+            DealDamage(friday, friday, 1, DamageType.Melee);
+            QuickHPCheck(-1);
+            AssertIsInPlay(better);
+        }
+
+        [Test()]
         public void TestICanDoBetterSkip()
         {
             SetupGameController("AkashBhuta", "VainFacadePlaytest.Friday", "Legacy", "Bunker", "TheScholar", "Megalopolis");
@@ -1035,7 +1103,7 @@ namespace VainFacadeTest
             StartGame();
 
             //Once per round, at the end of another hero's turn, {Friday} may deal that hero 2 lightning damage.
-            //When a hero other than {Friday} is dealt damage this way, {Friday} may use a power in that hero's play area, replacing the name of the hero on that card with {Friday} and with “You” on that card referring to {Friday}'s player.
+            //When a hero other than {Friday} is dealt damage this way, {Friday} may use a power in that hero's play area, replacing the name of that hero on that card with {Friday} and with “You” on that card referring to {Friday}'s player.
             Card proto = PlayCard("PrototypeCombatMimic");
             DecisionYesNo = true;
 
@@ -1073,7 +1141,7 @@ namespace VainFacadeTest
             StartGame();
 
             //Once per round, at the end of another hero's turn, {Friday} may deal that hero 2 lightning damage.
-            //When a hero other than {Friday} is dealt damage this way, {Friday} may use a power in that hero's play area, replacing the name of the hero on that card with {Friday} and with “You” on that card referring to {Friday}'s player.
+            //When a hero other than {Friday} is dealt damage this way, {Friday} may use a power in that hero's play area, replacing the name of that hero on that card with {Friday} and with “You” on that card referring to {Friday}'s player.
             Card proto = PlayCard("PrototypeCombatMimic");
             DecisionSelectCard = bunker.CharacterCard;
             Card link = PlayCard("MicroAssembler");
@@ -1122,6 +1190,8 @@ namespace VainFacadeTest
             //Power: {Friday} deals 1 Target 2 melee or 2 projectile damage. Draw a card.
             Card ruthless = PlayCard("RuthlessMachine");
             DecisionYesNo = true;
+            PutOnDeck("GrimReflection");
+            PutOnDeck("TechnologicalDuplication");
 
             //Check that Ruthless Machine does not prevent damage from Friday's cards
             QuickHPStorage(friday);
@@ -1238,7 +1308,6 @@ namespace VainFacadeTest
         {
             SetupGameController("AkashBhuta", "VainFacadePlaytest.Friday", "Legacy", "Bunker", "TheScholar", "Megalopolis");
             StartGame();
-
             //When this card enters your hand, put it into play.
             //{Friday} deals herself 1 irreducible lightning damage.
             //You may draw 2 cards. If you do, shuffle this card into your deck.
@@ -1363,5 +1432,22 @@ namespace VainFacadeTest
             AssertInTrash(ring);
             AssertIsInPlay(flak);
         }
+
+        //[Test()]
+        //public void TestMercenarySquad()
+        //{
+        //    SetupGameController("AkashBhuta", "VainFacadePlaytest.Friday", "Legacy", "Bunker", "TheScholar", "VainFacadePlaytest.ParadiseIsle");
+        //    StartGame();
+
+        //    //Test how Mercenary Squad interacts with Arm Cannon
+        //    Card mercenary = PlayCard("MercenarySquad");
+        //    Card cannon = PlayCard("DracimpR9A3ArmCannon");
+        //    DecisionSelectTarget = mercenary;
+
+        //    GoToEndOfTurn(legacy);
+        //    DealDamage(legacy, akash, 1, DamageType.Melee);
+        //    DecisionSelectDamageType = DamageType.Melee;
+        //    UsePower(cannon);
+        //}
     }
 }
