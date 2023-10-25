@@ -121,7 +121,7 @@
 				"When {Friday} would be dealt 5 or more damage from a single source, you may reduce that damage by up to 3."
 			],
 			"powers": [
-				"Reveal cards from the top of your deck until 2 mimicries are revealed. Put one into your hand or into play. Shuffle the remaining revealed cards into your deck. If a card entered play this way, destroy this card."
+				"Reveal cards from the top of your deck until 2 Mimicries are revealed. Put one into your hand or into play. Shuffle the remaining revealed cards into your deck. If a card entered play this way, destroy this card."
 			],
 			"icons": [
 				"ReduceDamageTaken",
@@ -139,8 +139,8 @@
 				"ongoing"
 			],
 			"body": [
-				"When the hero target with the lowest HP would be dealt damage, redirect that damage to {Friday}.",
-				"When {Friday} is dealt damage by a target, you may destroy this card. If you do, {Friday} deals the source of that damage 4 melee damage."
+				"When the hero target with the lowest HP would be dealt damage by a target other than {Friday}, redirect that damage to {Friday}.",
+				"When {Friday} is dealt damage by a target other than herself, you may destroy this card. If you do, {Friday} deals the source of that damage 4 melee damage."
 			],
 			"icons": [
 				"RedirectDamage",
@@ -263,7 +263,7 @@
 				"mimicry"
 			],
 			"body": [
-				"When a target deals {Friday} damage, {Friday} may deal the source of that damage X plus 2 damage of the same type, where X = the amount of damage dealt to {Friday}. If {Friday} deals damage this way, destroy this card."
+				"When {Friday} is dealt damage by a target other than herself, {Friday} may deal the source of that damage X plus 2 damage of the same type, where X = the amount of damage dealt to {Friday}. If {Friday} deals damage this way, destroy this card."
 			],
 			"powers": [
 				"Play a mimicry or draw 2 cards."
@@ -306,7 +306,13 @@
 				"HasPower",
 				"Manipulate"
 			],
-			"flavorText": "[Unknown hostile detected...{BR}Weaknesses analyzed...{BR}Calibrating weapons systems...]{BR}{BR}- Friday, Elemental Triggers"
+			"flavorQuotes": [
+				{
+					"identifier": "Friday",
+					"text": "[Unknown hostile detected...{BR}Weaknesses analyzed...{BR}Calibrating weapons systems...]"
+				}
+			],
+			"flavorReference": "Friday, Environmental Triggers"
 		},
 		{
 			"identifier": "PrototypeCombatMimic",
@@ -319,7 +325,7 @@
 			],
 			"body": [
 				"Once per round, at the end of another hero's turn, {Friday} may deal that hero 2 lightning damage.",
-				"When a hero other than {Friday} is dealt damage this way, {Friday} may use a power in that hero's play area, replacing the name of the hero on that card with {Friday} and with “You” on that card referring to {Friday}'s player."
+				"When a hero other than {Friday} is dealt damage this way, {Friday} may use a power in that hero's play area, replacing the name of that hero on that card with {Friday} and with “You” on that card referring to {Friday}'s player."
 			],
 			"icons": [
 				"EndOfTurnAction",
@@ -339,7 +345,7 @@
 				"When a card from another deck would cause {Friday} to deal herself damage, you may discard a card from your hand to prevent that damage."
 			],
 			"powers": [
-				"{Friday} deals 1 target 2 melee or 2 projectile damage. Draw a card."
+				"{Friday} deals 1 Target 2 melee or 2 projectile damage. Draw a card."
 			],
 			"icons": [
 				"Discard",
