@@ -17,8 +17,8 @@ namespace VainFacadePlaytest.Friday
 
         public override void AddTriggers()
         {
-            //When a target deals {Friday} damage, {Friday} may deal the source of that damage X plus 2 damage of the same type, where X = the amount of damage dealt to {Friday}. If {Friday} deals damage this way, destroy this card.
-            AddTrigger<DealDamageAction>((DealDamageAction dd) => dd.DamageSource.IsTarget && dd.Target == this.CharacterCard && dd.DidDealDamage, DamageResponse, new TriggerType[2] { TriggerType.DealDamage, TriggerType.DestroySelf }, TriggerTiming.After);
+            //When {Friday} is dealt damage by a target other than herself, {Friday} may deal the source of that damage X plus 2 damage of the same type, where X = the amount of damage dealt to {Friday}. If {Friday} deals damage this way, destroy this card.
+            AddTrigger<DealDamageAction>((DealDamageAction dd) => dd.DamageSource.IsTarget && dd.DamageSource.Card != this.CharacterCard && dd.Target == this.CharacterCard && dd.DidDealDamage, DamageResponse, new TriggerType[2] { TriggerType.DealDamage, TriggerType.DestroySelf }, TriggerTiming.After);
         }
 
         private IEnumerator DamageResponse(DealDamageAction dd)

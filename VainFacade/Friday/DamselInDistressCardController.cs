@@ -19,16 +19,16 @@ namespace VainFacadePlaytest.Friday
 
         public override void AddTriggers()
         {
-            //When the hero target with the lowest HP would be dealt damage, redirect that damage to {Friday}.
-            AddTrigger((DealDamageAction dd) => dd.Target != base.CharacterCard && CanCardBeConsideredLowestHitPoints(dd.Target, (Card c) => IsHeroTarget(c)), RedirectIfLowestResponse, new TriggerType[2]
+            //When the hero target with the lowest HP would be dealt damage by a target other than {Friday}, redirect that damage to {Friday}.
+            AddTrigger((DealDamageAction dd) => dd.Target != base.CharacterCard && dd.DamageSource.IsTarget && dd.DamageSource.Card != this.CharacterCard && CanCardBeConsideredLowestHitPoints(dd.Target, (Card c) => IsHeroTarget(c)), RedirectIfLowestResponse, new TriggerType[2]
             {
             TriggerType.WouldBeDealtDamage,
             TriggerType.RedirectDamage
             }, TriggerTiming.Before);
             base.AddTriggers();
 
-            //When {Friday} is dealt damage by a target, you may destroy this card. If you do, {Friday} deals the source of that damage 4 melee damage.
-            AddTrigger<DealDamageAction>((DealDamageAction dd) => dd.DamageSource.IsTarget && dd.Target == this.CharacterCard && dd.DidDealDamage && !IsBeingDestroyed && dd.DidDealDamage, DestroyResponse, new TriggerType[2] { TriggerType.DestroySelf, TriggerType.DealDamage }, TriggerTiming.After);
+            //When {Friday} is dealt damage by a target other than herself, you may destroy this card. If you do, {Friday} deals the source of that damage 4 melee damage.
+            AddTrigger<DealDamageAction>((DealDamageAction dd) => dd.DamageSource.IsTarget && dd.DamageSource.Card != this.CharacterCard && dd.Target == this.CharacterCard && dd.DidDealDamage && !IsBeingDestroyed && dd.DidDealDamage, DestroyResponse, new TriggerType[2] { TriggerType.DestroySelf, TriggerType.DealDamage }, TriggerTiming.After);
         }
 
         private IEnumerator RedirectIfLowestResponse(DealDamageAction dd)
