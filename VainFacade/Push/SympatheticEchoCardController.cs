@@ -63,7 +63,7 @@ namespace VainFacadePlaytest.Push
                 List<DiscardCardAction> discardResults = new List<DiscardCardAction>();
                 List<DealDamageAction> list = new List<DealDamageAction>();
                 list.Add(dd);
-                IEnumerator coroutine = base.GameController.SelectAndDiscardCard(DecisionMaker, optional: true, null, discardResults, SelectionType.Custom, list, this.TurnTaker, ignoreBattleZone: false, null, GetCardSource());
+                IEnumerator coroutine = base.GameController.SelectAndDiscardCard(DecisionMaker, optional: true, null, discardResults, SelectionType.DiscardCard, list, this.TurnTaker, ignoreBattleZone: false, null, GetCardSource());
                 if (base.UseUnityCoroutines)
                 {
                     yield return base.GameController.StartCoroutine(coroutine);
