@@ -71,7 +71,7 @@
       "flavorQuotes": [
         {
           "identifier": "Burgess",
-          "text": "Sure, you didn't steal the purse. Mind telling me how you ended up -- let me see if I got this right -- literally buried in cleaning supplies?"
+          "text": "[y=0.95]Sure, you didn't steal{BR}the purse. Mind telling me how you{BR}ended up -- let me see if I got this{BR}right -- literally buried in cleaning supplies?"
         }
       ],
       "flavorReference": "Burgess, Bastion's Best #37"
@@ -98,7 +98,7 @@
       "flavorQuotes": [
         {
           "identifier": "Push",
-          "text": "What? These don't even have people in them!"
+          "text": "What? These don't even{BR}have people in them!"
         },
         {
           "identifier": "Forge",
@@ -155,13 +155,7 @@
         "DealDamageProjectile",
         "StartOfTurnAction"
       ],
-      "flavorQuotes": [
-        {
-          "identifier": "Doomsayer",
-          "text": "It's why they'll never trust you. They can't see how hard you're trying. They don't deserve you. It's a good thing you have a friend like me."
-        }
-      ],
-      "flavorReference": "Doomsayer, Apocalypse 10: Death of Grandfather"
+      "flavorText": "{BR}“[y=1.15]I[y=0.85]t[y=1.15]'s[y=0.85] w[y=1.15]h[y=0.85]y [y=1.15]t[y=0.85]h[y=1.15]e[y=0.85]y'[y=1.15]l[y=0.85]l [y=1.15]n[y=0.85]e[y=1.15]v[y=0.85]e[y=1.15]r[y=0.85] t[y=1.15]r[y=0.85]u[y=1.15]s[y=0.85]t{BR}[y=1.15]y[y=0.85]o[y=1.15]u. [y=0.85]T[y=1.15]h[y=0.85]e[y=1.15]y[y=0.85] c[y=1.15]a[y=0.85]n'[y=1.15]t[y=0.85] s[y=1.15]e[y=0.85]e[y=1.15] h[y=0.85]o[y=1.15]w[y=0.85] h[y=1.15]a[y=0.85]r[y=1.15]d[y=0.85] y[y=1.15]o[y=0.85]u'[y=1.15]r[y=0.85]e{BR}[y=1.15]t[y=0.85]r[y=1.15]y[y=0.85]i[y=1.15]n[y=0.85]g.[y=1.15] [y=0.85]T[y=1.15]h[y=0.85]e[y=1.15]y[y=0.85] d[y=1.15]o[y=0.85]n'[y=1.15]t[y=0.85] d[y=1.15]e[y=0.85]s[y=1.15]e[y=0.85]r[y=1.15]v[y=0.85]e[y=1.15] y[y=0.85]o[y=1.15]u[y=0.85]. I[y=1.15]t[y=0.85]'s[y=1.15] a[y=0.85] g[y=1.15]o[y=0.85]o[y=1.15]d[y=0.85]{BR} t[y=1.15]h[y=0.85]i[y=1.15]n[y=0.85]g[y=1.15] y[y=0.85]o[y=1.15]u[y=0.85] h[y=1.15]a[y=0.85]v[y=1.15]e[y=0.85] a[y=1.15] f[y=0.85]r[y=1.15]i[y=0.85]e[y=1.15]n[y=0.85]d[y=1.15] l[y=0.85]i[y=1.15]k[y=0.85]e[y=1.15] m[y=0.85]e.”{BR}[y=0.90] - Doomsayer, Apocalypse 10:{BR} Death of Grandfather"
     },
     {
       "identifier": "FoldingForces",
@@ -180,13 +174,7 @@
         "StartOfTurnAction",
         "DestroySelf"
       ],
-      "flavorQuotes": [
-        {
-          "identifier": "Push",
-          "text": "That's the thing people don't get. The waves want to sync up and, uh, harmonize. They want to fold back on themselves and be bigger. So. Much. Bigger."
-        }
-      ],
-      "flavorReference": "Push, Apocalypse 10: The End of Time"
+      "flavorText": "[y=0.85]{BR}“That's the thing people don't get. The waves want{BR}to sync up and, uh, harmonize. They want to fold{BR}back on themselves and be bigger. So. Much. Bigger.”{BR}[y=0.75] - Push, Apocalypse 10: The End of Time"
     },
     {
       "identifier": "ForcePulse",
@@ -232,7 +220,7 @@
       "flavorQuotes": [
         {
           "identifier": "Node",
-          "text": "{You can act or not act. There are always consequences. Nobody's perfect. If you do act, don't hesitate -- Commit and accept whatever comes.}"
+          "text": "{You can act or not{BR}act. There are always consequences.{BR}Nobody's perfect. If you do act, don't{BR}hesitate -- Commit and accept{BR}whatever comes.}"
         }
       ],
       "flavorReference": "Node, Bulwark #34"
@@ -260,7 +248,7 @@
       "flavorQuotes": [
         {
           "identifier": "Push",
-          "text": "Hey! Why don't we take this outside... and into a field far away from civilians?"
+          "text": "Hey! Why don't we take this outside...{BR}and into a field far away from civilians?"
         }
       ],
       "flavorReference": "Push, Raptor's Revenge one-shot"
@@ -285,7 +273,7 @@
       "flavorQuotes": [
         {
           "identifier": "Push",
-          "text": "Look, it's all very scientific. I do a lot of studying. I do a lot of scientist-stuff. I'm, uh, a progeny or whatever. I'm basically science-girl."
+          "text": "Look, it's all very scientific.{BR}I do a lot of studying. I do a lot of{BR}scientist-stuff. I'm, uh, a progeny or whatever. I'm basically science-girl."
         }
       ],
       "flavorReference": "Push, Midnight Vigil #38"
@@ -310,14 +298,14 @@
       "flavorQuotes": [
         {
           "identifier": "Sphere",
-          "text": "Stop wasting time. Just pull it to you."
+          "text": "[y=0.90]Stop wasting time.{BR}Just pull it to you."
         },
         {
           "identifier": "Push",
-          "text": "That's not a thing! The best I can do is try to throw it at myself!"
+          "text": "[y=0.90]That's not a thing! The best I{BR}can do is try to throw it at myself!"
         }
       ],
-      "flavorReference": "Overwhelming Force one-shot"
+      "flavorReference": "[y=0.90]Overwhelming Force one-shot"
     },
     {
       "identifier": "PathOfDestruction",
@@ -344,7 +332,7 @@
         },
         {
           "identifier": "Friday",
-          "text": "This is my purpose. This is your purpose. There is nothing else."
+          "text": "This is my purpose. This is your{BR}purpose. There is nothing else."
         }
       ],
       "flavorReference": "Overwhelming Force one-shot"
@@ -367,7 +355,7 @@
       "flavorQuotes": [
         {
           "identifier": "Push",
-          "text": "Yes, it connects to my tongue, no, it's not that weird! Lots of neurons, lets me see field vibrations! So I don't smash the building! Probably!"
+          "text": "Yes, it connects to my tongue,{BR}no, it's not that weird! Lots of neurons,{BR}lets me see field vibrations! So I don't{BR}smash the building! Probably!"
         }
       ],
       "flavorReference": "Push, Bulwark #172"
@@ -388,7 +376,7 @@
       "flavorQuotes": [
         {
           "identifier": "Push",
-          "text": "Okay, fine! I don't really know the science! I just hate people thinking I'm dumb because I'd rather live my life than study, okay?"
+          "text": "Okay, fine! I don't really know{BR}the science! I just hate people{BR}thinking I'm dumb because I'd rather{BR}live my life than study, okay?"
         }
       ],
       "flavorReference": "Push, Midnight Vigil #45"
@@ -410,13 +398,7 @@
         "StartOfTurnAction",
         "DestroySelf"
       ],
-      "flavorQuotes": [
-        {
-          "identifier": "Push",
-          "text": "You really want to see me cut loose, you blood-sucking freak? Ever hear the expression 'Be careful what you wish for?'"
-        }
-      ],
-      "flavorReference": "Push, Bastion City: A Spider Never Blinks #112"
+      "flavorText": "{BR}“You really want to see me cut{BR}loose, you blood-sucking freak?{BR}Ever hear the expression 'Be careful{BR}what you wish for?'”{BR}[y=0.90] - Push, Bastion City:{BR}A Spider Never Blinks #112"
     },
     {
       "identifier": "Shockwave",
@@ -439,7 +421,7 @@
       "flavorQuotes": [
         {
           "identifier": "Sidewinder",
-          "text": "If you wouldn't mind, I think we could use a little space."
+          "text": "If you wouldn't mind, I think{BR}we could use a little space."
         }
       ],
       "flavorReference": "Sidewinder, Sidewinder #3"
@@ -463,7 +445,7 @@
       "flavorQuotes": [
         {
           "identifier": "Doctor Falls",
-          "text": "How can you be undefended? Each incoming vector crosses the wave your heartbeat emits. You know when it will be. Use it!"
+          "text": "How can you be undefended?{BR}Each incoming vector crosses the wave{BR}your heartbeat emits. You know when{BR}it will be. Use it!"
         }
       ],
       "flavorReference": "Doctor Falls, Push #79"
@@ -488,7 +470,7 @@
       "flavorQuotes": [
         {
           "identifier": "Push",
-          "text": "Guys, shut up! I've got to think! Of course I can do it, but how do I do it safely...ish?"
+          "text": "Guys, shut up! I've got to think!{BR}Of course I can do it, but how do I{BR}do it safely...ish?"
         }
       ],
       "flavorReference": "Push, Grim Tidings: Scared to Death"
