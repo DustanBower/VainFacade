@@ -96,7 +96,7 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":400,"h":200},
 	"sourceSize": {"w":400,"h":200}
 },
-"SphereCharacter.png":
+"PushCharacter.png":
 {
 	"frame": {"x":806,"y":406,"w":400,"h":200},
 	"rotated": false,
@@ -104,7 +104,7 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":400,"h":200},
 	"sourceSize": {"w":400,"h":200}
 },
-"SphereCharacterFlipped.png":
+"PushCharacterFlipped.png":
 {
 	"frame": {"x":1209,"y":406,"w":400,"h":200},
 	"rotated": false,
@@ -112,7 +112,7 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":400,"h":200},
 	"sourceSize": {"w":400,"h":200}
 },
-"TheFuryCharacter.png":
+"SphereCharacter.png":
 {
 	"frame": {"x":1612,"y":406,"w":400,"h":200},
 	"rotated": false,
@@ -120,9 +120,25 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":400,"h":200},
 	"sourceSize": {"w":400,"h":200}
 },
-"TheFuryCharacterFlipped.png":
+"SphereCharacterFlipped.png":
 {
 	"frame": {"x":0,"y":609,"w":400,"h":200},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":400,"h":200},
+	"sourceSize": {"w":400,"h":200}
+},
+"TheFuryCharacter.png":
+{
+	"frame": {"x":403,"y":609,"w":400,"h":200},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":400,"h":200},
+	"sourceSize": {"w":400,"h":200}
+},
+"TheFuryCharacterFlipped.png":
+{
+	"frame": {"x":806,"y":609,"w":400,"h":200},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":400,"h":200},
@@ -135,6 +151,6 @@
 	"format": "RGBA8888",
 	"size": {"w":2048,"h":2048},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:16a2e6024cf3076530dc05283f512fae:f7c68f55e94e3e9a9f493b6bd35eeebf:e92652cff04ed6c8e37f7bc0458ec814$"
+	"smartupdate": "$TexturePacker:SmartUpdate:c89e5e9385a8698da16908857ef4a7c7:deccfae0f9532fbbfd270b7c97a12f5f:e92652cff04ed6c8e37f7bc0458ec814$"
 }
 }
