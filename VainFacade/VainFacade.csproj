@@ -234,6 +234,29 @@
     <Compile Include="ParadiseIsle\TheGoldenDawnCasinoCardController.cs" />
     <Compile Include="ParadiseIsle\TightHallwaysCardController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Push\AnchorCardController.cs" />
+    <Compile Include="Push\BoggedDownCardController.cs" />
+    <Compile Include="Push\CollateralBonusCardController.cs" />
+    <Compile Include="Push\FeedbackBounceCardController.cs" />
+    <Compile Include="Push\FieldCascadeCardController.cs" />
+    <Compile Include="Push\FoldingForcesCardController.cs" />
+    <Compile Include="Push\ForcePulseCardController.cs" />
+    <Compile Include="Push\HarmonicJunctionCardController.cs" />
+    <Compile Include="Push\KineticAbsorptionCardController.cs" />
+    <Compile Include="Push\NewtonsCradleCardController.cs" />
+    <Compile Include="Push\ObjectsInMotionCardController.cs" />
+    <Compile Include="Push\PathOfDestructionCardController.cs" />
+    <Compile Include="Push\PhaseAnalyzerCardController.cs" />
+    <Compile Include="Push\PivotPointCardController.cs" />
+    <Compile Include="Push\PushBaseCharacterCardController.cs" />
+    <Compile Include="Push\PushCardControllerUtilities.cs" />
+    <Compile Include="Push\PushCharacterCardController.cs" />
+    <Compile Include="Push\PushTurnTakerController.cs" />
+    <Compile Include="Push\ReboundPulseCardController.cs" />
+    <Compile Include="Push\ShockwaveCardController.cs" />
+    <Compile Include="Push\SympatheticEchoCardController.cs" />
+    <Compile Include="Push\VectorMathCardController.cs" />
+    <Compile Include="Push\YeahNoCardController.cs" />
     <Compile Include="Sphere\AlienHeartCardController.cs" />
     <Compile Include="Sphere\AlterationWardCardController.cs" />
     <Compile Include="Sphere\BattleAuraCardController.cs" />
@@ -349,6 +372,9 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="DeckLists\ArctisDeckList.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="DeckLists\PushDeckList.json" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
