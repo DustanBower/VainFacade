@@ -27,8 +27,6 @@ namespace VainFacadePlaytest.Push
         {
             //Once per turn, when damage would be dealt to a target, you may discard a card to change the damage type to projectile or melee.
             //Based on Mind over Matter
-            //ChangeDamageTypeTrigger trigger = new ChangeDamageTypeTrigger(base.GameController, (DealDamageAction dd) => !IsPropertyTrue(ChangeDamageTypeKey), ChangeTypeResponse, new TriggerType[1] { TriggerType.ChangeDamageType }, new DamageType[2] { DamageType.Melee, DamageType.Projectile }, GetCardSource());
-            //AddTrigger(trigger);
 
             AddTrigger<DealDamageAction>((DealDamageAction dd) => !IsPropertyTrue(ChangeDamageTypeKey), ChangeTypeResponse, new TriggerType[1] { TriggerType.ChangeDamageType }, TriggerTiming.Before);
 
@@ -61,9 +59,8 @@ namespace VainFacadePlaytest.Push
             if (base.GameController.PretendMode)
             {
                 List<DiscardCardAction> discardResults = new List<DiscardCardAction>();
-                List<DealDamageAction> list = new List<DealDamageAction>();
-                list.Add(dd);
-                IEnumerator coroutine = base.GameController.SelectAndDiscardCard(DecisionMaker, optional: true, null, discardResults, SelectionType.DiscardCard, list, this.TurnTaker, ignoreBattleZone: false, null, GetCardSource());
+                List<YesNoCardDecision> YesNoResults = new List<YesNoCardDecision>();
+                IEnumerator coroutine = base.GameController.MakeYesNoCardDecision(DecisionMaker, SelectionType.Custom, this.Card, dd, YesNoResults, new Card[] {dd.Target }, GetCardSource());
                 if (base.UseUnityCoroutines)
                 {
                     yield return base.GameController.StartCoroutine(coroutine);
@@ -72,6 +69,20 @@ namespace VainFacadePlaytest.Push
                 {
                     base.GameController.ExhaustCoroutine(coroutine);
                 }
+
+                if (DidPlayerAnswerYes(YesNoResults))
+                {
+                    coroutine = base.GameController.SelectAndDiscardCard(DecisionMaker, true, null, discardResults, dealDamageInfo: new DealDamageAction[] { dd }, cardSource: GetCardSource());
+                    if (base.UseUnityCoroutines)
+                    {
+                        yield return base.GameController.StartCoroutine(coroutine);
+                    }
+                    else
+                    {
+                        base.GameController.ExhaustCoroutine(coroutine);
+                    }
+                }
+
                 if (DidDiscardCards(discardResults))
                 {
                     SetCardPropertyToTrueIfRealAction(ChangeDamageTypeKey, null, dd);
@@ -110,7 +121,6 @@ namespace VainFacadePlaytest.Push
             }
             if (CardToDiscard != null)
             {
-                //SetCardProperty(ChangeDamageTypeKey, true);
                 SetCardPropertyToTrueIfRealAction(ChangeDamageTypeKey, null, dd);
                 IEnumerator coroutine2 = base.GameController.DiscardCard(DecisionMaker, CardToDiscard, null, base.TurnTaker, null, GetCardSource());
                 if (base.UseUnityCoroutines)
@@ -147,9 +157,9 @@ namespace VainFacadePlaytest.Push
 
         public override CustomDecisionText GetCustomDecisionText(IDecision decision)
         {
-            if (decision is SelectCardDecision)
+            if (decision is YesNoCardDecision && ((YesNoCardDecision)decision).GameAction != null && ((YesNoCardDecision)decision).GameAction is DealDamageAction)
             {
-                DamageType type = ((SelectCardDecision)decision).DealDamageInfo.FirstOrDefault().DamageType;
+                DamageType type = ((DealDamageAction)((YesNoCardDecision)decision).GameAction).DamageType;
                 string text1 = "";
                 if (type == DamageType.Projectile)
                 {
@@ -163,16 +173,15 @@ namespace VainFacadePlaytest.Push
                 {
                     text1 = "melee or projectile";
                 }
-                //string text1 = "melee or projectile";
                 string text = $"to change the damage type to {text1}";
                 return new CustomDecisionText(
-                $"discard a card {text}.",
-                $"{decision.DecisionMaker.Name} is selecting a card to discard {text}.",
-                $"Vote for a card to discard {text}.",
-                $"a card to discard {text}."
+                $"Do you want to discard a card {text}?",
+                $"{decision.DecisionMaker.Name} is deciding whether to discard a card {text}.",
+                $"Vote for whether to discard a card {text}.",
+                $"whether to discard a card {text}."
                 );
             }
-            return null;
+            return base.GetCustomDecisionText(decision);
 
         }
     }
