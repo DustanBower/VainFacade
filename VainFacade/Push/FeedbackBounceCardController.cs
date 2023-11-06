@@ -68,7 +68,7 @@ namespace VainFacadePlaytest.Push
                 IEnumerable<Function> functionChoices = new Function[2]
                 {
                     new Function(base.HeroTurnTakerController, "Destroy this card", SelectionType.DestroySelf, () => DestroyThisCardResponse(null)),
-                    new Function(base.HeroTurnTakerController, "Put an ongoing from in play under this card", SelectionType.MoveCard, () => base.GameController.SelectAndMoveCard(DecisionMaker, (Card c) => IsOngoing(c) && c.IsInPlayAndHasGameText && c != this.Card, this.Card.UnderLocation, cardSource: GetCardSource()))
+                    new Function(base.HeroTurnTakerController, "Put an ongoing from in play under this card", SelectionType.MoveCard, () => base.GameController.SelectAndMoveCard(DecisionMaker, (Card c) => IsOngoing(c) && c.IsInPlayAndHasGameText && c != this.Card, this.Card.UnderLocation, playIfMovingToPlayArea: false, cardSource: GetCardSource()))
                 };
 
                 SelectFunctionDecision selectFunction = new SelectFunctionDecision(base.GameController, base.HeroTurnTakerController, functionChoices, false, null, null, null, GetCardSource());
@@ -95,7 +95,7 @@ namespace VainFacadePlaytest.Push
                     base.GameController.ExhaustCoroutine(coroutine);
                 }
 
-                coroutine = base.GameController.SelectAndMoveCard(DecisionMaker, (Card c) => IsOngoing(c) && c.IsInPlayAndHasGameText && c.Owner.IsPlayer && c.Owner != this.TurnTaker, this.Card.UnderLocation, cardSource: GetCardSource());
+                coroutine = base.GameController.SelectAndMoveCard(DecisionMaker, (Card c) => IsOngoing(c) && c.IsInPlayAndHasGameText && c.Owner.IsPlayer && c.Owner != this.TurnTaker, this.Card.UnderLocation, playIfMovingToPlayArea: false, cardSource: GetCardSource());
                 if (base.UseUnityCoroutines)
                 {
                     yield return base.GameController.StartCoroutine(coroutine);

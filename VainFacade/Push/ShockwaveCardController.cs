@@ -34,16 +34,18 @@ namespace VainFacadePlaytest.Push
             {
                 base.GameController.ExhaustCoroutine(coroutine);
             }
-
-            coroutine = DestroyThisCardResponse(null);
-            if (base.UseUnityCoroutines)
+            if (this.Card.IsInPlayAndHasGameText)
             {
-                yield return base.GameController.StartCoroutine(coroutine);
-            }
-            else
-            {
-                base.GameController.ExhaustCoroutine(coroutine);
-            }
+                coroutine = DestroyThisCardResponse(null);
+                if (base.UseUnityCoroutines)
+                {
+                    yield return base.GameController.StartCoroutine(coroutine);
+                }
+                else
+                {
+                    base.GameController.ExhaustCoroutine(coroutine);
+                }
+            } 
         }
     }
 }
