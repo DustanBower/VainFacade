@@ -33,7 +33,7 @@ namespace VainFacadePlaytest.Push
             SetCardProperty(FirstDamage,true);
             int amount = dd.Amount;
             DamageType type = dd.DamageType;
-            IEnumerator coroutine = base.GameController.SelectTargetsAndDealDamage(DecisionMaker, new DamageSource(base.GameController, this.CharacterCard), amount, type, 2, false, 2, additionalCriteria: (Card c) => !HasBeenDealtDamageThisTurn(c), cardSource: GetCardSource());
+            IEnumerator coroutine = base.GameController.SelectTargetsAndDealDamage(DecisionMaker, new DamageSource(base.GameController, this.CharacterCard), amount, type, 2, false, 2, addStatusEffect: (dd.StatusEffectResponses != null) ? dd.StatusEffectResponses.FirstOrDefault() : null, isIrreducible: dd.IsIrreducible, additionalCriteria: (Card c) => !HasBeenDealtDamageThisTurn(c), cardSource: GetCardSource());
             if (base.UseUnityCoroutines)
             {
                 yield return base.GameController.StartCoroutine(coroutine);
