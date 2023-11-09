@@ -9,7 +9,7 @@ using System.Text;
 
 namespace VainFacadePlaytest.TheBaroness
 {
-    public class TwistedPerceptionsCardController : CardController
+    public class TwistedPerceptionsCardController : BaronessUtilityCardController
     {
         public TwistedPerceptionsCardController(Card card, TurnTakerController turnTakerController)
             : base(card, turnTakerController)

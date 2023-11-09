@@ -86,5 +86,29 @@ namespace VainFacadePlaytest.TheBaroness
             };
             return SpecialStringMaker.ShowSpecialString(output, () => base.Card.IsInPlayAndHasGameText, () => base.GameController.FindCardsWhere(BloodCard(), visibleToCard: GetCardSource()));
         }
+
+        public override IEnumerator DeterminePlayLocation(List<MoveCardDestination> storedResults, bool isPutIntoPlay, List<IDecision> decisionSources, Location overridePlayArea = null, LinqTurnTakerCriteria additionalTurnTakerCriteria = null)
+        {
+            if (FindCardsWhere(BloodCard()).Any())
+            {
+                List<Card> list = GetOrderedCardsInLocation(TurnTaker.PlayArea).ToList();
+                Card firstBlood = list.Where((Card c) => BloodCard().Criteria(c)).FirstOrDefault();
+                int num = list.IndexOf(firstBlood);
+                list.Insert(num, base.Card);
+                list.ForEach(delegate (Card c)
+                {
+                    base.GameController.Game.AssignPlayCardIndex(c);
+                });
+            }
+
+            storedResults.Add(new MoveCardDestination(TurnTaker.PlayArea));
+
+            yield return null;
+        }
+
+        private IEnumerable<Card> GetOrderedCardsInLocation(Location location)
+        {
+            return location.Cards.OrderBy((Card c) => c.PlayIndex);
+        }
     }
 }
