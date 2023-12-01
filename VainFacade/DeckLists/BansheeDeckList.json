@@ -1,0 +1,480 @@
+﻿{
+  "name": "Banshee",
+  "kind": "Hero",
+  "initialCardIdentifiers": [
+    "BansheeCharacter"
+  ],
+  "cards": [
+    {
+      "identifier": "BansheeCharacter",
+      "count": 1,
+      "title": "Banshee",
+      "body": "Stygian Song",
+      "backgroundColor": "6E7998",
+      "character": true,
+      "powers": [
+        "Select a non-hero target. Increase the next damage dealt to that target by 2."
+      ],
+      "icons": [
+        "HasPower",
+        "IncreaseDamageTaken"
+      ],
+      "hitpoints": 26,
+      "nemesisIdentifiers": [
+        "VainFacadePlaytest.Banshee"
+      ],
+      "incapacitatedAbilities": [
+        "Destroy an environment card.",
+        "Destroy an ongoing card.",
+        "Destroy a target with 3 or fewer hp."
+      ],
+      "flippedIcons": [
+        "DestroyEnvironment",
+        "DestroyOngoing",
+        "DestroyTarget"
+      ],
+      "complexity": 2,
+      "openingLines": {
+        "default": "Beware! I have swum in the river, and it dances to my tune!",
+        "Cauldron.CeladrochCharacter": "This land is for the living! Return to your kingdom below!",
+        "TheDreamerCharacter": "These dreams must also die. Let them fade.",
+        "OblivAeonFrontPageCharacter": "This is not the end."
+      }
+    },
+    {
+      "identifier": "BetterOffDead",
+      "count": 2,
+      "title": "Better Off Dead",
+      "keywords": [
+        "ongoing",
+        "limited"
+      ],
+      "body": [
+        "When {Banshee} would be incapacitated, each player may first play a card."
+      ],
+      "powers": [
+        "Draw a card. 1 incapacitated hero activates an ability. Then, if {Banshee} has 10 or fewer hp, you may play a card."
+      ],
+      "icons": [
+        "PlayCardNow",
+        "HasPower",
+        "DrawCardNow"
+      ],
+      "flavorQuotes": [
+        {
+          "identifier": "Jen",
+          "text": "I loved my life, but it is over. I am ready to move on to what's next. Promise me you won't won't let them bind me here."
+        }
+      ],
+      "flavorReference": "Jen, Strange Stories: Dead Reckoning #7"
+    },
+    {
+      "identifier": "BridgeOfTheBroken",
+      "count": 2,
+      "title": "Bridge of the Broken",
+      "keywords": [
+        "ongoing",
+        "dirge"
+      ],
+      "body": [
+        "When this card enters play, return all of your other dirges in play to your hand.",
+        "Play this card next to a target. Damage dealt to that target is irreducible. The first time each turn that target deals damage, {Banshee} may use a power.",
+        "At the end of that target's turn, if this card did not enter play this turn, play up to 1 card and return this card to your hand."
+      ],
+      "icons": [
+        "MakeDamageIrreducible",
+        "UsePowerNow",
+        "EndOfTurnAction",
+        "PlayCardNow"
+      ],
+      "flavorQuotes": [
+        {
+          "identifier": "Bizheda",
+          "text": "So-called speaker, where is your power? What are your laments to Kalementu? The songs of the dead are ended. They are faded on the wind."
+        }
+      ],
+      "flavorReference": "Bizheda, Guardians at the Gate #63"
+    },
+    {
+      "identifier": "CallOfTheGrave",
+      "count": 2,
+      "title": "Call of the Grave",
+      "keywords": [
+        "one-shot"
+      ],
+      "body": [
+        "Discard any number of cards.",
+        "{Banshee} deals herself 1 irreducible infernal damage for each card discarded this way.",
+        "{Banshee} deals a target X irreducible infernal damage, where X = 2 times the damage she took this way."
+      ],
+      "icons": [
+        "Discard",
+        "DealDamageInfernal"
+      ],
+      "flavorQuotes": [
+        {
+          "identifier": "Banshee",
+          "text": "I cannot cross the river, but the ferryman knows my name. Your passage is paid in full!"
+        }
+      ],
+      "flavorReference": "Banshee, Guardians at the Gate #142"
+    },
+    {
+      "identifier": "ChorusOfChaos",
+      "count": 2,
+      "title": "Chorus of Chaos",
+      "keywords": [
+        "ongoing",
+        "dirge"
+      ],
+      "body": [
+        "When this card enters play, return all other dirges in play to your hand.",
+        "Play this card next to a target. The first time each turn another target is dealt damage by a non-hero card, that source deals that same damage to the target next to this card.",
+        "At the end of that target's turn, if this card did not enter play this turn, play up to 1 card and return this card to your hand."
+      ],
+      "icons": [
+        "DealDamage",
+        "EndOfTurnAction",
+        "PlayCardNow"
+      ],
+      "flavorQuotes": [
+        {
+          "identifier": "Grandfather",
+          "text": "Well, shoot! That wasn't supposed to happen..."
+        }
+      ],
+      "flavorReference": "Grandfather, Strange Stories: Time and Tide #9"
+    },
+    {
+      "identifier": "DecayingTones",
+      "count": 2,
+      "title": "Decaying Tones",
+      "keywords": [
+        "ongoing",
+        "limited"
+      ],
+      "body": [
+        "When a card is destroyed, you may draw a card.",
+        "At the start of your turn, {Banshee} regains 2 hp. Then destroy this card."
+      ],
+      "icons": [
+        "DrawCardNow",
+        "StartofTurnAction",
+        "GainHP",
+        "DestroySelf"
+      ],
+      "flavorQuotes": [
+        {
+          "identifier": "Banshee",
+          "text": "Everything withers. I can hear the fading notes of each passing through the veil."
+        }
+      ],
+      "flavorReference": "Banshee, Peacekeeper #47"
+    },
+    {
+      "identifier": "DreadCacophony",
+      "count": 3,
+      "title": "Dread Cacophony",
+      "keywords": [
+        "one-shot"
+      ],
+      "body": [
+        "1 target deals itself 1 irreducible infernal damage.",
+        "You may draw a card.",
+        "You may play a card."
+      ],
+      "icons": [
+        "DealDamageInfernal",
+        "DrawCardNow",
+        "PlayCardNow"
+      ],
+      "flavorQuotes": [
+        {
+          "identifier": "Songbird",
+          "text": "What is this insufferable racket?"
+        }
+      ],
+      "flavorReference": "Songbird, Bulwark #23"
+    },
+    {
+      "identifier": "DreamThief",
+      "count": 3,
+      "title": "Dream Thief",
+      "keywords": [
+        "one-shot"
+      ],
+      "body": [
+        "Discard the top 2 cards of your deck, the villain deck, and the environment deck. You may put a card discarded this way into play from the trash.",
+        "You may draw or play a card."
+      ],
+      "icons": [
+        "Discard",
+        "PlayCardNow",
+        "DrawCardNow"
+      ],
+      "flavorQuotes": [
+        {
+          "identifier": "Banshee",
+          "text": "With apologies to her grace!"
+        }
+      ],
+      "flavorReference": "Banshee, Guardians at the Gate #25"
+    },
+    {
+      "identifier": "FatalFortissimo",
+      "count": 3,
+      "title": "Fatal Fortissimo",
+      "keywords": [
+        "one-shot"
+      ],
+      "body": [
+        "Select up to 3 targets. Increase the next damage dealt to those targets by 2."
+      ],
+      "icons": [
+        "Discard",
+        "PlayCardNow",
+        "DrawCardNow"
+      ],
+      "flavorQuotes": [
+        {
+          "identifier": "Ember",
+          "text": "Is it bad that sounds beautiful to me?"
+        }
+      ],
+      "flavorReference": "Ember, Kalatutkhenos Rising"
+    },
+    {
+      "identifier": "GraveRobber",
+      "count": 2,
+      "title": "Grave Robber",
+      "keywords": [
+        "one-shot"
+      ],
+      "body": [
+        "Put a card other than a one-shot from a trash into play."
+      ],
+      "icons": [
+        "PlayCardNow"
+      ],
+      "flavorQuotes": [
+        {
+          "identifier": "Khenageen",
+          "text": "In life were you nothing but a thief; in death, you plunder the halls of the dead!"
+        }
+      ],
+      "flavorReference": "Khenageen, Banshee #29"
+    },
+    {
+      "identifier": "MenacingMelody",
+      "count": 3,
+      "title": "Menacing Melody",
+      "keywords": [
+        "ongoing"
+      ],
+      "powers": [
+        "A target deals itself 0 irreducible infernal damage. Then, if that target has 3 or fewer hp, destroy it and {Banshee} regains X hp, where X = that target's hp before it was destroyed.",
+        "Select a keyword. Increase the next damage dealt to each target with that keyword by 1."
+      ],
+      "icons": [
+        "HasPower",
+        "DealDamageInfernal",
+        "DestroyTarget",
+        "GainHP",
+        "IncreaseDamageTaken"
+      ],
+      "flavorQuotes": [
+        {
+          "identifier": "Banshee",
+          "text": "You swim in the whispers of Irkalla. Hear now the song of Ereshkigal!"
+        }
+      ],
+      "flavorReference": "Banshee, Strange Stories: Dead Men's Tales"
+    },
+    {
+      "identifier": "MournfulMorendo",
+      "count": 3,
+      "title": "Mournful Morendo",
+      "keywords": [
+        "ongoing"
+      ],
+      "powers": [
+        "Select an environment card. You may shuffle it into its deck. If you do, destroy this card. Otherwise, destroy the selected card.",
+        "Play a card."
+      ],
+      "icons": [
+        "HasPower",
+        "Manipulate",
+        "DestroySelf",
+        "DestroyEnvironment",
+        "PlayCardNow"
+      ],
+      "flavorQuotes": [
+        {
+          "identifier": "Banshee",
+          "text": "What prison of earth can hold the forces of the dead?"
+        }
+      ],
+      "flavorReference": "Banshee, Q is for Quiet one-shot"
+    },
+    {
+      "identifier": "ReapersRest",
+      "count": 2,
+      "title": "Reaper's Rest",
+      "keywords": [
+        "ongoing"
+      ],
+      "body": [
+        "When this card enters play, you may draw and play a card.",
+        "At the end of each player's turn, if that player did not play a card, did not use a power, or did not draw a card this turn, select a target. Increase the next damage dealt to that target by 1."
+      ],
+      "icons": [
+        "DrawCardNow",
+        "PlayCardNow",
+        "EndOfTurnAction",
+        "IncreaseDamageTaken"
+      ],
+      "flavorQuotes": [
+        {
+          "identifier": "Beketamun",
+          "text": "Your song ends while mine begins. I-- wipe that smirk off your face!"
+        }
+      ],
+      "flavorReference": "Beketamun, Guardians at the Gate: The Lost Pyramid"
+    },
+    {
+      "identifier": "RuinousRhythm",
+      "count": 3,
+      "title": "Ruinous Rhythm",
+      "keywords": [
+        "ongoing"
+      ],
+      "powers": [
+        "Destroy a non-character, non-target card. If a non-ongoing is destroyed this way, destroy this card.",
+        "Draw a card."
+      ],
+      "icons": [
+        "HasPower",
+        "Destroy",
+        "DestroySelf",
+        "DrawCardNow"
+      ],
+      "flavorQuotes": [
+        {
+          "identifier": "Beketamun",
+          "text": "Your song ends while mine begins. I-- wipe that smirk off your face!"
+        }
+      ],
+      "flavorReference": "Beketamun, Guardians at the Gate: The Lost Pyramid"
+    },
+    {
+      "identifier": "TensionAndResolution",
+      "count": 2,
+      "title": "Tension and Resolution",
+      "keywords": [
+        "ongoing"
+      ],
+      "body": [
+        "The first time each non-hero turn you play a card with a name not in play, you may draw a card and use a power."
+      ],
+      "icons": [
+        "DrawCardNow",
+        "UsePowerNow"
+      ],
+      "flavorQuotes": [
+        {
+          "identifier": "Banshee",
+          "text": "In the music of the spheres above and the world below, there is an ebb and flow to all things."
+        }
+      ],
+      "flavorReference": "Banshee, Banshee #11"
+    },
+    {
+      "identifier": "VerseForTheVanquished",
+      "count": 2,
+      "title": "Verse for the Vanquished",
+      "keywords": [
+        "ongoing",
+        "dirge"
+      ],
+      "body": [
+        "When this card enters play, return all of your other dirges in play to your hand.",
+        "Play this card next to a target. The first time each turn that target is dealt damage, a player may discard a card to draw or play a card.",
+        "At the end of that target's turn, if this card did not enter play this turn, play up to 1 card and return this card to your hand."
+      ],
+      "icons": [
+        "Discard",
+        "DrawCardNow",
+        "PlayCardNow",
+        "EndOfTurnAction"
+      ],
+      "flavorQuotes": [
+        {
+          "identifier": "Judge Virtanen",
+          "text": "This power is too great for you!"
+        },
+        {
+          "identifier": "Banshee",
+          "text": "But I am not alone: Nagala's victims speak through me!"
+        }
+      ],
+      "flavorReference": "Grim Tidings: Keep Watch"
+    },
+    {
+      "identifier": "VoiceForTheVoiceless",
+      "count": 2,
+      "title": "Voice for the Voiceless",
+      "keywords": [
+        "one-shot"
+      ],
+      "body": [
+        "Search your deck for a dirge and put it into your hand. Shuffle your deck.",
+        "You may draw a card.",
+        "You may play a card."
+      ],
+      "icons": [
+        "Search",
+        "DrawCardNow",
+        "PlayCardNow"
+      ],
+      "flavorQuotes": [
+        {
+          "identifier": "Banshee",
+          "text": "Old, dark, enchanted forest, you have been silent long enough. The dead sing of your glory. Soon the living will know your song."
+        }
+      ],
+      "flavorReference": "Banshee, Guardians at the Gate #79"
+    },
+    {
+      "identifier": "WretchedRefrain",
+      "count": 2,
+      "title": "Wretched Refrain",
+      "keywords": [
+        "ongoing",
+        "dirge"
+      ],
+      "body": [
+        "When this card enters play, return all of your other Dirges in play to your hand.",
+        "Play this card next to a target. When that target would be dealt damage, you may increase that damage by 1 and change the damage type to a type of your choice.",
+        "At the end of that target's turn, if this card did not enter play this turn, play up to 1 card and return this card to your hand."
+      ],
+      "icons": [
+        "IncreaseDamageTaken",
+        "EndOfTurnAction",
+        "PlayCardNow"
+      ],
+      "flavorQuotes": [
+        {
+          "identifier": "Hermit Glissen",
+          "text": "The fell voice on the air. What does it mean?"
+        },
+        {
+          "identifier": "Grim Sebastian",
+          "text": "The black wind howls..."
+        }
+      ],
+      "flavorReference": "Through the Shadows: Paying the Ferryman"
+    }
+  ],
+  "promoCards": [
+  ]
+}
