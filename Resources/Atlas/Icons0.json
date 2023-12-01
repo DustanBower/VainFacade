@@ -8,7 +8,7 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":128,"h":128},
 	"sourceSize": {"w":128,"h":128}
 },
-"BurgessIcon.png":
+"BansheeIcon.png":
 {
 	"frame": {"x":131,"y":0,"w":128,"h":128},
 	"rotated": false,
@@ -16,7 +16,7 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":128,"h":128},
 	"sourceSize": {"w":128,"h":128}
 },
-"CarnavalIcon.png":
+"BurgessIcon.png":
 {
 	"frame": {"x":262,"y":0,"w":128,"h":128},
 	"rotated": false,
@@ -24,7 +24,7 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":128,"h":128},
 	"sourceSize": {"w":128,"h":128}
 },
-"EmberIcon.png":
+"CarnavalIcon.png":
 {
 	"frame": {"x":393,"y":0,"w":128,"h":128},
 	"rotated": false,
@@ -32,7 +32,7 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":128,"h":128},
 	"sourceSize": {"w":128,"h":128}
 },
-"FridayIcon.png":
+"EmberIcon.png":
 {
 	"frame": {"x":524,"y":0,"w":128,"h":128},
 	"rotated": false,
@@ -40,7 +40,7 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":128,"h":128},
 	"sourceSize": {"w":128,"h":128}
 },
-"GlyphIcon.png":
+"FridayIcon.png":
 {
 	"frame": {"x":655,"y":0,"w":128,"h":128},
 	"rotated": false,
@@ -48,9 +48,17 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":128,"h":128},
 	"sourceSize": {"w":128,"h":128}
 },
+"GlyphIcon.png":
+{
+	"frame": {"x":786,"y":0,"w":128,"h":128},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":128,"h":128},
+	"sourceSize": {"w":128,"h":128}
+},
 "ice.png":
 {
-	"frame": {"x":786,"y":0,"w":64,"h":64},
+	"frame": {"x":917,"y":0,"w":64,"h":64},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":64,"h":64},
@@ -58,7 +66,7 @@
 },
 "NodeIcon.png":
 {
-	"frame": {"x":853,"y":0,"w":128,"h":128},
+	"frame": {"x":0,"y":131,"w":128,"h":128},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":128,"h":128},
@@ -66,7 +74,7 @@
 },
 "PushIcon.png":
 {
-	"frame": {"x":0,"y":131,"w":128,"h":128},
+	"frame": {"x":131,"y":131,"w":128,"h":128},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":128,"h":128},
@@ -74,7 +82,7 @@
 },
 "SphereIcon.png":
 {
-	"frame": {"x":131,"y":131,"w":128,"h":128},
+	"frame": {"x":262,"y":131,"w":128,"h":128},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":128,"h":128},
@@ -82,7 +90,7 @@
 },
 "TheFuryIcon.png":
 {
-	"frame": {"x":262,"y":131,"w":128,"h":128},
+	"frame": {"x":393,"y":131,"w":128,"h":128},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":128,"h":128},
@@ -95,6 +103,6 @@
 	"format": "RGBA8888",
 	"size": {"w":1024,"h":1024},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:41d75140dc08e72d3f6a508ce163fd88:a872510eeeb251616c97b06b850155a3:c680398f21d101d0a1ae6d7fc2a23608$"
+	"smartupdate": "$TexturePacker:SmartUpdate:cd1d518374c8469edfdaa2ab740e6795:b917d66b2e2b124c52276c4a10b622a2:c680398f21d101d0a1ae6d7fc2a23608$"
 }
 }

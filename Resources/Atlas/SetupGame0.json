@@ -2,7 +2,15 @@
 
 "ArctisCharacter.png":
 {
-	"frame": {"x":0,"y":0,"w":178,"h":256},
+	"frame": {"x":180,"y":259,"w":178,"h":256},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":178,"h":256},
+	"sourceSize": {"w":178,"h":256}
+},
+"BansheeCharacter.png":
+{
+	"frame": {"x":361,"y":259,"w":178,"h":256},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":178,"h":256},
@@ -10,7 +18,7 @@
 },
 "BlitzCharacter.png":
 {
-	"frame": {"x":181,"y":0,"w":177,"h":256},
+	"frame": {"x":0,"y":0,"w":177,"h":256},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":177,"h":256},
@@ -18,7 +26,7 @@
 },
 "BurgessCharacter.png":
 {
-	"frame": {"x":361,"y":0,"w":177,"h":256},
+	"frame": {"x":180,"y":0,"w":177,"h":256},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":177,"h":256},
@@ -26,7 +34,7 @@
 },
 "CarnavalCharacter.png":
 {
-	"frame": {"x":541,"y":0,"w":177,"h":256},
+	"frame": {"x":360,"y":0,"w":177,"h":256},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":177,"h":256},
@@ -34,7 +42,7 @@
 },
 "EldrenwoodVillageDeckBack.png":
 {
-	"frame": {"x":721,"y":0,"w":177,"h":256},
+	"frame": {"x":540,"y":0,"w":177,"h":256},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":177,"h":256},
@@ -42,7 +50,7 @@
 },
 "EmberCharacter.png":
 {
-	"frame": {"x":0,"y":259,"w":177,"h":256},
+	"frame": {"x":720,"y":0,"w":177,"h":256},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":177,"h":256},
@@ -50,7 +58,7 @@
 },
 "FridayCharacter.png":
 {
-	"frame": {"x":180,"y":259,"w":178,"h":256},
+	"frame": {"x":542,"y":259,"w":178,"h":256},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":178,"h":256},
@@ -58,7 +66,7 @@
 },
 "GrandfatherCharacter.png":
 {
-	"frame": {"x":361,"y":259,"w":177,"h":256},
+	"frame": {"x":900,"y":0,"w":177,"h":256},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":177,"h":256},
@@ -66,7 +74,7 @@
 },
 "NodeCharacter.png":
 {
-	"frame": {"x":541,"y":259,"w":177,"h":256},
+	"frame": {"x":1080,"y":0,"w":177,"h":256},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":177,"h":256},
@@ -74,7 +82,7 @@
 },
 "ParadiseIsleDeckBack.png":
 {
-	"frame": {"x":721,"y":259,"w":177,"h":256},
+	"frame": {"x":1260,"y":0,"w":177,"h":256},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":177,"h":256},
@@ -82,7 +90,7 @@
 },
 "PushCharacter.png":
 {
-	"frame": {"x":0,"y":518,"w":178,"h":256},
+	"frame": {"x":723,"y":259,"w":178,"h":256},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":178,"h":256},
@@ -90,7 +98,7 @@
 },
 "SphereCharacter.png":
 {
-	"frame": {"x":181,"y":518,"w":177,"h":256},
+	"frame": {"x":1440,"y":0,"w":177,"h":256},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":177,"h":256},
@@ -98,7 +106,7 @@
 },
 "TheBaronessCharacter.png":
 {
-	"frame": {"x":361,"y":518,"w":177,"h":256},
+	"frame": {"x":1620,"y":0,"w":177,"h":256},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":177,"h":256},
@@ -106,7 +114,7 @@
 },
 "TheFuryCharacter.png":
 {
-	"frame": {"x":541,"y":518,"w":177,"h":256},
+	"frame": {"x":1800,"y":0,"w":177,"h":256},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":177,"h":256},
@@ -114,7 +122,7 @@
 },
 "TheMidnightBazaarDeckBack.png":
 {
-	"frame": {"x":721,"y":518,"w":177,"h":256},
+	"frame": {"x":0,"y":259,"w":177,"h":256},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":177,"h":256},
@@ -125,8 +133,8 @@
 	"version": "1.0",
 	"image": "SetupGame0.png",
 	"format": "RGBA8888",
-	"size": {"w":1024,"h":1024},
+	"size": {"w":2048,"h":2048},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:58e40a038bf630b4c841dd3f258c24f7:29830e958914926a7a8a5504efc8cff2:4ee285c32a91b7652e02ac049f918b2a$"
+	"smartupdate": "$TexturePacker:SmartUpdate:d3d777aaff27784ddcd9be591ff36de2:3037db34db54b40506f89063ffa5d63c:4ee285c32a91b7652e02ac049f918b2a$"
 }
 }

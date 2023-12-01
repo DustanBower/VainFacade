@@ -8,7 +8,7 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":330,"h":260},
 	"sourceSize": {"w":330,"h":260}
 },
-"BurgessCharacter.png":
+"BansheeCharacter.png":
 {
 	"frame": {"x":333,"y":0,"w":330,"h":260},
 	"rotated": false,
@@ -16,7 +16,7 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":330,"h":260},
 	"sourceSize": {"w":330,"h":260}
 },
-"CarnavalCharacter.png":
+"BurgessCharacter.png":
 {
 	"frame": {"x":666,"y":0,"w":330,"h":260},
 	"rotated": false,
@@ -24,9 +24,17 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":330,"h":260},
 	"sourceSize": {"w":330,"h":260}
 },
+"CarnavalCharacter.png":
+{
+	"frame": {"x":999,"y":0,"w":330,"h":260},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":330,"h":260},
+	"sourceSize": {"w":330,"h":260}
+},
 "EmberCharacter.png":
 {
-	"frame": {"x":0,"y":263,"w":330,"h":260},
+	"frame": {"x":1332,"y":0,"w":330,"h":260},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":330,"h":260},
@@ -34,7 +42,7 @@
 },
 "FridayCharacter.png":
 {
-	"frame": {"x":333,"y":263,"w":330,"h":260},
+	"frame": {"x":1665,"y":0,"w":330,"h":260},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":330,"h":260},
@@ -42,7 +50,7 @@
 },
 "NodeCharacter.png":
 {
-	"frame": {"x":666,"y":263,"w":330,"h":260},
+	"frame": {"x":0,"y":263,"w":330,"h":260},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":330,"h":260},
@@ -50,7 +58,7 @@
 },
 "PushCharacter.png":
 {
-	"frame": {"x":0,"y":526,"w":330,"h":260},
+	"frame": {"x":333,"y":263,"w":330,"h":260},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":330,"h":260},
@@ -58,7 +66,7 @@
 },
 "SphereCharacter.png":
 {
-	"frame": {"x":333,"y":526,"w":330,"h":260},
+	"frame": {"x":666,"y":263,"w":330,"h":260},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":330,"h":260},
@@ -66,7 +74,7 @@
 },
 "TheFuryCharacter.png":
 {
-	"frame": {"x":666,"y":526,"w":330,"h":260},
+	"frame": {"x":999,"y":263,"w":330,"h":260},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":330,"h":260},
@@ -77,8 +85,8 @@
 	"version": "1.0",
 	"image": "HeroLogos0.png",
 	"format": "RGBA8888",
-	"size": {"w":1024,"h":1024},
+	"size": {"w":2048,"h":2048},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:704f73bc4f84671709c0869a1ee9ec54:1bd2f3f71e2e9fc63e47bafe2be8403f:abd76add2ce06cabb8b0a8e056eb9b47$"
+	"smartupdate": "$TexturePacker:SmartUpdate:bedd79bba201c2551d30991c219acf7b:3797962530fe60308cf88bcfdbf78d98:abd76add2ce06cabb8b0a8e056eb9b47$"
 }
 }
