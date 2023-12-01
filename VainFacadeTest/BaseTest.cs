@@ -235,6 +235,7 @@ namespace Handelabra.Sentinels.UnitTest
         protected Location aeonTrash { get { return oblivaeon.TurnTaker.FindSubTrash("AeonMenDeck"); } }
         protected Location scionDeck { get { return oblivaeon.TurnTaker.FindSubDeck("ScionDeck"); } }
         protected Location scionTrash { get { return oblivaeon.TurnTaker.FindSubTrash("ScionDeck"); } }
+        protected Location missionDeck { get { return oblivaeon.TurnTaker.FindSubDeck("MissionDeck"); } }
 
         protected Card aeonScion { get { return GetCard("AeonMasterCharacter"); } }
         protected Card borrScion { get { return GetCard("BorrTheUnstableCharacter"); } }
@@ -1414,6 +1415,1020 @@ namespace Handelabra.Sentinels.UnitTest
                     SelectNumberDecision selectNumber = decision as SelectNumberDecision;
                     Console.WriteLine("Make a SelectNumberDecision: [" + selectNumber.Choices.ToCommaList() + "]");
                     
+                    if (this.DecisionSelectNumber != null)
+                    {
+                        selectNumber.SelectedNumber = this.DecisionSelectNumber.Value;
+                    }
+                    else
+                    {
+                        if (selectNumber.IsOptional)
+                        {
+                            selectNumber.FinishedSelecting = true;
+                        }
+                        else
+                        {
+                            selectNumber.SelectedNumber = selectNumber.Choices.FirstOrDefault();
+                        }
+                    }
+                    Console.WriteLine("Selected: " + selectNumber.SelectedNumber);
+                }
+                else if (decision is ActivateAbilityDecision)
+                {
+                    ActivateAbilityDecision activateAbility = decision as ActivateAbilityDecision;
+                    var who = activateAbility.HeroTurnTakerController != null ? activateAbility.HeroTurnTakerController.Name : "Everybody";
+                    var skip = activateAbility.IsOptional ? ", Skip" : "";
+
+                    var abilityChoices = activateAbility.Choices.Select(aa => aa.CardController.Card.Title);
+                    var choices = "";
+                    for (int i = 0; i < abilityChoices.Count(); i++)
+                    {
+                        choices += abilityChoices.ElementAt(i);
+                        var associated = activateAbility.GetAssociatedCard(i);
+                        if (associated != null)
+                        {
+                            choices += " (" + associated.Title + ")";
+                        }
+
+                        if (i < abilityChoices.Count() - 1)
+                        {
+                            choices += ", ";
+                        }
+                    }
+                    choices += skip;
+
+                    Console.WriteLine(who + ", Make an ActivateAbilityDecision: [" + choices + "]");
+
+                    if (this.DecisionDoNotActivatableAbility)
+                    {
+                        Console.WriteLine("Selected to skip using an ability.");
+                        activateAbility.FinishedSelecting = true;
+                    }
+                    else
+                    {
+                        if (this.DecisionActivateAbilities != null)
+                        {
+                            var ability = activateAbility.Choices.Where(aa => aa.CardController.Card == this.DecisionActivateAbilities[this.DecisionActivateAbilitiesIndex]).FirstOrDefault();
+                            activateAbility.SelectedAbility = ability;
+                            this.DecisionActivateAbilitiesIndex++;
+                        }
+                        else
+                        {
+                            activateAbility.SelectedAbility = activateAbility.Choices.FirstOrDefault();
+                        }
+                        Console.WriteLine("Selected: " + activateAbility.SelectedAbility.CardController.Card.Title);
+                    }
+                }
+                else if (decision is SelectWordDecision)
+                {
+                    SelectWordDecision selectWord = decision as SelectWordDecision;
+                    Console.WriteLine("Make a SelectWordDecision: [" + selectWord.Choices.ToCommaList() + "]");
+
+                    if (this.DecisionSelectWords != null)
+                    {
+                        var word = this.DecisionSelectWords[this.DecisionSelectWordsIndex];
+                        if (!selectWord.Choices.Contains(word))
+                        {
+                            Assert.Fail("The SelectWordDecision does not contain the word: " + word);
+                        }
+
+                        selectWord.SelectedWord = word;
+                        this.DecisionSelectWordsIndex++;
+                    }
+                    else if (this.DecisionSelectWord != null)
+                    {
+                        if (!selectWord.Choices.Contains(this.DecisionSelectWord))
+                        {
+                            Assert.Fail("The SelectWordDecision does not contain the word: " + this.DecisionSelectWord);
+                        }
+
+                        selectWord.SelectedWord = this.DecisionSelectWord;
+                    }
+                    else if (this.DecisionSelectWordSkip)
+                    {
+                        if (!selectWord.IsOptional)
+                        {
+                            Assert.Fail("The SelectWordDecision is not optional so cannot be skipped.");
+                        }
+
+                        selectWord.Skip();
+                    }
+                    else
+                    {
+                        Log.Warning("Automatically choosing first word: " + selectWord.Choices.FirstOrDefault());
+
+                        selectWord.SelectedWord = selectWord.Choices.FirstOrDefault();
+                    }
+
+                    Console.WriteLine("Selected: " + selectWord.SelectedWord);
+                }
+                else if (decision is SelectFromBoxDecision)
+                {
+                    SelectFromBoxDecision selectFromBox = decision as SelectFromBoxDecision;
+                    Console.WriteLine("Make a SelectFromBoxDecision: ");
+
+                    if (this.DecisionSelectFromBoxIdentifiers != null
+                        && this.DecisionSelectFromBoxIdentifiers.Count() > 0
+                        && this.DecisionSelectFromBoxIndex < this.DecisionSelectFromBoxIdentifiers.Count())
+                    {
+                        var identifier = this.DecisionSelectFromBoxIdentifiers[this.DecisionSelectFromBoxIndex];
+                        this.DecisionSelectFromBoxIndex++;
+                        if (!selectFromBox.IsIdentifierAllowed(identifier))
+                        {
+                            Assert.Fail("The SelectFromBoxDecision does not allow the identifier: " + identifier);
+                        }
+
+                        selectFromBox.SelectedIdentifier = identifier;
+                        selectFromBox.SelectedTurnTakerIdentifier = this.DecisionSelectFromBoxTurnTakerIdentifier;
+                    }
+                    else
+                    {
+                        var firstHero = selectFromBox.Choices.FirstOrDefault();
+                        var selectedPromo = firstHero.Value;
+
+                        Log.Warning("No hero was provided automatically selecting a variant of the first hero: " + selectedPromo);
+                        selectFromBox.SelectedIdentifier = selectedPromo;
+                        selectFromBox.SelectedTurnTakerIdentifier = firstHero.Key;
+                    }
+                    Console.WriteLine("Selected " + selectFromBox.SelectedIdentifier + " from " + selectFromBox.SelectedTurnTakerIdentifier + ".");
+                }
+                else if (decision is SelectTurnPhaseDecision)
+                {
+                    SelectTurnPhaseDecision selectPhase = decision as SelectTurnPhaseDecision;
+                    Console.WriteLine("Make a SelectTurnPhaseDecision: [" + selectPhase.Choices.Select(tp => tp.Phase).ToCommaList() + "]");
+
+                    if (this.DecisionSelectTurnPhase != null)
+                    {
+                        if (!selectPhase.Choices.Contains(this.DecisionSelectTurnPhase))
+                        {
+                            Assert.Fail("The SelectTurnPhaseDecision does not contain the phase: " + this.DecisionSelectTurnPhase);
+                        }
+
+                        selectPhase.SelectedPhase = this.DecisionSelectTurnPhase;
+                    }
+                    else
+                    {
+                        Log.Warning("Automatically first phase: " + selectPhase.Choices.Select(tp => tp.Phase).FirstOrDefault());
+
+                        selectPhase.SelectedPhase = selectPhase.Choices.FirstOrDefault();
+                    }
+                }
+            }
+
+            this.NumberOfDecisionsAnswered += 1;
+
+            yield return null;
+        }
+
+        protected virtual IEnumerator MakeDecisions2(IDecision decision)
+        {
+            // Make sure we are not allowing fast coroutines!
+            if (this.GameController.PeekFastCoroutines())
+            {
+                Assert.Fail("MakeDecisions was forcing fast coroutines!");
+            }
+
+            Console.WriteLine("MakeDecisions: " + decision.ToStringForMultiplayerDebugging());
+
+            // Any decision with 0 choices is an error and should never happen.
+            var numChoices = decision.NumberOfChoices;
+            if (numChoices.HasValue)
+            {
+                Assert.Greater(numChoices, 0, "Decision has 0 choices: {0}", decision);
+            }
+
+            // In most cases, a non-optional decision with 1 choice is an error.
+            // Exception: ActivateAbilityDecision (The Argent Adept) and UsePowerDecision (Guise, for now)
+            if (!(decision is ActivateAbilityDecision || decision is UsePowerDecision))
+            {
+                Assert.IsFalse(numChoices == 1 && !decision.IsOptional, "Non-optional decision has 1 choice: {0}", decision);
+            }
+
+            // If decision answers is not null, check to see if it has an entry for the decision.
+            if (this.ReplayDecisionAnswers != null)
+            {
+                var answer = this.ReplayDecisionAnswers.Where(d => d.DecisionIdentifier.Equals(decision.DecisionIdentifier)).FirstOrDefault();
+                if (answer != null)
+                {
+                    if (answer.AnswerIndex.HasValue)
+                    {
+                        decision.ChooseIndex(answer.AnswerIndex.Value);
+                    }
+                    else if (answer.Skipped)
+                    {
+                        decision.Skip();
+                    }
+                    else if (answer.AutoDecided)
+                    {
+                        decision.AutoDecide();
+                    }
+
+                    // If this was the very last decision choice, we are no longer able to replay the game.
+                    if (answer == this.ReplayDecisionAnswers.LastOrDefault())
+                    {
+                        this.ReplayingGame = false;
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("WARNING: ReplayDecisionAnswers did not have an entry for this decision: " + decision);
+
+                    // Stop the replay.
+                    this.ReplayingGame = false;
+                }
+            }
+
+            if (!decision.Completed)
+            {
+                if (this.DecisionAutoDecide.HasValue && decision.SelectionType == this.DecisionAutoDecide)
+                {
+                    if (decision.AllowAutoDecide)
+                    {
+                        Console.WriteLine("Auto-deciding for decision: " + decision.SelectionType);
+                        decision.AutoDecide();
+                    }
+                    else
+                    {
+                        Assert.Fail("Test wanted to auto-decide for this decision, but the decision does not allow it: " + decision);
+                    }
+                }
+                else if (this.DecisionAutoDecideIfAble)
+                {
+                    if (decision.AllowAutoDecide)
+                    {
+                        Console.WriteLine("Auto-deciding for decision: " + decision.SelectionType);
+                        decision.AutoDecide();
+                    }
+                }
+
+                if (_assertDecisionOptional != null && decision.SelectionType == _assertDecisionOptional)
+                {
+                    Assert.IsTrue(decision.IsOptional, "Decision was not optional: " + decision);
+                }
+
+                if (decision is SelectCardDecision)
+                {
+                    SelectCardDecision selectCardDecision = (SelectCardDecision)decision;
+
+                    Assert.IsNotNull(selectCardDecision.Choices, "Choices must not be null");
+
+                    if (selectCardDecision.ExtraInfo != null)
+                    {
+                        Console.WriteLine(selectCardDecision.ExtraInfo());
+                    }
+
+                    if (_numberOfChoicesInNextDecision != null)
+                    {
+                        var check = true;
+                        if (_numberOfChoicesInNextDecisionSelectionType != null && _numberOfChoicesInNextDecisionSelectionType != decision.SelectionType)
+                        {
+                            check = false;
+                        }
+
+                        if (check)
+                        {
+                            Assert.AreEqual(_numberOfChoicesInNextDecision, selectCardDecision.Choices.Count(), "SelectCardDecision has the wrong number of choices.");
+                            _numberOfChoicesInNextDecision = null;
+                        }
+                    }
+
+                    var originalChoices = new List<Card>();
+                    originalChoices.AddRange(selectCardDecision.Choices);
+
+                    if (_includedCardsInNextDecision != null)
+                    {
+                        _includedCardsInNextDecision.ForEach(e => Assert.IsTrue(selectCardDecision.Choices.Contains(e), "SelectCardDecision did not include: " + e.Title + "."));
+                        _includedCardsInNextDecision = null;
+                    }
+
+                    if (_notIncludedCardsInNextDecision != null)
+                    {
+                        _notIncludedCardsInNextDecision.ForEach(e => Assert.IsFalse(selectCardDecision.Choices.Contains(e), "SelectCardDecision should not include: " + e.Title + ". (Choices: " + selectCardDecision.Choices.Select(c => c.Title).ToCommaList() + ")"));
+                        _notIncludedCardsInNextDecision = null;
+                    }
+
+                    if (selectCardDecision.Choices.Count() == 1 && !selectCardDecision.IsOptional)
+                    {
+                        Assert.Fail("This test presented a decision with only 1 choice, and it was not optional.");
+                    }
+
+                    if (this.ExpectedDecisionChoiceCount != null)
+                    {
+                        Assert.AreEqual(this.ExpectedDecisionChoiceCount.Value, selectCardDecision.Choices.Count(), "Expected the decision to have " + this.ExpectedDecisionChoiceCount + " choices, but it had " + selectCardDecision.Choices.Count() + ".");
+                    }
+
+                    if (selectCardDecision.Choices.Count() > 0)
+                    {
+                        if (selectCardDecision.AutoDecided)
+                        {
+                            selectCardDecision.SelectedCard = selectCardDecision.Choices.FirstOrDefault();
+                        }
+                        else
+                        {
+                            string secondary = "";
+                            if (selectCardDecision.SecondarySelectionType != null)
+                            {
+                                secondary = " and secondary type " + selectCardDecision.SecondarySelectionType;
+                            }
+
+                            string cardSource = "";
+                            if (selectCardDecision.CardSource != null)
+                            {
+                                cardSource = "[" + selectCardDecision.CardSource.Card.Title + "] ";
+                            }
+
+                            string offset = "";
+                            if (selectCardDecision.SelectionTypeOrdinal.HasValue)
+                            {
+                                offset = " (" + (selectCardDecision.SelectionTypeOrdinal.Value).ToOrdinalString() + ") ";
+                            }
+                            var auto = selectCardDecision.AllowAutoDecide ? ", Auto" : "";
+                            var skip = selectCardDecision.IsOptional ? ", Skip" : "";
+                            var who = selectCardDecision.HeroTurnTakerController != null ? selectCardDecision.HeroTurnTakerController.Name : "Everybody";
+
+                            string choices = "";
+                            IEnumerable<Card> cardChoices = selectCardDecision.Choices;
+                            if (selectCardDecision.Choices.All(c => c.PlayIndex.HasValue))
+                            {
+                                cardChoices = cardChoices.OrderBy(c => c.PlayIndex.Value);
+                            }
+                            for (int i = 0; i < cardChoices.Count(); i++)
+                            {
+                                choices += cardChoices.ElementAt(i).Title;
+                                var associated = selectCardDecision.GetAssociatedCard(i);
+                                if (associated != null)
+                                {
+                                    choices += " (" + associated.Title + ")";
+                                }
+
+                                if (i < cardChoices.Count() - 1)
+                                {
+                                    choices += ", ";
+                                }
+                            }
+
+                            string dealDamageInfo = "";
+                            if (selectCardDecision.SelectionType == SelectionType.AmbiguousDecision && selectCardDecision.SecondarySelectionType == SelectionType.RedirectDamage)
+                            {
+                                Assert.NotNull(selectCardDecision.DealDamageInfo);
+                                Assert.NotNull(selectCardDecision.DealDamageInfo.FirstOrDefault());
+
+                                var info = selectCardDecision.DealDamageInfo.First();
+                                dealDamageInfo = " (" + info.DamageSource.TitleOrName + " dealing " + info.Amount + " " + info.DamageType + " damage to " + info.Target.Title;
+                            }
+
+                            Console.WriteLine(cardSource + who + ", Make a SelectCardDecision of type " + selectCardDecision.SelectionType + secondary + offset + ": [" + choices + auto + skip + "]" + dealDamageInfo + ")");
+
+                            if (selectCardDecision.IsOptional && this.DecisionDoNotSelectCard == selectCardDecision.SelectionType)
+                            {
+                                selectCardDecision.FinishedSelecting = true;
+                            }
+                            else if (this.DecisionSelectCards != null)
+                            {
+                                // Select each of the given cards in order
+                                Card toSelect = this.DecisionSelectCards.ElementAt(this.DecisionSelectCardsIndex);
+                                if (toSelect != null)
+                                {
+                                    if (selectCardDecision.SelectionType == SelectionType.RedirectDamage && selectCardDecision.GameAction is DealDamageAction)
+                                    {
+                                        var dealDamage = selectCardDecision.GameAction as DealDamageAction;
+                                        if (dealDamage.DamageSource != null && dealDamage.DamageSource.IsCard)
+                                        {
+                                            // Show a preview of the redirect.
+                                            Console.WriteLine("=== Redirect Preview ===");
+
+                                            var damageSource = dealDamage.DamageSource.Card;
+                                            GetDamagePreviewResults(damageSource, toSelect,
+                                                dealDamage.Amount, dealDamage.DamageType, dealDamage.IsIrreducible);
+
+                                            Console.WriteLine("======");
+                                        }
+                                    }
+
+                                    selectCardDecision.SelectedCard = toSelect;
+                                }
+                                else
+                                {
+                                    selectCardDecision.FinishedSelecting = true;
+                                }
+
+                                if (this.DecisionSelectCards.Count() - 1 > this.DecisionSelectCardsIndex)
+                                {
+                                    this.DecisionSelectCardsIndex++;
+                                }
+                            }
+                            else if (selectCardDecision.SelectionType == SelectionType.SelectTargetFriendly && this.DecisionSelectTargetFriendly != null)
+                            {
+                                selectCardDecision.SelectedCard = this.DecisionSelectTargetFriendly;
+                            }
+                            else if (selectCardDecision.SelectionType == SelectionType.DiscardCard && this.DecisionDiscardCard != null)
+                            {
+                                selectCardDecision.SelectedCard = this.DecisionDiscardCard;
+                            }
+                            else if (selectCardDecision.SelectionType == SelectionType.MoveCard && this.DecisionMoveCard != null)
+                            {
+                                selectCardDecision.SelectedCard = this.DecisionMoveCard;
+                            }
+                            else if (selectCardDecision.SelectionType == SelectionType.DestroyCard && (this.DecisionDestroyCard != null || this.DecisionDestroyCards != null))
+                            {
+                                if (this.DecisionDestroyCards != null)
+                                {
+                                    selectCardDecision.SelectedCard = this.DecisionDestroyCards.ElementAt(this.DecisionDestroyCardsIndex);
+                                    this.DecisionDestroyCardsIndex++;
+                                }
+                                else if (this.DecisionDestroyCard != null)
+                                {
+                                    selectCardDecision.SelectedCard = this.DecisionDestroyCard;
+                                }
+                            }
+                            else if (selectCardDecision.SelectionType == SelectionType.MoveCardNextToCard && this.DecisionNextToCard != null)
+                            {
+                                selectCardDecision.SelectedCard = this.DecisionNextToCard;
+                            }
+                            else if (selectCardDecision.SelectionType == SelectionType.UnincapacitateHero && this.DecisionUnincapacitateHero != null)
+                            {
+                                selectCardDecision.SelectedCard = this.DecisionUnincapacitateHero;
+                            }
+                            else if (selectCardDecision.SelectionType == SelectionType.ReturnToHand && this.DecisionReturnToHand != null)
+                            {
+                                selectCardDecision.SelectedCard = this.DecisionReturnToHand;
+                            }
+                            else if (selectCardDecision.SelectionType == SelectionType.RedirectDamage)
+                            {
+                                if (this.DecisionRedirectTargets != null)
+                                {
+                                    selectCardDecision.SelectedCard = this.DecisionRedirectTargets.ElementAt(this.DecisionRedirectTargetsIndex);
+                                    this.DecisionRedirectTargetsIndex++;
+                                }
+                                else if (this.DecisionRedirectTarget != null)
+                                {
+                                    selectCardDecision.SelectedCard = this.DecisionRedirectTarget;
+                                }
+                                else if (selectCardDecision.IsOptional)
+                                {
+                                    selectCardDecision.SelectedCard = null;
+                                }
+                                else
+                                {
+                                    selectCardDecision.SelectedCard = selectCardDecision.Choices.FirstOrDefault();
+                                }
+                            }
+                            else if (selectCardDecision.SelectionType == SelectionType.AmbiguousDecision
+                                     && (this.DecisionAmbiguousCardAtIndex != null
+                                         || this.DecisionAmbiguousCardAtIndices != null
+                                         || this.DecisionAmbiguousCard != null
+                                         || this.DecisionAmbiguousCards != null))
+                            {
+                                if (this.DecisionAmbiguousCardAtIndex != null || this.DecisionAmbiguousCardAtIndices != null)
+                                {
+                                    int indexValue;
+                                    if (this.DecisionAmbiguousCardAtIndices != null)
+                                    {
+                                        indexValue = this.DecisionAmbiguousCardAtIndices.ElementAt(this.DecisionAmbiguousCardAtIndicesIndex++).Value;
+                                    }
+                                    else
+                                    {
+                                        indexValue = this.DecisionAmbiguousCardAtIndex.Value;
+                                    }
+
+                                    if ((decision as SelectCardDecision).Choices.Count() >= indexValue + 1)
+                                    {
+                                        selectCardDecision.ChooseIndex(indexValue);
+                                    }
+                                }
+                                else if ((this.DecisionAmbiguousCard != null || this.DecisionAmbiguousCards != null))
+                                {
+                                    if (this.DecisionAmbiguousCards != null)
+                                    {
+                                        selectCardDecision.SelectedCard = this.DecisionAmbiguousCards.ElementAt(this.DecisionAmbiguousCardsIndex++);
+                                    }
+                                    else
+                                    {
+                                        selectCardDecision.SelectedCard = this.DecisionAmbiguousCard;
+                                    }
+                                }
+                            }
+                            else if ((selectCardDecision.SelectionType == SelectionType.HighestHP && this.DecisionHighestHP != null)
+                                 || (selectCardDecision.SelectionType == SelectionType.LowestHP))
+                            {
+                                if (selectCardDecision.SelectionType == SelectionType.HighestHP && this.DecisionHighestHP != null)
+                                {
+                                    selectCardDecision.SelectedCard = this.DecisionHighestHP;
+                                }
+                                else
+                                {
+                                    selectCardDecision.SelectedCard = this.DecisionLowestHP;
+                                }
+
+                                if (selectCardDecision.GameAction != null && selectCardDecision.GameAction is DealDamageAction && selectCardDecision.SelectedCard != null)
+                                {
+                                    DealDamageAction dealDamage = (selectCardDecision.GameAction as DealDamageAction);
+                                    Console.WriteLine("--- BEGIN PREVIEW ---");
+                                    Console.WriteLine("Selected: " + selectCardDecision.SelectedCard.Title);
+                                    GetDamagePreviewResults(dealDamage, selectCardDecision.SelectedCard);
+                                    Console.WriteLine("--- END PREVIEW ---");
+                                }
+                            }
+                            else if (selectCardDecision.SelectionType == SelectionType.SelectTarget || selectCardDecision.SelectionType == SelectionType.HighestHP || selectCardDecision.SelectionType == SelectionType.LowestHP || selectCardDecision.SelectionType == SelectionType.SelectTargetNoDamage || selectCardDecision.SelectionType == SelectionType.DealDamageSelf)
+                            {
+                                if (this.DecisionSelectTargets != null)
+                                {
+                                    // Select each of the given targets in order
+                                    selectCardDecision.SelectedCard = this.DecisionSelectTargets.ElementAt(this.DecisionSelectTargetsIndex);
+                                    if (this.DecisionSelectTargets.Count() - 1 > this.DecisionSelectTargetsIndex)
+                                    {
+                                        this.DecisionSelectTargetsIndex++;
+                                    }
+                                    else
+                                    {
+                                        this.DecisionSelectTargetsIndex = 0;
+                                    }
+                                }
+                                else if (this.DecisionSelectTarget != null)
+                                {
+                                    selectCardDecision.SelectedCard = this.DecisionSelectTarget;
+                                }
+                                else
+                                {
+                                    selectCardDecision.SelectedCard = selectCardDecision.Choices.FirstOrDefault();
+                                }
+
+                                if (selectCardDecision is SelectTargetDecision && this.ShowDamagePreview && selectCardDecision.SelectedCard != null && selectCardDecision.SelectionType != SelectionType.SelectTargetNoDamage)
+                                {
+                                    SelectTargetDecision selectTarget = selectCardDecision as SelectTargetDecision;
+                                    Console.WriteLine("--- BEGIN PREVIEW ---");
+                                    Console.WriteLine("Selected Target: " + selectCardDecision.SelectedCard.Title);
+                                    var source = selectTarget.DamageSource;
+                                    if (source == null && selectTarget.SelectionType == SelectionType.DealDamageSelf)
+                                    {
+                                        source = new DamageSource(this.GameController, selectTarget.SelectedCard);
+                                    }
+                                    //Console.WriteLine("Damage Source: " + source.Title);
+                                    GetDamagePreviewResults(source, selectTarget.SelectedCard, selectTarget.DynamicAmount, selectTarget.DamageType.Value, selectTarget.IsIrreducible, selectCardDecision.CardSource);
+                                    Console.WriteLine("--- END PREVIEW ---");
+                                }
+                            }
+                            else if ((selectCardDecision.SelectionType == SelectionType.PlayCard || selectCardDecision.SelectionType == SelectionType.PutIntoPlay) && this.DecisionSelectCardToPlay != null)
+                            {
+                                selectCardDecision.SelectedCard = this.DecisionSelectCardToPlay;
+                            }
+                            else if (selectCardDecision.SelectionType == SelectionType.GainHP && this.DecisionGainHP != null)
+                            {
+                                selectCardDecision.SelectedCard = this.DecisionGainHP;
+                            }
+                            else if (this.DecisionSelectCard != null)
+                            {
+                                selectCardDecision.SelectedCard = this.DecisionSelectCard;
+                            }
+                            else
+                            {
+                                Console.WriteLine("WARNING: No card was specified for the test, selecting the first available choice.");
+                                selectCardDecision.SelectedCard = selectCardDecision.Choices.FirstOrDefault();
+                            }
+
+                            if (selectCardDecision.SelectedCard != null)
+                            {
+                                // Make sure the selected card is one of the possible choices.
+                                Console.WriteLine("Selected: " + selectCardDecision.SelectedCard.Title);
+                                //Assert.IsTrue(originalChoices.Contains(selectCardDecision.SelectedCard), "SelectCardDecision selected \"" + selectCardDecision.SelectedCard.Title + "\", which is not one of the decision options: " + originalChoices.Select(c => c.Title).ToCommaList());
+                                if (!originalChoices.Contains(selectCardDecision.SelectedCard))
+                                {
+                                    Console.WriteLine($"{selectCardDecision.SelectedCard.Title} is not one of the decision options! Selecting first decision option instead.");
+                                    selectCardDecision.SelectedCard = selectCardDecision.Choices.FirstOrDefault();
+                                }
+                            }
+                            if  (selectCardDecision.SelectedCard == null)
+                            {
+                                Console.WriteLine("WARNING: No card selected.");
+                            }
+                        }
+                    }
+                }
+                else if (decision is YesNoDecision)
+                {
+                    YesNoDecision yesNo = decision as YesNoDecision;
+                    var source = yesNo.CardSource != null ? yesNo.CardSource.Card.Title : "GameController";
+                    var who = yesNo.HeroTurnTakerController != null ? yesNo.HeroTurnTakerController.Name : "Everyone";
+                    Console.WriteLine("[" + source + "] " + who + ", Make a YesNoDecision of type " + yesNo.SelectionType);
+                    if (this.DecisionsYesNo != null)
+                    {
+                        Assert.Greater(this.DecisionsYesNo.Count(), this.DecisionsYesNoIndex, "Not enough DecisionsYesNo were provided.");
+                        yesNo.Answer = this.DecisionsYesNo.ElementAt(this.DecisionsYesNoIndex);
+                        this.DecisionsYesNoIndex += 1;
+                    }
+                    else
+                    {
+                        yesNo.Answer = this.DecisionYesNo;
+                    }
+                    Console.WriteLine("Selected: " + yesNo.Answer);
+                }
+                else if (decision is YesNoCardDecision)
+                {
+                    YesNoCardDecision yesNo = decision as YesNoCardDecision;
+                    var source = yesNo.CardSource != null ? yesNo.CardSource.Card.Title : "GameController";
+                    var who = yesNo.HeroTurnTakerController != null ? yesNo.HeroTurnTakerController.Name : "Everyone";
+                    Console.WriteLine("[" + source + "] " + who + ", Make a YesNoCardDecision of type " + yesNo.SelectionType + " with card " + yesNo.Card.Title);
+                    if (this.DecisionsYesNo != null)
+                    {
+                        Assert.Greater(this.DecisionsYesNo.Count(), this.DecisionsYesNoIndex, "Not enough DecisionsYesNo were provided.");
+                        yesNo.Answer = this.DecisionsYesNo.ElementAt(this.DecisionsYesNoIndex);
+                        this.DecisionsYesNoIndex += 1;
+                    }
+                    else
+                    {
+                        yesNo.Answer = this.DecisionYesNo;
+                    }
+                    Console.WriteLine("Selected: " + yesNo.Answer);
+                }
+                else if (decision is SelectDamageTypeDecision)
+                {
+                    SelectDamageTypeDecision damage = decision as SelectDamageTypeDecision;
+
+                    if (_numberOfChoicesInNextDecision != null)
+                    {
+                        Assert.AreEqual(_numberOfChoicesInNextDecision, damage.Choices.Count(), "SelectDamageTypeDecision has the wrong number of choices.");
+                        _numberOfChoicesInNextDecision = null;
+                    }
+
+                    var who = damage.HeroTurnTakerController != null ? damage.HeroTurnTakerController.Name + ", " : "";
+                    Console.WriteLine(who + "Make a SelectDamageTypeDecision: [" + damage.Choices.ToCommaList(useWordOr: true) + "]");
+
+                    if (this.DecisionSelectDamageType != null)
+                    {
+                        damage.SelectedDamageType = this.DecisionSelectDamageType;
+                        Console.WriteLine("Selected: " + damage.SelectedDamageType);
+                    }
+                    else
+                    {
+                        damage.SelectedDamageType = damage.Choices.First();
+                        Console.WriteLine("No damage type provided. Selected: " + damage.SelectedDamageType);
+                    }
+                }
+                else if (decision is MoveCardDecision)
+                {
+                    MoveCardDecision moveCard = decision as MoveCardDecision;
+
+                    if (_numberOfChoicesInNextDecision != null)
+                    {
+                        Assert.AreEqual(_numberOfChoicesInNextDecision, moveCard.PossibleDestinations.Count(), "MoveCardDecision has the wrong number of choices.");
+                        _numberOfChoicesInNextDecision = null;
+                    }
+
+                    Console.WriteLine("Make a MoveCardDecision with destinations: [" + moveCard.PossibleDestinations.ToCommaList() + "]");
+                    if (moveCard.PossibleDestinations.Count() == 1 && !moveCard.IsOptional)
+                    {
+                        Assert.Fail("This test presented a decision with only 1 choice, and it was not optional.");
+                    }
+                    if (this.ExpectedDecisionChoiceCount != null)
+                    {
+                        Assert.AreEqual(this.ExpectedDecisionChoiceCount.Value, moveCard.PossibleDestinations.Count());
+                    }
+
+                    MoveCardDestination chosenDestination = new MoveCardDestination();
+                    if (moveCard.SelectionType == SelectionType.MoveCardNextToCard && this.DecisionNextToCard != null)
+                    {
+                        chosenDestination = new MoveCardDestination(this.DecisionNextToCard.NextToLocation);
+                    }
+                    else if (this.DecisionMoveCardDestinations != null)
+                    {
+                        chosenDestination = this.DecisionMoveCardDestinations[this.DecisionMoveCardDestinationsIndex++];
+                    }
+                    else if (this.DecisionMoveCardDestination.Location != null)
+                    {
+                        chosenDestination = this.DecisionMoveCardDestination;
+                    }
+
+                    if (chosenDestination.Location != null)
+                    {
+                        if (moveCard.PossibleDestinations.Any(d => d.Location == chosenDestination.Location && d.ToBottom == chosenDestination.ToBottom))
+                        {
+                            moveCard.Destination = chosenDestination;
+                            Console.WriteLine("Selected: " + moveCard.Destination);
+                        }
+                        else
+                        {
+                            Assert.Fail("The selected destination was not a choice: {0}", chosenDestination);
+                        }
+                    }
+                    else
+                    {
+                        chosenDestination = moveCard.PossibleDestinations.First();
+                        Console.WriteLine("No selection was provided, so choosing destination at index {0}", chosenDestination);
+                        moveCard.Destination = chosenDestination;
+                    }
+                }
+                else if (decision is SelectLocationDecision)
+                {
+                    SelectLocationDecision selectLocation = decision as SelectLocationDecision;
+
+                    if (_numberOfChoicesInNextDecision != null)
+                    {
+                        Assert.AreEqual(_numberOfChoicesInNextDecision, selectLocation.Choices.Count(), "SelectLocationDecision has the wrong number of choices.");
+                        _numberOfChoicesInNextDecision = null;
+                    }
+
+                    var choices = selectLocation.Choices.ToCommaList();
+                    if (selectLocation.IsOptional)
+                    {
+                        choices += ", Skip";
+                    }
+                    Console.WriteLine("Make a SelectLocationDecision with locations: [" + choices + "]");
+                    if (selectLocation.Choices.Count() == 1 && !selectLocation.IsOptional)
+                    {
+                        Assert.Fail("This test presented a decision with only 1 choice, and it was not optional.");
+                    }
+                    if (this.ExpectedDecisionChoiceCount != null)
+                    {
+                        Assert.AreEqual(this.ExpectedDecisionChoiceCount.Value, selectLocation.Choices.Count());
+                    }
+
+                    if (_includedLocationsInNextDecision != null)
+                    {
+                        _includedLocationsInNextDecision.ForEach(e => Assert.IsTrue(selectLocation.Choices.Any(lc => lc.Location == e.Location), "SelectLocationsDecision did not include: " + e.Location.GetFriendlyName() + "."));
+                        _includedLocationsInNextDecision = null;
+                    }
+
+                    if (_notIncludedLocationsInNextDecision != null)
+                    {
+                        _notIncludedLocationsInNextDecision.ForEach(e => Assert.IsFalse(selectLocation.Choices.Any(l => l.Location == e.Location), "SelectLocationsDecision should not include: " + e.Location.GetFriendlyName() + ". (Choices: " + selectLocation.Choices.Select(l => l.Location.GetFriendlyName()).ToCommaList() + ")"));
+                        _notIncludedLocationsInNextDecision = null;
+                    }
+
+                    if (selectLocation.SelectionType == SelectionType.MoveCardNextToCard && this.DecisionNextToCard != null)
+                    {
+                        selectLocation.SelectedLocation = selectLocation.Choices.Where(c => c.Location == this.DecisionNextToCard.NextToLocation).FirstOrDefault();
+                    }
+                    else if (this.DecisionSelectLocations != null)
+                    {
+                        var location = this.DecisionSelectLocations.ElementAt(this.DecisionSelectLocationsIndex++);
+                        if (location.Location == null && selectLocation.IsOptional)
+                        {
+                            selectLocation.FinishedSelecting = true;
+                        }
+                        else if (!selectLocation.Choices.Any(c => c.Location == location.Location))
+                        {
+                            Assert.Fail("The selected location was not a choice: {0}", location);
+                        }
+                        else
+                        {
+                            selectLocation.SelectedLocation = selectLocation.Choices.Where(c => c.Location == location.Location).FirstOrDefault();
+                        }
+                    }
+                    else if (this.DecisionSelectLocation.Location != null)
+                    {
+                        if (!selectLocation.Choices.Any(c => c.Location == this.DecisionSelectLocation.Location))
+                        {
+                            Assert.Fail("The selected location was not a choice: {0}", this.DecisionSelectLocation);
+                        }
+                        else
+                        {
+                            selectLocation.SelectedLocation = selectLocation.Choices.Where(c => c.Location == this.DecisionSelectLocation.Location).FirstOrDefault();
+                            this.DecisionDoNotSelectLocation = false;
+                        }
+                    }
+                    else if (this.DecisionDoNotSelectLocation)
+                    {
+                        if (!selectLocation.IsOptional)
+                        {
+                            Log.Warning("Skipping a non-optional SelectLocationDecision");
+                        }
+
+                        this.DecisionDoNotSelectLocation = false;
+                        selectLocation.FinishedSelecting = true;
+                    }
+                    else
+                    {
+                        var location = selectLocation.Choices.First();
+                        Console.WriteLine("No selection was provided, so choosing Location at index {0}", location);
+                        selectLocation.SelectedLocation = location;
+                    }
+                    Console.WriteLine("Selected: " + selectLocation.SelectedLocation);
+                }
+                else if (decision is UsePowerDecision)
+                {
+                    UsePowerDecision power = decision as UsePowerDecision;
+
+                    if (_numberOfChoicesInNextDecision != null)
+                    {
+                        Assert.AreEqual(_numberOfChoicesInNextDecision, power.Choices.Count(), "UsePowerDecision has the wrong number of choices.");
+                        _numberOfChoicesInNextDecision = null;
+                    }
+
+                    var who = power.HeroTurnTakerController != null ? power.HeroTurnTakerController.Name : "Everybody";
+
+                    Console.WriteLine(who + ", Make a UsePowerDecision: [" + power.Choices.Select(p => p.Title).ToCommaList() + "]");
+
+                    var powerCards = power.Choices.Select(p => p.CardController.Card);
+                    if (_includedPowersInNextDecision != null)
+                    {
+                        _includedPowersInNextDecision.ForEach(e => Assert.IsTrue(powerCards.Contains(e), "SelectPowerDecision did not include: " + e.Title + "."));
+                        _includedPowersInNextDecision = null;
+                    }
+
+                    if (_notIncludedPowersInNextDecision != null)
+                    {
+                        _notIncludedPowersInNextDecision.ForEach(e => Assert.IsFalse(powerCards.Contains(e), "SelectPowerDecision should not include: " + e.Title + ". (Choices: " + powerCards.Select(c => c.Title).ToCommaList() + ")"));
+                        _notIncludedPowersInNextDecision = null;
+                    }
+
+                    if (this.DecisionSelectPowers != null)
+                    {
+                        power.SelectedPower = power.Choices.Where(p => p.CardController.Card == this.DecisionSelectPowers[this.DecisionSelectPowersIndex]).FirstOrDefault();
+                        this.DecisionSelectPowersIndex++;
+                    }
+                    else if (this.DecisionSelectPower != null)
+                    {
+                        var powers = power.Choices.Where(p => p.CardController.Card == this.DecisionSelectPower);
+
+                        if (this.DecisionSelectPowerIndex < powers.Count())
+                        {
+                            power.SelectedPower = powers.ElementAt(this.DecisionSelectPowerIndex);
+                        }
+                        else
+                        {
+                            power.SelectedPower = powers.FirstOrDefault();
+                        }
+                    }
+
+                    if (power.SelectedPower == null)
+                    {
+                        Console.WriteLine("Choosing power from " + power.Choices.ToCommaList());
+                        power.SelectedPower = power.Choices.ElementAt(this.DecisionPowerIndex);
+                    }
+
+                    Console.WriteLine("Selected: " + power.SelectedPower.Description);
+                }
+                else if (decision is UseIncapacitatedAbilityDecision)
+                {
+                    UseIncapacitatedAbilityDecision ability = decision as UseIncapacitatedAbilityDecision;
+
+                    if (_numberOfChoicesInNextDecision != null)
+                    {
+                        Assert.AreEqual(_numberOfChoicesInNextDecision, ability.Choices.Count(), "UseIncapacitatedAbilityDecision has the wrong number of choices.");
+                        _numberOfChoicesInNextDecision = null;
+                    }
+
+                    Console.WriteLine("Make a UseIncapacitatedAbilityDecision: [" + ability.Choices.Select(a => a.Description).ToCommaList() + "]");
+                    ability.SelectedAbility = ability.Choices.ElementAt(this.DecisionIncapacitatedAbilityIndex);
+                    Console.WriteLine("Selected: " + ability.SelectedAbility.Description);
+                }
+                else if (decision is SelectCardsDecision)
+                {
+                    SelectCardsDecision selectCards = decision as SelectCardsDecision;
+                    if (selectCards.IsOptional && selectCards.AllowAutoDecide)
+                    {
+                        Assert.Fail("A SelectCardsDecision may not be both optional and allow for auto-decisions.");
+                    }
+                    if (selectCards.AllAtOnce)
+                    {
+                        if (selectCards.NumberOfCards.HasValue)
+                        {
+                            for (int i = 0; i < selectCards.NumberOfCards.Value; i++)
+                            {
+                                SelectCardDecision selectCardDecision = selectCards.GetNextSelectCardDecision();
+                                this.RunCoroutine(this.MakeDecisions(selectCardDecision));
+                            }
+                        }
+                    }
+                    else
+                    {
+                        selectCards.ReadyForNext = true;
+                    }
+                }
+                else if (decision is SelectTurnTakerDecision)
+                {
+                    SelectTurnTakerDecision selectTurnTaker = decision as SelectTurnTakerDecision;
+
+                    if (_numberOfChoicesInNextDecision != null)
+                    {
+                        Assert.AreEqual(_numberOfChoicesInNextDecision, selectTurnTaker.Choices.Count(), "SelectTurnTakerDecision has the wrong number of choices.");
+                        _numberOfChoicesInNextDecision = null;
+                    }
+
+
+                    string sequence = "";
+                    if (selectTurnTaker.NumberOfCards != null)
+                    {
+                        sequence = ", " + selectTurnTaker.NumberOfCards.Value.ToOrdinalString();
+                    }
+                    var auto = selectTurnTaker.AllowAutoDecide ? ", Auto" : "";
+                    var skip = selectTurnTaker.IsOptional ? ", Skip" : "";
+                    var who = selectTurnTaker.HeroTurnTakerController != null ? selectTurnTaker.HeroTurnTakerController.Name + ", " : "";
+                    Console.WriteLine(who + "Make a SelectTurnTakerDecision (" + selectTurnTaker.SelectionType + sequence + "): [" + selectTurnTaker.Choices.Select(tt => tt.Name).ToCommaList() + auto + skip + "]");
+
+                    if (_includedTurnTakersInNextDecision != null)
+                    {
+                        _includedTurnTakersInNextDecision.ForEach(e => Assert.IsTrue(selectTurnTaker.Choices.Contains(e), "SelectTurnTakerDecision did not include: " + e.Name + "."));
+                        _includedTurnTakersInNextDecision = null;
+                    }
+
+                    if (_notIncludedTurnTakersInNextDecision != null)
+                    {
+                        _notIncludedTurnTakersInNextDecision.ForEach(e => Assert.IsFalse(selectTurnTaker.Choices.Contains(e), "SelectTurnTakerDecision should not include: " + e.Name + ". (Choices: " + selectTurnTaker.Choices.Select(tt => tt.Name).ToCommaList() + ")"));
+                        _notIncludedTurnTakersInNextDecision = null;
+                    }
+
+                    if (DecisionDoNotSelectTurnTaker && selectTurnTaker.IsOptional)
+                    {
+                        selectTurnTaker.SelectedTurnTaker = null;
+                        selectTurnTaker.FinishedSelecting = true;
+                    }
+                    else if (this.DecisionSelectTurnTakers != null)
+                    {
+                        Console.WriteLine("Using DecisionSelectTurnTakers at index {0}", DecisionSelectTurnTakersIndex);
+                        selectTurnTaker.SelectedTurnTaker = this.DecisionSelectTurnTakers.ElementAt(this.DecisionSelectTurnTakersIndex++);
+                        if (selectTurnTaker.SelectedTurnTaker == null && selectTurnTaker.IsOptional)
+                        {
+                            selectTurnTaker.FinishedSelecting = true;
+                        }
+                    }
+                    else if (this.DecisionSelectTurnTaker != null)
+                    {
+                        selectTurnTaker.SelectedTurnTaker = this.DecisionSelectTurnTaker;
+                    }
+                    else
+                    {
+                        selectTurnTaker.SelectedTurnTaker = selectTurnTaker.Choices.FirstOrDefault();
+                    }
+                    string ttname = selectTurnTaker.SelectedTurnTaker != null ? selectTurnTaker.SelectedTurnTaker.Name : "None";
+                    Console.WriteLine("Selected: " + ttname);
+
+                    if (selectTurnTaker.SelectedTurnTaker != null && !selectTurnTaker.Choices.Contains(selectTurnTaker.SelectedTurnTaker))
+                    {
+                        Assert.Fail("The test selected " + selectTurnTaker.SelectedTurnTaker.Name + ", which is not one of the options: " + selectTurnTaker.Choices.Select(tt => tt.Name).ToCommaList());
+                    }
+                }
+                else if (decision is SelectFunctionDecision)
+                {
+                    SelectFunctionDecision selectAction = decision as SelectFunctionDecision;
+
+                    if (_numberOfChoicesInNextDecision != null)
+                    {
+                        var check = true;
+                        if (_numberOfChoicesInNextDecisionSelectionType != null && _numberOfChoicesInNextDecisionSelectionType != decision.SelectionType)
+                        {
+                            check = false;
+                        }
+
+                        if (check)
+                        {
+                            Assert.AreEqual(_numberOfChoicesInNextDecision, selectAction.Choices.Count(), "SelectFunctionDecision has the wrong number of choices.");
+                            _numberOfChoicesInNextDecision = null;
+                        }
+                    }
+
+                    var who = "";
+                    if (selectAction.HeroTurnTakerController != null)
+                    {
+                        who = selectAction.HeroTurnTakerController.Name + ", ";
+                    }
+
+                    var skip = decision.IsOptional ? ", Skip" : "";
+                    Console.WriteLine(who + "Make a SelectFunctionDecision: [" + selectAction.Choices.Select(d => d.DisplayText).ToCommaList() + skip + "]");
+
+                    if (this.DecisionDoNotSelectFunction)
+                    {
+                        selectAction.SelectedFunction = null;
+                        selectAction.FinishedSelecting = true;
+                    }
+                    else if (this.DecisionSelectFunction != null || this.DecisionSelectFunctions != null)
+                    {
+                        if (this.DecisionSelectFunctions != null)
+                        {
+                            if (this.DecisionSelectFunctions[this.DecisionSelectFunctionsIndex].HasValue)
+                            {
+                                selectAction.SelectedFunction = selectAction.Choices.ElementAt(this.DecisionSelectFunctions[this.DecisionSelectFunctionsIndex].Value);
+                            }
+                            else
+                            {
+                                selectAction.FinishedSelecting = true;
+                            }
+
+                            this.DecisionSelectFunctionsIndex++;
+                        }
+                        else
+                        {
+                            selectAction.SelectedFunction = selectAction.Choices.ElementAt(this.DecisionSelectFunction.Value);
+                        }
+                    }
+                    else
+                    {
+                        selectAction.SelectedFunction = selectAction.Choices.FirstOrDefault();
+                    }
+
+                    if (selectAction.SelectedFunction != null)
+                    {
+                        Console.WriteLine("Selected: " + selectAction.SelectedFunction.DisplayText);
+                    }
+                    else
+                    {
+                        Console.WriteLine("Selected: No function");
+                    }
+                }
+                else if (decision is SelectNumberDecision)
+                {
+                    SelectNumberDecision selectNumber = decision as SelectNumberDecision;
+                    Console.WriteLine("Make a SelectNumberDecision: [" + selectNumber.Choices.ToCommaList() + "]");
+
                     if (this.DecisionSelectNumber != null)
                     {
                         selectNumber.SelectedNumber = this.DecisionSelectNumber.Value;
