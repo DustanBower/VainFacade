@@ -67,10 +67,10 @@ namespace VainFacadePlaytest.Banshee
 
             //You may put a card discarded this way into play from the trash.
             List<SelectCardDecision> cardResults = new List<SelectCardDecision>();
-            Console.WriteLine($"Cards discarded for Dream Thief: {results.Select((MoveCardAction mc) => mc.CardToMove.Title).ToCommaList()}");
-            Console.WriteLine($"Locations: {results.Select((MoveCardAction mc) => mc.CardToMove.Location.GetFriendlyName()).ToCommaList()}");
-            Console.WriteLine($"IsTrash: {results.Select((MoveCardAction mc) => mc.CardToMove.Location.IsTrash).ToCommaList()}");
-            Console.WriteLine($"IsSubTrash: {results.Select((MoveCardAction mc) => mc.CardToMove.Location.IsSubTrash).ToCommaList()}");
+            //Console.WriteLine($"Cards discarded for Dream Thief: {results.Select((MoveCardAction mc) => mc.CardToMove.Title).ToCommaList()}");
+            //Console.WriteLine($"Locations: {results.Select((MoveCardAction mc) => mc.CardToMove.Location.GetFriendlyName()).ToCommaList()}");
+            //Console.WriteLine($"IsTrash: {results.Select((MoveCardAction mc) => mc.CardToMove.Location.IsTrash).ToCommaList()}");
+            //Console.WriteLine($"IsSubTrash: {results.Select((MoveCardAction mc) => mc.CardToMove.Location.IsSubTrash).ToCommaList()}");
             coroutine = base.GameController.SelectCardAndStoreResults(DecisionMaker, SelectionType.PutIntoPlay, results.Select((MoveCardAction mc) => mc.CardToMove).Where((Card c) => c.Location.IsTrash), cardResults,true, cardSource: GetCardSource());
             if (base.UseUnityCoroutines)
             {
