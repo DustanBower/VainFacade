@@ -24,7 +24,7 @@ namespace VainFacadePlaytest.Banshee
                     {
                         //Select an environment card.
                         List<SelectCardDecision> results = new List<SelectCardDecision>();
-                        coroutine = base.GameController.SelectCardAndStoreResults(DecisionMaker, SelectionType.ShuffleCardIntoDeck, new LinqCardCriteria((Card c) => c.IsEnvironment && c.IsInPlayAndHasGameText, "environment"), results, false, cardSource: GetCardSource());
+                        coroutine = base.GameController.SelectCardAndStoreResults(DecisionMaker, SelectionType.None, new LinqCardCriteria((Card c) => c.IsEnvironment && c.IsInPlayAndHasGameText, "environment"), results, false, cardSource: GetCardSource());
                         if (base.UseUnityCoroutines)
                         {
                             yield return base.GameController.StartCoroutine(coroutine);
