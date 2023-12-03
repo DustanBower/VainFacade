@@ -32,12 +32,13 @@
     "namespace": "VainFacadePlaytest",
     "dll": "VainFacadePlaytest.dll",
     "publishedFileId": 2835111137,
-    "version": "0.15",
+    "version": "0.16",
     "color": "232370",
     "manualTags": [],
     "decks": {
       "heroes": [
 	      "Arctis",
+	      "Banshee",
 	    "Burgess",
 		"Carnaval",
 		"Ember",

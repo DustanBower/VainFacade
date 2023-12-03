@@ -60,6 +60,25 @@
     <Compile Include="Arctis\ShardStormCardController.cs" />
     <Compile Include="Arctis\SublimeCascadeCardController.cs" />
     <Compile Include="Arctis\WintersWrathCardController.cs" />
+    <Compile Include="Banshee\BansheeCharacterCardController.cs" />
+    <Compile Include="Banshee\BetterOffDeadCardController.cs" />
+    <Compile Include="Banshee\BridgeOfTheBrokenCardController.cs" />
+    <Compile Include="Banshee\CallOfTheGraveCardController.cs" />
+    <Compile Include="Banshee\ChorusOfChaosCardController.cs" />
+    <Compile Include="Banshee\DecayingTonesCardController.cs" />
+    <Compile Include="Banshee\DirgeCardController.cs" />
+    <Compile Include="Banshee\DreadCacophonyCardController.cs" />
+    <Compile Include="Banshee\DreamThiefCardController.cs" />
+    <Compile Include="Banshee\FatalFortissimoCardController.cs" />
+    <Compile Include="Banshee\GraveRobberCardController.cs" />
+    <Compile Include="Banshee\MenacingMelodyCardController.cs" />
+    <Compile Include="Banshee\MournfulMorendoCardController.cs" />
+    <Compile Include="Banshee\ReapersRestCardController.cs" />
+    <Compile Include="Banshee\RuinousRhythmCardController.cs" />
+    <Compile Include="Banshee\TensionAndResolutionCardController.cs" />
+    <Compile Include="Banshee\VerseForTheVanquishedCardController.cs" />
+    <Compile Include="Banshee\VoiceForTheVoicelessCardController.cs" />
+    <Compile Include="Banshee\WretchedRefrainCardController.cs" />
     <Compile Include="Blitz\ArcProjectorCardController.cs" />
     <Compile Include="Blitz\BlitzCharacterCardController.cs" />
     <Compile Include="Blitz\BlitzTurnTakerController.cs" />
@@ -375,6 +394,9 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="DeckLists\PushDeckList.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="DeckLists\BansheeDeckList.json" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

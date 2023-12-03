@@ -63,7 +63,7 @@
       "flavorQuotes": [
         {
           "identifier": "Jen",
-          "text": "I loved my life, but it is over. I am ready to move on to what's next. Promise me you won't won't let them bind me here."
+          "text": "I loved my life, but it is over. I am{BR}ready to move on to what's next. Promise{BR}me you won't won't let them bind me here."
         }
       ],
       "flavorReference": "Jen, Strange Stories: Dead Reckoning #7"
@@ -90,7 +90,7 @@
       "flavorQuotes": [
         {
           "identifier": "Bizheda",
-          "text": "So-called speaker, where is your power? What are your laments to Kalementu? The songs of the dead are ended. They are faded on the wind."
+          "text": "So-called speaker, where{BR}is your power? What are your laments{BR}to Kalementu? The songs of the dead are ended. They are faded on the wind."
         }
       ],
       "flavorReference": "Bizheda, Guardians at the Gate #63"
@@ -114,7 +114,7 @@
       "flavorQuotes": [
         {
           "identifier": "Banshee",
-          "text": "I cannot cross the river, but the ferryman knows my name. Your passage is paid in full!"
+          "text": "I cannot cross the river, but{BR}the ferryman knows my name.{BR}your passage is paid in full!"
         }
       ],
       "flavorReference": "Banshee, Guardians at the Gate #142"
@@ -140,10 +140,10 @@
       "flavorQuotes": [
         {
           "identifier": "Grandfather",
-          "text": "Well, shoot! That wasn't supposed to happen..."
+          "text": "Well, shoot! That wasn't{BR}supposed to happen..."
         }
       ],
-      "flavorReference": "Grandfather, Strange Stories: Time and Tide #9"
+      "flavorReference": "[y=0.9]Grandfather, Strange Stories: Time and Tide #9"
     },
     {
       "identifier": "DecayingTones",
@@ -166,7 +166,7 @@
       "flavorQuotes": [
         {
           "identifier": "Banshee",
-          "text": "Everything withers. I can hear the fading notes of each passing through the veil."
+          "text": "Everything withers. I can{BR}hear the fading notes of each{BR}passing through the veil."
         }
       ],
       "flavorReference": "Banshee, Peacekeeper #47"
@@ -259,7 +259,7 @@
       "flavorQuotes": [
         {
           "identifier": "Khenageen",
-          "text": "In life were you nothing but a thief; in death, you plunder the halls of the dead!"
+          "text": "In life were you nothing{BR}but a thief; in death, you plunder{BR}the halls of the dead!"
         }
       ],
       "flavorReference": "Khenageen, Banshee #29"
@@ -285,7 +285,7 @@
       "flavorQuotes": [
         {
           "identifier": "Banshee",
-          "text": "You swim in the whispers of Irkalla. Hear now the song of Ereshkigal!"
+          "text": "You swim in the whispers of Irkalla.{BR}Hear now the song of Ereshkigal!"
         }
       ],
       "flavorReference": "Banshee, Strange Stories: Dead Men's Tales"
@@ -311,7 +311,7 @@
       "flavorQuotes": [
         {
           "identifier": "Banshee",
-          "text": "What prison of earth can hold the forces of the dead?"
+          "text": "What prison of earth can hold{BR}the forces of the dead?"
         }
       ],
       "flavorReference": "Banshee, Q is for Quiet one-shot"
@@ -336,10 +336,10 @@
       "flavorQuotes": [
         {
           "identifier": "Beketamun",
-          "text": "Your song ends while mine begins. I-- wipe that smirk off your face!"
+          "text": "Your song ends while mine begins.{BR}I-- wipe that smirk off your face!"
         }
       ],
-      "flavorReference": "Beketamun, Guardians at the Gate: The Lost Pyramid"
+      "flavorReference": "[y=0.8]Beketamun, Guardians at the Gate: The Lost Pyramid"
     },
     {
       "identifier": "RuinousRhythm",
@@ -360,11 +360,11 @@
       ],
       "flavorQuotes": [
         {
-          "identifier": "Beketamun",
-          "text": "Your song ends while mine begins. I-- wipe that smirk off your face!"
+          "identifier": "Banshee",
+          "text": "It doesn't matter what form you{BR}take. Even dreams must die."
         }
       ],
-      "flavorReference": "Beketamun, Guardians at the Gate: The Lost Pyramid"
+      "flavorReference": "Banshee, Guardians at the Gate #136"
     },
     {
       "identifier": "TensionAndResolution",
@@ -383,7 +383,7 @@
       "flavorQuotes": [
         {
           "identifier": "Banshee",
-          "text": "In the music of the spheres above and the world below, there is an ebb and flow to all things."
+          "text": "In the music of the spheres{BR}above and the world below, there is an{BR}ebb and flow to all things."
         }
       ],
       "flavorReference": "Banshee, Banshee #11"
@@ -410,11 +410,11 @@
       "flavorQuotes": [
         {
           "identifier": "Judge Virtanen",
-          "text": "This power is too great for you!"
+          "text": "This power is{BR}too great for you!"
         },
         {
           "identifier": "Banshee",
-          "text": "But I am not alone: Nagala's victims speak through me!"
+          "text": "But I am not alone: Nagala's{BR}victims speak through me!"
         }
       ],
       "flavorReference": "Grim Tidings: Keep Watch"
@@ -439,7 +439,7 @@
       "flavorQuotes": [
         {
           "identifier": "Banshee",
-          "text": "Old, dark, enchanted forest, you have been silent long enough. The dead sing of your glory. Soon the living will know your song."
+          "text": "Old, dark, enchanted{BR}forest, you have been silent long{BR}enough. The dead sing of your glory. Soon the living will know your song."
         }
       ],
       "flavorReference": "Banshee, Guardians at the Gate #79"
@@ -465,7 +465,7 @@
       "flavorQuotes": [
         {
           "identifier": "Hermit Glissen",
-          "text": "The fell voice on the air. What does it mean?"
+          "text": "The fell voice on the{BR}air. What does it mean?"
         },
         {
           "identifier": "Grim Sebastian",
