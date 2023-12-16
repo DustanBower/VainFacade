@@ -159,7 +159,7 @@
       ],
       "icons": [
         "DrawCardNow",
-        "StartofTurnAction",
+        "StartOfTurnAction",
         "GainHP",
         "DestroySelf"
       ],
@@ -231,9 +231,7 @@
         "Select up to 3 targets. Increase the next damage dealt to those targets by 2."
       ],
       "icons": [
-        "Discard",
-        "PlayCardNow",
-        "DrawCardNow"
+        "IncreaseDamageTaken"
       ],
       "flavorQuotes": [
         {
