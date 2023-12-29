@@ -112,7 +112,7 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":400,"h":200},
 	"sourceSize": {"w":400,"h":200}
 },
-"PushCharacter.png":
+"PeacekeeperCharacter.png":
 {
 	"frame": {"x":1612,"y":406,"w":400,"h":200},
 	"rotated": false,
@@ -120,7 +120,7 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":400,"h":200},
 	"sourceSize": {"w":400,"h":200}
 },
-"PushCharacterFlipped.png":
+"PeacekeeperCharacterFlipped.png":
 {
 	"frame": {"x":0,"y":609,"w":400,"h":200},
 	"rotated": false,
@@ -128,7 +128,7 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":400,"h":200},
 	"sourceSize": {"w":400,"h":200}
 },
-"SphereCharacter.png":
+"PushCharacter.png":
 {
 	"frame": {"x":403,"y":609,"w":400,"h":200},
 	"rotated": false,
@@ -136,7 +136,7 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":400,"h":200},
 	"sourceSize": {"w":400,"h":200}
 },
-"SphereCharacterFlipped.png":
+"PushCharacterFlipped.png":
 {
 	"frame": {"x":806,"y":609,"w":400,"h":200},
 	"rotated": false,
@@ -144,7 +144,7 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":400,"h":200},
 	"sourceSize": {"w":400,"h":200}
 },
-"TheFuryCharacter.png":
+"SphereCharacter.png":
 {
 	"frame": {"x":1209,"y":609,"w":400,"h":200},
 	"rotated": false,
@@ -152,9 +152,25 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":400,"h":200},
 	"sourceSize": {"w":400,"h":200}
 },
-"TheFuryCharacterFlipped.png":
+"SphereCharacterFlipped.png":
 {
 	"frame": {"x":1612,"y":609,"w":400,"h":200},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":400,"h":200},
+	"sourceSize": {"w":400,"h":200}
+},
+"TheFuryCharacter.png":
+{
+	"frame": {"x":0,"y":812,"w":400,"h":200},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":400,"h":200},
+	"sourceSize": {"w":400,"h":200}
+},
+"TheFuryCharacterFlipped.png":
+{
+	"frame": {"x":403,"y":812,"w":400,"h":200},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":400,"h":200},
@@ -167,6 +183,6 @@
 	"format": "RGBA8888",
 	"size": {"w":2048,"h":2048},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:520e63c31f8d986c6d746678802b0dd9:903c0bfb09dfe837aabaa214053cf4ed:e92652cff04ed6c8e37f7bc0458ec814$"
+	"smartupdate": "$TexturePacker:SmartUpdate:5151f159357463e8c3c7cba078839e25:daf8c9de702f722f9ef5ace09e966ff9:e92652cff04ed6c8e37f7bc0458ec814$"
 }
 }

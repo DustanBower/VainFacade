@@ -72,7 +72,7 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":128,"h":128},
 	"sourceSize": {"w":128,"h":128}
 },
-"PushIcon.png":
+"PeacekeeperIcon.png":
 {
 	"frame": {"x":131,"y":131,"w":128,"h":128},
 	"rotated": false,
@@ -80,7 +80,7 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":128,"h":128},
 	"sourceSize": {"w":128,"h":128}
 },
-"SphereIcon.png":
+"PushIcon.png":
 {
 	"frame": {"x":262,"y":131,"w":128,"h":128},
 	"rotated": false,
@@ -88,9 +88,17 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":128,"h":128},
 	"sourceSize": {"w":128,"h":128}
 },
-"TheFuryIcon.png":
+"SphereIcon.png":
 {
 	"frame": {"x":393,"y":131,"w":128,"h":128},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":128,"h":128},
+	"sourceSize": {"w":128,"h":128}
+},
+"TheFuryIcon.png":
+{
+	"frame": {"x":524,"y":131,"w":128,"h":128},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":128,"h":128},
@@ -103,6 +111,6 @@
 	"format": "RGBA8888",
 	"size": {"w":1024,"h":1024},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:cd1d518374c8469edfdaa2ab740e6795:b917d66b2e2b124c52276c4a10b622a2:c680398f21d101d0a1ae6d7fc2a23608$"
+	"smartupdate": "$TexturePacker:SmartUpdate:3389fcd0edd72f2ced231186eb561ddd:46710996e8429dc0164f61b7513c832d:c680398f21d101d0a1ae6d7fc2a23608$"
 }
 }
