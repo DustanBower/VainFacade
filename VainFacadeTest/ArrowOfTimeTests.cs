@@ -91,6 +91,8 @@ namespace VainFacadeTest
             //When a hero deck becomes empty, add a token to this card and put the bottom 5 cards of that deck's trash on top of the deck.
             Card arrow = GetCard("ArrowOfTime");
             MoveAllCards(legacy, legacy.TurnTaker.Deck, legacy.HeroTurnTaker.Hand, false, 1);
+            Card ammo = PutOnDeck("AmmoDrop");
+            DecisionSelectCard = ammo;
             QuickTokenPoolStorage(arrow.TokenPools);
             PlayCard("LeyLineShift");
             QuickTokenPoolCheck(1);
@@ -181,6 +183,29 @@ namespace VainFacadeTest
             QuickTokenPoolStorage(arrow.TokenPools);
             UsePower(visionary);
             QuickTokenPoolCheck(1);
+        }
+
+        [Test()]
+        public void TestVillainShowdownNemesis()
+        {
+            SetupGameController("VainFacadePlaytest.Grandfather", "Legacy", "Bunker", "TheVisionary/DarkVisionaryCharacter", "Megalopolis");
+            Card showdown = PutOnDeck("VillainShowdown");
+            StartGame();
+            //MoveCards(grandpa, FindCardsWhere((Card c) => c.Owner == grandpa.TurnTaker && c.IsInPlay && !c.IsCharacter), grandpa.TurnTaker.Trash, overrideIndestructible: true);
+            //DecisionSelectCard = legacy.CharacterCard;
+            //Card showdown = PlayCard("VillainShowdown");
+
+            Assert.IsTrue(FindCardController(showdown).NemesisTrigger != null, "Villain Showdown does not have a nemesis trigger");
+
+            QuickHPStorage(legacy.CharacterCard, showdown);
+            DealDamage(legacy.CharacterCard, showdown, 1, DamageType.Melee);
+            DealDamage(showdown, legacy.CharacterCard, 1, DamageType.Melee);
+            QuickHPCheck(-2, -2);
+
+            QuickHPStorage(bunker.CharacterCard, showdown);
+            DealDamage(bunker.CharacterCard, showdown, 1, DamageType.Melee);
+            DealDamage(showdown, bunker.CharacterCard, 1, DamageType.Melee);
+            QuickHPCheck(-1, -1);
         }
     }
 }
