@@ -1,0 +1,552 @@
+﻿{
+  "name": "Peacekeeper",
+  "kind": "Hero",
+  "initialCardIdentifiers": [
+    "PeacekeeperCharacter"
+  ],
+  "cards": [
+    {
+      "identifier": "PeacekeeperCharacter",
+      "count": 1,
+      "title": "Peacekeeper",
+      "body": "Test Subject 7",
+      "backgroundColor": "05AC00",
+      "character": true,
+      "powers": [
+        "{Peacekeeper} deals 1 target 1 melee damage. You may draw a card."
+      ],
+      "icons": [
+        "HasPower",
+        "DealDamageMelee",
+        "DrawCardNow"
+      ],
+      "hitpoints": 29,
+      "nemesisIdentifiers": [
+        "VainFacadePlaytest.Peacekeeper"
+      ],
+      "incapacitatedAbilities": [
+        "The next time a hero uses a power, that hero deals 1 target 1 projectile damage.",
+        "Select a hero target. Reduce the next damage dealt to that target by 2.",
+        "1 player may play a card."
+      ],
+      "flippedIcons": [
+        "DealDamageProjectile",
+        "ReduceDamageTaken",
+        "PlayCardNow"
+      ],
+      "complexity": 2,
+      "openingLines": {
+        "default": "Wheels up. Stay Frosty."
+      }
+    },
+    {
+      "identifier": "Ambush",
+      "count": 1,
+      "title": "Ambush",
+      "keywords": [
+        "ongoing",
+        "maneuver"
+      ],
+      "body": [
+        "When this card enters play, return your other maneuvers in play to your hand.",
+        "Prevent the first damage dealt to {Peacekeeper} by non-hero targets each turn. When {Peacekeeper} deals or is dealt damage by another target, destroy this card."
+      ],
+      "powers": [
+        "Increase damage {Peacekeeper} deals to non-hero targets by 2 until this card leaves play."
+      ],
+      "icons": [
+        "Manipulate",
+        "CancelledDamageGreen",
+        "DestroySelf",
+        "HasPower",
+        "IncreaseDamageDealt"
+      ],
+      "flavorQuotes": [
+        {
+          "identifier": "Carnaval",
+          "text": "I love a good trap, but I was hoping for something a bit more flashy."
+        }
+      ],
+      "flavorReference": "Carnaval, Division X: Friendly Fire one-shot"
+    },
+    {
+      "identifier": "BulletHell",
+      "count": 1,
+      "title": "Bullet Hell",
+      "keywords": [
+        "ongoing",
+        "maneuver"
+      ],
+      "body": [
+        "When this card enters play, return your other maneuvers in play to your hand.",
+        "Prevent the first card draw during your draw phase."
+      ],
+      "powers": [
+        "[y=0.95]Until the start of your next turn, the first time each turn any target deals damage, {Peacekeeper} may discard a card to deal 1 target 1 projectile damage.[/y]",
+        "Draw a card or destroy this card."
+      ],
+      "icons": [
+        "Manipulate",
+        "CannotDrawCards",
+        "HasPower",
+        "Discard",
+        "DealDamageProjectile",
+        "DrawCardNow",
+        "DestroySelf"
+      ],
+      "flavorQuotes": [
+        {
+          "identifier": "Sphere",
+          "text": "We're moving out, Peace. Make it rain."
+        }
+      ],
+      "flavorReference": "Sphere, Weapons of Tomorrow #3"
+    },
+    {
+      "identifier": "BurstOfSpeed",
+      "count": 3,
+      "title": "Burst of Speed",
+      "keywords": [
+        "one-shot"
+      ],
+      "body": [
+        "You may draw 1 card and play 1 card. {Peacekeeper} deals himself 2 irreducible toxic damage.",
+        "If {Peacekeeper} was dealt damage this way, you may play 1 card."
+      ],
+      "icons": [
+        "DrawCardNow",
+        "PlayCardNow",
+        "DealDamageToxic"
+      ],
+      "flavorQuotes": [
+        {
+          "identifier": "Doctor Vargha",
+          "text": "Subject's reaction times and mobility are off the charts. The serum appears to be permanently altering his physiology to maximize his combat prowess."
+        }
+      ],
+      "flavorReference": "Doctor Vargha, Echoes of X51 #8"
+    },
+    {
+      "identifier": "CodenamePeacekeeper",
+      "count": 3,
+      "title": "Codename: Peacekeeper",
+      "keywords": [
+        "one-shot"
+      ],
+      "body": [
+        "{Peacekeeper} deals 1 target X melee damage, where X = the number of symptoms in play.",
+        "{Peacekeeper} deals himself 2 toxic damage. If he is dealt damage this way, he deals the original target 3 melee damage."
+      ],
+      "icons": [
+        "DealDamageMelee",
+        "DealDamageToxic"
+      ],
+      "flavorQuotes": [
+        {
+          "identifier": "Peacekeeper",
+          "text": "I'm no hero. I'm not a soldier anymore, but I'm still a peacekeeper. I can't stay off my meds for long, but if that's what it takes to save your city, I'm in."
+        }
+      ],
+      "flavorReference": "Peacekeeper, Echoes of X51 #18"
+    },
+    {
+      "identifier": "CoverFire",
+      "count": 1,
+      "title": "Cover Fire",
+      "keywords": [
+        "ongoing",
+        "maneuver"
+      ],
+      "body": [
+        "When this card enters play, return your other maneuvers in play to your hand.",
+        "At the start of your turn, destroy this card."
+      ],
+      "powers": [
+        "Until the start of your next turn, the first time each turn any hero target would be dealt damage by another target, reduce that damage by 1, then {Peacekeeper} deals the source of that damage 2 projectile damage."
+      ],
+      "icons": [
+        "Manipulate",
+        "StartOfTurnAction",
+        "DestroySelf",
+        "HasPower",
+        "ReduceDamageTaken",
+        "DealDamageProjectile"
+      ],
+      "flavorQuotes": [
+        {
+          "identifier": "General Janson",
+          "text": "Don't push it, Vidal. Varano here pulled my men out of hell more times than I can count, and that's the only reason I'm tolerating your expedition."
+        }
+      ],
+      "flavorReference": "General Janson, Operational Clearance One-shot"
+    },
+    {
+      "identifier": "ExcessAdrenaline",
+      "count": 3,
+      "title": "Excess Adrenaline",
+      "keywords": [
+        "ongoing",
+        "symptom"
+      ],
+      "body": [
+        "At the end of your turn, you may draw or play a card. Then {Peacekeeper} deals himself 1 irreducible toxic damage."
+      ],
+      "icons": [
+        "EndOfTurnAction",
+        "DrawCardNow",
+        "PlayCardNow",
+        "DealDamageToxic"
+      ],
+      "flavorQuotes": [
+        {
+          "identifier": "Peacekeeper",
+          "text": "Hey Amalgam! They've got nothing you haven't seen before, but I can do something you can't!"
+        }
+      ],
+      "flavorReference": "Peacekeeper, Apocalypse 10: The Rise of Amalgam"
+    },
+    {
+      "identifier": "FragGrenades",
+      "count": 2,
+      "title": "Frag Grenades",
+      "keywords": [
+        "equipment",
+        "limited"
+      ],
+      "powers": [
+        "{Peacekeeper} deals up to 3 targets 2 fire damage each."
+      ],
+      "icons": [
+        "HasPower",
+        "DealDamageFire"
+      ],
+      "flavorQuotes": [
+        {
+          "identifier": "Peacekeeper",
+          "text": "Just like old times."
+        }
+      ],
+      "flavorReference": "Peacekeeper, Lone Wolfe one-shot"
+    },
+    {
+      "identifier": "GreenVeins",
+      "count": 3,
+      "title": "Green Veins",
+      "keywords": [
+        "ongoing",
+        "symptom"
+      ],
+      "body": [
+        "The first time each turn damage is redirected from {Peacekeeper} to another target, draw a card.",
+        "When {Peacekeeper} would be dealt damage by any non-hero target, you may discard 2 cards to redirect that damage to another target.",
+        "At the end of your turn, {Peacekeeper} deals himself 1 irreducible toxic damage."
+      ],
+      "icons": [
+        "DrawCardNow",
+        "Discard",
+        "RedirectDamage",
+        "EndOfTurnAction",
+        "DealDamageToxic"
+      ],
+      "flavorQuotes": [
+        {
+          "identifier": "Sphere",
+          "text": "Looking a little green today, Peace."
+        },
+        {
+          "identifier": "Peacekeeper",
+          "text": "We can't all afford that fancy spray-tan."
+        }
+      ],
+      "flavorReference": "Weapons of Tomorrow #18"
+    },
+    {
+      "identifier": "IfYouDesirePeace",
+      "count": 2,
+      "title": "If You Desire Peace...",
+      "keywords": [
+        "one-shot"
+      ],
+      "body": [
+        "Reveal cards from the top of your deck until 2 equipment cards are revealed. Put one into your hand or into play. Shuffle the other revealed cards into your deck."
+      ],
+      "icons": [
+        "Search"
+      ],
+      "flavorQuotes": [
+        {
+          "identifier": "Colonel Wolfe",
+          "text": "Without your little girlfriend to protect you, you're nothing."
+        },
+        {
+          "identifier": "Peacekeeper",
+          "text": "Do you even read your mission briefings?"
+        }
+      ],
+      "flavorReference": "Division X, Friendly fire one-shot"
+    },
+    {
+      "identifier": "NBE2CombatKnife",
+      "count": 2,
+      "title": "NBE-2 Combat Knife",
+      "keywords": [
+        "equipment",
+        "limited"
+      ],
+      "body": [
+        "Increase melee damage dealt by {Peacekeeper} by 1."
+      ],
+      "powers": [
+        "{Peacekeeper} deals 1 target 2 melee damage. If that target dealt {Peacekeeper} melee damage since the start of your last turn, increase that damage by 2."
+      ],
+      "icons": [
+        "IncreaseDamageDealtMelee",
+        "HasPower",
+        "DealDamageMelee"
+      ],
+      "flavorQuotes": [
+        {
+          "identifier": "Colonel Wolfe",
+          "text": "Did you really bring a knife to a gun fight?"
+        },
+        {
+          "identifier": "Peacekeeper",
+          "text": "Brought my fists and elbows too."
+        }
+      ],
+      "flavorReference": "Division X #22"
+    },
+    {
+      "identifier": "PrepareForWar",
+      "count": 2,
+      "title": "Prepare for War",
+      "keywords": [
+        "one-shot"
+      ],
+      "body": [
+        "Search your deck for a maneuver and put it into play.",
+        "You may put a maneuver from your trash on top of your deck.",
+        "Shuffle your deck."
+      ],
+      "icons": [
+        "Search",
+        "Manipulate"
+      ],
+      "flavorQuotes": [
+        {
+          "identifier": "Carnaval",
+          "text": "Fine! Want to know why I picked you? I can't protect people, you can! I'm going to go make a mess. Your job is to save bystanders, got it?"
+        }
+      ],
+      "flavorReference": "Carnaval, Operational Clearance one-shot"
+    },
+    {
+      "identifier": "S399ModifiedAssaultRifle",
+      "count": 2,
+      "title": "S3-99 Modified Assault Rifle",
+      "keywords": [
+        "equipment",
+        "limited"
+      ],
+      "body": [
+        "Increase projectile damage dealt by {Peacekeeper} by 1."
+      ],
+      "powers": [
+        "{Peacekeeper} deals 1 target 2 projectile damage, then deals 1 target 2 projectile damage."
+      ],
+      "icons": [
+        "IncreaseDamageDealtProjectile",
+        "HasPower",
+        "DealDamageProjectile"
+      ],
+      "flavorQuotes": [
+        {
+          "identifier": "General Janson",
+          "text": "Custom made to fit your strengths. You should be proud of the work you do, son. If we had more men like you, the world would be a safer place."
+        }
+      ],
+      "flavorReference": "General Janson, Operational Clearance One-shot"
+    },
+    {
+      "identifier": "SniperPerch",
+      "count": 1,
+      "title": "Sniper Perch",
+      "keywords": [
+        "ongoing",
+        "maneuver"
+      ],
+      "body": [
+        "When this card enters play, return your other maneuvers in play to your hand.",
+        "Reduce damage dealt to {Peacekeeper} by 2. When {Peacekeeper} is dealt damage by another target or you use a power on another card, destroy this card."
+      ],
+      "powers": [
+        "{Peacekeeper} deals 1 target 3 irreducible projectile damage."
+      ],
+      "icons": [
+        "Manipulate",
+        "ReduceDamageTaken",
+        "DestroySelf",
+        "HasPower",
+        "DealDamageProjectile"
+      ],
+      "flavorQuotes": [
+        {
+          "identifier": "Peacekeeper",
+          "text": "Lure them out in the open. I have a surprise prepared."
+        }
+      ],
+      "flavorReference": "Peaecekeeper, Behind Enemy Lines #4"
+    },
+    {
+      "identifier": "SystemPurge",
+      "count": 3,
+      "title": "System Purge",
+      "keywords": [
+        "one-shot"
+      ],
+      "body": [
+        "Draw a card.",
+        "Destroy a serum or symptom. If a card was destroyed this way, reveal the top 2 cards of your deck. Put one into your hand and one on the bottom of the deck."
+      ],
+      "icons": [
+        "DrawCardNow",
+        "DestroyHero",
+        "Manipulate"
+      ],
+      "flavorQuotes": [
+        {
+          "identifier": "Friday",
+          "text": "I was ordered not to kill you, but I will if you want."
+        },
+        {
+          "identifier": "Peacekeeper",
+          "text": "No, that was... hyperbole, but thank you. You're a true friend."
+        }
+      ],
+      "flavorReference": "Division X #22"
+    },
+    {
+      "identifier": "ToxicBlood",
+      "count": 3,
+      "title": "Toxic Blood",
+      "keywords": [
+        "ongoing",
+        "symptom"
+      ],
+      "body": [
+        "Increase damage dealt by {Peacekeeper} to other targets by 1.",
+        "At the end of your turn, {Peacekeeper} deals himself 1 irreducible toxic damage."
+      ],
+      "icons": [
+        "IncreaseDamageDealt",
+        "EndOfTurnAction",
+        "DealDamageToxic"
+      ],
+      "flavorQuotes": [
+        {
+          "identifier": "Peacekeeper",
+          "text": "That serum is the only way I can have a normal life. Miss a dose, my veins start to turn green. I get strong and fast, but I start dying."
+        }
+      ],
+      "flavorReference": "Peacekeeper, Echoes of X51 #13"
+    },
+    {
+      "identifier": "UpCloseAndPersonal",
+      "count": 1,
+      "title": "Up Close and Personal",
+      "keywords": [
+        "ongoing",
+        "maneuver"
+      ],
+      "body": [
+        "When this card enters play, return your other maneuvers in play to your hand.",
+        "Play this card next to a target. Redirect all damage dealt by that target to {Peacekeeper}. Reduce non-melee damage that target deals to {Peacekeeper} by 1."
+      ],
+      "powers": [
+        "{Peacekeeper} deals the target next to this card 3 melee damage."
+      ],
+      "icons": [
+        "Manipulate",
+        "RedirectDamage",
+        "ReduceDamageTaken",
+        "HasPower",
+        "DealDamageMelee"
+      ],
+      "flavorQuotes": [
+        {
+          "identifier": "Peacekeeper",
+          "text": "You want him? Come get him."
+        }
+      ],
+      "flavorReference": "Peaecekeeper, Division X #36"
+    },
+    {
+      "identifier": "X517BoosterShot",
+      "count": 3,
+      "title": "X51-7 Booster Shot",
+      "keywords": [
+        "equipment",
+        "serum",
+        "limited"
+      ],
+      "body": [
+        "When this card enters play, destroy your other serums.",
+        "Damage dealt by {Peacekeeper} to other targets is increased by 2 and irreducible.",
+        "Reduce damage dealt to {Peacekeeper} by 1.",
+        "At the start of your turn, {Peacekeeper} deals himself 2 irreducible toxic damage. Then you may play a symptom. Then destroy this card."
+      ],
+      "icons": [
+        "DestroyHero",
+        "IncreaseDamageDealt",
+        "MakeDamageIrreducible",
+        "ReduceDmageTaken",
+        "StartOfTurnAction",
+        "DealDamageToxic",
+        "PlayCardNow",
+        "DestroySelf"
+      ],
+      "flavorQuotes": [
+        {
+          "identifier": "Carnaval",
+          "text": "Listen, I can't tell you what to do. You're a good soldier with or without the serum. We may live, we may die. If it were me, I don't know..."
+        }
+      ],
+      "flavorReference": "Carnaval, Operational Clearance one-shot"
+    },
+    {
+      "identifier": "YTechCustomSerum4319B",
+      "count": 3,
+      "title": "Y-Tech Custom Serum 4319B",
+      "keywords": [
+        "equipment",
+        "serum",
+        "limited"
+      ],
+      "body": [
+        "When this card enters play, destroy your other serums.",
+        "{Peacekeeper} is immune to toxic damage.",
+        "At the end of your turn, return a symptom in play to your hand."
+      ],
+      "powers": [
+        "Destroy this card."
+      ],
+      "icons": [
+        "DestroyHero",
+        "ImmuneToDamageToxic",
+        "EndOfTurnAction",
+        "Manipulate",
+        "HasPower",
+        "DestroySelf"
+      ],
+      "flavorQuotes": [
+        {
+          "identifier": "Peacekeeper",
+          "text": "No sudden movements. Turn around slowly. I want to know who you are, why you're here, and how you know about my serum."
+        }
+      ],
+      "flavorReference": "Peacekeeper, Echoes of X51 #12"
+    }
+  ],
+  "promoCards": [
+  ]
+}
