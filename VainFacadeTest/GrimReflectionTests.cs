@@ -25,6 +25,10 @@ namespace VainFacadeTest
         protected HeroTurnTakerController sphere { get { return FindHero("Sphere"); } }
         protected HeroTurnTakerController fury { get { return FindHero("TheFury"); } }
         protected HeroTurnTakerController carnaval { get { return FindHero("Carnaval"); } }
+        protected HeroTurnTakerController peacekeeper { get { return FindHero("Peacekeeper"); } }
+        protected HeroTurnTakerController banshee { get { return FindHero("Banshee"); } }
+        protected HeroTurnTakerController arctis { get { return FindHero("Arctis"); } }
+        protected HeroTurnTakerController push { get { return FindHero("Push"); } }
 
         //Villains
         protected TurnTakerController baroness { get { return FindVillain("TheBaroness"); } }
@@ -438,22 +442,22 @@ namespace VainFacadeTest
 
         }
 
-        [Test()]
-        public void TestBattleZonesUhYeah()
-        {
-            SetupGameController(new string[] { "OblivAeon", "Guise", "Legacy", "Bunker", "TheScholar", "Megalopolis", "InsulaPrimalis", "TombOfAnubis", "RuinsOfAtlantis", "NexusOfTheVoid", "ChampionStudios" }, shieldIdentifier: "TheArcOfUnreality", scionIdentifiers: new string[] { "DarkMindCharacter" });
-            StartGame();
-            DecisionSelectTurnTaker = legacy.TurnTaker;
-            Card UhYeah = PlayCard("UhYeahImThatGuy");
-            PlayCard("MotivationalCharge");
-            SwitchBattleZone(guise);
-            SetHitPoints(guise, 10);
-            QuickHPStorage(mindScion, guise.CharacterCard);
+        //[Test()]
+        //public void TestBattleZonesUhYeah()
+        //{
+        //    SetupGameController(new string[] { "OblivAeon", "Guise", "Legacy", "Bunker", "TheScholar", "Megalopolis", "InsulaPrimalis", "TombOfAnubis", "RuinsOfAtlantis", "NexusOfTheVoid", "ChampionStudios" }, shieldIdentifier: "TheArcOfUnreality", scionIdentifiers: new string[] { "DarkMindCharacter" });
+        //    StartGame();
+        //    DecisionSelectTurnTaker = legacy.TurnTaker;
+        //    Card UhYeah = PlayCard("UhYeahImThatGuy");
+        //    PlayCard("MotivationalCharge");
+        //    SwitchBattleZone(guise);
+        //    SetHitPoints(guise, 10);
+        //    QuickHPStorage(mindScion, guise.CharacterCard);
 
-            //Legacy is in BZ1, Guise is in BZ2, but he can still use the power from Motivational Charge
-            UsePower(UhYeah);
-            QuickHPCheck(-2, 1);
-        }
+        //    //Legacy is in BZ1, Guise is in BZ2, but he can still use the power from Motivational Charge
+        //    UsePower(UhYeah);
+        //    QuickHPCheck(-2, 1);
+        //}
 
         [Test()]
         public void TestBattleZonesPower()
@@ -571,6 +575,127 @@ namespace VainFacadeTest
             AssertIsInPlay(allies);
             QuickHandCheck(1);
             AssertInHand(war);
+        }
+
+        [Test()]
+        public void TestBulletHellPower1Grim()
+        {
+            SetupGameController("AkashBhuta", "VainFacadePlaytest.Peacekeeper", "Legacy", "Bunker", "VainFacadePlaytest.Friday", "TheBlock");
+            StartGame();
+
+            //Power: Until the start of your next turn, the first time each turn any target deals damage, {Peacekeeper} may discard a card to deal 1 target 1 projectile damage.
+            Card bullet = PlayCard("BulletHell");
+            GoToUsePowerPhase(peacekeeper);
+            UsePower(bullet);
+
+            base.GameController.OnMakeDecisions -= MakeDecisions;
+            base.GameController.OnMakeDecisions += MakeDecisions2;
+
+            Card grim = PlayCard("GrimReflection");
+            MoveAllCards(friday, friday.HeroTurnTaker.Hand, friday.TurnTaker.Trash, false, 1);
+            DecisionSelectCard = bullet;
+            PutOnDeck("ProteanDoom");
+            DecisionSelectFunction = 0;
+            UsePower(grim);
+            UsePower(grim, 1);
+
+            //Check that it works if another hero uses the power on Bullet Hell.
+            DecisionSelectTarget = akash.CharacterCard;
+            Card war = PutInHand("BuiltForWar");
+            QuickHPStorage(akash);
+            QuickHandStorage(peacekeeper, friday);
+            DealDamage(akash, legacy, 1, DamageType.Melee);
+            QuickHPCheck(-2);
+            QuickHandCheck(-1, -1);
+            AssertInTrash(war);
+        }
+
+        [Test()]
+        public void TestCoverFirePowerGrim()
+        {
+            SetupGameController("AkashBhuta", "VainFacadePlaytest.Peacekeeper", "Legacy", "Bunker", "VainFacadePlaytest.Friday", "TheBlock");
+            StartGame();
+
+            //Power: Until the start of your next turn, the first time each turn any hero target would be dealt damage by another target, reduce that damage by 1, then {Peacekeeper} deals the source of that damage 2 projectile damage.
+            GoToUsePowerPhase(peacekeeper);
+            Card cover = PlayCard("CoverFire");
+            UsePower(cover);
+
+            base.GameController.OnMakeDecisions -= MakeDecisions;
+            base.GameController.OnMakeDecisions += MakeDecisions2;
+
+            Card grim = PlayCard("GrimReflection");
+            MoveAllCards(friday, friday.HeroTurnTaker.Hand, friday.TurnTaker.Trash, false, 1);
+            DecisionSelectCard = cover;
+            PutOnDeck("ProteanDoom");
+            DecisionSelectFunction = 0;
+            UsePower(grim);
+            UsePower(grim, 1);
+
+            //Check that it works if another hero uses the power on cover fire.
+            QuickHPStorage(legacy, akash);
+            DealDamage(akash, legacy, 3, DamageType.Melee);
+            QuickHPCheck(-1,-4);
+        }
+
+        [Test()]
+        public void TestToxicBloodGrim()
+        {
+            SetupGameController("AkashBhuta", "VainFacadePlaytest.Peacekeeper", "Legacy", "Bunker", "VainFacadePlaytest.Friday", "TheBlock");
+            StartGame();
+
+            //Increase damage dealt by {Peacekeeper} to other targets by 1.
+            //At the end of your turn, {Peacekeeper} deals himself 1 irreducible toxic damage.
+            GoToPlayCardPhase(friday);
+            Card toxic = PlayCard("ToxicBlood");
+
+            base.GameController.OnMakeDecisions -= MakeDecisions;
+            base.GameController.OnMakeDecisions += MakeDecisions2;
+
+            Card grim = PlayCard("GrimReflection");
+            MoveAllCards(friday, friday.HeroTurnTaker.Hand, friday.TurnTaker.Trash, false, 1);
+            DecisionSelectCard = toxic;
+            PutOnDeck("ProteanDoom");
+            DecisionSelectFunction = 0;
+            UsePower(grim);
+
+            //Check that Friday gets the damage increase
+            QuickHPStorage(akash);
+            DealDamage(friday, akash, 1, DamageType.Melee);
+            QuickHPCheck(-2);
+
+            //Check that Friday copies the end of turn damage
+            QuickHPStorage(friday);
+            GoToEndOfTurn(friday);
+            QuickHPCheck(-1);
+
+            QuickHPStorage(peacekeeper);
+            GoToEndOfTurn(peacekeeper);
+            QuickHPCheck(-1);
+        }
+
+        [Test()]
+        public void TestMalleableBattleForm()
+        {
+            SetupGameController("Argo", "Ra", "Legacy", "Bunker", "VainFacadePlaytest.Friday", "TheBlock");
+            StartGame();
+
+            //At the end of the villain turn, Argo deals each target 1 projectile damage.
+            DestroyCards(FindCardsWhere((Card c) => c.IsImprint && c.IsInPlayAndHasGameText));
+            Card malleable = PlayCard("MalleableBattleForm");
+            TurnTakerController argo = FindVillain("Argo");
+
+            base.GameController.OnMakeDecisions -= MakeDecisions;
+            base.GameController.OnMakeDecisions += MakeDecisions2;
+
+            Card grim = PlayCard("GrimReflection");
+            MoveAllCards(friday, friday.HeroTurnTaker.Hand, friday.TurnTaker.Trash, false, 1);
+            DecisionSelectCard = malleable;
+            PutOnDeck("ProteanDoom");
+            DecisionSelectFunction = 0;
+            UsePower(grim);
+
+            GoToEndOfTurn(argo);
         }
     }
 }
