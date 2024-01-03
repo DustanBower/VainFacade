@@ -13,6 +13,7 @@ namespace VainFacadePlaytest.Peacekeeper
 		public CoverFireCardController(Card card, TurnTakerController turnTakerController)
             : base(card, turnTakerController)
         {
+            AddThisCardControllerToList(CardControllerListType.CanCauseDamageOutOfPlay);
 		}
 
         public string FirstDamageKey = "FirstDamageKey";
@@ -104,6 +105,7 @@ namespace VainFacadePlaytest.Peacekeeper
 
             if (target.IsInPlayAndHasGameText && target.IsTarget)
             {
+                AddInhibitorException((GameAction ga) => true);
                 List<Card> results2 = new List<Card>();
                 DealDamageAction dd = new DealDamageAction(base.GameController, null, null, amount, DamageType.Projectile);
                 HeroTurnTakerController httc = FindHeroTurnTakerController(hero.ToHero());
@@ -130,6 +132,8 @@ namespace VainFacadePlaytest.Peacekeeper
                         base.GameController.ExhaustCoroutine(coroutine);
                     }
                 }
+
+                RemoveInhibitorException();
             }
         }
     }
