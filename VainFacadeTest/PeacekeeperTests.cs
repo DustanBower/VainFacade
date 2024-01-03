@@ -480,7 +480,63 @@ namespace VainFacadeTest
             AssertInTrash(sniper, ambush);
         }
 
-        
+        [Test()]
+        public void TestBulletHellPower1Destroyed()
+        {
+            SetupGameController("AkashBhuta", "VainFacadePlaytest.Peacekeeper", "Legacy", "Bunker", "TheScholar", "TheBlock");
+            StartGame();
+
+            //Power: Until the start of your next turn, the first time each turn any target deals damage, {Peacekeeper} may discard a card to deal 1 target 1 projectile damage.
+            Card bullet = PlayCard("BulletHell");
+            GoToUsePowerPhase(peacekeeper);
+            UsePower(bullet);
+            DestroyCard(bullet);
+            Card codename = PutInHand("CodenamePeacekeeper");
+            Card ambush = PutInHand("Ambush");
+
+            //If Bullet Hell is destroyed after the power is used, it should still take effect
+            //Check that it works
+            DecisionDiscardCard = codename;
+            DecisionSelectTarget = akash.CharacterCard;
+            AssertDecisionIsOptional(SelectionType.DiscardCard);
+            QuickHPStorage(akash);
+            DealDamage(legacy, akash, 1, DamageType.Melee);
+            QuickHPCheck(-2);
+            AssertInTrash(codename);
+
+            //Check that it doesn't work twice in one turn
+            DecisionDiscardCard = ambush;
+            QuickHPStorage(akash);
+            DealDamage(legacy, akash, 1, DamageType.Melee);
+            QuickHPCheck(-1);
+            AssertInHand(ambush);
+
+            //Check that it does work on the next turn, and that it works on any damage
+            GoToStartOfTurn(legacy);
+            QuickHPStorage(akash);
+            DealDamage(akash, legacy, 1, DamageType.Melee);
+            QuickHPCheck(-1);
+            AssertInTrash(ambush);
+
+            //Check that you don't deal damage if you don't discard
+            GoToStartOfTurn(bunker);
+            DecisionDoNotSelectCard = SelectionType.DiscardCard;
+            QuickHPStorage(akash);
+            QuickHandStorage(peacekeeper);
+            DealDamage(akash, legacy, 1, DamageType.Melee);
+            QuickHPCheck(0);
+            QuickHandCheck(0);
+
+            //Check that it expires at the start of Peacekeeper's turn
+            GoToStartOfTurn(peacekeeper);
+            Card sniper = PutInHand("SniperPerch");
+            ResetDecisions();
+            DecisionDiscardCard = sniper;
+            QuickHPStorage(akash);
+            DealDamage(legacy, akash, 1, DamageType.Melee);
+            QuickHPCheck(-1);
+            AssertInHand(sniper);
+        }
 
         [Test()]
         public void TestBulletHellPower2Draw()
@@ -799,6 +855,51 @@ namespace VainFacadeTest
             QuickHPStorage(legacy, akash);
             DealDamage(akash, legacy, 3, DamageType.Melee);
             QuickHPCheck(-3, 0);
+        }
+
+        [Test()]
+        public void TestCoverFirePowerDestroyed()
+        {
+            SetupGameController("AkashBhuta", "VainFacadePlaytest.Peacekeeper", "Legacy", "Bunker", "TheScholar", "TheBlock");
+            StartGame();
+
+            //Power: Until the start of your next turn, the first time each turn any hero target would be dealt damage by another target, reduce that damage by 1, then {Peacekeeper} deals the source of that damage 2 projectile damage.
+            GoToPlayCardPhase(peacekeeper);
+            Card cover = PlayCard("CoverFire");
+            UsePower(cover);
+            DestroyCard(cover);
+
+            //If Cover Fire is destroyed, it should still work.
+            //Check that it works
+            QuickHPStorage(legacy, akash);
+            DealDamage(akash, legacy, 2, DamageType.Melee);
+            QuickHPCheck(-1, -2);
+
+            //Check that it doesn't work a second time
+            QuickHPStorage(legacy, akash);
+            DealDamage(akash, legacy, 2, DamageType.Melee);
+            QuickHPCheck(-2, 0);
+
+            GoToStartOfTurn(legacy);
+
+            //Check that it works on the next turn
+            QuickHPStorage(legacy, akash);
+            DealDamage(akash, legacy, 2, DamageType.Melee);
+            QuickHPCheck(-1, -2);
+
+            GoToStartOfTurn(bunker);
+
+            //Check that it doesn't react to damage to a non-hero target
+            QuickHPStorage(legacy, akash);
+            DealDamage(legacy, akash, 2, DamageType.Melee);
+            QuickHPCheck(0, -2);
+
+            GoToStartOfTurn(peacekeeper);
+
+            //Check that it expires at the start of Peacekeeper's turn
+            QuickHPStorage(legacy, akash);
+            DealDamage(akash, legacy, 2, DamageType.Melee);
+            QuickHPCheck(-2, 0);
         }
 
         [Test()]
