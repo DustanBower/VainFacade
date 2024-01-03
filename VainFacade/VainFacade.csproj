@@ -252,6 +252,32 @@
     <Compile Include="ParadiseIsle\TestSubjectsCardController.cs" />
     <Compile Include="ParadiseIsle\TheGoldenDawnCasinoCardController.cs" />
     <Compile Include="ParadiseIsle\TightHallwaysCardController.cs" />
+    <Compile Include="Peacekeeper\BurstOfSpeedCardController.cs" />
+    <Compile Include="Peacekeeper\CodenamePeacekeeperCardController.cs" />
+    <Compile Include="Peacekeeper\FragGrenadesCardController.cs" />
+    <Compile Include="Peacekeeper\IfYouDesirePeaceCardController.cs" />
+    <Compile Include="Peacekeeper\Maneuvers\AmbushCardController.cs" />
+    <Compile Include="Peacekeeper\Maneuvers\BulletHellCardController.cs" />
+    <Compile Include="Peacekeeper\Maneuvers\CoverFireCardController.cs" />
+    <Compile Include="Peacekeeper\Maneuvers\SniperPerchCardController.cs" />
+    <Compile Include="Peacekeeper\Maneuvers\UpCloseAndPersonalCardController.cs" />
+    <Compile Include="Peacekeeper\NBE2CombatKnifeCardController.cs" />
+    <Compile Include="Peacekeeper\PeacekeeperCharacterCardController.cs" />
+    <Compile Include="Peacekeeper\PrepareForWarCardController.cs" />
+    <Compile Include="Peacekeeper\S399ModifiedAssaultRifleCardController.cs" />
+    <Compile Include="Peacekeeper\Serums\X517BoosterShotCardController.cs" />
+    <Compile Include="Peacekeeper\Serums\YTechCustomSerum4319BCardController.cs" />
+    <Compile Include="Peacekeeper\Symptoms\ExcessAdrenalineCardController.cs" />
+    <Compile Include="Peacekeeper\Symptoms\GreenVeinsCardController.cs" />
+    <Compile Include="Peacekeeper\Symptoms\ToxicBloodCardController.cs" />
+    <Compile Include="Peacekeeper\SystemPurgeCardController.cs" />
+    <Compile Include="Peacekeeper\Utilities\BulletHellStatusEffect.cs" />
+    <Compile Include="Peacekeeper\Utilities\CoverFireStatusEffect.cs" />
+    <Compile Include="Peacekeeper\Utilities\ManeuverCardController.cs" />
+    <Compile Include="Peacekeeper\Utilities\PeacekeeperCardUtilities.cs" />
+    <Compile Include="Peacekeeper\Utilities\PeacekeeperIncapStatusEffect.cs" />
+    <Compile Include="Peacekeeper\Utilities\SerumCardController.cs" />
+    <Compile Include="Peacekeeper\Utilities\SymptomCardController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Push\AnchorCardController.cs" />
     <Compile Include="Push\BoggedDownCardController.cs" />
@@ -397,6 +423,9 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="DeckLists\BansheeDeckList.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="DeckLists\PeacekeeperDeckList.json" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

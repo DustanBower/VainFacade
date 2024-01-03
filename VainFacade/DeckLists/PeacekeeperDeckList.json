@@ -64,10 +64,10 @@
       "flavorQuotes": [
         {
           "identifier": "Carnaval",
-          "text": "I love a good trap, but I was hoping for something a bit more flashy."
+          "text": "I love a good trap, but I was{BR}hoping for something a bit more flashy."
         }
       ],
-      "flavorReference": "Carnaval, Division X: Friendly Fire one-shot"
+      "flavorReference": "Carnaval, Division X: Friendly Fire"
     },
     {
       "identifier": "BulletHell",
@@ -121,10 +121,10 @@
       "flavorQuotes": [
         {
           "identifier": "Doctor Vargha",
-          "text": "Subject's reaction times and mobility are off the charts. The serum appears to be permanently altering his physiology to maximize his combat prowess."
+          "text": "Subject's reaction times and{BR}mobility are off the charts. The serum{BR}appears to be permanently altering his{BR}physiology to maximize his combat prowess."
         }
       ],
-      "flavorReference": "Doctor Vargha, Echoes of X51 #8"
+      "flavorReference": "[y=0.75]Doctor Vargha, Echoes of X51 #8"
     },
     {
       "identifier": "CodenamePeacekeeper",
@@ -144,7 +144,7 @@
       "flavorQuotes": [
         {
           "identifier": "Peacekeeper",
-          "text": "I'm no hero. I'm not a soldier anymore, but I'm still a peacekeeper. I can't stay off my meds for long, but if that's what it takes to save your city, I'm in."
+          "text": "I'm no hero. I'm not a{BR}soldier anymore, but I'm still a{BR}peacekeeper. I can't stay off{BR}my meds for long, but if that's what it{BR}takes to save your city, I'm in."
         }
       ],
       "flavorReference": "Peacekeeper, Echoes of X51 #18"
@@ -175,10 +175,10 @@
       "flavorQuotes": [
         {
           "identifier": "General Janson",
-          "text": "Don't push it, Vidal. Varano here pulled my men out of hell more times than I can count, and that's the only reason I'm tolerating your expedition."
+          "text": "[y=0.90]Don't push it, Vidal. Varano here{BR}pulled my men out of hell more times{BR}than I can count, and that's the only reason{BR}I'm tolerating your expedition."
         }
       ],
-      "flavorReference": "General Janson, Operational Clearance One-shot"
+      "flavorReference": "[y=0.70]General Janson, Operational Clearance"
     },
     {
       "identifier": "ExcessAdrenaline",
@@ -200,7 +200,7 @@
       "flavorQuotes": [
         {
           "identifier": "Peacekeeper",
-          "text": "Hey Amalgam! They've got nothing you haven't seen before, but I can do something you can't!"
+          "text": "Hey Amalgam! They've got nothing{BR}you haven't seen before, but I can do{BR}something you can't!"
         }
       ],
       "flavorReference": "Peacekeeper, Apocalypse 10: The Rise of Amalgam"
@@ -226,7 +226,7 @@
           "text": "Just like old times."
         }
       ],
-      "flavorReference": "Peacekeeper, Lone Wolfe one-shot"
+      "flavorReference": "Peacekeeper, Lone Wolfe"
     },
     {
       "identifier": "GreenVeins",
@@ -251,11 +251,11 @@
       "flavorQuotes": [
         {
           "identifier": "Sphere",
-          "text": "Looking a little green today, Peace."
+          "text": "Looking a little{BR}green today, Peace."
         },
         {
           "identifier": "Peacekeeper",
-          "text": "We can't all afford that fancy spray-tan."
+          "text": "We can't all afford{BR}that fancy spray-tan."
         }
       ],
       "flavorReference": "Weapons of Tomorrow #18"
@@ -280,10 +280,10 @@
         },
         {
           "identifier": "Peacekeeper",
-          "text": "Do you even read your mission briefings?"
+          "text": "Do you even read your{BR}mission briefings?"
         }
       ],
-      "flavorReference": "Division X, Friendly fire one-shot"
+      "flavorReference": "Division X, Friendly fire"
     },
     {
       "identifier": "NBE2CombatKnife",
@@ -307,11 +307,11 @@
       "flavorQuotes": [
         {
           "identifier": "Colonel Wolfe",
-          "text": "Did you really bring a knife to a gun fight?"
+          "text": "Did you really{BR}bring a knife to a gun fight?"
         },
         {
           "identifier": "Peacekeeper",
-          "text": "Brought my fists and elbows too."
+          "text": "Brought my fists and{BR}elbows too."
         }
       ],
       "flavorReference": "Division X #22"
@@ -335,10 +335,10 @@
       "flavorQuotes": [
         {
           "identifier": "Carnaval",
-          "text": "Fine! Want to know why I picked you? I can't protect people, you can! I'm going to go make a mess. Your job is to save bystanders, got it?"
+          "text": "Fine! Want to know why I{BR}picked you? I can't protect people,{BR}you can! I'm going to go make a mess. Your job is to save bystanders, got it?"
         }
       ],
-      "flavorReference": "Carnaval, Operational Clearance one-shot"
+      "flavorReference": "Carnaval, Operational Clearance"
     },
     {
       "identifier": "S399ModifiedAssaultRifle",
@@ -362,10 +362,10 @@
       "flavorQuotes": [
         {
           "identifier": "General Janson",
-          "text": "Custom made to fit your strengths. You should be proud of the work you do, son. If we had more men like you, the world would be a safer place."
+          "text": "Custom made to fit your{BR}strengths. You should be proud{BR}of the work you do, son. If we had more men like you, the world would be{BR}a safer place."
         }
       ],
-      "flavorReference": "General Janson, Operational Clearance One-shot"
+      "flavorReference": "[y=0.70]General Janson, Operational Clearance"
     },
     {
       "identifier": "SniperPerch",
@@ -392,7 +392,7 @@
       "flavorQuotes": [
         {
           "identifier": "Peacekeeper",
-          "text": "Lure them out in the open. I have a surprise prepared."
+          "text": "Lure them out in the open.{BR}I have a surprise prepared."
         }
       ],
       "flavorReference": "Peaecekeeper, Behind Enemy Lines #4"
@@ -416,11 +416,11 @@
       "flavorQuotes": [
         {
           "identifier": "Friday",
-          "text": "I was ordered not to kill you, but I will if you want."
+          "text": "I was ordered not to{BR}kill you, but I will if you want."
         },
         {
           "identifier": "Peacekeeper",
-          "text": "No, that was... hyperbole, but thank you. You're a true friend."
+          "text": "No, that was... hyperbole,{BR}but thank you. You're a true friend."
         }
       ],
       "flavorReference": "Division X #22"
@@ -445,10 +445,10 @@
       "flavorQuotes": [
         {
           "identifier": "Peacekeeper",
-          "text": "That serum is the only way I can have a normal life. Miss a dose, my veins start to turn green. I get strong and fast, but I start dying."
+          "text": "That serum is the only way I{BR}can have a normal life. Miss a dose, my{BR}veins start to turn green. I get strong{BR}and fast, but I start dying."
         }
       ],
-      "flavorReference": "Peacekeeper, Echoes of X51 #13"
+      "flavorReference": "[y=0.90]Peacekeeper, Echoes of X51 #13"
     },
     {
       "identifier": "UpCloseAndPersonal",
@@ -508,10 +508,10 @@
       "flavorQuotes": [
         {
           "identifier": "Carnaval",
-          "text": "Listen, I can't tell you what to do. You're a good soldier with or without the serum. We may live, we may die. If it were me, I don't know..."
+          "text": "Listen, I can't tell you{BR}what to do. You're a good soldier{BR}with or without the serum. We may live, we may die. If it were me, I don't know..."
         }
       ],
-      "flavorReference": "Carnaval, Operational Clearance one-shot"
+      "flavorReference": "Carnaval, Operational Clearance"
     },
     {
       "identifier": "YTechCustomSerum4319B",
@@ -541,10 +541,10 @@
       "flavorQuotes": [
         {
           "identifier": "Peacekeeper",
-          "text": "No sudden movements. Turn around slowly. I want to know who you are, why you're here, and how you know about my serum."
+          "text": "No sudden movements. Turn{BR}around slowly. I want to know who you{BR}are, why you're here, and how you know{BR}about my serum."
         }
       ],
-      "flavorReference": "Peacekeeper, Echoes of X51 #12"
+      "flavorReference": "[y=0.90]Peacekeeper, Echoes of X51 #12"
     }
   ],
   "promoCards": [
