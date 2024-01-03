@@ -13,6 +13,7 @@ namespace VainFacadePlaytest.Peacekeeper
 		public BulletHellCardController(Card card, TurnTakerController turnTakerController)
             : base(card, turnTakerController)
         {
+            AddThisCardControllerToList(CardControllerListType.CanCauseDamageOutOfPlay);
 		}
 
         private string FirstDrawKey = "FirstDrawKey";
@@ -116,6 +117,7 @@ namespace VainFacadePlaytest.Peacekeeper
 
                 if (DidDiscardCards(results))
                 {
+                    AddInhibitorException((GameAction ga) => true);
                     List<Card> results2 = new List<Card>();
                     DealDamageAction dd = new DealDamageAction(base.GameController, null, null, num1, DamageType.Projectile);
                     coroutine = base.GameController.FindCharacterCard(httc, hero, SelectionType.HeroToDealDamage, results2, damageInfo: new DealDamageAction[] { dd }, cardSource: new CardSource(FindCardController(effect.CardSource)));
@@ -141,6 +143,8 @@ namespace VainFacadePlaytest.Peacekeeper
                             base.GameController.ExhaustCoroutine(coroutine);
                         }
                     }
+
+                    RemoveInhibitorException();
                 }
             }
         }
