@@ -21,7 +21,7 @@ namespace VainFacadePlaytest.Push
         public override void AddTriggers()
         {
             //The first time each turn that you draw a card, you may draw a second card or discard a card.
-            AddTrigger<DrawCardAction>((DrawCardAction dc) => dc.HeroTurnTaker == this.HeroTurnTaker && dc.DidDrawCard && !IsPropertyTrue(FirstTimeDraw), DrawResponse, new TriggerType[2] { TriggerType.DrawCard, TriggerType.DiscardCard }, TriggerTiming.After);
+            AddTrigger<DrawCardAction>((DrawCardAction dc) => dc.HeroTurnTaker == this.HeroTurnTaker && dc.DidDrawCard && !IsPropertyTrue(FirstTimeDraw), DrawResponse, new TriggerType[2] { TriggerType.DrawCard, TriggerType.DiscardCard }, TriggerTiming.After, isActionOptional: true);
             AddAfterLeavesPlayAction((GameAction ga) => ResetFlagAfterLeavesPlay(FirstTimeDraw), TriggerType.Hidden);
         }
 
