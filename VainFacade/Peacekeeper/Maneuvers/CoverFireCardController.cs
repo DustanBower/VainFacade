@@ -36,7 +36,7 @@ namespace VainFacadePlaytest.Peacekeeper
             {
                 ID = effects.Select((CoverFireStatusEffect s) => s.ID).Max() + 1;
             }
-            CoverFireStatusEffect effect = new CoverFireStatusEffect(this.CardWithoutReplacements, "PowerResponse", $"The first time a hero target would be dealt damage, reduce that damage by {num1}, then {this.TurnTaker.Name} deals the source of that damage {num2} projectile damage.", new TriggerType[] { TriggerType.ReduceDamage }, this.TurnTaker, this.Card, new int[] {num1, num2 }, ID);
+            CoverFireStatusEffect effect = new CoverFireStatusEffect(this.CardWithoutReplacements, "PowerResponse", $"The first time each turn any hero target would be dealt damage, reduce that damage by {num1}, then {this.TurnTaker.Name} deals the source of that damage {num2} projectile damage.", new TriggerType[] { TriggerType.ReduceDamage }, this.TurnTaker, this.Card, new int[] {num1, num2 }, ID);
             effect.UntilStartOfNextTurn(this.TurnTaker);
             effect.UntilTargetLeavesPlay(this.CharacterCard);
             effect.TargetCriteria.IsHero = true;
