@@ -1428,7 +1428,7 @@ namespace VainFacadeTest
             SetupGameController("AkashBhuta", "VainFacadePlaytest.Peacekeeper", "Legacy", "Bunker", "TheScholar", "TheBlock");
             StartGame();
 
-            //Play this card next to a target. Redirect all damage dealt by that target to {Peacekeeper}. Reduce non-melee damage that target deals to {Peacekeeper} by 1.
+            //Play this card next to a target. The first time each turn that target would deal damage, redirect that damage to Peacekeeper. Reduce non-melee damage that target deals to {Peacekeeper} by 1.
             DecisionSelectCard = akash.CharacterCard;
             Card upclose = PlayCard("UpCloseAndPersonal");
             AssertAtLocation(upclose, akash.CharacterCard.NextToLocation);
@@ -1438,10 +1438,137 @@ namespace VainFacadeTest
             DealDamage(akash, legacy, 2, DamageType.Melee);
             QuickHPCheck(-2, 0);
 
+            QuickHPStorage(peacekeeper, legacy);
+            DealDamage(akash, legacy, 2, DamageType.Melee);
+            QuickHPCheck(0, -2);
+
             //Check non-melee damage
+            GoToStartOfTurn(legacy);
             QuickHPStorage(peacekeeper, legacy);
             DealDamage(akash, legacy, 2, DamageType.Cold);
             QuickHPCheck(-1, 0);
+
+            QuickHPStorage(peacekeeper, legacy);
+            DealDamage(akash, legacy, 2, DamageType.Melee);
+            QuickHPCheck(0, -2);
+        }
+
+        [Test()]
+        public void TestUpCloseAndPersonalMultipleRedirects1()
+        {
+            SetupGameController("AkashBhuta", "VainFacadePlaytest.Peacekeeper", "Legacy", "Bunker", "TheScholar", "TheBlock");
+            StartGame();
+
+            //Play this card next to a target. The first time each turn that target would deal damage, redirect that damage to Peacekeeper. Reduce non-melee damage that target deals to {Peacekeeper} by 1.
+            DecisionSelectCard = akash.CharacterCard;
+            Card upclose = PlayCard("UpCloseAndPersonal");
+            AssertAtLocation(upclose, akash.CharacterCard.NextToLocation);
+            ResetDecisions();
+
+            Card lead = PlayCard("LeadFromTheFront");
+            DecisionYesNo = true;
+            DecisionSelectCard = upclose;
+
+            //If Up Close is selected first, it should redirect to Peacekeeper and then to Legacy
+            QuickHPStorage(peacekeeper, legacy, bunker);
+            DealDamage(akash, bunker, 2, DamageType.Melee);
+            QuickHPCheck(0, -2, 0);
+        }
+
+        [Test()]
+        public void TestUpCloseAndPersonalMultipleRedirects2()
+        {
+            SetupGameController("AkashBhuta", "VainFacadePlaytest.Peacekeeper", "Legacy", "Bunker", "TheScholar", "TheBlock");
+            StartGame();
+
+            //Play this card next to a target. The first time each turn that target would deal damage, redirect that damage to Peacekeeper. Reduce non-melee damage that target deals to {Peacekeeper} by 1.
+            DecisionSelectCard = akash.CharacterCard;
+            Card upclose = PlayCard("UpCloseAndPersonal");
+            AssertAtLocation(upclose, akash.CharacterCard.NextToLocation);
+            ResetDecisions();
+
+            Card lead = PlayCard("LeadFromTheFront");
+            DecisionYesNo = true;
+            DecisionSelectCard = lead;
+
+            //If Lead From the Front is selected first, it should redirect to Legacy and then to Peacekeeper
+            QuickHPStorage(peacekeeper, legacy, bunker);
+            DealDamage(akash, bunker, 2, DamageType.Melee);
+            QuickHPCheck(-2, 0, 0);
+        }
+
+        [Test()]
+        public void TestUpCloseAndPersonalAndGreenVeins1()
+        {
+            SetupGameController("AkashBhuta", "VainFacadePlaytest.Peacekeeper", "Legacy", "Bunker", "TheScholar", "TheBlock");
+            StartGame();
+
+            //Play this card next to a target. The first time each turn that target would deal damage, redirect that damage to Peacekeeper. Reduce non-melee damage that target deals to {Peacekeeper} by 1.
+            DecisionSelectCard = akash.CharacterCard;
+            Card upclose = PlayCard("UpCloseAndPersonal");
+            AssertAtLocation(upclose, akash.CharacterCard.NextToLocation);
+            ResetDecisions();
+
+            Card green = PlayCard("GreenVeins");
+            DecisionYesNo = true;
+            DecisionRedirectTarget = legacy.CharacterCard;
+
+            //It should redirect to Peacekeeper, who then redirects to Legacy
+            QuickHPStorage(peacekeeper, legacy, bunker);
+            DealDamage(akash, bunker, 2, DamageType.Melee);
+            QuickHPCheck(0, -2, 0);
+        }
+
+        [Test()]
+        public void TestUpCloseAndPersonalAndGreenVeins2()
+        {
+            SetupGameController("AkashBhuta", "VainFacadePlaytest.Peacekeeper", "Legacy", "Bunker", "TheScholar", "TheBlock");
+            StartGame();
+
+            base.GameController.OnMakeDecisions -= MakeDecisions;
+            base.GameController.OnMakeDecisions += MakeDecisions2;
+
+            //Play this card next to a target. The first time each turn that target would deal damage, redirect that damage to Peacekeeper. Reduce non-melee damage that target deals to {Peacekeeper} by 1.
+            DecisionSelectCard = akash.CharacterCard;
+            Card upclose = PlayCard("UpCloseAndPersonal");
+            AssertAtLocation(upclose, akash.CharacterCard.NextToLocation);
+            ResetDecisions();
+
+            Card green = PlayCard("GreenVeins");
+            DecisionYesNo = true;
+            DecisionRedirectTarget = legacy.CharacterCard;
+            DecisionSelectCard = upclose;
+
+            //Peacekeeper is being dealt damage and Up Close is selected first, Up Close redirects to Peacekeeper, then Green Veins redirects to Legacy
+            QuickHPStorage(peacekeeper, legacy, bunker);
+            DealDamage(akash, peacekeeper, 2, DamageType.Melee);
+            QuickHPCheck(0, -2, 0);
+        }
+
+        [Test()]
+        public void TestUpCloseAndPersonalAndGreenVeins3()
+        {
+            SetupGameController("AkashBhuta", "VainFacadePlaytest.Peacekeeper", "Legacy", "Bunker", "TheScholar", "TheBlock");
+            StartGame();
+
+            base.GameController.OnMakeDecisions -= MakeDecisions;
+            base.GameController.OnMakeDecisions += MakeDecisions2;
+
+            //Play this card next to a target. The first time each turn that target would deal damage, redirect that damage to Peacekeeper. Reduce non-melee damage that target deals to {Peacekeeper} by 1.
+            DecisionSelectCard = akash.CharacterCard;
+            Card upclose = PlayCard("UpCloseAndPersonal");
+            AssertAtLocation(upclose, akash.CharacterCard.NextToLocation);
+            ResetDecisions();
+
+            Card green = PlayCard("GreenVeins");
+            DecisionYesNo = true;
+            DecisionRedirectTarget = legacy.CharacterCard;
+            DecisionSelectCard = green;
+
+            //Peacekeeper is being dealt damage and Green Veins is selected first, Green Veins redirects to Legacy, then Up Close redirects to Peacekeeper
+            QuickHPStorage(peacekeeper, legacy, bunker);
+            DealDamage(akash, peacekeeper, 2, DamageType.Melee);
+            QuickHPCheck(-2, 0, 0);
         }
 
         [Test()]
@@ -1511,6 +1638,43 @@ namespace VainFacadeTest
             Card toxic = PlayCard("ToxicBlood");
             GoToEndOfTurn(peacekeeper);
             AssertInHand(toxic);
+        }
+
+        [Test()]
+        public void TestLiesAndMonolith()
+        {
+            SetupGameController("AkashBhuta", "SkyScraper", "Legacy", "Bunker", "VoidGuardWrithe", "TheBlock");
+            StartGame();
+
+            Card cloak = PlayCard("TheShadowCloak");
+            Card lies = PlayCard("LiesOfTheShadows");
+            DecisionYesNo = true;
+            DecisionRedirectTarget = legacy.CharacterCard;
+            Card monolith = PlayCard("ThorathianMonolith");
+
+            DealDamage(akash, sky, 5,DamageType.Melee);
+        }
+
+        [Test()]
+        public void TestGreenVeinsAndUpCloseImmune()
+        {
+            SetupGameController("AkashBhuta", "VainFacadePlaytest.Peacekeeper", "Legacy", "Bunker", "TheScholar", "TheBlock");
+            StartGame();
+
+            Card green = PlayCard("GreenVeins");
+            DecisionSelectCard = akash.CharacterCard;
+            Card upclose = PlayCard("UpCloseAndPersonal");
+            ResetDecisions();
+
+            DecisionRedirectTarget = legacy.CharacterCard;
+            DecisionSelectDamageType = DamageType.Melee;
+            DecisionYesNo = true;
+            Card evolution = PlayCard("NextEvolution");
+            UsePower(evolution);
+
+            QuickHPStorage(peacekeeper, legacy, bunker);
+            DealDamage(akash, peacekeeper, 2, DamageType.Melee);
+            QuickHPCheck(0, 0, 0);
         }
     }
 }

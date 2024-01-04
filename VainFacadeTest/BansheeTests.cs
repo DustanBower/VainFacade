@@ -84,7 +84,7 @@ namespace VainFacadeTest
             StartGame();
 
             //Destroy an ongoing card.
-            Card entomb = PlayCard("Entomb");
+            Card entomb = PutOnDeck("Entomb");
             Card raptor = PlayCard("VelociraptorPack");
 
             SetupIncap(akash);
@@ -516,6 +516,7 @@ namespace VainFacadeTest
 
             //Power: A target deals itself 0 irreducible infernal damage. Then, if that target has 3 or fewer hp, destroy it and {Banshee} regains X hp, where X = that target's hp before it was destroyed.
             //Power: Select a keyword. Increase the next damage dealt to each target with that keyword by 1.
+            PutOnDeck("AlliesOfTheEarth");
             Card raptor = PlayCard("VelociraptorPack");
             Card melody = PlayCard("MenacingMelody");
             SetHitPoints(raptor, 3);

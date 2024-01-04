@@ -185,7 +185,10 @@ namespace VainFacadeTest
         {
             SetupGameController("AkashBhuta", "VainFacadePlaytest.Push", "Legacy", "Bunker", "TheScholar", "InsulaPrimalis");
             StartGame();
+
+            //When Push deals damage, destroy an environment card. If a card is destroyed this way, discard a card and the environment deals the same target 2 irreducible projectile damage.
             Card bonus = PlayCard("CollateralBonus");
+            Card raptor = PutOnDeck("VelociraptorPack");
             Card volcano = PlayCard("VolcanicEruption");
             Card carapace = PlayCard("MountainousCarapace");
             MoveAllCards(push, push.HeroTurnTaker.Hand, push.TurnTaker.Trash);
@@ -680,6 +683,23 @@ namespace VainFacadeTest
         }
 
         [Test()]
+        public void TestReboundPulseNoDamage()
+        {
+            SetupGameController("AkashBhuta", "VainFacadePlaytest.Push", "Legacy", "Bunker", "TheScholar", "InsulaPrimalis");
+            StartGame();
+            //When {Push} deals melee or projectile damage, draw a card.
+            //At the start of your turn, destroy this card.
+            Card rebound = PlayCard("ReboundPulse");
+            Card path = PutOnDeck("PathOfDestruction");
+            Card carapace = PlayCard("MountainousCarapace");
+
+            QuickHandStorage(push);
+            DealDamage(push, akash, 1, DamageType.Melee);
+            QuickHandCheck(0);
+            AssertOnTopOfDeck(path);
+        }
+
+        [Test()]
         public void TestShockwave()
         {
             SetupGameController("AkashBhuta", "VainFacadePlaytest.Push", "Legacy", "Bunker", "TheScholar", "InsulaPrimalis");
@@ -710,13 +730,14 @@ namespace VainFacadeTest
 
             //Check that if no card is discarded, damage type is not changed and you can discard for the next damage
             DecisionSelectCard = feedback;
-            DecisionDoNotSelectCard = SelectionType.Custom;
+            DecisionYesNo = false;
             QuickHPStorage(gloom);
             DealDamage(legacy, gloom, 1, DamageType.Energy);
             QuickHPCheck(-1);
 
             //Check that damage type changes to melee
             ResetDecisions();
+            DecisionYesNo = true;
             DecisionSelectCard = feedback;
             DecisionSelectDamageType = DamageType.Melee;
             QuickHPStorage(gloom);
@@ -726,6 +747,7 @@ namespace VainFacadeTest
 
             //Check that it does not trigger again after being used 
             ResetDecisions();
+            DecisionYesNo = true;
             DecisionSelectCard = folding;
             DecisionSelectDamageType = DamageType.Melee;
             QuickHPStorage(gloom);
@@ -736,6 +758,7 @@ namespace VainFacadeTest
             //Check that it can trigger again next turn
             ResetDecisions();
             GoToStartOfTurn(push);
+            DecisionYesNo = true;
             DecisionSelectCard = phase;
             DecisionSelectDamageType = DamageType.Melee;
             QuickHPStorage(gloom);
