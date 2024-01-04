@@ -14,7 +14,10 @@ namespace VainFacadePlaytest.Peacekeeper
             : base(card, turnTakerController)
         {
             AddAsPowerContributor();
+            base.SpecialStringMaker.ShowHasBeenUsedThisTurn(FirstDamage);
 		}
+
+        private string FirstDamage = "FirstDamage";
 
         public override IEnumerator DeterminePlayLocation(List<MoveCardDestination> storedResults, bool isPutIntoPlay, List<IDecision> decisionSources, Location overridePlayArea = null, LinqTurnTakerCriteria additionalTurnTakerCriteria = null)
         {
@@ -41,8 +44,9 @@ namespace VainFacadePlaytest.Peacekeeper
 
         public override void AddTriggers()
         {
-            //Redirect all damage dealt by that target to {Peacekeeper}.
-            AddRedirectDamageTrigger((DealDamageAction dd) => dd.DamageSource.IsTarget && IsThisCardNextToCard(dd.DamageSource.Card) && dd.Target != this.CharacterCard, () => this.CharacterCard);
+            //The first time each turn that target would deal damage, redirect that damage to Peacekeeper.
+            //AddRedirectDamageTrigger((DealDamageAction dd) => dd.DamageSource.IsTarget && IsThisCardNextToCard(dd.DamageSource.Card) && dd.Target != this.CharacterCard, () => this.CharacterCard);
+            AddTrigger<DealDamageAction>((DealDamageAction dd) => !IsPropertyTrue(FirstDamage) && dd.DamageSource.IsTarget && IsThisCardNextToCard(dd.DamageSource.Card) && !HasDamageOccurredThisTurn(null, (Card c) => IsThisCardNextToCard(c), dd), RedirectResponse, TriggerType.RedirectDamage, TriggerTiming.Before);
 
             //Reduce non-melee damage that target deals to {Peacekeeper} by 1.
             AddReduceDamageTrigger((DealDamageAction dd) => dd.DamageSource.IsTarget && IsThisCardNextToCard(dd.DamageSource.Card) && dd.Target == this.CharacterCard && dd.DamageType != DamageType.Melee, (DealDamageAction dd) => 1);
@@ -53,6 +57,23 @@ namespace VainFacadePlaytest.Peacekeeper
                             ReplaceWithActualPower,
                             TriggerType.FirstTrigger,
                             TriggerTiming.Before);
+        }
+
+        private IEnumerator RedirectResponse(DealDamageAction dd)
+        {
+            SetCardPropertyToTrueIfRealAction(FirstDamage);
+            if (dd.Target != this.CharacterCard)
+            {
+                IEnumerator coroutine = base.GameController.RedirectDamage(dd, this.CharacterCard, false, GetCardSource());
+                if (base.UseUnityCoroutines)
+                {
+                    yield return base.GameController.StartCoroutine(coroutine);
+                }
+                else
+                {
+                    base.GameController.ExhaustCoroutine(coroutine);
+                }
+            }
         }
 
         public override IEnumerator UsePower(int index = 0)
