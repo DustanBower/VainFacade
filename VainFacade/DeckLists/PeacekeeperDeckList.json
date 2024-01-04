@@ -460,7 +460,7 @@
       ],
       "body": [
         "When this card enters play, return your other maneuvers in play to your hand.",
-        "Play this card next to a target. Redirect all damage dealt by that target to {Peacekeeper}. Reduce non-melee damage that target deals to {Peacekeeper} by 1."
+        "Play this card next to a target. The first time each turn that target would deal damage, redirect that damage to {Peacekeeper}. Reduce non-melee damage that target deals to {Peacekeeper} by 1."
       ],
       "powers": [
         "{Peacekeeper} deals the target next to this card 3 melee damage."
