@@ -23,7 +23,8 @@ namespace VainFacadePlaytest.Friday
         public override void AddTriggers()
         {
             //When {Friday} is dealt 5 or more damage from a single source, you may reduce that damage by up to 3.
-            AddTrigger<DealDamageAction>((DealDamageAction dd) => dd.Target == this.CharacterCard && dd.Amount >= 5 && !dd.IsIrreducible, ReduceResponse, new TriggerType[2] {TriggerType.WouldBeDealtDamage, TriggerType.ReduceDamage }, TriggerTiming.Before);
+            //Try changing to TriggerType.ModifyReduceDamage and changing the if to an else if in the response
+            AddTrigger<DealDamageAction>((DealDamageAction dd) => dd.Target == this.CharacterCard && dd.Amount >= 5 && !dd.IsIrreducible, ReduceResponse, new TriggerType[1] {TriggerType.ModifyDamageAmount}, TriggerTiming.Before);
         }
 
         public override bool CanOrderAffectOutcome(GameAction action)
@@ -40,8 +41,8 @@ namespace VainFacadePlaytest.Friday
             if (!DecidedReduce.HasValue || DecidedReduce.Value != dd.InstanceIdentifier)
             {
                 List<SelectNumberDecision> storedResults = new List<SelectNumberDecision>();
-                List<DealDamageAction> list = new List<DealDamageAction>();
-                list.Add(dd);
+                //List<DealDamageAction> list = new List<DealDamageAction>();
+                //list.Add(dd);
                 IEnumerator coroutine = base.GameController.SelectNumber(DecisionMaker, SelectionType.Custom, 1, 3, optional: true, storedResults: storedResults, cardSource: GetCardSource());
                 if (base.UseUnityCoroutines)
                 {
@@ -66,7 +67,7 @@ namespace VainFacadePlaytest.Friday
                     }
                 }
             }
-            if (DecidedReduce.HasValue && DecidedReduce.Value == dd.InstanceIdentifier)
+            else if (DecidedReduce.HasValue && DecidedReduce.Value == dd.InstanceIdentifier)
             {
                 IEnumerator coroutine4 = base.GameController.ReduceDamage(dd, AmountToReduce, null, GetCardSource());
                 if (base.UseUnityCoroutines)
