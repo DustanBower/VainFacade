@@ -1,0 +1,28 @@
+{"frames": {
+
+"GlyphFateDeckBack.png":
+{
+	"frame": {"x":0,"y":0,"w":178,"h":256},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":178,"h":256},
+	"sourceSize": {"w":178,"h":256}
+},
+"GlyphFateDeckBackMicro.png":
+{
+	"frame": {"x":181,"y":0,"w":108,"h":108},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":108,"h":108},
+	"sourceSize": {"w":108,"h":108}
+}},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "GlyphFateDeckAtlas0.png",
+	"format": "RGBA8888",
+	"size": {"w":512,"h":512},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:178eda5a45ef57889ccd85db0557f250:0ef255955787fd0f9c776f961c9142b4:0194d59deb9d6ea172016c65257ab294$"
+}
+}
