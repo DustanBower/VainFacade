@@ -1,0 +1,360 @@
+{
+	"name": "Glyph",
+	"kind": "Hero",
+	"initialCardIdentifiers": [
+		"GlyphCharacter"
+	],
+	"cards": [
+		{
+			"identifier": "GlyphCharacter",
+			"count": 1,
+			"title": "Glyph",
+			"body": "Hidden Symbols",
+			"backgroundColor": "AC00AA",
+			"character": true,
+			"gameplay": "When you would play a card, you may play it face-down in any play area instead of resolving its normal effects.",
+			"powers": [
+				"Draw up to 2 cards. You may play a card face-down in any play area or swap 2 of your face-down cards."
+			],
+			"icons": [
+				"HasPower",
+				"DrawCardNow",
+				"PlayCardNow",
+				"Manipulate"
+			],
+			"hitpoints": 26,
+			"nemesisIdentifiers": [
+				"VainFacadePlaytest.Glyph"
+			],
+			"incapacitatedAbilities": [
+				"Reveal and replace the top card of a deck. 1 player may play a card.",
+				"1 player draws a card or puts a relic, spell, ritual, rune, or glyph from their trash on top of their deck.",
+				"Destroy an environment card."
+			],
+			"flippedIcons": [
+				"Manipulate",
+				"PlayCardNow",
+				"DrawCardNow",
+				"DestroyEnvironment"
+			],
+			"complexity": 4,
+			"openingLines": {
+				"default": ""
+			}
+		},
+		{
+			"identifier": "EmbroideredCloak",
+			"count": 2,
+			"title": "Embroidered Cloak",
+			"keywords": [
+				"equipment",
+				"relic",
+				"limited",
+				"might"
+			],
+			"body": [
+				"The first time each turn {Glyph} is dealt damage, she regains 1 HP.",
+				"At the start of your turn, you may discard a card. If you do, {Glyph} is immune to damage, cards in {Glyph}'s play area can only be destroyed by {Glyph}, and cards from other decks cannot be played this turn."
+			],
+			"icons": [
+				"GainHP",
+				"StartOfTurnAction",
+				"Discard",
+				"ImmuneToDamage"
+			],
+			"flavorQuotes": [
+				{
+					"identifier": "Novice Balogh",
+					"text": "But we won't always have supplies!"
+				},
+				{
+					"identifier": "Sister Ellington",
+					"text": "Every thread can be a symbol, and every stitch has a glyph.."
+				}
+			],
+			"flavorReference": "Under the Rose #11"
+		},
+		{
+			"identifier": "SigiledBlade",
+			"count": 2,
+			"title": "Sigiled Blade",
+			"keywords": [
+				"equipment",
+				"relic",
+				"limited",
+				"might"
+			],
+			"body": [
+				"Increase melee damage dealt by {Glyph} by 1."
+			],
+			"powers": [
+				"{Glyph} deals 1 target 0 or 1 melee damage. If {Glyph} is dealt damage this way, you may put one of your cards into play face-down in any play area for each point of damage dealt this way, then you may play a ritual."
+			],
+			"icons": [
+				"IncreaseDamageDealtMelee",
+				"HasPower",
+				"DealDamageMelee",
+				"Manipulate"
+			],
+			"flavorQuotes": [
+				{
+					"identifier": "Novice Balogh",
+					"text": "But we won't always have supplies!"
+				},
+				{
+					"identifier": "Sister Ellington",
+					"text": "Every thread can be a symbol, and every stitch has a glyph."
+				}
+			],
+			"flavorReference": "Under the Rose #11"
+		}
+	],
+	"subdecks": [
+		{
+			"identifier": "GlyphInsight",
+			"name": "Glyph's Insight Deck",
+			"kind": "Hero",
+			"isReal": false,
+			"cards": [
+				{
+					"identifier": "InscrutableTutelageInsight",
+					"count": 1,
+					"title": "Inscrutable Tutelage",
+					"keywords": [
+						"ongoing",
+						"insight",
+						"limited"
+					],
+					"body": [
+						"When this card enters play, you may draw a card or play a relic.",
+						"The first time each turn damage would be dealt to any target in an area containing your face-down cards, you may increase or reduce that damage by 1."
+					],
+					"icons": [
+						"DrawCardNow",
+						"PlayCardNow",
+						"IncreaseDamageTaken",
+						"ReduceDamageTaken"
+					],
+					"flavorQuotes": [
+						{
+							"identifier": "Baroness",
+							"text": "Unvilling to lose zee pawn after all."
+						},
+						{
+							"identifier": "Stevens",
+							"text": "Pawns can be promoted."
+						}
+					],
+					"flavorReference": "Under the Rose #11"
+				},
+				{
+					"identifier": "MaledictionOfInaalaInsight",
+					"count": 1,
+					"title": "Malediction of Inaala",
+					"keywords": [
+						"one-shot",
+						"ritual",
+						"insight"
+					],
+					"body": [
+						"Discard up to 3 cards. {Glyph} deals 1 target X times 2 infernal damage where X = the number of cards discarded in this way.",
+						"You may destroy 1 of your face-down might cards. If you do, you may discard any number of cards instead."
+					],
+					"icons": [
+						"Discard",
+						"DealDamageInfernal",
+						"DestroyHero"
+					],
+					"flavorQuotes": [
+						{
+							"identifier": "Glyph",
+							"text": "You work for Mathis, right? Give him a message for me."
+						}
+					],
+					"flavorReference": "Glyph, Bastion City: Marked for Death One-Shot"
+				},
+				{
+					"identifier": "MilektithasDarkSummonsInsight",
+					"count": 1,
+					"title": "Milektitha's Dark Summons",
+					"keywords": [
+						"one-shot",
+						"ritual",
+						"insight"
+					],
+					"body": [
+						"You may destroy 1 of your face-down might cards. If you do, {Glyph} deals each target in that card's play area 2 infernal damage.",
+						"Destroy any number of your face-down destruction cards. For each card destroyed this way, {Glyph} deals a target in that play area that has not been dealt damage this way 5 cold damage."
+					],
+					"icons": [
+						"DestroyHero",
+						"DealDamageInfernal",
+						"DealDamageCold"
+					],
+					"flavorQuotes": [
+						{
+							"identifier": "Mr. Brzezicki",
+							"text": "You said if I gave you a name, you'd let me live!"
+						},
+						{
+							"identifier": "Glyph",
+							"text": "I said I wouldn't lay a finger on you."
+						}
+					],
+					"flavorReference": "Three-Fold Vengeance One-Shot"
+				},
+				{
+					"identifier": "ReturnToSilenceInsight",
+					"count": 1,
+					"title": "Return to Silence",
+					"keywords": [
+						"one-shot",
+						"ritual",
+						"insight"
+					],
+					"body": [
+						"You may destroy 1 of your face-down might cards. If you do, each non-character, non-target card in that card's play area gains the ongoing keyword this turn.",
+						"Destroy any number of your face-down death cards. For each card destroyed this way, destroy an environment, ongoing, or equipment card in that card's play area."
+					],
+					"icons": [
+						"DestroyHero",
+						"DestroyEnvironment",
+						"DestroyOngoing",
+						"DestroyEquipment"
+					],
+					"flavorQuotes": [
+						{
+							"identifier": "Glyph",
+							"text": "The dark heart of the Eldrenwood clouds your vision. Only it knows your name, but its name is written on my hand! Return to the shadow of the stones!"
+						}
+					],
+					"flavorReference": "Glyph, Grim Tidings: Killing Fields"
+				}
+			]
+		},
+		{
+			"identifier": "GlyphFate",
+			"name": "Glyph's Fate Deck",
+			"kind": "Hero",
+			"isReal": false,
+			"cards": [
+				{
+					"identifier": "InscrutableTutelageFate",
+					"count": 1,
+					"title": "Inscrutable Tutelage",
+					"keywords": [
+						"ongoing",
+						"fate",
+						"limited"
+					],
+					"body": [
+						"When this card enters play, you may draw a card or play a relic.",
+						"The first time each turn damage would be dealt to any target in an area containing your face-down cards, you may increase or reduce that damage by 1."
+					],
+					"icons": [
+						"DrawCardNow",
+						"PlayCardNow",
+						"IncreaseDamageTaken",
+						"ReduceDamageTaken"
+					],
+					"flavorQuotes": [
+						{
+							"identifier": "Baroness",
+							"text": "Unvilling to lose zee pawn after all."
+						},
+						{
+							"identifier": "Stevens",
+							"text": "Pawns can be promoted."
+						}
+					],
+					"flavorReference": "Under the Rose #11"
+				},
+				{
+					"identifier": "MaledictionOfInaalaFate",
+					"count": 1,
+					"title": "Malediction of Inaala",
+					"keywords": [
+						"one-shot",
+						"ritual",
+						"fate"
+					],
+					"body": [
+						"Discard up to 3 cards. {Glyph} deals 1 target X times 2 infernal damage where X = the number of cards discarded in this way.",
+						"You may destroy 1 of your face-down might cards. If you do, you may discard any number of cards instead."
+					],
+					"icons": [
+						"Discard",
+						"DealDamageInfernal",
+						"DestroyHero"
+					],
+					"flavorQuotes": [
+						{
+							"identifier": "Glyph",
+							"text": "You work for Mathis, right? Give him a message for me."
+						}
+					],
+					"flavorReference": "Glyph, Bastion City: Marked for Death One-Shot"
+				},
+				{
+					"identifier": "MilektithasDarkSummonsFate",
+					"count": 1,
+					"title": "Milektitha's Dark Summons",
+					"keywords": [
+						"one-shot",
+						"ritual",
+						"fate"
+					],
+					"body": [
+						"You may destroy 1 of your face-down might cards. If you do, {Glyph} deals each target in that card's play area 2 infernal damage.",
+						"Destroy any number of your face-down destruction cards. For each card destroyed this way, {Glyph} deals a target in that play area that has not been dealt damage this way 5 cold damage."
+					],
+					"icons": [
+						"DestroyHero",
+						"DealDamageInfernal",
+						"DealDamageCold"
+					],
+					"flavorQuotes": [
+						{
+							"identifier": "Mr. Brzezicki",
+							"text": "You said if I gave you a name, you'd let me live!"
+						},
+						{
+							"identifier": "Glyph",
+							"text": "I said I wouldn't lay a finger on you."
+						}
+					],
+					"flavorReference": "Three-Fold Vengeance One-Shot"
+				},
+				{
+					"identifier": "ReturnToSilenceFate",
+					"count": 1,
+					"title": "Return to Silence",
+					"keywords": [
+						"one-shot",
+						"ritual",
+						"fate"
+					],
+					"body": [
+						"You may destroy 1 of your face-down might cards. If you do, each non-character, non-target card in that card's play area gains the ongoing keyword this turn.",
+						"Destroy any number of your face-down death cards. For each card destroyed this way, destroy an environment, ongoing, or equipment card in that card's play area."
+					],
+					"icons": [
+						"DestroyHero",
+						"DestroyEnvironment",
+						"DestroyOngoing",
+						"DestroyEquipment"
+					],
+					"flavorQuotes": [
+						{
+							"identifier": "Glyph",
+							"text": "The dark heart of the Eldrenwood clouds your vision. Only it knows your name, but its name is written on my hand! Return to the shadow of the stones!"
+						}
+					],
+					"flavorReference": "Glyph, Grim Tidings: Killing Fields"
+				}
+			]
+		}
+	],
+	"promoCards": [
+	]
+}
