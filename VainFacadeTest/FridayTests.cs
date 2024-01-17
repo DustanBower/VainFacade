@@ -1224,7 +1224,7 @@ namespace VainFacadeTest
 
             //Reduce damage dealt to {Friday} by 1.
             //Once per turn when {Friday} deals damage, she may deal 1 damage of the same type to the same target.
-            //At the end of your turn, you may discard a card. If you do not, {Friday} deals each other target 1 psychic damage.
+            //At the end of your turn, you may discard a card. If you do not, {Friday} deals each target other than Friday 1 psychic damage each.
             Card armor = PlayCard("T913ExdimReaperArmor");
             QuickHPStorage(friday);
             DealDamage(akash, friday, 2, DamageType.Melee);
@@ -1239,7 +1239,7 @@ namespace VainFacadeTest
 
             //Reduce damage dealt to {Friday} by 1.
             //Once per turn when {Friday} deals damage, she may deal 1 damage of the same type to the same target.
-            //At the end of your turn, you may discard a card. If you do not, {Friday} deals each other target 1 psychic damage.
+            //At the end of your turn, you may discard a card. If you do not, {Friday} deals each target other than Friday 1 psychic damage each.
             Card armor = PlayCard("T913ExdimReaperArmor");
             DecisionYesNo = true;
             GoToStartOfTurn(friday);
@@ -1277,7 +1277,7 @@ namespace VainFacadeTest
 
             //Reduce damage dealt to {Friday} by 1.
             //Once per turn when {Friday} deals damage, she may deal 1 damage of the same type to the same target.
-            //At the end of your turn, you may discard a card. If you do not, {Friday} deals each other target 1 psychic damage.
+            //At the end of your turn, you may discard a card. If you do not, {Friday} deals each target other than Friday 1 psychic damage each.
             Card armor = PlayCard("T913ExdimReaperArmor");
             Card grim = PutInHand("GrimReflection");
             DecisionSelectCard = grim;
@@ -1295,7 +1295,7 @@ namespace VainFacadeTest
 
             //Reduce damage dealt to {Friday} by 1.
             //Once per turn when {Friday} deals damage, she may deal 1 damage of the same type to the same target.
-            //At the end of your turn, you may discard a card. If you do not, {Friday} deals each other target 1 psychic damage.
+            //At the end of your turn, you may discard a card. If you do not, {Friday} deals each target other than Friday 1 psychic damage each.
             Card armor = PlayCard("T913ExdimReaperArmor");
             DecisionDoNotSelectCard = SelectionType.DiscardCard;
             QuickHPStorage(legacy, bunker, scholar, akash);

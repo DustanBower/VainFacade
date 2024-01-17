@@ -26,7 +26,7 @@ namespace VainFacadePlaytest.Friday
             //Once per turn when {Friday} deals damage, she may deal 1 damage of the same type to the same target.
             AddTrigger<DealDamageAction>((DealDamageAction dd) => dd.DidDealDamage && dd.DamageSource.IsCard && dd.DamageSource.Card == this.CharacterCard && !IsPropertyTrue(FirstTimeDamageKey), DamageResponse, TriggerType.DealDamage, TriggerTiming.After);
 
-            //At the end of your turn, you may discard a card. If you do not, {Friday} deals each other target 1 psychic damage.
+            //At the end of your turn, you may discard a card. If you do not, {Friday} deals each other target other than Friday 1 psychic damage each.
             AddEndOfTurnTrigger((TurnTaker tt) => tt == this.TurnTaker, EndOfTurnResponse, new TriggerType[2] { TriggerType.DiscardCard, TriggerType.DealDamage });
         }
 
