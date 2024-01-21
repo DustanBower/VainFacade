@@ -194,6 +194,28 @@
     <Compile Include="Friday\TechnologicalDuplicationCardController.cs" />
     <Compile Include="Friday\UnstableCircuitryCardController.cs" />
     <Compile Include="Friday\VesselOfDestructionCardController.cs" />
+    <Compile Include="Glyph\Character\GlyphBaseCharacterCardController.cs" />
+    <Compile Include="Glyph\Character\GlyphCharacterCardController.cs" />
+    <Compile Include="Glyph\Character\GlyphTurnTakerController.cs" />
+    <Compile Include="Glyph\Fate\InscrutableTutelageFateCardController.cs" />
+    <Compile Include="Glyph\Fate\MaledictionOfInaalaFateCardController.cs" />
+    <Compile Include="Glyph\Fate\MilektithasDarkSummonsFateCardController.cs" />
+    <Compile Include="Glyph\Fate\ReturnToSilenceFateCardController.cs" />
+    <Compile Include="Glyph\InscrutableTutelageCardController.cs" />
+    <Compile Include="Glyph\Insight\InscrutableTutelageInsightCardController.cs" />
+    <Compile Include="Glyph\Insight\MaledictionOfInaalaInsightCardController.cs" />
+    <Compile Include="Glyph\Insight\MilektithasDarkSummonsInsightCardController.cs" />
+    <Compile Include="Glyph\Insight\ReturnToSilenceInsightCardController.cs" />
+    <Compile Include="Glyph\MaledictionOfInaalaCardController.cs" />
+    <Compile Include="Glyph\Might\EmbroideredCloakCardController.cs" />
+    <Compile Include="Glyph\Might\SigiledBladeCardController.cs" />
+    <Compile Include="Glyph\MilektithasDarkSummonsCardController.cs" />
+    <Compile Include="Glyph\ReturnToSilenceCardController.cs" />
+    <Compile Include="Glyph\Utilities\EmbroideredCloakCannotPlayCardsStatusEffect.cs" />
+    <Compile Include="Glyph\Utilities\EmbroideredCloakStatusEffect.cs" />
+    <Compile Include="Glyph\Utilities\GlyphCardUtilities.cs" />
+    <Compile Include="Glyph\Utilities\GlyphLimitedCard.cs" />
+    <Compile Include="Glyph\Utilities\ReturnToSilenceStatusEffect.cs" />
     <Compile Include="Grandfather\AcceleratedTimetableCardController.cs" />
     <Compile Include="Grandfather\ArrowOfTimeCardController.cs" />
     <Compile Include="Grandfather\BendingTheRulesCardController.cs" />
@@ -426,6 +448,9 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="DeckLists\PeacekeeperDeckList.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="DeckLists\GlyphDeckList.json" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

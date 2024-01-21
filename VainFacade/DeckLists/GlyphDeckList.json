@@ -65,11 +65,11 @@
 			"flavorQuotes": [
 				{
 					"identifier": "Novice Balogh",
-					"text": "But we won't always have supplies!"
+					"text": "But we won't{BR}always have supplies!"
 				},
 				{
 					"identifier": "Sister Ellington",
-					"text": "Every thread can be a symbol, and every stitch has a glyph.."
+					"text": "Every thread can be a{BR}symbol, and every stitch a glyph."
 				}
 			],
 			"flavorReference": "Under the Rose #11"
@@ -98,15 +98,11 @@
 			],
 			"flavorQuotes": [
 				{
-					"identifier": "Novice Balogh",
-					"text": "But we won't always have supplies!"
-				},
-				{
-					"identifier": "Sister Ellington",
-					"text": "Every thread can be a symbol, and every stitch has a glyph."
+					"identifier": "Glyph",
+					"text": "You can tell me who hired you,{BR}or I can read it in your entrails. It's{BR}all the same to me."
 				}
 			],
-			"flavorReference": "Under the Rose #11"
+			"flavorReference": "Three-fold Vengeance"
 		},
 		{
 			"identifier": "SphereOfNalatukha",
@@ -128,10 +124,10 @@
 			"flavorQuotes": [
 				{
 					"identifier": "Brother Stevens",
-					"text": "If you can't play three moves ahead, at least be difficult to anticipate."
+					"text": "If you can't play three moves ahead,{BR}at least be difficult to anticipate."
 				}
 			],
-			"flavorReference": "Brother Stevens, Bastion City: Marked for Death one-shot"
+			"flavorReference": "[y=0.80]Brother Stevens, Bastion City: Marked for Death"
 		},
 		{
 			"identifier": "SuntulusCompendium",
@@ -154,10 +150,10 @@
 			"flavorQuotes": [
 				{
 					"identifier": "The Librarian",
-					"text": "Initiate Ellington, I am told that you display a rare aptitude for Ritual Semiotics. This should assist you in your studies."
+					"text": "Initiate Ellington, I am{BR}told that you display a rare{BR}aptitude for Ritual Semiotics. This{BR}should assist you in your studies."
 				}
 			],
-			"flavorReference": "The Librarian, Bastion's Best #20"
+			"flavorReference": "[y=0.85]The Librarian, Bastion's Best #20"
 		},
 		{
 			"identifier": "ABrushWithDeath",
@@ -169,7 +165,7 @@
 				"fate"
 			],
 			"body": [
-				"At the end of your turn, if you skipped your play, power, or draw phase or {Glyph} has fewer than 10 hp, you may draw a card, play a card, or use a power."
+				"At the end of your turn, if you did not play a card, did not use a power, or did not draw a card this turn, or if {Glyph} has 10 or fewer hp, you may draw a card, play a card, or use a power."
 			],
 			"icons": [
 				"EndOfTurnAction",
@@ -180,10 +176,10 @@
 			"flavorQuotes": [
 				{
 					"identifier": "Jen Zheng",
-					"text": "Like me, you stand in the gate. Only you can help me. Let me pass into the world beyond. Don't let them hold me here! Cut my tethers, please...."
+					"text": "Like me, you stand in the gate.{BR}Let me pass into the world beyond.{BR}Don't let them hold me here!{BR}Cut my tethers, please...."
 				}
 			],
-			"flavorReference": "Jen Zheng, Strange Stories: Dead Reckoning #4"
+			"flavorReference": "[y=0.60]Jen Zheng, Strange Stories: Dead Reckoning #4"
 		},
 		{
 			"identifier": "InscrutableTutelage",
@@ -207,14 +203,14 @@
 			"flavorQuotes": [
 				{
 					"identifier": "Baroness",
-					"text": "Unvilling to lose zee pawn after all."
+					"text": "Unvilling to lose{BR}zee pawn after all."
 				},
 				{
 					"identifier": "Stevens",
 					"text": "Pawns can be promoted."
 				}
 			],
-			"flavorReference": "Under the Rose #11"
+			"flavorReference": "Dead Reckoning #6"
 		},
 		{
 			"identifier": "MaledictionOfInaala",
@@ -237,10 +233,10 @@
 			"flavorQuotes": [
 				{
 					"identifier": "Glyph",
-					"text": "You work for Mathis, right? Give him a message for me."
+					"text": "You work for Mathis, right?{BR}Give him a message for me."
 				}
 			],
-			"flavorReference": "Glyph, Bastion City: Marked for Death One-Shot"
+			"flavorReference": "[y=0.85]Glyph, Bastion City: Marked for Death"
 		},
 		{
 			"identifier": "MilektithasDarkSummons",
@@ -263,14 +259,14 @@
 			"flavorQuotes": [
 				{
 					"identifier": "Mr. Brzezicki",
-					"text": "You said if I gave you a name, you'd let me live!"
+					"text": "You said if I{BR}gave you a name, you'd let me live!"
 				},
 				{
 					"identifier": "Glyph",
-					"text": "I said I wouldn't lay a finger on you."
+					"text": "I said I wouldn't{BR}lay a finger on you."
 				}
 			],
-			"flavorReference": "Three-Fold Vengeance One-Shot"
+			"flavorReference": "Three-Fold Vengeance"
 		},
 		{
 			"identifier": "MinetkasProclamation",
@@ -294,7 +290,7 @@
 			"flavorQuotes": [
 				{
 					"identifier": "Glyph",
-					"text": "My fate is for the Norns to decide, but yours is in my hands!"
+					"text": "My fate is for the Norns to{BR}decide, but yours is in my hands!"
 				}
 			],
 			"flavorReference": "Glyph, Guardians at the Gate #27"
@@ -321,10 +317,10 @@
 			"flavorQuotes": [
 				{
 					"identifier": "Sister Ellington",
-					"text": "All things, actions, and events are threads spun along the web that binds all things. Those threads don't hear your silly incantations, but speak only the language of symbols."
+					"text": "[y=0.90]All things, actions, and{BR}events are threads spun along the{BR}web that binds all things. Those threads{BR}don't hear your silly incantations, but speak only the language of symbols."
 				}
 			],
-			"flavorReference": "Sister Ellington, Under the Rose #7"
+			"flavorReference": "[y=0.75]Sister Ellington, Under the Rose #7"
 		},
 		{
 			"identifier": "ReturnToSilence",
@@ -348,10 +344,10 @@
 			"flavorQuotes": [
 				{
 					"identifier": "Glyph",
-					"text": "The dark heart of the Eldrenwood clouds your vision. Only it knows your name, but its name is written on my hand! Return to the shadow of the stones!"
+					"text": "The dark heart of the{BR}Eldrenwood clouds your vision.{BR}Only it knows your name, but its{BR}name is written on my hand! Return to{BR}the shadow of the stones!"
 				}
 			],
-			"flavorReference": "Glyph, Grim Tidings: Killing Fields"
+			"flavorReference": "[y=0.90]Glyph, Grim Tidings: Killing Fields"
 		},
 		{
 			"identifier": "RitualCircle",
@@ -362,10 +358,10 @@
 				"fate"
 			],
 			"body": [
-				"At the end of your turn, you may put a ritual from your hand beneath this card."
+				"At the end of your turn, you may put a ritual from your hand under this card."
 			],
 			"powers": [
-				"Play any number of rituals from beneath this card."
+				"Play any number of rituals from under this card."
 			],
 			"icons": [
 				"EndOfTurnAction",
@@ -376,11 +372,11 @@
 			"flavorQuotes": [
 				{
 					"identifier": "Liana",
-					"text": "You can do it. There are few that match your skills as a ritualist."
+					"text": "There are few that{BR}match your skills as a ritualist."
 				},
 				{
 					"identifier": "Glyph",
-					"text": "... I've never apologized for what I did to you... I probably won't. But, just so you know, I do feel... conflicted."
+					"text": "... I've never apologized for what I did{BR}to you... I probably won't. But, just so you{BR}know, I do feel... conflicted."
 				}
 			],
 			"flavorReference": "Guardians at the Gate #4"
@@ -404,14 +400,14 @@
 			"flavorQuotes": [
 				{
 					"identifier": "Baroness",
-					"text": "Veren't you saying zat Bruzer Stevens had a message for me? Vat vas it?"
+					"text": "Veren't you saying{BR}zat Bruzer Stevens had a message{BR}for me? Vat vas it?"
 				},
 				{
 					"identifier": "Glyph",
 					"text": "He said: 'Check.'"
 				}
 			],
-			"flavorReference": "Three-fold Vengeance one-shot"
+			"flavorReference": "Three-fold Vengeance"
 		},
 		{
 			"identifier": "UnspokenDecree",
@@ -434,10 +430,10 @@
 			"flavorQuotes": [
 				{
 					"identifier": "Bizheda",
-					"text": "Vile worm, your evils are ended. Your blasphemies have blighted the ears of Kalementu, but how will you rail against him with no voice?"
+					"text": "Vile worm, your evils are{BR}ended. Your blasphemies have blighted{BR}the ears of Kalementu, but how will you{BR}rail against him with no voice?"
 				}
 			],
-			"flavorReference": "Guardians at the Gate #61"
+			"flavorReference": "[y=0.80]Bizheda, Guardians at the Gate #61"
 		},
 		{
 			"identifier": "WalkingTheWeb",
@@ -460,7 +456,7 @@
 			"flavorQuotes": [
 				{
 					"identifier": "Glyph",
-					"text": "You expect me to play both sides against the other."
+					"text": "You expect me to play{BR}both sides against the other."
 				},
 				{
 					"identifier": "Stevens",
@@ -490,7 +486,7 @@
 			"flavorQuotes": [
 				{
 					"identifier": "Stevens",
-					"text": "Brother Mathis' murderer must be brought to justice. Did anyone see the killer's face?"
+					"text": "Brother Mathis'{BR}murderer must be brought to justice.{BR}Did anyone see the killer's face?"
 				},
 				{
 					"identifier": "Zitnik",
@@ -501,7 +497,7 @@
 					"text": "I... was taking notes."
 				}
 			],
-			"flavorReference": "Three-fold Vengeance one-shot"
+			"flavorReference": "Three-fold Vengeance"
 		}
 	],
 	"promoCards": [
