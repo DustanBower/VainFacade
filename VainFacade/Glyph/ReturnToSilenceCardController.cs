@@ -14,7 +14,7 @@ namespace VainFacadePlaytest.Glyph
             : base(card, turnTakerController)
         {
             base.SpecialStringMaker.ShowSpecialString(() => ShowLocationsOfFaceDownCards(IsFaceDownMight, "face-down might cards", true));
-            base.SpecialStringMaker.ShowSpecialString(() => ShowLocationsOfFaceDownCards(IsFaceDownFate, "face-down fate cards", true));
+            base.SpecialStringMaker.ShowSpecialString(() => ShowLocationsOfFaceDownCards(IsFaceDownDeath, "face-down death cards", true));
             AddThisCardControllerToList(CardControllerListType.ModifiesKeywords);
 		}
 
