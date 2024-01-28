@@ -13,7 +13,9 @@ namespace VainFacadePlaytest.Glyph
 		public WalkingTheWebCardController(Card card, TurnTakerController turnTakerController)
             : base(card, turnTakerController)
         {
-		}
+            base.SpecialStringMaker.ShowSpecialString(() => ShowLocationsOfFaceDownCards(IsFaceDownInsight, "face-down insight cards", true));
+            base.SpecialStringMaker.ShowSpecialString(() => ShowLocationsOfFaceDownCards(IsFaceDownMight, "face-down might cards", true));
+        }
 
         public override IEnumerator Play()
         {
