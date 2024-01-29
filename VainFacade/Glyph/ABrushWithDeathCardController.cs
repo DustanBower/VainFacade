@@ -18,11 +18,35 @@ namespace VainFacadePlaytest.Glyph
         public override void AddTriggers()
         {
             //At the end of your turn, if you did not play a card, did not use a power, or did not draw a card this turn, or {Glyph} has fewer than 10 hp, you may draw a card, play a card, or use a power.
-            AddEndOfTurnTrigger((TurnTaker tt) => tt == this.TurnTaker && (this.CharacterCard.HitPoints < 10 || GetNumberOfCardsPlayedThisTurn(this.TurnTakerController) == 0 || GetNumberOfPowersUsedThisTurn(this.HeroTurnTakerController) == 0 || GetNumberOfCardsDrawnThisTurn(this.HeroTurnTaker) == 0), EndOfTurnResponse, new TriggerType[] { TriggerType.DrawCard, TriggerType.PlayCard, TriggerType.UsePower });
+            AddEndOfTurnTrigger((TurnTaker tt) => tt == this.TurnTaker && (this.CharacterCard.HitPoints < 10 || (GetNumberOfCardsPlayedThisTurn(this.TurnTakerController) == 0 && !IsPropertyTrue("ABrushWithDeathTracking", (CardPropertiesJournalEntry e) => e.Card == this.CharacterCard)) || GetNumberOfPowersUsedThisTurn(this.HeroTurnTakerController) == 0 || GetNumberOfCardsDrawnThisTurn(this.HeroTurnTaker) == 0), EndOfTurnResponse, new TriggerType[] { TriggerType.DrawCard, TriggerType.PlayCard, TriggerType.UsePower });
         }
 
         private IEnumerator EndOfTurnResponse(PhaseChangeAction pca)
         {
+            //string text = "has less than 10 HP";
+            //if (GetNumberOfCardsPlayedThisTurn(this.TurnTakerController) == 0)
+            //{
+            //    text = "did not play a card";
+            //}
+            //else if (GetNumberOfPowersUsedThisTurn(this.HeroTurnTakerController) == 0)
+            //{
+            //    text = "did not use a power";
+            //}
+            //else if (GetNumberOfCardsDrawnThisTurn(this.HeroTurnTaker) == 0)
+            //{
+            //    text = "did not draw a card";
+            //}
+
+            //IEnumerator coroutine = base.GameController.SendMessageAction($"{this.TurnTaker.Name} {text} this turn",Priority.High,GetCardSource());
+            //if (base.UseUnityCoroutines)
+            //{
+            //    yield return base.GameController.StartCoroutine(coroutine);
+            //}
+            //else
+            //{
+            //    base.GameController.ExhaustCoroutine(coroutine);
+            //}
+
             IEnumerable<Function> functionChoices = new Function[3]
                 {
                 new Function(base.HeroTurnTakerController, "Draw a card", SelectionType.DrawCard, () => DrawCard(), base.GameController.CanDrawCards(DecisionMaker, GetCardSource())),
