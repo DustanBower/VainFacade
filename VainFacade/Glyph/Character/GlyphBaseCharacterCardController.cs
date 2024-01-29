@@ -167,6 +167,8 @@ namespace VainFacadePlaytest.Glyph
                     {
                         base.GameController.ExhaustCoroutine(coroutine);
                     }
+
+                    SetCardProperty("ABrushWithDeathTracking", true);
                 }
             }
         }
