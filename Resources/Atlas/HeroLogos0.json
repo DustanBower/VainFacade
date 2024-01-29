@@ -48,7 +48,7 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":330,"h":260},
 	"sourceSize": {"w":330,"h":260}
 },
-"NodeCharacter.png":
+"GlyphCharacter.png":
 {
 	"frame": {"x":0,"y":263,"w":330,"h":260},
 	"rotated": false,
@@ -56,7 +56,7 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":330,"h":260},
 	"sourceSize": {"w":330,"h":260}
 },
-"PeacekeeperCharacter.png":
+"NodeCharacter.png":
 {
 	"frame": {"x":333,"y":263,"w":330,"h":260},
 	"rotated": false,
@@ -64,7 +64,7 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":330,"h":260},
 	"sourceSize": {"w":330,"h":260}
 },
-"PushCharacter.png":
+"PeacekeeperCharacter.png":
 {
 	"frame": {"x":666,"y":263,"w":330,"h":260},
 	"rotated": false,
@@ -72,7 +72,7 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":330,"h":260},
 	"sourceSize": {"w":330,"h":260}
 },
-"SphereCharacter.png":
+"PushCharacter.png":
 {
 	"frame": {"x":999,"y":263,"w":330,"h":260},
 	"rotated": false,
@@ -80,9 +80,17 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":330,"h":260},
 	"sourceSize": {"w":330,"h":260}
 },
-"TheFuryCharacter.png":
+"SphereCharacter.png":
 {
 	"frame": {"x":1332,"y":263,"w":330,"h":260},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":330,"h":260},
+	"sourceSize": {"w":330,"h":260}
+},
+"TheFuryCharacter.png":
+{
+	"frame": {"x":1665,"y":263,"w":330,"h":260},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":330,"h":260},
@@ -95,6 +103,6 @@
 	"format": "RGBA8888",
 	"size": {"w":2048,"h":2048},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:432c105c6ce9c0a4be6224d029e5ffec:7251ca5fcd3abb1a5cb9b954c08181e3:abd76add2ce06cabb8b0a8e056eb9b47$"
+	"smartupdate": "$TexturePacker:SmartUpdate:9103a04895789127e1f6bd5d28b1dafe:46b54064e04f9a46e252bb9608e2b0ff:abd76add2ce06cabb8b0a8e056eb9b47$"
 }
 }
