@@ -114,6 +114,9 @@ namespace VainFacadePlaytest.Glyph
             AddTrigger<ExpireStatusEffectAction>((ExpireStatusEffectAction exp) => exp.StatusEffect is ReturnToSilenceStatusEffect, CleanUpKeywordsResponse, TriggerType.Hidden, TriggerTiming.After);
 
             //AddEndOfTurnTrigger((TurnTaker tt) => tt == this.TurnTaker, (PhaseChangeAction pca) => base.GameController.MoveCard(DecisionMaker, this.HeroTurnTaker.Deck.TopCard, this.Game.TurnTakers.ToList()[3].Deck, cardSource: GetCardSource()), TriggerType.MoveCard);
+
+            //Some cards that reveal and play cards from Glyph's deck do not clean up the revealed cards if they cannot be played (e.g. Mission Control). Move any cards left in Glyph's revealed cards to her trash.
+            AddPhaseChangeTrigger((TurnTaker tt) => true, (Phase p) => true, (PhaseChangeAction pca) => this.TurnTaker.Revealed.Cards.Any(), (PhaseChangeAction pca) => CleanupCardsAtLocations(new Location[] { this.TurnTaker.Revealed }.ToList(), this.TurnTaker.Trash, isReturnedToOriginalLocation: false, isDiscard: false),new TriggerType[] {TriggerType.Hidden, TriggerType.MoveCard },TriggerTiming.Before);
         }
 
         private IEnumerator PlayFaceDownInstead(PlayCardAction pca)
