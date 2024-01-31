@@ -17,8 +17,8 @@ namespace VainFacadePlaytest.Glyph
 
         public override void AddTriggers()
         {
-            //At the end of your turn, if you did not play a card, did not use a power, or did not draw a card this turn, or {Glyph} has fewer than 10 hp, you may draw a card, play a card, or use a power.
-            AddEndOfTurnTrigger((TurnTaker tt) => tt == this.TurnTaker && (this.CharacterCard.HitPoints < 10 || (GetNumberOfCardsPlayedThisTurn(this.TurnTakerController) == 0 && !IsPropertyTrue("ABrushWithDeathTracking", (CardPropertiesJournalEntry e) => e.Card == this.CharacterCard)) || GetNumberOfPowersUsedThisTurn(this.HeroTurnTakerController) == 0 || GetNumberOfCardsDrawnThisTurn(this.HeroTurnTaker) == 0), EndOfTurnResponse, new TriggerType[] { TriggerType.DrawCard, TriggerType.PlayCard, TriggerType.UsePower });
+            //At the end of your turn, if you did not play a card, did not use a power, or did not draw a card this turn, or {Glyph} has 10 or fewer hp, you may draw a card, play a card, or use a power.
+            AddEndOfTurnTrigger((TurnTaker tt) => tt == this.TurnTaker && (this.CharacterCard.HitPoints <= 10 || (GetNumberOfCardsPlayedThisTurn(this.TurnTakerController) == 0 && !IsPropertyTrue("ABrushWithDeathTracking", (CardPropertiesJournalEntry e) => e.Card == this.CharacterCard)) || GetNumberOfPowersUsedThisTurn(this.HeroTurnTakerController) == 0 || GetNumberOfCardsDrawnThisTurn(this.HeroTurnTaker) == 0), EndOfTurnResponse, new TriggerType[] { TriggerType.DrawCard, TriggerType.PlayCard, TriggerType.UsePower });
         }
 
         private IEnumerator EndOfTurnResponse(PhaseChangeAction pca)
