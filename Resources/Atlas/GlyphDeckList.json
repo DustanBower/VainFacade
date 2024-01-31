@@ -1,0 +1,1131 @@
+{
+	"name": "Glyph",
+	"kind": "Hero",
+	"initialCardIdentifiers": [
+		"GlyphCharacter"
+	],
+	"cards": [
+		{
+			"identifier": "GlyphCharacter",
+			"count": 1,
+			"title": "Glyph",
+			"body": "Hidden Symbols",
+			"backgroundColor": "AC00AA",
+			"character": true,
+			"gameplay": "When you would play one of your cards, you may play it face-down in any play area instead of resolving its normal effects.",
+			"powers": [
+				"Draw up to 2 cards. You may play a card face-down in any play area or swap 2 of your face-down cards."
+			],
+			"icons": [
+				"HasPower",
+				"DrawCardNow",
+				"PlayCardNow",
+				"Manipulate"
+			],
+			"hitpoints": 26,
+			"nemesisIdentifiers": [
+				"VainFacadePlaytest.Glyph"
+			],
+			"incapacitatedAbilities": [
+				"Reveal and replace the top card of a deck. 1 player may play a card.",
+				"1 player draws a card or puts a relic, spell, ritual, rune, or glyph from their trash on top of their deck.",
+				"Destroy an environment card."
+			],
+			"flippedIcons": [
+				"Manipulate",
+				"PlayCardNow",
+				"DrawCardNow",
+				"DestroyEnvironment"
+			],
+			"complexity": 4,
+			"openingLines": {
+				"default": "Your defeat has already been written.",
+				"VainFacadePlaytest.TheBaronessCharacter": "You've disrupted the balance long enough. Now it's time to pay the piper.",
+				"Cauldron.DendronCharacter": "Passable technique, but nothing I haven't seen before.",
+				"Cauldron.WindcolorDendronCharacter": "Huh. Interesting...",
+				"IronLegacyCharacter": "What use are your heroes and villains? All that matters is the balance. I uphold it, you disrupt it.",
+				"OblivAeonFrontPageCharacter": "You're just another blight on the balance. You'll end like the rest."
+			},
+			"openingLineRequests": {
+				"OblivAeonFrontPageCharacter": "TheHarpyCharacter",
+				"IronLegacyCharacter": "BunkerFreedomSixCharacter"
+			}
+		},
+		{
+			"identifier": "EmbroideredCloak",
+			"count": 2,
+			"title": "Embroidered Cloak",
+			"keywords": [
+				"equipment",
+				"relic",
+				"limited",
+				"might"
+			],
+			"body": [
+				"The first time each turn {Glyph} is dealt damage, she regains 1 HP.",
+				"At the start of your turn, you may discard a card. If you do, {Glyph} is immune to damage, cards in {Glyph}'s play area can only be destroyed by {Glyph}, and cards from other decks cannot be played this turn."
+			],
+			"icons": [
+				"GainHP",
+				"StartOfTurnAction",
+				"Discard",
+				"ImmuneToDamage"
+			],
+			"flavorQuotes": [
+				{
+					"identifier": "Novice Balogh",
+					"text": "But we won't{BR}always have supplies!"
+				},
+				{
+					"identifier": "Sister Ellington",
+					"text": "Every thread can be a{BR}symbol, and every stitch a glyph."
+				}
+			],
+			"flavorReference": "Under the Rose #11"
+		},
+		{
+			"identifier": "SigiledBlade",
+			"count": 2,
+			"title": "Sigiled Blade",
+			"keywords": [
+				"equipment",
+				"relic",
+				"limited",
+				"might"
+			],
+			"body": [
+				"Increase melee damage dealt by {Glyph} by 1."
+			],
+			"powers": [
+				"{Glyph} deals 1 target 0 or 1 melee damage. If {Glyph} is dealt damage this way, you may put one of your cards into play face-down in any play area for each point of damage dealt this way, then you may play a ritual."
+			],
+			"icons": [
+				"IncreaseDamageDealtMelee",
+				"HasPower",
+				"DealDamageMelee",
+				"Manipulate"
+			],
+			"flavorQuotes": [
+				{
+					"identifier": "Glyph",
+					"text": "You can tell me who hired you,{BR}or I can read it in your entrails. It's{BR}all the same to me."
+				}
+			],
+			"flavorReference": "Glyph, Three-fold Vengeance"
+		},
+		{
+			"identifier": "SphereOfNalatukha",
+			"count": 2,
+			"title": "Sphere of Nalatukha",
+			"keywords": [
+				"equipment",
+				"relic",
+				"limited",
+				"might"
+			],
+			"body": [
+				"The first time each turn {Glyph} is dealt damage, you may draw or play a card."
+			],
+			"icons": [
+				"DrawCardNow",
+				"PlayCardNow"
+			],
+			"flavorQuotes": [
+				{
+					"identifier": "Brother Stevens",
+					"text": "If you can't play three moves ahead,{BR}at least be difficult to anticipate."
+				}
+			],
+			"flavorReference": "[y=0.80]Brother Stevens, Bastion City: Marked for Death"
+		},
+		{
+			"identifier": "SuntulusCompendium",
+			"count": 2,
+			"title": "Suntulu's Compendium",
+			"keywords": [
+				"equipment",
+				"relic",
+				"limited",
+				"might"
+			],
+			"powers": [
+				"Reveal cards from the top of your deck or trash until a ritual is revealed. Put it into your hand. Discard the other revealed cards. If you revealed a card from the top of your deck this way, you may play a card."
+			],
+			"icons": [
+				"HasPower",
+				"Search",
+				"PlayCardNow"
+			],
+			"flavorQuotes": [
+				{
+					"identifier": "The Librarian",
+					"text": "Initiate Ellington, I am{BR}told that you display a rare{BR}aptitude for Ritual Semiotics. This{BR}should assist you in your studies."
+				}
+			],
+			"flavorReference": "[y=0.85]The Librarian, Bastion's Best #20"
+		}
+	],
+	"subdecks": [
+		{
+			"identifier": "GlyphDeath",
+			"name": "Glyph's Death Deck",
+			"kind": "Hero",
+			"isReal": false,
+			"cards": [
+				{
+					"identifier": "ABrushWithDeathDeath",
+					"count": 1,
+					"title": "A Brush With Death",
+					"keywords": [
+						"ongoing",
+						"limited",
+						"death"
+					],
+					"body": [
+						"At the end of your turn, if you did not play a card, did not use a power, or did not draw a card this turn, or if {Glyph} has 10 or fewer hp, you may draw a card, play a card, or use a power."
+					],
+					"icons": [
+						"EndOfTurnAction",
+						"DrawCardNow",
+						"PlayCardNow",
+						"UsePowerNow"
+					],
+					"flavorQuotes": [
+						{
+							"identifier": "Jen Zheng",
+							"text": "Like me, you stand in the gate.{BR}Let me pass into the world beyond.{BR}Don't let them hold me here!{BR}Cut my tethers, please...."
+						}
+					],
+					"flavorReference": "[y=0.60]Jen Zheng, Strange Stories: Dead Reckoning #4"
+				},
+				{
+					"identifier": "MilektithasDarkSummonsDeath",
+					"count": 1,
+					"title": "Milektitha's Dark Summons",
+					"keywords": [
+						"one-shot",
+						"ritual",
+						"death"
+					],
+					"body": [
+						"You may destroy 1 of your face-down might cards. If you do, {Glyph} deals each target in that card's play area 2 infernal damage.",
+						"Destroy any number of your face-down destruction cards. For each card destroyed this way, {Glyph} deals a target in that play area that has not been dealt damage this way 5 cold damage."
+					],
+					"icons": [
+						"VainFacadePlaytest.DestroyMight",
+						"VainFacadePlaytest.DestroyDestruction",
+						"DealDamageInfernal",
+						"DealDamageCold"
+					],
+					"flavorQuotes": [
+						{
+							"identifier": "Mr. Brzezicki",
+							"text": "You said if I{BR}gave you a name, you'd let me live!"
+						},
+						{
+							"identifier": "Glyph",
+							"text": "I said I wouldn't{BR}lay a finger on you."
+						}
+					],
+					"flavorReference": "Three-Fold Vengeance"
+				},
+				{
+					"identifier": "MinetkasProclamationDeath",
+					"count": 1,
+					"title": "Minetka's Proclamation",
+					"keywords": [
+						"ongoing",
+						"ritual",
+						"death"
+					],
+					"body": [
+						"When this card enters play, destroy any number of your face-down fate cards. For each card destroyed this way, increase or reduce damage dealt by a target in that play area by 1 until this card leaves play.",
+						"At the start of your turn, destroy 1 of your face-down might cards in the play area of a target affected this way or destroy this card."
+					],
+					"icons": [
+						"VainFacadePlaytest.DestroyFate",
+						"VainFacadePlaytest.DestroyMight",
+						"IncreaseDamageDealt",
+						"ReduceDamageDealt",
+						"StartOfTurnAction"
+					],
+					"flavorQuotes": [
+						{
+							"identifier": "Glyph",
+							"text": "My fate is for the Norns to{BR}decide, but yours is in my hands!"
+						}
+					],
+					"flavorReference": "Glyph, Guardians at the Gate #27"
+				},
+				{
+					"identifier": "OccludedMarionetteDeath",
+					"count": 1,
+					"title": "Occluded Marionette",
+					"keywords": [
+						"one-shot",
+						"ritual",
+						"death"
+					],
+					"body": [
+						"You may put a non-indestructible card on top of its deck.",
+						"You may destroy 1 of your face-down might cards to put the top card of of a deck in that card's play area into play or shuffle that deck. If a card entered play this way, cards cannot be played from that deck until the start of your next turn."
+					],
+					"icons": [
+						"Manipulate",
+						"VainFacadePlaytest.DestroyMight",
+						"PlayCardNow",
+						"CannotPlayCards"
+					],
+					"flavorQuotes": [
+						{
+							"identifier": "Sister Ellington",
+							"text": "[y=0.90]All things, actions, and{BR}events are threads spun along the{BR}web that binds all things. Those threads{BR}don't hear your silly incantations, but speak only the language of symbols."
+						}
+					],
+					"flavorReference": "[y=0.75]Sister Ellington, Under the Rose #7"
+				},
+				{
+					"identifier": "RitualCircleDeath",
+					"count": 1,
+					"title": "Ritual Circle",
+					"keywords": [
+						"ongoing",
+						"death"
+					],
+					"body": [
+						"At the end of your turn, you may put a ritual from your hand under this card."
+					],
+					"powers": [
+						"Play any number of rituals from under this card."
+					],
+					"icons": [
+						"EndOfTurnAction",
+						"Manipulate",
+						"HasPower",
+						"PlayCardNow"
+					],
+					"flavorQuotes": [
+						{
+							"identifier": "Liana",
+							"text": "There are few that{BR}match your skills as a ritualist."
+						},
+						{
+							"identifier": "Glyph",
+							"text": "... I've never apologized for what I did{BR}to you... I probably won't. But, just so you{BR}know, I do feel... conflicted."
+						}
+					],
+					"flavorReference": "Guardians at the Gate #4"
+				},
+				{
+					"identifier": "SympatheticCastingDeath",
+					"count": 1,
+					"title": "Sympathetic Casting",
+					"keywords": [
+						"ongoing",
+						"death"
+					],
+					"powers": [
+						"Select a play area. X on this card = the number of your face-down cards in that area. {Glyph} deals herself and 1 target in that play area X irreducible infernal damage each, then {Glyph} deals that target X fire damage."
+					],
+					"icons": [
+						"HasPower",
+						"DealDamageInfernal",
+						"DealDamageFire"
+					],
+					"flavorQuotes": [
+						{
+							"identifier": "Baroness",
+							"text": "Veren't you saying{BR}zat Bruzer Stevens had a message{BR}for me? Vat vas it?"
+						},
+						{
+							"identifier": "Glyph",
+							"text": "He said: 'Check.'"
+						}
+					],
+					"flavorReference": "Three-fold Vengeance"
+				},
+				{
+					"identifier": "UnspokenDecreeDeath",
+					"count": 1,
+					"title": "Unspoken Decree",
+					"keywords": [
+						"one-shot",
+						"ritual",
+						"death"
+					],
+					"body": [
+						"Destroy any number of your face-down cards. For each card destroyed with a matching type, 1 target in that play area:{BR}} [u]death[/u]: is put on top of its deck, if not a character.{BR}} [u]destruction[/u]: Deals a target 2 melee damage.{BR}} [u]fate[/u]: [y=0.99]Makes its next damage dealt irreducible.[/y]{BR}} [u]insight[/u]: Prevents the next damage it would deal."
+					],
+					"icons": [
+						"DestroyHero",
+						"Manipulate",
+						"DealDamageMelee",
+						"MakeDamageIrreducible"
+					],
+					"flavorQuotes": [
+						{
+							"identifier": "Bizheda",
+							"text": "Vile worm, your evils are{BR}ended. Your blasphemies have blighted{BR}the ears of Kalementu, but how will you{BR}rail against him with no voice?"
+						}
+					],
+					"flavorReference": "[y=0.80]Bizheda, Guardians at the Gate #61"
+				},
+				{
+					"identifier": "WalkingTheWebDeath",
+					"count": 1,
+					"title": "Walking the Web",
+					"keywords": [
+						"one-shot",
+						"ritual",
+						"death"
+					],
+					"body": [
+						"Destroy any number of your face-down insight cards. For each card destroyed this way, reveal the top 2 cards of a deck in that card's play area and put 1 card on the top and 1 on the bottom of that deck.",
+						"You may destroy 1 of your face-down might cards to play or discard the top card of a deck in that card's play area."
+					],
+					"icons": [
+						"VainFacadePlaytest.DestroyInsight",
+						"VainFacadePlaytest.DestroyMight",
+						"Manipulate",
+						"PlayCardNow"
+					],
+					"flavorQuotes": [
+						{
+							"identifier": "Glyph",
+							"text": "You expect me to play{BR}both sides against the other."
+						},
+						{
+							"identifier": "Stevens",
+							"text": "Don't be a fool. Why stop at two?"
+						}
+					],
+					"flavorReference": "Bastion City: A Spider Never Blinks #7"
+				}
+			]
+		},
+		{
+			"identifier": "GlyphDestruction",
+			"name": "Glyph's Destruction Deck",
+			"kind": "Hero",
+			"isReal": false,
+			"cards": [
+				{
+					"identifier": "MaledictionOfInaalaDestruction",
+					"count": 1,
+					"title": "Malediction of Inaala",
+					"keywords": [
+						"one-shot",
+						"ritual",
+						"destruction"
+					],
+					"body": [
+						"Discard up to 3 cards. {Glyph} deals 1 target X times 2 infernal damage where X = the number of cards discarded in this way.",
+						"You may destroy 1 of your face-down might cards. If you do, you may discard any number of cards instead."
+					],
+					"icons": [
+						"Discard",
+						"DealDamageInfernal",
+						"VainFacadePlaytest.DestroyMight"
+					],
+					"flavorQuotes": [
+						{
+							"identifier": "Glyph",
+							"text": "You work for Mathis, right?{BR}Give him a message for me."
+						}
+					],
+					"flavorReference": "[y=0.85]Glyph, Bastion City: Marked for Death"
+				},
+				{
+					"identifier": "MinetkasProclamationDestruction",
+					"count": 1,
+					"title": "Minetka's Proclamation",
+					"keywords": [
+						"ongoing",
+						"ritual",
+						"destruction"
+					],
+					"body": [
+						"When this card enters play, destroy any number of your face-down fate cards. For each card destroyed this way, increase or reduce damage dealt by a target in that play area by 1 until this card leaves play.",
+						"At the start of your turn, destroy 1 of your face-down might cards in the play area of a target affected this way or destroy this card."
+					],
+					"icons": [
+						"VainFacadePlaytest.DestroyFate",
+						"VainFacadePlaytest.DestroyMight",
+						"IncreaseDamageDealt",
+						"ReduceDamageDealt",
+						"StartOfTurnAction"
+					],
+					"flavorQuotes": [
+						{
+							"identifier": "Glyph",
+							"text": "My fate is for the Norns to{BR}decide, but yours is in my hands!"
+						}
+					],
+					"flavorReference": "Glyph, Guardians at the Gate #27"
+				},
+				{
+					"identifier": "OccludedMarionetteDestruction",
+					"count": 1,
+					"title": "Occluded Marionette",
+					"keywords": [
+						"one-shot",
+						"ritual",
+						"destruction"
+					],
+					"body": [
+						"You may put a non-indestructible card on top of its deck.",
+						"You may destroy 1 of your face-down might cards to put the top card of of a deck in that card's play area into play or shuffle that deck. If a card entered play this way, cards cannot be played from that deck until the start of your next turn."
+					],
+					"icons": [
+						"Manipulate",
+						"VainFacadePlaytest.DestroyMight",
+						"PlayCardNow",
+						"CannotPlayCards"
+					],
+					"flavorQuotes": [
+						{
+							"identifier": "Sister Ellington",
+							"text": "[y=0.90]All things, actions, and{BR}events are threads spun along the{BR}web that binds all things. Those threads{BR}don't hear your silly incantations, but speak only the language of symbols."
+						}
+					],
+					"flavorReference": "[y=0.75]Sister Ellington, Under the Rose #7"
+				},
+				{
+					"identifier": "ReturnToSilenceDestruction",
+					"count": 1,
+					"title": "Return to Silence",
+					"keywords": [
+						"one-shot",
+						"ritual",
+						"destruction"
+					],
+					"body": [
+						"You may destroy 1 of your face-down might cards. If you do, each non-character, non-target card in that card's play area gains the ongoing keyword this turn.",
+						"Destroy any number of your face-down death cards. For each card destroyed this way, destroy an environment, ongoing, or equipment card in that card's play area."
+					],
+					"icons": [
+						"VainFacadePlaytest.DestroyMight",
+						"VainFacadePlaytest.DestroyDeath",
+						"DestroyEnvironment",
+						"DestroyOngoing",
+						"DestroyEquipment"
+					],
+					"flavorQuotes": [
+						{
+							"identifier": "Glyph",
+							"text": "The dark heart of the{BR}Eldrenwood clouds your vision.{BR}Only it knows your name, but its{BR}name is written on my hand! Return to{BR}the shadow of the stones!"
+						}
+					],
+					"flavorReference": "[y=0.90]Glyph, Grim Tidings: Killing Fields"
+				},
+				{
+					"identifier": "RitualCircleDestruction",
+					"count": 1,
+					"title": "Ritual Circle",
+					"keywords": [
+						"ongoing",
+						"destruction"
+					],
+					"body": [
+						"At the end of your turn, you may put a ritual from your hand under this card."
+					],
+					"powers": [
+						"Play any number of rituals from under this card."
+					],
+					"icons": [
+						"EndOfTurnAction",
+						"Manipulate",
+						"HasPower",
+						"PlayCardNow"
+					],
+					"flavorQuotes": [
+						{
+							"identifier": "Liana",
+							"text": "There are few that{BR}match your skills as a ritualist."
+						},
+						{
+							"identifier": "Glyph",
+							"text": "... I've never apologized for what I did{BR}to you... I probably won't. But, just so you{BR}know, I do feel... conflicted."
+						}
+					],
+					"flavorReference": "Guardians at the Gate #4"
+				},
+				{
+					"identifier": "SympatheticCastingDestruction",
+					"count": 1,
+					"title": "Sympathetic Casting",
+					"keywords": [
+						"ongoing",
+						"destruction"
+					],
+					"powers": [
+						"Select a play area. X on this card = the number of your face-down cards in that area. {Glyph} deals herself and 1 target in that play area X irreducible infernal damage each, then {Glyph} deals that target X fire damage."
+					],
+					"icons": [
+						"HasPower",
+						"DealDamageInfernal",
+						"DealDamageFire"
+					],
+					"flavorQuotes": [
+						{
+							"identifier": "Baroness",
+							"text": "Veren't you saying{BR}zat Bruzer Stevens had a message{BR}for me? Vat vas it?"
+						},
+						{
+							"identifier": "Glyph",
+							"text": "He said: 'Check.'"
+						}
+					],
+					"flavorReference": "Three-fold Vengeance"
+				},
+				{
+					"identifier": "WalkingTheWebDestruction",
+					"count": 1,
+					"title": "Walking the Web",
+					"keywords": [
+						"one-shot",
+						"ritual",
+						"destruction"
+					],
+					"body": [
+						"Destroy any number of your face-down insight cards. For each card destroyed this way, reveal the top 2 cards of a deck in that card's play area and put 1 card on the top and 1 on the bottom of that deck.",
+						"You may destroy 1 of your face-down might cards to play or discard the top card of a deck in that card's play area."
+					],
+					"icons": [
+						"VainFacadePlaytest.DestroyInsight",
+						"VainFacadePlaytest.DestroyMight",
+						"Manipulate",
+						"PlayCardNow"
+					],
+					"flavorQuotes": [
+						{
+							"identifier": "Glyph",
+							"text": "You expect me to play{BR}both sides against the other."
+						},
+						{
+							"identifier": "Stevens",
+							"text": "Don't be a fool. Why stop at two?"
+						}
+					],
+					"flavorReference": "Bastion City: A Spider Never Blinks #7"
+				},
+				{
+					"identifier": "WrittenFutureDestruction",
+					"count": 1,
+					"title": "Written Future",
+					"keywords": [
+						"one-shot",
+						"ritual",
+						"destruction"
+					],
+					"body": [
+						"Destroy any number of your face-down cards. For each card destroyed with a matching type, 1 target in that play area:{BR}} [u]death[/u]: is destroyed if it has 3 or fewer hp.{BR}} [u]destruction[/u]: deals itself 2 psychic damage.{BR}} [u]fate[/u]: reduces its next damage dealt by 2.{BR}} [u]insight[/u]: increases its next damage dealt by 2."
+					],
+					"icons": [
+						"DestroyHero",
+						"DestroyTarget",
+						"DealDamagePsychic",
+						"ReduceDamageDealt"
+					],
+					"flavorQuotes": [
+						{
+							"identifier": "Stevens",
+							"text": "Brother Mathis'{BR}murderer must be brought to justice.{BR}Did anyone see the killer's face?"
+						},
+						{
+							"identifier": "Zitnik",
+							"text": "It... all happened so quickly."
+						},
+						{
+							"identifier": "Vang",
+							"text": "I... was taking notes."
+						}
+					],
+					"flavorReference": "Three-fold Vengeance"
+				}
+			]
+		},
+		{
+			"identifier": "GlyphFate",
+			"name": "Glyph's Fate Deck",
+			"kind": "Hero",
+			"isReal": false,
+			"cards": [
+				{
+					"identifier": "ABrushWithDeathFate",
+					"count": 1,
+					"title": "A Brush With Death",
+					"keywords": [
+						"ongoing",
+						"limited",
+						"fate"
+					],
+					"body": [
+						"At the end of your turn, if you did not play a card, did not use a power, or did not draw a card this turn, or if {Glyph} has 10 or fewer hp, you may draw a card, play a card, or use a power."
+					],
+					"icons": [
+						"EndOfTurnAction",
+						"DrawCardNow",
+						"PlayCardNow",
+						"UsePowerNow"
+					],
+					"flavorQuotes": [
+						{
+							"identifier": "Jen Zheng",
+							"text": "Like me, you stand in the gate.{BR}Let me pass into the world beyond.{BR}Don't let them hold me here!{BR}Cut my tethers, please...."
+						}
+					],
+					"flavorReference": "[y=0.60]Jen Zheng, Strange Stories: Dead Reckoning #4"
+				},
+				{
+					"identifier": "InscrutableTutelageFate",
+					"count": 1,
+					"title": "Inscrutable Tutelage",
+					"keywords": [
+						"ongoing",
+						"fate",
+						"limited"
+					],
+					"body": [
+						"When this card enters play, you may draw a card or play a relic.",
+						"The first time each turn damage would be dealt to any target in an area containing your face-down cards, you may increase or reduce that damage by 1."
+					],
+					"icons": [
+						"DrawCardNow",
+						"PlayCardNow",
+						"IncreaseDamageTaken",
+						"ReduceDamageTaken"
+					],
+					"flavorQuotes": [
+						{
+							"identifier": "Baroness",
+							"text": "Unvilling to lose{BR}zee pawn after all."
+						},
+						{
+							"identifier": "Stevens",
+							"text": "Pawns can be promoted."
+						}
+					],
+					"flavorReference": "Dead Reckoning #6"
+				},
+				{
+					"identifier": "MaledictionOfInaalaFate",
+					"count": 1,
+					"title": "Malediction of Inaala",
+					"keywords": [
+						"one-shot",
+						"ritual",
+						"fate"
+					],
+					"body": [
+						"Discard up to 3 cards. {Glyph} deals 1 target X times 2 infernal damage where X = the number of cards discarded in this way.",
+						"You may destroy 1 of your face-down might cards. If you do, you may discard any number of cards instead."
+					],
+					"icons": [
+						"Discard",
+						"DealDamageInfernal",
+						"VainFacadePlaytest.DestroyMight"
+					],
+					"flavorQuotes": [
+						{
+							"identifier": "Glyph",
+							"text": "You work for Mathis, right?{BR}Give him a message for me."
+						}
+					],
+					"flavorReference": "[y=0.85]Glyph, Bastion City: Marked for Death"
+				},
+				{
+					"identifier": "MilektithasDarkSummonsFate",
+					"count": 1,
+					"title": "Milektitha's Dark Summons",
+					"keywords": [
+						"one-shot",
+						"ritual",
+						"fate"
+					],
+					"body": [
+						"You may destroy 1 of your face-down might cards. If you do, {Glyph} deals each target in that card's play area 2 infernal damage.",
+						"Destroy any number of your face-down destruction cards. For each card destroyed this way, {Glyph} deals a target in that play area that has not been dealt damage this way 5 cold damage."
+					],
+					"icons": [
+						"VainFacadePlaytest.DestroyMight",
+						"VainFacadePlaytest.DestroyDestruction",
+						"DealDamageInfernal",
+						"DealDamageCold"
+					],
+					"flavorQuotes": [
+						{
+							"identifier": "Mr. Brzezicki",
+							"text": "You said if I{BR}gave you a name, you'd let me live!"
+						},
+						{
+							"identifier": "Glyph",
+							"text": "I said I wouldn't{BR}lay a finger on you."
+						}
+					],
+					"flavorReference": "Three-Fold Vengeance"
+				},
+				{
+					"identifier": "ReturnToSilenceFate",
+					"count": 1,
+					"title": "Return to Silence",
+					"keywords": [
+						"one-shot",
+						"ritual",
+						"fate"
+					],
+					"body": [
+						"You may destroy 1 of your face-down might cards. If you do, each non-character, non-target card in that card's play area gains the ongoing keyword this turn.",
+						"Destroy any number of your face-down death cards. For each card destroyed this way, destroy an environment, ongoing, or equipment card in that card's play area."
+					],
+					"icons": [
+						"VainFacadePlaytest.DestroyMight",
+						"VainFacadePlaytest.DestroyDeath",
+						"DestroyEnvironment",
+						"DestroyOngoing",
+						"DestroyEquipment"
+					],
+					"flavorQuotes": [
+						{
+							"identifier": "Glyph",
+							"text": "The dark heart of the{BR}Eldrenwood clouds your vision.{BR}Only it knows your name, but its{BR}name is written on my hand! Return to{BR}the shadow of the stones!"
+						}
+					],
+					"flavorReference": "[y=0.90]Glyph, Grim Tidings: Killing Fields"
+				},
+				{
+					"identifier": "RitualCircleFate",
+					"count": 1,
+					"title": "Ritual Circle",
+					"keywords": [
+						"ongoing",
+						"fate"
+					],
+					"body": [
+						"At the end of your turn, you may put a ritual from your hand under this card."
+					],
+					"powers": [
+						"Play any number of rituals from under this card."
+					],
+					"icons": [
+						"EndOfTurnAction",
+						"Manipulate",
+						"HasPower",
+						"PlayCardNow"
+					],
+					"flavorQuotes": [
+						{
+							"identifier": "Liana",
+							"text": "There are few that{BR}match your skills as a ritualist."
+						},
+						{
+							"identifier": "Glyph",
+							"text": "... I've never apologized for what I did{BR}to you... I probably won't. But, just so you{BR}know, I do feel... conflicted."
+						}
+					],
+					"flavorReference": "Guardians at the Gate #4"
+				},
+				{
+					"identifier": "SympatheticCastingFate",
+					"count": 1,
+					"title": "Sympathetic Casting",
+					"keywords": [
+						"ongoing",
+						"fate"
+					],
+					"powers": [
+						"Select a play area. X on this card = the number of your face-down cards in that area. {Glyph} deals herself and 1 target in that play area X irreducible infernal damage each, then {Glyph} deals that target X fire damage."
+					],
+					"icons": [
+						"HasPower",
+						"DealDamageInfernal",
+						"DealDamageFire"
+					],
+					"flavorQuotes": [
+						{
+							"identifier": "Baroness",
+							"text": "Veren't you saying{BR}zat Bruzer Stevens had a message{BR}for me? Vat vas it?"
+						},
+						{
+							"identifier": "Glyph",
+							"text": "He said: 'Check.'"
+						}
+					],
+					"flavorReference": "Three-fold Vengeance"
+				},
+				{
+					"identifier": "WalkingTheWebFate",
+					"count": 1,
+					"title": "Walking the Web",
+					"keywords": [
+						"one-shot",
+						"ritual",
+						"fate"
+					],
+					"body": [
+						"Destroy any number of your face-down insight cards. For each card destroyed this way, reveal the top 2 cards of a deck in that card's play area and put 1 card on the top and 1 on the bottom of that deck.",
+						"You may destroy 1 of your face-down might cards to play or discard the top card of a deck in that card's play area."
+					],
+					"icons": [
+						"VainFacadePlaytest.DestroyInsight",
+						"VainFacadePlaytest.DestroyMight",
+						"Manipulate",
+						"PlayCardNow"
+					],
+					"flavorQuotes": [
+						{
+							"identifier": "Glyph",
+							"text": "You expect me to play{BR}both sides against the other."
+						},
+						{
+							"identifier": "Stevens",
+							"text": "Don't be a fool. Why stop at two?"
+						}
+					],
+					"flavorReference": "Bastion City: A Spider Never Blinks #7"
+				}
+			]
+		},
+		{
+			"identifier": "GlyphInsight",
+			"name": "Glyph's Insight Deck",
+			"kind": "Hero",
+			"isReal": false,
+			"cards": [
+				{
+					"identifier": "InscrutableTutelageInsight",
+					"count": 1,
+					"title": "Inscrutable Tutelage",
+					"keywords": [
+						"ongoing",
+						"insight",
+						"limited"
+					],
+					"body": [
+						"When this card enters play, you may draw a card or play a relic.",
+						"The first time each turn damage would be dealt to any target in an area containing your face-down cards, you may increase or reduce that damage by 1."
+					],
+					"icons": [
+						"DrawCardNow",
+						"PlayCardNow",
+						"IncreaseDamageTaken",
+						"ReduceDamageTaken"
+					],
+					"flavorQuotes": [
+						{
+							"identifier": "Baroness",
+							"text": "Unvilling to lose{BR}zee pawn after all."
+						},
+						{
+							"identifier": "Stevens",
+							"text": "Pawns can be promoted."
+						}
+					],
+					"flavorReference": "Dead Reckoning #6"
+				},
+				{
+					"identifier": "MaledictionOfInaalaInsight",
+					"count": 1,
+					"title": "Malediction of Inaala",
+					"keywords": [
+						"one-shot",
+						"ritual",
+						"insight"
+					],
+					"body": [
+						"Discard up to 3 cards. {Glyph} deals 1 target X times 2 infernal damage where X = the number of cards discarded in this way.",
+						"You may destroy 1 of your face-down might cards. If you do, you may discard any number of cards instead."
+					],
+					"icons": [
+						"Discard",
+						"DealDamageInfernal",
+						"VainFacadePlaytest.DestroyMight"
+					],
+					"flavorQuotes": [
+						{
+							"identifier": "Glyph",
+							"text": "You work for Mathis, right?{BR}Give him a message for me."
+						}
+					],
+					"flavorReference": "[y=0.85]Glyph, Bastion City: Marked for Death"
+				},
+				{
+					"identifier": "MilektithasDarkSummonsInsight",
+					"count": 1,
+					"title": "Milektitha's Dark Summons",
+					"keywords": [
+						"one-shot",
+						"ritual",
+						"insight"
+					],
+					"body": [
+						"You may destroy 1 of your face-down might cards. If you do, {Glyph} deals each target in that card's play area 2 infernal damage.",
+						"Destroy any number of your face-down destruction cards. For each card destroyed this way, {Glyph} deals a target in that play area that has not been dealt damage this way 5 cold damage."
+					],
+					"icons": [
+						"VainFacadePlaytest.DestroyMight",
+						"VainFacadePlaytest.DestroyDestruction",
+						"DealDamageInfernal",
+						"DealDamageCold"
+					],
+					"flavorQuotes": [
+						{
+							"identifier": "Mr. Brzezicki",
+							"text": "You said if I{BR}gave you a name, you'd let me live!"
+						},
+						{
+							"identifier": "Glyph",
+							"text": "I said I wouldn't{BR}lay a finger on you."
+						}
+					],
+					"flavorReference": "Three-Fold Vengeance"
+				},
+				{
+					"identifier": "MinetkasProclamationInsight",
+					"count": 1,
+					"title": "Minetka's Proclamation",
+					"keywords": [
+						"ongoing",
+						"ritual",
+						"insight"
+					],
+					"body": [
+						"When this card enters play, destroy any number of your face-down fate cards. For each card destroyed this way, increase or reduce damage dealt by a target in that play area by 1 until this card leaves play.",
+						"At the start of your turn, destroy 1 of your face-down might cards in the play area of a target affected this way or destroy this card."
+					],
+					"icons": [
+						"VainFacadePlaytest.DestroyFate",
+						"VainFacadePlaytest.DestroyMight",
+						"IncreaseDamageDealt",
+						"ReduceDamageDealt",
+						"StartOfTurnAction"
+					],
+					"flavorQuotes": [
+						{
+							"identifier": "Glyph",
+							"text": "My fate is for the Norns to{BR}decide, but yours is in my hands!"
+						}
+					],
+					"flavorReference": "Glyph, Guardians at the Gate #27"
+				},
+				{
+					"identifier": "OccludedMarionetteInsight",
+					"count": 1,
+					"title": "Occluded Marionette",
+					"keywords": [
+						"one-shot",
+						"ritual",
+						"insight"
+					],
+					"body": [
+						"You may put a non-indestructible card on top of its deck.",
+						"You may destroy 1 of your face-down might cards to put the top card of of a deck in that card's play area into play or shuffle that deck. If a card entered play this way, cards cannot be played from that deck until the start of your next turn."
+					],
+					"icons": [
+						"Manipulate",
+						"VainFacadePlaytest.DestroyMight",
+						"PlayCardNow",
+						"CannotPlayCards"
+					],
+					"flavorQuotes": [
+						{
+							"identifier": "Sister Ellington",
+							"text": "[y=0.90]All things, actions, and{BR}events are threads spun along the{BR}web that binds all things. Those threads{BR}don't hear your silly incantations, but speak only the language of symbols."
+						}
+					],
+					"flavorReference": "[y=0.75]Sister Ellington, Under the Rose #7"
+				},
+				{
+					"identifier": "ReturnToSilenceInsight",
+					"count": 1,
+					"title": "Return to Silence",
+					"keywords": [
+						"one-shot",
+						"ritual",
+						"insight"
+					],
+					"body": [
+						"You may destroy 1 of your face-down might cards. If you do, each non-character, non-target card in that card's play area gains the ongoing keyword this turn.",
+						"Destroy any number of your face-down death cards. For each card destroyed this way, destroy an environment, ongoing, or equipment card in that card's play area."
+					],
+					"icons": [
+						"VainFacadePlaytest.DestroyMight",
+						"VainFacadePlaytest.DestroyDeath",
+						"DestroyEnvironment",
+						"DestroyOngoing",
+						"DestroyEquipment"
+					],
+					"flavorQuotes": [
+						{
+							"identifier": "Glyph",
+							"text": "The dark heart of the{BR}Eldrenwood clouds your vision.{BR}Only it knows your name, but its{BR}name is written on my hand! Return to{BR}the shadow of the stones!"
+						}
+					],
+					"flavorReference": "[y=0.90]Glyph, Grim Tidings: Killing Fields"
+				},
+				{
+					"identifier": "UnspokenDecreeInsight",
+					"count": 1,
+					"title": "Unspoken Decree",
+					"keywords": [
+						"one-shot",
+						"ritual",
+						"insight"
+					],
+					"body": [
+						"Destroy any number of your face-down cards. For each card destroyed with a matching type, 1 target in that play area:{BR}} [u]death[/u]: is put on top of its deck, if not a character.{BR}} [u]destruction[/u]: Deals a target 2 melee damage.{BR}} [u]fate[/u]: [y=0.99]Makes its next damage dealt irreducible.[/y]{BR}} [u]insight[/u]: Prevents the next damage it would deal."
+					],
+					"icons": [
+						"DestroyHero",
+						"Manipulate",
+						"DealDamageMelee",
+						"MakeDamageIrreducible"
+					],
+					"flavorQuotes": [
+						{
+							"identifier": "Bizheda",
+							"text": "Vile worm, your evils are{BR}ended. Your blasphemies have blighted{BR}the ears of Kalementu, but how will you{BR}rail against him with no voice?"
+						}
+					],
+					"flavorReference": "[y=0.80]Bizheda, Guardians at the Gate #61"
+				},
+				{
+					"identifier": "WrittenFutureInsight",
+					"count": 1,
+					"title": "Written Future",
+					"keywords": [
+						"one-shot",
+						"ritual",
+						"insight"
+					],
+					"body": [
+						"Destroy any number of your face-down cards. For each card destroyed with a matching type, 1 target in that play area:{BR}} [u]death[/u]: is destroyed if it has 3 or fewer hp.{BR}} [u]destruction[/u]: deals itself 2 psychic damage.{BR}} [u]fate[/u]: reduces its next damage dealt by 2.{BR}} [u]insight[/u]: increases its next damage dealt by 2."
+					],
+					"icons": [
+						"DestroyHero",
+						"DestroyTarget",
+						"DealDamagePsychic",
+						"ReduceDamageDealt"
+					],
+					"flavorQuotes": [
+						{
+							"identifier": "Stevens",
+							"text": "Brother Mathis'{BR}murderer must be brought to justice.{BR}Did anyone see the killer's face?"
+						},
+						{
+							"identifier": "Zitnik",
+							"text": "It... all happened so quickly."
+						},
+						{
+							"identifier": "Vang",
+							"text": "I... was taking notes."
+						}
+					],
+					"flavorReference": "Three-fold Vengeance"
+				}
+			]
+		}
+	],
+	"promoCards": [
+	]
+}
