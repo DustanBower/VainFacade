@@ -2,7 +2,7 @@
 
 "EmbroideredCloak.png":
 {
-	"frame": {"x":0,"y":0,"w":256,"h":198},
+	"frame": {"x":0,"y":111,"w":256,"h":198},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":256,"h":198},
@@ -10,7 +10,39 @@
 },
 "EmbroideredCloakMicro.png":
 {
-	"frame": {"x":259,"y":0,"w":108,"h":108},
+	"frame": {"x":0,"y":0,"w":108,"h":108},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":108,"h":108},
+	"sourceSize": {"w":108,"h":108}
+},
+"GlyphCharacter.png":
+{
+	"frame": {"x":259,"y":312,"w":178,"h":256},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":178,"h":256},
+	"sourceSize": {"w":178,"h":256}
+},
+"GlyphCharacterBack.png":
+{
+	"frame": {"x":440,"y":312,"w":178,"h":256},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":178,"h":256},
+	"sourceSize": {"w":178,"h":256}
+},
+"GlyphCharacterBackMicro.png":
+{
+	"frame": {"x":111,"y":0,"w":108,"h":108},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":108,"h":108},
+	"sourceSize": {"w":108,"h":108}
+},
+"GlyphCharacterMicro.png":
+{
+	"frame": {"x":222,"y":0,"w":108,"h":108},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":108,"h":108},
@@ -18,7 +50,7 @@
 },
 "GlyphDeckBack.png":
 {
-	"frame": {"x":370,"y":0,"w":178,"h":256},
+	"frame": {"x":621,"y":312,"w":178,"h":256},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":178,"h":256},
@@ -26,7 +58,7 @@
 },
 "GlyphDeckBackMicro.png":
 {
-	"frame": {"x":551,"y":0,"w":108,"h":108},
+	"frame": {"x":333,"y":0,"w":108,"h":108},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":108,"h":108},
@@ -34,7 +66,7 @@
 },
 "SigiledBlade.png":
 {
-	"frame": {"x":662,"y":0,"w":256,"h":198},
+	"frame": {"x":259,"y":111,"w":256,"h":198},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":256,"h":198},
@@ -42,7 +74,7 @@
 },
 "SigiledBladeMicro.png":
 {
-	"frame": {"x":0,"y":259,"w":108,"h":108},
+	"frame": {"x":444,"y":0,"w":108,"h":108},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":108,"h":108},
@@ -50,7 +82,7 @@
 },
 "SphereOfNalatukha.png":
 {
-	"frame": {"x":111,"y":259,"w":256,"h":198},
+	"frame": {"x":518,"y":111,"w":256,"h":198},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":256,"h":198},
@@ -58,7 +90,7 @@
 },
 "SphereOfNalatukhaMicro.png":
 {
-	"frame": {"x":370,"y":259,"w":108,"h":108},
+	"frame": {"x":555,"y":0,"w":108,"h":108},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":108,"h":108},
@@ -66,7 +98,7 @@
 },
 "SuntulusCompendium.png":
 {
-	"frame": {"x":481,"y":259,"w":256,"h":198},
+	"frame": {"x":0,"y":312,"w":256,"h":198},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":256,"h":198},
@@ -74,7 +106,7 @@
 },
 "SuntulusCompendiumMicro.png":
 {
-	"frame": {"x":740,"y":259,"w":108,"h":108},
+	"frame": {"x":666,"y":0,"w":108,"h":108},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":108,"h":108},
@@ -87,6 +119,6 @@
 	"format": "RGBA8888",
 	"size": {"w":1024,"h":1024},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:411f9d62ac78d1708f5502e1adaa4482:c8e03ddf5a7d588180e78b7cc74f8258:f51af6c7c053840f4478d5a9cdac0af7$"
+	"smartupdate": "$TexturePacker:SmartUpdate:c2c791775b23462df7f973aea0feb60c:b7366b4331915e85afdbfd42efb10325:f51af6c7c053840f4478d5a9cdac0af7$"
 }
 }
