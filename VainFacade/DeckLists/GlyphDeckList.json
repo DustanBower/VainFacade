@@ -39,7 +39,16 @@
 			],
 			"complexity": 4,
 			"openingLines": {
-				"default": ""
+				"default": "Your defeat has already been written.",
+				"VainFacadePlaytest.TheBaronessCharacter": "You've disrupted the balance long enough. Now it's time to pay the piper.",
+				"Cauldron.DendronCharacter": "Passable technique, but nothing I haven't seen before.",
+				"Cauldron.WindcolorDendronCharacter": "Huh. Interesting...",
+				"IronLegacyCharacter": "What use are your heroes and villains? All that matters is the balance. I uphold it, you disrupt it.",
+				"OblivAeonFrontPageCharacter": "You're just another blight on the balance. You'll end like the rest."
+			},
+			"openingLineRequests": {
+				"OblivAeonFrontPageCharacter": "TheHarpyCharacter",
+				"IronLegacyCharacter": "BunkerFreedomSixCharacter"
 			}
 		},
 		{
@@ -345,7 +354,7 @@
 						"death"
 					],
 					"body": [
-						"Destroy any number of your face-down cards. For each card destroyed with a matching type, 1 target in that play area:{BR}} [u]death[/u]: is put on top its deck, if not a character.{BR}} [u]destruction[/u]: Deals a target 2 melee damage.{BR}} [u]fate[/u]: [y=0.99]Makes its next damage dealt irreducible.[/y]{BR}} [u]insight[/u]: Prevents the next damage it would deal."
+						"Destroy any number of your face-down cards. For each card destroyed with a matching type, 1 target in that play area:{BR}} [u]death[/u]: is put on top of its deck, if not a character.{BR}} [u]destruction[/u]: Deals a target 2 melee damage.{BR}} [u]fate[/u]: [y=0.99]Makes its next damage dealt irreducible.[/y]{BR}} [u]insight[/u]: Prevents the next damage it would deal."
 					],
 					"icons": [
 						"DestroyHero",
@@ -416,7 +425,7 @@
 					"icons": [
 						"Discard",
 						"DealDamageInfernal",
-						"DestroyHero"
+						"VainFacadePlaytest.DestroyMight"
 					],
 					"flavorQuotes": [
 						{
@@ -1064,7 +1073,7 @@
 						"insight"
 					],
 					"body": [
-						"Destroy any number of your face-down cards. For each card destroyed with a matching type, 1 target in that play area:{BR}} [u]death[/u]: is put on top its deck, if not a character.{BR}} [u]destruction[/u]: Deals a target 2 melee damage.{BR}} [u]fate[/u]: [y=0.99]Makes its next damage dealt irreducible.[/y]{BR}} [u]insight[/u]: Prevents the next damage it would deal."
+						"Destroy any number of your face-down cards. For each card destroyed with a matching type, 1 target in that play area:{BR}} [u]death[/u]: is put on top of its deck, if not a character.{BR}} [u]destruction[/u]: Deals a target 2 melee damage.{BR}} [u]fate[/u]: [y=0.99]Makes its next damage dealt irreducible.[/y]{BR}} [u]insight[/u]: Prevents the next damage it would deal."
 					],
 					"icons": [
 						"DestroyHero",
