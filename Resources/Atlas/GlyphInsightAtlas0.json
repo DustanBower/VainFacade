@@ -147,10 +147,10 @@
 "meta": {
 	"app": "https://www.codeandweb.com/texturepacker",
 	"version": "1.0",
-	"image": "GlyphInsightDeckAtlas0.png",
+	"image": "GlyphInsightAtlas0.png",
 	"format": "RGBA8888",
 	"size": {"w":1024,"h":1024},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:54b696ac5aae4f7b04a4b2284abdc769:fa21a632b18ea420d71463f8db459623:9ca0e0e8b229bcabbf6b4e9bccedc3dd$"
+	"smartupdate": "$TexturePacker:SmartUpdate:9ae18ffac318f0475c5df4f1589e395c:ded0de088b5e8cffee76e16867d362b6:c00c2c3245b3a3d39a265f64d586bbca$"
 }
 }

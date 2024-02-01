@@ -147,10 +147,10 @@
 "meta": {
 	"app": "https://www.codeandweb.com/texturepacker",
 	"version": "1.0",
-	"image": "GlyphDeathDeckAtlas0.png",
+	"image": "GlyphDeathAtlas0.png",
 	"format": "RGBA8888",
 	"size": {"w":1024,"h":1024},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:3460471debc91170b204f00e3a8d11bf:3d28b1378f1d52be194a03822de2a901:e8b3a472a241d9986a0855816d89c266$"
+	"smartupdate": "$TexturePacker:SmartUpdate:f5d6d813dfa1adecfb7b4ded8f58cc8b:e0e84563a226f4391b8306847ced2746:f58d50cdcf27b0ef4cd33eb7751cfcb0$"
 }
 }

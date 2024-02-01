@@ -147,10 +147,10 @@
 "meta": {
 	"app": "https://www.codeandweb.com/texturepacker",
 	"version": "1.0",
-	"image": "GlyphFateDeckAtlas0.png",
+	"image": "GlyphFateAtlas0.png",
 	"format": "RGBA8888",
 	"size": {"w":1024,"h":1024},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:f3363c3225f357646d56772c6c6422df:64ac2a30655e12107409bf333593a1c5:0194d59deb9d6ea172016c65257ab294$"
+	"smartupdate": "$TexturePacker:SmartUpdate:9cb965caef8d872c8e01c77ae026618a:aa1f073e5c682b8af172ba7625b2bcbb:75d98b905c74c46a005a0d0a250ac758$"
 }
 }

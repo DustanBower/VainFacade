@@ -147,10 +147,10 @@
 "meta": {
 	"app": "https://www.codeandweb.com/texturepacker",
 	"version": "1.0",
-	"image": "GlyphDestructionDeckAtlas0.png",
+	"image": "GlyphDestructionAtlas0.png",
 	"format": "RGBA8888",
 	"size": {"w":1024,"h":1024},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:52a1e4605688ee2b09122e8e33a121ff:7e7fc201ffbfba3492976d505231b6ab:d36a555b4676deaaec2ae071cb45f40b$"
+	"smartupdate": "$TexturePacker:SmartUpdate:1326f33b0a3c8a1fbfbc162a2665d29c:0a9b2de44ddc6db68072c75196bd7c48:c0a7459be5d9c29b963ffcc71d72f689$"
 }
 }
