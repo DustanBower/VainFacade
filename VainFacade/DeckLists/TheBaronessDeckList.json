@@ -80,6 +80,7 @@
 			"openingLines": {
 				"SpookyGhostwriter.SilhouetteCharacter": "Vat a lovely veil! It vould look better... on [b]me[/b]!",
 				"VainFacadePlaytest.FridayCharacter": "Vat a fabulous little automaton! Come show me your tricks.",
+				"VainFacadePlaytest.GlyphCharacter": "Enough meddling, pawn. Zis time you vill go to zee Undervorld for good.",
 				"default": "You believe zat you can oppose [b]me[/b]? How delightful!"
 			}
 		},
@@ -200,7 +201,7 @@
 				"spell"
 			],
 			"body": [
-				"Each hero destroys one of their non-character cards for each point of resonance they have.",
+				"Each hero destroys one of their non-character, non-blood cards for each point of resonance they have.",
 				"For each card destroyed this way, destroy 1 Blood card owned by that hero.",
 				"Then {TheBaroness} deals each hero target that did not destroy a card in this way {H - 1} infernal damage."
 			],
