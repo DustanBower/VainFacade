@@ -194,6 +194,62 @@
     <Compile Include="Friday\TechnologicalDuplicationCardController.cs" />
     <Compile Include="Friday\UnstableCircuitryCardController.cs" />
     <Compile Include="Friday\VesselOfDestructionCardController.cs" />
+    <Compile Include="Glyph\ABrushWithDeathCardController.cs" />
+    <Compile Include="Glyph\Character\GlyphBaseCharacterCardController.cs" />
+    <Compile Include="Glyph\Character\GlyphCharacterCardController.cs" />
+    <Compile Include="Glyph\Character\GlyphTurnTakerController.cs" />
+    <Compile Include="Glyph\Death\ABrushWithDeathDeathCardController.cs" />
+    <Compile Include="Glyph\Death\MilektithasDarkSummonsDeathCardController.cs" />
+    <Compile Include="Glyph\Death\MinetkasProclamationDeathCardController.cs" />
+    <Compile Include="Glyph\Death\OccludedMarionetteDeathCardController.cs" />
+    <Compile Include="Glyph\Death\RitualCircleDeathCardController.cs" />
+    <Compile Include="Glyph\Death\SympatheticCastingDeathCardController.cs" />
+    <Compile Include="Glyph\Death\UnspokenDecreeDeathCardController.cs" />
+    <Compile Include="Glyph\Death\WalkingTheWebDeathCardController.cs" />
+    <Compile Include="Glyph\Destruction\MaledictionOfInaalaDestructionCardController.cs" />
+    <Compile Include="Glyph\Destruction\MinetkasProclamationDestructionCardController.cs" />
+    <Compile Include="Glyph\Destruction\OccludedMarionetteDestructionCardController.cs" />
+    <Compile Include="Glyph\Destruction\ReturnToSilenceDestructionCardController.cs" />
+    <Compile Include="Glyph\Destruction\RitualCircleDestructionCardController.cs" />
+    <Compile Include="Glyph\Destruction\SympatheticCastingDestructionCardController.cs" />
+    <Compile Include="Glyph\Destruction\WalkingTheWebDestructionCardController.cs" />
+    <Compile Include="Glyph\Destruction\WrittenFutureDestructionCardController.cs" />
+    <Compile Include="Glyph\Fate\ABrushWithDeathFateCardController.cs" />
+    <Compile Include="Glyph\Fate\InscrutableTutelageFateCardController.cs" />
+    <Compile Include="Glyph\Fate\MaledictionOfInaalaFateCardController.cs" />
+    <Compile Include="Glyph\Fate\MilektithasDarkSummonsFateCardController.cs" />
+    <Compile Include="Glyph\Fate\ReturnToSilenceFateCardController.cs" />
+    <Compile Include="Glyph\Fate\RitualCircleFateCardController.cs" />
+    <Compile Include="Glyph\Fate\SympatheticCastingFateCardController.cs" />
+    <Compile Include="Glyph\Fate\WalkingTheWebFateCardController.cs" />
+    <Compile Include="Glyph\InscrutableTutelageCardController.cs" />
+    <Compile Include="Glyph\Insight\InscrutableTutelageInsightCardController.cs" />
+    <Compile Include="Glyph\Insight\MaledictionOfInaalaInsightCardController.cs" />
+    <Compile Include="Glyph\Insight\MilektithasDarkSummonsInsightCardController.cs" />
+    <Compile Include="Glyph\Insight\MinetkasProclamationInsightCardController.cs" />
+    <Compile Include="Glyph\Insight\OccludedMarionetteInsightCardController.cs" />
+    <Compile Include="Glyph\Insight\ReturnToSilenceInsightCardController.cs" />
+    <Compile Include="Glyph\Insight\UnspokenDecreeInsightCardController.cs" />
+    <Compile Include="Glyph\Insight\WrittenFutureInsightCardController.cs" />
+    <Compile Include="Glyph\MaledictionOfInaalaCardController.cs" />
+    <Compile Include="Glyph\Might\EmbroideredCloakCardController.cs" />
+    <Compile Include="Glyph\Might\SigiledBladeCardController.cs" />
+    <Compile Include="Glyph\Might\SphereOfNalatukhaCardController.cs" />
+    <Compile Include="Glyph\Might\SuntulusCompendiumCardController.cs" />
+    <Compile Include="Glyph\MilektithasDarkSummonsCardController.cs" />
+    <Compile Include="Glyph\MinetkasProclamationCardController.cs" />
+    <Compile Include="Glyph\OccludedMarionetteCardController.cs" />
+    <Compile Include="Glyph\ReturnToSilenceCardController.cs" />
+    <Compile Include="Glyph\RitualCircleCardController.cs" />
+    <Compile Include="Glyph\SympatheticCastingCardController.cs" />
+    <Compile Include="Glyph\UnspokenDecreeCardController.cs" />
+    <Compile Include="Glyph\Utilities\EmbroideredCloakCannotPlayCardsStatusEffect.cs" />
+    <Compile Include="Glyph\Utilities\EmbroideredCloakStatusEffect.cs" />
+    <Compile Include="Glyph\Utilities\GlyphCardUtilities.cs" />
+    <Compile Include="Glyph\Utilities\GlyphLimitedCard.cs" />
+    <Compile Include="Glyph\Utilities\ReturnToSilenceStatusEffect.cs" />
+    <Compile Include="Glyph\WalkingTheWebCardController.cs" />
+    <Compile Include="Glyph\WrittenFutureCardController.cs" />
     <Compile Include="Grandfather\AcceleratedTimetableCardController.cs" />
     <Compile Include="Grandfather\ArrowOfTimeCardController.cs" />
     <Compile Include="Grandfather\BendingTheRulesCardController.cs" />
@@ -426,6 +482,9 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="DeckLists\PeacekeeperDeckList.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="DeckLists\GlyphDeckList.json" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
