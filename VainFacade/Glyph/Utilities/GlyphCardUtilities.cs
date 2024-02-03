@@ -34,7 +34,7 @@ namespace VainFacadePlaytest.Glyph
                 }
                 return $"{description} are in: {text}.";
             }
-            return $"There are no {description} in play.";
+            return $"There are no {(description == "your face-down cards" ? $"face-down cards belonging to {this.TurnTaker.Name}" : description)} in play.";
         }
 
         public enum CustomDecisionMode
