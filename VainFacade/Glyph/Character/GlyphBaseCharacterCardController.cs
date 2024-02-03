@@ -117,6 +117,9 @@ namespace VainFacadePlaytest.Glyph
 
             //Some cards that reveal and play cards from Glyph's deck do not clean up the revealed cards if they cannot be played (e.g. Mission Control). Move any cards left in Glyph's revealed cards to her trash.
             AddPhaseChangeTrigger((TurnTaker tt) => true, (Phase p) => true, (PhaseChangeAction pca) => this.TurnTaker.Revealed.Cards.Any(), (PhaseChangeAction pca) => CleanupCardsAtLocations(new Location[] { this.TurnTaker.Revealed }.ToList(), this.TurnTaker.Trash, isReturnedToOriginalLocation: false, isDiscard: false),new TriggerType[] {TriggerType.Hidden, TriggerType.MoveCard },TriggerTiming.Before);
+
+            //If Santa Guise flips one of Glyph's limited cards when another copy is in play, it doesn't get moved to the trash.
+            AddTrigger<FlipCardAction>((FlipCardAction fc) => FindCardController(fc.CardToFlip.Card) is GlyphLimitedCard && FindCardsWhere((Card c) => c.IsInPlayAndHasGameText && c.Title == fc.CardToFlip.Card.Title && c != fc.CardToFlip.Card).Any(), HandleLimited, TriggerType.MoveCard, TriggerTiming.After);
         }
 
         private IEnumerator PlayFaceDownInstead(PlayCardAction pca)
@@ -314,6 +317,29 @@ namespace VainFacadePlaytest.Glyph
                 {
                     base.GameController.ExhaustCoroutine(coroutine);
                 }
+            }
+        }
+
+        private IEnumerator HandleLimited(FlipCardAction fc)
+        {
+            IEnumerator coroutine = base.GameController.SendMessageAction($"{this.TurnTaker.Name} tried to play {fc.CardToFlip.Card.Title}, but it is a limited card that is already in play. Moving it to {this.TurnTaker.Trash.GetFriendlyName()}.",Priority.High,GetCardSource());
+            if (base.UseUnityCoroutines)
+            {
+                yield return base.GameController.StartCoroutine(coroutine);
+            }
+            else
+            {
+                base.GameController.ExhaustCoroutine(coroutine);
+            }
+
+            coroutine = base.GameController.MoveCard(this.TurnTakerController, fc.CardToFlip.Card, this.TurnTaker.Trash, cardSource: GetCardSource());
+            if (base.UseUnityCoroutines)
+            {
+                yield return base.GameController.StartCoroutine(coroutine);
+            }
+            else
+            {
+                base.GameController.ExhaustCoroutine(coroutine);
             }
         }
     }
