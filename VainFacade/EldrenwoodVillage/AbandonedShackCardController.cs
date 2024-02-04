@@ -63,7 +63,8 @@ namespace VainFacadePlaytest.EldrenwoodVillage
                 base.GameController.ExhaustCoroutine(drawCoroutine);
             }
             // "Reduce damage dealt to heroes that do so by 2 until the start of the next environment turn."
-            ReduceDamageStatusEffect wall = new ReduceDamageStatusEffect(2);
+            //ReduceDamageStatusEffect wall = new ReduceDamageStatusEffect(2);
+            FixedReduceDamageStatusEffect wall = new FixedReduceDamageStatusEffect(2);
             wall.TargetCriteria.IsHeroCharacterCard = true;
             wall.TargetCriteria.OwnedBy = tt;
             if (tt.HasMultipleCharacterCards)
