@@ -1,0 +1,121 @@
+{
+	"name": "Doomsayer",
+	"sortName": "Doomsayer",
+	"kind": "Villain",
+	"initialCardIdentifiers": [
+		"DoomsayerCharacter",
+		"CountlessWordsCharacter"
+	],
+	"cards": [
+		{
+			"identifier": "DoomsayerCharacter",
+			"count": 1,
+			"title": "Doomsayer",
+			"keywords": [
+				"villain"
+			],
+			"body": "Cheating Fate",
+			"backgroundColor": "AC0000",
+			"character": true,
+			"hitpoints": 13,
+			"nemesisIdentifiers": [
+				"VainFacadePlaytest.Fury"
+			],
+			"setup": [
+				""
+			],
+			"gameplay": [
+				""
+			],
+			"advanced": "",
+			"icons": [
+				""
+			],
+			"advancedIcons": [
+				""
+			],
+			"flippedBody": "InevitableDoom",
+			"flippedGameplay": [
+				""
+			],
+			"flippedAdvanced": "",
+			"flippedIcons": [
+				""
+			],
+			"flippedAdvancedIcons": [
+				""
+			],
+			"difficulty": 4,
+			"openingLines": {
+				"default": ""
+			}
+		},
+		{
+			"identifier": "CountlessWords",
+			"count": 1,
+			"title": "Countless Words",
+			"keywords": [
+				"pattern",
+				"fate"
+			],
+			"body": [
+				"When there are 4 cards under this card, flip this card.",
+				"When there are 2 or fewer cards under this card, {Doomsayer} and proclamations are indestructible.",
+				"When there are no cards under this card, villain cards are indestructible and {Doomsayer} is immune to damage."
+			],
+			"flavorQuotes": [
+				{
+					"identifier": "Doomsayer",
+					"text": "Do you really think you can{BR}beat me? You can't even control{BR}the darkness within yourself."
+				}
+			],
+			"flavorReference": "Doomsayer, Fury: Sins of the Siblings #23"
+		},
+		{
+			"identifier": "TheSilentBalance",
+			"count": 1,
+			"title": "The Silent Balance",
+			"keywords": [
+				"pattern",
+				"providence"
+			],
+			"body": [
+				"Reduce damage dealt to hero targets by 1.",
+				"Each hero gains the following power:"
+			],
+			"powers": "Destroy an ongoing or increase the next damage dealt to {Doomsayer} by 3.",
+			"flavorQuotes": [
+				{
+					"identifier": "Liana",
+					"text": "What do you{BR}say, Fury? Wanna [b]Dance[/b]?"
+				}
+			],
+			"flavorReference": "Liana, Fury: Sins of the Siblings #23"
+		},
+		{
+			"identifier": "CountlessWordsCharacter",
+			"count": 1,
+			"title": "Countless Words",
+			"keywords": [
+				"pattern",
+				"fate"
+			],
+			"backgroundColor": "AC0000",
+			"character": true,
+			"icons": [
+				"Indestructible",
+				"ImmuneToDamage"
+			],
+			"flippedKeywords": [
+				"pattern",
+				"providence"
+			],
+			"flippedTitle": "The Silent Balance",
+			"flippedIcons": [
+				"ReduceDamageTaken",
+				"HasPower",
+				"IncreaseDamageTaken"
+			]
+		}
+	]
+}
