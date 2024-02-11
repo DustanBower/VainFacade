@@ -91,31 +91,6 @@
 				}
 			],
 			"flavorReference": "Liana, Fury: Sins of the Siblings #23"
-		},
-		{
-			"identifier": "CountlessWordsCharacter",
-			"count": 1,
-			"title": "Countless Words",
-			"keywords": [
-				"pattern",
-				"fate"
-			],
-			"backgroundColor": "AC0000",
-			"character": true,
-			"icons": [
-				"Indestructible",
-				"ImmuneToDamage"
-			],
-			"flippedKeywords": [
-				"pattern",
-				"providence"
-			],
-			"flippedTitle": "The Silent Balance",
-			"flippedIcons": [
-				"ReduceDamageTaken",
-				"HasPower",
-				"IncreaseDamageTaken"
-			]
 		}
 	]
 }
