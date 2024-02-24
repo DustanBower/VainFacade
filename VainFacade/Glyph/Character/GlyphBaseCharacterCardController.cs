@@ -281,7 +281,7 @@ namespace VainFacadePlaytest.Glyph
         public override bool AskIfCardContainsKeyword(Card card, string keyword, bool evenIfUnderCard = false, bool evenIfFaceDown = false)
         {
             List<Location> affected = GetAffectedPlayAreas();
-            if (affected != null && keyword == "ongoing" && !card.IsTarget && !card.IsCharacter && affected.Contains(card.Location.HighestRecursiveLocation))
+            if (affected != null && keyword == "ongoing" && !card.IsTarget && !card.IsCharacter && affected.Contains(card.Location.HighestRecursiveLocation) && base.GameController.IsCardVisibleToCardSource(card,GetCardSource()) && !card.IsFaceDownNonCharacter && !card.IsUnderCard)
             {
                 return true;
             }
@@ -291,7 +291,7 @@ namespace VainFacadePlaytest.Glyph
         public override IEnumerable<string> AskForCardAdditionalKeywords(Card card)
         {
             List<Location> affected = GetAffectedPlayAreas();
-            if (affected != null && !card.IsTarget && !card.IsCharacter && affected.Contains(card.Location.HighestRecursiveLocation))
+            if (affected != null && !card.IsTarget && !card.IsCharacter && affected.Contains(card.Location.HighestRecursiveLocation) && base.GameController.IsCardVisibleToCardSource(card, GetCardSource()) && !card.IsFaceDownNonCharacter && !card.IsUnderCard)
             {
                 return new string[1]
                 {
