@@ -148,19 +148,25 @@ namespace VainFacadeTest
         {
             SetupGameController("AkashBhuta", "VainFacadePlaytest.Banshee", "Legacy", "Bunker", "Ra", "InsulaPrimalis");
             StartGame();
+            this.GameController.OnMakeDecisions -= MakeDecisions;
+            this.GameController.OnMakeDecisions += MakeDecisions2;
 
             //When {Banshee} would be incapacitated, each player may first play a card.
             //Power: Draw a card. 1 incapacitated hero activates an ability. Then, if {Banshee} has 10 or fewer hp, you may play a card.
             Card better = PlayCard("BetterOffDead");
+            MoveAllCards(banshee, banshee.HeroTurnTaker.Hand, banshee.TurnTaker.Trash);
             MoveAllCards(legacy, legacy.HeroTurnTaker.Hand, legacy.TurnTaker.Trash);
             MoveAllCards(bunker, bunker.HeroTurnTaker.Hand, bunker.TurnTaker.Trash);
             MoveAllCards(ra, ra.HeroTurnTaker.Hand, ra.TurnTaker.Trash);
+            PutInHand("GraveRobber");
+            Card flesh = PutInTrash("FleshOfTheSunGod");
+            DecisionSelectCard = flesh;
             Card fortitude = PutInHand("Fortitude");
             Card ammo = PutInHand("AmmoDrop");
             Card blaze = PutInHand("BlazingTornado");
             
             SetupIncap(akash);
-            AssertIsInPlay(new Card[] { fortitude, ammo, blaze });
+            AssertIsInPlay(new Card[] {flesh, fortitude, ammo, blaze });
         }
 
         [Test()]
