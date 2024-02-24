@@ -40,6 +40,14 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":177,"h":256},
 	"sourceSize": {"w":177,"h":256}
 },
+"DoomsayerCharacter.png":
+{
+	"frame": {"x":542,"y":259,"w":178,"h":256},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":178,"h":256},
+	"sourceSize": {"w":178,"h":256}
+},
 "EldrenwoodVillageDeckBack.png":
 {
 	"frame": {"x":540,"y":0,"w":177,"h":256},
@@ -58,7 +66,7 @@
 },
 "FridayCharacter.png":
 {
-	"frame": {"x":542,"y":259,"w":178,"h":256},
+	"frame": {"x":723,"y":259,"w":178,"h":256},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":178,"h":256},
@@ -66,7 +74,7 @@
 },
 "GlyphCharacter.png":
 {
-	"frame": {"x":723,"y":259,"w":178,"h":256},
+	"frame": {"x":904,"y":259,"w":178,"h":256},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":178,"h":256},
@@ -98,7 +106,7 @@
 },
 "PeacekeeperCharacter.png":
 {
-	"frame": {"x":904,"y":259,"w":178,"h":256},
+	"frame": {"x":1085,"y":259,"w":178,"h":256},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":178,"h":256},
@@ -106,7 +114,7 @@
 },
 "PushCharacter.png":
 {
-	"frame": {"x":1085,"y":259,"w":178,"h":256},
+	"frame": {"x":1266,"y":259,"w":178,"h":256},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":178,"h":256},
@@ -151,6 +159,6 @@
 	"format": "RGBA8888",
 	"size": {"w":2048,"h":2048},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:1b3667a4ac3659d8acf75e424cccae0b:693e587677c6ce845b5d52220fa4ad14:4ee285c32a91b7652e02ac049f918b2a$"
+	"smartupdate": "$TexturePacker:SmartUpdate:e65b07fc300e01c18f9b9fee5180e479:afb032fea9b876f8b606510c9186cb3e:4ee285c32a91b7652e02ac049f918b2a$"
 }
 }
