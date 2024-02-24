@@ -40,7 +40,8 @@
 			"complexity": 3,
 			"openingLines": {
 				"default": "Your [b]iniquities[/b] echo in the deep, screaming for [b]retribution[/b]!",
-				"OblivAeonFrontPageCharacter": "With your appearance unappointed, these are not your threads to cut."
+				"OblivAeonFrontPageCharacter": "With your appearance unappointed, these are not your threads to cut.",
+				"VainFacadePlaytest.DoomsayerCharacter": "Vile serpent! Too long have your lies twisted the tapestry!"
 			}
 		},
 		{

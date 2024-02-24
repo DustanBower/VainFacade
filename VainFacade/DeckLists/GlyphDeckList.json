@@ -44,7 +44,8 @@
 				"Cauldron.DendronCharacter": "Passable technique, but nothing I haven't seen before.",
 				"WindcolorDendronCharacter": "Huh. Interesting...",
 				"IronLegacyCharacter": "What use are your heroes and villains? All that matters is the balance. I uphold it, you disrupt it.",
-				"OblivAeonFrontPageCharacter": "You're just another blight on the balance. You'll end like the rest."
+				"OblivAeonFrontPageCharacter": "You're just another blight on the balance. You'll end like the rest.",
+				"VainFacadePlaytest.DoomsayerCharacter": "Your words are as empty as your future, Oathbreaker."
 			},
 			"openingLineRequests": {
 				"OblivAeonFrontPageCharacter": "TheHarpyCharacter",
