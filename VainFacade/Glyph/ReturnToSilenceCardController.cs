@@ -42,7 +42,7 @@ namespace VainFacadePlaytest.Glyph
             {
                 //If you do, each non-character non-target card in that card's play area gains the ongoing keyword this turn.
                 Location loc = locationMight.FirstOrDefault();
-                List<Card> affectedCards = FindCardsWhere((Card c) => c.IsInPlayAndHasGameText && c.Location.HighestRecursiveLocation == loc && !c.IsCharacter && !c.IsTarget).ToList();
+                List<Card> affectedCards = FindCardsWhere((Card c) => c.IsInPlayAndHasGameText && c.Location.HighestRecursiveLocation == loc && !c.IsCharacter && !c.IsTarget && !c.IsFaceDownNonCharacter && !c.IsUnderCard).ToList();
                 coroutine = base.GameController.ModifyKeywords("ongoing", true, affectedCards, GetCardSource());
                 if (base.UseUnityCoroutines)
                 {
