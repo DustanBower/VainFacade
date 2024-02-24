@@ -1,0 +1,244 @@
+{"frames": {
+
+"ACertainFinality.png":
+{
+	"frame": {"x":0,"y":259,"w":256,"h":198},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":256,"h":198},
+	"sourceSize": {"w":256,"h":198}
+},
+"AcolytesOfTheBlackThorn.png":
+{
+	"frame": {"x":0,"y":0,"w":178,"h":256},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":178,"h":256},
+	"sourceSize": {"w":178,"h":256}
+},
+"AcolytesOfTheBlackThornBack.png":
+{
+	"frame": {"x":181,"y":0,"w":178,"h":256},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":178,"h":256},
+	"sourceSize": {"w":178,"h":256}
+},
+"AFriendlyFace.png":
+{
+	"frame": {"x":259,"y":259,"w":256,"h":198},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":256,"h":198},
+	"sourceSize": {"w":256,"h":198}
+},
+"Bladewight.png":
+{
+	"frame": {"x":362,"y":0,"w":178,"h":256},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":178,"h":256},
+	"sourceSize": {"w":178,"h":256}
+},
+"BladewightBack.png":
+{
+	"frame": {"x":543,"y":0,"w":178,"h":256},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":178,"h":256},
+	"sourceSize": {"w":178,"h":256}
+},
+"BloodBoundFate.png":
+{
+	"frame": {"x":518,"y":259,"w":256,"h":198},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":256,"h":198},
+	"sourceSize": {"w":256,"h":198}
+},
+"CountlessWords.png":
+{
+	"frame": {"x":724,"y":0,"w":178,"h":256},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":178,"h":256},
+	"sourceSize": {"w":178,"h":256}
+},
+"CountlessWordsBack.png":
+{
+	"frame": {"x":905,"y":0,"w":178,"h":256},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":178,"h":256},
+	"sourceSize": {"w":178,"h":256}
+},
+"DarkestBeforeTheDawn.png":
+{
+	"frame": {"x":777,"y":259,"w":256,"h":198},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":256,"h":198},
+	"sourceSize": {"w":256,"h":198}
+},
+"DictatingDestiny.png":
+{
+	"frame": {"x":1036,"y":259,"w":256,"h":198},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":256,"h":198},
+	"sourceSize": {"w":256,"h":198}
+},
+"DifferentTimesDifferentFaces.png":
+{
+	"frame": {"x":1295,"y":259,"w":256,"h":198},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":256,"h":198},
+	"sourceSize": {"w":256,"h":198}
+},
+"DoomsayerCharacter.png":
+{
+	"frame": {"x":1086,"y":0,"w":178,"h":256},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":178,"h":256},
+	"sourceSize": {"w":178,"h":256}
+},
+"DoomsayerCharacterBack.png":
+{
+	"frame": {"x":1267,"y":0,"w":178,"h":256},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":178,"h":256},
+	"sourceSize": {"w":178,"h":256}
+},
+"DoomsayerDeckBack.png":
+{
+	"frame": {"x":1448,"y":0,"w":178,"h":256},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":178,"h":256},
+	"sourceSize": {"w":178,"h":256}
+},
+"FutileEfforts.png":
+{
+	"frame": {"x":1554,"y":259,"w":256,"h":198},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":256,"h":198},
+	"sourceSize": {"w":256,"h":198}
+},
+"Ingini.png":
+{
+	"frame": {"x":1629,"y":0,"w":178,"h":256},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":178,"h":256},
+	"sourceSize": {"w":178,"h":256}
+},
+"InginiBack.png":
+{
+	"frame": {"x":1810,"y":0,"w":178,"h":256},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":178,"h":256},
+	"sourceSize": {"w":178,"h":256}
+},
+"LookingForALoophole.png":
+{
+	"frame": {"x":0,"y":460,"w":256,"h":198},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":256,"h":198},
+	"sourceSize": {"w":256,"h":198}
+},
+"NothingToSeeHere.png":
+{
+	"frame": {"x":259,"y":460,"w":256,"h":198},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":256,"h":198},
+	"sourceSize": {"w":256,"h":198}
+},
+"SeeingRed.png":
+{
+	"frame": {"x":518,"y":460,"w":256,"h":198},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":256,"h":198},
+	"sourceSize": {"w":256,"h":198}
+},
+"SilverTonguedDevil.png":
+{
+	"frame": {"x":777,"y":460,"w":256,"h":198},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":256,"h":198},
+	"sourceSize": {"w":256,"h":198}
+},
+"SomeoneInNeed.png":
+{
+	"frame": {"x":1036,"y":460,"w":256,"h":198},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":256,"h":198},
+	"sourceSize": {"w":256,"h":198}
+},
+"TheyOweYou.png":
+{
+	"frame": {"x":1295,"y":460,"w":256,"h":198},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":256,"h":198},
+	"sourceSize": {"w":256,"h":198}
+},
+"YouAreAlone.png":
+{
+	"frame": {"x":1554,"y":460,"w":256,"h":198},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":256,"h":198},
+	"sourceSize": {"w":256,"h":198}
+},
+"YouAreBroken.png":
+{
+	"frame": {"x":0,"y":661,"w":256,"h":198},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":256,"h":198},
+	"sourceSize": {"w":256,"h":198}
+},
+"YouAreRunningOutOfTime.png":
+{
+	"frame": {"x":259,"y":661,"w":256,"h":198},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":256,"h":198},
+	"sourceSize": {"w":256,"h":198}
+},
+"YouCantChange.png":
+{
+	"frame": {"x":518,"y":661,"w":256,"h":198},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":256,"h":198},
+	"sourceSize": {"w":256,"h":198}
+},
+"YouHaveNoChoice.png":
+{
+	"frame": {"x":777,"y":661,"w":256,"h":198},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":256,"h":198},
+	"sourceSize": {"w":256,"h":198}
+}},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "DoomsayerAtlas0.png",
+	"format": "RGBA8888",
+	"size": {"w":2048,"h":2048},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:e83048996d4bfa4d270b15760ccf9cda:cce793818ad9524ceec93c58e17b7c1e:965ba888d34d61991fca82c02cfd09d6$"
+}
+}
