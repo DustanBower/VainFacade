@@ -1,0 +1,752 @@
+{
+	"name": "Doomsayer",
+	"kind": "Villain",
+	"initialCardIdentifiers": [
+		"DoomsayerCharacter"
+	],
+	"cards": [
+		{
+			"identifier": "DoomsayerCharacter",
+			"count": 1,
+			"title": "Doomsayer",
+			"keywords": [
+				"villain"
+			],
+			"body": "Cheating Fate",
+			"backgroundColor": "AC0000",
+			"character": true,
+			"hitpoints": 13,
+			"nemesisIdentifiers": [
+				"VainFacadePlaytest.TheFury"
+			],
+			"setup": [
+				"Put {CountlessWords} into play. Shuffle {AcolytesOfTheBlackThorn}, {Bladewight}, and {Ingini} into the villain deck. Reveal cards from the top of the villain deck until a target and a proclamation are revealed. Put the first revealed card of each type into play. Shuffle the rest into the villain deck."
+			],
+			"gameplay": [
+				"Non-villain cards can’t affect villain patterns in play.",
+				"When a villain character is destroyed, remove it from the game.",
+				"When {Doomsayer} is destroyed, the heroes win.",
+				"Reduce damage dealt to {Doomsayer} by 1 for each other villain target in play.",
+				"At the start of the villain turn, {Doomsayer} regains 13 hp.",
+				"At the end of the villain turn, shuffle all patterns from the villain trash into the villain deck, then reveal cards from the top of the villain deck until a pattern is revealed. Put it into play. Shuffle the rest into the villain deck. Then flip this card."
+			],
+			"advanced": "Increase damage dealt to hero targets by 1.",
+			"icons": [
+				"ReduceDamageTaken",
+				"StartAndEndOfTurnAction",
+				"GainHP",
+				"Search"
+			],
+			"advancedIcons": [
+				"IncreaseDamageTaken"
+			],
+			"flippedBody": "Inevitable Doom",
+			"flippedGameplay": [
+				"Non-villain cards can’t affect villain patterns in play.",
+				"When a villain character is destroyed, remove it from the game.",
+				"When {Doomsayer} is destroyed, the heroes win.",
+				"When a villain pattern is moved under {CountlessWords}, flip this card.",
+				"Reduce damage dealt to {Doomsayer} by 1 for each other villain target in play.",
+				"At the start of the villain turn, {Doomsayer} regains 13 hp.",
+				"At the end of the villain turn, {Doomsayer} deals each hero target 1 infernal damage. If no damage is dealt this way, play the top card of the environment deck."
+			],
+			"flippedAdvanced": "At the start of the villain turn, play the top card of the villain deck.",
+			"flippedIcons": [
+				"ReduceDamageTaken",
+				"StartAndEndOfTurnAction",
+				"GainHP",
+				"DealDamageInfernal"
+			],
+			"flippedAdvancedIcons": [
+				"PlayCardNow"
+			],
+			"difficulty": 2,
+			"challengeTitle": "Herald of Ruin",
+			"challengeText": "When damage would be dealt to a hero target, increase that damage by 1 for each proclamation in that target's play area.",
+			"challengeIcons": [
+				"IncreaseDamageTaken"
+			],
+			"openingLines": {
+				"default": "I'm glad everyone could make it. We need to talk.",
+				"VainFacadePlaytest.TheFuryCharacter": "Return to my side and complete the work that we've begun.",
+				"VainFacadePlaytest.GlyphCharacter": "Initiate Ellington, Brother Stevens will never see your true potential. Join me instead."
+			}
+		},
+		{
+			"identifier": "CountlessWords",
+			"count": 1,
+			"title": "Countless Words",
+			"keywords": [
+				"pattern",
+				"fate"
+			],
+			"backgroundColor": "AC0000",
+			"character": true,
+			"icons": [
+				"Indestructible",
+				"ImmuneToDamage"
+			],
+			"flippedTitle": "The Silent Balance",
+			"flippedIcons": [
+				"ReduceDamageTaken",
+				"HasPower",
+				"IncreaseDamageTaken"
+			]
+		},
+		{
+			"identifier": "AcolytesOfTheBlackThorn",
+			"count": 1,
+			"title": "Acolytes of the Black Thorn",
+			"keywords": [
+				"villain",
+				"nemesis"
+			],
+			"body": "Spellbound Followers",
+			"backgroundColor": "AC0000",
+			"character": true,
+			"hitpoints": 50,
+			"nemesisIdentifiers": [
+				"VainFacadePlaytest.TheFury"
+			],
+			"gameplay": [
+				"The first time each turn this card is dealt damage, reveal and replace the top card of the villain deck, then 1 player may play a card.",
+				"At the end of the villain turn, if there is an ongoing on top the villain trash, this card deals the hero target with the second highest HP {H} infernal damage. Otherwise this card deals the {H - 1} hero targets with the lowest HP 1 melee and 1 infernal damage each."
+			],
+			"icons": [
+				"Manipulate",
+				"PlayCardNow",
+				"EndOfTurnAction",
+				"DealDamageInfernal",
+				"DealDamageMelee"
+			],
+			"flippedNemesisIdentifiers": [
+				"VainFacadePlaytest.TheFury"
+			],
+			"flippedBody": "Spellbound Followers",
+			"flippedGameplay": [
+				"The first time each turn this card is dealt damage, reveal and replace the top card of the villain deck, then 1 player may play a card.",
+				"At the end of the villain turn, if there is an ongoing on top the villain trash, this card deals the hero target with the second highest HP {H} infernal damage. Otherwise this card deals the {H - 1} hero targets with the lowest HP 1 melee and 1 infernal damage each."
+			],
+			"flippedIcons": [
+				"Manipulate",
+				"PlayCardNow",
+				"EndOfTurnAction",
+				"DealDamageInfernal",
+				"DealDamageMelee"
+			]
+		},
+		{
+			"identifier": "Bladewight",
+			"count": 1,
+			"title": "Bladewight",
+			"keywords": [
+				"villain",
+				"nemesis",
+				"undead"
+			],
+			"body": "PeerlessSwordsman",
+			"backgroundColor": "AC0000",
+			"character": true,
+			"hitpoints": 20,
+			"nemesisIdentifiers": [
+				"VainFacadePlaytest.TheFury"
+			],
+			"gameplay": [
+				"When this card would be dealt 5 or fewer damage, reduce that damage to 1.",
+				"When {Bladewight} is dealt damage, increase the next damage dealt by {Bladewight} by 1, then 1 player may draw a card.",
+				"At the end of the villain turn, this card deals the {H - 1} hero targets with the highest HP 2 melee damage each."
+			],
+			"icons": [
+				"ReduceDamageTaken",
+				"IncreaseDamageDealt",
+				"DrawCardNow",
+				"EndOfTurnAction",
+				"DealDamageMelee"
+			],
+			"flippedNemesisIdentifiers": [
+				"VainFacadePlaytest.TheFury"
+			],
+			"flippedBody": "PeerlessSwordsman",
+			"flippedGameplay": [
+				"When this card would be dealt 5 or fewer damage, reduce that damage to 1.",
+				"When {Bladewight} is dealt damage, increase the next damage dealt by {Bladewight} by 1, then 1 player may draw a card.",
+				"At the end of the villain turn, this card deals the {H - 1} hero targets with the highest HP 2 melee damage each."
+			],
+			"flippedIcons": [
+				"ReduceDamageTaken",
+				"IncreaseDamageDealt",
+				"DrawCardNow",
+				"EndOfTurnAction",
+				"DealDamageMelee"
+			]
+		},
+		{
+			"identifier": "Ingini",
+			"count": 1,
+			"title": "Ingini",
+			"keywords": [
+				"villain",
+				"nemesis"
+			],
+			"body": "Dark Sorceror",
+			"backgroundColor": "AC0000",
+			"character": true,
+			"hitpoints": 66,
+			"nemesisIdentifiers": [
+				"VainFacadePlaytest.TheFury"
+			],
+			"gameplay": [
+				"The first time each turn this card is dealt damage, 1 hero may use a power.",
+				"At the end of the villain turn, {Ingini} deals the hero target with the highest HP {H - 3} irreducible infernal damage. Increase damage dealt by {Ingini} by 1 until this card leaves play."
+			],
+			"icons": [
+				"UsePowerNow",
+				"EndOfTurnAction",
+				"DealDamageInfernal",
+				"IncreaseDamageDealt"
+			],
+			"flippedNemesisIdentifiers": [
+				"VainFacadePlaytest.TheFury"
+			],
+			"flippedBody": "Dark Sorceror",
+			"flippedGameplay": [
+				"The first time each turn this card is dealt damage, 1 hero may use a power.",
+				"At the end of the villain turn, {Ingini} deals the hero target with the highest HP {H - 3} irreducible infernal damage. Increase damage dealt by {Ingini} by 1 until this card leaves play."
+			],
+			"flippedIcons": [
+				"UsePowerNow",
+				"EndOfTurnAction",
+				"DealDamageInfernal",
+				"IncreaseDamageDealt"
+			]
+		},
+		{
+			"identifier": "ACertainFinality",
+			"count": 2,
+			"title": "A Certain Finality",
+			"keywords": [
+				"ongoing"
+			],
+			"body": [
+				"When this card enters play, discard cards from the top of the villain deck until a target or proclamation is discarded. Put it into play.",
+				"When damage would be dealt to a hero target, that damage cannot be reduced, redirected, or prevented by non-villain cards."
+			],
+			"icons": [
+				"Search",
+				"MakeDamageIrreducible"
+			],
+			"flavorQuotes": [
+				{
+					"identifier": "Doomsayer",
+					"text": "Why do you make me do this? After everything I’ve done for you. You don’t deserve me. You don’t deserve anything. There’s nothing left for you to do but wither away."
+				}
+			],
+			"flavorReference": "Doomsayer, Fury #49"
+		},
+		{
+			"identifier": "AFriendlyFace",
+			"count": 1,
+			"title": "A Friendly Face",
+			"keywords": [
+				"role"
+			],
+			"body": [
+				"{Doomsayer} is indestructible, immune to damage, and can’t deal damage.",
+				"At the start of each player’s turn, that player may skip their play, power, or draw phase to add a token to this card. Then, if there are more tokens on this card than active heroes, each hero deals itself 1 psychic damage, then remove this card from the game."
+			],
+			"icons": [
+				"Indestructible",
+				"ImmuneToDamage",
+				"CannotDealDamage",
+				"StartOfTurnAction",
+				"AddTokens"
+			],
+			"tokenPools": [
+				{
+					"identifier": "RolePool",
+					"name": "A Friendly Face's Token Pool",
+					"initialValue": 0,
+					"minimumValue": 0
+				}
+			],
+			"flavorQuotes": [
+				{
+					"identifier": "Glyph",
+					"text": "He adopts a role you’re weak to and bends it to control you. You have to be ready – from the core of your being – to walk away from that role if you want to see through it."
+				}
+			],
+			"flavorReference": "Glyph, Weighted Words one-shot"
+		},
+		{
+			"identifier": "BloodBoundFate",
+			"count": 2,
+			"title": "Blood-bound Fate",
+			"keywords": [
+				"ongoing"
+			],
+			"body": [
+				"When this card enters play, a player may move a card from their trash to their hand.",
+				"When a hero would deal damage to {Doomsayer}, they may first deal themselves that same damage.",
+				"When a hero would deal damage to {Doomsayer}, prevent that damage if that hero has not dealt themselves damage this turn."
+			],
+			"icons": [
+				"Manipulate",
+				"DealDamage",
+				"CancelledDamageRed"
+			],
+			"flavorQuotes": [
+				{
+					"identifier": "Liana",
+					"text": "You’re going to kill me for some cult?"
+				},
+				{
+					"identifier": "Morgan",
+					"text": "Kill you? I’m going to make you a god."
+				}
+			],
+			"flavorReference": "Bastion’s Best #25"
+		},
+		{
+			"identifier": "DarkestBeforeTheDawn",
+			"count": 2,
+			"title": "Darkest Before the Dawn",
+			"keywords": [
+				"ongoing"
+			],
+			"body": [
+				"The first time each turn any hero target would be dealt damage, increase that damage by 3.",
+				"When {Doomsayer} regains 13 or more hp at once, destroy an ongoing.",
+				"At the end of each turn, if {Doomsayer} has -13 or fewer hp, he regains 13 HP."
+			],
+			"icons": [
+				"IncreaseDamageTaken",
+				"DestroyOngoing",
+				"EndOfTurnAction",
+				"GainHP"
+			],
+			"flavorQuotes": [
+				{
+					"identifier": "Liana",
+					"text": "I’ve been here many times before. Everything seems dark – it is dark – but it’s not all there is, no matter what he tells you."
+				}
+			],
+			"flavorReference": "Liana, Storm of the Century: Certain Doom"
+		},
+		{
+			"identifier": "DictatingDestiny",
+			"count": 2,
+			"title": "Dictating Destiny",
+			"keywords": [
+				"ongoing"
+			],
+			"body": [
+				"When a villain target would be dealt damage, redirect that damage to the non-villain target with the lowest hp.",
+				"When this card enters play, play the top card of each hero deck in turn order. The first {H - 2} times a non-one-shot enters play this way, play the top card of the villain deck.",
+				"At the end of the villain turn, 1 player may discard 2 cards to destroy this card."
+			],
+			"icons": [
+				"RedirectDamage",
+				"PlayCardNow",
+				"EndOfTurnAction",
+				"Discard",
+				"DestroySelf"
+			],
+			"flavorQuotes": [
+				{
+					"identifier": "Haste",
+					"text": "You can’t speak the future into existence. Time doesn’t work that way."
+				},
+				{
+					"identifier": "Sidewinder",
+					"text": "True. As best I understand it, his words load the quantum dice."
+				}
+			],
+			"flavorReference": "Haste #41"
+		},
+		{
+			"identifier": "DifferentTimesDifferentFaces",
+			"count": 2,
+			"title": "Different Times, Different Faces",
+			"keywords": [
+				"one-shot"
+			],
+			"body": [
+				"Reveal cards from the top of the villain deck until a proclamation and a role are revealed. Put the first revealed card of each type into play. Shuffle the other cards into the villain deck.",
+				"Each player discards a random card from their hand.",
+				"Play the top card of the villain deck."
+			],
+			"icons": [
+				"Search",
+				"Discard",
+				"PlayCardNow"
+			],
+			"flavorQuotes": [
+				{
+					"identifier": "Cynthia Dimitriu",
+					"text": "Who’s your friend? She seems nice. Her tattoo weirds me out, though."
+				},
+				{
+					"identifier": "Roland Pryor",
+					"text": "What tattoo?"
+				}
+			],
+			"flavorReference": "Bastion City: A Spider Never Blinks #84"
+		},
+		{
+			"identifier": "FutileEfforts",
+			"count": 1,
+			"title": "Futile Efforts",
+			"keywords": [
+				"pattern"
+			],
+			"body": [
+				"Reduce hero damage by 1.",
+				"At the end of the villain turn, each player may discard any number of cards. Add a token to this card for each card discarded this way. Then, if there are {H * 3} or more tokens on this card, put this card under {CountlessWords}."
+			],
+			"tokenPools": [
+				{
+					"identifier": "FutileEffortsPool",
+					"name": "Futile Efforts' Token Pool",
+					"initialValue": 0,
+					"minimumValue": 0
+				}
+			],
+			"icons": [
+				"ReduceDamageDealt",
+				"EndOfTurnAction",
+				"Discard",
+				"AddTokens"
+			],
+			"flavorQuotes": [
+				{
+					"identifier": "Carnaval",
+					"text": "I don’t know why I bothered putting on the mask again. Nothing’s changed. I’m done pretending. There’s something [b]wrong[/b] with the world."
+				}
+			],
+			"flavorReference": "Carnaval, Carnaval #31"
+		},
+		{
+			"identifier": "LookingForALoophole",
+			"count": 1,
+			"title": "Looking for a Loophole",
+			"keywords": [
+				"pattern"
+			],
+			"body": [
+				"At the end of each hero turn, that hero’s player discards 1 card or destroys one of their ongoing or equipment cards, then may play a card.",
+				"Then they may discard a card to put a token on this card. Then, if there are {H} or more tokens on this card, put this card under {CountlessWords}."
+			],
+			"tokenPools": [
+				{
+					"identifier": "LookingForALoopholePool",
+					"name": "Looking for a Loophole's Token Pool",
+					"initialValue": 0,
+					"minimumValue": 0
+				}
+			],
+			"icons": [
+				"EndOfTurnAction",
+				"Discard",
+				"DestroyOngoing",
+				"DestroyEquipment",
+				"PlayCardNow",
+				"AddTokens"
+			],
+			"flavorQuotes": [
+				{
+					"identifier": "Banshee",
+					"text": "Why are the Fates doing this? There must be something we can offer them!"
+				},
+				{
+					"identifier": "Liana",
+					"text": "I’ve come to realize the Fates don’t make deals with us. The deals we make are with ourselves."
+				}
+			],
+			"flavorReference": "Guardians at the Gate #6"
+		},
+		{
+			"identifier": "NothingToSeeHere",
+			"count": 1,
+			"title": "Nothing to See Here",
+			"keywords": [
+				"pattern"
+			],
+			"body": [
+				"The first time each turn each hero is dealt damage by any non-hero card other than {Doomsayer}, put a token on this card. Then if there are {H} or more tokens on this card, put this card under {CountlessWords}.",
+				"At the end of the villain turn, play the top card of the villain deck."
+			],
+			"tokenPools": [
+				{
+					"identifier": "NothingToSeeHerePool",
+					"name": "Nothing to See Here's Token Pool",
+					"initialValue": 0,
+					"minimumValue": 0
+				}
+			],
+			"icons": [
+				"AddTokens",
+				"EndOfTurnAction",
+				"PlayCardNow"
+			],
+			"flavorQuotes": [
+				{
+					"identifier": "Sheriff Smithy",
+					"text": "Listen, son, don’t know what you come out her for, but ain’t nothin’ untoward happenin’ nowhere near Eldrenwood. I know this area in and out."
+				}
+			],
+			"flavorReference": "Sheriff Smithy, Grim Tidings: Killing Fields One-Shot"
+		},
+		{
+			"identifier": "SeeingRed",
+			"count": 1,
+			"title": "Seeing Red",
+			"keywords": [
+				"pattern"
+			],
+			"body": [
+				"Increase damage dealt to and by hero targets by 1.",
+				"When a card is destroyed, add a token to this card. Then, if there are {H} or more tokens on this card, put this card under {CountlessWords}."
+			],
+			"icons": [
+				"IncreaseDamageTaken",
+				"IncreaseDamageDealt",
+				"AddTokens"
+			],
+			"tokenPools": [
+				{
+					"identifier": "SeeingRedPool",
+					"name": "Seeing Red's Token Pool",
+					"initialValue": 0,
+					"minimumValue": 0
+				}
+			],
+			"flavorQuotes": [
+				{
+					"identifier": "Glyph",
+					"text": "When I find that little worm, I’ll show him what doom really means!"
+				}
+			],
+			"flavorReference": "Glyph, Guardians at the Gate #8"
+		},
+		{
+			"identifier": "SilverTonguedDevil",
+			"count": 2,
+			"title": "Silver-Tongued Devil",
+			"keywords": [
+				"ongoing"
+			],
+			"body": [
+				"When this card enters play, shuffle all one-shots and targets from the villain trash into the villain deck.",
+				"When a villain card enters play, the hero with the highest hp may increase the next damage dealt to them by 3. Otherwise destroy a hero ongoing or equipment.",
+				"Then 1 player may discard their hand to destroy an ongoing card."
+			],
+			"icons": [
+				"Manipulate",
+				"IncreaseDamageTaken",
+				"DestroyOngoing",
+				"DestroyEquipment",
+				"Discard"
+			],
+			"flavorQuotes": [
+				{
+					"identifier": "Glyph",
+					"text": "I’ll never understand why every idiot in the Academy finds him so fascinating."
+				},
+				{
+					"identifier": "Stevens",
+					"text": "I’ll assume the time you spent fawning over him is unrelated."
+				}
+			],
+			"flavorReference": "Bastion City: A Spider Never Blinks #7"
+		},
+		{
+			"identifier": "SomeoneInNeed",
+			"count": 1,
+			"title": "Someone In Need",
+			"keywords": [
+				"role"
+			],
+			"body": [
+				"{Doomsayer} is indestructible, immune to damage, and can’t deal damage.",
+				"At the start of each player’s turn, that player may skip their play, power, or draw phase to add a token to this card. Then, if there are more tokens on this card than active heroes, each hero deals itself 1 psychic damage, then remove this card from the game."
+			],
+			"tokenPools": [
+				{
+					"identifier": "RolePool",
+					"name": "Someone In Need's Token Pool",
+					"initialValue": 0,
+					"minimumValue": 0
+				}
+			],
+			"icons": [
+				"Indestructible",
+				"ImmuneToDamage",
+				"CannotDealDamage",
+				"StartOfTurnAction",
+				"AddTokens",
+				"DealDamagePsychic"
+			],
+			"flavorQuotes": [
+				{
+					"identifier": "Ember",
+					"text": "Hush now, little one. Don’t cry. You’re fine now. Where’s your mammy?"
+				}
+			],
+			"flavorReference": "Ember, Ember #1"
+		},
+		{
+			"identifier": "TheyOweYou",
+			"count": 1,
+			"title": "They Owe You",
+			"keywords": [
+				"ongoing",
+				"proclamation"
+			],
+			"body": [
+				"Play this card next to the hero with the fewest cards in play.",
+				"{Doomsayer} is indestructible.",
+				"At the end of that hero’s turn, that hero regains 1 hp, then deals each other hero target 1 psychic damage."
+			],
+			"icons": [
+				"Indestructible",
+				"EndOfTurnAction",
+				"GainHP",
+				"DealDamagePsychic"
+			],
+			"flavorQuotes": [
+				{
+					"identifier": "Gina",
+					"text": "You’re a hero to me, John. I’m sorry the others can’t see that, even after everything you’ve done for them."
+				}
+			],
+			"flavorReference": "Gina, Division X #59"
+		},
+		{
+			"identifier": "YouAreAlone",
+			"count": 1,
+			"title": "You Are Alone",
+			"keywords": [
+				"ongoing",
+				"proclamation"
+			],
+			"body": [
+				"Play this card next to the hero with the lowest hp. That hero and that hero’s cards cannot affect or be affected by any other hero card or effect from another hero deck except for dealing damage.",
+				"{Doomsayer} is indestructible."
+			],
+			"icons": [
+				"Indestructible"
+			],
+			"flavorQuotes": [
+				{
+					"identifier": "Dr. Samson",
+					"text": "I know you want to help, but people need their space. Having you in their head all the time is too much for anyone. They’re not like you. I guess no one is."
+				}
+			],
+			"flavorReference": "Dr. Samson, Apocalypse 10: Death of Grandfather"
+		},
+		{
+			"identifier": "YouAreBroken",
+			"count": 1,
+			"title": "You Are Broken",
+			"keywords": [
+				"ongoing",
+				"proclamation"
+			],
+			"body": [
+				"Play this card next to the hero whose player has the fewest cards in their hand.",
+				"Targets in this play area cannot regain hp or have their hp increased.",
+				"{Doomsayer} is indestructible."
+			],
+			"icons": [
+				"CannotGainHP",
+				"Indestructible"
+			],
+			"flavorQuotes": [
+				{
+					"identifier": "Peacekeeper",
+					"text": "Everyone wants to help, but there’s nothing they can do. It’s just me, you know. There’s the serum, but also… there’s just something wrong with [b]me[/b]."
+				}
+			],
+			"flavorReference": "Peacekeeper, Division X #64"
+		},
+		{
+			"identifier": "YouAreRunningOutOfTime",
+			"count": 1,
+			"title": "You Are Running Out of Time",
+			"keywords": [
+				"ongoing",
+				"proclamation"
+			],
+			"body": [
+				"Play this card in a hero play area. The first time each turn that hero plays a card, put a random card from their hand into play.",
+				"{Doomsayer} is indestructible."
+			],
+			"icons": [
+				"PlayCardNow",
+				"Indestructible"
+			],
+			"flavorQuotes": [
+				{
+					"identifier": "Doomsayer",
+					"text": "Another year gone, and what have you accomplished? Is this the life you’ve fought so hard to lead? The life you needed far away from me?"
+				}
+			],
+			"flavorReference": "Doomsayer, Bastion City: A Spider Never Blinks #11"
+		},
+		{
+			"identifier": "YouCantChange",
+			"count": 1,
+			"title": "You Can't Change",
+			"keywords": [
+				"ongoing",
+				"proclamation"
+			],
+			"body": [
+				"Play this card in a hero play area.",
+				"When a power is used on a non-character card in that play area, destroy that card.",
+				"{Doomsayer} is indestructible."
+			],
+			"icons": [
+				"DestroyHero",
+				"Indestructible"
+			],
+			"flavorQuotes": [
+				{
+					"identifier": "Coach Green",
+					"text": "What’re you saying, son?"
+				},
+				{
+					"identifier": "Bolt",
+					"text": "I seen what I wanted to see, but then you go and tell me I ain’t capable of change? I named [b]myself[/b] Bolt. I name you [b]Doomsayer[/b]."
+				}
+			],
+			"flavorReference": "Bolt #7"
+		},
+		{
+			"identifier": "YouHaveNoChoice",
+			"count": 1,
+			"title": "You Have No Choice",
+			"keywords": [
+				"ongoing",
+				"proclamation"
+			],
+			"body": [
+				"Play this card in a hero play area.",
+				"When that hero’s player would play a card or that hero would use a power, that hero’s player may discard a card. If they do not, play the bottom card of that hero’s deck instead.",
+				"{Doomsayer} is indestructible."
+			],
+			"icons": [
+				"Discard",
+				"PlayCardNow",
+				"Indestructible"
+			],
+			"flavorQuotes": [
+				{
+					"identifier": "Arctis",
+					"text": "Listen, it doesn’t matter what he says or does. We’re heroes. We were made for this. We couldn’t do anything differently if we wanted to."
+				}
+			],
+			"flavorReference": "Arctis, Midnight Vigil #76"
+		}
+	]
+}
