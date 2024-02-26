@@ -61,9 +61,16 @@ namespace VainFacadePlaytest.Doomsayer
                 bool? flag5 = g.CardSource != null && g.CardSource.AssociatedCardSources.Count() > 0 && g.CardSource.Card.Owner == GetIsolatedHero() && g.CardSource.AssociatedCardSources.Any((CardSource c) => c.Card.Owner != GetIsolatedHero() && IsHero(c.Card.Owner));
                 bool? flag6 = g.CardSource != null && g.CardSource.AssociatedCardSources.Count() > 0 && g.CardSource.Card.Owner != GetIsolatedHero() && IsHero(g.CardSource.Card) && g.CardSource.AssociatedCardSources.Any((CardSource c) => c.Card.Owner == GetIsolatedHero());
 
-                if ((flag.HasValue && flag.Value) || (flag2.HasValue && flag2.Value) || (flag3.HasValue && flag3.Value) || (flag4.HasValue && flag4.Value) || (flag5.HasValue && flag5.Value) || (flag6.HasValue && flag6.Value))
+                //flag 7 prevents power actions
+                bool? flag7 = g is UsePowerAction && PowerConditions((UsePowerAction)g);
+
+                //flag 8 prevents other hero cards from preventing phase actions of the isolated hero, and vice versa.
+                //The reason this is included is because of Radiance's Radiant Duplicate
+                bool? flag8 = g is PreventPhaseAction && PreventPhaseConditions((PreventPhaseAction)g);
+
+                if ((flag.HasValue && flag.Value) || (flag2.HasValue && flag2.Value) || (flag3.HasValue && flag3.Value) || (flag4.HasValue && flag4.Value) || (flag5.HasValue && flag5.Value) || (flag6.HasValue && flag6.Value) || (flag7.HasValue && flag7.Value) || (flag8.HasValue && flag8.Value))
                 {
-                    Log.Debug($"{this.Card.Title} prevents action from occurring: {g}");
+                    Log.Debug($"{this.Card.Title} prevents action from occurring: {g.ToString()}");
                     return false;
                 }
             }
@@ -75,11 +82,10 @@ namespace VainFacadePlaytest.Doomsayer
             //If Ra is isolated and you hit Ra with Stun Bolt, the status effect is still created, and it reduces the damage Ra deals by 1 (I think because the reduction is treated as affecting the target, not affecting Ra).
             //Except if Ra hits himself - in that case, the reduction does not apply because Wraith cannot reduce damage dealt to Ra.
 
-            //Can't block another hero's card from letting the isolated hero use a power, but it does cancel the power use itself
             //Can't block Leyline Shift or Gimmicky Character from selecting the isolated hero to discard their top card, but it does prevent the discard itself
 
             AddTrigger((MakeDecisionsAction md) => md.CardSource != null && IsHero(md.CardSource.Card.Owner), RemoveDecisionsFromMakeDecisionsResponse, TriggerType.RemoveDecision, TriggerTiming.Before);
-            AddTrigger<UsePowerAction>((UsePowerAction up) => GetIsolatedHero() != null && PowerConditions(up), (UsePowerAction up) => base.GameController.CancelAction(up,cardSource:GetCardSource()), TriggerType.CancelAction, TriggerTiming.Before);
+            //AddTrigger<UsePowerAction>((UsePowerAction up) => GetIsolatedHero() != null && PowerConditions(up), (UsePowerAction up) => base.GameController.CancelAction(up,cardSource:GetCardSource()), TriggerType.CancelAction, TriggerTiming.Before);
             AddTrigger<MakeDecisionAction>((MakeDecisionAction md) =>  md.CardSource != null && IsHero(md.CardSource.Card), DecisionResponse, TriggerType.Hidden, TriggerTiming.Before);
         }
 
@@ -104,6 +110,17 @@ namespace VainFacadePlaytest.Doomsayer
             bool flag6 = up.HeroUsingPower.TurnTaker != GetIsolatedHero() && up.Power.IsContributionFromCardSource && up.Power.CopiedFromCardController.Card.Owner == GetIsolatedHero();
 
             return flag1 || flag2 || flag3 || flag4 || flag5 || flag6;
+        }
+
+        private bool PreventPhaseConditions(PreventPhaseAction g)
+        {
+            //If another hero's card is preventing a turn phase of the isolated hero 
+            bool flag1 = g.TurnPhase.TurnTaker == GetIsolatedHero() && g.CardSource != null && IsHero(g.CardSource.Card) && g.CardSource.Card.Owner != GetIsolatedHero();
+
+            //If a card belonging to the isolated hero is preventing a turn phase of another hero
+            bool flag2 = g.CardSource != null && g.CardSource.Card.Owner == GetIsolatedHero() && g.TurnPhase.TurnTaker != GetIsolatedHero();
+
+            return flag1 || flag2;
         }
 
         private IEnumerator DecisionResponse(MakeDecisionAction md)
