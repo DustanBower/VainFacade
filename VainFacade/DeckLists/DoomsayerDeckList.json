@@ -144,7 +144,7 @@
 				"nemesis",
 				"undead"
 			],
-			"body": "PeerlessSwordsman",
+			"body": "Peerless Swordsman",
 			"backgroundColor": "AC0000",
 			"character": true,
 			"hitpoints": 20,
@@ -166,7 +166,7 @@
 			"flippedNemesisIdentifiers": [
 				"VainFacadePlaytest.TheFury"
 			],
-			"flippedBody": "PeerlessSwordsman",
+			"flippedBody": "Peerless Swordsman",
 			"flippedGameplay": [
 				"When this card would be dealt 5 or fewer damage, reduce that damage to 1.",
 				"When {Bladewight} is dealt damage, increase the next damage dealt by {Bladewight} by 1, then 1 player may draw a card.",
@@ -238,7 +238,7 @@
 			"flavorQuotes": [
 				{
 					"identifier": "Doomsayer",
-					"text": "Why do you make me do this? After everything I’ve done for you. You don’t deserve me. You don’t deserve anything. There’s nothing left for you to do but wither away."
+					"text": "Why do you make me do{BR}this? After everything I’ve done for{BR}you. You don’t deserve me. You don’t{BR}deserve anything. There’s nothing left for you to do but wither away."
 				}
 			],
 			"flavorReference": "Doomsayer, Fury #49"
@@ -272,10 +272,10 @@
 			"flavorQuotes": [
 				{
 					"identifier": "Glyph",
-					"text": "He adopts a role you’re weak to and bends it to control you. You have to be ready – from the core of your being – to walk away from that role if you want to see through it."
+					"text": "He adopts a role you’re{BR}weak to and bends it to control you.{BR}You have to be ready -- from the core of{BR}your being -- to walk away from that{BR}role if you want to see through it."
 				}
 			],
-			"flavorReference": "Glyph, Weighted Words one-shot"
+			"flavorReference": "Glyph, Weighted Words"
 		},
 		{
 			"identifier": "BloodBoundFate",
@@ -297,11 +297,11 @@
 			"flavorQuotes": [
 				{
 					"identifier": "Liana",
-					"text": "You’re going to kill me for some cult?"
+					"text": "You’re going to kill me{BR}for some cult?"
 				},
 				{
 					"identifier": "Morgan",
-					"text": "Kill you? I’m going to make you a god."
+					"text": "Kill you? I’m going to{BR}make you a god."
 				}
 			],
 			"flavorReference": "Bastion’s Best #25"
@@ -327,10 +327,10 @@
 			"flavorQuotes": [
 				{
 					"identifier": "Liana",
-					"text": "I’ve been here many times before. Everything seems dark – it is dark – but it’s not all there is, no matter what he tells you."
+					"text": "I’ve been here many times{BR}before. Everything seems dark -- it is{BR}dark -- but it’s not all there is, no matter{BR}what he tells you."
 				}
 			],
-			"flavorReference": "Liana, Storm of the Century: Certain Doom"
+			"flavorReference": "[y=0.65]Liana, Storm of the Century: Certain Doom"
 		},
 		{
 			"identifier": "DictatingDestiny",
@@ -354,11 +354,11 @@
 			"flavorQuotes": [
 				{
 					"identifier": "Haste",
-					"text": "You can’t speak the future into existence. Time doesn’t work that way."
+					"text": "You can’t speak{BR}the future into existence.{BR}Time doesn’t work that way."
 				},
 				{
 					"identifier": "Sidewinder",
-					"text": "True. As best I understand it, his words load the quantum dice."
+					"text": "True. As best I understand it,{BR}his words load the quantum dice."
 				}
 			],
 			"flavorReference": "Haste #41"
@@ -383,14 +383,14 @@
 			"flavorQuotes": [
 				{
 					"identifier": "Cynthia Dimitriu",
-					"text": "Who’s your friend? She seems nice. Her tattoo weirds me out, though."
+					"text": "Who’s your{BR}friend? She seems nice. Her tattoo{BR}weirds me out, though."
 				},
 				{
 					"identifier": "Roland Pryor",
 					"text": "What tattoo?"
 				}
 			],
-			"flavorReference": "Bastion City: A Spider Never Blinks #84"
+			"flavorReference": "[y=0.7]Bastion City: A Spider Never Blinks #84"
 		},
 		{
 			"identifier": "FutileEfforts",
@@ -420,7 +420,7 @@
 			"flavorQuotes": [
 				{
 					"identifier": "Carnaval",
-					"text": "I don’t know why I bothered putting on the mask again. Nothing’s changed. I’m done pretending. There’s something [b]wrong[/b] with the world."
+					"text": "I don’t know why I{BR}bothered putting on the mask again.{BR}Nothing’s changed. I’m done pretending.{BR}There’s something [b]wrong[/b] with the world."
 				}
 			],
 			"flavorReference": "Carnaval, Carnaval #31"
@@ -454,15 +454,15 @@
 			],
 			"flavorQuotes": [
 				{
-					"identifier": "Banshee",
-					"text": "Why are the Fates doing this? There must be something we can offer them!"
+					"identifier": "[y=0.8]Banshee",
+					"text": "[y=0.8]Why are the Fates doing this? There{BR}must be something we can offer them!"
 				},
 				{
-					"identifier": "Liana",
-					"text": "I’ve come to realize the Fates don’t make deals with us. The deals we make are with ourselves."
+					"identifier": "[y=0.8]Liana",
+					"text": "[y=0.8]I’ve come to realize the Fates don’t make deals with us. The deals we make are with ourselves."
 				}
 			],
-			"flavorReference": "Guardians at the Gate #6"
+			"flavorReference": "[y=0.8]Guardians at the Gate #6"
 		},
 		{
 			"identifier": "NothingToSeeHere",
@@ -491,10 +491,10 @@
 			"flavorQuotes": [
 				{
 					"identifier": "Sheriff Smithy",
-					"text": "Listen, son, don’t know what you come out her for, but ain’t nothin’ untoward happenin’ nowhere near Eldrenwood. I know this area in and out."
+					"text": "[y=0.9]Listen, son, don’t know what{BR}you come out here for, but ain’t nothin’{BR}untoward happenin’ nowhere near{BR}Eldrenwood. I know this area in and out."
 				}
 			],
-			"flavorReference": "Sheriff Smithy, Grim Tidings: Killing Fields One-Shot"
+			"flavorReference": "[y=0.7]Sheriff Smithy, Grim Tidings: Killing Fields"
 		},
 		{
 			"identifier": "SeeingRed",
@@ -523,7 +523,7 @@
 			"flavorQuotes": [
 				{
 					"identifier": "Glyph",
-					"text": "When I find that little worm, I’ll show him what doom really means!"
+					"text": "When I find that little worm, I’ll{BR}show him what doom really means!"
 				}
 			],
 			"flavorReference": "Glyph, Guardians at the Gate #8"
@@ -549,15 +549,15 @@
 			],
 			"flavorQuotes": [
 				{
-					"identifier": "Glyph",
-					"text": "I’ll never understand why every idiot in the Academy finds him so fascinating."
+					"identifier": "[y=0.9]Glyph",
+					"text": "[y=0.9]I’ll never{BR}understand why every idiot in the{BR}Academy finds him so fascinating."
 				},
 				{
-					"identifier": "Stevens",
-					"text": "I’ll assume the time you spent fawning over him is unrelated."
+					"identifier": "[y=0.9]Stevens",
+					"text": "[y=0.9]I’ll assume the time you spent{BR}fawning over him is unrelated."
 				}
 			],
-			"flavorReference": "Bastion City: A Spider Never Blinks #7"
+			"flavorReference": "[y=0.8]Bastion City: A Spider Never Blinks #7"
 		},
 		{
 			"identifier": "SomeoneInNeed",
@@ -589,7 +589,7 @@
 			"flavorQuotes": [
 				{
 					"identifier": "Ember",
-					"text": "Hush now, little one. Don’t cry. You’re fine now. Where’s your mammy?"
+					"text": "Hush now, little one. Don’t cry.{BR}You’re fine now. Where’s your mammy?"
 				}
 			],
 			"flavorReference": "Ember, Ember #1"
@@ -616,7 +616,7 @@
 			"flavorQuotes": [
 				{
 					"identifier": "Gina",
-					"text": "You’re a hero to me, John. I’m sorry the others can’t see that, even after everything you’ve done for them."
+					"text": "You’re a hero to me, John.{BR}I’m sorry the others can’t see that, even{BR}after everything you’ve done for them."
 				}
 			],
 			"flavorReference": "Gina, Division X #59"
@@ -638,11 +638,11 @@
 			],
 			"flavorQuotes": [
 				{
-					"identifier": "Dr. Samson",
-					"text": "I know you want to help, but people need their space. Having you in their head all the time is too much for anyone. They’re not like you. I guess no one is."
+					"identifier": "[y=0.75]Dr. Samson",
+					"text": "[y=0.75]I know you want to help, but people need{BR}their space. Having you in their head all the time is too much for anyone. They’re not like you. I guess no one is."
 				}
 			],
-			"flavorReference": "Dr. Samson, Apocalypse 10: Death of Grandfather"
+			"flavorReference": "[y=0.75]Dr. Samson, Apocalypse 10: Death of Grandfather"
 		},
 		{
 			"identifier": "YouAreBroken",
@@ -664,7 +664,7 @@
 			"flavorQuotes": [
 				{
 					"identifier": "Peacekeeper",
-					"text": "Everyone wants to help, but there’s nothing they can do. It’s just me, you know. There’s the serum, but also… there’s just something wrong with [b]me[/b]."
+					"text": "Everyone wants to help, but{BR}there’s nothing they can do. It’s just{BR}me, you know. There’s the serum, but also…{BR}there’s just something wrong with [b]me[/b]."
 				}
 			],
 			"flavorReference": "Peacekeeper, Division X #64"
@@ -688,10 +688,10 @@
 			"flavorQuotes": [
 				{
 					"identifier": "Doomsayer",
-					"text": "Another year gone, and what have you accomplished? Is this the life you’ve fought so hard to lead? The life you needed far away from me?"
+					"text": "[y=0.8]Another year gone, and what have you{BR}accomplished? Is this the life you’ve fought so hard{BR}to lead? The life you needed far away from me?"
 				}
 			],
-			"flavorReference": "Doomsayer, Bastion City: A Spider Never Blinks #11"
+			"flavorReference": "[y=0.8]Doomsayer, Bastion City: A Spider Never Blinks #11"
 		},
 		{
 			"identifier": "YouCantChange",
@@ -712,15 +712,15 @@
 			],
 			"flavorQuotes": [
 				{
-					"identifier": "Coach Green",
-					"text": "What’re you saying, son?"
+					"identifier": "[y=0.8]Coach Green",
+					"text": "[y=0.8]What’re you saying, son?"
 				},
 				{
-					"identifier": "Bolt",
-					"text": "I seen what I wanted to see, but then you go and tell me I ain’t capable of change? I named [b]myself[/b] Bolt. I name you [b]Doomsayer[/b]."
+					"identifier": "[y=0.8]Bolt",
+					"text": "[y=0.8]I seen what I wanted to see, but then{BR}you go and tell me I ain’t capable of change?{BR}I named [b]myself[/b] Bolt. I name you [b]Doomsayer[/b]."
 				}
 			],
-			"flavorReference": "Bolt #7"
+			"flavorReference": "[y=0.8]Bolt #7"
 		},
 		{
 			"identifier": "YouHaveNoChoice",
@@ -743,7 +743,7 @@
 			"flavorQuotes": [
 				{
 					"identifier": "Arctis",
-					"text": "Listen, it doesn’t matter what he says or does. We’re heroes. We were made for this. We couldn’t do anything differently if we wanted to."
+					"text": "Listen, it doesn’t matter what{BR}he says or does. We’re heroes. We were{BR}made for this. We couldn’t do anything{BR}differently if we wanted to."
 				}
 			],
 			"flavorReference": "Arctis, Midnight Vigil #76"
