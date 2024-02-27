@@ -141,6 +141,35 @@
     <Compile Include="Carnaval\SuspiciousBodyDoubleCardController.cs" />
     <Compile Include="Carnaval\MelpomeneCardController.cs" />
     <Compile Include="Carnaval\WhatsYoursIsMineCardController.cs" />
+    <Compile Include="Doomsayer\ACertainFinalityCardController.cs" />
+    <Compile Include="Doomsayer\AFriendlyFaceCardController.cs" />
+    <Compile Include="Doomsayer\BloodBoundFateCardController.cs" />
+    <Compile Include="Doomsayer\Card Utilities\DoomsayerCardUtilities.cs" />
+    <Compile Include="Doomsayer\Card Utilities\PatternCardController.cs" />
+    <Compile Include="Doomsayer\Card Utilities\ProclamationCardController.cs" />
+    <Compile Include="Doomsayer\Card Utilities\RoleCardController.cs" />
+    <Compile Include="Doomsayer\Character Cards\AcolytesOfTheBlackThornCardController.cs" />
+    <Compile Include="Doomsayer\Character Cards\BladewightCardController.cs" />
+    <Compile Include="Doomsayer\Character Cards\CountlessWordsCardController.cs" />
+    <Compile Include="Doomsayer\Character Cards\DoomsayerCharacterCardController.cs" />
+    <Compile Include="Doomsayer\Character Cards\DoomsayerTurnTakerController.cs" />
+    <Compile Include="Doomsayer\Character Cards\InginiCardController.cs" />
+    <Compile Include="Doomsayer\Character Cards\SideCharacterCardController.cs" />
+    <Compile Include="Doomsayer\DarkestBeforeTheDawnCardController.cs" />
+    <Compile Include="Doomsayer\DictatingDestinyCardController.cs" />
+    <Compile Include="Doomsayer\DifferentTimesDifferentFacesCardController.cs" />
+    <Compile Include="Doomsayer\FutileEffortsCardController.cs" />
+    <Compile Include="Doomsayer\LookingForALoopholeCardController.cs" />
+    <Compile Include="Doomsayer\NothingToSeeHereCardController.cs" />
+    <Compile Include="Doomsayer\SeeingRedCardController.cs" />
+    <Compile Include="Doomsayer\SilverTonguedDevilCardController.cs" />
+    <Compile Include="Doomsayer\SomeoneInNeedCardController.cs" />
+    <Compile Include="Doomsayer\TheyOweYouCardController.cs" />
+    <Compile Include="Doomsayer\YouAreAloneCardController.cs" />
+    <Compile Include="Doomsayer\YouAreBrokenCardController.cs" />
+    <Compile Include="Doomsayer\YouAreRunningOutOfTimeCardController.cs" />
+    <Compile Include="Doomsayer\YouCantChangeCardController.cs" />
+    <Compile Include="Doomsayer\YouHaveNoChoiceCardController.cs" />
     <Compile Include="EldrenwoodVillage\AbandonedShackCardController.cs" />
     <Compile Include="EldrenwoodVillage\AfflictedCardController.cs" />
     <Compile Include="EldrenwoodVillage\CallOfTheWildCardController.cs" />
@@ -149,6 +178,7 @@
     <Compile Include="EldrenwoodVillage\EldrenwoodUtilityCardController.cs" />
     <Compile Include="EldrenwoodVillage\EldrenwoodVillageCardController.cs" />
     <Compile Include="EldrenwoodVillage\ElmerWallaceCardController.cs" />
+    <Compile Include="EldrenwoodVillage\FixedReduceDamageStatusEffect.cs" />
     <Compile Include="EldrenwoodVillage\FullMoonCardController.cs" />
     <Compile Include="EldrenwoodVillage\JohnHadawayCardController.cs" />
     <Compile Include="EldrenwoodVillage\LilMarieCardController.cs" />
@@ -433,6 +463,7 @@
     <Compile Include="TheMidnightBazaar\VelkinorCardController.cs" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="DeckLists\DoomsayerDeckList.json" />
     <EmbeddedResource Include="DeckLists\TheMidnightBazaarDeckList.json" />
   </ItemGroup>
   <ItemGroup>
