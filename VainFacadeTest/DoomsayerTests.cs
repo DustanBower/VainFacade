@@ -159,6 +159,25 @@ namespace VainFacadeTest
         }
 
         [Test()]
+        public void TestDoomsayerProclamationDestroyedWin()
+        {
+            SetupGameController("VainFacadePlaytest.Doomsayer", "Ra", "Legacy", "Bunker", "TheScholar", "InsulaPrimalis");
+            StartGame();
+
+            //When {Doomsayer} is destroyed, the heroes win.
+            ClearInitialCards();
+            MoveCard(doomsayer, "FutileEfforts", countless.UnderLocation);
+            MoveCard(doomsayer, "LookingForALoophole", countless.UnderLocation);
+            MoveCard(doomsayer, "NothingToSeeHere", countless.UnderLocation);
+
+            SetHitPoints(doomsayer, 1);
+            Card owe = PlayCard("TheyOweYou");
+            DealDamage(legacy, doomsayer, 5, DamageType.Melee);
+            DestroyCard(owe);
+            AssertGameOver(EndingResult.VillainDestroyedVictory);
+        }
+
+        [Test()]
         public void TestDoomsayerRemovedFromGameWin()
         {
             SetupGameController("VainFacadePlaytest.Doomsayer", "Ra", "Legacy", "Bunker", "TheScholar", "TheFinalWasteland");
@@ -432,6 +451,10 @@ namespace VainFacadeTest
             QuickHPStorage(doomsayer);
             DealDamage(legacy, doomsayer, 5, DamageType.Melee);
             QuickHPCheck(0);
+
+            //Check that if a card is moved under Countless Words while a villain target has less than 0 HP, it gets destroyed
+            MoveCard(doomsayer, "FutileEfforts", countless.UnderLocation);
+            AssertOutOfGame(ingini);
         }
 
         [Test()]
@@ -498,6 +521,40 @@ namespace VainFacadeTest
             Card broken = PlayCard("YouAreBroken");
             DestroyCard(broken);
             AssertIsInPlay(broken);
+
+        }
+
+        [Test()]
+        public void TestCountlessWordsMoveCardUnderWin()
+        {
+            SetupGameController("VainFacadePlaytest.Doomsayer", "Ra", "Legacy", "Bunker", "TheScholar", "TheFinalWasteland");
+            StartGame();
+
+            //When there are no cards under this card, villain cards are indestructible and {Doomsayer} is immune to damage.
+            //When there are 2 or fewer cards under this card, {Doomsayer} and proclamations are indestructible.
+            ClearInitialCards();
+            MoveCard(doomsayer, "FutileEfforts", countless.UnderLocation);
+            MoveCard(doomsayer, "NothingToSeeHere", countless.UnderLocation);
+            PlayCard(ingini);
+            Card silver = PlayCard("SilverTonguedDevil");
+
+            //Check that regular ongoings and targets are no longer indestructible
+            DestroyCard(silver);
+            SetHitPoints(ingini, 1);
+            DealDamage(legacy, ingini, 5, DamageType.Melee);
+            AssertInTrash(silver);
+            AssertOutOfGame(ingini);
+
+            //Check that Doomsayer can be damaged but is indestructible
+            QuickHPStorage(doomsayer);
+            DealDamage(legacy, doomsayer, 20, DamageType.Melee);
+            QuickHPCheck(-20);
+            AssertIsInPlay(doomsayer.CharacterCard);
+            AssertNotGameOver();
+
+            //Check that if a third card is moved under Countless Words while Doomsayer has less than 0 HP, the heroes win
+            MoveCard(doomsayer, "SeeingRed", countless.UnderLocation);
+            AssertGameOver(EndingResult.VillainDestroyedVictory);
         }
 
         [Test()]
@@ -1959,6 +2016,38 @@ namespace VainFacadeTest
             AssertIsInPlay(dark);
             AssertInTrash(gaze);
             QuickHandCheck(0);
+        }
+
+        [Test()]
+        public void TestSilverTonguedDevilEmptyHandDiscard()
+        {
+            SetupGameController("VainFacadePlaytest.Doomsayer", "Ra", "Legacy", "Bunker", "TheWraith", "InsulaPrimalis");
+            StartGame();
+
+            //When a villain card enters play, the hero with the highest hp may increase the next damage dealt to them by 3. Otherwise destroy a hero ongoing or equipment.
+            //Then 1 player may discard their hand to destroy an ongoing card.
+            ClearInitialCards();
+            MoveCard(doomsayer, "FutileEfforts", countless.UnderLocation);
+            Card silver = PlayCard("SilverTonguedDevil");
+            DecisionYesNo = true;
+            DecisionSelectTurnTaker = ra.TurnTaker;
+            MoveAllCards(ra, ra.HeroTurnTaker.Hand, ra.TurnTaker.Trash);
+            Card dark = GetCard("DarkestBeforeTheDawn");
+            DecisionSelectCard = dark;
+            Card gaze = PlayCard("WrathfulGaze");
+            PlayCard(dark);
+
+            //The next damage to Legacy should be increased by 3, and Wrathful Gaze should still be in play,
+            //and Ra should have discarded his empty hand, and Darkest Before the Dawn should be destroyed
+            QuickHPStorage(legacy);
+            DealDamage(ra, legacy, 1, DamageType.Melee);
+            QuickHPCheck(-4);
+
+            QuickHPStorage(legacy);
+            DealDamage(ra, legacy, 1, DamageType.Melee);
+            QuickHPCheck(-1);
+            AssertInTrash(dark);
+            AssertIsInPlay(gaze);
         }
 
         [Test()]
