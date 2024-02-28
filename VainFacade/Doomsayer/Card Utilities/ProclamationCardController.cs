@@ -25,6 +25,12 @@ namespace VainFacadePlaytest.Doomsayer
             }
             return base.AskIfCardIsIndestructible(card);
         }
+
+        public override void AddTriggers()
+        {
+            //Copied from Fixed Point
+            AddAfterLeavesPlayAction((GameAction g) => base.GameController.DestroyAnyCardsThatShouldBeDestroyed(ignoreBattleZone: false, GetCardSource()), TriggerType.DestroyCard);
+        }
     }
 }
 

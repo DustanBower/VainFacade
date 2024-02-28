@@ -54,6 +54,7 @@ namespace VainFacadePlaytest.Doomsayer
         {
             //At the end of that hero’s turn, that hero regains 1 hp, then deals each other hero target 1 psychic damage.
             AddEndOfTurnTrigger((TurnTaker tt) => GetCardThisCardIsNextTo() != null && GetCardThisCardIsNextTo().IsHeroCharacterCard && tt == GetCardThisCardIsNextTo().Owner, EndOfTurnResponse, new TriggerType[2] { TriggerType.GainHP, TriggerType.DealDamage });
+            base.AddTriggers();
         }
 
         private IEnumerator EndOfTurnResponse(PhaseChangeAction pca)

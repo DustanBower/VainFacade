@@ -119,23 +119,8 @@ namespace VainFacadePlaytest.Doomsayer
 
         private IEnumerator EndOfTurnResponse(PhaseChangeAction pca)
         {
-            SelectTurnTakerDecision decision = new SelectTurnTakerDecision(base.GameController, DecisionMaker, FindTurnTakersWhere((TurnTaker tt) => tt.IsPlayer && tt.ToHero().Hand.NumberOfCards >= 2), SelectionType.DiscardCard, true, cardSource: GetCardSource());
-            IEnumerator coroutine = base.GameController.SelectTurnTakerAndDoAction(decision, DiscardAndDestroy);
-            if (UseUnityCoroutines)
-            {
-                yield return GameController.StartCoroutine(coroutine);
-            }
-            else
-            {
-                GameController.ExhaustCoroutine(coroutine);
-            }
-        }
-
-        private IEnumerator DiscardAndDestroy(TurnTaker hero)
-        {
-            HeroTurnTakerController httc = FindHeroTurnTakerController(hero.ToHero());
             List<DiscardCardAction> results = new List<DiscardCardAction>();
-            IEnumerator coroutine = base.GameController.SelectAndDiscardCards(httc, 2, false, 2, results, cardSource: GetCardSource());
+            IEnumerator coroutine = base.GameController.SelectHeroToDiscardCards(DecisionMaker, 2, 2, true, storedResultsDiscard: results, cardSource: GetCardSource());
             if (UseUnityCoroutines)
             {
                 yield return GameController.StartCoroutine(coroutine);

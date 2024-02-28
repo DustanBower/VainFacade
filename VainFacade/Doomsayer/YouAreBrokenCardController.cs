@@ -57,6 +57,8 @@ namespace VainFacadePlaytest.Doomsayer
             //Targets in this play area cannot regain hp or have their hp increased.
             AddTrigger<GainHPAction>((GainHPAction hp) => hp.HpGainer.Location.HighestRecursiveLocation == this.Card.Location.HighestRecursiveLocation, HealResponse,new TriggerType[2] { TriggerType.WouldGainHP, TriggerType.CancelAction }, TriggerTiming.Before);
             AddTrigger<SetHPAction>((SetHPAction hp) => hp.HpGainer.Location.HighestRecursiveLocation == this.Card.Location.HighestRecursiveLocation && hp.Amount > hp.HpGainer.HitPoints, HealResponse, new TriggerType[2] { TriggerType.WouldGainHP, TriggerType.CancelAction }, TriggerTiming.Before);
+
+            base.AddTriggers();
         }
 
         private IEnumerator HealResponse(GameAction g)

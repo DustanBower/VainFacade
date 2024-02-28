@@ -28,6 +28,9 @@ namespace VainFacadePlaytest.Doomsayer
 
                 //When there are no cards under this card, villain cards are indestructible and {Doomsayer} is immune to damage.
                 AddSideTrigger(AddImmuneToDamageTrigger((DealDamageAction dd) => this.Card.UnderLocation.Cards.Count() == 0 && dd.Target == this.CharacterCard));
+
+                //Bsed on Fixed Point
+                AddTrigger((MoveCardAction mc) => mc.Destination == this.Card.UnderLocation, (MoveCardAction mc) => base.GameController.DestroyAnyCardsThatShouldBeDestroyed(cardSource: GetCardSource()), TriggerType.DestroyCard, TriggerTiming.After, ActionDescription.Unspecified, isConditional: false, requireActionSuccess: true, null, outOfPlayTrigger: true);
             }
             else
             {

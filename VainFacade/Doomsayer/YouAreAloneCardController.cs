@@ -52,6 +52,7 @@ namespace VainFacadePlaytest.Doomsayer
             //That hero and that hero’s cards cannot affect or be affected by any other hero card or effect from another hero deck except for dealing damage.
             if (GetIsolatedHero() != null && !(g is DealDamageAction) && !(g is DestroyCardAction && ((DestroyCardAction)g).DealDamageAction != null))
             {
+                //flags 1-4 based on Isolated Hero
                 bool? flag = g.DoesFirstCardAffectSecondCard((Card c) => c.Owner == GetIsolatedHero(), (Card c) => c.Owner != GetIsolatedHero() && IsHero(c.Owner));
                 bool? flag2 = g.DoesFirstCardAffectSecondCard((Card c) => c.Owner != GetIsolatedHero() && IsHero(c.Owner), (Card c) => c.Owner == GetIsolatedHero());
                 bool? flag3 = g.DoesFirstTurnTakerAffectSecondTurnTaker((TurnTaker tt) => tt == GetIsolatedHero(), (TurnTaker tt) => tt != GetIsolatedHero() && IsHero(tt));
@@ -87,6 +88,8 @@ namespace VainFacadePlaytest.Doomsayer
             AddTrigger((MakeDecisionsAction md) => md.CardSource != null && IsHero(md.CardSource.Card.Owner), RemoveDecisionsFromMakeDecisionsResponse, TriggerType.RemoveDecision, TriggerTiming.Before);
             //AddTrigger<UsePowerAction>((UsePowerAction up) => GetIsolatedHero() != null && PowerConditions(up), (UsePowerAction up) => base.GameController.CancelAction(up,cardSource:GetCardSource()), TriggerType.CancelAction, TriggerTiming.Before);
             AddTrigger<MakeDecisionAction>((MakeDecisionAction md) =>  md.CardSource != null && IsHero(md.CardSource.Card), DecisionResponse, TriggerType.Hidden, TriggerTiming.Before);
+
+            base.AddTriggers();
         }
 
         private bool PowerConditions(UsePowerAction up)

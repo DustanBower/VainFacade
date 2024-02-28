@@ -97,21 +97,9 @@ namespace VainFacadePlaytest.Doomsayer
                     }
                 }
             }
-            SelectTurnTakerDecision decision = new SelectTurnTakerDecision(base.GameController, DecisionMaker, FindTurnTakersWhere((TurnTaker tt) => tt.IsPlayer && !tt.IsIncapacitatedOrOutOfGame && tt.ToHero().HasCardsInHand), SelectionType.DiscardHand, true, cardSource: GetCardSource());
-            coroutine = base.GameController.SelectTurnTakerAndDoAction(decision, DiscardHandResponse);
-            if (base.UseUnityCoroutines)
-            {
-                yield return base.GameController.StartCoroutine(coroutine);
-            }
-            else
-            {
-                base.GameController.ExhaustCoroutine(coroutine);
-            }
-        }
 
-        private IEnumerator DiscardHandResponse(TurnTaker tt)
-        {
-            IEnumerator coroutine = base.GameController.DiscardHand(FindHeroTurnTakerController(tt.ToHero()), false, null, tt, GetCardSource());
+            List<SelectTurnTakerDecision> results = new List<SelectTurnTakerDecision>();
+            coroutine = base.GameController.SelectHeroToDiscardTheirHand(DecisionMaker, true, false, storedResultsTurnTaker: results, cardSource: GetCardSource());
             if (base.UseUnityCoroutines)
             {
                 yield return base.GameController.StartCoroutine(coroutine);
@@ -121,14 +109,19 @@ namespace VainFacadePlaytest.Doomsayer
                 base.GameController.ExhaustCoroutine(coroutine);
             }
 
-            coroutine = base.GameController.SelectAndDestroyCard(FindHeroTurnTakerController(tt.ToHero()), new LinqCardCriteria((Card c) => IsOngoing(c), "ongoing"), false, cardSource: GetCardSource());
-            if (base.UseUnityCoroutines)
+            if (DidSelectTurnTaker(results))
             {
-                yield return base.GameController.StartCoroutine(coroutine);
-            }
-            else
-            {
-                base.GameController.ExhaustCoroutine(coroutine);
+                TurnTaker hero = GetSelectedTurnTaker(results);
+                HeroTurnTakerController httc = FindHeroTurnTakerController(hero.ToHero());
+                coroutine = base.GameController.SelectAndDestroyCard(httc, new LinqCardCriteria((Card c) => IsOngoing(c), "ongoing"), false, cardSource: GetCardSource());
+                if (base.UseUnityCoroutines)
+                {
+                    yield return base.GameController.StartCoroutine(coroutine);
+                }
+                else
+                {
+                    base.GameController.ExhaustCoroutine(coroutine);
+                }
             }
         }
 
@@ -141,6 +134,15 @@ namespace VainFacadePlaytest.Doomsayer
                 $"Vote for whether to increase the next damage dealt to {highestCard.Title} by 3.",
                 $"whether to increase the next damage dealt to {highestCard.Title} by 3."
             );
+        }
+
+        public override IEnumerable<Card> FilterDecisionCardChoices(SelectCardDecision decision)
+        {
+            if (decision.SelectionType == SelectionType.DestroyCard && decision.Choices.Where((Card c) => !IsHero(c)).Count() > 0)
+            {
+                return decision.Choices.Where((Card c) => IsHero(c));
+            }
+            return null;
         }
     }
 }

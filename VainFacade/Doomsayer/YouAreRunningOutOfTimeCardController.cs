@@ -44,6 +44,8 @@ namespace VainFacadePlaytest.Doomsayer
             //The first time each turn that hero plays a card, put a random card from their hand into play.
             AddTrigger<PlayCardAction>((PlayCardAction pca) => !IsPropertyTrue(FirstCardPlay) && this.Card.Location.IsHeroPlayAreaRecursive && pca.ResponsibleTurnTaker == this.Card.Location.HighestRecursiveLocation.OwnerTurnTaker && !pca.IsPutIntoPlay, PlayRandom, TriggerType.PlayCard, TriggerTiming.After);
             AddAfterLeavesPlayAction((GameAction g) => ResetFlagAfterLeavesPlay(FirstCardPlay), TriggerType.Hidden);
+
+            base.AddTriggers();
         }
 
         private IEnumerator PlayRandom(PlayCardAction pca)

@@ -40,6 +40,8 @@ namespace VainFacadePlaytest.Doomsayer
         {
             //When a power is used on a non-character card in that play area, destroy that card.
             AddTrigger<UsePowerAction>((UsePowerAction up) => up.Power.CardSource != null && !up.Power.CardSource.Card.IsCharacter && up.Power.CardSource.Card.Location.HighestRecursiveLocation == this.Card.Location.HighestRecursiveLocation, DestroyResponse, TriggerType.DestroyCard, TriggerTiming.After);
+
+            base.AddTriggers();
         }
 
         private IEnumerator DestroyResponse(UsePowerAction up)

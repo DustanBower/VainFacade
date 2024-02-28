@@ -41,6 +41,8 @@ namespace VainFacadePlaytest.Doomsayer
             //When that hero’s player would play a card or that hero would use a power, that hero’s player may discard a card. If they do not, play the bottom card of that hero’s deck instead.
             AddTrigger<PlayCardAction>((PlayCardAction pca) => this.Card.Location.IsHeroPlayAreaRecursive && pca.ResponsibleTurnTaker == this.Card.Location.HighestRecursiveLocation.OwnerTurnTaker && !pca.IsPutIntoPlay, DiscardOrPlayBottom, new TriggerType[2] { TriggerType.CancelAction, TriggerType.PlayCard }, TriggerTiming.Before);
             AddTrigger<UsePowerAction>((UsePowerAction up) => this.Card.Location.IsHeroPlayAreaRecursive && up.HeroUsingPower.TurnTaker == this.Card.Location.HighestRecursiveLocation.OwnerTurnTaker, DiscardOrPlayBottom, new TriggerType[2] { TriggerType.CancelAction, TriggerType.PlayCard }, TriggerTiming.Before);
+
+            base.AddTriggers();
         }
 
         private IEnumerator DiscardOrPlayBottom(GameAction g)
