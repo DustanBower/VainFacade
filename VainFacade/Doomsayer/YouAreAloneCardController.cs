@@ -100,17 +100,17 @@ namespace VainFacadePlaytest.Doomsayer
             //If another hero is using a power due to an isolated card
             bool flag2 = up.HeroUsingPower.TurnTaker != GetIsolatedHero() && up.CardSource != null && up.CardSource.Card.Owner == GetIsolatedHero();
 
-            //If the isolated hero is using a power on another hero's card (I Can Do That Too)
-            bool flag3 = up.HeroUsingPower.TurnTaker == GetIsolatedHero() && up.Power.CardSource != null && IsHero(up.Power.CardSource.Card.Owner) && up.Power.CardSource.Card.Owner != GetIsolatedHero();// && !(up.Power.IsContributionFromCardSource && !IsHero(up.Power.CopiedFromCardController.Card));
+            //If the isolated hero is using a power on another hero's card (I Can Do That Too), or one granted by another hero's card (Cosmic Weapon)
+            bool flag3 = up.HeroUsingPower.TurnTaker == GetIsolatedHero() && up.Power.CardSource != null && IsHero(up.Power.CardSource.Card.Owner) && up.Power.CardSource.Card.Owner != GetIsolatedHero();
 
-            //If another hero is using a power on an isolated card (I Can Do That Too)
+            //If another hero is using a power on an isolated card (I Can Do That Too), or one granted by an isolated card (Cosmic Weapon)
             bool flag4 = up.HeroUsingPower.TurnTaker != GetIsolatedHero() && up.Power.CardSource != null && up.Power.CardSource.Card.Owner == GetIsolatedHero();
 
-            //If the isolated hero is using a power granted by another hero's card
-            bool flag5 = up.HeroUsingPower.TurnTaker == GetIsolatedHero() && up.Power.IsContributionFromCardSource && IsHero(up.Power.CopiedFromCardController.Card) && up.Power.CopiedFromCardController.Card.Owner != GetIsolatedHero();
+            //If the isolated hero is using a power copied from another hero's card
+            bool flag5 = up.HeroUsingPower.TurnTaker == GetIsolatedHero() && up.Power.CopiedFromCardController != null && IsHero(up.Power.CopiedFromCardController.Card) && up.Power.CopiedFromCardController.Card.Owner != GetIsolatedHero();
 
-            //If another hero is using a power granted by the isolated hero's card
-            bool flag6 = up.HeroUsingPower.TurnTaker != GetIsolatedHero() && up.Power.IsContributionFromCardSource && up.Power.CopiedFromCardController.Card.Owner == GetIsolatedHero();
+            //If another hero is using a power copied from the isolated hero's card
+            bool flag6 = up.HeroUsingPower.TurnTaker != GetIsolatedHero() && up.Power.CopiedFromCardController != null && up.Power.CopiedFromCardController.Card.Owner == GetIsolatedHero();
 
             return flag1 || flag2 || flag3 || flag4 || flag5 || flag6;
         }
