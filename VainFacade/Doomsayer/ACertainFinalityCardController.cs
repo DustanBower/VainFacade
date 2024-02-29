@@ -29,7 +29,7 @@ namespace VainFacadePlaytest.Doomsayer
         {
             //When this card enters play, discard cards from the top of the villain deck until a target or proclamation is discarded. Put it into play.
             List<MoveCardAction> results = new List<MoveCardAction>();
-            IEnumerator coroutine = DiscardCardsFromTopOfDeck(this.TurnTakerController, 1, false, results, false, this.TurnTaker);
+            IEnumerator coroutine = RevealAndDiscard(results);
             if (base.UseUnityCoroutines)
             {
                 yield return base.GameController.StartCoroutine(coroutine);
@@ -39,9 +39,10 @@ namespace VainFacadePlaytest.Doomsayer
                 base.GameController.ExhaustCoroutine(coroutine);
             }
 
-            while (!results.Any((MoveCardAction mc) => mc.CardToMove.IsTarget || IsProclamation(mc.CardToMove)))
+            while (!results.Any((MoveCardAction mc) => mc.CardToMove.IsTarget || IsProclamation(mc.CardToMove)) && DidMoveCard(results))
             {
-                IEnumerator discard = DiscardCardsFromTopOfDeck(this.TurnTakerController, 1, false, results, false, this.TurnTaker);
+                results = new List<MoveCardAction>();
+                IEnumerator discard = RevealAndDiscard(results);
                 if (base.UseUnityCoroutines)
                 {
                     yield return base.GameController.StartCoroutine(discard);
@@ -52,8 +53,37 @@ namespace VainFacadePlaytest.Doomsayer
                 }
             }
 
-            Card card = results.Where((MoveCardAction mc) => mc.CardToMove.IsTarget || IsProclamation(mc.CardToMove)).FirstOrDefault().CardToMove;
-            coroutine = base.GameController.PlayCard(this.TurnTakerController, card, true, cardSource: GetCardSource());
+            if (results.Any((MoveCardAction mc) => mc.CardToMove.IsTarget || IsProclamation(mc.CardToMove)))
+            {
+                Card card = results.Where((MoveCardAction mc) => mc.CardToMove.IsTarget || IsProclamation(mc.CardToMove)).FirstOrDefault().CardToMove;
+                coroutine = base.GameController.PlayCard(this.TurnTakerController, card, true, cardSource: GetCardSource());
+                if (base.UseUnityCoroutines)
+                {
+                    yield return base.GameController.StartCoroutine(coroutine);
+                }
+                else
+                {
+                    base.GameController.ExhaustCoroutine(coroutine);
+                }
+            }
+            else
+            {
+                coroutine = base.GameController.SendMessageAction("There were no targets or proclamations in the villain deck.", Priority.Medium, GetCardSource());
+                if (base.UseUnityCoroutines)
+                {
+                    yield return base.GameController.StartCoroutine(coroutine);
+                }
+                else
+                {
+                    base.GameController.ExhaustCoroutine(coroutine);
+                }
+            }
+        }
+
+        private IEnumerator RevealAndDiscard(List<MoveCardAction> storedResults = null)
+        {
+            List<Card> results = new List<Card>();
+            IEnumerator coroutine = base.GameController.RevealCards(this.TurnTakerController, this.TurnTaker.Deck, 1, results, cardSource: GetCardSource());
             if (base.UseUnityCoroutines)
             {
                 yield return base.GameController.StartCoroutine(coroutine);
@@ -61,6 +91,20 @@ namespace VainFacadePlaytest.Doomsayer
             else
             {
                 base.GameController.ExhaustCoroutine(coroutine);
+            }
+
+            if (results.FirstOrDefault() != null && results.FirstOrDefault().Location.IsRevealed)
+            {
+                Card revealed = results.FirstOrDefault();
+                coroutine = base.GameController.MoveCard(this.TurnTakerController, revealed, FindCardController(revealed).GetTrashDestination().Location, storedResults: storedResults, responsibleTurnTaker: this.TurnTaker, isDiscard: true, cardSource: GetCardSource());
+                if (base.UseUnityCoroutines)
+                {
+                    yield return base.GameController.StartCoroutine(coroutine);
+                }
+                else
+                {
+                    base.GameController.ExhaustCoroutine(coroutine);
+                }
             }
         }
 
