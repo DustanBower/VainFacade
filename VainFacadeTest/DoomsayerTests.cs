@@ -19,6 +19,7 @@ namespace VainFacadeTest
     public class DoomsayerTests : BaseTest
     {
         protected TurnTakerController doomsayer { get { return FindVillain("Doomsayer"); } }
+        protected TurnTakerController ember { get { return FindHero("Ember"); } }
         protected Card countless { get { return GetCard("CountlessWords"); } }
         protected Card acolytes { get { return GetCard("AcolytesOfTheBlackThorn"); } }
         protected Card bladewight { get { return GetCard("Bladewight"); } }
@@ -943,6 +944,26 @@ namespace VainFacadeTest
         }
 
         [Test()]
+        public void TestACertainFinalityNoCards()
+        {
+            SetupGameController("VainFacadePlaytest.Doomsayer", "Ra", "Legacy", "Bunker", "TheScholar", "TheFinalWasteland");
+            StartGame();
+
+            //When this card enters play, discard cards from the top of the villain deck until a target or proclamation is discarded. Put it into play.
+            ClearInitialCards();
+            MoveCard(doomsayer, "SeeingRed", countless.UnderLocation);
+            PlayCards(new Card[] { ingini, bladewight, acolytes });
+            SetHitPoints(new Card[] { ingini, bladewight, acolytes }, 1);
+            DealDamage(legacy.CharacterCard, new Card[] { ingini, bladewight, acolytes }, 5, DamageType.Melee);
+
+            PlayCards(new string[] { "TheyOweYou", "YouAreAlone", "YouAreBroken", "YouAreRunningOutOfTime", "YouCantChange", "YouHaveNoChoice" });
+
+            //Check that if there are no targets or proclamations in the villain deck, it just discards until it runs out of cards
+            PlayCard("ACertainFinality");
+            AssertNumberOfCardsInDeck(doomsayer, 0);
+        }
+
+        [Test()]
         public void TestACertainFinalityReduce()
         {
             SetupGameController("VainFacadePlaytest.Doomsayer", "Ra", "Legacy", "Bunker", "TheScholar", "TheFinalWasteland");
@@ -1025,6 +1046,26 @@ namespace VainFacadeTest
             QuickHPStorage(ra);
             DealDamage(legacy, ra, 1, DamageType.Melee);
             QuickHPCheck(-1);
+        }
+
+        [Test()]
+        public void TestACertainFinalityCleansingFire()
+        {
+            SetupGameController("VainFacadePlaytest.Doomsayer", "Ra", "Legacy", "Bunker", "VainFacadePlaytest.Ember","InsulaPrimalis");
+            StartGame();
+
+            //When damage would be dealt to a hero target, that damage cannot be reduced, redirected, or prevented by non-villain cards.
+            //Check that it does not cancel the cancellation and healing from Cleansing Fire
+            ClearInitialCards();
+            PutOnDeck("Ingini");
+            Card certain = PlayCard("ACertainFinality");
+            Card cleansing = PlayCard("CleansingFire");
+            SetHitPoints(legacy, 10);
+            DecisionYesNo = true;
+
+            QuickHPStorage(legacy);
+            DealDamage(ember, legacy, 5, DamageType.Fire);
+            QuickHPCheck(5);
         }
 
         [Test()]
@@ -1429,6 +1470,24 @@ namespace VainFacadeTest
             QuickHPStorage(doomsayer);
             GoToEndOfTurn(legacy);
             QuickHPCheck(0);
+        }
+
+        [Test()]
+        public void TestDarkestBeforeTheDawnEndOfTurnEnvironment()
+        {
+            SetupGameController("VainFacadePlaytest.Doomsayer", "Ra", "Legacy", "Bunker", "TheWraith", "InsulaPrimalis");
+            StartGame();
+
+            //At the end of each turn, if {Doomsayer} has -13 or fewer hp, he regains 13 HP.
+            ClearInitialCards();
+            StackDeckAfterShuffle(doomsayer, new string[] { "SeeingRed" });
+            SetHitPoints(doomsayer.CharacterCard, -13);
+            GoToStartOfTurn(FindEnvironment());
+
+            PlayCard("DarkestBeforeTheDawn");
+            QuickHPStorage(doomsayer);
+            GoToEndOfTurn(FindEnvironment());
+            QuickHPCheck(13);
         }
 
         [Test()]

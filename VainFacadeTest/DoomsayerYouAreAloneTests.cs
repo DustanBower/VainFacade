@@ -321,5 +321,167 @@ namespace VainFacadeTest
             DealDamage(ra, rex, 1, DamageType.Melee);
             QuickHPCheck(-1);
         }
+
+        [Test()]
+        public void TestUhYeahHighFive()
+        {
+            SetupGameController("VainFacadePlaytest.Doomsayer", "Tachyon", "Legacy", "Bunker", "Guise", "InsulaPrimalis");
+            StartGame();
+
+            this.GameController.OnMakeDecisions -= MakeDecisions;
+            this.GameController.OnMakeDecisions += MakeDecisions2;
+
+            //Check that Guise cannot high five the isolated hero
+            ClearInitialCards();
+            SetHitPoints(legacy, 10);
+            PlayCard(alone);
+
+            AssertNextDecisionChoices(new TurnTaker[] { tachyon.TurnTaker, bunker.TurnTaker }, new TurnTaker[] { legacy.TurnTaker, guise.TurnTaker });
+            PlayCard("UhYeahImThatGuy");
+        }
+
+        [Test()]
+        public void TestUhYeahHighFiveReverse()
+        {
+            SetupGameController("VainFacadePlaytest.Doomsayer", "Tachyon", "Legacy", "Bunker", "Guise", "InsulaPrimalis");
+            StartGame();
+
+            this.GameController.OnMakeDecisions -= MakeDecisions;
+            this.GameController.OnMakeDecisions += MakeDecisions2;
+
+            //Check that Guise cannot high five other heroes while isolated
+            ClearInitialCards();
+            SetHitPoints(guise, 10);
+            PlayCard(alone);
+
+            AssertNextDecisionChoices(null, new TurnTaker[] { legacy.TurnTaker, guise.TurnTaker, tachyon.TurnTaker, bunker.TurnTaker });
+            PlayCard("UhYeahImThatGuy");
+        }
+
+        [Test()]
+        public void TestUhYeahEffect()
+        {
+            SetupGameController("VainFacadePlaytest.Doomsayer", "Tachyon", "Legacy", "Bunker", "Guise", "InsulaPrimalis");
+            StartGame();
+
+            this.GameController.OnMakeDecisions -= MakeDecisions;
+            this.GameController.OnMakeDecisions += MakeDecisions2;
+
+            //Check that Guise is not affected by copied cards from the isolated hero
+            ClearInitialCards();
+            SetHitPoints(legacy, 10);
+            DecisionSelectTurnTaker = legacy.TurnTaker;
+            PlayCard("Fortitude");
+            PlayCard("UhYeahImThatGuy");
+            PlayCard(alone);
+
+            QuickHPStorage(guise);
+            DealDamage(bunker, guise, 2, DamageType.Melee);
+            QuickHPCheck(-2);
+        }
+
+        [Test()]
+        public void TestUhYeahEffectReversed()
+        {
+            SetupGameController("VainFacadePlaytest.Doomsayer", "Tachyon", "Legacy", "Bunker", "Guise", "InsulaPrimalis");
+            StartGame();
+
+            this.GameController.OnMakeDecisions -= MakeDecisions;
+            this.GameController.OnMakeDecisions += MakeDecisions2;
+
+            //Check that Guise cannot copy other heroes' cards when he is isolated
+            ClearInitialCards();
+            SetHitPoints(guise, 10);
+            DecisionSelectTurnTaker = legacy.TurnTaker;
+            PlayCard("Fortitude");
+            PlayCard("UhYeahImThatGuy");
+            PlayCard(alone);
+
+            QuickHPStorage(guise);
+            DealDamage(bunker, guise, 2, DamageType.Melee);
+            QuickHPCheck(-2);
+        }
+
+        [Test()]
+        public void TestImmuneToDamage()
+        {
+            SetupGameController("VainFacadePlaytest.Doomsayer", "Tachyon", "Legacy", "Bunker", "InsulaPrimalis");
+            StartGame();
+
+            this.GameController.OnMakeDecisions -= MakeDecisions;
+            this.GameController.OnMakeDecisions += MakeDecisions2;
+
+            //Check Heroic Interception doesn't protect the isolated hero
+            ClearInitialCards();
+            SetHitPoints(tachyon, 10);
+            PlayCard(alone);
+            PlayCard("HeroicInterception");
+
+            QuickHPStorage(tachyon);
+            DealDamage(doomsayer, tachyon, 5, DamageType.Melee);
+            QuickHPCheck(-5);
+        }
+
+        [Test()]
+        public void TestImmuneToDamageReversed()
+        {
+            SetupGameController("VainFacadePlaytest.Doomsayer", "Tachyon", "Legacy", "Bunker", "InsulaPrimalis");
+            StartGame();
+
+            this.GameController.OnMakeDecisions -= MakeDecisions;
+            this.GameController.OnMakeDecisions += MakeDecisions2;
+
+            //Check that Heroic Interception doesn't protect other heores when Legacy is isolated
+            ClearInitialCards();
+            SetHitPoints(legacy, 10);
+            PlayCard(alone);
+            PlayCard("HeroicInterception");
+
+            QuickHPStorage(tachyon);
+            DealDamage(doomsayer, tachyon, 5, DamageType.Melee);
+            QuickHPCheck(-5);
+        }
+
+        [Test()]
+        public void TestCancelDamage()
+        {
+            SetupGameController("VainFacadePlaytest.Doomsayer", "Tachyon", "Legacy", "Bunker","VoidGuardWrithe/VoidGuardWritheCosmicInventorCharacter", "InsulaPrimalis");
+            StartGame();
+
+            this.GameController.OnMakeDecisions -= MakeDecisions;
+            this.GameController.OnMakeDecisions += MakeDecisions2;
+
+            //Check that Cosmic Inventor Writhe can't prevent damage to the isolated hero
+            ClearInitialCards();
+            SetHitPoints(legacy, 10);
+            DecisionSelectCard = legacy.CharacterCard;
+            UsePower(voidWrithe);
+            PlayCard(alone);
+
+            QuickHPStorage(legacy);
+            DealDamage(doomsayer, legacy, 5, DamageType.Melee);
+            QuickHPCheck(-5);
+        }
+
+        [Test()]
+        public void TestCancelDamageReverse()
+        {
+            SetupGameController("VainFacadePlaytest.Doomsayer", "Tachyon", "Legacy", "Bunker", "VoidGuardWrithe/VoidGuardWritheCosmicInventorCharacter", "InsulaPrimalis");
+            StartGame();
+
+            this.GameController.OnMakeDecisions -= MakeDecisions;
+            this.GameController.OnMakeDecisions += MakeDecisions2;
+
+            //Check that Cosmic Inventor Writhe can't prevent damage to other heroes if he is isolated
+            ClearInitialCards();
+            SetHitPoints(voidWrithe, 10);
+            DecisionSelectCard = legacy.CharacterCard;
+            UsePower(voidWrithe);
+            PlayCard(alone);
+
+            QuickHPStorage(legacy);
+            DealDamage(doomsayer, legacy, 5, DamageType.Melee);
+            QuickHPCheck(-5);
+        }
     }
 }
