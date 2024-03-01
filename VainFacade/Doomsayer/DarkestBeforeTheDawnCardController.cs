@@ -43,6 +43,15 @@ namespace VainFacadePlaytest.Doomsayer
                 base.GameController.ExhaustCoroutine(coroutine);
             }
         }
+
+        public override IEnumerable<Card> FilterDecisionCardChoices(SelectCardDecision decision)
+        {
+            if (decision.SelectionType == SelectionType.DestroyCard && decision.Choices.Where((Card c) => !IsHero(c)).Count() > 0)
+            {
+                return decision.Choices.Where((Card c) => IsHero(c));
+            }
+            return null;
+        }
     }
 }
 
