@@ -238,7 +238,7 @@
 			"flavorQuotes": [
 				{
 					"identifier": "Doomsayer",
-					"text": "Why do you make me do{BR}this? After everything I’ve done for{BR}you. You don’t deserve me. You don’t{BR}deserve anything. There’s nothing left for you to do but wither away."
+					"text": "[y=1.05]W[y=0.75]h[y=1.05]y[y=0.75] d[y=1.05]o[y=0.75] y[y=1.05]o[y=0.75]u[y=1.05] m[y=0.75]a[y=1.05]k[y=0.75]e[y=1.05] m[y=0.75]e[y=1.05] d[y=0.75]o[y=1.05] t[y=0.75]h[y=1.05]i[y=0.75]s[y=1.05]?{BR}[y=0.75] A[y=1.05]f[y=0.75]t[y=1.05]e[y=0.75]r[y=1.05] e[y=0.75]v[y=1.05]e[y=0.75]r[y=1.05]y[y=0.75]t[y=1.05]h[y=0.75]i[y=1.05]n[y=0.75]g[y=1.05] I[y=0.75]'[y=1.05]v[y=0.75]e[y=1.05] d[y=0.75]o[y=1.05]n[y=0.75]e[y=1.05] f[y=0.75]o[y=1.05]r[y=0.75] y[y=1.05]o[y=0.75]u[y=1.05].[y=0.75] Y[y=1.05]o[y=0.75]u[y=1.05]{BR}d[y=0.75]o[y=1.05]n[y=0.75]'[y=1.05]t[y=0.75] d[y=1.05]e[y=0.75]s[y=1.05]e[y=0.75]r[y=1.05]v[y=0.75]e[y=1.05] m[y=0.75]e[y=1.05].[y=0.75] Y[y=1.05]o[y=0.75]u[y=1.05] d[y=0.75]o[y=1.05]n[y=0.75]'[y=1.05]t[y=0.75] d[y=1.05]e[y=0.75]s[y=1.05]e[y=0.75]r[y=1.05]v[y=0.75]e[y=1.05]{BR}a[y=0.75]n[y=1.05]y[y=0.75]t[y=1.05]h[y=0.75]i[y=1.05]n[y=0.75]g[y=1.05].[y=0.75] T[y=1.05]h[y=0.75]e[y=1.05]r[y=0.75]e[y=1.05]'[y=0.75]s[y=1.05] n[y=0.75]o[y=1.05]t[y=0.75]h[y=1.05]i[y=0.75]n[y=1.05]g[y=0.75] l[y=1.05]e[y=0.75]f[y=1.05]t[y=0.75] f[y=1.05]o[y=0.75]r[y=1.05] y[y=0.75]o[y=1.05]u[y=0.75]{BR}t[y=1.05]o[y=0.75] d[y=1.05]o[y=0.75] b[y=1.05]u[y=0.75]t[y=1.05] w[y=0.75]i[y=1.05]t[y=0.75]h[y=1.05]e[y=0.75]r[y=1.05] a[y=0.75]w[y=1.05]a[y=0.75]y[y=1.05].[y=0.75]"
 				}
 			],
 			"flavorReference": "Doomsayer, Fury #49"
@@ -616,7 +616,7 @@
 			"flavorQuotes": [
 				{
 					"identifier": "Gina",
-					"text": "You’re a hero to me, John.{BR}I’m sorry the others can’t see that, even{BR}after everything you’ve done for them."
+					"text": "Y[y=1.15]o[y=0.85]u[y=1.15]'[y=0.85]r[y=1.15]e[y=0.85] a[y=1.15] h[y=0.85]e[y=1.15]r[y=0.85]o[y=1.15] t[y=0.85]o[y=1.15] m[y=0.85]e[y=1.15],[y=0.85] J[y=1.15]o[y=0.85]h[y=1.15]n[y=0.85].{BR}[y=1.15] I[y=0.85]'[y=1.15]m[y=0.85] s[y=1.15]o[y=0.85]r[y=1.15]r[y=0.85]y[y=1.15] t[y=0.85]h[y=1.15]e[y=0.85] o[y=1.15]t[y=0.85]h[y=1.15]e[y=0.85]r[y=1.15]s[y=0.85] c[y=1.15]a[y=0.85]n[y=1.15]'[y=0.85]t[y=1.15] s[y=0.85]e[y=1.15]e[y=0.85] t[y=1.15]h[y=0.85]a[y=1.15]t[y=0.85],[y=1.15] e[y=0.85]v[y=1.15]e[y=0.85]n[y=1.15]{BR}a[y=0.85]f[y=1.15]t[y=0.85]e[y=1.15]r[y=0.85] e[y=1.15]v[y=0.85]e[y=1.15]r[y=0.85]y[y=1.15]t[y=0.85]h[y=1.15]i[y=0.85]n[y=1.15]g[y=0.85] y[y=1.15]o[y=0.85]u[y=1.15]'[y=0.85]v[y=1.15]e[y=0.85] d[y=1.15]o[y=0.85]n[y=1.15]e[y=0.85] f[y=1.15]o[y=0.85]r[y=1.15] t[y=0.85]h[y=1.15]e[y=0.85]m[y=1.15].[y=0.85]"
 				}
 			],
 			"flavorReference": "Gina, Division X #59"
@@ -639,10 +639,10 @@
 			"flavorQuotes": [
 				{
 					"identifier": "[y=0.75]Dr. Samson",
-					"text": "[y=0.75]I know you want to help, but people need{BR}their space. Having you in their head all the time is too much for anyone. They’re not like you. I guess no one is."
+					"text": "[y=0.9]I[y=0.6] k[y=0.9]n[y=0.6]o[y=0.9]w[y=0.6] y[y=0.9]o[y=0.6]u[y=0.9] w[y=0.6]a[y=0.9]n[y=0.6]t[y=0.9] t[y=0.6]o[y=0.9] h[y=0.6]e[y=0.9]l[y=0.6]p[y=0.9],[y=0.6] b[y=0.9]u[y=0.6]t[y=0.9] p[y=0.6]e[y=0.9]o[y=0.6]p[y=0.9]l[y=0.6]e[y=0.9] n[y=0.6]e[y=0.9]e[y=0.6]d[y=0.9]{BR}t[y=0.6]h[y=0.9]e[y=0.6]i[y=0.9]r[y=0.6] s[y=0.9]p[y=0.6]a[y=0.9]c[y=0.6]e[y=0.9].[y=0.6] H[y=0.9]a[y=0.6]v[y=0.9]i[y=0.6]n[y=0.9]g[y=0.6] y[y=0.9]o[y=0.6]u[y=0.9] i[y=0.6]n[y=0.9] t[y=0.6]h[y=0.9]e[y=0.6]i[y=0.9]r[y=0.6] h[y=0.9]e[y=0.6]a[y=0.9]d[y=0.6] a[y=0.9]l[y=0.6]l[y=0.9] t[y=0.6]h[y=0.9]e[y=0.6]{BR}t[y=0.9]i[y=0.6]m[y=0.9]e[y=0.6] i[y=0.9]s[y=0.6] t[y=0.9]o[y=0.6]o[y=0.9] m[y=0.6]u[y=0.9]c[y=0.6]h[y=0.9] f[y=0.6]o[y=0.9]r[y=0.6] a[y=0.9]n[y=0.6]y[y=0.9]o[y=0.6]n[y=0.9]e[y=0.6].[y=0.9] T[y=0.6]h[y=0.9]e[y=0.6]y[y=0.9]'[y=0.6]r[y=0.9]e[y=0.6] n[y=0.9]o[y=0.6]t[y=0.9] l[y=0.6]i[y=0.9]k[y=0.6]e[y=0.9]{BR}y[y=0.6]o[y=0.9]u[y=0.6].[y=0.9] I[y=0.6] g[y=0.9]u[y=0.6]e[y=0.9]s[y=0.6]s[y=0.9] n[y=0.6]o[y=0.9] o[y=0.6]n[y=0.9]e[y=0.6] i[y=0.9]s[y=0.6]."
 				}
 			],
-			"flavorReference": "[y=0.75]Dr. Samson, Apocalypse 10: Death of Grandfather"
+			"flavorReference": "[y=0.55]Dr. Samson, Apocalypse 10: Death of Grandfather"
 		},
 		{
 			"identifier": "YouAreBroken",
@@ -688,7 +688,7 @@
 			"flavorQuotes": [
 				{
 					"identifier": "Doomsayer",
-					"text": "[y=0.8]Another year gone, and what have you{BR}accomplished? Is this the life you’ve fought so hard{BR}to lead? The life you needed far away from me?"
+					"text": "A[y=0.9]n[y=0.6]o[y=0.9]t[y=0.6]h[y=0.9]e[y=0.6]r[y=0.9] y[y=0.6]e[y=0.9]a[y=0.6]r[y=0.9] g[y=0.6]o[y=0.9]n[y=0.6]e[y=0.9],[y=0.6] a[y=0.9]n[y=0.6]d[y=0.9] w[y=0.6]h[y=0.9]a[y=0.6]t[y=0.9] h[y=0.6]a[y=0.9]v[y=0.6]e[y=0.9] y[y=0.6]o[y=0.9]u[y=0.6] a[y=0.9]c[y=0.6]c[y=0.9]o[y=0.6]m[y=0.9]p[y=0.6]l[y=0.9]i[y=0.6]s[y=0.9]h[y=0.6]e[y=0.9]d[y=0.6]?{BR}[y=0.9] I[y=0.6]s[y=0.9] t[y=0.6]h[y=0.9]i[y=0.6]s[y=0.9] t[y=0.6]h[y=0.9]e[y=0.6] l[y=0.9]i[y=0.6]f[y=0.9]e[y=0.6] y[y=0.9]o[y=0.6]u[y=0.9]'[y=0.6]v[y=0.9]e[y=0.6] f[y=0.9]o[y=0.6]u[y=0.9]g[y=0.6]h[y=0.9]t[y=0.6] s[y=0.9]o[y=0.6] h[y=0.9]a[y=0.6]r[y=0.9]d[y=0.6] t[y=0.9]o[y=0.6] l[y=0.9]e[y=0.6]a[y=0.9]d[y=0.6]?{BR}[y=0.9] T[y=0.6]h[y=0.9]e[y=0.6] l[y=0.9]i[y=0.6]f[y=0.9]e[y=0.6] y[y=0.9]o[y=0.6]u[y=0.9] n[y=0.6]e[y=0.9]e[y=0.6]d[y=0.9]e[y=0.6]d[y=0.9] f[y=0.6]a[y=0.9]r[y=0.6] a[y=0.9]w[y=0.6]a[y=0.9]y[y=0.6] f[y=0.9]r[y=0.6]o[y=0.9]m[y=0.6] m[y=0.9]e[y=0.6]?"
 				}
 			],
 			"flavorReference": "[y=0.8]Doomsayer, Bastion City: A Spider Never Blinks #11"
@@ -713,7 +713,7 @@
 			"flavorQuotes": [
 				{
 					"identifier": "[y=0.8]Coach Green",
-					"text": "[y=0.8]What’re you saying, son?"
+					"text": "[y=0.95]W[y=0.65]h[y=0.95]a[y=0.65]t[y=0.95]'[y=0.65]r[y=0.95]e[y=0.65] y[y=0.95]o[y=0.65]u[y=0.95] s[y=0.65]a[y=0.95]y[y=0.65]i[y=0.95]n[y=0.65]g[y=0.95],[y=0.65] s[y=0.95]o[y=0.65]n[y=0.95]?[y=0.65]"
 				},
 				{
 					"identifier": "[y=0.8]Bolt",
