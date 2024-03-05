@@ -78,12 +78,12 @@
         "maneuver"
       ],
       "body": [
-        "When this card enters play, return your other maneuvers in play to your hand.",
-        "Prevent the first card draw during your draw phase."
+        "[y=0.88]When this card enters play, return your other maneuvers in play to your hand.",
+        "[y=0.88]Prevent the first card draw during your draw phase."
       ],
       "powers": [
-        "[y=0.95]Until the start of your next turn, the first time each turn any target deals damage, {Peacekeeper} may discard a card to deal 1 target 1 projectile damage.[/y]",
-        "Draw a card or destroy this card."
+        "[y=0.88]Until the start of your next turn, the first time each turn any target deals damage, You may discard a card. If you do, {Peacekeeper} deals 1 target 1 projectile damage.",
+        "[y=0.88]Draw a card or destroy this card."
       ],
       "icons": [
         "Manipulate",
