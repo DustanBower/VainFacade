@@ -23,7 +23,7 @@ namespace VainFacadePlaytest.Ember
         {
             base.AddTriggers();
             // "When {EmberCharacter} would deal a target fire damage, that target may regain that much HP instead. Reduce HP gained this way by 1 for each time HP has been regained this way this turn, to a minimum of 1."
-            AddOptionalPreventDamageTrigger((DealDamageAction dda) => dda.DamageSource != null && dda.DamageSource.IsSameCard(base.CharacterCard) && dda.DamageType == DamageType.Fire && dda.Amount > 0, GainHPBasedOnDamagePrevented, new TriggerType[] { TriggerType.GainHP }, true);
+            AddOptionalPreventDamageTrigger((DealDamageAction dda) => dda.DamageSource != null && dda.DamageSource.IsSameCard(base.CharacterCard) && dda.DamageType == DamageType.Fire && dda.Amount > 0, GainHPBasedOnDamagePrevented, new TriggerType[] { TriggerType.GainHP }, false);
         }
 
         public int TimesHealedThisTurn()

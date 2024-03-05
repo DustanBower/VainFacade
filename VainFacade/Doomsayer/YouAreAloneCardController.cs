@@ -69,7 +69,11 @@ namespace VainFacadePlaytest.Doomsayer
                 //The reason this is included is because of Radiance's Radiant Duplicate
                 bool? flag8 = g is PreventPhaseAction && PreventPhaseConditions((PreventPhaseAction)g);
 
-                if ((flag.HasValue && flag.Value) || (flag2.HasValue && flag2.Value) || (flag3.HasValue && flag3.Value) || (flag4.HasValue && flag4.Value) || (flag5.HasValue && flag5.Value) || (flag6.HasValue && flag6.Value) || (flag7.HasValue && flag7.Value) || (flag8.HasValue && flag8.Value))
+                //flag 9 deals with cancel actions that affect the isolated hero, and vice versa
+                bool? flag9 = g is CancelAction && g.CardSource != null && IsHero(g.CardSource.Card) && CancelConditions((CancelAction)g);
+                //bool? flag9 = false;
+
+                if ((flag.HasValue && flag.Value) || (flag2.HasValue && flag2.Value) || (flag3.HasValue && flag3.Value) || (flag4.HasValue && flag4.Value) || (flag5.HasValue && flag5.Value) || (flag6.HasValue && flag6.Value) || (flag7.HasValue && flag7.Value) || (flag8.HasValue && flag8.Value) || (flag9.HasValue && flag9.Value))
                 {
                     Log.Debug($"{this.Card.Title} prevents action from occurring: {g.ToString()}");
                     return false;
@@ -90,6 +94,36 @@ namespace VainFacadePlaytest.Doomsayer
             AddTrigger<MakeDecisionAction>((MakeDecisionAction md) =>  md.CardSource != null && IsHero(md.CardSource.Card), DecisionResponse, TriggerType.Hidden, TriggerTiming.Before);
 
             base.AddTriggers();
+        }
+
+        private bool CancelConditions(CancelAction g)
+        {
+            if (g.ActionToCancel is DealDamageAction)
+            {
+                DealDamageAction dd = (DealDamageAction)(g.ActionToCancel);
+
+                //If damage to an isolated target is being cancelled by another hero's card
+                bool flag1 = dd.Target.Owner == GetIsolatedHero() && g.CardSource.Card.Owner != GetIsolatedHero();
+
+                //If damage to another hero target is being cancelled by an isolated card
+                bool flag2 = dd.Target.Owner != GetIsolatedHero() && g.CardSource.Card.Owner == GetIsolatedHero();
+
+                return flag1 || flag2;
+            }
+
+            if (g.ActionToCancel is DestroyCardAction)
+            {
+                DestroyCardAction dc = (DestroyCardAction)(g.ActionToCancel);
+
+                //If another hero's card is preventing the destruction of an isolated card
+                bool flag1 = dc.CardToDestroy.Card.Owner == GetIsolatedHero() && dc.CardSource.Card.Owner != GetIsolatedHero();
+
+                //If an isolated card is preventing the destruction of another hero's card
+                bool flag2 = dc.CardToDestroy.Card.Owner != GetIsolatedHero() && dc.CardSource.Card.Owner == GetIsolatedHero();
+
+                return flag1 || flag2;
+            }
+            return false;
         }
 
         private bool PowerConditions(UsePowerAction up)
