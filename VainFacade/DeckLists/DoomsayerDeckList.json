@@ -605,6 +605,7 @@
 			"body": [
 				"Play this card next to the hero with the fewest cards in play.",
 				"{Doomsayer} is indestructible.",
+				"The heroes cannot win the game.",
 				"At the end of that hero’s turn, that hero regains 1 hp, then deals each other hero target 1 psychic damage."
 			],
 			"icons": [
@@ -631,7 +632,8 @@
 			],
 			"body": [
 				"Play this card next to the hero with the lowest hp. That hero and that hero’s cards cannot affect or be affected by any other hero card or effect from another hero deck except for dealing damage.",
-				"{Doomsayer} is indestructible."
+				"{Doomsayer} is indestructible.",
+				"The heroes cannot win the game."
 			],
 			"icons": [
 				"Indestructible"
@@ -655,7 +657,8 @@
 			"body": [
 				"Play this card next to the hero whose player has the fewest cards in their hand.",
 				"Targets in this play area cannot regain hp or have their hp increased.",
-				"{Doomsayer} is indestructible."
+				"{Doomsayer} is indestructible.",
+				"The heroes cannot win the game."
 			],
 			"icons": [
 				"CannotGainHP",
@@ -679,7 +682,8 @@
 			],
 			"body": [
 				"Play this card in a hero play area. The first time each turn that hero plays a card, put a random card from their hand into play.",
-				"{Doomsayer} is indestructible."
+				"{Doomsayer} is indestructible.",
+				"The heroes cannot win the game."
 			],
 			"icons": [
 				"PlayCardNow",
@@ -704,7 +708,8 @@
 			"body": [
 				"Play this card in a hero play area.",
 				"When a power is used on a non-character card in that play area, destroy that card.",
-				"{Doomsayer} is indestructible."
+				"{Doomsayer} is indestructible.",
+				"The heroes cannot win the game."
 			],
 			"icons": [
 				"DestroyHero",
@@ -733,7 +738,8 @@
 			"body": [
 				"Play this card in a hero play area.",
 				"When that hero’s player would play a card or that hero would use a power, that hero’s player may discard a card. If they do not, play the bottom card of that hero’s deck instead.",
-				"{Doomsayer} is indestructible."
+				"{Doomsayer} is indestructible.",
+				"The heroes cannot win the game."
 			],
 			"icons": [
 				"Discard",

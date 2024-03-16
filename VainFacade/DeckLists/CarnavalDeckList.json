@@ -429,7 +429,7 @@
 			],
 			"body": [
 				"",
-				"Play this card in the play area of a target with 3 or fewer HP. Move that target under this card.",
+				"Play this card in the play area of a non-indestructible target with 3 or fewer HP. Move that target under this card.",
 				"At the end of that target's turn, the 3 targets in this play area with the highest HP each deal themselves 2 toxic damage. Then destroy this card."
 			],
 			"icons": [
