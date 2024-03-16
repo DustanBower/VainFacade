@@ -30,6 +30,8 @@ namespace VainFacadePlaytest.Doomsayer
         {
             //Copied from Fixed Point
             AddAfterLeavesPlayAction((GameAction g) => base.GameController.DestroyAnyCardsThatShouldBeDestroyed(ignoreBattleZone: false, GetCardSource()), TriggerType.DestroyCard);
+
+            AddTrigger<GameOverAction>((GameOverAction ga) => ga.ResultIsVictory, CancelResponse, TriggerType.CancelAction, TriggerTiming.Before);
         }
     }
 }
