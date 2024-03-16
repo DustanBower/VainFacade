@@ -62,7 +62,7 @@ namespace VainFacadePlaytest.Carnaval
         public override IEnumerator DeterminePlayLocation(List<MoveCardDestination> storedResults, bool isPutIntoPlay, List<IDecision> decisionSources, Location overridePlayArea = null, LinqTurnTakerCriteria additionalTurnTakerCriteria = null)
         {
             // "Play this card in the play area of a target with 3 or fewer HP. Move that target under this card."
-            IEnumerable<Card> options = FindCardsWhere(new LinqCardCriteria((Card c) => c.IsInPlayAndHasGameText && c.IsTarget && c.HitPoints.Value <= 3), visibleToCard: GetCardSource());
+            IEnumerable<Card> options = FindCardsWhere(new LinqCardCriteria((Card c) => c.IsInPlayAndHasGameText && c.IsTarget && c.HitPoints.Value <= 3 && !base.GameController.IsCardIndestructible(c)), visibleToCard: GetCardSource());
             if (options.Count() > 0)
             {
                 List<SelectCardDecision> choices = new List<SelectCardDecision>();
