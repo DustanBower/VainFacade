@@ -79,7 +79,7 @@ namespace VainFacadePlaytest.ParadiseIsle
             base.AddTriggers();
             // "This card is immune to damage if it has not dealt damage since entering play."
             AddImmuneToDamageTrigger((DealDamageAction dda) => dda.Target == base.Card && !HasDealtDamageSinceEnteringPlay());
-            // "The first time a Conspirator deals damage to a target each turn, {Bombshell} deals that target {H} projectile damage."
+            // "The first time any target is dealt damage by any Conspirator each turn, {Bombshell} deals that target {H} projectile damage."
             AddTrigger((DealDamageAction dda) => dda.DamageSource != null && dda.DamageSource.Card != null && dda.DamageSource.Card.DoKeywordsContain(ConspiratorKeyword) && dda.DidDealDamage && !HasBeenSetToTrueThisTurn(FirstConspiratorDamage), SupportingFireResponse, TriggerType.DealDamage, TriggerTiming.After);
             AddAfterLeavesPlayAction((GameAction ga) => ResetFlagAfterLeavesPlay(FirstConspiratorDamage), TriggerType.Hidden);
             // "The first time multiple targets are dealt damage during each environment turn, {Bombshell} deals each non-Conspirator target 2 fire damage."

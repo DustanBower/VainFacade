@@ -21,7 +21,7 @@ namespace VainFacadePlaytest.Carnaval
         {
             base.AddTriggers();
             AddIfTheCardThatThisCardIsNextToLeavesPlayMoveItToTheirPlayAreaTrigger(false);
-            // "If this card is not next to a target, the first time a villain target would deal damage, move this card next to that target."
+            // "If this card is not next to a target, when a villain target would deal damage, move this card next to that target."
             AddTrigger((DealDamageAction dda) => dda.DamageSource != null && dda.DamageSource.IsCard && IsVillainTarget(dda.DamageSource.Card) && !IsThisNextToATarget(), (DealDamageAction dda) => base.GameController.MoveCard(base.TurnTakerController, base.Card, dda.DamageSource.Card.NextToLocation, playCardIfMovingToPlayArea: false, showMessage: true, responsibleTurnTaker: base.TurnTaker, cardSource: GetCardSource()), TriggerType.ReduceDamage, TriggerTiming.Before);
             // "Reduce damage dealt by the target next to this card by 3."
             AddReduceDamageTrigger((DealDamageAction dda) => dda.DamageSource != null && dda.DamageSource.IsCard && IsThisCardNextToCard(dda.DamageSource.Card), (DealDamageAction dda) => 3);

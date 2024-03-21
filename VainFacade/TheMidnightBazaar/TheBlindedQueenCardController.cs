@@ -45,7 +45,7 @@ namespace VainFacadePlaytest.TheMidnightBazaar
         public override void AddTriggers()
         {
             base.AddTriggers();
-            // "The first time each turn a non-Hound target deals damage to a target other than itself, increase damage dealt to the source of that damage by 1 until this card leaves play."
+            // "The first time each turn any non-Hound target deals damage to any target other than itself, increase damage dealt to the source of that damage by 1 until this card leaves play."
             AddTrigger<DealDamageAction>((DealDamageAction dda) => !HasBeenSetToTrueThisTurn(FirstHostileDamageThisTurn) && dda.DidDealDamage && dda.DamageSource != null && dda.DamageSource.IsCard && !dda.DamageSource.Card.DoKeywordsContain(HoundKeyword) && dda.Target != dda.DamageSource.Card, AggroResponse, TriggerType.AddStatusEffectToDamage, TriggerTiming.After);
             AddAfterLeavesPlayAction((GameAction ga) => ResetFlagAfterLeavesPlay(FirstHostileDamageThisTurn), TriggerType.Hidden);
             AddAfterLeavesPlayAction((GameAction ga) => ResetFlagAfterLeavesPlay(IsShufflingSelf), TriggerType.Hidden);

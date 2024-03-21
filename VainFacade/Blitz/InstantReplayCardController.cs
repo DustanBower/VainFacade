@@ -23,7 +23,7 @@ namespace VainFacadePlaytest.Blitz
         public override void AddTriggers()
         {
             base.AddTriggers();
-            // "The first time each turn {BlitzCharacter} deals a target other than himself damage, {BlitzCharacter} deals that target 2 melee and 2 lightning damage."
+            // "The first time each turn {BlitzCharacter} deals any target other than himself damage, {BlitzCharacter} deals that target 2 melee and 2 lightning damage."
             AddTrigger((DealDamageAction dda) => dda.DamageSource != null && dda.DamageSource.Card != null && dda.DamageSource.Card == base.CharacterCard && dda.Target != base.CharacterCard && dda.DidDealDamage && !HasBeenSetToTrueThisTurn(FirstDamageToNonSelfThisTurn), ExtraDamageResponse, TriggerType.DealDamage, TriggerTiming.After);
             AddAfterLeavesPlayAction((GameAction ga) => ResetFlagAfterLeavesPlay(FirstDamageToNonSelfThisTurn), TriggerType.Hidden);
         }

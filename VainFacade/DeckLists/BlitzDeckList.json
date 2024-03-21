@@ -216,7 +216,7 @@
 			"body": [
 				"When this card enters play, destroy all other Playbooks.",
 				"When this card is destroyed, play the top card of the villain deck.",
-				"The first time each turn {BlitzCharacter} deals a target other than himself damage, {BlitzCharacter} deals that target 2 melee and 2 lightning damage."
+				"The first time each turn {BlitzCharacter} deals any target other than himself damage, {BlitzCharacter} deals that target 2 melee and 2 lightning damage."
 			],
 			"icons": [
 				"Destroy",
