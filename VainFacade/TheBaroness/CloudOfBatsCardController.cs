@@ -53,6 +53,28 @@ namespace VainFacadePlaytest.TheBaroness
             /*AddTrigger((MoveCardAction mca) => mca.Origin.IsPlayAreaOf(base.TurnTaker), LogMoveCardAction, TriggerType.Hidden, TriggerTiming.Before);
             AddTrigger((BulkMoveCardsAction bmca) => true, LogBulkMoveAction, TriggerType.Hidden, TriggerTiming.Before);
             AddTrigger((BulkMoveCardsAction bmca) => true, LogBulkMoveAction, TriggerType.Hidden, TriggerTiming.After);*/
+
+
+            AddTrigger((DestroyCardAction dca) => !base.GameController.IsCardIndestructible(dca.CardToDestroy.Card) && dca.CardToDestroy.Card.GetAllNextToCards(false).Any() && dca.CardToDestroy.Card.Owner == base.TurnTaker && dca.CardToDestroy.Card.Identifier == BatIdentifier, HandleNextToCards, TriggerType.MoveCard, TriggerTiming.Before);
+        }
+
+        private IEnumerator HandleNextToCards(DestroyCardAction dc)
+        {
+            Card bat = dc.CardToDestroy.Card;
+            Card blood = bat.Location.OwnerCard;
+            List<Card> NextToCards = bat.GetAllNextToCards(false).ToList();
+            if (NextToCards.Any() && blood != null)
+            {
+                IEnumerator coroutine = base.GameController.BulkMoveCards(DecisionMaker, NextToCards, blood.NextToLocation, cardSource: GetCardSource());
+                if (base.UseUnityCoroutines)
+                {
+                    yield return base.GameController.StartCoroutine(coroutine);
+                }
+                else
+                {
+                    base.GameController.ExhaustCoroutine(coroutine);
+                }
+            }
         }
 
         /*private IEnumerator LogBulkMoveAction(BulkMoveCardsAction bmca)
@@ -199,15 +221,22 @@ namespace VainFacadePlaytest.TheBaroness
                     }
                     //Log.Debug("CloudOfBatsCardController.DestroyBloodRemoveBatResponse: bloodDest result: " + bloodDest.GetFriendlyName());
                     IEnumerator destroyCoroutine = null;
+
+                    CardSource destroySource = dca.CardSource;
+                    if (destroySource.Card == dca.CardToDestroy.Card)
+                    {
+                        base.GameController.AddInhibitorException(destroySource.CardController, (GameAction ga) => ga is DestroyCardAction && ((DestroyCardAction)ga).CardToDestroy.Card == associatedBlood);
+                    }
+
                     if (bloodDest == associatedBlood.NativeTrash)
                     {
                         //Log.Debug("CloudOfBatsCardController.DestroyBloodRemoveBatResponse: destroyCoroutine is DestroyCard with no override");
-                        destroyCoroutine = base.GameController.DestroyCard(DecisionMaker, associatedBlood, actionSource: dca, responsibleCard: dca.ResponsibleCard, cardSource: dca.CardSource);
+                        destroyCoroutine = base.GameController.DestroyCard(DecisionMaker, associatedBlood, actionSource: dca, responsibleCard: dca.ResponsibleCard, cardSource: destroySource);
                     }
                     else
                     {
                         //Log.Debug("CloudOfBatsCardController.DestroyBloodRemoveBatResponse: destroyCoroutine is DestroyCard with overrideDestroyLocation");
-                        destroyCoroutine = base.GameController.DestroyCard(DecisionMaker, associatedBlood, actionSource: dca, responsibleCard: dca.ResponsibleCard, overrideDestroyLocation: bloodDest, cardSource: dca.CardSource);
+                        destroyCoroutine = base.GameController.DestroyCard(DecisionMaker, associatedBlood, actionSource: dca, responsibleCard: dca.ResponsibleCard, overrideDestroyLocation: bloodDest, cardSource: destroySource);
                     }
                     if (base.UseUnityCoroutines)
                     {
@@ -216,6 +245,11 @@ namespace VainFacadePlaytest.TheBaroness
                     else
                     {
                         base.GameController.ExhaustCoroutine(destroyCoroutine);
+                    }
+
+                    if (destroySource.Card == dca.CardToDestroy.Card)
+                    {
+                        base.GameController.RemoveInhibitorException(destroySource.CardController);
                     }
                 }
             }
