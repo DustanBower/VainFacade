@@ -238,6 +238,22 @@ namespace VainFacadeTest
         }
 
         [Test()]
+        public void TestABrushWithDeathBasePower()
+        {
+            SetupGameController("AkashBhuta", "VainFacadePlaytest.Glyph", "Legacy", "Bunker", "TheScholar", "InsulaPrimalis");
+            StartGame();
+
+            //Glyph's base power should be able to play A Brush With Death face-down when the other copy is in play face-up
+            DecisionYesNo = false;
+            Card brush1 = PlayCard("ABrushWithDeathDeath");
+            Card brush2 = PutInHand("ABrushWithDeathFate");
+            DecisionSelectCard = brush2;
+            DecisionSelectTurnTaker = glyph.TurnTaker;
+            UsePower(glyph);
+            AssertIsInPlay(brush2);
+        }
+
+        [Test()]
         public void TestABrushWithDeathSkipPlayPlay()
         {
             SetupGameController("AkashBhuta", "VainFacadePlaytest.Glyph", "Legacy", "Bunker", "TheScholar", "InsulaPrimalis");
@@ -362,7 +378,7 @@ namespace VainFacadeTest
             Card sigil = PlayCard("SigiledBlade");
             UsePower(sigil);
             DrawCard(glyph);
-            SetHitPoints(glyph, 9);
+            SetHitPoints(glyph, 10);
 
             ResetDecisions();
             DecisionYesNo = false;
@@ -1490,5 +1506,24 @@ namespace VainFacadeTest
             DealDamage(akash, legacy, 1, DamageType.Melee);
             QuickHPCheck(-1);
         }
+
+        //[Test()]
+        //public void TestChaosLord()
+        //{
+        //    SetupGameController("KaargraWarfang", "VainFacadePlaytest.Glyph", "Legacy", "Bunker", "TheScholar", "InsulaPrimalis");
+        //    StartGame();
+
+        //    Card chaos = PlayCard("TitleChaosLord");
+        //    DecisionYesNo = true;
+        //    DecisionSelectTurnTaker = glyph.TurnTaker;
+        //    PlayCard("OccludedMarionetteInsight");
+        //    PlayCard("ABrushWithDeathDeath");
+        //    PlayCard("ReturnToSilenceFate");
+
+        //    DecisionYesNo = false;
+        //    PlayCard("ABrushWithDeathFate");
+        //    PlayCard("SigiledBlade");
+        //    PlayCard("EmbroideredCloak");
+        //}
     }
 }
