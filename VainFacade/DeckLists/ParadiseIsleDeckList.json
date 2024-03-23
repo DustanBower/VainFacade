@@ -413,7 +413,7 @@
 			],
 			"body": [
 				"When this card enters play, destroy all other Areas.",
-				"At the end of the environment turn, 1 player chooses a number between 1 and 4, selects a keyword, and discards the top card of their deck. If that card has the selected keyword, that hero draws X cards, otherwise they deal themselves X psychic damage, where X = the chosen number."
+				"At the end of the environment turn, 1 player chooses a number between 1 and 4, selects a keyword, and discards the top card of their deck. If that card has the selected keyword, they draw X cards, otherwise their hero deals themself X psychic damage, where X = the chosen number."
 			],
 			"icons": [
 				"DestroyEnvironment",

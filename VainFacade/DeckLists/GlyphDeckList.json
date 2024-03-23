@@ -268,7 +268,7 @@
 						"death"
 					],
 					"body": [
-						"You may put a non-indestructible card on top of its deck.",
+						"You may put a non-indestructible, non-character card on top of its deck.",
 						"You may destroy 1 of your face-down might cards to put the top card of of a deck in that card's play area into play or shuffle that deck. If a card entered play this way, cards cannot be played from that deck until the start of your next turn."
 					],
 					"icons": [
@@ -474,7 +474,7 @@
 						"destruction"
 					],
 					"body": [
-						"You may put a non-indestructible card on top of its deck.",
+						"You may put a non-indestructible, non-character card on top of its deck.",
 						"You may destroy 1 of your face-down might cards to put the top card of of a deck in that card's play area into play or shuffle that deck. If a card entered play this way, cards cannot be played from that deck until the start of your next turn."
 					],
 					"icons": [
@@ -1019,7 +1019,7 @@
 						"insight"
 					],
 					"body": [
-						"You may put a non-indestructible card on top of its deck.",
+						"You may put a non-indestructible, non-character card on top of its deck.",
 						"You may destroy 1 of your face-down might cards to put the top card of of a deck in that card's play area into play or shuffle that deck. If a card entered play this way, cards cannot be played from that deck until the start of your next turn."
 					],
 					"icons": [

@@ -19,7 +19,7 @@ namespace VainFacadePlaytest.Glyph
 
         public override IEnumerator Play()
         {
-            //You may put a non-indestructible card on top of its deck.
+            //You may put a non-indestructible, non-character card on top of its deck.
             //Based on Abduct and Abandon
             var scd = new SelectCardDecision(GameController, DecisionMaker, SelectionType.MoveCardOnDeck, GameController.GetAllCards(), isOptional: true,
                 additionalCriteria: c => !base.GameController.IsCardIndestructible(c) && c.IsInPlay && !c.IsCharacter && !c.IsOneShot && GameController.IsCardVisibleToCardSource(c, GetCardSource()) && (FindCardController(c) is MissionCardController ? c.IsFlipped : true),

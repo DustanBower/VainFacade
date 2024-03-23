@@ -23,13 +23,13 @@ namespace VainFacadePlaytest.Carnaval
             base.AddTriggers();
             base.AddAsPowerContributor();
             AddIfTheCardThatThisCardIsNextToLeavesPlayMoveItToTheirPlayAreaTrigger(true);
-            // "When that card is destroyed, you may destroy up to 2 non-character non-target cards or {CarnavalCharacter} may deal each non-hero target 1 fire damage and 1 projectile damage."
+            // "When that card is destroyed, you may destroy up to 2 non-character, non-target cards or {CarnavalCharacter} may deal each non-hero target 1 fire damage and 1 projectile damage."
             AddTrigger((DestroyCardAction dca) => IsThisCardNextToCard(dca.CardToDestroy.Card), ExplodeResponse, new TriggerType[] { TriggerType.DealDamage, TriggerType.DestroyCard }, TriggerTiming.After);
         }
 
         private IEnumerator ExplodeResponse(DestroyCardAction dca)
         {
-            // "... you may destroy up to 2 non-character non-target cards or {CarnavalCharacter} may deal each non-hero target 1 fire damage and 1 projectile damage."
+            // "... you may destroy up to 2 non-character, non-target cards or {CarnavalCharacter} may deal each non-hero target 1 fire damage and 1 projectile damage."
             List<DealDamageAction> instances = new List<DealDamageAction>();
             instances.Add(new DealDamageAction(GetCardSource(), new DamageSource(base.GameController, base.CharacterCard), null, 1, DamageType.Fire));
             instances.Add(new DealDamageAction(GetCardSource(), new DamageSource(base.GameController, base.CharacterCard), null, 1, DamageType.Projectile));
@@ -50,7 +50,7 @@ namespace VainFacadePlaytest.Carnaval
 
         public override IEnumerator DeterminePlayLocation(List<MoveCardDestination> storedResults, bool isPutIntoPlay, List<IDecision> decisionSources, Location overridePlayArea = null, LinqTurnTakerCriteria additionalTurnTakerCriteria = null)
         {
-            // "Play this card next to a non-target non-character card."
+            // "Play this card next to a non-character, non-target card."
             IEnumerator selectCoroutine = SelectCardThisCardWillMoveNextTo(new LinqCardCriteria((Card c) => !c.IsCharacter && !c.IsTarget && !c.IsOneShot && c.IsInPlay, "non-character non-target"), storedResults, isPutIntoPlay, decisionSources);
             if (base.UseUnityCoroutines)
             {
