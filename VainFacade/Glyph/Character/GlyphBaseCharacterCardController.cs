@@ -119,7 +119,7 @@ namespace VainFacadePlaytest.Glyph
             AddPhaseChangeTrigger((TurnTaker tt) => true, (Phase p) => true, (PhaseChangeAction pca) => this.TurnTaker.Revealed.Cards.Any(), (PhaseChangeAction pca) => CleanupCardsAtLocations(new Location[] { this.TurnTaker.Revealed }.ToList(), this.TurnTaker.Trash, isReturnedToOriginalLocation: false, isDiscard: false),new TriggerType[] {TriggerType.Hidden, TriggerType.MoveCard },TriggerTiming.Before);
 
             //If Santa Guise flips one of Glyph's limited cards when another copy is in play, it doesn't get moved to the trash.
-            AddTrigger<FlipCardAction>((FlipCardAction fc) => FindCardController(fc.CardToFlip.Card) is GlyphLimitedCard && FindCardsWhere((Card c) => c.IsInPlayAndHasGameText && c.Title == fc.CardToFlip.Card.Title && c != fc.CardToFlip.Card).Any(), HandleLimited, TriggerType.MoveCard, TriggerTiming.After);
+            AddTrigger<FlipCardAction>((FlipCardAction fc) => !fc.ToFaceDown && FindCardController(fc.CardToFlip.Card) is GlyphLimitedCard && FindCardsWhere((Card c) => c.IsInPlayAndHasGameText && c.Title == fc.CardToFlip.Card.Title && c != fc.CardToFlip.Card).Any(), HandleLimited, TriggerType.MoveCard, TriggerTiming.After);
         }
 
         private IEnumerator PlayFaceDownInstead(PlayCardAction pca)
