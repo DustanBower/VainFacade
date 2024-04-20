@@ -2061,10 +2061,10 @@ namespace VainFacadeTest
             Card silver = PlayCard("SilverTonguedDevil");
             DecisionYesNo = false;
             DecisionDoNotSelectTurnTaker = true;
+            Card gaze = PlayCard("WrathfulGaze");
             QuickHandStorage(ra);
             Card dark = GetCard("DarkestBeforeTheDawn");
             DecisionSelectCard = dark;
-            Card gaze = PlayCard("WrathfulGaze");
             PlayCard(dark);
 
             //The next damage to Legacy should not be increased by 3, and Wrathful Gaze should still be destroyed,
