@@ -49,7 +49,7 @@
 				"trap"
 			],
 			"body": [
-				"Play this card next to a non-character, non-target card. When that card is destroyed, you may destroy up to 2 non-character, non-target cards or {CarnavalCharacter} may deal each non-hero target 1 fire damage and 1 projectile damage.",
+				"Play this card next to a non-target non-character card. When that card is destroyed, you may destroy up to 2 non-character non-target cards or {CarnavalCharacter} may deal each non-hero target 1 fire damage and 1 projectile damage.",
 				"[b]Power:[/b] Destroy a hero Ongoing or Equipment card."
 			],
 			"icons": [
@@ -149,7 +149,7 @@
 				"trap"
 			],
 			"body": [
-				"When a hero card is discarded during an environment or villain turn, the target with the lowest HP from that turn's associated deck deals each other target in its play area 1 projectile damage, then deals itself 4 irreducible fire damage. Then destroy this card."
+				"When a hero card is discarded on an environment or villain turn, the target with the lowest HP from that turn's associated deck deals each other target in its play area 1 projectile damage, then deals itself 4 irreducible fire damage. Then destroy this card."
 			],
 			"icons": [
 				"DealDamageProjectile",
@@ -306,7 +306,7 @@
 				"trap"
 			],
 			"body": [
-				"If this card is not next to a target, when a villain target would deal damage, move this card next to that target.",
+				"If this card is not next to a target, the first time a villain target would deal damage, move this card next to that target.",
 				"Reduce damage dealt by the target next to this card by 3.",
 				"At the start of that target's turn, if this card is next to a target, {CarnavalCharacter} deals that target 2 melee damage and destroys this card."
 			],
@@ -428,8 +428,8 @@
 				"trap"
 			],
 			"body": [
-				"Play this card in the play area of a non-indestructible target with 3 or fewer HP. Move that target under this card.",
-				"At the end of that target's turn, the 3 targets in this play area with the highest HP each deal themselves 2 toxic damage. Then destroy this card."
+				"When this card enters play, you may destroy a target with 3 or fewer HP.{BR}If a target is destroyed this way, put this card in that card's play area. Otherwise destroy this card.",
+				"At the end of that play area's turn, the 3 targets in this play area with the highest HP each deal themselves 2 toxic damage, then destroy this card."
 			],
 			"icons": [
 				"DestroyTarget",
