@@ -9,103 +9,116 @@ using System.Text;
 
 namespace VainFacadePlaytest.Carnaval
 {
-    public class SuspiciousBodyDoubleCardController : CardController
-    {
-        public SuspiciousBodyDoubleCardController(Card card, TurnTakerController turnTakerController)
+	public class SuspiciousBodyDoubleCardController:CardController
+	{
+		public SuspiciousBodyDoubleCardController(Card card, TurnTakerController turnTakerController)
             : base(card, turnTakerController)
         {
             // If this card is in play, make sure the player can tell what play area it's in
             SpecialStringMaker.ShowSpecialString(() => "This card is in " + base.Card.Location.HighestRecursiveLocation.GetFriendlyName() + ".").Condition = () => base.Card.IsInPlayAndHasGameText;
         }
 
+        public override IEnumerator Play()
+        {
+            //When this card enters play, you may destroy a target with 3 or fewer HP.
+            List<SelectCardDecision> results = new List<SelectCardDecision>();
+            List<DestroyCardAction> destroyResults = new List<DestroyCardAction>();
+            Location originalLocation = null;
+            IEnumerator coroutine = base.GameController.SelectCardAndStoreResults(DecisionMaker,SelectionType.DestroyCard, new LinqCardCriteria((Card c) => c.IsTarget && c.HitPoints <= 3 && c.IsInPlayAndHasGameText, "", false, false, "target with 3 or fewer HP", "targets with 3 or fewer HP"), results, true, cardSource: GetCardSource());
+            if (base.UseUnityCoroutines)
+            {
+                yield return base.GameController.StartCoroutine(coroutine);
+            }
+            else
+            {
+                base.GameController.ExhaustCoroutine(coroutine);
+            }
+
+            if (DidSelectCard(results))
+            {
+                Card selected = GetSelectedCard(results);
+                if (selected != null)
+                {
+                    originalLocation = selected.Location.HighestRecursiveLocation;
+                    coroutine = base.GameController.DestroyCard(DecisionMaker, selected, false, destroyResults, responsibleCard: this.Card, cardSource: GetCardSource());
+                    if (base.UseUnityCoroutines)
+                    {
+                        yield return base.GameController.StartCoroutine(coroutine);
+                    }
+                    else
+                    {
+                        base.GameController.ExhaustCoroutine(coroutine);
+                    }
+                }
+            }
+
+            //If a target is destroyed this way, put this card in that card's play area, otherwise destroy this card.
+            if (DidDestroyCard(destroyResults) && originalLocation != null)
+            {
+                coroutine = base.GameController.MoveCard(this.TurnTakerController, this.Card, originalLocation,playCardIfMovingToPlayArea: false, responsibleTurnTaker: this.TurnTaker, cardSource: GetCardSource());
+                if (base.UseUnityCoroutines)
+                {
+                    yield return base.GameController.StartCoroutine(coroutine);
+                }
+                else
+                {
+                    base.GameController.ExhaustCoroutine(coroutine);
+                }
+            }
+            else
+            {
+                coroutine = DestroyThisCardResponse(null);
+                if (base.UseUnityCoroutines)
+                {
+                    yield return base.GameController.StartCoroutine(coroutine);
+                }
+                else
+                {
+                    base.GameController.ExhaustCoroutine(coroutine);
+                }
+            }
+        }
+
         public override void AddTriggers()
         {
-            base.AddTriggers();
-            // "At the end of that target's turn, the 3 targets in this play area with the highest HP each deal themselves 2 toxic damage. Then destroy this card."
-            AddEndOfTurnTrigger((TurnTaker tt) => base.Card.UnderLocation.HasCards && tt == base.Card.UnderLocation.Cards.FirstOrDefault().Owner, GasResponse, new TriggerType[] { TriggerType.DealDamage, TriggerType.DestroySelf });
+            //At the end of that play area's turn, the 3 targets in this play area with the highest HP each deal themselves 2 toxic damage, then destroy this card.
+            AddEndOfTurnTrigger((TurnTaker tt) => tt == this.Card.Location.OwnerTurnTaker, GasResponse, new TriggerType[] { TriggerType.DealDamage, TriggerType.DestroySelf });
         }
 
         private IEnumerator GasResponse(PhaseChangeAction pca)
         {
-            // "... the 3 targets in this play area with the highest HP each deal themselves 2 toxic damage."
             List<Card> storedTargets = new List<Card>();
-            IEnumerator findCoroutine = base.GameController.FindTargetsWithHighestHitPoints(1, 3, (Card c) => c.IsInPlayAndHasGameText && c.IsTarget && c.IsAtLocationRecursive(base.Card.Location.HighestRecursiveLocation), storedTargets, cardSource: GetCardSource());
+            DealDamageAction damageAction = new DealDamageAction(GetCardSource(), null, null, 2, DamageType.Toxic);
+            IEnumerator coroutine = base.GameController.FindTargetsWithHighestHitPoints(1, 3, (Card c) => c.Location.HighestRecursiveLocation == this.Card.Location.HighestRecursiveLocation, storedTargets, damageAction, cardSource: GetCardSource());
             if (base.UseUnityCoroutines)
             {
-                yield return base.GameController.StartCoroutine(findCoroutine);
+                yield return base.GameController.StartCoroutine(coroutine);
             }
             else
             {
-                base.GameController.ExhaustCoroutine(findCoroutine);
+                base.GameController.ExhaustCoroutine(coroutine);
             }
-            IEnumerator damageCoroutine = base.GameController.DealDamageToSelf(DecisionMaker, (Card c) => storedTargets.Contains(c), 2, DamageType.Toxic, cardSource: GetCardSource());
-            if (base.UseUnityCoroutines)
-            {
-                yield return base.GameController.StartCoroutine(damageCoroutine);
-            }
-            else
-            {
-                base.GameController.ExhaustCoroutine(damageCoroutine);
-            }
-            // "Then destroy this card."
-            IEnumerator destructCoroutine = DestroyThisCardResponse(null);
-            if (base.UseUnityCoroutines)
-            {
-                yield return base.GameController.StartCoroutine(destructCoroutine);
-            }
-            else
-            {
-                base.GameController.ExhaustCoroutine(destructCoroutine);
-            }
-        }
 
-        public override IEnumerator DeterminePlayLocation(List<MoveCardDestination> storedResults, bool isPutIntoPlay, List<IDecision> decisionSources, Location overridePlayArea = null, LinqTurnTakerCriteria additionalTurnTakerCriteria = null)
-        {
-            // "Play this card in the play area of a target with 3 or fewer HP. Move that target under this card."
-            IEnumerable<Card> options = FindCardsWhere(new LinqCardCriteria((Card c) => c.IsInPlayAndHasGameText && c.IsTarget && c.HitPoints.Value <= 3 && !base.GameController.IsCardIndestructible(c)), visibleToCard: GetCardSource());
-            if (options.Count() > 0)
+            coroutine = base.GameController.DealDamageToSelf(DecisionMaker, (Card c) => storedTargets.Contains(c), 2, DamageType.Toxic, cardSource: GetCardSource());
+            if (base.UseUnityCoroutines)
             {
-                List<SelectCardDecision> choices = new List<SelectCardDecision>();
-                IEnumerator selectCoroutine = base.GameController.SelectCardAndStoreResults(DecisionMaker, SelectionType.MoveCardAboveCard, options, choices, cardSource: GetCardSource());
-                if (base.UseUnityCoroutines)
-                {
-                    yield return base.GameController.StartCoroutine(selectCoroutine);
-                }
-                else
-                {
-                    base.GameController.ExhaustCoroutine(selectCoroutine);
-                }
-                Card selected = GetSelectedCard(choices);
-                if (selected != null)
-                {
-                    Location dest = selected.Location;
-                    IEnumerator hideCoroutine = base.GameController.MoveCard(base.TurnTakerController, selected, base.Card.UnderLocation, responsibleTurnTaker: base.TurnTaker, cardSource: GetCardSource());
-                    if (base.UseUnityCoroutines)
-                    {
-                        yield return base.GameController.StartCoroutine(hideCoroutine);
-                    }
-                    else
-                    {
-                        base.GameController.ExhaustCoroutine(hideCoroutine);
-                    }
-                    base.Card.PlayIndex = selected.PlayIndex;
-                    selected.PlayIndex = null;
-                    storedResults?.Add(new MoveCardDestination(dest));
-                }
+                yield return base.GameController.StartCoroutine(coroutine);
             }
             else
             {
-                IEnumerator messageCoroutine = base.GameController.SendMessageAction("There are no targets with 3 or fewer HP in play to move " + base.Card.Title + "above. Moving it to " + base.Card.Owner.Name + "'s trash.", Priority.High, GetCardSource(), showCardSource: true);
-                if (base.UseUnityCoroutines)
-                {
-                    yield return base.GameController.StartCoroutine(messageCoroutine);
-                }
-                else
-                {
-                    base.GameController.ExhaustCoroutine(messageCoroutine);
-                }
-                storedResults?.Add(new MoveCardDestination(base.TurnTaker.Trash));
+                base.GameController.ExhaustCoroutine(coroutine);
+            }
+
+            coroutine = DestroyThisCardResponse(null);
+            if (base.UseUnityCoroutines)
+            {
+                yield return base.GameController.StartCoroutine(coroutine);
+            }
+            else
+            {
+                base.GameController.ExhaustCoroutine(coroutine);
             }
         }
     }
 }
+
