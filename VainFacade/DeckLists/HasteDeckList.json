@@ -1,0 +1,477 @@
+﻿{
+  "name": "Haste",
+  "kind": "Hero",
+  "initialCardIdentifiers": [
+    "HasteCharacter"
+  ],
+  "cards": [
+    {
+      "identifier": "HasteCharacter",
+      "count": 1,
+      "title": "Haste",
+      "body": "Lightning Reflexes",
+      "backgroundColor": "FF2223",
+      "character": true,
+      "powers": [
+        "Add 3 tokens to your speed pool.{BR}Until the start of your next turn, when a non-hero card enters play, you may remove 2 tokens from your speed pool. If you do, play a card."
+      ],
+      "icons": [
+        "HasPower",
+        "AddTokens",
+        "RemoveTokens",
+        "PlayCardNow"
+      ],
+      "tokenPools": [
+        {
+          "identifier": "SpeedPool",
+          "name": "Haste's Speed Pool",
+          "initialValue": 0,
+          "minimumValue": 0
+        }
+      ],
+      "hitpoints": 26,
+      "nemesisIdentifiers": [
+        "VainFacadePlaytest.Haste"
+      ],
+      "incapacitatedAbilities": [
+        "Select a target. Reduce the next damage dealt to that target by 2.",
+        "1 hero may play a card.",
+        "1 hero may use a power."
+      ],
+      "flippedIcons": [
+        "ReduceDamageTaken",
+        "PlayCardNow",
+        "UsePowerNow"
+      ],
+      "complexity": 2,
+      "openingLines": {
+        "default": "Time to make things right!",
+        "LaCapitanCharacter": "A time... pirate? That's... no, that's awesome! Definitely using that in my next script!",
+        "LaCapitanTeamCharacter": "A time... pirate? That's... no, that's awesome! Definitely using that in my next script!",
+        "FrictionTeamCharacter": "Finally, a villain who can move! So refreshing.",
+        "VainFacadePlaytest.GrandfatherCharacter": "You're one to talk!",
+        "OblivAeonFrontPageCharacter": "No matter how bad things may seem, there's always a future!"
+      },
+      "openingLineRequests": {
+        "OblivAeonFrontPageCharacter": "LaComadoraCharacter",
+        "LaCapitanTeamCharacter": "ChronoRangerCharacter"
+      }
+    },
+    {
+      "identifier": "BulletTime",
+      "count": 3,
+      "title": "Bullet Time",
+      "keywords": [
+        "ongoing"
+      ],
+      "powers": [
+        "Add 3 tokens to your speed pool.{BR}Until the start of your next turn, when {Haste} would be dealt damage by a source other than {Haste}, remove any number of tokens from your speed pool.{BR}If the number of tokens equals or exceeds that damage, prevent that damage."
+      ],
+      "icons": [
+        "HasPower",
+        "AddTokens",
+        "RemoveTokens",
+        "CancelledDamageGreen"
+      ],
+      "flavorQuotes": [
+        {
+          "identifier": "Geyser",
+          "text": "What's it like to move that fast?"
+        },
+        {
+          "identifier": "Haste",
+          "text": "Like watching paint dry."
+        }
+      ],
+      "flavorReference": "Future Comics #143"
+    },
+    {
+      "identifier": "FoldingTime",
+      "count": 2,
+      "title": "Folding Time",
+      "keywords": [
+        "ongoing",
+        "limited"
+      ],
+      "body": [
+        "When one of your cards enters play, {Haste} may deal 1 target 1 energy damage. You may remove a token from your speed pool. If you do, increase that damage by 1.",
+        "When {Haste} deals himself damage, draw up to X cards, where X = the damage dealt this way."
+      ],
+      "icons": [
+        "DealDamageEnergy",
+        "RemoveTokens",
+        "IncreaseDamageDealt",
+        "DrawCardNow"
+      ],
+      "flavorQuotes": [
+        {
+          "identifier": "Grandfather",
+          "text": "If I understood what you were about to do, I'd do it myself. All I know for sure is that your personal timeline is about to... compress."
+        }
+      ],
+      "flavorReference": "Grandfather: Keeping Time #7"
+    },
+    {
+      "identifier": "HighSpeedCollision",
+      "count": 3,
+      "title": "High-Speed Collision",
+      "keywords": [
+        "one-shot"
+      ],
+      "body": [
+        "Remove any number of tokens from your speed pool.",
+        "{Haste} deals 1 target X melee damage, where X = 2 plus the number of tokens removed this way."
+      ],
+      "icons": [
+        "RemoveTokens",
+        "DealDamageMelee"
+      ],
+      "flavorQuotes": [
+        {
+          "identifier": "Haste",
+          "text": "What you give, you get, ten times over."
+        }
+      ],
+      "flavorReference": "Haste, Rhymes and Riddles one-shot"
+    },
+    {
+      "identifier": "InAFlash",
+      "count": 2,
+      "title": "In a Flash",
+      "keywords": [
+        "one-shot"
+      ],
+      "body": [
+        "Add 2 tokens to your speed pool.",
+        "You may draw a card.",
+        "Destroy any number of hero ongoing or equipment cards. For each card destroyed this way, you may destroy an environment or ongoing card."
+      ],
+      "icons": [
+        "AddTokens",
+        "DrawCardNow",
+        "DestroyHero",
+        "DestroyEnvironment",
+        "DestroyOngoing"
+      ],
+      "flavorQuotes": [
+        {
+          "identifier": "Haste",
+          "text": "No matter how thin you slice space, I'll still have plenty of time."
+        }
+      ],
+      "flavorReference": "Haste, Midnight Vigil #186"
+    },
+    {
+      "identifier": "InstantAnalysis",
+      "count": 4,
+      "title": "Instant Analysis",
+      "keywords": [
+        "ongoing"
+      ],
+      "body": [
+        "When this card enters play, add 2 tokens to your speed pool.",
+        "At the end of your turn, you may remove any number of tokens from your speed pool. X players draw a card, where X = the number of tokens removed this way."
+      ],
+      "icons": [
+        "AddTokens",
+        "EndOfTurnAction",
+        "RemoveTokens",
+        "DrawCardNow"
+      ],
+      "flavorQuotes": [
+        {
+          "identifier": "Whisper",
+          "text": "Why do you hesitate? You know what you must do."
+        }
+      ],
+      "flavorReference": "Whisper, Midnight Vigil #16"
+    },
+    {
+      "identifier": "KillingTime",
+      "count": 2,
+      "title": "Killing Time",
+      "keywords": [
+        "ongoing",
+        "limited"
+      ],
+      "body": [
+        "When a card would add tokens to your speed pool, increase the number of tokens added by 1.",
+        "At the start of your turn, increase the next damage dealt to {Haste} by 1 for every 10 tokens in your speed pool. Then {Haste} deals himself 0 irreducible toxic damage."
+      ],
+      "icons": [
+        "AddTokens",
+        "StartOfTurnAction",
+        "IncreaseDamageTaken",
+        "DealDamageToxic"
+      ],
+      "flavorQuotes": [
+        {
+          "identifier": "Sidewinder",
+          "text": "I understand, but I need you to reign it in next time. It doesn't matter how fast you are if the air can't keep up."
+        }
+      ],
+      "flavorReference": "Sidewinder, Midnight Vigil #31"
+    },
+    {
+      "identifier": "MotionBlur",
+      "count": 2,
+      "title": "Motion Blur",
+      "keywords": [
+        "ongoing",
+        "limited"
+      ],
+      "body": [
+        "When you play a card, you may select a target that has not been selected this way this turn. Reduce the next damage dealt by that target by 1."
+      ],
+      "powers": [
+        "Play a card. You may discard a card to play a card."
+      ],
+      "icons": [
+        "ReduceDamageDealt",
+        "HasPower",
+        "PlayCardNow",
+        "Discard"
+      ],
+      "flavorQuotes": [
+        {
+          "identifier": "Haste",
+          "text": "Le temps perdu ne se rattrape pas!"
+        }
+      ],
+      "flavorReference": "Haste, Haste #36"
+    },
+    {
+      "identifier": "QuickReactions",
+      "count": 3,
+      "title": "Quick Reactions",
+      "keywords": [
+        "ongoing",
+        "limited"
+      ],
+      "body": [
+        "When this card enters play, add 3 tokens to your speed pool.",
+        "When a hero ongoing or equipment would be destroyed, you may remove 3 tokens from your speed pool. If you do, put that card on top of its deck instead. Otherwise, if it is one of your cards, add 2 tokens to your speed pool."
+      ],
+      "icons": [
+        "AddTokens",
+        "RemoveTokens",
+        "Manipulate"
+      ],
+      "flavorQuotes": [
+        {
+          "identifier": "Codex",
+          "text": "Now, let's see how you fight without your silly tricks."
+        },
+        {
+          "identifier": "Haste",
+          "text": "Oh, cool!"
+        }
+      ],
+      "flavorReference": "Strange Stories #106"
+    },
+    {
+      "identifier": "RunningCircles",
+      "count": 3,
+      "title": "Running Circles",
+      "keywords": [
+        "ongoing",
+        "limited"
+      ],
+      "body": [
+        "When this card enters play, add 3 tokens to your speed pool.",
+        "When you discard a card, add a token to your speed pool.",
+        "At the end of your turn, you may discard a card and draw a card."
+      ],
+      "icons": [
+        "AddTokens",
+        "EndOfTurnAction",
+        "Discard",
+        "DrawCardNow"
+      ],
+      "flavorQuotes": [
+        {
+          "identifier": "Haste",
+          "text": "Was that bullet meant for me? Anyway, if I move the betrayal to the first act, Act Two shouldn't stagnate so much."
+        }
+      ],
+      "flavorReference": "Haste, Haste #1"
+    },
+    {
+      "identifier": "ScoutingAhead",
+      "count": 3,
+      "title": "Scouting Ahead",
+      "keywords": [
+        "ongoing"
+      ],
+      "body": [
+        "When this card enters play, add 4 tokens to your speed pool.",
+        "At the end of your turn, you may remove 2 tokens from your speed pool. If you do, discard the top card of a deck or reveal and replace it, then repeat this text."
+      ],
+      "icons": [
+        "AddTokens",
+        "EndOfTurnAction",
+        "RemoveTokens",
+        "Manipulate"
+      ],
+      "flavorQuotes": [
+        {
+          "identifier": "Burgess",
+          "text": "You have all the time in the world. You can't look around? Assess the situation?"
+        }
+      ],
+      "flavorReference": "Burgess, Midnight Operation #2"
+    },
+    {
+      "identifier": "StandingStill",
+      "count": 3,
+      "title": "Standing Still",
+      "keywords": [
+        "ongoing",
+        "limited"
+      ],
+      "body": [
+        "When {Haste} deals himself damage, he deals up to X targets other than himself 2 melee damage each, where X = the damage dealt this way."
+      ],
+      "powers": [
+        "Add a token to your speed pool. {Haste} deals a target 2 melee damage."
+      ],
+      "icons": [
+        "DealDamageMelee",
+        "HasPower",
+        "AddTokens"
+      ],
+      "flavorQuotes": [
+        {
+          "identifier": "Haste",
+          "text": "Like shooting fish in a barrel of molasses."
+        }
+      ],
+      "flavorReference": "Haste, Wayfarer #9"
+    },
+    {
+      "identifier": "StreakOfFists",
+      "count": 3,
+      "title": "Streak of Fists",
+      "keywords": [
+        "one-shot"
+      ],
+      "body": [
+        "Remove any number of tokens from your speed pool.",
+        "{Haste} deals X targets 2 melee damage each, where X = 2 plus the number of tokens removed this way.",
+        "You may draw or play a card. If you draw a card this way, shuffle this card into your deck."
+      ],
+      "icons": [
+        "RemoveTokens",
+        "DealDamageMelee",
+        "DrawCardNow",
+        "PlayCardNow",
+        "Manipulate"
+      ],
+      "flavorQuotes": [
+        {
+          "identifier": "Broadcast",
+          "text": "The Santaiyin are unimpressed with your feeble antics. You are hopelessly outnumbered. Surrender to the inevitable!"
+        }
+      ],
+      "flavorReference": "Broadcast, Future Comics #114"
+    },
+    {
+      "identifier": "TheSandsOfTime",
+      "count": 2,
+      "title": "The Sands of Time",
+      "keywords": [
+        "ongoing",
+        "limited"
+      ],
+      "body": [
+        "Increase damage dealt by {Haste} by 1.",
+        "At the end of your turn, {Haste} may deal himself 2 energy damage. If he takes no damage this way, destroy this card."
+      ],
+      "icons": [
+        "IncreaseDamageDealt",
+        "EndOfTurnAction",
+        "DealDamageEnergy",
+        "DestroySelf"
+      ],
+      "flavorQuotes": [
+        {
+          "identifier": "Chronicle",
+          "text": "Friday, translate?"
+        },
+        {
+          "identifier": "Friday",
+          "text": "He said 'Gold that will shine, must pass through the fire.'"
+        },
+        {
+          "identifier": "Chronicle",
+          "text": "Oh dear."
+        }
+
+      ],
+      "flavorReference": "Pendulum #11"
+    },
+    {
+      "identifier": "UnmatchedAlacrity",
+      "count": 3,
+      "title": "Unmatched Alacrity",
+      "keywords": [
+        "ongoing",
+        "limited"
+      ],
+      "body": [
+        "When you would add tokens to your speed pool, reduce the number of tokens added this way by 2.",
+        "At the end of each turn, you may remove 1 token from your speed pool to draw a card, play a card, or use a power.",
+        "At the start of your turn, destroy this card."
+      ],
+      "icons": [
+        "StartAndEndOfTurnAction",
+        "RemoveTokens",
+        "DrawCardNow",
+        "PlayCardNow",
+        "UsePowerNow",
+        "DestroySelf"
+      ],
+      "flavorQuotes": [
+        {
+          "identifier": "Arctis",
+          "text": "You can't be everywheeree aaaat oooooooonnnnnnnnc-"
+        },
+        {
+          "identifier": "Haste",
+          "text": "Watch me!"
+        }
+
+      ],
+      "flavorReference": "Paging Dr. Voigt #8"
+    },
+    {
+      "identifier": "ViolatingCausality",
+      "count": 2,
+      "title": "Violating Causality",
+      "keywords": [
+        "one-shot"
+      ],
+      "body": [
+        "Add 2 tokens to your speed pool.",
+        "You may remove a token from your speed pool to put the top card of another trash into play or on the bottom of its deck.",
+        "If a card enters play this way, {Haste} deals himself 2 energy damage. Otherwise, repeat this text."
+      ],
+      "icons": [
+        "AddTokens",
+        "RemoveTokens",
+        "PlayCardNow",
+        "Manipulate",
+        "DealDamageEnergy"
+      ],
+      "flavorQuotes": [
+        {
+          "identifier": "Zeno",
+          "text": "What use is your speed? Time and space are an illusion. Your father could see that. Why can't you?"
+        }
+      ],
+      "flavorReference": "Zeno, Future Comics: Space and Time one-shot"
+    }
+  ],
+  "promoCards": [
+  ]
+}
