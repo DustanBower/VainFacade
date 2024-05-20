@@ -97,7 +97,7 @@
 			],
 			"body": [
 				"When you use a power, {EmberCharacter} may deal 1 target 1 fire damage.",
-				"At the end of each turn, {EmberCharacter} deals up to X targets 1 fire damage each, where X is the number of decks that have had cards revealed by your cards or powers this turn."
+				"At the end of each turn, {EmberCharacter} deals up to X targets 1 fire damage each, where X = the number of decks your cards and powers have revealed from this turn."
 			],
 			"icons": [
 				"DealDamageFire",
@@ -242,7 +242,7 @@
 				"limited"
 			],
 			"body": [
-				"When {EmberCharacter} drops to 0 or fewer HP, restore her to 7 HP, then remove this card from the game."
+				"When {EmberCharacter} is reduced to 0 or fewer HP, restore her to 7 HP, then remove this card from the game."
 			],
 			"powers": [
 				"Until the start of your next turn, whenever {EmberCharacter} is dealt fire damage, she regains 1 HP for each Blaze card in play, then increases the next damage she deals by 1. You may discard a card to use a power."

@@ -21,7 +21,7 @@ namespace VainFacadePlaytest.Ember
         public override void AddTriggers()
         {
             base.AddTriggers();
-            // "When {EmberCharacter} drops to 0 or fewer HP, restore her to 7 HP, then remove this card from the game."
+            // "When {EmberCharacter} is reduced to 0 or fewer HP, restore her to 7 HP, then remove this card from the game."
             AddTrigger((DestroyCardAction dca) => dca.CardToDestroy.Card == base.CharacterCard && base.CharacterCard.HitPoints.HasValue && base.CharacterCard.HitPoints.Value <= 0, PreventDestroyRestoreHPRemoveResponse, TriggerType.CancelAction, TriggerTiming.Before);
         }
 

@@ -23,7 +23,7 @@ namespace VainFacadePlaytest.Ember
             base.AddTriggers();
             // "When you use a power, {EmberCharacter} may deal 1 target 1 fire damage."
             AddTrigger((UsePowerAction upa) => upa.HeroUsingPower == base.TurnTakerController.ToHero(), BurnOneResponse, TriggerType.DealDamage, TriggerTiming.After);
-            // "At the end of each turn, {EmberCharacter} deals up to X targets 1 fire damage each, where X is the number of decks that have had cards revealed by your cards or powers this turn."
+	    // "At the end of each turn, {EmberCharacter} deals up to X targets 1 fire damage each, where X = the number of decks your cards and powers have revealed from this turn."
             AddEndOfTurnTrigger((TurnTaker tt) => base.GameController.IsTurnTakerVisibleToCardSource(tt, GetCardSource()), BurnXResponse, TriggerType.DealDamage);
         }
 
@@ -43,7 +43,7 @@ namespace VainFacadePlaytest.Ember
 
         private IEnumerator BurnXResponse(PhaseChangeAction pca)
         {
-            // "... {EmberCharacter} deals up to X targets 1 fire damage each, where X is the number of decks that have had cards revealed by your cards or powers this turn."
+	    // "... {EmberCharacter} deals up to X targets 1 fire damage each, where X = the number of decks your cards and powers have revealed from this turn."
             IEnumerator damageCoroutine = base.GameController.SelectTargetsAndDealDamage(DecisionMaker, new DamageSource(base.GameController, base.CharacterCard), 1, DamageType.Fire, NumberOfDecksRevealedFromThisTurn(), false, 0, cardSource: GetCardSource());
             if (base.UseUnityCoroutines)
             {
