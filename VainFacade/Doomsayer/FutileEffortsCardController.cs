@@ -23,7 +23,7 @@ namespace VainFacadePlaytest.Doomsayer
 
         public override void AddTriggers()
         {
-            //Reduce hero damage by 1.
+            //Reduce damage dealt by hero targets by 1.
             AddReduceDamageTrigger((DealDamageAction dd) => dd.DamageSource.IsHero,(DealDamageAction dd) => 1);
 
             //At the end of the villain turn, each player may discard any number of cards. Add a token to this card for each card discarded this way. Then, if there are {H * 3} or more tokens on this card, put this card under {CountlessWords}.

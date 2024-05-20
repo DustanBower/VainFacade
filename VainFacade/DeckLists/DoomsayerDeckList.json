@@ -152,7 +152,7 @@
 				"VainFacadePlaytest.TheFury"
 			],
 			"gameplay": [
-				"When this card would be dealt 5 or fewer damage, reduce that damage to 1.",
+				"When this card would be dealt 5 or fewer damage at once, reduce that damage to 1.",
 				"When {Bladewight} is dealt damage, increase the next damage dealt by {Bladewight} by 1, then 1 player may draw a card.",
 				"At the end of the villain turn, this card deals the {H - 1} hero targets with the highest HP 2 melee damage each."
 			],
@@ -340,8 +340,8 @@
 				"ongoing"
 			],
 			"body": [
-				"When a villain target would be dealt damage, redirect that damage to the non-villain target with the lowest hp.",
 				"When this card enters play, play the top card of each hero deck in turn order. The first {H - 2} times a non-one-shot enters play this way, play the top card of the villain deck.",
+				"When a villain target would be dealt damage, redirect that damage to the non-villain target with the lowest hp.",
 				"At the end of the villain turn, 1 player may discard 2 cards to destroy this card."
 			],
 			"icons": [
@@ -400,7 +400,7 @@
 				"pattern"
 			],
 			"body": [
-				"Reduce hero damage by 1.",
+				"Reduce damage dealt by hero targets by 1.",
 				"At the end of the villain turn, each player may discard any number of cards. Add a token to this card for each card discarded this way. Then, if there are {H * 3} or more tokens on this card, put this card under {CountlessWords}."
 			],
 			"tokenPools": [

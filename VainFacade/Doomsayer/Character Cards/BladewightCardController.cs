@@ -18,7 +18,7 @@ namespace VainFacadePlaytest.Doomsayer
 
         public override void AddTriggers()
         {
-            //When this card would be dealt 5 or fewer damage, reduce that damage to 1.
+            //When this card would be dealt 5 or fewer damage at once, reduce that damage to 1.
             AddReduceDamageToSetAmountTrigger((DealDamageAction dd) => dd.Amount <= 5 && dd.Target == this.Card, 1);
 
             //When {Bladewight} is dealt damage, increase the next damage dealt by {Bladewight} by 1, then 1 player may draw a card.
