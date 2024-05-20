@@ -301,6 +301,25 @@
     <Compile Include="Grandfather\QuietMeddlingCardController.cs" />
     <Compile Include="Grandfather\StrangePocketwatchCardController.cs" />
     <Compile Include="Grandfather\VillainShowdownCardController.cs" />
+    <Compile Include="Haste\BulletTimeCardController.cs" />
+    <Compile Include="Haste\Character Cards\HasteCharacterCardController.cs" />
+    <Compile Include="Haste\FoldingTimeCardController.cs" />
+    <Compile Include="Haste\HighSpeedCollisionCardController.cs" />
+    <Compile Include="Haste\InAFlashCardController.cs" />
+    <Compile Include="Haste\InstantAnalysisCardController.cs" />
+    <Compile Include="Haste\KillingTimeCardController.cs" />
+    <Compile Include="Haste\MotionBlurCardController.cs" />
+    <Compile Include="Haste\QuickReactionsCardController.cs" />
+    <Compile Include="Haste\RunningCirclesCardController.cs" />
+    <Compile Include="Haste\ScoutingAheadCardController.cs" />
+    <Compile Include="Haste\StandingStillCardController.cs" />
+    <Compile Include="Haste\StreakOfFistsCardController.cs" />
+    <Compile Include="Haste\TheSandsOfTimeCardController.cs" />
+    <Compile Include="Haste\UnmatchedAlacrityCardController.cs" />
+    <Compile Include="Haste\Utilities\HastePowerStatusEffect.cs" />
+    <Compile Include="Haste\Utilities\HasteSpeedPoolUtility.cs" />
+    <Compile Include="Haste\Utilities\HasteUtilityCardController.cs" />
+    <Compile Include="Haste\ViolatingCausalityCardController.cs" />
     <Compile Include="Node\BleedingEdgeCardController.cs" />
     <Compile Include="Node\CleverHackCardController.cs" />
     <Compile Include="Node\CollectiveUnconsciousCardController.cs" />
@@ -516,6 +535,9 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="DeckLists\GlyphDeckList.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="DeckLists\HasteDeckList.json" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

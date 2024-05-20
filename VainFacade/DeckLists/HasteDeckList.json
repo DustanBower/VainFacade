@@ -106,7 +106,7 @@
       "flavorQuotes": [
         {
           "identifier": "Grandfather",
-          "text": "If I understood what you were about to do, I'd do it myself. All I know for sure is that your personal timeline is about to... compress."
+          "text": "If I understood what you{BR}were about to do, I'd do it myself.{BR}All I know for sure is that your{BR}personal timeline is about to... [b]compress[/b]."
         }
       ],
       "flavorReference": "Grandfather: Keeping Time #7"
@@ -156,7 +156,7 @@
       "flavorQuotes": [
         {
           "identifier": "Haste",
-          "text": "No matter how thin you slice space, I'll still have plenty of time."
+          "text": "No matter how thin you slice space,{BR}I'll still have plenty of time."
         }
       ],
       "flavorReference": "Haste, Midnight Vigil #186"
@@ -181,7 +181,7 @@
       "flavorQuotes": [
         {
           "identifier": "Whisper",
-          "text": "Why do you hesitate? You know what you must do."
+          "text": "Why do you hesitate?{BR}You know what you must do."
         }
       ],
       "flavorReference": "Whisper, Midnight Vigil #16"
@@ -207,7 +207,7 @@
       "flavorQuotes": [
         {
           "identifier": "Sidewinder",
-          "text": "I understand, but I need you to reign it in next time. It doesn't matter how fast you are if the air can't keep up."
+          "text": "I understand, but I need you{BR}to reign it in next time. It doesn't{BR}matter how fast you are{BR}if the [b]air[/b] can't keep up."
         }
       ],
       "flavorReference": "Sidewinder, Midnight Vigil #31"
@@ -260,7 +260,7 @@
       "flavorQuotes": [
         {
           "identifier": "Codex",
-          "text": "Now, let's see how you fight without your silly tricks."
+          "text": "Now, let's see how you fight{BR}without your silly tricks."
         },
         {
           "identifier": "Haste",
@@ -291,7 +291,7 @@
       "flavorQuotes": [
         {
           "identifier": "Haste",
-          "text": "Was that bullet meant for me? Anyway, if I move the betrayal to the first act, Act Two shouldn't stagnate so much."
+          "text": "Was that bullet meant for me?{BR}Anyway, if I move the betrayal{BR}to the first act, Act Two{BR}shouldn't stagnate so much."
         }
       ],
       "flavorReference": "Haste, Haste #1"
@@ -316,7 +316,7 @@
       "flavorQuotes": [
         {
           "identifier": "Burgess",
-          "text": "You have all the time in the world. You can't look around? Assess the situation?"
+          "text": "You have all the time in the world.{BR}You can't look around?{BR}Assess the situation?"
         }
       ],
       "flavorReference": "Burgess, Midnight Operation #2"
@@ -343,7 +343,7 @@
       "flavorQuotes": [
         {
           "identifier": "Haste",
-          "text": "Like shooting fish in a barrel of molasses."
+          "text": "Like shooting fish{BR}in a barrel of molasses."
         }
       ],
       "flavorReference": "Haste, Wayfarer #9"
@@ -370,7 +370,7 @@
       "flavorQuotes": [
         {
           "identifier": "Broadcast",
-          "text": "The Santaiyin are unimpressed with your feeble antics. You are hopelessly outnumbered. Surrender to the inevitable!"
+          "text": "The Santaiyin are unimpressed{BR}with your feeble antics. You are{BR}hopelessly outnumbered. Surrender{BR}to the inevitable!"
         }
       ],
       "flavorReference": "Broadcast, Future Comics #114"
@@ -434,7 +434,7 @@
       "flavorQuotes": [
         {
           "identifier": "Arctis",
-          "text": "You can't be everywheeree aaaat oooooooonnnnnnnnc-"
+          "text": "You can't be everywheeree{BR}aaaat oooooooonnnnnnnnc-"
         },
         {
           "identifier": "Haste",
@@ -466,7 +466,7 @@
       "flavorQuotes": [
         {
           "identifier": "Zeno",
-          "text": "What use is your speed? Time and space are an illusion. Your father could see that. Why can't you?"
+          "text": "What use is your speed?{BR}Time and space are an illusion. Your father{BR}could see that. Why can't you?"
         }
       ],
       "flavorReference": "Zeno, Future Comics: Space and Time one-shot"
