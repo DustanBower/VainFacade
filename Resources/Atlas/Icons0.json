@@ -2,7 +2,7 @@
 
 "ArctisIcon.png":
 {
-	"frame": {"x":0,"y":0,"w":128,"h":128},
+	"frame": {"x":402,"y":0,"w":128,"h":128},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":128,"h":128},
@@ -10,7 +10,7 @@
 },
 "BansheeIcon.png":
 {
-	"frame": {"x":131,"y":0,"w":128,"h":128},
+	"frame": {"x":533,"y":0,"w":128,"h":128},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":128,"h":128},
@@ -18,7 +18,7 @@
 },
 "BurgessIcon.png":
 {
-	"frame": {"x":262,"y":0,"w":128,"h":128},
+	"frame": {"x":664,"y":0,"w":128,"h":128},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":128,"h":128},
@@ -26,7 +26,7 @@
 },
 "CarnavalIcon.png":
 {
-	"frame": {"x":393,"y":0,"w":128,"h":128},
+	"frame": {"x":795,"y":0,"w":128,"h":128},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":128,"h":128},
@@ -34,7 +34,7 @@
 },
 "DestroyDeath.png":
 {
-	"frame": {"x":524,"y":0,"w":64,"h":64},
+	"frame": {"x":0,"y":0,"w":64,"h":64},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":64,"h":64},
@@ -42,7 +42,7 @@
 },
 "DestroyDestruction.png":
 {
-	"frame": {"x":591,"y":0,"w":64,"h":64},
+	"frame": {"x":67,"y":0,"w":64,"h":64},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":64,"h":64},
@@ -50,7 +50,7 @@
 },
 "DestroyFate.png":
 {
-	"frame": {"x":658,"y":0,"w":64,"h":64},
+	"frame": {"x":134,"y":0,"w":64,"h":64},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":64,"h":64},
@@ -58,7 +58,7 @@
 },
 "DestroyInsight.png":
 {
-	"frame": {"x":725,"y":0,"w":64,"h":64},
+	"frame": {"x":201,"y":0,"w":64,"h":64},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":64,"h":64},
@@ -66,7 +66,7 @@
 },
 "DestroyMight.png":
 {
-	"frame": {"x":792,"y":0,"w":64,"h":64},
+	"frame": {"x":268,"y":0,"w":64,"h":64},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":64,"h":64},
@@ -74,7 +74,7 @@
 },
 "EmberIcon.png":
 {
-	"frame": {"x":859,"y":0,"w":128,"h":128},
+	"frame": {"x":0,"y":131,"w":128,"h":128},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":128,"h":128},
@@ -82,7 +82,7 @@
 },
 "FridayIcon.png":
 {
-	"frame": {"x":0,"y":131,"w":128,"h":128},
+	"frame": {"x":131,"y":131,"w":128,"h":128},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":128,"h":128},
@@ -90,7 +90,15 @@
 },
 "GlyphIcon.png":
 {
-	"frame": {"x":131,"y":131,"w":128,"h":128},
+	"frame": {"x":262,"y":131,"w":128,"h":128},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":128,"h":128},
+	"sourceSize": {"w":128,"h":128}
+},
+"HasteIcon.png":
+{
+	"frame": {"x":393,"y":131,"w":128,"h":128},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":128,"h":128},
@@ -98,7 +106,7 @@
 },
 "ice.png":
 {
-	"frame": {"x":262,"y":131,"w":64,"h":64},
+	"frame": {"x":335,"y":0,"w":64,"h":64},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":64,"h":64},
@@ -106,7 +114,7 @@
 },
 "NodeIcon.png":
 {
-	"frame": {"x":329,"y":131,"w":128,"h":128},
+	"frame": {"x":524,"y":131,"w":128,"h":128},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":128,"h":128},
@@ -114,7 +122,7 @@
 },
 "PeacekeeperIcon.png":
 {
-	"frame": {"x":460,"y":131,"w":128,"h":128},
+	"frame": {"x":655,"y":131,"w":128,"h":128},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":128,"h":128},
@@ -122,7 +130,7 @@
 },
 "PushIcon.png":
 {
-	"frame": {"x":591,"y":131,"w":128,"h":128},
+	"frame": {"x":786,"y":131,"w":128,"h":128},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":128,"h":128},
@@ -130,7 +138,7 @@
 },
 "SphereIcon.png":
 {
-	"frame": {"x":722,"y":131,"w":128,"h":128},
+	"frame": {"x":0,"y":262,"w":128,"h":128},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":128,"h":128},
@@ -138,7 +146,7 @@
 },
 "TheFuryIcon.png":
 {
-	"frame": {"x":853,"y":131,"w":128,"h":128},
+	"frame": {"x":131,"y":262,"w":128,"h":128},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":128,"h":128},
@@ -151,6 +159,6 @@
 	"format": "RGBA8888",
 	"size": {"w":1024,"h":1024},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:19853abe80c40a4bdd6ab3ad3de073a6:1c1f3b6e618a24876a04f3411c4a3f64:c680398f21d101d0a1ae6d7fc2a23608$"
+	"smartupdate": "$TexturePacker:SmartUpdate:7e717dc5e27c28b4cc776cdf3bb107c2:af3e5b8f1ab57ac00f9a094710e9d866:c680398f21d101d0a1ae6d7fc2a23608$"
 }
 }

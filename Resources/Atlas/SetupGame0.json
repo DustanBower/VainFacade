@@ -88,6 +88,14 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":177,"h":256},
 	"sourceSize": {"w":177,"h":256}
 },
+"HasteCharacter.png":
+{
+	"frame": {"x":1085,"y":259,"w":178,"h":256},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":178,"h":256},
+	"sourceSize": {"w":178,"h":256}
+},
 "NodeCharacter.png":
 {
 	"frame": {"x":1080,"y":0,"w":177,"h":256},
@@ -106,7 +114,7 @@
 },
 "PeacekeeperCharacter.png":
 {
-	"frame": {"x":1085,"y":259,"w":178,"h":256},
+	"frame": {"x":1266,"y":259,"w":178,"h":256},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":178,"h":256},
@@ -114,7 +122,7 @@
 },
 "PushCharacter.png":
 {
-	"frame": {"x":1266,"y":259,"w":178,"h":256},
+	"frame": {"x":1447,"y":259,"w":178,"h":256},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":178,"h":256},
@@ -159,6 +167,6 @@
 	"format": "RGBA8888",
 	"size": {"w":2048,"h":2048},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:e65b07fc300e01c18f9b9fee5180e479:afb032fea9b876f8b606510c9186cb3e:4ee285c32a91b7652e02ac049f918b2a$"
+	"smartupdate": "$TexturePacker:SmartUpdate:641674d63beb12722a590801520cee66:debc7f0eaded85aabd9482f708437701:4ee285c32a91b7652e02ac049f918b2a$"
 }
 }
