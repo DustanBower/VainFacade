@@ -65,7 +65,7 @@
         "ongoing"
       ],
       "powers": [
-        "Add 3 tokens to your speed pool.{BR}Until the start of your next turn, when {Haste} would be dealt damage by a source other than {Haste}, remove any number of tokens from your speed pool.{BR}If the number of tokens equals or exceeds that damage, prevent that damage."
+        "[y=0.94]Add 3 tokens to your speed pool.{BR}{BR}Until the start of your next turn, when {Haste} would be dealt damage by a source other than {Haste}, remove any number of tokens from your speed pool.{BR}{BR}If the number of tokens equals or exceeds that damage, prevent that damage."
       ],
       "icons": [
         "HasPower",
