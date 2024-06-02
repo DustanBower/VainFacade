@@ -14,6 +14,7 @@ namespace VainFacadePlaytest.Haste
 		public HasteCharacterCardController(Card card, TurnTakerController turnTakerController)
             : base(card, turnTakerController)
         {
+            base.SpecialStringMaker.ShowTokenPool(SpeedPool);
 		}
 
         private TokenPool SpeedPool => this.Card.FindTokenPool("SpeedPool");
@@ -24,7 +25,8 @@ namespace VainFacadePlaytest.Haste
             //Add 3 tokens to your Speed pool.
             int num1 = GetPowerNumeral(0, 3);
             int num2 = GetPowerNumeral(1, 2);
-            IEnumerator coroutine = base.GameController.AddTokensToPool(HasteSpeedPoolUtility.GetSpeedPool(this), num1, GetCardSource());
+            //IEnumerator coroutine = base.GameController.AddTokensToPool(HasteSpeedPoolUtility.GetSpeedPool(this), num1, GetCardSource());
+            IEnumerator coroutine = HasteSpeedPoolUtility.AddSpeedTokens(this, num1, GetCardSource());
             if (base.UseUnityCoroutines)
             {
                 yield return base.GameController.StartCoroutine(coroutine);
@@ -130,8 +132,13 @@ namespace VainFacadePlaytest.Haste
             {
                 int num = effect.Num;
                 List<RemoveTokensFromPoolAction> results = new List<RemoveTokensFromPoolAction>();
-                IEnumerator coroutine = HasteSpeedPoolUtility.RemoveSpeedTokens(FindCardController(effect.Source), num, null, true, results);
-                //IEnumerator coroutine = base.GameController.RemoveTokensFromPool(HasteSpeedPoolUtility.GetSpeedPool(this), num, results, true, cardSource: GetCardSource(effect));
+                CardSource source = new CardSource(FindCardController(effect.Source));
+                if (source.Card != this.CardWithoutReplacements)
+                {
+                    //This is necessary to allow Friday to get the custom decision text
+                    source.AddAssociatedCardSource(GetCardSource());
+                }
+                IEnumerator coroutine = HasteSpeedPoolUtility.RemoveSpeedTokens(FindCardController(effect.Source), num, null, true, results, null,cardSource: source);
                 if (base.UseUnityCoroutines)
                 {
                     yield return base.GameController.StartCoroutine(coroutine);
@@ -144,7 +151,7 @@ namespace VainFacadePlaytest.Haste
                 if (DidRemoveTokens(results, num))
                 {
                     TurnTaker hero = effect.Hero;
-                    coroutine = base.GameController.SelectAndPlayCardFromHand(FindHeroTurnTakerController(hero.ToHero()), false, cardSource: new CardSource(FindCardController(effect.Source)));
+                    coroutine = base.GameController.SelectAndPlayCardFromHand(FindHeroTurnTakerController(hero.ToHero()), false, cardSource: source);
                     if (base.UseUnityCoroutines)
                     {
                         yield return base.GameController.StartCoroutine(coroutine);
