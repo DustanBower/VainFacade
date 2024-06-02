@@ -254,7 +254,19 @@ namespace VainFacadePlaytest.Friday
             }
         }
 
-        
+        public override CustomDecisionText GetCustomDecisionText(IDecision decision)
+        {
+            if (decision.CardSource != null)
+            {
+                CardSource source = decision.CardSource.AssociatedCardSources.FirstOrDefault();
+                if (source != null)
+                {
+                    Console.WriteLine("Friday requesting custom decision text from " + source.Card.Title);
+                    return source.CardController.GetCustomDecisionText(decision);
+                }
+            }
+            return null;
+        }
     }
 }
 

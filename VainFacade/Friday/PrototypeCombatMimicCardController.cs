@@ -242,6 +242,19 @@ namespace VainFacadePlaytest.Friday
                 base.GameController.ExhaustCoroutine(coroutine);
             }
         }
+
+        public override CustomDecisionText GetCustomDecisionText(IDecision decision)
+        {
+            if (decision.CardSource != null)
+            {
+                CardSource source = decision.CardSource.AssociatedCardSources.FirstOrDefault();
+                if (source != null)
+                {
+                    Console.WriteLine("Prototype Combat Mimic requesting custom decision text from " + source.Card.Title);
+                    return source.CardController.GetCustomDecisionText(decision);
+                }
+            }
+            return null;
+        }
     }
 }
-
