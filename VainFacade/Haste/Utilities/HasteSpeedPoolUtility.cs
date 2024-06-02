@@ -15,10 +15,13 @@ namespace VainFacadePlaytest.Haste
         public static TokenPool GetSpeedPool(CardController cardController)
         {
             //Check Character Card first
-            var prospect = cardController.CharacterCard.FindTokenPool("SpeedPool");
-            if (prospect != null)
+            if (cardController.CharacterCard != null)
             {
-                return prospect;
+                var prospect1 = cardController.CharacterCard.FindTokenPool("SpeedPool");
+                if (prospect1 != null)
+                {
+                    return prospect1;
+                }
             }
 
             //If not, look for a "Haste" TurnTaker and get their character card
@@ -28,13 +31,22 @@ namespace VainFacadePlaytest.Haste
                 return haste.CharacterCard.FindTokenPool("SpeedPool");
             }
 
-            //If not there, try the card itself (for Representative of Earth purposes)
-            prospect = cardController.CardWithoutReplacements.FindTokenPool("SpeedPool");
-            if (prospect != null)
+            //If not there, look for a card with the identifier "HasteCharacter" (for Representative of Earth purposes)
+            var hasteChar = cardController.GameController.FindCardsWhere((Card c) => c.IsCharacter && !c.IsIncapacitatedOrOutOfGame && c.IsInPlayAndHasGameText && c.Identifier == "HasteCharacter", visibleToCard: new CardSource(cardController)).FirstOrDefault();
+            Console.WriteLine($"hasteChar is {(hasteChar == null ? "null" : hasteChar.Title)}");
+            if (hasteChar != null)
             {
-                return prospect;
+                return hasteChar.FindTokenPool("SpeedPool");
             }
 
+            //If not there, try the card itself (for Representative of Earth purposes)
+            var prospect2 = cardController.CardWithoutReplacements.FindTokenPool("SpeedPool");
+            if (prospect2 != null)
+            {
+                return prospect2;
+            }
+
+            Console.WriteLine($"{(cardController == null ? "null CardController" : cardController.Card.Title)} failed to find speed pool");
             //If not, we have failed to find it - error handle!
             return null;
         }
@@ -42,7 +54,7 @@ namespace VainFacadePlaytest.Haste
         public static string KillingTimeKey = "KillingTimeKey";
         public static string UnmatchedAlacrityKey = "UnmatchedAlacrityKey";
 
-        public static IEnumerator AddSpeedTokens(CardController cardController, int amountToAdd)
+        public static IEnumerator AddSpeedTokens(CardController cardController, int amountToAdd, CardSource cardSource = null)
         {
             IEnumerator coroutine;
 
@@ -66,7 +78,11 @@ namespace VainFacadePlaytest.Haste
 
             if (amountToAdd > 0)
             {
-                coroutine = cardController.GameController.AddTokensToPool(GetSpeedPool(cardController), amountToAdd, cardController.GetCardSource());
+                if (cardSource == null)
+                {
+                    cardSource = cardController.GetCardSource();
+                }
+                coroutine = cardController.GameController.AddTokensToPool(GetSpeedPool(cardController), amountToAdd, cardSource);
                 if (cardController.UseUnityCoroutines)
                 {
                     yield return cardController.GameController.StartCoroutine(coroutine);
@@ -111,7 +127,7 @@ namespace VainFacadePlaytest.Haste
             }
         }
 
-        public static IEnumerator RemoveSpeedTokens(CardController cardController, int amount, GameAction gameAction, bool optional = false, List<RemoveTokensFromPoolAction> storedResults = null, IEnumerable<Card> associatedCards = null)
+        public static IEnumerator RemoveSpeedTokens(CardController cardController, int amount, GameAction gameAction, bool optional = false, List<RemoveTokensFromPoolAction> storedResults = null, IEnumerable<Card> associatedCards = null, CardSource cardSource = null)
         {
             IEnumerator coroutine;
             if (GetSpeedPool(cardController) == null)
@@ -128,7 +144,11 @@ namespace VainFacadePlaytest.Haste
                 yield break;
             }
 
-            coroutine = RemoveTokensFromPoolCustom(cardController, GetSpeedPool(cardController), amount, storedResults, optional, gameAction, cardController.GetCardSource(), associatedCards);
+            if (cardSource == null)
+            {
+                cardSource = cardController.GetCardSource();
+            }
+            coroutine = RemoveTokensFromPoolCustom(cardController, GetSpeedPool(cardController), amount, storedResults, optional, gameAction, cardSource, associatedCards);
             if (cardController.UseUnityCoroutines)
             {
                 yield return cardController.GameController.StartCoroutine(coroutine);
@@ -151,7 +171,12 @@ namespace VainFacadePlaytest.Haste
             if (optional)
             {
                 proceed = false;
-                SelectionType type = cardController.DecisionMaker.Name.Contains("Guise") ? SelectionType.RemoveTokens : SelectionType.Custom;
+                SelectionType type = SelectionType.RemoveTokens;
+                if (cardController.DecisionMaker != null && (cardController.DecisionMaker.Name.Contains("Friday") || cardController.DecisionMaker.Name.Contains("Haste")))
+                {
+                    //Haste and Friday should have the custom decision text handling for Haste, but Guise does not.
+                    type = SelectionType.Custom;
+                }
                 if (pool.CurrentValue < numberOfTokens)
                 {
                     type = SelectionType.RemoveTokensToNoEffect;

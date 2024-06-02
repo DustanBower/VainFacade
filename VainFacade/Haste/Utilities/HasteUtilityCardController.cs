@@ -24,12 +24,16 @@ namespace VainFacadePlaytest.Haste
 
         public IEnumerator AddSpeedTokens(int amount)
 		{
-			return HasteSpeedPoolUtility.AddSpeedTokens(this, amount);
+			return HasteSpeedPoolUtility.AddSpeedTokens(this, amount, GetCardSource());
         }
 
-		public IEnumerator RemoveSpeedTokens(int amount, GameAction gameAction = null, bool optional = false, List<RemoveTokensFromPoolAction> storedResults = null, IEnumerable<Card> associatedCards = null)
+		public IEnumerator RemoveSpeedTokens(int amount, GameAction gameAction = null, bool optional = false, List<RemoveTokensFromPoolAction> storedResults = null, IEnumerable<Card> associatedCards = null, CardSource cardSource = null)
 		{
-			return HasteSpeedPoolUtility.RemoveSpeedTokens(this, amount, gameAction, optional, storedResults, associatedCards);
+            if (cardSource == null)
+            {
+                cardSource = GetCardSource();
+            }
+			return HasteSpeedPoolUtility.RemoveSpeedTokens(this, amount, gameAction, optional, storedResults, associatedCards, GetCardSource());
 		}
 
 		public IEnumerator RemoveAnyNumberOfSpeedTokens(List<int?> storedResults)
