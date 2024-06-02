@@ -49,6 +49,7 @@ namespace VainFacadePlaytest.Haste
             effect.SourceCriteria.IsNotSpecificCard = this.CharacterCard;
             effect.TargetCriteria.IsSpecificCard = this.CharacterCard;
             effect.UntilTargetLeavesPlay(this.CharacterCard);
+            effect.DamageAmountCriteria.GreaterThan = 0;
             coroutine = AddStatusEffect(effect);
             if (base.UseUnityCoroutines)
             {
@@ -63,12 +64,13 @@ namespace VainFacadePlaytest.Haste
         //Based on The Shadow Cloak
         public IEnumerator BulletTimeResponse(DealDamageAction dda, TurnTaker hero, StatusEffect effect, int[] powerNumerals = null)
         {
+            CardSource cardSource = new CardSource(FindCardController(effect.CardSource));
             if (!RemoveTokensForDamage.HasValue || RemoveTokensForDamage.Value != dda.InstanceIdentifier)
             {
                 List<SelectNumberDecision> storedResults = new List<SelectNumberDecision>();
                 decisionAmount = dda.Amount;
 
-                IEnumerator coroutine = RemoveAnyNumberOfTokensFromTokenPool_Modified(storedResults , dda);
+                IEnumerator coroutine = RemoveAnyNumberOfTokensFromTokenPool_Modified(storedResults, FindHeroTurnTakerController(hero.ToHero()), cardSource);
                 if (base.UseUnityCoroutines)
                 {
                     yield return base.GameController.StartCoroutine(coroutine);
@@ -85,7 +87,7 @@ namespace VainFacadePlaytest.Haste
             }
             if (RemoveTokensForDamage.HasValue && RemoveTokensForDamage.Value == dda.InstanceIdentifier && selectNumber.SelectedNumber >= dda.Amount)
             {
-                IEnumerator coroutine3 = CancelAction(dda, showOutput: true, cancelFutureRelatedDecisions: true, null, isPreventEffect: true);
+                IEnumerator coroutine3 = base.GameController.CancelAction(dda, showOutput: true, cancelRelatedDecisions: true, null, isPreventEffect: true, cardSource:cardSource);
                 if (base.UseUnityCoroutines)
                 {
                     yield return base.GameController.StartCoroutine(coroutine3);
@@ -99,7 +101,7 @@ namespace VainFacadePlaytest.Haste
             {
                 if (selectNumber != null)
                 {
-                    IEnumerator remove = RemoveSpeedTokens(selectNumber.SelectedNumber.Value, dda, false);
+                    IEnumerator remove = RemoveSpeedTokens(selectNumber.SelectedNumber.Value, dda, false, cardSource:cardSource);
                     if (base.UseUnityCoroutines)
                     {
                         yield return base.GameController.StartCoroutine(remove);
@@ -116,7 +118,7 @@ namespace VainFacadePlaytest.Haste
         }
 
         //Modified to show the damage while deciding how many tokens to remove
-        private IEnumerator RemoveAnyNumberOfTokensFromTokenPool_Modified(List<SelectNumberDecision> storedResults, DealDamageAction dd)
+        private IEnumerator RemoveAnyNumberOfTokensFromTokenPool_Modified(List<SelectNumberDecision> storedResults, HeroTurnTakerController hero, CardSource cardSource)
         {
             IEnumerator coroutine;
             if (HasteSpeedPoolUtility.GetSpeedPool(this) == null)
@@ -136,7 +138,8 @@ namespace VainFacadePlaytest.Haste
             TokenPool pool = HasteSpeedPoolUtility.GetSpeedPool(this);
             if (pool.CurrentValue > 0)
             {
-                coroutine = GameController.SelectNumber(DecisionMaker, SelectionType.Custom, 0, pool.CurrentValue, optional: false, allowAutoDecide: false, null, storedResults, GetCardSource());
+                SelectionType type = (hero.Name == "Haste" || hero.Name == "Friday" ? SelectionType.Custom : SelectionType.RemoveTokens);
+                coroutine = GameController.SelectNumber(hero, type, 0, pool.CurrentValue, optional: false, allowAutoDecide: false, null, storedResults, cardSource);
                 if (UseUnityCoroutines)
                 {
                     yield return GameController.StartCoroutine(coroutine);
@@ -162,7 +165,7 @@ namespace VainFacadePlaytest.Haste
             }
             else
             {
-                IEnumerator coroutine2 = GameController.SendMessageAction("There are no tokens in " + pool.Name + " to remove.", Priority.High, GetCardSource(), null, showCardSource: true);
+                IEnumerator coroutine2 = GameController.SendMessageAction("There are no tokens in " + pool.Name + " to remove.", Priority.High, cardSource, null, showCardSource: true);
                 if (UseUnityCoroutines)
                 {
                     yield return GameController.StartCoroutine(coroutine2);
