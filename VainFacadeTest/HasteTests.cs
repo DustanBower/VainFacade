@@ -146,6 +146,38 @@ namespace VainFacadeTest
         }
 
         [Test()]
+        public void TestInnatePowerRepOfEarth()
+        {
+            SetupGameController("AkashBhuta", "Tachyon", "Legacy", "Bunker", "TheScholar", "TheCelestialTribunal");
+            StartGame();
+            //Add 3 tokens to your Speed pool.
+            //Until the start of your next turn, when a non-hero card enters play, you may remove 2 tokens from your speed pool. If you do, play a card.
+            DecisionSelectFromBoxTurnTakerIdentifier = "VainFacadePlaytest.Haste";
+            DecisionSelectFromBoxIdentifiers = new string[] { "VainFacadePlaytest.HasteCharacter" };
+            Card rep = PlayCard("RepresentativeOfEarth");
+            Card witness = PlayCard("CharacterWitness");
+            Card hasteChar = GetCard("HasteCharacter");
+            AssertIsInPlay(hasteChar);
+
+            TokenPool speed = hasteChar.FindTokenPool("SpeedPool");
+
+            //Let Bunker use Haste's power to play Ammo Drop
+            DecisionSelectCard = bunker.CharacterCard;
+            DecisionYesNo = true;
+            Card ammo = PutInHand("AmmoDrop");
+            DecisionSelectCardToPlay = ammo;
+
+            QuickTokenPoolStorage(speed);
+            GoToStartOfTurn(FindEnvironment());
+            QuickTokenPoolCheck(3);
+
+            QuickTokenPoolStorage(speed);
+            PlayCard("Entomb");
+            AssertIsInPlay(ammo);
+            QuickTokenPoolCheck(-2);
+        }
+
+        [Test()]
         public void TestIncap1Discard()
         {
             SetupGameController("AkashBhuta", "VainFacadePlaytest.Haste", "Legacy", "Bunker", "TheScholar", "InsulaPrimalis");
