@@ -722,7 +722,7 @@
 				},
 				{
 					"identifier": "[y=0.8]Bolt",
-					"text": "[y=0.8]I seen what I wanted to see, but then{BR}you go and tell me I ain’t capable of change?{BR}I named [b]myself[/b] Bolt. I name you [b]Doomsayer[/b]."
+					"text": "[y=0.8]I seen what I wanted to see, but then{BR}you go and tell [b]me[/b] I ain’t capable of change?{BR}I named [b]myself[/b] Bolt. I name you [b]Doomsayer[/b]."
 				}
 			],
 			"flavorReference": "[y=0.8]Bolt #7"
