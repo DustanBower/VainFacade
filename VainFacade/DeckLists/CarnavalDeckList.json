@@ -306,7 +306,7 @@
 				"trap"
 			],
 			"body": [
-				"If this card is not next to a target, the first time a villain target would deal damage, move this card next to that target.",
+				"If this card is not next to a target, when a villain target would deal damage, move this card next to that target.",
 				"Reduce damage dealt by the target next to this card by 3.",
 				"At the start of that target's turn, if this card is next to a target, {CarnavalCharacter} deals that target 2 melee damage and destroys this card."
 			],

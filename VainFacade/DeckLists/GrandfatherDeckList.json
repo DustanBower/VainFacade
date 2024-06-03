@@ -26,7 +26,7 @@
 			"gameplay": [
 				"{Grandfather} is immune to damage.",
 				"When there is only 1 villain Design in play, it is indestructible.",
-				"When there are 24 or more tokens on [i]Arrow of Time[/i], {Grandfather} controls the timeline. [b]The heroes lose.[/b]",
+				"When there are 24 or more tokens on [i]Arrow of Time[/i], {Grandfather} controls the timeline. The heroes lose. [b]Game Over.[/b]",
 				"At the end of each turn, if there are {H + 1} or more environment cards in the trash, each player may discard any number of cards. If {H} or more cards are discarded this way, flip {Grandfather}'s character cards."
 			],
 			"advanced": "At the end of the villain turn, discard the top 2 cards of each hero deck.",
@@ -45,7 +45,7 @@
 			],
 			"flippedGameplay": [
 				"When there is only 1 villain Design in play, it is indestructible.",
-				"When there are 24 or more tokens on [i]Arrow of Time[/i], {Grandfather} controls the timeline. [b]The heroes lose.[/b]",
+				"When there are 24 or more tokens on [i]Arrow of Time[/i], {Grandfather} controls the timeline. The heroes lose. [b]Game Over.[/b]",
 				"At the start of each player's turn, that player may discard any number of cards. For each card discarded this way, increase damage dealt to {Grandfather} by 1 this turn.",
 				"At the end of the villain turn, {Grandfather} deals each hero 3 energy damage."
 			],
@@ -129,7 +129,7 @@
 					"text": "If you don't mind me saying, Baroness{BR}Bogozi, what you really need is more time..."
 				}
 			],
-			"flavorReference": "Grandfather, Repeating Yesterday One-Shot"
+			"flavorReference": "Grandfather, Repeating Yesterday"
 		},
 		{
 			"identifier": "ArrowOfTime",
@@ -271,7 +271,8 @@
 				"fulcrum"
 			],
 			"body": [
-				"This card is indestructible while there are cards in the environment deck. When the environment deck is empty, destroy this card. Increase damage dealt by environment cards by 2.",
+				"This card is indestructible if there are cards in the environment deck. When the environment deck is empty, destroy this card.",
+				"Increase damage dealt by environment cards by 2.",
 				"At the end of the villain turn, discard the top card of the environment deck. If a target is discarded this way, play it. Otherwise, discard the top 5 cards of each hero deck."
 			],
 			"icons": [
@@ -401,7 +402,7 @@
 				"fulcrum"
 			],
 			"body": [
-				"This card is indestructible while a target is next to it. Play this card next to the hero with the highest HP.",
+				"This card is indestructible if a target is next to it. Play this card next to the hero with the highest HP.",
 				"The first time each turn each villain card would deal damage, redirect that damage to the target next to this card. Any player may discard 1 card to redirect that damage to one of their targets instead."
 			],
 			"icons": [
