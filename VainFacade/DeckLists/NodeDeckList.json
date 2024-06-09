@@ -71,7 +71,7 @@
 				"You may play a card.",
 				"Return any number of Connections in play to your hand.",
 				"For each Connection returned this way, you may draw a card, then you may play a card.",
-				"Increase the next damage dealt to {NodeCharacter} by X, where X is the number of hero cards played since this card entered play."
+				"Increase the next damage dealt to {NodeCharacter} by X, where X = the number of hero cards played since this card entered play."
 			],
 			"icons": [
 				"PlayCardNow",

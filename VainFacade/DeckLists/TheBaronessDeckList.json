@@ -272,7 +272,7 @@
 				"one-shot"
 			],
 			"body": [
-				"Destroy all Blood cards belonging to the hero with the highest resonance. {TheBaroness} deals that hero X times 2 melee damage, where X is the number of Blood cards destroyed in this way."
+				"Destroy all Blood cards belonging to the hero with the highest resonance. {TheBaroness} deals that hero X times 2 melee damage, where X = the number of Blood cards destroyed in this way."
 			],
 			"icons": [
 				"Destroy",

@@ -182,7 +182,7 @@
 				"one-shot"
 			],
 			"body": [
-				"Discard any number of cards. Increase the next damage dealt by Burgess by X plus 1, where X is the amount of cards discarded this way."
+				"Discard any number of cards. Increase the next damage dealt by Burgess by X plus 1, where X = the amount of cards discarded this way."
 			],
 			"icons": [
 				"Discard",

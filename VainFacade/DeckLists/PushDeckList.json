@@ -484,7 +484,7 @@
       ],
       "body": [
         "Destroy a target with 4 or fewer HP.",
-        "You may shuffle a non-character target destroyed this way into its deck. If you do, increase the next damage dealt to {Push} by X, where X is the destroyed target's current HP before it was destroyed."
+        "You may shuffle a non-character target destroyed this way into its deck. If you do, increase the next damage dealt to {Push} by X, where X = the destroyed target's current HP before it was destroyed."
       ],
       "icons": [
         "DestroyTarget",

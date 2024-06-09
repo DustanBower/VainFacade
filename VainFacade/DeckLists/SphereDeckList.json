@@ -129,7 +129,7 @@
 				"one-shot"
 			],
 			"body": [
-				"{Sphere} deals 1 target X plus 2 energy damage, where X is the number of Emanations in play."
+				"{Sphere} deals 1 target X plus 2 energy damage, where X = the number of Emanations in play."
 			],
 			"icons": [
 				"DealDamageEnergy"
@@ -173,7 +173,7 @@
 				"one-shot"
 			],
 			"body": [
-				"Destroy all environment cards. {Sphere} deals himself X projectile damage, then another target X times 2 projectile damage, where X is the number of environment cards destroyed in this way."
+				"Destroy all environment cards. {Sphere} deals himself X projectile damage, then another target X times 2 projectile damage, where X = the number of environment cards destroyed in this way."
 			],
 			"icons": [
 				"DestroyEnvironment",
