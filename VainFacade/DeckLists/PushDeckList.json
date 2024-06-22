@@ -220,9 +220,10 @@
       "flavorQuotes": [
         {
           "identifier": "Node",
-          "text": "{You can act or not{BR}act. There are always consequences.{BR}Nobody's perfect. If you do act, don't{BR}hesitate -- Commit and accept{BR}whatever comes.}"
+          "text": "<You can act or not{BR}act. There are always consequences.{BR}Nobody's perfect. If you do act, don't{BR}hesitate -- Commit and accept{BR}whatever comes.>"
         }
       ],
+      "flavorText": "<You can act or not{BR}act. There are always consequences.{BR}Nobody's perfect. If you do act, don't{BR}hesitate -- Commit and accept{BR}whatever comes.>",
       "flavorReference": "Node, Bulwark #34"
     },
     {

@@ -222,7 +222,7 @@
 				"StartOfTurnAction",
 				"DealDamageProjectile"
 			],
-			"flavorText": "Push frowned. “Do you think she'll be{BR}alright?” Node's disembodied voice filled{BR}her mind. {She is... having fun.}",
+			"flavorText": "Push frowned. “Do you think she'll be{BR}alright?” Node's disembodied voice filled{BR}her mind. <She is... having fun.>",
 			"flavorQuotes": [
 				{
 					"identifier": "Push",

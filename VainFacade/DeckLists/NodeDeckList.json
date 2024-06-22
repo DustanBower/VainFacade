@@ -79,7 +79,7 @@
 				"DrawCardNow",
 				"IncreaseDamageTaken"
 			],
-			"flavorText": "{Node! I know you can hear me!{BR}Stop this! It's killing you!}",
+			"flavorText": "<Node! I know you can hear me!{BR}Stop this! It's killing you!>",
 			"flavorReference": "[y=0.75]Push, Bastion City: A Spider Never Blinks #116"
 		},
 		{
@@ -193,7 +193,7 @@
 			"icons": [
 				"GainHP"
 			],
-			"flavorText": "{The serum may be killing you, but{BR}you're not going to die today.}",
+			"flavorText": "<The serum may be killing you, but{BR}you're not going to die today.>",
 			"flavorReference": "[y=0.75]Node, Bastion City: A Spider Never Blinks #114"
 		},
 		{
@@ -215,7 +215,7 @@
 				"HasPower",
 				"DealDamagePsychic"
 			],
-			"flavorText": "{I know I can't make you care{BR}about the pain you cause, but I{BR}can show you how it feels.}",
+			"flavorText": "<I know I can't make you care{BR}about the pain you cause, but I{BR}can show you how it feels.>",
 			"flavorReference": "Node, Apocalypse 10: Death of Grandfather"
 		},
 		{
@@ -259,7 +259,7 @@
 				"DrawCardNow",
 				"PlayCardNow"
 			],
-			"flavorText": "{I'm in your mind. You can't outrun{BR}yourself -- or your past --{BR}but you don't have to.}"
+			"flavorText": "<I'm in your mind. You can't outrun{BR}yourself -- or your past --{BR}but you don't have to.>"
 			,
 			"flavorReference": "Node, Apocalypse 10: No More Heroes"
 		},
@@ -279,7 +279,7 @@
 				"DrawCardNow",
 				"PlayCardNow"
 			],
-			"flavorText": "{I'm not a hallucination,{BR}Officer. Turn here. She doesn't{BR}have much time.}",
+			"flavorText": "<I'm not a hallucination,{BR}Officer. Turn here. She doesn't{BR}have much time.>",
 			"flavorReference": "Node, Burgess #14"
 		},
 		{
@@ -351,9 +351,10 @@
 			"flavorQuotes": [
 				{
 					"identifier": "Node",
-					"text": "I know you don't know me,{BR}and you have no reason to trust{BR}me, but I've got you."
+					"text": "<I know you don't know me,{BR}and you have no reason to trust{BR}me, but I've got you.>"
 				}
 			],
+			"flavorText": "<I know you don't know me,{BR}and you have no reason to trust{BR}me, but I've got you.>",
 			"flavorReference": "Node, Bastion City: Secret Wars #8"
 		},
 		{

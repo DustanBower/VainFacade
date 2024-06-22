@@ -246,7 +246,7 @@
 				"Destroy",
 				"DealDamageLightning"
 			],
-			"flavorText": "{BR}[b]Node[/b]: {You could have been{BR}a hero. He didn't make you{BR}a villain.} *scream*{BR}[b]Blitz[/b]: “Careful, baby, high voltage!”{BR}{BR}-Blitz, Sphere: Grudge Match #9"
+			"flavorText": "{BR}[b]Node[/b]: <You could have been{BR}a hero. He didn't make you{BR}a villain.> *scream*{BR}[b]Blitz[/b]: “Careful, baby, high voltage!”{BR}{BR}-Blitz, Sphere: Grudge Match #9"
 		},
 		{
 			"identifier": "PersonalFoul",

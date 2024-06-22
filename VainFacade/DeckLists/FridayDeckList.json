@@ -332,7 +332,7 @@
 				"DealDamageLightning",
 				"UsePowerNow"
 			],
-			"flavorText": "{BR}{Am I connecting to you...{BR}or are you connecting to me?}{BR} - Node/Friday, All Smiles"
+			"flavorText": "{BR}<Am I connecting to you...{BR}or are you connecting to me?>{BR} - Node/Friday, All Smiles"
 		},
 		{
 			"identifier": "RuthlessMachine",
