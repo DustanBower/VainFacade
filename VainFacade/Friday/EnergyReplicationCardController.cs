@@ -5,6 +5,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 
 namespace VainFacadePlaytest.Friday
 {
@@ -29,11 +30,9 @@ namespace VainFacadePlaytest.Friday
             AddIncreaseDamageTrigger((DealDamageAction dd) => dd.Target == this.CharacterCard && dd.DamageType == DamageType.Lightning, (DealDamageAction dd) => 1);
 
             //Once per round, when another target deals damage, {Friday} may deal 1 target X damage of the same type, where X = the amount of damage dealt or 3, whichever is lower.
-            AddTrigger<DealDamageAction>((DealDamageAction dd) => !HasBeenSetToTrueThisRound(OneTimePerRoundKey) && dd.DamageSource.IsTarget && dd.DamageSource.Card != this.CharacterCard && dd.DidDealDamage, DamageResponse, TriggerType.DealDamage, TriggerTiming.After);
-
+            AddTrigger<DealDamageAction>((DealDamageAction dd) => !HasBeenSetToTrueThisRound(OneTimePerRoundKey) && (dd.DamageSource.IsTarget || dd.DamageSource.IsHeroCharacterCard) && dd.DamageSource.Card != this.CharacterCard && dd.DidDealDamage, DamageResponse, TriggerType.DealDamage, TriggerTiming.After);
             AddAfterLeavesPlayAction(ResetFlags, TriggerType.Hidden);
         }
-
         private IEnumerator DamageResponse(DealDamageAction dd)
         {
             int amount = Math.Min(3, dd.Amount);
