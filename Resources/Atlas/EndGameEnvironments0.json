@@ -1,0 +1,44 @@
+{"frames": {
+
+"BastionCityDeckBack.jpg":
+{
+	"frame": {"x":0,"y":0,"w":400,"h":200},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":400,"h":200},
+	"sourceSize": {"w":400,"h":200}
+},
+"EldrenwoodVillageDeckBack.jpg":
+{
+	"frame": {"x":403,"y":0,"w":400,"h":200},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":400,"h":200},
+	"sourceSize": {"w":400,"h":200}
+},
+"ParadiseIsleDeckBack.jpg":
+{
+	"frame": {"x":0,"y":203,"w":400,"h":200},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":400,"h":200},
+	"sourceSize": {"w":400,"h":200}
+},
+"TheMidnightBazaarDeckBack.jpg":
+{
+	"frame": {"x":403,"y":203,"w":400,"h":200},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":400,"h":200},
+	"sourceSize": {"w":400,"h":200}
+}},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "EndGameEnvironments0.png",
+	"format": "RGBA8888",
+	"size": {"w":1024,"h":1024},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:ce14ec0df4d134df00817995afbe12c9:21b92f85c61f71e4fd2fb76390cbe3b6:54d17c0efaf99c3cc33a2aed1483935b$"
+}
+}
