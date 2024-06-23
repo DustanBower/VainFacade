@@ -64,6 +64,7 @@
 	],
       "teamVillains": [],
       "environments": [
+	      "BastionCity",
 	    "EldrenwoodVillage",
         "TheMidnightBazaar",
 		"ParadiseIsle"
