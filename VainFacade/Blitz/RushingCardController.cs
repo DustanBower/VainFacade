@@ -25,7 +25,7 @@ namespace VainFacadePlaytest.Blitz
         {
             base.AddTriggers();
             // "The first time each turn {BlitzCharacter} deals a hero target lightning damage, {H - 2} players discard a card, then play the top card of the villain deck."
-            AddTrigger((DealDamageAction dda) => dda.DamageSource != null && dda.DamageSource.Card != null && dda.DamageSource.Card == base.CharacterCard && IsHeroTarget(dda.Target) && dda.DamageType == DamageType.Lightning && dda.DidDealDamage && !HasBeenSetToTrueThisTurn(FirstHeroZappedThisTurn), DiscardPlayResponse, new TriggerType[] { TriggerType.DiscardCard, TriggerType.PlayCard }, TriggerTiming.After);
+            AddTrigger((DealDamageAction dda) => dda.DamageSource != null && dda.DamageSource.Card != null && dda.DamageSource.Card == base.CharacterCard && (IsHeroTarget(dda.Target) || (IsHeroCharacterCard(dda.Target) && !dda.Target.IsEnvironmentTarget && !dda.Target.IsVillainTarget)) && dda.DamageType == DamageType.Lightning && dda.DidDealDamage && !HasBeenSetToTrueThisTurn(FirstHeroZappedThisTurn), DiscardPlayResponse, new TriggerType[] { TriggerType.DiscardCard, TriggerType.PlayCard }, TriggerTiming.After);
             AddAfterLeavesPlayAction((GameAction ga) => ResetFlagAfterLeavesPlay(FirstHeroZappedThisTurn), TriggerType.Hidden);
         }
 
