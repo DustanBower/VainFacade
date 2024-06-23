@@ -59,7 +59,7 @@ namespace VainFacadePlaytest.TheBaroness
 
         private bool DidHitHeroTargetThisTurn()
         {
-            IEnumerable<DealDamageJournalEntry> list = Journal.DealDamageEntriesThisTurn().Where((DealDamageJournalEntry ddje) => ddje.SourceCard != null && ddje.SourceCard == base.Card && ddje.TargetCard != null && IsHeroTarget(ddje.TargetCard) && ddje.Amount > 0);
+            IEnumerable<DealDamageJournalEntry> list = Journal.DealDamageEntriesThisTurn().Where((DealDamageJournalEntry ddje) => ddje.SourceCard != null && ddje.SourceCard == base.Card && ddje.TargetCard != null && (IsHeroTarget(ddje.TargetCard) || (ddje.TargetCard.IsHeroCharacterCard && !ddje.TargetCard.IsEnvironmentTarget && !ddje.TargetCard.IsVillainTarget)) && ddje.Amount > 0);
             return list.Any();
         }
 
