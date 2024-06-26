@@ -157,7 +157,7 @@
 				"DestroyEquipment",
 				"DealDamageMelee"
 			],
-			"flavorText": "Mr. Brzezicki smiled thinly. “The thing you need{BR}to understand, Mr. Pryor... We keep things{BR}running smoothly at all costs. While those{BR}who work with us pay a nominal fee, I've heard{BR}that those who don't... Well, they pay even more.”"
+			"flavorText": "[y=0.75]Mr. Brzezicki smiled thinly. “The thing you need to understand,{BR}Mr. Pryor... We keep things running smoothly at all costs.{BR}While those who work with us pay a nominal fee, I've heard{BR}that those who don't... Well, they pay even more.”"
 		},
 		{
 			"identifier": "MrGoodman",

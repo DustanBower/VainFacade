@@ -79,6 +79,21 @@
     <Compile Include="Banshee\VerseForTheVanquishedCardController.cs" />
     <Compile Include="Banshee\VoiceForTheVoicelessCardController.cs" />
     <Compile Include="Banshee\WretchedRefrainCardController.cs" />
+    <Compile Include="BastionCity\AForkInTheRoadCardController.cs" />
+    <Compile Include="BastionCity\BastionCityCardController.cs" />
+    <Compile Include="BastionCity\BrotherMathisCardController.cs" />
+    <Compile Include="BastionCity\BusinessAsUsualCardController.cs" />
+    <Compile Include="BastionCity\BystanderCardController.cs" />
+    <Compile Include="BastionCity\CleanStreetsDirtyHandsCardController.cs" />
+    <Compile Include="BastionCity\DarkTitheCardController.cs" />
+    <Compile Include="BastionCity\GrimSebastianCardController.cs" />
+    <Compile Include="BastionCity\LegitimateBusinessmenCardController.cs" />
+    <Compile Include="BastionCity\MrGoodmanCardController.cs" />
+    <Compile Include="BastionCity\PlayingBothSidesCardController.cs" />
+    <Compile Include="BastionCity\PowerPlayCardController.cs" />
+    <Compile Include="BastionCity\RitesOfTheBlackThornCardController.cs" />
+    <Compile Include="BastionCity\TheSpidersWebCardController.cs" />
+    <Compile Include="BastionCity\TwoSidesToShadowsCardController.cs" />
     <Compile Include="Blitz\ArcProjectorCardController.cs" />
     <Compile Include="Blitz\BlitzCharacterCardController.cs" />
     <Compile Include="Blitz\BlitzTurnTakerController.cs" />
@@ -538,6 +553,9 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="DeckLists\HasteDeckList.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="DeckLists\BastionCityDeckList.json" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
