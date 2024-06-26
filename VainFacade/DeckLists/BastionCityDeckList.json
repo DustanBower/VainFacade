@@ -28,6 +28,9 @@
 			"count": 1,
 			"title": "Brother Mathis",
 			"hitpoints": 9,
+			"nemesisIdentifiers": [
+				"VainFacadePlaytest.Glyph"
+			],
 			"keywords": [
 				"sorceror",
 				"academy"
