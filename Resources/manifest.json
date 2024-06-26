@@ -24,6 +24,7 @@
       "  Sphere - A narcissistic anti-hero with the ability to generate different types of forcefields.",
       "",
       "Environments:",
+      "  Bastion City - A clean, bustling city concealing strange and sinister secrets.",
       "  Eldrenwood Village - A quaint country town with a dark secret. Travelers often go missing there on the nights of the full moon.",
       "  The Midnight Bazaar - A goblin market full of fae that will eagerly deal with the heroes or the villains. Buyer beware.",
       "  Paradise Isle Grand Hotel - A luxurious beach hotel that conceals dark secrets.",
@@ -37,7 +38,7 @@
     "namespace": "VainFacadePlaytest",
     "dll": "VainFacadePlaytest.dll",
     "publishedFileId": 2835111137,
-    "version": "0.20.4",
+    "version": "0.21",
     "color": "232370",
     "manualTags": [],
     "decks": {
@@ -64,6 +65,7 @@
 	],
       "teamVillains": [],
       "environments": [
+	      "BastionCity",
 	    "EldrenwoodVillage",
         "TheMidnightBazaar",
 		"ParadiseIsle"
@@ -155,6 +157,13 @@
       "Card art icons from game-icons.net",
       "",
       "ENVIRONMENTS",
+      "",
+      "Bastion City",
+      "Code by origami swami",
+      "Card art icons from game-icons.net",
+      "Music: Urban Shadows by Tonitrus (made with LMMS with",
+      "instruments by Dead Duck Software)",
+      "Sentinels Digital Background art by Tonitrus",
       "",
       "Eldrenwood Village",
       "Code by Bart_KF",

@@ -1,0 +1,277 @@
+{
+	"name": "Bastion City",
+	"kind": "Environment",
+	"backgroundColor": "538B15",
+	"difficulty": 2,
+	"cards": [
+		{
+			"identifier": "AForkInTheRoad",
+			"count": 1,
+			"title": "A Fork in the Road",
+			"keywords": [
+				"gambit"
+			],
+			"body": [
+				"At the end of the environment turn, destroy a machination and this card.",
+				"When this card is destroyed, discard the top card of the environment deck. If that card is not a target, play the top card of the villain deck. Otherwise a player may play a card."
+			],
+			"icons": [
+				"EndOfTurnAction",
+				"DestroyEnvironment",
+				"DestroySelf",
+				"Manipulate"
+			],
+			"flavorText": "“Did you hope they'd kill me, or that she'd{BR}save me?” Burgess called after him.{BR}Without turning, Brother Stevens replied,{BR}“Hopes are for children, Detective.”"
+		},
+		{
+			"identifier": "BrotherMathis",
+			"count": 1,
+			"title": "Brother Mathis",
+			"hitpoints": 9,
+			"nemesisIdentifiers": [
+				"VainFacadePlaytest.Glyph"
+			],
+			"keywords": [
+				"sorceror",
+				"academy"
+			],
+			"body": [
+				"At the end of the environment turn, this card deals the target with the lowest HP {H - 2} infernal damage.",
+				"If an environment card is dealt damage this way, this card deals each non-environment target 2 infernal damage."
+			],
+			"icons": [
+				"EndOfTurnAction",
+				"DealDamageInfernal"
+			],
+			"flavorText": "Brother Mathis' voice echoed throughout{BR}the chamber: “Forty daggers, seven lives,{BR}thirteen children, thirteen lies...”"
+		},
+		{
+			"identifier": "BusinessAsUsual",
+			"count": 1,
+			"title": "Business As Usual",
+			"keywords": [
+				"machination",
+				"coalition"
+			],
+			"body": [
+				"At the end of the environment turn, 1 player may discard a card. If they do, select a target. Reduce the next damage dealt to that target by 2. If they do not, deal the non-environment target with the lowest hp 2 melee damage."
+			],
+			"icons": [
+				"EndOfTurnAction",
+				"Discard",
+				"ReduceDamageTaken",
+				"DealDamageMelee"
+			],
+			"flavorText": "“What brings you to our humble meeting?” Mr.{BR}Konig asked. Burgess forced a smile. “Just{BR}looking for some glib denials regarding the{BR}body we just fished from the river.”"
+		},
+		{
+			"identifier": "Bystander",
+			"count": 2,
+			"title": "Bystander",
+			"hitpoints": 3,
+			"keywords": [
+				"civilian"
+			],
+			"body": [
+				"When this card is dealt damage, one player discards a card.",
+				"When this card reduced to 0 or fewer hp, each hero target deals itself 1 irreducible psychic damage. Then shuffle this card into the environment deck."
+			],
+			"icons": [
+				"Discard",
+				"DealDamagePsychic",
+				"Manipulate"
+			],
+			"flavorText": "“Mom, I'll call you when I get back! Bastion{BR}is one of the safest cities in the country!”{BR}she said, hanging up the payphone. Sphere{BR}looked down from the rooftop, nodding."
+		},
+		{
+			"identifier": "CleanStreetsDirtyHands",
+			"count": 1,
+			"title": "Clean Streets, Dirty Hands",
+			"keywords": [],
+			"body": [
+				"At the end of the environment turn, discard the top {H - 1} cards of the environment deck. When a non-machination card is discarded this way with a keyword matching a card in play, put it into play."
+			],
+			"icons": [
+				"EndOfTurnAction",
+				"Discard",
+				"PlayCardNow"
+			],
+			"flavorText": "Blitz growled. “Don't want nothin' but to{BR}make you see what a scam this city is! All{BR}them lights and purdy words is just to{BR}distract you while they pick your pockets!”"
+		},
+		{
+			"identifier": "DarkTithe",
+			"count": 1,
+			"title": "Dark Tithe",
+			"keywords": [
+				"machination",
+				"guild"
+			],
+			"body": [
+				"At the start of the environment turn, discard the top {H - 2} cards of the environment deck. If {MrGoodman} is discarded this way, put him into play.",
+				"At the end of the environment turn, a player may discard a card. If a card is discarded this way, then 1 player may play a card."
+			],
+			"icons": [
+				"StartAndEndOfTurnAction",
+				"Discard",
+				"PlayCardNow"
+			],
+			"flavorText": "A cold wind blew through Banshee as{BR}the money left her fingers. Power at any{BR}price was the Guild's motto. It was true{BR}more ways than one."
+		},
+		{
+			"identifier": "GrimSebastian",
+			"count": 1,
+			"title": "Grim Sebastian",
+			"hitpoints": 10,
+			"keywords": [
+				"assassin",
+				"keeper"
+			],
+			"body": [
+				"At the start of the environment turn, discard a card from under this card. This card deals the non-keeper card with the highest HP from that card's deck {H - 2} melee damage.",
+				"At the end of the environment turn, reveal and discard the top card of each deck. Put the revealed card with the most keywords under this card."
+			],
+			"icons": [
+				"StartAndEndOfTurnAction",
+				"Discard",
+				"DealDamageMelee",
+				"Manipulate"
+			],
+			"flavorText": "It was said his stern gaze could pierce all{BR}veils of truth or perception, given time.{BR}Ember hid just out of his view. She couldn't{BR}bear to think what he would see in her."
+		},
+		{
+			"identifier": "LegitimateBusinessmen",
+			"count": 1,
+			"title": "Legitimate Businessmen",
+			"hitpoints": 6,
+			"keywords": [
+				"enforcers",
+				"coalition"
+			],
+			"body": [
+				"At the end of the environment turn, destroy a hero ongoing or equipment card.",
+				"Then this card deals the non-coalition target with the lowest hp 2 melee damage."
+			],
+			"icons": [
+				"EndOfTurnAction",
+				"DestroyOngoing",
+				"DestroyEquipment",
+				"DealDamageMelee"
+			],
+			"flavorText": "[y=0.75]Mr. Brzezicki smiled thinly. “The thing you need to understand,{BR}Mr. Pryor... We keep things running smoothly at all costs.{BR}While those who work with us pay a nominal fee, I've heard{BR}that those who don't... Well, they pay even more.”"
+		},
+		{
+			"identifier": "MrGoodman",
+			"count": 1,
+			"title": "Mr. Goodman",
+			"hitpoints": 13,
+			"keywords": [
+				"demon",
+				"guild"
+			],
+			"body": [
+				"At the end of the environment turn, select a deck with no cards under this card. Put the top card of that deck under this card, then put the top card of that deck into play.",
+				"Then, this card deals each target from a deck with a card under this one 2 psychic damage each."
+			],
+			"icons": [
+				"EndOfTurnAction",
+				"Manipulate",
+				"PlayCardNow",
+				"DealDamagePsychic"
+			],
+			"flavorText": "He'd needed the money badly, and hadn't{BR}realized how strange Goodman's smile{BR}was at the time. Now it waited for him in{BR}the dark whenever he closed his eyes."
+		},
+		{
+			"identifier": "PlayingBothSides",
+			"count": 1,
+			"title": "Playing Both Sides",
+			"keywords": [
+				"gambit"
+			],
+			"body": [
+				"When this card enters play, put the top card of each deck under it.",
+				"At the end of the environment turn, a player may discard 2 cards. If they do not, put the top card of the villain deck under this card.",
+				"At the start of the environment turn, put a random card from under this card into play. If a one-shot or environment card is played this way, destroy this card."
+			],
+			"icons": [
+				"Manipulate",
+				"StartAndEndOfTurnAction",
+				"Discard",
+				"PlayCardNow"
+			],
+			"flavorText": "Liana sighed. “Come to gloat?” Brother{BR}Stevens' grey eye seemed to shimmer in the{BR}fluorescent light. “On the contrary, Ms.{BR}LeRoux, I am here to restore the balance.”"
+		},
+		{
+			"identifier": "PowerPlay",
+			"count": 1,
+			"title": "Power Play",
+			"keywords": [],
+			"body": [
+				"At the start of the environment turn, reveal the top {H} cards of the environment deck. Put any revealed machinations into play. Discard the other revealed cards. If a card enters play this way, destroy this card."
+			],
+			"icons": [
+				"StartOfTurnAction",
+				"PlayCardNow",
+				"Discard",
+				"DestroySelf"
+			],
+			"flavorText": "“I think I speak for everyone when I say that{BR}we should think... bigger,” Mr. Brzezicki said.{BR}Butcher Bill grinned. “You boys wanna take{BR}things up a notch? That's gonna cost extra.”"
+		},
+		{
+			"identifier": "RitesOfTheBlackThorn",
+			"count": 1,
+			"title": "Rites of the Black Thorn",
+			"keywords": [
+				"machination",
+				"academy"
+			],
+			"body": [
+				"Infernal damage is increased by 1 and irreducible.",
+				"The first time each turn any target is destroyed by infernal damage, play the top card of the environment deck."
+			],
+			"icons": [
+				"IncreaseDamageDealtInfernal",
+				"MakeDamageIrreducible",
+				"PlayCardNow"
+			],
+			"flavorText": "Brother LeRoux smiled as he inspected the{BR}tattoo. “Excellent work, Initiate Ellington.{BR}Your talent will not go overlooked. I see{BR}you going far in the Academy.”"
+		},
+		{
+			"identifier": "TheSpidersWeb",
+			"count": 1,
+			"title": "The Spider's Web",
+			"keywords": [
+				"machination"
+			],
+			"body": [
+				"At the start of the environment turn, destroy a machination other than this card. If you do not, destroy this card.",
+				"At the end of the environment turn, increase the next damage dealt by the villain target with the highest HP by 2."
+			],
+			"icons": [
+				"StartAndEndOfTurnAction",
+				"DestroyEnvironment",
+				"IncreaseDamageDealt"
+			],
+			"flavorText": "“Zsejke Bogozi. She doesn't like to get{BR}her hands dirty, but you follow any{BR}criminal operation in the city far enough,{BR}you'll always find her name.”"
+		},
+		{
+			"identifier": "TwoSidesToShadows",
+			"count": 1,
+			"title": "Two Sides to Shadows",
+			"keywords": [
+				"machination",
+				"keeper"
+			],
+			"body": [
+				"Reduce damage dealt to keepers and civilians by 1.",
+				"At the end of the environment turn, destroy an ongoing card. Then play the top card of that card's deck."
+			],
+			"icons": [
+				"ReduceDamageTaken",
+				"EndOfTurnAction",
+				"DestroyOngoing",
+				"PlayCardNow"
+			],
+			"flavorText": "The figure's muffled voice returned steadily{BR}through the mask. “No joy without sorrow.{BR}No power without pain. No end without a{BR}beginning. And no beginning without an end.”"
+		}
+	]
+}
