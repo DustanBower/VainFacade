@@ -74,7 +74,7 @@
 			],
 			"body": [
 				"When this card is dealt damage, one player discards a card.",
-				"When this card reduced to 0 or fewer hp, each hero target deals itself 1 irreducible psychic damage. Then shuffle this card into the environment deck."
+				"If this card would be destroyed and its HP is at or below 0, each hero target deals itself 1 irreducible psychic damage. Then shuffle this card into the environment deck."
 			],
 			"icons": [
 				"Discard",

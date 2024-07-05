@@ -102,7 +102,7 @@
 			"hitpoints": 2,
 			"body": [
 				"At the end of the environment turn, one player draws a card.",
-				"If this card is reduced to 0 or fewer HP, each hero target deals itself 2 psychic damage."
+				"If this card would be destroyed and its HP is at or below 0, each hero target deals itself 2 psychic damage."
 			],
 			"icons": [
 				"EndOfTurnAction",
@@ -141,7 +141,7 @@
 			"hitpoints": 4,
 			"body": [
 				"At the end of the environment turn, one hero target regains 1 HP.",
-				"If this card is reduced to 0 or fewer HP, the players collectively discard {H} cards."
+				"If this card would be destroyed and its HP is at or below 0, the players collectively discard {H} cards."
 			],
 			"icons": [
 				"EndOfTurnAction",
@@ -168,7 +168,7 @@
 			"body": [
 				"Reduce energy, projectile, and toxic damage by 1.",
 				"At the end of the environment turn, this card deals itself or the hero with the lowest HP 1 psychic damage.",
-				"If this card is reduced to 0 or fewer HP, each non-villain target deals itself 2 irreducible psychic damage."
+				"If this card would be destroyed and its HP is at or below 0, each non-villain target deals itself 2 irreducible psychic damage."
 			],
 			"icons": [
 				"ReduceDamageDealt",
@@ -188,7 +188,7 @@
 			"hitpoints": 4,
 			"body": [
 				"At the end of the environment turn, one player draws 2 cards and discards 1 card.",
-				"If this card is reduced to 0 or fewer HP, destroy a hero Ongoing card."
+				"If this card would be destroyed and its HP is at or below 0, destroy a hero Ongoing card."
 			],
 			"icons": [
 				"EndOfTurnAction",
@@ -235,7 +235,7 @@
 			"hitpoints": 4,
 			"body": [
 				"At the end of the environment turn, one player discards or plays a card. If a card entered play this way, this card deals one hero 2 sonic damage.",
-				"If this card is reduced to 0 or fewer HP, destroy one hero Equipment card."
+				"If this card would be destroyed and its HP is at or below 0, destroy one hero Equipment card."
 			],
 			"icons": [
 				"Discard",
@@ -262,7 +262,7 @@
 			"hitpoints": 6,
 			"body": [
 				"When an environment target is dealt damage or destroyed, this card deals the non-environment target with the second highest HP 2 sonic damage.",
-				"If this card is reduced to 0 or fewer HP, play the top card of the villain deck."
+				"If this card would be destroyed and its HP is at or below 0, play the top card of the villain deck."
 			],
 			"icons": [
 				"DealDamageSonic",
@@ -290,7 +290,7 @@
 			"hitpoints": 3,
 			"body": [
 				"Once per turn, when a Werewolf would deal damage, each player may put a card in their hand on the bottom of their deck. If {H - 2} cards are moved this way, prevent that damage.",
-				"If this card is reduced to 0 or fewer HP, each player discards a card."
+				"If this card would be destroyed and its HP is at or below 0, each player discards a card."
 			],
 			"icons": [
 				"Manipulate",
