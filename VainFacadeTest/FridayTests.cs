@@ -349,6 +349,32 @@ namespace VainFacadeTest
         }
 
         [Test()]
+        public void TestBuiltForWarReduce2()
+        {
+            SetupGameController("AkashBhuta", "VainFacadePlaytest.Friday", "Legacy", "Bunker", "Tempest", "Megalopolis");
+            StartGame();
+
+            //When {Friday} is dealt 5 or more damage from a single source, you may reduce that damage by up to 3.
+            //Power: Reveal cards from the top of your deck until 2 Mimicries are revealed. Put one into your hand or into play. Shuffle the remaining revealed cards into your deck. If a card entered play this way, destroy this card.
+            Card war = PlayCard("BuiltForWar");
+            //Card shield = PlayCard("ShieldingWinds");
+            Card endo = PlayCard("AdaptiveEndoskeleton");
+            DecisionSelectCard = endo;
+            DecisionYesNo = true;
+
+            DealDamage(akash, friday, 1, DamageType.Melee);
+
+            ResetDecisions();
+            DecisionSelectCard = endo;
+            DecisionYesNo = false;
+
+            DecisionSelectNumber = 3;
+            QuickHPStorage(friday);
+            DealDamage(akash, friday, 10, DamageType.Energy);
+            QuickHPCheck(-7);
+        }
+
+        [Test()]
         public void TestBuiltForWarPower1()
         {
             SetupGameController("AkashBhuta", "VainFacadePlaytest.Friday", "Legacy", "Bunker", "TheScholar", "Megalopolis");
@@ -855,6 +881,22 @@ namespace VainFacadeTest
         }
 
         [Test()]
+        public void TestEnergyReplicationIncap()
+        {
+            SetupGameController("AkashBhuta", "Ra", "Legacy", "Bunker", "VainFacadePlaytest.Friday", "InsulaPrimalis");
+            StartGame();
+            //When another target deals damage, Friday may deal 1 target X damage of the same type
+            //Check that it works if the damage is a hero incapping themself
+            Card energy = PlayCard("EnergyReplication");
+            SetHitPoints(ra, 1);
+            DecisionYesNo = true;
+            DecisionSelectTarget = akash.CharacterCard;
+            QuickHPStorage(akash);
+            DealDamage(ra, ra, 2, DamageType.Melee);
+            QuickHPCheck(-2);
+        }
+
+        [Test()]
         public void TestICanDoBetter()
         {
             SetupGameController("AkashBhuta", "VainFacadePlaytest.Friday", "Legacy", "Bunker", "TheScholar", "Megalopolis");
@@ -1123,10 +1165,10 @@ namespace VainFacadeTest
             QuickHPCheck(0);
 
             //Check that it activates on Bunker's turn next round
-            QuickHPStorage(bunker);
-            QuickHandStorage(friday);
             DecisionYesNo = false;
             GoToStartOfTurn(bunker);
+            QuickHPStorage(bunker);
+            QuickHandStorage(friday);
             DecisionYesNo = true;
             PutOnDeck("ProteanDoom");
             GoToEndOfTurn(bunker);
@@ -1224,7 +1266,7 @@ namespace VainFacadeTest
 
             //Reduce damage dealt to {Friday} by 1.
             //Once per turn when {Friday} deals damage, she may deal 1 damage of the same type to the same target.
-            //At the end of your turn, you may discard a card. If you do not, {Friday} deals each target other than Friday 1 psychic damage each.
+            //At the end of your turn, you may discard a card. If you do not, {Friday} deals each other target 1 psychic damage.
             Card armor = PlayCard("T913ExdimReaperArmor");
             QuickHPStorage(friday);
             DealDamage(akash, friday, 2, DamageType.Melee);
@@ -1239,7 +1281,7 @@ namespace VainFacadeTest
 
             //Reduce damage dealt to {Friday} by 1.
             //Once per turn when {Friday} deals damage, she may deal 1 damage of the same type to the same target.
-            //At the end of your turn, you may discard a card. If you do not, {Friday} deals each target other than Friday 1 psychic damage each.
+            //At the end of your turn, you may discard a card. If you do not, {Friday} deals each other target 1 psychic damage.
             Card armor = PlayCard("T913ExdimReaperArmor");
             DecisionYesNo = true;
             GoToStartOfTurn(friday);
@@ -1277,7 +1319,7 @@ namespace VainFacadeTest
 
             //Reduce damage dealt to {Friday} by 1.
             //Once per turn when {Friday} deals damage, she may deal 1 damage of the same type to the same target.
-            //At the end of your turn, you may discard a card. If you do not, {Friday} deals each target other than Friday 1 psychic damage each.
+            //At the end of your turn, you may discard a card. If you do not, {Friday} deals each other target 1 psychic damage.
             Card armor = PlayCard("T913ExdimReaperArmor");
             Card grim = PutInHand("GrimReflection");
             DecisionSelectCard = grim;
@@ -1295,7 +1337,7 @@ namespace VainFacadeTest
 
             //Reduce damage dealt to {Friday} by 1.
             //Once per turn when {Friday} deals damage, she may deal 1 damage of the same type to the same target.
-            //At the end of your turn, you may discard a card. If you do not, {Friday} deals each target other than Friday 1 psychic damage each.
+            //At the end of your turn, you may discard a card. If you do not, {Friday} deals each other target 1 psychic damage.
             Card armor = PlayCard("T913ExdimReaperArmor");
             DecisionDoNotSelectCard = SelectionType.DiscardCard;
             QuickHPStorage(legacy, bunker, scholar, akash);
@@ -1448,6 +1490,79 @@ namespace VainFacadeTest
         //    DealDamage(legacy, akash, 1, DamageType.Melee);
         //    DecisionSelectDamageType = DamageType.Melee;
         //    UsePower(cannon);
+        //}
+
+        //[Test()]
+        //public void TestUnstableCircuitryOblivAeon()
+        //{
+        //    SetupGameController("OblivAeon", "Ra", "Legacy", "Bunker", "TheScholar", "Megalopolis", "InsulaPrimalis", "TombOfAnubis", "RuinsOfAtlantis", "NexusOfTheVoid", "ChampionStudios");
+        //    StartGame();
+
+        //    //When this card enters your hand, put it into play.
+        //    //{Friday} deals herself 1 irreducible lightning damage.
+        //    //You may draw 2 cards. If you do, shuffle this card into your deck.
+        //    DecisionSelectFromBoxIdentifiers = new string[] { "Friday" };
+        //    DecisionSelectFromBoxTurnTakerIdentifier = "VainFacadePlaytest.Friday";
+        //    DestroyCard(ra);
+        //    GoToAfterEndOfTurn(oblivaeon);
+        //    RunActiveTurnPhase();
+
+        //    GoToDrawCardPhase(friday);
+
+        //    //SaveAndLoad(GameController);
+
+        //    Card unstable = PutOnDeck("UnstableCircuitry");
+        //    QuickHPStorage(friday);
+        //    DrawCard(friday);
+        //    QuickHPCheck(-1);
+        //    AssertInTrash(unstable);
+
+        //}
+
+        //[Test()]
+        //public void TestMonsterOfIdOblivAeon()
+        //{
+        //    SetupGameController("OblivAeon", "Ra", "Legacy", "Bunker", "TheScholar", "Megalopolis", "InsulaPrimalis", "TombOfAnubis", "RuinsOfAtlantis", "NexusOfTheVoid", "ChampionStudios");
+        //    StartGame();
+
+        //    DecisionSelectFromBoxIdentifiers = new string[] { "VoidGuardTheIdealist" };
+        //    DecisionSelectFromBoxTurnTakerIdentifier = "VoidGuardTheIdealist";
+        //    DestroyCard(ra);
+        //    GoToAfterEndOfTurn(oblivaeon);
+        //    RunActiveTurnPhase();
+
+        //    GoToDrawCardPhase(voidIdealist);
+
+        //    Card id = PutOnDeck("MonsterOfId");
+        //    QuickHPStorage(voidIdealist);
+        //    DrawCard(voidIdealist);
+        //    AssertIsInPlay(id);
+        //}
+
+        //[Test()]
+        //public void TestShinobiOblivAeon()
+        //{
+        //    SetupGameController("OblivAeon", "Ra", "Legacy", "SkyScraper", "TheScholar", "Megalopolis", "InsulaPrimalis", "TheTempleOfZhuLong", "RuinsOfAtlantis", "NexusOfTheVoid");
+        //    StartGame();
+
+        //    Card inevitable = GetCard("InevitableDestruction");
+        //    MoveCards(oblivaeon, FindCardsWhere((Card c) => c.Identifier == "AeonThrall"), oblivaeon.TurnTaker.FindSubDeck("AeonMenDeck"));
+
+        //    RemoveTokensFromPool(inevitable.FindTokenPool("CountdownTokenPool"),6); 
+        //    Card shinobi = GetCard("ShinobiAssassin");
+        //    AssertInDeck(FindEnvironment(bzOne),shinobi);
+
+        //    SetHitPoints(new TurnTakerController[] {legacy, sky, scholar }, 20);
+        //    SetHitPoints(ra, 10);
+        //    PlayCard(shinobi);
+        //    DestroyCard(shinobi);
+        //    DestroyCards(FindCardsWhere((Card c) => c.IsAeonMan));
+
+        //    QuickHPStorage(ra);
+        //    DrawCard(ra);
+        //    Console.WriteLine($"{shinobi.Title} is in {shinobi.Location.GetFriendlyName()}");
+        //    AssertIsInPlay(shinobi);
+        //    QuickHPCheck(-3);
         //}
     }
 }

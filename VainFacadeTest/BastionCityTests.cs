@@ -237,29 +237,34 @@ namespace VainFacadeTest
 
             QuickHPStorage(apostate, ra, legacy, bunker, tachyon);
             QuickShuffleStorage(bastion);
+            QuickHandStorage(ra, legacy, bunker, tachyon);
 
             DealDamage(ra, bystander, 5, DamageType.Fire);
 
             QuickHPCheck(0, -1, -1, -1, -1);
             QuickShuffleCheck(1);
             AssertAtLocation(bystander, bastion.TurnTaker.Deck);
+            QuickHandCheckZero();
 
             PlayCard(bystander);
             QuickHPStorage(apostate, ra, legacy, bunker, tachyon);
             QuickShuffleStorage(bastion);
+            Card blinding = PutInTrash("BlindingSpeed");
+            QuickHandStorage(ra, legacy, bunker, tachyon);
 
             DecisionSelectCard = bystander;
-            PlayCard("BlindingSpeed");
+            PlayCard(blinding);
 
             QuickHPCheckZero();
             QuickShuffleCheck(0);
             AssertAtLocation(bystander, bastion.TurnTaker.Trash);
+            QuickHandCheckZero();
         }
 
         [Test()]
         public void TestBystanderDestroyOA()
         {
-            SetupGameController(new string[] { "OblivAeon", "Bunker", "Legacy", "Haka", "VainFacadePlaytest.BastionCity", "MobileDefensePlatform", "InsulaPrimalis", "RuinsOfAtlantis", "Magmaria" }, shieldIdentifier: "TheArcOfUnreality");
+            SetupGameController(new string[] { "OblivAeon", "Bunker", "Legacy", "Tachyon", "VainFacadePlaytest.BastionCity", "MobileDefensePlatform", "InsulaPrimalis", "RuinsOfAtlantis", "Magmaria" }, shieldIdentifier: "TheArcOfUnreality");
             StartGame();
             //When this card is dealt damage, one player discards a card.
             //When this card reduced to 0 or fewer hp, each hero target deals itself 1 irreducible psychic damage. Then shuffle this card into the environment deck.
@@ -268,18 +273,44 @@ namespace VainFacadeTest
             FlipCard(shield);
 
             QuickShuffleStorage(bastion);
-            QuickHPStorage(bunker, legacy, haka);
+            QuickHPStorage(bunker, legacy, tachyon);
             DecisionSelectTurnTaker = bunker.TurnTaker;
             QuickHandStorage(bunker);
             
-
+            //Check that if the destruction is prevented, Bystander does not go off
             DealDamage(bunker, bystander, 5, DamageType.Fire);
+            QuickShuffleCheck(0);
+            QuickHPCheck(0, 0, 0);
+            QuickHandCheck(-3);
+            AssertIsInPlay(bystander);
+
+            //Check that if it is destroyed when at 0 or less HP, it does go off, even if it wasn't destroyed by damage
+            DecisionDoNotSelectTurnTaker = true;
+            QuickShuffleStorage(bastion);
+            QuickHPStorage(bunker, legacy, tachyon);
+            QuickHandStorage(bunker);
+            PlayCard("BlindingSpeed");
             QuickShuffleCheck(1);
             QuickHPCheck(-1, -1, -1);
-            QuickHandCheck(-3);
-            AssertAtLocation(bystander, bastion.TurnTaker.Deck);
+            QuickHandCheck(0);
+            AssertAtLocation(bystander,bastion.TurnTaker.Deck);
         }
 
+        [Test()]
+        public void TestBystanderJackHandle()
+        {
+            SetupGameController("Apostate", "MrFixer", "Haka", "Legacy", "VainFacadePlaytest.BastionCity");
+            StartGame();
+
+            Card bystander = PlayCard("Bystander");
+            Card jack = PlayCard("JackHandle");
+
+            QuickHPStorage(apostate, fixer, haka, legacy);
+            QuickHandStorage(fixer, haka, legacy);
+            DealDamage(legacy, bystander, 5, DamageType.Melee);
+            QuickHPCheck(-1, 0, -1, -1);
+            QuickHandCheckZero();
+        }
 
         [Test()]
         public void TestCleanStreetsDirtyHands()
