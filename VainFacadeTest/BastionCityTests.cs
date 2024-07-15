@@ -305,6 +305,7 @@ namespace VainFacadeTest
             Card bystander = PlayCard("Bystander");
             Card jack = PlayCard("JackHandle");
 
+
             QuickHPStorage(apostate, fixer, haka, legacy);
             QuickHandStorage(fixer, haka, legacy);
             DealDamage(legacy, bystander, 5, DamageType.Melee);
@@ -312,54 +313,107 @@ namespace VainFacadeTest
             QuickHandCheckZero();
         }
 
+        //[Test()]
+        //public void TestCleanStreetsDirtyHands()
+        //{
+        //    SetupGameController("Apostate", "Ra", "Legacy", "Bunker", "Tachyon", "VainFacadePlaytest.BastionCity");
+        //    StartGame();
+        //    //At the end of the environment turn, discard the top {H - 1} cards of the environment deck. When a non-machination card is discarded this way with a keyword matching a card in play, put it into play.
+        //    GoToPlayCardPhase(bastion);
+        //    Card clean = PlayCard("CleanStreetsDirtyHands");
+        //    Card tithe = PlayCard("DarkTithe");
+        //    Card business = PutOnDeck("BusinessAsUsual");
+        //    Card goodman = PutOnDeck("MrGoodman");
+        //    Card grim = PutOnDeck("GrimSebastian");
+        //    DecisionDoNotSelectTurnTaker = true;
+
+        //    //Business as Usual and Grim Sebastian should be in the trash, and Mr Goodman should be in play.
+        //    GoToEndOfTurn(bastion);
+        //    AssertInTrash(business, grim);
+        //    AssertIsInPlay(goodman);
+        //}
+
+        //[Test()]
+        //public void TestCleanStreetsDirtyHandsOneCard()
+        //{
+        //    SetupGameController("Apostate", "Ra", "Legacy", "Bunker", "Tachyon", "VainFacadePlaytest.BastionCity");
+        //    StartGame();
+        //    //At the end of the environment turn, discard the top {H - 1} cards of the environment deck. When a non-machination card is discarded this way with a keyword matching a card in play, put it into play.
+        //    GoToPlayCardPhase(bastion);
+        //    PlayCard("CleanStreetsDirtyHands");
+        //    MoveAllCards(bastion, bastion.TurnTaker.Deck, bastion.TurnTaker.OutOfGame);
+        //    Card grim = MoveCard(bastion,"GrimSebastian",bastion.TurnTaker.Deck);
+        //    QuickShuffleStorage(bastion.TurnTaker.Deck);
+        //    GoToEndOfTurn(bastion);
+        //    QuickShuffleCheck(2);
+        //    AssertInTrash(grim);
+        //}
+
+        //[Test()]
+        //public void TestCleanStreetsDirtyHandsEmptyDeck()
+        //{
+        //    SetupGameController("Apostate", "Ra", "Legacy", "Bunker", "Tachyon", "VainFacadePlaytest.BastionCity");
+        //    StartGame();
+        //    //At the end of the environment turn, discard the top {H - 1} cards of the environment deck. When a non-machination card is discarded this way with a keyword matching a card in play, put it into play.
+        //    GoToPlayCardPhase(bastion);
+        //    PlayCard("CleanStreetsDirtyHands");
+        //    MoveAllCards(bastion, bastion.TurnTaker.Deck, bastion.TurnTaker.OutOfGame);
+        //    QuickShuffleStorage(bastion.TurnTaker.Deck);
+        //    GoToEndOfTurn(bastion);
+        //    QuickShuffleCheck(3);
+        //}
+
         [Test()]
-        public void TestCleanStreetsDirtyHands()
+        public void TestCleanStreetsDirtyHandsIncrease()
         {
             SetupGameController("Apostate", "Ra", "Legacy", "Bunker", "Tachyon", "VainFacadePlaytest.BastionCity");
             StartGame();
-            //At the end of the environment turn, discard the top {H - 1} cards of the environment deck. When a non-machination card is discarded this way with a keyword matching a card in play, put it into play.
+
+            //Increase damage dealt by targets sharing a keyword with a machination by 1.
+            Card clean = PlayCard("CleanStreetsDirtyHands");
+            Card business = PlayCard("BusinessAsUsual");
+            Card legit = PlayCard("LegitimateBusinessmen");
+            Card grim = PlayCard("GrimSebastian");
+
+            //Legitimate Businessmen should have its damage increased
+            QuickHPStorage(legacy);
+            DealDamage(legit, legacy, 1, DamageType.Melee);
+            QuickHPCheck(-2);
+
+            //Grim Sebastian should not have its damage increased
+            QuickHPStorage(legacy);
+            DealDamage(grim, legacy, 1, DamageType.Melee);
+            QuickHPCheck(-1);
+
+            PrintSpecialStringsForCard(clean);
+        }
+
+        [Test()]
+        public void TestCleanStreetsDirtyHandsDiscardTarget()
+        {
+            SetupGameController("Apostate", "Ra", "Legacy", "Bunker", "Tachyon", "VainFacadePlaytest.BastionCity");
+            StartGame();
+
+            //At the end of the environment turn, discard the top card of the environment deck. If a target is discarded this way, put it into play.
             GoToPlayCardPhase(bastion);
             Card clean = PlayCard("CleanStreetsDirtyHands");
-            Card tithe = PlayCard("DarkTithe");
-            Card business = PutOnDeck("BusinessAsUsual");
-            Card goodman = PutOnDeck("MrGoodman");
             Card grim = PutOnDeck("GrimSebastian");
-            DecisionDoNotSelectTurnTaker = true;
-
-            //Business as Usual and Grim Sebastian should be in the trash, and Mr Goodman should be in play.
             GoToEndOfTurn(bastion);
-            AssertInTrash(business, grim);
-            AssertIsInPlay(goodman);
+            AssertIsInPlay(grim);
         }
 
         [Test()]
-        public void TestCleanStreetsDirtyHandsOneCard()
+        public void TestCleanStreetsDirtyHandsDiscardNonTarget()
         {
             SetupGameController("Apostate", "Ra", "Legacy", "Bunker", "Tachyon", "VainFacadePlaytest.BastionCity");
             StartGame();
-            //At the end of the environment turn, discard the top {H - 1} cards of the environment deck. When a non-machination card is discarded this way with a keyword matching a card in play, put it into play.
-            GoToPlayCardPhase(bastion);
-            PlayCard("CleanStreetsDirtyHands");
-            MoveAllCards(bastion, bastion.TurnTaker.Deck, bastion.TurnTaker.OutOfGame);
-            Card grim = MoveCard(bastion,"GrimSebastian",bastion.TurnTaker.Deck);
-            QuickShuffleStorage(bastion.TurnTaker.Deck);
-            GoToEndOfTurn(bastion);
-            QuickShuffleCheck(2);
-            AssertInTrash(grim);
-        }
 
-        [Test()]
-        public void TestCleanStreetsDirtyHandsEmptyDeck()
-        {
-            SetupGameController("Apostate", "Ra", "Legacy", "Bunker", "Tachyon", "VainFacadePlaytest.BastionCity");
-            StartGame();
-            //At the end of the environment turn, discard the top {H - 1} cards of the environment deck. When a non-machination card is discarded this way with a keyword matching a card in play, put it into play.
+            //At the end of the environment turn, discard the top card of the environment deck. If a target is discarded this way, put it into play.
             GoToPlayCardPhase(bastion);
-            PlayCard("CleanStreetsDirtyHands");
-            MoveAllCards(bastion, bastion.TurnTaker.Deck, bastion.TurnTaker.OutOfGame);
-            QuickShuffleStorage(bastion.TurnTaker.Deck);
+            Card clean = PlayCard("CleanStreetsDirtyHands");
+            Card tithe = PutOnDeck("DarkTithe");
             GoToEndOfTurn(bastion);
-            QuickShuffleCheck(3);
+            AssertInTrash(tithe);
         }
 
         [Test()]
@@ -746,23 +800,59 @@ namespace VainFacadeTest
             AssertIsInPlay(grim);
         }
 
+        //[Test()]
+        //public void TestPowerPlayNoMachinations()
+        //{
+        //    SetupGameController("Apostate", "Ra", "Legacy", "Bunker", "Tachyon", "VainFacadePlaytest.BastionCity");
+        //    StartGame();
+        //    //At the start of the environment turn, reveal the top {H} cards of the environment deck. Put any revealed machinations into play. Discard the other revealed cards. If a card enters play this way, destroy this card.
+        //    Card fork = PutOnDeck("AForkInTheRoad");
+        //    Card mathis = PutOnDeck("BrotherMathis");
+        //    Card bystander = PutOnDeck("Bystander");
+        //    Card clean = PutOnDeck("CleanStreetsDirtyHands");
+        //    Card grim = PutOnDeck("GrimSebastian");
+
+        //    Card powerplay = PlayCard("PowerPlay");
+
+        //    GoToStartOfTurn(bastion);
+        //    AssertInTrash(new Card[] { mathis, bystander, clean, grim });
+        //    AssertOnTopOfDeck(fork);
+        //}
+
+        //[Test()]
+        //public void TestPowerPlay()
+        //{
+        //    SetupGameController("Apostate", "Ra", "Legacy", "Bunker", "Tachyon", "VainFacadePlaytest.BastionCity");
+        //    StartGame();
+        //    //At the start of the environment turn, reveal the top {H} cards of the environment deck. Put any revealed machinations into play. Discard the other revealed cards. If a card enters play this way, destroy this card.
+        //    Card fork = PutOnDeck("AForkInTheRoad");
+        //    Card mathis = PutOnDeck("BrotherMathis");
+        //    Card rites = PutOnDeck("RitesOfTheBlackThorn");
+        //    Card clean = PutOnDeck("CleanStreetsDirtyHands");
+        //    Card business = PutOnDeck("BusinessAsUsual");
+
+        //    Card powerplay = PlayCard("PowerPlay");
+
+        //    GoToStartOfTurn(bastion);
+        //    AssertInTrash(new Card[] { mathis, clean });
+        //    AssertIsInPlay(new Card[] { rites, business });
+        //    AssertOnTopOfDeck(fork);
+        //}
+
         [Test()]
         public void TestPowerPlayNoMachinations()
         {
             SetupGameController("Apostate", "Ra", "Legacy", "Bunker", "Tachyon", "VainFacadePlaytest.BastionCity");
             StartGame();
-            //At the start of the environment turn, reveal the top {H} cards of the environment deck. Put any revealed machinations into play. Discard the other revealed cards. If a card enters play this way, destroy this card.
-            Card fork = PutOnDeck("AForkInTheRoad");
-            Card mathis = PutOnDeck("BrotherMathis");
-            Card bystander = PutOnDeck("Bystander");
-            Card clean = PutOnDeck("CleanStreetsDirtyHands");
-            Card grim = PutOnDeck("GrimSebastian");
 
-            Card powerplay = PlayCard("PowerPlay");
-
+            //At the start of the environment turn, reveal cards from the top of the environment deck until a machination is revealed.
+            //Put it into play. Discard the other revealed cards. If a card enters play this way, destroy this card.
+            Card power = PlayCard("PowerPlay");
+            MoveCards(bastion, FindCardsWhere((Card c) => c.DoKeywordsContain("machination")), bastion.TurnTaker.Trash);
             GoToStartOfTurn(bastion);
-            AssertInTrash(new Card[] { mathis, bystander, clean, grim });
-            AssertOnTopOfDeck(fork);
+            AssertIsInPlay(power);
+            AssertNumberOfCardsInPlay((Card c) => c.IsEnvironment, 1);
+            AssertNumberOfCardsInTrash(bastion, 14);
         }
 
         [Test()]
@@ -770,19 +860,20 @@ namespace VainFacadeTest
         {
             SetupGameController("Apostate", "Ra", "Legacy", "Bunker", "Tachyon", "VainFacadePlaytest.BastionCity");
             StartGame();
-            //At the start of the environment turn, reveal the top {H} cards of the environment deck. Put any revealed machinations into play. Discard the other revealed cards. If a card enters play this way, destroy this card.
-            Card fork = PutOnDeck("AForkInTheRoad");
-            Card mathis = PutOnDeck("BrotherMathis");
-            Card rites = PutOnDeck("RitesOfTheBlackThorn");
-            Card clean = PutOnDeck("CleanStreetsDirtyHands");
-            Card business = PutOnDeck("BusinessAsUsual");
 
-            Card powerplay = PlayCard("PowerPlay");
+            //At the start of the environment turn, reveal cards from the top of the environment deck until a machination is revealed.
+            //Put it into play. Discard the other revealed cards. If a card enters play this way, destroy this card.
+            Card power = PlayCard("PowerPlay");
+            Card tithe = PutOnDeck("DarkTithe");
+            Card business = PutOnDeck("BusinessAsUsual");
+            Card goodman = PutOnDeck("MrGoodman");
+            Card clean = PutOnDeck("CleanStreetsDirtyHands");
+            Card playing = PutOnDeck("PlayingBothSides");
 
             GoToStartOfTurn(bastion);
-            AssertInTrash(new Card[] { mathis, clean });
-            AssertIsInPlay(new Card[] { rites, business });
-            AssertOnTopOfDeck(fork);
+            AssertIsInPlay(business);
+            AssertInTrash(new Card[] { power, goodman, clean, playing });
+            AssertOnTopOfDeck(tithe);
         }
 
         [Test()]

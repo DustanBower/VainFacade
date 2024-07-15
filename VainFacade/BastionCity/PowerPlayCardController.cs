@@ -14,19 +14,20 @@ namespace VainFacadePlaytest.BastionCity
 		public PowerPlayCardController(Card card, TurnTakerController turnTakerController)
             : base(card, turnTakerController)
         {
-            base.SpecialStringMaker.ShowNumberOfCardsAtLocation(this.TurnTaker.Deck, MachinationCriteria());
+            base.SpecialStringMaker.ShowListOfCardsAtLocation(this.TurnTaker.Deck, MachinationCriteria());
 		}
 
         public override void AddTriggers()
         {
-            //At the start of the environment turn, reveal the top {H} cards of the environment deck. Put any revealed machinations into play. Discard the other revealed cards. If a card enters play this way, destroy this card.
-            AddStartOfTurnTrigger((TurnTaker tt) => tt == this.TurnTaker, StartOfTurnResponse, new TriggerType[] {TriggerType.RevealCard, TriggerType.PutIntoPlay, TriggerType.DiscardCard, TriggerType.DestroySelf });
+            //At the start of the environment turn, reveal cards from the top of the environment deck until a machination is revealed.
+            //Put it into play. Discard the other revealed cards. If a card enters play this way, destroy this card.
+            AddStartOfTurnTrigger((TurnTaker tt) => tt == this.TurnTaker, StartOfTurnResponse, new TriggerType[] { TriggerType.RevealCard, TriggerType.PutIntoPlay, TriggerType.DestroySelf });
         }
 
         private IEnumerator StartOfTurnResponse(PhaseChangeAction pca)
         {
             List<Card> played = new List<Card>();
-            IEnumerator coroutine = RevealCards_PutSomeIntoPlay_DiscardRemaining(this.TurnTakerController, this.TurnTaker.Deck, base.H, MachinationCriteria(), playedCards: played);
+            IEnumerator coroutine = RevealCards_PutSomeIntoPlay_DiscardRemaining(this.TurnTakerController, this.TurnTaker.Deck, null, MachinationCriteria(), playedCards: played, revealUntilNumberOfMatchingCards: 1);
             if (base.UseUnityCoroutines)
             {
                 yield return base.GameController.StartCoroutine(coroutine);
@@ -36,7 +37,7 @@ namespace VainFacadePlaytest.BastionCity
                 base.GameController.ExhaustCoroutine(coroutine);
             }
 
-            if (played.Any())
+            if (played.Count() > 0)
             {
                 coroutine = DestroyThisCardResponse(null);
                 if (base.UseUnityCoroutines)
@@ -47,7 +48,7 @@ namespace VainFacadePlaytest.BastionCity
                 {
                     base.GameController.ExhaustCoroutine(coroutine);
                 }
-            } 
+            }
         }
     }
 }

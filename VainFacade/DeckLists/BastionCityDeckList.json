@@ -89,9 +89,11 @@
 			"title": "Clean Streets, Dirty Hands",
 			"keywords": [],
 			"body": [
-				"At the end of the environment turn, discard the top {H - 1} cards of the environment deck. When a non-machination card is discarded this way with a keyword matching a card in play, put it into play."
+				"Increase damage dealt by targets sharing a keyword with a machination by 1.",
+				"At the end of the environment turn, discard the top card of the environment deck. If a target is discarded this way, put it into play."
 			],
 			"icons": [
+				"IncreaseDamageDealt",
 				"EndOfTurnAction",
 				"Discard",
 				"PlayCardNow"
@@ -206,12 +208,11 @@
 			"title": "Power Play",
 			"keywords": [],
 			"body": [
-				"At the start of the environment turn, reveal the top {H} cards of the environment deck. Put any revealed machinations into play. Discard the other revealed cards. If a card enters play this way, destroy this card."
+				"At the start of the environment turn, reveal cards from the top of the environment deck until a machination is revealed. Put it into play. Discard the other revealed cards. If a card enters play this way, destroy this card."
 			],
 			"icons": [
 				"StartOfTurnAction",
-				"PlayCardNow",
-				"Discard",
+				"Search",
 				"DestroySelf"
 			],
 			"flavorText": "“I think I speak for everyone when I say that{BR}we should think... bigger,” Mr. Brzezicki said.{BR}Butcher Bill grinned. “You boys wanna take{BR}things up a notch? That's gonna cost extra.”"
