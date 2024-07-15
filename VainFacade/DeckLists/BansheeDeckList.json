@@ -38,7 +38,8 @@
         "default": "Beware! I have swum in the river, and it dances to my tune!",
         "Cauldron.CeladrochCharacter": "This land is for the living! Return to your kingdom below!",
         "TheDreamerCharacter": "These dreams must also die. Let them fade.",
-        "OblivAeonFrontPageCharacter": "This is not the end."
+        "OblivAeonFrontPageCharacter": "This is not the end.",
+	"ArtifactComics.TombstoneCharacter": "You're on the wrong side of the river. It's time to go home."
       }
     },
     {
