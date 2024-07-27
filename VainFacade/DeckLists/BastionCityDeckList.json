@@ -129,7 +129,7 @@
 				"keeper"
 			],
 			"body": [
-				"At the start of the environment turn, discard a card from under this card. This card deals the non-keeper card with the highest HP from that card's deck {H - 2} melee damage.",
+				"At the start of the environment turn, discard a card from under this card. This card deals the non-keeper card with the highest HP from that card's deck {H + 2} melee damage.",
 				"At the end of the environment turn, reveal and discard the top card of each deck. Put the revealed card with the most keywords under this card."
 			],
 			"icons": [
