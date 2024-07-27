@@ -468,7 +468,7 @@ namespace VainFacadeTest
 
             QuickHPStorage(apostate.CharacterCard, gauntlet);
             GoToStartOfTurn(bastion);
-            QuickHPCheck(-2, 0);
+            QuickHPCheck(-6, 0);
             AssertInTrash(apocalypse);
         }
 
