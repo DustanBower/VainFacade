@@ -56,7 +56,7 @@ namespace VainFacadePlaytest.BastionCity
                 if (DidMoveCard(moveResults))
                 {
                     Card moved = moveResults.FirstOrDefault().CardToMove;
-                    coroutine = DealDamageToHighestHP(this.Card, 1, (Card c) => c.Owner == moved.Owner && !IsKeeper(c), (Card c) => base.H - 2, DamageType.Melee);
+                    coroutine = DealDamageToHighestHP(this.Card, 1, (Card c) => c.Owner == moved.Owner && !IsKeeper(c), (Card c) => base.H + 2, DamageType.Melee);
                     if (base.UseUnityCoroutines)
                     {
                         yield return base.GameController.StartCoroutine(coroutine);
