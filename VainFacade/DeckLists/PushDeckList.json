@@ -436,7 +436,7 @@
       ],
       "body": [
         "Once per turn, when damage would be dealt to a target, you may discard a card to change the damage type to projectile or melee.",
-        "The first time each turn melee, projectile, or sonic damage is dealt to {Push} by a target, {Push} may deal the source of that damage 3 projectile damage."
+        "The first time each turn melee, projectile, or sonic damage is dealt to {Push} by any target, {Push} may deal the source of that damage 3 projectile damage."
       ],
       "icons": [
         "Discard",

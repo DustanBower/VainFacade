@@ -30,7 +30,7 @@ namespace VainFacadePlaytest.Push
 
             AddTrigger<DealDamageAction>((DealDamageAction dd) => !IsPropertyTrue(ChangeDamageTypeKey), ChangeTypeResponse, new TriggerType[1] { TriggerType.ChangeDamageType }, TriggerTiming.Before);
 
-            //The first time each turn melee, projectile, or sonic damage is dealt to Push by a target, Push may deal the source of that damage 3 projectile damage.
+            //The first time each turn melee, projectile, or sonic damage is dealt to Push by any target, Push may deal the source of that damage 3 projectile damage.
             AddTrigger<DealDamageAction>((DealDamageAction dd) => !IsPropertyTrue(FirstDamageKey)  && (dd.DamageType == DamageType.Melee || dd.DamageType == DamageType.Projectile || dd.DamageType == DamageType.Sonic) && dd.DamageSource.IsTarget && dd.Target == this.CharacterCard && dd.DidDealDamage, CounterDamageResponse, TriggerType.DealDamage, TriggerTiming.After);
 
             AddAfterLeavesPlayAction((GameAction ga) => ResetFlagAfterLeavesPlay(FirstDamageKey), TriggerType.Hidden);

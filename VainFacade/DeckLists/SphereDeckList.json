@@ -80,7 +80,7 @@
 			],
 			"body": [
 				"At the start of your turn, select an Emanation. Destroy all Emanations that are not copies of that card.",
-				"When {Sphere} would be dealt exactly 1 damage, prevent it. The first time each turn {Sphere} is dealt damage by a non-hero target, draw a card."
+				"When {Sphere} would be dealt exactly 1 damage, prevent it. The first time each turn {Sphere} is dealt damage by any non-hero target, draw a card."
 			],
 			"icons": [
 				"StartOfTurnAction",

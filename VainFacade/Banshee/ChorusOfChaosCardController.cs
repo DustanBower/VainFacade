@@ -22,7 +22,7 @@ namespace VainFacadePlaytest.Banshee
 		{
 			base.AddTriggers();
 
-			//The first time each turn a non-hero card deals damage to another target, that source deals that same damage to the target next to this card.
+			//The first time each turn any non-hero card deals damage to another target, that source deals that same damage to the target next to this card.
 			AddTrigger<DealDamageAction>((DealDamageAction dd) => GetCardThisCardIsNextTo() != null && !IsPropertyTrue(FirstDamageKey) && dd.DamageSource.IsCard && !IsHero(dd.DamageSource.Card) && dd.Target != GetCardThisCardIsNextTo() && dd.DidDealDamage, DamageResponse, TriggerType.DealDamage, TriggerTiming.After);
 			ResetFlagAfterLeavesPlay(FirstDamageKey);
 		}

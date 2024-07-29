@@ -130,7 +130,7 @@
       ],
       "body": [
         "When this card enters play, return all other dirges in play to your hand.",
-        "Play this card next to a target. The first time each turn another target is dealt damage by a non-hero card, that source deals that same damage to the target next to this card.",
+        "Play this card next to a target. The first time each turn another target is dealt damage by any non-hero card, that source deals that same damage to the target next to this card.",
         "At the end of that target's turn, if this card did not enter play this turn, play up to 1 card and return this card to your hand."
       ],
       "icons": [

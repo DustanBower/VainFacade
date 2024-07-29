@@ -128,7 +128,7 @@ namespace VainFacadePlaytest.Friday
 
         public override IEnumerator UsePower(int index = 0)
         {
-            //Select a damage type, then repeat the following text 3 times: {Friday} deals 1 target 1 damage of that type. Reduce damage dealt to that target by 1 this turn.
+            //Select a damage type, then repeat this text 3 times: {Friday} deals 1 target 1 damage of that type. Reduce damage dealt to that target by 1 this turn.
             int num1 = GetPowerNumeral(0, 3);
             int num2 = GetPowerNumeral(1, 1);
             int num3 = GetPowerNumeral(2, 1);
