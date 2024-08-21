@@ -95,8 +95,8 @@ namespace VainFacadePlaytest.EldrenwoodVillage
             else
             {
                 // Back side:
-                // "Reduce damage dealt to Werewolves by 2."
-                AddSideTrigger(AddReduceDamageTrigger((Card c) => base.GameController.DoesCardContainKeyword(c, WerewolfKeyword), 2));
+                // "Reduce damage dealt to Werewolves by 1."
+                AddSideTrigger(AddReduceDamageTrigger((Card c) => base.GameController.DoesCardContainKeyword(c, WerewolfKeyword), 1));
                 // "At the start of the environment turn, if there are no Triggers in play, flip this card."
                 AddSideTrigger(AddStartOfTurnTrigger((TurnTaker tt) => tt == base.TurnTaker, FlipThisCharacterCardResponse, TriggerType.FlipCard, (PhaseChangeAction pca) => FindCardsWhere(TriggerInPlay(), visibleToCard: GetCardSource()).Count() <= 0));
                 // "At the end of the environment turn, each Small Werewolf deals the non-Werewolf with the lowest HP {H - 2} irreducible melee damage."
