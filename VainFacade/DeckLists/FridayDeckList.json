@@ -396,7 +396,7 @@
 			],
 			"body": [
 				"[y=0.999]Increase lightning damage dealt to {Friday} by 1.[/y]",
-				"Play this card next to an equipment card from another deck without a copy of this card beside it. This card gains the text of that card. Treat the name of the hero on that card as {Friday}, and “you” on that card as {Friday}'s player.",
+				"Play this card next to an equipment card from another deck without a copy of this card next to it. This card gains the text of that card. Treat the name of the hero on that card as {Friday}, and “you” on that card as {Friday}'s player.",
 				"When that card leaves play, destroy this card."
 			],
 			"icons": [
