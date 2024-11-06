@@ -108,7 +108,7 @@ namespace VainFacadePlaytest.Glyph
             AddTrigger<MoveCardAction>((MoveCardAction mc) => mc.Destination.IsSubDeck && mc.Destination.OwnerTurnTaker == this.TurnTaker, PutInMainDeck,TriggerType.MoveCard , TriggerTiming.After);
 
             //When you would play one of your cards, you may play it face-down in any play area instead of resolving its normal effects.
-            AddTrigger<PlayCardAction>((PlayCardAction pca) => pca.ResponsibleTurnTaker == this.TurnTaker && !pca.IsPutIntoPlay && pca.CardToPlay.Owner == this.TurnTaker, PlayFaceDownInstead, TriggerType.MoveCard, TriggerTiming.Before);
+            AddTrigger<PlayCardAction>((PlayCardAction pca) => this.TurnTakerController is GlyphTurnTakerController && pca.ResponsibleTurnTaker == this.TurnTaker && !pca.IsPutIntoPlay && pca.CardToPlay.Owner == this.TurnTaker, PlayFaceDownInstead, TriggerType.MoveCard, TriggerTiming.Before);
 
             //Handle keyword change for Return to Silence
             AddTrigger<ExpireStatusEffectAction>((ExpireStatusEffectAction exp) => exp.StatusEffect is ReturnToSilenceStatusEffect, CleanUpKeywordsResponse, TriggerType.Hidden, TriggerTiming.After);
