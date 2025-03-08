@@ -26,6 +26,9 @@ namespace VainFacadePlaytest.Friday
             AddThisCardControllerToList(CardControllerListType.ActivatesEffects);
         }
 
+ 	//This needs to be here just in case the card this is copying needs AllowFastCoroutinesDuringPretend to be false
+        public override bool AllowFastCoroutinesDuringPretend => false;
+
         private Dictionary<string, List<ITrigger>> _triggersForCard;
 
         private SelfDestructTrigger _removeCardSourceWhenDestroyedTrigger;
