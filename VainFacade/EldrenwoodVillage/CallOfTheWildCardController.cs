@@ -16,7 +16,7 @@ namespace VainFacadePlaytest.EldrenwoodVillage
         {
             AddThisCardControllerToList(CardControllerListType.MakesIndestructible);
             // Show number of Werewolves in play
-            SpecialStringMaker.ShowNumberOfCardsInPlay(new LinqCardCriteria((Card c) => base.GameController.DoesCardContainKeyword(c, WerewolfKeyword), "Werewolf"));
+            SpecialStringMaker.ShowNumberOfCardsInPlay(new LinqCardCriteria((Card c) => base.GameController.DoesCardContainKeyword(c, WerewolfKeyword),"", false, false, "environment werewolf", "environment werewolves"));
             // If there are no Triggers in play, show list of Afflicted who will become Werewolves if this enters play?
             // ...
         }
@@ -26,7 +26,7 @@ namespace VainFacadePlaytest.EldrenwoodVillage
             if (card.DoKeywordsContain(TriggerKeyword))
             {
                 // "Triggers are indestructible while there is at least 1 Werewolf in play."
-                return FindCardsWhere(new LinqCardCriteria((Card c) => c.IsInPlayAndNotUnderCard && base.GameController.DoesCardContainKeyword(c, WerewolfKeyword), "in play", false, true, "Werewolf card", "Werewolf cards"), visibleToCard: GetCardSource()).Count() > 0;
+                return FindCardsWhere(new LinqCardCriteria((Card c) => c.IsInPlayAndNotUnderCard && base.GameController.DoesCardContainKeyword(c, WerewolfKeyword) && c.IsEnvironment, "in play", false, true, "environment werewolf", "environment werewolves"), visibleToCard: GetCardSource()).Count() > 0;
             }
             return base.AskIfCardIsIndestructible(card);
         }
