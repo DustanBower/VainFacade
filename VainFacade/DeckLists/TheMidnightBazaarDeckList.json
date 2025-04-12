@@ -13,12 +13,10 @@
 				"the ties that bind"
 			],
 			"body": [
-				"When this card enters play, play the top card of the environment deck.",
 				"Reduce damage dealt by non-environment targets by 1.",
 				"At the start of the environment turn, deal each hero 1 psychic damage for each card from their deck under [i]The Empty Well.[/i]"
 			],
 			"icons": [
-				"PlayCardNow",
 				"ReduceDamageDealt",
 				"StartOfTurnAction",
 				"DealDamagePsychic"
@@ -34,14 +32,16 @@
 				"unbinding"
 			],
 			"body": [
-				"When this card enters play, play the top card of the environment deck.",
-				"This card is indestructible. Damage dealt by Threens is irreducible.",
-				"When a Threen would deal damage, 1 player may put 2 cards from their hand or 1 non-character hero card from play and not under [i]The Empty Well[/i] under [i]The Empty Well[/i] to redirect that damage to a non-Threen target."
+				"This card is indestructible.",
+				"Damage dealt by Threens is irreducible.",
+				"Increase sonic and psychic damage dealt by targets by 1.",
+				"When a Threen would deal damage, 1 player may put 2 cards from their hand under [i]The Empty Well[/i] to redirect that damage to a non-Threen target."
 			],
 			"icons": [
 				"Indestructible",
-				"PlayCardNow",
 				"MakeDamageIrreducible",
+				"IncreaseDamageSonic",
+				"IncreaseDamagePsychic",
 				"RedirectDamage"
 			],
 			"flavorText": "The woman tapped her fingers rhythmically on{BR}her forearm, her stitched-together lips{BR}contorting into an eerie smile, as Glyph sliced{BR}the threads that bound them one by one.",
@@ -97,12 +97,13 @@
 			],
 			"hitpoints": 7,
 			"body": [
-				"When this card would deal damage, if [i]The Blinded Queen[/i] is in play, play the top card of the villain deck instead.",
-				"At the end of the environment turn, this card deals the target with the lowest HP other than itself {H + 1} melee damage."
+				"This card cannot deal damage if [i]The Blinded Queen[/i] is in play.",
+				"At the end of the environment turn, increase the next damage dealt by this card by 1. Then this card deals the target with the lowest HP other than itself {H} melee damage."
 			],
 			"icons": [
-				"PlayCardNow",
+				"CannotDealDamage",
 				"EndOfTurnAction",
+				"IncreaseDamageDealt",
 				"DealDamageMelee"
 			],
 			"flavorText": "“How will I know where to look?” Glyph{BR}asked. Firebird shifted on her smoldering{BR}perch. “Look for Mr. Wolf,” she croaked.{BR}“Wherever there is trouble, he will be in its midst.”",
@@ -130,12 +131,13 @@
 			],
 			"hitpoints": 7,
 			"body": [
-				"When this card would deal damage, if [i]The Blinded Queen[/i] is in play, play the top card of the environment deck instead.",
-				"At the end of the environment turn, this card deals the hero target with the highest HP {H + 2} melee damage. If a player puts a card from their hand under [i]The Empty Well[/i], redirect that damage to a target other than this card."
+				"This card cannot deal damage if [i]The Blinded Queen[/i] is in play.",
+				"At the end of the environment turn, increase the next damage dealt by this card by 2. Then this card deals the hero target with the highest HP {H} melee damage. If a player puts a card from their hand under [i]The Empty Well[/i], redirect that damage to a target other than this card."
 			],
 			"icons": [
-				"PlayCardNow",
+				"CannotDealDamage",
 				"EndOfTurnAction",
+				"IncreaseDamageDealt",
 				"DealDamageMelee",
 				"RedirectDamage"
 			],
@@ -157,15 +159,15 @@
 			],
 			"hitpoints": 7,
 			"body": [
-				"When this card enters play, play the top card of the environment deck.",
-				"Damage dealt by this card can only be increased by environment cards.",
-				"At the start of the environment turn, this card deals each non-environment or Threen target 0 irreducible infernal damage 3 times."
+				"Reduce all HP recovery by 1.",
+				"At the end of the environment turn, this card deals the target other than itself with the second highest HP 2 irreducible infernal damage. If 3 or more damage is dealt this way, destroy an ongoing or equipment card from that target's deck."
 			],
 			"icons": [
-				"PlayCardNow",
-				"MakeDamageUnincreasable",
-				"StartOfTurnAction",
-				"DealDamageInfernal"
+				"ReduceGainHP",
+				"EndOfTurnAction",
+				"DealDamageInfernal",
+				"DestroyOngoing",
+				"DestroyEquipment"
 			],
 			"flavorText": "Liana pulled Arctis behind the cart so hard{BR}he nearly fell. Her eyes turned black as she{BR}snarled at him. “You can escape, or it can{BR}take you. You can fight, but you can't win.”",
 			"flavorQuotes": [
@@ -184,7 +186,7 @@
 			],
 			"body": [
 				"This card is indestructible to other cards.",
-				"The first time each turn any non-Hound target deals damage to any target other than itself, increase damage dealt to the source of that damage by 1 until this card leaves play.",
+				"The first time each turn any non-Hound target deals damage to any target other than itself, increase the next damage dealt to the source of that damage by 2.",
 				"At the start of the environment turn, play the top card of the environment deck, then shuffle this card and a Hound from the environment trash into the environment deck."
 			],
 			"icons": [
@@ -257,14 +259,16 @@
 			"keywords": [],
 			"body": [
 				"This card is indestructible.",
-				"When this card enters play, play the top card of the environment deck.",
-				"When a card with the same title from the same deck as a card under this card would enter play, remove it from the game instead."
+				"When a card would enter play, if another copy of that card is under this card, put that card under this card instead.",
+				"At the end of the environment turn, a player draws or discards 2 cards. If a card is discarded this way, discard a card from under this card. Otherwise a player puts a card from their hand under this card."
 			],
 			"icons": [
 				"Indestructible",
-				"PlayCardNow",
 				"CannotPlayCards",
-				"RemoveFromGame"
+				"EndOfTurnAction",
+				"DrawCardNow",
+				"Discard",
+				"Manipulate"
 			],
 			"flavorText": "None thirsted in sight of the well, but nor{BR}were they truly sated. It sat in the courtyard,{BR}somehow both inconspicuous and ominous, at{BR}the center of all things.",
 			"flavorQuotes": []
@@ -281,13 +285,14 @@
 			"body": [
 				"Reduce damage dealt by this card to 0.",
 				"Threens are indestructible if any Threen has 1 or more HP.",
-				"At the end of the environment turn, this card deals the non-Threen target with the lowest HP {H - 2} psychic damage."
+				"At the end of the environment turn, this card deals the non-Threen target with the lowest HP {H - 2} psychic damage. If no damage is dealt this way, a player discards a card."
 			],
 			"icons": [
 				"ReduceDamageDealt",
 				"Indestructible",
 				"EndOfTurnAction",
-				"DealDamagePsychic"
+				"DealDamagePsychic",
+				"Discard"
 			],
 			"flavorText": "They were allowed to speak so long as{BR}they didn't sing. Once the poet was freed,{BR}they all spoke in perfect unison, no matter{BR}how far apart. It made Liana's skin crawl.",
 			"flavorQuotes": []
@@ -304,7 +309,7 @@
 			"body": [
 				"Reduce damage dealt by this card to 0.",
 				"Increase damage dealt by Threens by the number of Threens in play.",
-				"At the end of the environment turn, this card deals each non-Threen target 1 sonic damage, then plays a Threen and an Unbinding from the environment trash."
+				"At the end of the environment turn, a hero deals themself 2 sonic damage, then that hero's player draws a card.{BR}Then this card deals each non-Threen target 1 sonic damage, then plays a Threen and an Unbinding from the environment trash."
 			],
 			"icons": [
 				"ReduceDamageDealt",
@@ -325,8 +330,8 @@
 			],
 			"hitpoints": 3,
 			"body": [
-				"When this card enters play, search the environment deck and trash for [i]The Empty Well[/i] and put it into play. Shuffle the environment deck.",
-				"At the end of the environment turn, a player may put 2 different cards from their hand under [i]The Empty Well[/i]. If 2 cards are moved this way, search a deck for a card and put it into play, then shuffle that deck and remove this card from the game."
+				"When this card enters play, search the environment deck and trash for [i]The Empty Well[/i] and put it into play. Shuffle the deck.",
+				"At the end of the environment turn, a player may put 2 different cards from their hand under [i]The Empty Well[/i]. If 2 cards are moved, search a deck for a card and put it into play, then shuffle that deck. If a card enters play this way, remove this card from the game."
 			],
 			"icons": [
 				"Search",
@@ -351,15 +356,15 @@
 			],
 			"hitpoints": 3,
 			"body": [
-				"At the end of the environment turn, if there is no active hero in this play area, 1 player may move a card from their hand under [i]The Empty Well[/i] to move this card to their play area. They gain the following power:"
-			],
-			"powers": [
-				"Your hero deals 1 target 5 irreducible melee damage. Increase damage dealt to your hero by 1 until the start of your next turn."
+				"Increase damage dealt to targets next to this card by 1.",
+				"At the end of the environment turn, 1 player may move a card from their hand under [i]The Empty Well[/i] to move this card next to their hero. That hero gains the following power:",
+				"[b]Power:[/b] Your hero deals 1 target{BR}        5 irreducible melee damage."
 			],
 			"icons": [
+				"IncreaseDamageTaken",
+				"EndOfTurnAction",
 				"HasPower",
-				"DealDamageMelee",
-				"IncreaseDamageTaken"
+				"DealDamageMelee"
 			],
 			"flavorText": "The cursed blade was known to appear{BR}in markets across the world, magical{BR}and mundane. While other weapons might{BR}bring destruction, Velkinor simply was.",
 			"flavorQuotes": []
