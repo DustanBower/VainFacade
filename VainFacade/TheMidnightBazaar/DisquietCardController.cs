@@ -28,23 +28,13 @@ namespace VainFacadePlaytest.TheMidnightBazaar
             base.AddTriggers();
             // "Damage dealt by Threens is irreducible."
             AddMakeDamageIrreducibleTrigger((DealDamageAction dda) => dda.DamageSource != null && dda.DamageSource.IsCard && IsThreen(dda.DamageSource.Card));
+
+            //Increase sonic and psychic damage dealt by targets by 1.
+            AddIncreaseDamageTrigger((DealDamageAction dd) => dd.DamageSource.IsTarget && (dd.DamageType == DamageType.Sonic || dd.DamageType == DamageType.Psychic), 1);
+
             // "When a Threen would deal damage, 1 player may put 2 cards from their hand or 1 hero card from play under [i]The Empty Well[/i] to redirect that damage to a non-Threen target."
             AddTrigger((DealDamageAction dda) => dda.DamageSource != null && dda.DamageSource.IsCard && IsThreen(dda.DamageSource.Card) && IsEmptyWellInPlay(), MoveCardsToRedirectResponse, new TriggerType[] { TriggerType.MoveCard, TriggerType.RedirectDamage }, TriggerTiming.Before);
             AddTrigger((DealDamageAction dda) => dda.DamageSource != null && dda.DamageSource.IsCard && IsThreen(dda.DamageSource.Card) && !IsEmptyWellInPlay(), EmptyWellNotInPlayResponse, TriggerType.ShowMessage, TriggerTiming.Before);
-        }
-
-        public override IEnumerator Play()
-        {
-            // "When this card enters play, play the top card of the environment deck."
-            IEnumerator playCoroutine = PlayTheTopCardOfTheEnvironmentDeckWithMessageResponse(null);
-            if (base.UseUnityCoroutines)
-            {
-                yield return base.GameController.StartCoroutine(playCoroutine);
-            }
-            else
-            {
-                base.GameController.ExhaustCoroutine(playCoroutine);
-            }
         }
 
         private IEnumerator MoveCardsToRedirectResponse(DealDamageAction dda)
@@ -68,19 +58,15 @@ namespace VainFacadePlaytest.TheMidnightBazaar
 
         private IEnumerator ChooseSourceAndMoveCardsToRedirect(TurnTaker tt, List<bool> cardsMoved, DealDamageAction dda)
         {
-            // "... 1 player may put 2 cards from their hand or 1 hero non-character card from play and not under [i]The Empty Well[/i] under [i]The Empty Well[/i]..."
-            List<Function> options = new List<Function>();
-            options.Add(new Function(GameController.FindTurnTakerController(tt).ToHero(), "Move 2 cards from hand", SelectionType.MoveCard, () => DropCardsFromHand(tt, 2, false, true, cardsMoved, GetCardSource()), tt.ToHero().Hand.Cards.Count() > 1));
-            options.Add(new Function(GameController.FindTurnTakerController(tt).ToHero(), "Move 1 card from play", SelectionType.MoveCard, () => DropCardFromPlay(cardsMoved), GameController.FindCardsWhere(new LinqCardCriteria((Card c) => IsHero(c) && !c.IsCharacter && c.IsInPlay && c.Location != FindCard(EmptyWellIdentifier).UnderLocation), visibleToCard: GetCardSource()).Any()));
-            SelectFunctionDecision select = new SelectFunctionDecision(GameController, FindTurnTakerController(tt).ToHero(), options, true, gameAction: dda, "There are no non-character hero cards in play, and " + tt.Name + " does not have two cards in hand to put under [i]The Empty Well.[/i]", cardSource: GetCardSource());
-            IEnumerator selectCoroutine = base.GameController.SelectAndPerformFunction(select);
+            // "... 1 player may put 2 cards from their hand under [i]The Empty Well[/i]..."
+            IEnumerator coroutine = DropCardsFromHand(tt, 2, false, true, cardsMoved, GetCardSource());
             if (base.UseUnityCoroutines)
             {
-                yield return base.GameController.StartCoroutine(selectCoroutine);
+                yield return base.GameController.StartCoroutine(coroutine);
             }
             else
             {
-                base.GameController.ExhaustCoroutine(selectCoroutine);
+                base.GameController.ExhaustCoroutine(coroutine);
             }
             int cardsDropped = 0;
             foreach (bool b in cardsMoved)
@@ -88,6 +74,7 @@ namespace VainFacadePlaytest.TheMidnightBazaar
                 if (b)
                     cardsDropped++;
             }
+
             if (cardsDropped > 0)
             {
                 // "... to redirect that damage to a non-Threen target."
@@ -111,45 +98,6 @@ namespace VainFacadePlaytest.TheMidnightBazaar
                 else
                 {
                     base.GameController.ExhaustCoroutine(messageCoroutine);
-                }
-            }
-        }
-
-        private IEnumerator DropCardFromPlay(List<bool> cardsMoved)
-        {
-            // The players choose a hero card in play to move under The Empty Well
-            if (FindCard(EmptyWellIdentifier).IsInPlayAndHasGameText && base.GameController.IsCardVisibleToCardSource(FindCard(EmptyWellIdentifier), GetCardSource()))
-            {
-                if (cardsMoved == null)
-                {
-                    cardsMoved = new List<bool>();
-                }
-                List<SelectCardDecision> choices = new List<SelectCardDecision>();
-                currentMode = CustomMode.CardToDrop;
-                // Have the players select and move a card
-                IEnumerator moveCoroutine = base.GameController.SelectAndMoveCard(DecisionMaker, (Card c) => IsHero(c) && !c.IsCharacter && c.IsInPlay && c.Location != FindCard(EmptyWellIdentifier).UnderLocation, FindCard(EmptyWellIdentifier).UnderLocation, optional: true, playIfMovingToPlayArea: false, storedResults: choices, cardSource: GetCardSource());
-                if (base.UseUnityCoroutines)
-                {
-                    yield return base.GameController.StartCoroutine(moveCoroutine);
-                }
-                else
-                {
-                    base.GameController.ExhaustCoroutine(moveCoroutine);
-                }
-                // Note whether a card was moved
-                foreach (SelectCardDecision choice in choices)
-                {
-                    if (choice != null && choice.SelectedCard != null)
-                    {
-                        if (choice.SelectedCard.Location == FindCard(EmptyWellIdentifier).UnderLocation)
-                        {
-                            cardsMoved.Add(true);
-                        }
-                        else
-                        {
-                            cardsMoved.Add(false);
-                        }
-                    }
                 }
             }
         }

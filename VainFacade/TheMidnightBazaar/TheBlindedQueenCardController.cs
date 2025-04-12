@@ -45,8 +45,8 @@ namespace VainFacadePlaytest.TheMidnightBazaar
         public override void AddTriggers()
         {
             base.AddTriggers();
-            // "The first time each turn a non-Hound target deals damage to a target other than itself, increase damage dealt to the source of that damage by 1 until this card leaves play."
-            AddTrigger<DealDamageAction>((DealDamageAction dda) => !HasBeenSetToTrueThisTurn(FirstHostileDamageThisTurn) && dda.DidDealDamage && dda.DamageSource != null && dda.DamageSource.IsTarget && !dda.DamageSource.Card.DoKeywordsContain(HoundKeyword) && dda.Target != dda.DamageSource.Card, AggroResponse, TriggerType.AddStatusEffectToDamage, TriggerTiming.After);
+            // "The first time each turn a non-Hound target deals damage to a target other than itself, increase the next damage dealt to the source of that damage by 2."
+            AddTrigger<DealDamageAction>((DealDamageAction dda) => !HasBeenSetToTrueThisTurn(FirstHostileDamageThisTurn) && dda.DidDealDamage && dda.DamageSource != null && dda.DamageSource.IsTarget && !base.GameController.DoesCardContainKeyword(dda.DamageSource.Card, HoundKeyword) && dda.Target != dda.DamageSource.Card, AggroResponse, TriggerType.AddStatusEffectToDamage, TriggerTiming.After);
             AddAfterLeavesPlayAction((GameAction ga) => ResetFlagAfterLeavesPlay(FirstHostileDamageThisTurn), TriggerType.Hidden);
             AddAfterLeavesPlayAction((GameAction ga) => ResetFlagAfterLeavesPlay(IsShufflingSelf), TriggerType.Hidden);
             // "At the start of the environment turn, play the top card of the environment deck, then shuffle this card and a Hound from the environment trash into the environment deck."
@@ -55,14 +55,14 @@ namespace VainFacadePlaytest.TheMidnightBazaar
 
         private IEnumerator AggroResponse(DealDamageAction dda)
         {
-            // "... increase damage dealt to the source of that damage by 1 until this card leaves play."
+            // "... increase the next damage dealt to the source of that damage by 2."
             if (!HasBeenSetToTrueThisTurn(FirstHostileDamageThisTurn))
             {
                 SetCardPropertyToTrueIfRealAction(FirstHostileDamageThisTurn);
-                IncreaseDamageStatusEffect aggro = new IncreaseDamageStatusEffect(1);
+                IncreaseDamageStatusEffect aggro = new IncreaseDamageStatusEffect(2);
                 aggro.TargetCriteria.IsSpecificCard = dda.DamageSource.Card;
                 aggro.UntilTargetLeavesPlay(dda.DamageSource.Card);
-                aggro.UntilCardLeavesPlay(base.Card);
+                aggro.NumberOfUses = 1;
                 IEnumerator statusCoroutine = base.GameController.AddStatusEffect(aggro, true, GetCardSource());
                 if (base.UseUnityCoroutines)
                 {
@@ -106,7 +106,7 @@ namespace VainFacadePlaytest.TheMidnightBazaar
             {
                 // Move the Hound to the deck, then shuffle
                 MoveCardDestination dest = new MoveCardDestination(FindEnvironment().TurnTaker.Deck);
-                IEnumerator moveHoundCoroutine = base.GameController.SelectCardFromLocationAndMoveIt(DecisionMaker, base.TurnTaker.Trash, new LinqCardCriteria((Card c) => c.DoKeywordsContain(HoundKeyword), "Hound"), dest.ToEnumerable(), shuffleAfterwards: true, responsibleTurnTaker: base.TurnTaker, cardSource: GetCardSource());
+                IEnumerator moveHoundCoroutine = base.GameController.SelectCardFromLocationAndMoveIt(DecisionMaker, base.TurnTaker.Trash, new LinqCardCriteria((Card c) => base.GameController.DoesCardContainKeyword(c,HoundKeyword), "Hound"), dest.ToEnumerable(), shuffleAfterwards: true, responsibleTurnTaker: base.TurnTaker, cardSource: GetCardSource());
                 if (base.UseUnityCoroutines)
                 {
                     yield return base.GameController.StartCoroutine(moveHoundCoroutine);
@@ -116,18 +116,15 @@ namespace VainFacadePlaytest.TheMidnightBazaar
                     base.GameController.ExhaustCoroutine(moveHoundCoroutine);
                 }
             }
+            // Shuffle
+            IEnumerator shuffleCoroutine = base.GameController.ShuffleLocation(base.TurnTaker.Deck, cardSource: GetCardSource());
+            if (base.UseUnityCoroutines)
+            {
+                yield return base.GameController.StartCoroutine(shuffleCoroutine);
+            }
             else
             {
-                // Just shuffle
-                IEnumerator shuffleCoroutine = base.GameController.ShuffleLocation(base.TurnTaker.Deck, cardSource: GetCardSource());
-                if (base.UseUnityCoroutines)
-                {
-                    yield return base.GameController.StartCoroutine(shuffleCoroutine);
-                }
-                else
-                {
-                    base.GameController.ExhaustCoroutine(shuffleCoroutine);
-                }
+                base.GameController.ExhaustCoroutine(shuffleCoroutine);
             }
         }
     }

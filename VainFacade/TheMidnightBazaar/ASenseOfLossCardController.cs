@@ -33,20 +33,6 @@ namespace VainFacadePlaytest.TheMidnightBazaar
             AddStartOfTurnTrigger((TurnTaker tt) => tt.IsEnvironment && !IsEmptyWellInPlay(), EmptyWellNotInPlayResponse, TriggerType.ShowMessage);
         }
 
-        public override IEnumerator Play()
-        {
-            // "When this card enters play, play the top card of the environment deck."
-            IEnumerator playCoroutine = PlayTheTopCardOfTheEnvironmentDeckWithMessageResponse(null);
-            if (base.UseUnityCoroutines)
-            {
-                yield return base.GameController.StartCoroutine(playCoroutine);
-            }
-            else
-            {
-                base.GameController.ExhaustCoroutine(playCoroutine);
-            }
-        }
-
         private IEnumerator PsychicDamageResponse(PhaseChangeAction pca)
         {
             // "... deal each hero 1 psychic damage for each card from their deck under [i]The Empty Well.[/i]"

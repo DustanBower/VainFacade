@@ -29,8 +29,10 @@ namespace VainFacadePlaytest.TheMidnightBazaar
         {
             base.AddTriggers();
             // "When this card would deal damage, if [i]The Blinded Queen[/i] is in play, play the top card of the environment deck instead."
-            AddTrigger((DealDamageAction dda) => dda.DamageSource != null && dda.DamageSource.IsCard && dda.DamageSource.Card == base.Card && dda.Amount > 0 && IsBlindedQueenInPlay(), PlayEnvironmentCardInsteadResponse, new TriggerType[] { TriggerType.WouldBeDealtDamage, TriggerType.CancelAction, TriggerType.PlayCard }, TriggerTiming.Before);
-            // "At the end of the environment turn, this card deals the hero target with the highest HP {H + 2} melee damage."
+            AddCannotDealDamageTrigger((Card c) => c == this.Card && IsBlindedQueenInPlay());
+
+            //At the end of the environment turn, increase the next damage dealt by this card by 2.
+            // "Then this card deals the hero target with the highest HP {H} melee damage."
             AddEndOfTurnTrigger((TurnTaker tt) => tt.IsEnvironment, DamageWithRedirectResponse, TriggerType.DealDamage);
             // "If a player puts a card from their hand under [i]The Empty Well[/i], redirect that damage to a target other than this card."
             redirectDamageTrigger = AddTrigger((DealDamageAction dda) => EndOfTurnDamageCriteria(dda), MovedRedirectResponse, TriggerType.RedirectDamage, TriggerTiming.Before);
@@ -41,40 +43,25 @@ namespace VainFacadePlaytest.TheMidnightBazaar
             return dda.DamageSource != null && dda.DamageSource.IsCard && dda.DamageSource.Card == base.Card && dda.OriginalAmount == H + 2 && dda.OriginalDamageType == DamageType.Melee && dda.CardSource.Card == base.Card && Journal.GetCardPropertiesBoolean(base.Card, didMoveToRedirect) == true;
         }
 
-        private IEnumerator PlayEnvironmentCardInsteadResponse(DealDamageAction dda)
+        private IEnumerator DamageWithRedirectResponse(PhaseChangeAction pca)
         {
-            // "... play the top card of the environment deck instead."
-            bool wouldDealDamage = dda.CanDealDamage && !dda.IsPretend;
-            //Log.Debug("RedEyedRonaldCardController.PlayEnvironmentCardInsteadResponse: calling CancelAction");
-            IEnumerator cancelCoroutine = CancelAction(dda, isPreventEffect: true);
+            IncreaseDamageStatusEffect effect = new IncreaseDamageStatusEffect(2);
+            effect.SourceCriteria.IsSpecificCard = this.Card;
+            effect.NumberOfUses = 1;
+            effect.TargetLeavesPlayExpiryCriteria.Card = this.Card;
+            IEnumerator coroutine = AddStatusEffect(effect);
             if (base.UseUnityCoroutines)
             {
-                yield return base.GameController.StartCoroutine(cancelCoroutine);
+                yield return base.GameController.StartCoroutine(coroutine);
             }
             else
             {
-                base.GameController.ExhaustCoroutine(cancelCoroutine);
+                base.GameController.ExhaustCoroutine(coroutine);
             }
-            if (wouldDealDamage)
-            {
-                //Log.Debug("RedEyedRonaldCardController.PlayEnvironmentCardInsteadResponse: calling PlayTheTopCardOfTheEnvironmentDeckWithMessageResponse");
-                IEnumerator playCoroutine = PlayTheTopCardOfTheEnvironmentDeckWithMessageResponse(dda);
-                if (base.UseUnityCoroutines)
-                {
-                    yield return base.GameController.StartCoroutine(playCoroutine);
-                }
-                else
-                {
-                    base.GameController.ExhaustCoroutine(playCoroutine);
-                }
-            }
-        }
 
-        private IEnumerator DamageWithRedirectResponse(PhaseChangeAction pca)
-        {
-            // "... this card deals the hero target with the highest HP {H + 2} melee damage. If a player puts a card from their hand under [i]The Empty Well[/i], redirect that damage to a target other than this card."
+            // "... this card deals the hero target with the highest HP {H} melee damage. If a player puts a card from their hand under [i]The Empty Well[/i], redirect that damage to a target other than this card."
             List<Card> highest = new List<Card>();
-            DealDamageAction earlyPreview = new DealDamageAction(GetCardSource(), new DamageSource(base.GameController, base.Card), null, H + 2, DamageType.Melee);
+            DealDamageAction earlyPreview = new DealDamageAction(GetCardSource(), new DamageSource(base.GameController, base.Card), null, H, DamageType.Melee);
             IEnumerable<Card> cardsInHand = base.GameController.FindCardsWhere(new LinqCardCriteria((Card c) => c.Location.IsHand), visibleToCard: GetCardSource());
             IEnumerator findCoroutine = base.GameController.FindTargetWithHighestHitPoints(1, (Card c) => IsHeroTarget(c), highest, gameAction: earlyPreview, cardSource: GetCardSource());
             if (base.UseUnityCoroutines)
@@ -138,7 +125,7 @@ namespace VainFacadePlaytest.TheMidnightBazaar
                 }
 
                 // Initiate damage
-                IEnumerator damageCoroutine = DealDamage(base.Card, highestHeroTarget, H + 2, DamageType.Melee, cardSource: GetCardSource());
+                IEnumerator damageCoroutine = DealDamage(base.Card, highestHeroTarget, H, DamageType.Melee, cardSource: GetCardSource());
                 if (base.UseUnityCoroutines)
                 {
                     yield return base.GameController.StartCoroutine(damageCoroutine);

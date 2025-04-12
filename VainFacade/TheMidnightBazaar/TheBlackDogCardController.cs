@@ -14,61 +14,60 @@ namespace VainFacadePlaytest.TheMidnightBazaar
         public TheBlackDogCardController(Card card, TurnTakerController turnTakerController)
             : base(card, turnTakerController)
         {
-
+            base.SpecialStringMaker.ShowHighestHP(2, () => 1, new LinqCardCriteria((Card c) => c != this.Card, $"target other than {this.Card.Title}"));
         }
 
         public override void AddTriggers()
         {
-            base.AddTriggers();
-            // "At the start of the environment turn, this card deals each non-environment or Threen target 0 irreducible infernal damage 3 times."
-            AddStartOfTurnTrigger((TurnTaker tt) => tt.IsEnvironment, TripleBlastResponse, TriggerType.DealDamage);
+            //Reduce all HP recovery by 1
+            AddTrigger<GainHPAction>((GainHPAction hp) => true, (GainHPAction hp) => base.GameController.ReduceHPGain(hp, 1, GetCardSource()), TriggerType.ReduceHPGain, TriggerTiming.Before);
+
+            //At the end of the environment turn, this card deals the target other than itself with the second highest HP 2 irreducible infernal damage.
+            //If 3 or more damage is dealt this way, destroy an ongoing or equipment card from that target's deck.
+            AddEndOfTurnTrigger((TurnTaker tt) => tt == this.TurnTaker, EndOfTurnResponse, new TriggerType[] { TriggerType.DealDamage, TriggerType.DestroyCard });
         }
 
-        public override IEnumerator Play()
+        private IEnumerator EndOfTurnResponse(PhaseChangeAction pca)
         {
-            // "When this card enters play, play the top card of the environment deck."
-            IEnumerator playCoroutine = PlayTheTopCardOfTheEnvironmentDeckWithMessageResponse(null);
+            List<DealDamageAction> results = new List<DealDamageAction>();
+            IEnumerator coroutine = DealDamageToHighestHP(this.Card, 2, (Card c) => c != this.Card, (Card c) => 2, DamageType.Infernal, true, storedResults: results);
             if (base.UseUnityCoroutines)
             {
-                yield return base.GameController.StartCoroutine(playCoroutine);
+                yield return base.GameController.StartCoroutine(coroutine);
             }
             else
             {
-                base.GameController.ExhaustCoroutine(playCoroutine);
+                base.GameController.ExhaustCoroutine(coroutine);
             }
-        }
 
-        public override bool AskIfActionCanBePerformed(GameAction gameAction)
-        {
-            // "Damage dealt by this card can only be increased by environment cards."
-            if (gameAction is IncreaseDamageAction)
+
+
+            if (DidDealDamage(results))
             {
-                IncreaseDamageAction buff = (IncreaseDamageAction)gameAction;
-                //bool? flag = gameAction.DoesFirstCardAffectSecondCard((Card c) => !c.IsEnvironment, (Card c) => c == base.Card);
-                if (buff.DealDamageAction.DamageSource != null && buff.DealDamageAction.DamageSource.IsCard && buff.DealDamageAction.DamageSource.Card == base.Card && buff.CardSource != null && buff.CardSource.Card != null && !buff.CardSource.Card.IsEnvironment)
+                int amount = results.Where((DealDamageAction dd) => dd.DidDealDamage).Select((DealDamageAction dd) => dd.Amount).Sum();
+
+                if (amount >= 3)
                 {
-                    return false;
-                }
-            }
-            return base.AskIfActionCanBePerformed(gameAction);
-        }
+                    Card damaged = results.FirstOrDefault().Target;
+                    TurnTaker damagedOwner = damaged.Owner;
+                    HeroTurnTakerController decisionMaker = null;
+                    if (damagedOwner.IsPlayer)
+                    {
+                        //If a hero target was dealt damage, have that card's player decide what to destroy
+                        decisionMaker = FindHeroTurnTakerController(damagedOwner.ToHero());
+                    }
 
-        private IEnumerator TripleBlastResponse(PhaseChangeAction pca)
-        {
-            // "... this card deals each non-environment or Threen target 0 irreducible infernal damage 3 times."
-            List<DealDamageAction> attacks = new List<DealDamageAction>();
-            for (int i = 0; i < 3; i++)
-            {
-                attacks.Add(new DealDamageAction(GetCardSource(), new DamageSource(base.GameController, base.Card), null, 0, DamageType.Infernal, isIrreducible: true));
-            }
-            IEnumerator damageCoroutine = DealMultipleInstancesOfDamage(attacks, (Card c) => c.IsTarget && (!c.IsEnvironmentTarget || IsThreen(c)));
-            if (base.UseUnityCoroutines)
-            {
-                yield return base.GameController.StartCoroutine(damageCoroutine);
-            }
-            else
-            {
-                base.GameController.ExhaustCoroutine(damageCoroutine);
+                    coroutine = base.GameController.SelectAndDestroyCard(decisionMaker, new LinqCardCriteria((Card c) => (IsOngoing(c) || IsEquipment(c)) && c.Owner == damagedOwner, "ongoing or equipment"), false, responsibleCard: this.Card, cardSource: GetCardSource());
+                    if (base.UseUnityCoroutines)
+                    {
+                        yield return base.GameController.StartCoroutine(coroutine);
+                    }
+                    else
+                    {
+                        base.GameController.ExhaustCoroutine(coroutine);
+                    }
+                }
+
             }
         }
     }

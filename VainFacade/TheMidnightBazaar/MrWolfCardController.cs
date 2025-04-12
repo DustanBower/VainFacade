@@ -23,39 +23,28 @@ namespace VainFacadePlaytest.TheMidnightBazaar
         public override void AddTriggers()
         {
             base.AddTriggers();
-            // "When this card would deal damage, if [i]The Blinded Queen[/i] is in play, play the top card of the villain deck instead."
-            AddTrigger((DealDamageAction dda) => dda.DamageSource != null && dda.DamageSource.IsCard && dda.DamageSource.Card == base.Card && dda.Amount > 0 && IsBlindedQueenInPlay(), PlayVillainCardInsteadResponse, new TriggerType[]{ TriggerType.WouldBeDealtDamage, TriggerType.CancelAction, TriggerType.PlayCard}, TriggerTiming.Before);
-            // "At the end of the environment turn, this card deals the target with the lowest HP other than this card {H + 1} melee damage."
-            AddDealDamageAtEndOfTurnTrigger(TurnTaker, base.Card, (Card c) => c.IsTarget && c != base.Card, TargetType.LowestHP, H + 1, DamageType.Melee);
+            // This card cannot deal damage if The Blinded Queen is in play
+            AddCannotDealDamageTrigger((Card c) => c == this.Card && IsBlindedQueenInPlay());
+            //At the end of the environemnt turn, increase the next damage dealt by this card by 1...
+            AddEndOfTurnTrigger((TurnTaker tt) => tt == this.TurnTaker, IncreaseNextDamage, TriggerType.CreateStatusEffect);
+            //...then this card deals the target with the lowest HP other than itself {H} melee damage."
+            AddDealDamageAtEndOfTurnTrigger(TurnTaker, base.Card, (Card c) => c.IsTarget && c != base.Card, TargetType.LowestHP, H, DamageType.Melee);
         }
 
-        private IEnumerator PlayVillainCardInsteadResponse(DealDamageAction dda)
+        private IEnumerator IncreaseNextDamage(PhaseChangeAction pca)
         {
-            // "... play the top card of the villain deck instead."
-            bool wouldDealDamage = dda.CanDealDamage && !dda.IsPretend;
-            //Log.Debug("MrWolfCardController.PlayVillainCardInsteadResponse: calling CancelAction");
-            List<CancelAction> cancelActions = new List<CancelAction>();
-            IEnumerator cancelCoroutine = CancelAction(dda, storedResults: cancelActions, isPreventEffect: true);
+            IncreaseDamageStatusEffect effect = new IncreaseDamageStatusEffect(1);
+            effect.NumberOfUses = 1;
+            effect.SourceCriteria.IsSpecificCard = this.Card;
+            effect.TargetLeavesPlayExpiryCriteria.Card = this.Card;
+            IEnumerator coroutine = AddStatusEffect(effect);
             if (base.UseUnityCoroutines)
             {
-                yield return base.GameController.StartCoroutine(cancelCoroutine);
+                yield return base.GameController.StartCoroutine(coroutine);
             }
             else
             {
-                base.GameController.ExhaustCoroutine(cancelCoroutine);
-            }
-            if (wouldDealDamage)
-            {
-                //Log.Debug("MrWolfCardController.PlayVillainCardInsteadResponse: calling PlayTheTopCardOfTheVillainDeckWithMessageResponse");
-                IEnumerator playCoroutine = base.PlayTheTopCardOfTheVillainDeckWithMessageResponse(cancelActions.FirstOrDefault());
-                if (base.UseUnityCoroutines)
-                {
-                    yield return base.GameController.StartCoroutine(playCoroutine);
-                }
-                else
-                {
-                    base.GameController.ExhaustCoroutine(playCoroutine);
-                }
+                base.GameController.ExhaustCoroutine(coroutine);
             }
         }
     }

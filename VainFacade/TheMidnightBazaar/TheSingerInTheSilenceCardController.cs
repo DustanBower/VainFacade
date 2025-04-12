@@ -34,6 +34,47 @@ namespace VainFacadePlaytest.TheMidnightBazaar
 
         private IEnumerator SingResponse(PhaseChangeAction pca)
         {
+            //At the end of the environment turn, a hero deals themself 2 sonic damage, then that hero's player draws a card.
+            List<SelectCardDecision> results = new List<SelectCardDecision>();
+            DealDamageAction damage = new DealDamageAction(GetCardSource(), null, null, 2, DamageType.Sonic);
+            IEnumerator coroutine = base.GameController.SelectCardAndStoreResults(DecisionMaker, SelectionType.DealDamageSelf, new LinqCardCriteria((Card c) => IsHeroCharacterCard(c) && c.IsTarget && !c.IsIncapacitatedOrOutOfGame, "", false, false, "hero", "heroes"), results, false, cardSource: GetCardSource());
+            if (base.UseUnityCoroutines)
+            {
+                yield return base.GameController.StartCoroutine(coroutine);
+            }
+            else
+            {
+                base.GameController.ExhaustCoroutine(coroutine);
+            }
+
+            if (DidSelectCard(results))
+            {
+                Card selected = GetSelectedCard(results);
+                coroutine = DealDamage(selected, selected, 2, DamageType.Sonic, cardSource: GetCardSource());
+                if (base.UseUnityCoroutines)
+                {
+                    yield return base.GameController.StartCoroutine(coroutine);
+                }
+                else
+                {
+                    base.GameController.ExhaustCoroutine(coroutine);
+                }
+
+                HeroTurnTaker htt = selected.Owner.ToHero();
+                if (!htt.IsIncapacitatedOrOutOfGame)
+                {
+                    coroutine = DrawCard(htt);
+                    if (base.UseUnityCoroutines)
+                    {
+                        yield return base.GameController.StartCoroutine(coroutine);
+                    }
+                    else
+                    {
+                        base.GameController.ExhaustCoroutine(coroutine);
+                    }
+                }
+            }
+
             // "... this card deals each non-Threen target 1 sonic damage..."
             IEnumerator damageCoroutine = DealDamage(base.Card, (Card c) => !IsThreen(c), 1, DamageType.Sonic);
             if (base.UseUnityCoroutines)

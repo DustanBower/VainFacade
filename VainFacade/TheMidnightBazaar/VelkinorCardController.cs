@@ -21,17 +21,23 @@ namespace VainFacadePlaytest.TheMidnightBazaar
         public override void AddTriggers()
         {
             base.AddTriggers();
+
+            AddAsPowerContributor();
+
+            //Increase damage dealt to targets next to this card by 1.
+            AddIncreaseDamageTrigger((DealDamageAction dd) => dd.Target.GetAllNextToCards(false).Contains(this.Card), 1);
+
             // "At the end of the environment turn, if there is no active hero in this play area, 1 player may move a card from their hand under [i]The Empty Well[/i] to move this card to their play area."
-            AddEndOfTurnTrigger((TurnTaker tt) => tt.IsEnvironment && !base.GameController.FindCardsWhere(new LinqCardCriteria((Card c) => IsHeroCharacterCard(c) && c.IsActive && c.Location.HighestRecursiveLocation == base.Card.Location.HighestRecursiveLocation)).Any() && IsEmptyWellInPlay(), SelectPlayerResponse, TriggerType.MoveCard);
-            AddEndOfTurnTrigger((TurnTaker tt) => tt.IsEnvironment && !base.GameController.FindCardsWhere(new LinqCardCriteria((Card c) => IsHeroCharacterCard(c) && c.IsActive && c.Location.HighestRecursiveLocation == base.Card.Location.HighestRecursiveLocation)).Any() && !IsEmptyWellInPlay(), EmptyWellNotInPlayResponse, TriggerType.ShowMessage);
+            AddEndOfTurnTrigger((TurnTaker tt) => tt.IsEnvironment && IsEmptyWellInPlay(), SelectPlayerResponse, TriggerType.MoveCard);
+            AddEndOfTurnTrigger((TurnTaker tt) => tt.IsEnvironment && !IsEmptyWellInPlay(), EmptyWellNotInPlayResponse, TriggerType.ShowMessage);
         }
 
         private IEnumerator SelectPlayerResponse(PhaseChangeAction pca)
         {
-            // "... 1 player may move a card from their hand under [i]The Empty Well[/i] to move this card to their play area."
+            // "... 1 player may move a card from their hand under [i]The Empty Well[/i] to move this card next to their hero."
             List<bool> cardsMoved = new List<bool>();
             currentMode = CustomMode.PlayerToDropCard;
-            SelectTurnTakerDecision selection = new SelectTurnTakerDecision(base.GameController, null, GameController.FindTurnTakersWhere((TurnTaker tt) => IsHero(tt) && tt.ToHero().HasCardsInHand && GameController.IsTurnTakerVisibleToCardSource(tt, GetCardSource())), SelectionType.MoveCard, isOptional: true, cardSource: GetCardSource());
+            SelectTurnTakerDecision selection = new SelectTurnTakerDecision(base.GameController, null, GameController.FindTurnTakersWhere((TurnTaker tt) => IsHero(tt) && tt.ToHero().HasCardsInHand && GameController.IsTurnTakerVisibleToCardSource(tt, GetCardSource())), SelectionType.Custom, isOptional: true, cardSource: GetCardSource());
             IEnumerator selectCoroutine = base.GameController.SelectTurnTakerAndDoAction(selection, (TurnTaker tt) => GetSwordResponse(tt));
             if (base.UseUnityCoroutines)
             {
@@ -64,68 +70,75 @@ namespace VainFacadePlaytest.TheMidnightBazaar
             }
             if (cardsDropped > 0)
             {
-                IEnumerator pickupCoroutine = base.GameController.MoveCard(base.GameController.FindTurnTakerController(tt), base.Card, tt.PlayArea, playCardIfMovingToPlayArea: false, showMessage: true, responsibleTurnTaker: tt, evenIfIndestructible: true, cardSource: GetCardSource());
+                List<Card> selectedHero = new List<Card>();
+                IEnumerator coroutine = FindCharacterCard(tt, SelectionType.MoveCardNextToCard, selectedHero);
                 if (base.UseUnityCoroutines)
                 {
-                    yield return base.GameController.StartCoroutine(pickupCoroutine);
+                    yield return base.GameController.StartCoroutine(coroutine);
                 }
                 else
                 {
-                    base.GameController.ExhaustCoroutine(pickupCoroutine);
+                    base.GameController.ExhaustCoroutine(coroutine);
+                }
+
+                Card selected = selectedHero.FirstOrDefault();
+
+                if (selected != null)
+                {
+                    IEnumerator pickupCoroutine = base.GameController.MoveCard(base.GameController.FindTurnTakerController(tt), base.Card, selected.NextToLocation, playCardIfMovingToPlayArea: false, showMessage: true, responsibleTurnTaker: tt, evenIfIndestructible: true, cardSource: GetCardSource());
+                    if (base.UseUnityCoroutines)
+                    {
+                        yield return base.GameController.StartCoroutine(pickupCoroutine);
+                    }
+                    else
+                    {
+                        base.GameController.ExhaustCoroutine(pickupCoroutine);
+                    }
                 }
             }
         }
 
-        public override IEnumerator UsePower(int index = 0)
+        public override IEnumerable<Power> AskIfContributesPowersToCardController(CardController cardController)
         {
-            int numTargets = GetPowerNumeral(0, 1);
-            int damageAmt = GetPowerNumeral(1, 5);
-            int damageIncrease = GetPowerNumeral(2, 1);
-            if (base.Card.Location.Cards.Any((Card c) => c.IsHeroCharacterCard && c.IsActive))
+            if (cardController.Card == GetCardThisCardIsNextTo())
             {
-                List<SelectCardDecision> selection = new List<SelectCardDecision>();
-                HeroTurnTakerController httc = DecisionMaker;
-                if (IsHero(base.Card.Location.OwnerTurnTaker))
-                    httc = base.GameController.FindTurnTakerController(base.Card.Location.OwnerTurnTaker).ToHero();
-                IEnumerator findCoroutine = base.GameController.SelectCardAndStoreResults(httc, SelectionType.HeroToUsePower, new LinqCardCriteria((Card c) => c.IsHeroCharacterCard && c.IsActive && c.Location.HighestRecursiveLocation == base.Card.Location.HighestRecursiveLocation), selection, false, cardSource: GetCardSource());
-                if (base.UseUnityCoroutines)
+                return new Power[1]
                 {
-                    yield return base.GameController.StartCoroutine(findCoroutine);
-                }
-                else
-                {
-                    base.GameController.ExhaustCoroutine(findCoroutine);
-                }
-                SelectCardDecision choice = selection.FirstOrDefault();
-                if (choice != null && choice.SelectedCard != null)
-                {
-                    Card heroUsingPower = choice.SelectedCard;
-                    // "Your hero deals 1 target 5 irreducible melee damage. ..."
-                    IEnumerator damageCoroutine = base.GameController.SelectTargetsAndDealDamage(httc, new DamageSource(base.GameController, heroUsingPower), (Card c) => damageAmt, DamageType.Melee, () => numTargets, false, numTargets, isIrreducible: true, cardSource: GetCardSource());
-                    if (base.UseUnityCoroutines)
-                    {
-                        yield return base.GameController.StartCoroutine(damageCoroutine);
-                    }
-                    else
-                    {
-                        base.GameController.ExhaustCoroutine(damageCoroutine);
-                    }
-                    // "... Increase damage dealt to your hero by 1 until the start of your next turn."
-                    IncreaseDamageStatusEffect aggro = new IncreaseDamageStatusEffect(damageIncrease);
-                    aggro.TargetCriteria.IsSpecificCard = heroUsingPower;
-                    aggro.UntilStartOfNextTurn(heroUsingPower.Owner);
-                    aggro.UntilTargetLeavesPlay(heroUsingPower);
-                    IEnumerator statusCoroutine = base.GameController.AddStatusEffect(aggro, true, GetCardSource());
-                    if (base.UseUnityCoroutines)
-                    {
-                        yield return base.GameController.StartCoroutine(statusCoroutine);
-                    }
-                    else
-                    {
-                        base.GameController.ExhaustCoroutine(statusCoroutine);
-                    }
-                }
+                new Power(cardController.HeroTurnTakerController, cardController, "Your hero deals 1 target 5 irreducible melee damage.", DealDamageResponse(), 0, null, GetCardSource())
+                };
             }
+            return null;
+        }
+
+        private IEnumerator DealDamageResponse()
+        {
+            //Your hero deals 1 target 5 irreducible melee damage.
+            int num1 = GetPowerNumeral(0, 1);
+            int num2 = GetPowerNumeral(1, 5);
+
+            Card wielder = GetCardThisCardIsNextTo();
+            HeroTurnTakerController httc = FindHeroTurnTakerController(wielder.Owner.ToHero());
+            IEnumerator coroutine = base.GameController.SelectTargetsAndDealDamage(httc, new DamageSource(base.GameController, wielder), num2, DamageType.Melee, num1, false, num1, true, cardSource: GetCardSource());
+            if (base.UseUnityCoroutines)
+            {
+                yield return base.GameController.StartCoroutine(coroutine);
+            }
+            else
+            {
+                base.GameController.ExhaustCoroutine(coroutine);
+            }
+        }
+
+        public override CustomDecisionText GetCustomDecisionText(IDecision decision)
+        {
+            string s = $"put a card from their hand under The Empty Well";
+
+            return new CustomDecisionText(
+            $"Select a player to {s}.",
+            $"The players are selecting a player to {s}.",
+            $"Vote for a player to {s}.",
+            $"a player to {s}."
+            );
         }
     }
 }

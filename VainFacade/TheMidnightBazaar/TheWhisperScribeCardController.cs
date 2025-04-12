@@ -44,7 +44,7 @@ namespace VainFacadePlaytest.TheMidnightBazaar
             // "... a player may put 2 different cards from their hand under [i]The Empty Well[/i]. If 2 cards are moved this way, search a deck for a card and put it into play, then shuffle that deck. If a card enters play this way, remove this card from the game."
             List<bool> cardsMoved = new List<bool>();
             currentMode = CustomMode.PlayerToDropUniqueCards;
-            SelectTurnTakerDecision selection = new SelectTurnTakerDecision(base.GameController, DecisionMaker, GameController.FindTurnTakersWhere((TurnTaker tt) => IsHero(tt) && GameController.IsTurnTakerVisibleToCardSource(tt, GetCardSource())), SelectionType.MoveCard, isOptional: true, cardSource: GetCardSource());
+            SelectTurnTakerDecision selection = new SelectTurnTakerDecision(base.GameController, DecisionMaker, GameController.FindTurnTakersWhere((TurnTaker tt) => IsHero(tt) && GameController.IsTurnTakerVisibleToCardSource(tt, GetCardSource())), SelectionType.Custom, isOptional: true, cardSource: GetCardSource());
             IEnumerator selectCoroutine = base.GameController.SelectTurnTakerAndDoAction(selection, (TurnTaker tt) => SearchRemoveResponse(tt));
             if (base.UseUnityCoroutines)
             {
@@ -125,6 +125,18 @@ namespace VainFacadePlaytest.TheMidnightBazaar
                     }
                 }
             }
+        }
+
+        public override CustomDecisionText GetCustomDecisionText(IDecision decision)
+        {
+            string s = $"put 2 different cards from their hand under The Empty Well";
+
+            return new CustomDecisionText(
+            $"Select a player to {s}.",
+            $"The players are selecting a player to {s}.",
+            $"Vote for a player to {s}.",
+            $"a player to {s}."
+            );
         }
     }
 }

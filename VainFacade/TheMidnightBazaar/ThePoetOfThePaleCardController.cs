@@ -35,7 +35,7 @@ namespace VainFacadePlaytest.TheMidnightBazaar
         {
             base.AddTriggers();
             // "At the end of the environment turn, this card deals the non-Threen target with the lowest HP {H - 2} psychic damage."
-            AddDealDamageAtEndOfTurnTrigger(base.TurnTaker, base.Card, (Card c) => !IsThreen(c), TargetType.LowestHP, H - 2, DamageType.Psychic);
+            AddEndOfTurnTrigger((TurnTaker tt) => tt == this.TurnTaker, EndOfTurnResponse,new TriggerType[] { TriggerType.DealDamage, TriggerType.DiscardCard });
             // When the last Threen with >0 HP leaves play, other Threen lose indestructibility
             AddAfterLeavesPlayAction((GameAction ga) => base.GameController.DestroyAnyCardsThatShouldBeDestroyed(ignoreBattleZone: true, cardSource: GetCardSource()), TriggerType.DestroyCard);
             AddTrigger((DestroyCardAction dca) => IsThreen(dca.CardToDestroy.Card), CleanUpThreens, TriggerType.DestroyCard, TriggerTiming.After);
@@ -43,6 +43,34 @@ namespace VainFacadePlaytest.TheMidnightBazaar
             AddTrigger((SwitchBattleZoneAction sb) => sb.Origin == base.Card.BattleZone, CleanUpThreens, TriggerType.DestroyCard, TriggerTiming.After, ActionDescription.Unspecified, isConditional: false, requireActionSuccess: true, null, outOfPlayTrigger: false, null, null, ignoreBattleZone: true);
             AddTrigger((MoveCardAction mc) => mc.Origin.BattleZone == base.BattleZone && mc.Destination.BattleZone != base.BattleZone, CleanUpThreens, TriggerType.DestroyCard, TriggerTiming.After, ActionDescription.Unspecified, isConditional: false, requireActionSuccess: true, null, outOfPlayTrigger: false, null, null, ignoreBattleZone: true);
             AddAfterLeavesPlayAction((GameAction ga) => ResetFlagAfterLeavesPlay(IsCleaningUp), TriggerType.Hidden);
+        }
+
+        private IEnumerator EndOfTurnResponse(PhaseChangeAction pca)
+        {
+            List<DealDamageAction> results = new List<DealDamageAction>();
+            IEnumerator coroutine = DealDamageToLowestHP(this.Card, 1, (Card c) => !IsThreen(c), (Card c) => H - 2, DamageType.Psychic, storedResults: results);
+            if (base.UseUnityCoroutines)
+            {
+                yield return base.GameController.StartCoroutine(coroutine);
+            }
+            else
+            {
+                base.GameController.ExhaustCoroutine(coroutine);
+            }
+
+            //If no damage is dealt this way, a player discards a card
+            if (!DidDealDamage(results))
+            {
+                coroutine = base.GameController.SelectHeroToDiscardCard(DecisionMaker, false, false, cardSource: GetCardSource());
+                if (base.UseUnityCoroutines)
+                {
+                    yield return base.GameController.StartCoroutine(coroutine);
+                }
+                else
+                {
+                    base.GameController.ExhaustCoroutine(coroutine);
+                }
+            }
         }
 
         private IEnumerator CleanUpThreens(GameAction ga)
