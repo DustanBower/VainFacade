@@ -202,6 +202,27 @@ namespace VainFacadeTest
         }
 
         [Test()]
+        public void TestRonaldRedirect()
+        {
+            SetupGameController("BaronBlade", "Ra", "Legacy", "Bunker", "Tachyon", "VainFacadePlaytest.TheMidnightBazaar");
+            StartGame();
+            //At the end of the environment turn, increase the next damage dealt by this card by 2...
+            //...then this card deals the hero target with the highest HP {H} melee damage.
+
+            Card ron = PlayCard("RedEyedRonald");
+            Card well = PlayCard("TheEmptyWell");
+            Card mdp = GetCard("MobileDefensePlatform", 0, (Card c) => c.IsInPlayAndHasGameText);
+            DecisionSelectTurnTakers =  new TurnTaker[] { legacy.TurnTaker, ra.TurnTaker, ra.TurnTaker };
+            DecisionRedirectTarget = mdp;
+
+            QuickHPStorage(legacy.CharacterCard, mdp);
+            QuickHandStorage(legacy);
+            GoToEndOfTurn(bazaar);
+            QuickHPCheck(0,-6);
+            QuickHandCheck(-1);
+        }
+
+        [Test()]
         public void TestBlackDogHealReduce()
         {
             SetupGameController("BaronBlade", "Ra", "Legacy", "Bunker", "Tachyon", "VainFacadePlaytest.TheMidnightBazaar");
