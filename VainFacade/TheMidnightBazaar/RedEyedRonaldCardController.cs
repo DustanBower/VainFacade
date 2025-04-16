@@ -33,14 +33,14 @@ namespace VainFacadePlaytest.TheMidnightBazaar
 
             //At the end of the environment turn, increase the next damage dealt by this card by 2.
             // "Then this card deals the hero target with the highest HP {H} melee damage."
-            AddEndOfTurnTrigger((TurnTaker tt) => tt.IsEnvironment, DamageWithRedirectResponse, TriggerType.DealDamage);
+            AddEndOfTurnTrigger((TurnTaker tt) => tt.IsEnvironment, DamageWithRedirectResponse, new TriggerType[] { TriggerType.CreateStatusEffect, TriggerType.DealDamage });
             // "If a player puts a card from their hand under [i]The Empty Well[/i], redirect that damage to a target other than this card."
             redirectDamageTrigger = AddTrigger((DealDamageAction dda) => EndOfTurnDamageCriteria(dda), MovedRedirectResponse, TriggerType.RedirectDamage, TriggerTiming.Before);
         }
 
         private bool EndOfTurnDamageCriteria(DealDamageAction dda)
         {
-            return dda.DamageSource != null && dda.DamageSource.IsCard && dda.DamageSource.Card == base.Card && dda.OriginalAmount == H + 2 && dda.OriginalDamageType == DamageType.Melee && dda.CardSource.Card == base.Card && Journal.GetCardPropertiesBoolean(base.Card, didMoveToRedirect) == true;
+            return dda.DamageSource != null && dda.DamageSource.IsCard && dda.DamageSource.Card == base.Card && dda.OriginalAmount == H && dda.OriginalDamageType == DamageType.Melee && dda.CardSource.Card == base.Card && Journal.GetCardPropertiesBoolean(base.Card, didMoveToRedirect) == true;
         }
 
         private IEnumerator DamageWithRedirectResponse(PhaseChangeAction pca)
