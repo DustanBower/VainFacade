@@ -9,7 +9,7 @@ using System.Text;
 
 namespace VainFacadePlaytest.TheBaroness
 {
-    public class BaronessUtilityCardController : CardController
+    public class BaronessUtilityCardController : BaronessBaseCardController
     {
         public BaronessUtilityCardController(Card card, TurnTakerController turnTakerController)
             : base(card, turnTakerController)
@@ -91,7 +91,7 @@ namespace VainFacadePlaytest.TheBaroness
         {
             if (FindCardsWhere(BloodCard()).Any())
             {
-                List<Card> list = GetOrderedCardsInLocation(TurnTaker.PlayArea).ToList();
+                List<Card> list = GetOrderedCardsInLocation(TurnTaker.PlayArea).Where((Card c) => !c.IsCharacter).ToList();
                 Card firstBlood = list.Where((Card c) => BloodCard().Criteria(c)).FirstOrDefault();
                 int num = list.IndexOf(firstBlood);
                 list.Insert(num, base.Card);
