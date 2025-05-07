@@ -134,6 +134,19 @@ namespace VainFacadeTest
         }
 
         [Test()]
+        public void TestNoCardPutIntoPlayOmnitronX()
+        {
+            SetupGameController("VainFacadePlaytest.TheBaroness/TheBaronessSpiderCharacter", "Tempest", "Legacy", "Bunker", "OmnitronX", "Megalopolis");
+            StartGame();
+
+            Card arcane = PutOnDeck("ArcaneVeins");
+
+            DecisionSelectTurnTaker = baroness.TurnTaker;
+            UsePower(omnix);
+            AssertInTrash(arcane);
+        }
+
+        [Test()]
         public void TestChallengeFront()
         {
             SetupGameController(new string[] { "VainFacadePlaytest.TheBaroness/TheBaronessSpiderCharacter", "Tempest", "Legacy", "Bunker", "Ra", "Megalopolis" }, challenge: true);
