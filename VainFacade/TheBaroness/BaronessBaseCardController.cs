@@ -18,7 +18,7 @@ namespace VainFacadePlaytest.TheBaroness
 
         public override bool CanBePlayedFromLocation()
         {
-            if (base.FindCardController(base.CharacterCard) is TheBaronessSpiderCharacterCardController && !this.CharacterCard.IsFlipped && this.Card.Location == this.TurnTaker.Deck && this.Card.Identifier != "Vampirism")
+            if (base.FindCardController(base.CharacterCard) is TheBaronessSpiderCharacterCardController && !this.CharacterCard.IsFlipped && (this.Card.Location == this.TurnTaker.Deck || this.Card.Location.IsRevealed) && this.Card.Identifier != "Vampirism")
             {
                 return false;
             }
