@@ -32,6 +32,7 @@ namespace VainFacadeTest
             //Put {TheBaroness}'s character card, {JustBusiness}, {PoliticsAsUsual}, and {SecretSocieties} into play in the environment play area, “Caught in the Web” side up. Put the card {Vampirism} into play.
             AssertIsInPlay(baroness.CharacterCard);
             Assert.IsInstanceOf(typeof(TheBaronessSpiderCharacterCardController), baroness.CharacterCardController);
+            AssertNotTarget(baroness.CharacterCard);
             AssertIsInPlay("JustBusiness");
             AssertIsInPlay("PoliticsAsUsual");
             AssertIsInPlay("SecretSocieties");
@@ -47,20 +48,11 @@ namespace VainFacadeTest
             //Put {TheBaroness}'s character card, {JustBusiness}, {PoliticsAsUsual}, and {SecretSocieties} into play in the environment play area, “Caught in the Web” side up. Put the card {Vampirism} into play.
             AssertIsInPlay(baroness.CharacterCard);
             Assert.IsNotInstanceOf(typeof(TheBaronessSpiderCharacterCardController), baroness.CharacterCardController);
+            AssertIsTarget(baroness.CharacterCard);
             AssertNotInPlay("JustBusiness");
             AssertNotInPlay("PoliticsAsUsual");
             AssertNotInPlay("SecretSocieties");
             AssertIsInPlay("Vampirism");
-        }
-
-        [Test()]
-        public void TestVariantWinFront()
-        {
-            SetupGameController("VainFacadePlaytest.TheBaroness/TheBaronessSpiderCharacter", "Tempest", "Legacy", "Bunker", "Ra", "Megalopolis");
-            StartGame();
-
-            DealDamage(legacy, baroness, 200, DamageType.Melee);
-            AssertGameOver(EndingResult.VillainDestroyedVictory);
         }
 
         [Test()]
@@ -213,6 +205,8 @@ namespace VainFacadeTest
 
             AssertOutOfGame(new Card[] { JustBusiness, PoliticsAsUsual, SecretSocieties });
             AssertFlipped(baroness);
+            AssertIsTarget(baroness.CharacterCard);
+            AssertHitPoints(baroness.CharacterCard, 91);
         }
 
         [Test()]
@@ -238,6 +232,8 @@ namespace VainFacadeTest
 
             AssertOutOfGame(new Card[] { JustBusiness, PoliticsAsUsual, SecretSocieties });
             AssertFlipped(baroness);
+            AssertIsTarget(baroness.CharacterCard);
+            AssertHitPoints(baroness.CharacterCard, 91);
         }
 
         [Test()]
@@ -265,6 +261,8 @@ namespace VainFacadeTest
 
             AssertOutOfGame(new Card[] { JustBusiness, PoliticsAsUsual, SecretSocieties });
             AssertFlipped(baroness);
+            AssertIsTarget(baroness.CharacterCard);
+            AssertHitPoints(baroness.CharacterCard, 91);
         }
 
         [Test()]
@@ -290,6 +288,8 @@ namespace VainFacadeTest
 
             AssertOutOfGame(new Card[] { JustBusiness, PoliticsAsUsual, SecretSocieties });
             AssertFlipped(baroness);
+            AssertIsTarget(baroness.CharacterCard);
+            AssertHitPoints(baroness.CharacterCard, 91);
         }
         #endregion
 

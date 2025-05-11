@@ -1168,9 +1168,9 @@ namespace VainFacadeTest
             DecisionYesNo = false;
             GoToStartOfTurn(bunker);
             QuickHPStorage(bunker);
-            QuickHandStorage(friday);
             DecisionYesNo = true;
             PutOnDeck("ProteanDoom");
+            QuickHandStorage(friday);
             GoToEndOfTurn(bunker);
             QuickHPCheck(-2);
             QuickHandCheck(1);
