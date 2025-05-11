@@ -600,7 +600,7 @@
 			"body": "Caught in the Web",
 			"backgroundColor": "ff0000",
 			"character": true,
-			"hitpoints": 91,
+			"flippedHitpoints": 91,
 			"nemesisIdentifiers": [
 				"VainFacadePlaytest.Node"
 			],
