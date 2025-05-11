@@ -234,6 +234,7 @@ namespace VainFacadePlaytest.TheBaroness
                 //    base.GameController.ExhaustCoroutine(coroutine);
                 //}
 
+                //Move the selected card to the villain play area
                 coroutine = base.GameController.MoveCard(base.TurnTakerController, selected, base.TurnTaker.PlayArea, playCardIfMovingToPlayArea: false, responsibleTurnTaker: base.TurnTaker, flipFaceDown: false, cardSource: GetCardSource());
                 if (base.UseUnityCoroutines)
                 {
@@ -244,11 +245,10 @@ namespace VainFacadePlaytest.TheBaroness
                     base.GameController.ExhaustCoroutine(coroutine);
                 }
 
-
+                //Get list of cards in villain play area
                 List<Card> list = GetOrderedCardsInLocation(TurnTaker.PlayArea).Where((Card c) => !c.IsCharacter).ToList();
 
-                bool flag = list.LastOrDefault() != selected;
-
+                //Put the moved card last in the list of cards, so it goes to the end of the play area
                 list.Remove(selected);
                 list.Add(selected);
                 list.ForEach(delegate (Card c)
@@ -256,14 +256,7 @@ namespace VainFacadePlaytest.TheBaroness
                     base.GameController.Game.AssignPlayCardIndex(c);
                 });
 
-                //List<Card> list = GetOrderedCardsInLocation(TurnTaker.PlayArea).Where((Card c) => !c.IsCharacter).ToList();
-                //int num = list.Count();
-                //list.Insert(num, selected);
-                //list.ForEach(delegate (Card c)
-                //{
-                //    base.GameController.Game.AssignPlayCardIndex(c);
-                //});
-
+                //Flip the card face-down after moving it, so that the UI refreshes and the card goes to the end of the play area
                 coroutine = base.GameController.FlipCard(FindCardController(selected), cardSource: GetCardSource());
                 if (base.UseUnityCoroutines)
                 {
@@ -273,50 +266,7 @@ namespace VainFacadePlaytest.TheBaroness
                 {
                     base.GameController.ExhaustCoroutine(coroutine);
                 }
-
-                //if (flag)
-                //{
-                //    coroutine = RefreshUI(selected);
-                //    if (base.UseUnityCoroutines)
-                //    {
-                //        yield return base.GameController.StartCoroutine(coroutine);
-                //    }
-                //    else
-                //    {
-                //        base.GameController.ExhaustCoroutine(coroutine);
-                //    }
-                //}
             }
-        }
-
-        //Based on from Superstorm Akela
-        //Necessary when moving hero cards from in play to the villain play area
-        private IEnumerator RefreshUI(Card card)
-        {
-            IEnumerator coroutine;
-            IEnumerator coroutine2;
-
-            int? currentHP = card.IsTarget ? card.HitPoints : null;
-            FlipCardAction flip1 = new FlipCardAction(GetCardSource(), FindCardController(card), false, false, null);
-            flip1.AllowTriggersToRespond = false;
-            flip1.CanBeCancelled = false;
-            FlipCardAction flip2 = new FlipCardAction(GetCardSource(), FindCardController(card), false, false, null);
-            flip2.AllowTriggersToRespond = false;
-            flip2.CanBeCancelled = false;
-            coroutine = DoAction(flip1);
-            coroutine2 = DoAction(flip2);
-            if (base.UseUnityCoroutines)
-            {
-                yield return base.GameController.StartCoroutine(coroutine);
-                yield return base.GameController.StartCoroutine(coroutine2);
-            }
-            else
-            {
-                base.GameController.ExhaustCoroutine(coroutine);
-                base.GameController.ExhaustCoroutine(coroutine2);
-            }
-
-            yield break;
         }
 
         private IEnumerable<Card> GetOrderedCardsInLocation(Location location)
@@ -359,6 +309,29 @@ namespace VainFacadePlaytest.TheBaroness
         private IEnumerator ChallengeMoveCards(TurnTaker tt)
         {
             IEnumerator coroutine = base.GameController.MoveCard(base.TurnTakerController, tt.Deck.TopCard, base.TurnTaker.PlayArea, toBottom: false, isPutIntoPlay: false, playCardIfMovingToPlayArea: false, null, showMessage: false, null, null, null, evenIfIndestructible: false, flipFaceDown: true, null, isDiscard: false, evenIfPretendGameOver: false, shuffledTrashIntoDeck: false, doesNotEnterPlay: false, GetCardSource());
+            if (base.UseUnityCoroutines)
+            {
+                yield return base.GameController.StartCoroutine(coroutine);
+            }
+            else
+            {
+                base.GameController.ExhaustCoroutine(coroutine);
+            }
+        }
+
+        public override IEnumerator AfterFlipCardImmediateResponse()
+        {
+            IEnumerator coroutine = base.AfterFlipCardImmediateResponse();
+            if (base.UseUnityCoroutines)
+            {
+                yield return base.GameController.StartCoroutine(coroutine);
+            }
+            else
+            {
+                base.GameController.ExhaustCoroutine(coroutine);
+            }
+
+            coroutine = base.GameController.ChangeMaximumHP(this.Card, this.Card.Definition.FlippedHitPoints.Value, true, GetCardSource());
             if (base.UseUnityCoroutines)
             {
                 yield return base.GameController.StartCoroutine(coroutine);
