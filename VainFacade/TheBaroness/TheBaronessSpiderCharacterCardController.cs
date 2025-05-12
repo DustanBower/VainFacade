@@ -41,8 +41,8 @@ namespace VainFacadePlaytest.TheBaroness
 
         private string CardsInPlaySpecialString()
         {
-            int max = base.Game.HeroTurnTakers.Select((HeroTurnTaker htt) => FindCardsWhere((Card c) => !c.IsCharacter && c.Owner == htt && c.IsInPlayAndHasGameText).Count()).Max();
-            List<string> names = base.Game.HeroTurnTakers.Where((HeroTurnTaker htt) => FindCardsWhere((Card c) => !c.IsCharacter && c.Owner == htt && c.IsInPlayAndHasGameText).Count() == max).Select((HeroTurnTaker htt) => htt.Name).ToList();
+            int max = base.Game.HeroTurnTakers.Select((HeroTurnTaker htt) => FindCardsWhere((Card c) => !c.IsCharacter && c.Owner == htt && c.IsInPlay).Count()).Max();
+            List<string> names = base.Game.HeroTurnTakers.Where((HeroTurnTaker htt) => FindCardsWhere((Card c) => !c.IsCharacter && c.Owner == htt && c.IsInPlay).Count() == max).Select((HeroTurnTaker htt) => htt.Name).ToList();
             return $"{names.ToCommaList(true)} {(names.Count() == 1 ? "has" : "have")} {max} non-character cards in play";
         }
 
