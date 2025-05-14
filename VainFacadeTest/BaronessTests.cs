@@ -255,7 +255,7 @@ namespace VainFacadeTest
 
             PlayCard("Fortitude");
             PlayCard("InspiringPresence");
-            PlayCard("NextEvolution");
+            PlayCard("TheLegacyRing");
 
             GoToStartOfTurn(baroness);
 
