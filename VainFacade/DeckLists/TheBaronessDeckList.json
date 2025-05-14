@@ -611,7 +611,7 @@
 				"At the start of the villain turn, remove each villain web from the game and flip {TheBaroness}'s character cards if any of the following conditions are met:",
 				"{Any player has 7 or more cards in their hand.",
 				"{Any player has 7 or more cards in their trash.",
-				"{Any player has 3 or more non-character cards in play.",
+				"{Any player has 3 or more non-character ongoing, equipment, or target cards in play.",
 				"{There are no villain web targets in play."
 			],
 			"advanced": "Reduce damage dealt to webs by 1.",
