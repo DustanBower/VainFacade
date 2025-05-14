@@ -29,54 +29,71 @@ namespace VainFacadePlaytest.Carnaval
             // "... the target with the lowest HP from that turn's associated deck..."
             List<Card> lowestTargets = new List<Card>();
             List<Location> associatedDecks = GameController.ActiveTurnTaker.Decks;
-            foreach(Location deck in associatedDecks)
+
+            //Check that there are any targets from the associated deck in play before trying to find the lowest HP one to avoid null reference exception
+            if (FindCardsWhere((Card c) => c.IsInPlayAndHasGameText && c.IsTarget && associatedDecks.Contains(c.NativeDeck)).Any())
             {
-                List<Card> lowestFromDeck = new List<Card>();
-                IEnumerator findCoroutine = base.GameController.FindTargetWithLowestHitPoints(1, (Card c) => GetNativeDeck(c) == deck, lowestFromDeck, cardSource: GetCardSource());
+                foreach (Location deck in associatedDecks)
+                {
+                    List<Card> lowestFromDeck = new List<Card>();
+                    IEnumerator findCoroutine = base.GameController.FindTargetWithLowestHitPoints(1, (Card c) => GetNativeDeck(c) == deck, lowestFromDeck, cardSource: GetCardSource());
+                    if (base.UseUnityCoroutines)
+                    {
+                        yield return base.GameController.StartCoroutine(findCoroutine);
+                    }
+                    else
+                    {
+                        base.GameController.ExhaustCoroutine(findCoroutine);
+                    }
+                    lowestTargets.Add(lowestFromDeck.FirstOrDefault());
+                }
+                List<SelectTargetDecision> cardsChosen = new List<SelectTargetDecision>();
+                IEnumerator selectCoroutine = base.GameController.SelectTargetAndStoreResults(DecisionMaker, lowestTargets, cardsChosen, selectionType: SelectionType.DealDamage, cardSource: GetCardSource());
                 if (base.UseUnityCoroutines)
                 {
-                    yield return base.GameController.StartCoroutine(findCoroutine);
+                    yield return base.GameController.StartCoroutine(selectCoroutine);
                 }
                 else
                 {
-                    base.GameController.ExhaustCoroutine(findCoroutine);
+                    base.GameController.ExhaustCoroutine(selectCoroutine);
                 }
-                lowestTargets.Add(lowestFromDeck.FirstOrDefault());
-            }
-            List<SelectTargetDecision> cardsChosen = new List<SelectTargetDecision>();
-            IEnumerator selectCoroutine = base.GameController.SelectTargetAndStoreResults(DecisionMaker, lowestTargets, cardsChosen, selectionType: SelectionType.DealDamage, cardSource: GetCardSource());
-            if (base.UseUnityCoroutines)
-            {
-                yield return base.GameController.StartCoroutine(selectCoroutine);
+                SelectTargetDecision choice = cardsChosen.FirstOrDefault((SelectTargetDecision d) => d.Completed);
+                if (choice != null)
+                {
+                    Card selectedCard = choice.SelectedCard;
+                    // "... deals each other target in its play area 1 projectile damage, ..."
+                    Location playArea = selectedCard.Location.HighestRecursiveLocation;
+                    IEnumerator projectileCoroutine = DealDamage(selectedCard, (Card c) => c.IsAtLocationRecursive(playArea) && c != selectedCard, 1, DamageType.Projectile);
+                    if (base.UseUnityCoroutines)
+                    {
+                        yield return base.GameController.StartCoroutine(projectileCoroutine);
+                    }
+                    else
+                    {
+                        base.GameController.ExhaustCoroutine(projectileCoroutine);
+                    }
+                    // "... then deals itself 4 irreducible fire damage."
+                    IEnumerator fireCoroutine = DealDamage(selectedCard, selectedCard, 4, DamageType.Fire, isIrreducible: true, cardSource: GetCardSource());
+                    if (base.UseUnityCoroutines)
+                    {
+                        yield return base.GameController.StartCoroutine(fireCoroutine);
+                    }
+                    else
+                    {
+                        base.GameController.ExhaustCoroutine(fireCoroutine);
+                    }
+                }
             }
             else
             {
-                base.GameController.ExhaustCoroutine(selectCoroutine);
-            }
-            SelectTargetDecision choice = cardsChosen.FirstOrDefault((SelectTargetDecision d) => d.Completed);
-            if (choice != null)
-            {
-                Card selectedCard = choice.SelectedCard;
-                // "... deals each other target in its play area 1 projectile damage, ..."
-                Location playArea = selectedCard.Location.HighestRecursiveLocation;
-                IEnumerator projectileCoroutine = DealDamage(selectedCard, (Card c) => c.IsAtLocationRecursive(playArea) && c != selectedCard, 1, DamageType.Projectile);
+                IEnumerator message = base.GameController.SendMessageAction($"The Macguffin exploded, but there were no targets from {base.Game.ActiveTurnTaker.Name} to damage!",Priority.Low, GetCardSource(), null, true);
                 if (base.UseUnityCoroutines)
                 {
-                    yield return base.GameController.StartCoroutine(projectileCoroutine);
+                    yield return base.GameController.StartCoroutine(message);
                 }
                 else
                 {
-                    base.GameController.ExhaustCoroutine(projectileCoroutine);
-                }
-                // "... then deals itself 4 irreducible fire damage."
-                IEnumerator fireCoroutine = DealDamage(selectedCard, selectedCard, 4, DamageType.Fire, isIrreducible: true, cardSource: GetCardSource());
-                if (base.UseUnityCoroutines)
-                {
-                    yield return base.GameController.StartCoroutine(fireCoroutine);
-                }
-                else
-                {
-                    base.GameController.ExhaustCoroutine(fireCoroutine);
+                    base.GameController.ExhaustCoroutine(message);
                 }
             }
             // "Then destroy this card."
