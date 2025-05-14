@@ -42,7 +42,7 @@ namespace VainFacadePlaytest.TheBaroness
         private string CardsInPlaySpecialString()
         {
             int max = base.Game.HeroTurnTakers.Select((HeroTurnTaker htt) => FindCardsWhere((Card c) => !c.IsCharacter && c.Owner == htt && c.IsInPlay).Count()).Max();
-            List<string> names = base.Game.HeroTurnTakers.Where((HeroTurnTaker htt) => FindCardsWhere((Card c) => !c.IsCharacter && c.Owner == htt && c.IsInPlay).Count() == max).Select((HeroTurnTaker htt) => htt.Name).ToList();
+            List<string> names = base.Game.HeroTurnTakers.Where((HeroTurnTaker htt) => FindCardsWhere((Card c) => !c.IsCharacter && c.Owner == htt && c.IsInPlayAndHasGameText && (IsOngoing(c) || IsEquipment(c) || c.IsTarget)).Count() == max).Select((HeroTurnTaker htt) => htt.Name).ToList();
             return $"{names.ToCommaList(true)} {(names.Count() == 1 ? "has" : "have")} {max} non-character cards in play";
         }
 
@@ -128,14 +128,29 @@ namespace VainFacadePlaytest.TheBaroness
             //There are no villain web targets in play.
 
             bool flag = FindTurnTakersWhere((TurnTaker tt) => tt.IsPlayer && !tt.IsIncapacitatedOrOutOfGame && tt.ToHero().NumberOfCardsInHand >= 7).Any();
+            
             flag |= FindTurnTakersWhere((TurnTaker tt) => tt.IsPlayer && !tt.IsIncapacitatedOrOutOfGame && tt.Trash.NumberOfCards >= 7).Any();
-            flag |= FindTurnTakersWhere((TurnTaker tt) => tt.IsPlayer && FindCardsWhere((Card c) => c.Owner == tt && c.IsInPlay && !c.IsCharacter).Count() >= 3).Any();
+            
+            flag |= FindTurnTakersWhere((TurnTaker tt) => tt.IsPlayer && FindCardsWhere((Card c) => c.Owner == tt && c.IsInPlayAndHasGameText && !c.IsCharacter && (IsOngoing(c) || IsEquipment(c) || c.IsTarget)).Count() >= 3).Any();
+            
             flag |= !FindCardsWhere((Card c) => IsVillain(c) && base.GameController.DoesCardContainKeyword(c, "web") && c.IsTarget && c.IsInPlayAndHasGameText).Any();
+            
             return flag;
         }
 
         private IEnumerator FlipResponse(PhaseChangeAction pca)
         {
+            IEnumerator message_coroutine = base.GameController.SendMessageAction(BuildFlipString(), Priority.Critical, GetCardSource(), null, true);
+            if (base.UseUnityCoroutines)
+            {
+                yield return base.GameController.StartCoroutine(message_coroutine);
+
+            }
+            else
+            {
+                base.GameController.ExhaustCoroutine(message_coroutine);
+            }
+
             //remove each villain web from the game and flip The Baroness's character cards
             IEnumerator coroutine = base.GameController.BulkMoveCards(this.TurnTakerController, FindCardsWhere((Card c) => IsVillain(c) && base.GameController.DoesCardContainKeyword(c, "web")), this.TurnTaker.OutOfGame, cardSource: GetCardSource(), responsibleTurnTaker: this.TurnTaker);
             if (base.UseUnityCoroutines)
@@ -158,6 +173,79 @@ namespace VainFacadePlaytest.TheBaroness
             {
                 base.GameController.ExhaustCoroutine(coroutine);
             }
+        }
+
+        private string BuildFlipString()
+        {
+            IEnumerable<TurnTaker> hand = FindTurnTakersWhere((TurnTaker tt) => tt.IsPlayer && !tt.IsIncapacitatedOrOutOfGame && tt.ToHero().NumberOfCardsInHand >= 7);
+            IEnumerable<TurnTaker> trash = FindTurnTakersWhere((TurnTaker tt) => tt.IsPlayer && !tt.IsIncapacitatedOrOutOfGame && tt.Trash.NumberOfCards >= 7);
+            IEnumerable<TurnTaker> play = FindTurnTakersWhere((TurnTaker tt) => tt.IsPlayer && FindCardsWhere((Card c) => c.Owner == tt && c.IsInPlayAndHasGameText && !c.IsCharacter && (IsOngoing(c) || IsEquipment(c) || c.IsTarget)).Count() >= 3);
+            bool webs = !FindCardsWhere((Card c) => IsVillain(c) && base.GameController.DoesCardContainKeyword(c, "web") && c.IsTarget && c.IsInPlayAndHasGameText).Any();
+
+            string s_hand = "";
+            string s_trash = "";
+            string s_play = "";
+            string s_webs = "";
+
+            if (hand.Any())
+            {
+                s_hand = $"{hand.Select((TurnTaker tt) => tt.Name).ToCommaList(true)} {(hand.Count() == 1 ? "has" : "have")} 7 or more cards in hand";
+            }
+            if (trash.Any())
+            {
+                s_trash = $"{trash.Select((TurnTaker tt) => tt.Name).ToCommaList(true)} {(trash.Count() == 1 ? "has" : "have")} 7 or more cards in trash";
+            }
+            if (play.Any())
+            {
+                s_play = $"{play.Select((TurnTaker tt) => tt.Name).ToCommaList(true)} {(play.Count() == 1 ? "has" : "have")} 3 or more non-character ongoing, equipment, or target cards in play";
+            }
+            if (webs)
+            {
+                s_webs = "there are no villain web targets in play";
+            }
+
+            string final = s_hand;
+
+            if (s_trash != "")
+            {
+                if (final == "")
+                {
+                    final = s_trash;
+                }
+                else
+                {
+                    final += $", and {s_trash}";
+                }
+            }
+            
+            if (s_play != "")
+            {
+                if (final == "")
+                {
+                    final = s_play;
+                }
+                else
+                {
+                    final += $", and {s_play}";
+                }
+            }
+            
+            if (s_webs != "")
+            {
+                if (final == "")
+                {
+                    final = s_webs;
+                }
+                else
+                {
+                    final += $", and {s_webs}";
+                }
+            }
+            
+
+            final += $", so {this.TurnTaker.Name} flips!";
+
+            return final;
         }
 
         private IEnumerator EndOfTurnFlippedResponse(PhaseChangeAction pca)
