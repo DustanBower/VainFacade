@@ -182,6 +182,37 @@ namespace VainFacadeTest
             AssertNumberOfCardsAtLocation(baroness.TurnTaker.PlayArea, 4, (Card c) => c.IsHero);
         }
 
+        [Test()]
+        public void TestGlyphFaceDownCards()
+        {
+            SetupGameController("VainFacadePlaytest.TheBaroness/TheBaronessSpiderCharacter", "VainFacadePlaytest.Glyph", "Legacy", "Bunker", "OmnitronX", "Megalopolis");
+            StartGame();
+
+            FlipCard(baroness);
+            SetHitPoints(baroness, 50);
+
+            QuickHPStorage(baroness);
+            DecisionYesNo = true;
+            DecisionSelectTurnTaker = baroness.TurnTaker;
+            Card ritual = PutInHand("RitualCircleDeath");
+            PlayCard(ritual);
+            QuickHPCheck(1);
+        }
+
+        [Test()]
+        public void TestVampirismHeal()
+        {
+            SetupGameController("VainFacadePlaytest.TheBaroness/TheBaronessSpiderCharacter", "Tempest", "Legacy", "Bunker", "OmnitronX", "Megalopolis");
+            StartGame();
+
+            FlipCard(baroness);
+            SetHitPoints(baroness, 50);
+
+            QuickHPStorage(baroness);
+            DealDamage(baroness, tempest, 1, DamageType.Melee);
+            QuickHPCheck(1);
+        }
+
         #region Test Baroness flip conditions
         [Test()]
         public void TestFlipCondition_Hand()
@@ -786,6 +817,164 @@ namespace VainFacadeTest
             DestroyCard(SecretSocieties);
 
             AssertOutOfGame(SecretSocieties);
+        }
+        #endregion
+
+        #region Flip Side
+        [Test()]
+        public void TestRadiantIrreducible()
+        {
+            SetupGameController( "VainFacadePlaytest.TheBaroness/TheBaronessSpiderCharacter", "Tempest", "Legacy", "Bunker", "Ra", "TheBlock" );
+            StartGame();
+
+            //Radiant damage dealt to villain targets is irreducible
+            FlipCard(baroness);
+            PlayCard("DefensiveDisplacement");
+
+            QuickHPStorage(baroness);
+            DealDamage(legacy, baroness, 3, DamageType.Radiant);
+            QuickHPCheck(-3);
+
+            QuickHPStorage(legacy);
+            DealDamage(baroness, legacy, 3, DamageType.Radiant);
+            QuickHPCheck(-1);
+        }
+
+        [Test()]
+        public void Test5DamageStealCard()
+        {
+            SetupGameController( "VainFacadePlaytest.TheBaroness/TheBaronessSpiderCharacter", "Tempest", "Legacy", "Bunker", "Ra", "TheBlock" );
+            StartGame();
+
+            //The first time each turn The Baroness is dealt 5 or more damage at once, put a non-character hero card in play face down in the villain play area.
+            FlipCard(baroness);
+            Card fortitude = PlayCard("Fortitude");
+            SetHitPoints(baroness, 50);
+
+            QuickHPStorage(baroness);
+            DealDamage(legacy, baroness, 5, DamageType.Melee);
+            AssertFlipped(fortitude);
+            AssertInPlayArea(baroness, fortitude);
+
+            //Check that Baroness healed 1 HP after being dealt 5
+            QuickHPCheck(-4);
+
+            Card evo = PlayCard("NextEvolution");
+            
+            DealDamage(legacy, baroness, 5, DamageType.Melee);
+            AssertNotFlipped(evo);
+            AssertInPlayArea(legacy, evo);
+        }
+
+        [Test()]
+        public void TestSchemeEntersPlay()
+        {
+            SetupGameController( "VainFacadePlaytest.TheBaroness/TheBaronessSpiderCharacter", "Tempest", "Legacy", "Bunker", "Ra", "TheBlock" );
+            StartGame();
+
+            //The first time each turn a scheme enters or leaves play, play the top card of the villain deck.
+
+            FlipCard(baroness);
+            Card eternal = PutOnDeck("EternalSilence");
+            Card fang = PutOnDeck("FangAndClaw");
+            PlayCard("ArcaneVeins");
+            AssertInTrash(fang);
+            PlayCard("VampiricStrength");
+            AssertOnTopOfDeck(eternal);
+        }
+
+        [Test()]
+        public void TestSchemeLeavesPlay()
+        {
+            SetupGameController( "VainFacadePlaytest.TheBaroness/TheBaronessSpiderCharacter", "Tempest", "Legacy", "Bunker", "Ra", "TheBlock");
+            StartGame();
+
+            //The first time each turn a scheme enters or leaves play, play the top card of the villain deck.
+            GoToStartOfTurn(tempest);
+            FlipCard(baroness);
+            Card eternal = PutOnDeck("EternalSilence");
+            Card fang = PutOnDeck("FangAndClaw");
+            Card arcane = PlayCard("ArcaneVeins");
+            Card strength = PlayCard("VampiricStrength");
+            PutOnDeck(baroness,eternal);
+            PutOnDeck(baroness,fang);
+
+            GoToStartOfTurn(legacy);
+            DestroyCard(arcane);
+            AssertInTrash(fang);
+            DestroyCard(strength);
+            AssertOnTopOfDeck(eternal);
+        }
+
+        [Test()]
+        public void TestSchemeEntersThenLeavesPlay()
+        {
+            SetupGameController("VainFacadePlaytest.TheBaroness/TheBaronessSpiderCharacter", "Tempest", "Legacy", "Bunker", "Ra", "TheBlock");
+            StartGame();
+
+            //The first time each turn a scheme enters or leaves play, play the top card of the villain deck.
+
+            FlipCard(baroness);
+            Card eternal = PutOnDeck("EternalSilence");
+            Card fang = PutOnDeck("FangAndClaw");
+            Card arcane = PlayCard("ArcaneVeins");
+            AssertInTrash(fang);
+            DestroyCard(arcane);
+            AssertOnTopOfDeck(eternal);
+        }
+
+        [Test()]
+        public void TestCardDrawDamageIncrease()
+        {
+            SetupGameController("VainFacadePlaytest.TheBaroness/TheBaronessSpiderCharacter", "Tempest", "Legacy", "Bunker", "Ra", "TheBlock" );
+            StartGame();
+
+            //The first time each turn each player draws a card, increase the next damage dealt by {TheBaroness} by 1.
+
+            GoToStartOfTurn(tempest);
+            FlipCard(baroness);
+
+            //Check that next damage is increased
+            DrawCard(tempest);
+            QuickHPStorage(tempest);
+            DealDamage(baroness, tempest, 1, DamageType.Radiant);
+            QuickHPCheck(-2);
+
+            QuickHPStorage(tempest);
+            DealDamage(baroness, tempest, 1, DamageType.Radiant);
+            QuickHPCheck(-1);
+
+            //Check that damage is not increased on the next draw
+            DrawCard(tempest);
+            QuickHPStorage(tempest);
+            DealDamage(baroness, tempest, 1, DamageType.Radiant);
+            QuickHPCheck(-1);
+
+            //Check that damage is increased if a different hero draws
+            DrawCard(legacy);
+            QuickHPStorage(tempest);
+            DealDamage(baroness, tempest, 1, DamageType.Radiant);
+            QuickHPCheck(-2);
+        }
+
+        [Test()]
+        public void TestEndOfTurn()
+        {
+            SetupGameController("VainFacadePlaytest.TheBaroness/TheBaronessSpiderCharacter", "Tempest", "Legacy", "Bunker", "Ra", "TheBlock");
+            StartGame();
+
+            //At the end of the villain turn, play the top card of the villain deck. Then, {TheBaroness} deals the hero target with the highest HP {H} melee and {H} infernal damage.
+            FlipCard(baroness);
+            Card thirst = PutOnDeck("EndlessThirst");
+            Card undying = PutOnDeck("UndyingEssence");
+
+            QuickHPStorage(tempest,legacy, bunker, ra);
+            
+            GoToEndOfTurn(baroness);
+
+            AssertIsInPlay(undying);
+            AssertIsInPlay(thirst);
+            QuickHPCheck(0, -8, 0, 0);
         }
         #endregion
     }
