@@ -22,7 +22,7 @@ namespace VainFacadePlaytest.TheBaroness
             base.SpecialStringMaker.ShowHighestHP(1, null, new LinqCardCriteria(IsHeroTarget, "", false, false, "hero target", "hero targets")).Condition = () => this.Card.IsFlipped;
             base.SpecialStringMaker.ShowHasBeenUsedThisTurn(FirstSchemeThisTurn, "A scheme has already entered or left play this turn", "A scheme has not entered or left play this turn").Condition = () => this.Card.IsFlipped;
             base.SpecialStringMaker.ShowHasBeenUsedThisTurn(First5DamageThisTurn, $"{this.Card.Title} has already been dealt 5 damage this turn", $"{this.Card.Title} has not been dealt 5 damage this turn").Condition = () => this.Card.IsFlipped;
-            base.SpecialStringMaker.ShowHasBeenUsedThisTurn(FirstDrawThisTurn, "A card has already been drawn this turn", "No cards have been drawn this turn").Condition = () => this.Card.IsFlipped;
+            base.SpecialStringMaker.ShowSpecialString(HerosDrawnThisTurnSpecialString);
         }
 
         private string CardsInHandSpecialString()
@@ -30,6 +30,17 @@ namespace VainFacadePlaytest.TheBaroness
             int max = base.Game.HeroTurnTakers.Select((HeroTurnTaker htt) => htt.NumberOfCardsInHand).Max();
             List<string> names = base.Game.HeroTurnTakers.Where((HeroTurnTaker htt) => htt.NumberOfCardsInHand == max).Select((HeroTurnTaker htt) => htt.Name).ToList();
             return $"{names.ToCommaList(true)} {(names.Count() == 1 ? "has" : "have")} {max} cards in their hand";
+        }
+
+        private string HerosDrawnThisTurnSpecialString()
+        {
+            IEnumerable<DrawCardJournalEntry> e = base.GameController.Game.Journal.QueryJournalEntries((DrawCardJournalEntry ee) => true).Where(base.GameController.Game.Journal.ThisTurn<DrawCardJournalEntry>());
+            string drawn = e.Select((DrawCardJournalEntry d) => d.Hero.Name).Distinct().ToCommaList(true);
+            if (drawn == "")
+            {
+                drawn = "No heroes";
+            }
+            return drawn + $" {(e.Count() == 1 ? "has" : "have")} drawn a card this turn";
         }
 
         private string CardsInTrashSpecialString()
@@ -100,7 +111,7 @@ namespace VainFacadePlaytest.TheBaroness
                 AddSideTrigger(AddTrigger<DealDamageAction>((DealDamageAction dd) => !IsPropertyTrue(First5DamageThisTurn) && dd.Target == this.Card && dd.DidDealDamage && dd.Amount >= 5, GainBloodResponse, TriggerType.MoveCard, TriggerTiming.After));
 
                 //The first time each turn each player draws a card, increase the next damage dealt by The Baroness by 1.
-                AddSideTrigger(AddTrigger<DrawCardAction>((DrawCardAction dc) => !IsPropertyTrue(FirstDrawThisTurn), FirstDrawResponse, TriggerType.CreateStatusEffect, TriggerTiming.After, isActionOptional: false));
+                AddSideTrigger(AddTrigger<DrawCardAction>((DrawCardAction dc) =>  !IsPropertyTrue(GeneratePerTurnTakerKey(dc.HeroTurnTaker)), FirstDrawResponse, TriggerType.CreateStatusEffect, TriggerTiming.After, isActionOptional: false));
 
                 //At the end of the villain turn, play the top card of the villain deck.
                 //Then, The Baroness deals the hero target with the highest HP H melee and H infernal damage.
@@ -118,6 +129,11 @@ namespace VainFacadePlaytest.TheBaroness
                 //At the end of the villain turn, put the top card of each hero deck face down in the villain play area.
                 AddSideTrigger(AddEndOfTurnTrigger((TurnTaker tt) => tt == this.TurnTaker, EndOfTurnChallengeResponse, TriggerType.MoveCard));
             }
+        }
+
+        private string GeneratePerTurnTakerKey(TurnTaker hero)
+        {
+            return FirstDrawThisTurn + this.Card.Title + hero.Name;
         }
 
         private bool FlipCriteria(PhaseChangeAction pca)
@@ -364,7 +380,7 @@ namespace VainFacadePlaytest.TheBaroness
 
         private IEnumerator FirstDrawResponse(DrawCardAction dc)
         {
-            SetCardProperty(FirstDrawThisTurn, true);
+            SetCardProperty(GeneratePerTurnTakerKey(dc.HeroTurnTaker), true);
             IncreaseDamageStatusEffect effect = new IncreaseDamageStatusEffect(1);
             effect.NumberOfUses = 1;
             effect.SourceCriteria.IsSpecificCard = this.Card;

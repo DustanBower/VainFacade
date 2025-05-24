@@ -34,9 +34,21 @@ namespace VainFacadePlaytest.TheBaroness
         private IEnumerator EndOfTurnResponse(PhaseChangeAction pca)
         {
             //...for every 3 HP this card possesses, play the top card of the environment deck.
+            int n = this.Card.HitPoints.Value / 3;
+            IEnumerator message = base.GameController.SendMessageAction($"{this.Card.Title} plays {n} {(n == 1 ? "card" : "cards")} from the environment deck!", Priority.Medium, GetCardSource());
+            if (base.UseUnityCoroutines)
+            {
+                yield return base.GameController.StartCoroutine(message);
+            }
+            else
+            {
+                base.GameController.ExhaustCoroutine(message);
+            }
+
             int i = 3;
             while (this.Card.HitPoints.HasValue && i <= this.Card.HitPoints)
             {
+                
                 IEnumerator coroutine = PlayTheTopCardOfTheEnvironmentDeckResponse(null);
                 if (base.UseUnityCoroutines)
                 {
