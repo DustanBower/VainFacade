@@ -21,14 +21,18 @@ namespace VainFacadePlaytest.TheBaroness
 
         protected const string GivenBlood = "HasGivenBloodThisTurn";
 
+        private string BloodHealKey = "BloodHealKey";
+
         public override void AddTriggers()
         {
             base.AddTriggers();
             // "The first time each turn {TheBaroness} deals each hero target melee damage, put the top card of that target's deck face-down in the villain play area."
-            AddTrigger((DealDamageAction dda) => (IsHeroTarget(dda.Target) || (dda.Target.IsHeroCharacterCard && !dda.Target.IsEnvironmentTarget && !dda.Target.IsVillainTarget)) && !IsPropertyTrue(GeneratePerTargetKey(GivenBlood, dda.Target)) && dda.DidDealDamage && dda.DamageType == DamageType.Melee && dda.DamageSource != null && dda.DamageSource.IsCard && dda.DamageSource.Card == base.CharacterCard, FirstDrinkResponse, TriggerType.MoveCard, TriggerTiming.After);
+            AddTrigger((DealDamageAction dda) => dda.WasHeroTarget && !IsPropertyTrue(GeneratePerTargetKey(GivenBlood, dda.Target)) && dda.DidDealDamage && dda.DamageType == DamageType.Melee && dda.DamageSource != null && dda.DamageSource.IsCard && dda.DamageSource.IsSameCard(base.CharacterCard), FirstDrinkResponse, TriggerType.MoveCard, TriggerTiming.After);
             AddAfterLeavesPlayAction((GameAction ga) => ResetFlagsAfterLeavesPlay(GivenBlood), TriggerType.Hidden);
             // "When a card becomes Blood, {TheBaroness} regains 1 HP."
-            AddTrigger((MoveCardAction mca) => mca.CardToMove.IsFaceDownNonCharacter && mca.CardToMove.IsHero && mca.WasCardMoved && mca.Destination.IsPlayAreaOf(base.TurnTaker) && !mca.Origin.IsPlayAreaOf(base.TurnTaker), (MoveCardAction mca) => base.GameController.GainHP(base.CharacterCard, 1, cardSource: GetCardSource()), TriggerType.GainHP, TriggerTiming.After);
+            AddTrigger((MoveCardAction mca) => !IsPropertyTrue(GeneratePerTargetKey(BloodHealKey,mca.CardToMove)) && mca.CardToMove.IsFaceDownNonCharacter && mca.CardToMove.IsHero && mca.WasCardMoved && mca.Destination.IsPlayAreaOf(base.TurnTaker) && !mca.Origin.IsPlayAreaOf(base.TurnTaker), (MoveCardAction mca) => HealResponse(mca.CardToMove), TriggerType.GainHP, TriggerTiming.After);
+            AddTrigger((FlipCardAction fca) => !IsPropertyTrue(GeneratePerTargetKey(BloodHealKey, fca.CardToFlip.Card)) && fca.ToFaceDown && fca.CardToFlip.Card.Location.HighestRecursiveLocation == this.TurnTaker.PlayArea, (FlipCardAction fca) => HealResponse(fca.CardToFlip.Card), TriggerType.GainHP, TriggerTiming.After);
+            AddAfterLeavesPlayAction((GameAction ga) => ResetFlagsAfterLeavesPlay(BloodHealKey), TriggerType.Hidden);
         }
 
         private IEnumerator FirstDrinkResponse(DealDamageAction dda)
@@ -56,6 +60,20 @@ namespace VainFacadePlaytest.TheBaroness
                 result = true;
             }
             return result;
+        }
+
+        private IEnumerator HealResponse(Card blood)
+        {
+            SetCardProperty(GeneratePerTargetKey(BloodHealKey, blood), true);
+            IEnumerator coroutine = base.GameController.GainHP(base.CharacterCard, 1, cardSource: GetCardSource());
+            if (base.UseUnityCoroutines)
+            {
+                yield return base.GameController.StartCoroutine(coroutine);
+            }
+            else
+            {
+                base.GameController.ExhaustCoroutine(coroutine);
+            }
         }
     }
 }

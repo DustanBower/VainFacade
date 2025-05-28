@@ -6,7 +6,10 @@
 		"TheBaronessCharacter"
 	],
 	"initialOffToTheSideCardIdentifiers": [
-		"Bat"
+		"Bat",
+		"JustBusiness",
+		"PoliticsAsUsual",
+		"SecretSocieties"
 	],
 	"cards": [
 		{
@@ -460,6 +463,186 @@
 				}
 			],
 			"flavorReference": ""
+		},
+		{
+			"identifier": "JustBusiness",
+			"count": 1,
+			"title": "Just Business",
+			"character": true,
+			"hitpoints": 12,
+			"hitpointsText": "*",
+			"flippedShowHitpoints": false,
+			"keywords": [
+				"web"
+			],
+			"nemesisIdentifiers": [
+				"VainFacadePlaytest.Node"
+			],
+			"body": [
+				"Caught in the Web"
+			],
+			"gameplay": [
+				"* on this card = 3 times {H}",
+				"At the end of the environment turn, for every 3 HP this card possesses, a player discards a card.",
+				"When this card would be destroyed, flip it instead."
+			],
+			"icons": [
+				"EndOfTurnAction",
+				"Discard"
+			],
+			"flippedBody": "Along Came a Spider",
+			"flippedGameplay": [
+				"When this card is destroyed, remove it from the game.",
+				"At the end of the environment turn, each player may play up to 2 cards. If a card entered play this way, destroy this card."
+			],
+			"flippedIcons": [
+				"RemoveFromGame",
+				"EndOfTurnAction",
+				"PlayCardNow",
+				"DestroySelf"
+			]
+		},
+		{
+			"identifier": "PoliticsAsUsual",
+			"count": 1,
+			"title": "Politics as Usual",
+			"character": true,
+			"hitpoints": 12,
+			"hitpointsText": "*",
+			"flippedShowHitpoints": false,
+			"keywords": [
+				"web"
+			],
+			"nemesisIdentifiers": [
+				"VainFacadePlaytest.Node"
+			],
+			"body": [
+				"Caught in the Web"
+			],
+			"gameplay": [
+				"* on this card = 3 times {H}",
+				"At the end of the environment turn, for every 3 HP this card possesses, play the top card of the environment deck.",
+				"When this card would be destroyed, flip it instead."
+			],
+			"icons": [
+				"EndOfTurnAction",
+				"PlayCardNow"
+			],
+			"flippedBody": "Along Came a Spider",
+			"flippedGameplay": [
+				"When this card is destroyed, remove it from the game.",
+				"At the end of the environment turn, each player may discard a card to draw 2 cards. If a card is discarded this way, destroy this card."
+			],
+			"flippedIcons": [
+				"RemoveFromGame",
+				"EndOfTurnAction",
+				"Discard",
+				"DrawCardNow",
+				"DestroySelf"
+			]
+		},
+		{
+			"identifier": "SecretSocieties",
+			"count": 1,
+			"title": "Secret Societies",
+			"character": true,
+			"hitpoints": 12,
+			"hitpointsText": "*",
+			"flippedShowHitpoints": false,
+			"keywords": [
+				"web"
+			],
+			"nemesisIdentifiers": [
+				"VainFacadePlaytest.Node"
+			],
+			"body": [
+				"Caught in the Web"
+			],
+			"gameplay": [
+				"* on this card = 3 times {H}",
+				"At the end of the environment turn, for every 3 HP this card possesses, increase the next damage dealt by {TheBaroness} by 1.",
+				"When this card would be destroyed, flip it instead."
+			],
+			"icons": [
+				"EndOfTurnAction",
+				"IncreaseDamageDealt"
+			],
+			"flippedBody": "Along Came a Spider",
+			"flippedGameplay": [
+				"When this card is destroyed, remove it from the game.",
+				"At the end of the environment turn, each player may play a card and use a power. If a card enters play or a power is used this way, destroy this card."
+			],
+			"flippedIcons": [
+				"RemoveFromGame",
+				"EndOfTurnAction",
+				"PlayCardNow",
+				"UsePowerNow",
+				"DestroySelf"
+			]
+		}
+	],
+	"promoCards": [
+		{
+			"identifier": "TheBaronessCharacter",
+			"promoIdentifier": "TheBaronessSpiderCharacter",
+			"count": 1,
+			"title": "The Baroness",
+			"promoTitle": "The Baroness: A Spider Never Blinks",
+			"keywords": [
+				"villain",
+				"vampire"
+			],
+			"icons": [
+				"Indestructible",
+				"CannotPlayCards",
+				"StartOfTurnAction"
+			],
+			"body": "Caught in the Web",
+			"backgroundColor": "ff0000",
+			"character": true,
+			"flippedHitpoints": 91,
+			"nemesisIdentifiers": [
+				"VainFacadePlaytest.Node"
+			],
+			"setup": "Put {TheBaroness}'s character card, {JustBusiness}, {PoliticsAsUsual}, and {SecretSocieties} into play in the environment play area, “Caught in the Web” side up. Put the card {Vampirism} into play.",
+			"gameplay": [
+				"{Vampirism} is indestructible.",
+				"Cards cannot be played or put into play from the villain deck.",
+				"At the start of the villain turn, remove each villain web from the game and flip {TheBaroness}'s character cards if any of the following conditions are met:",
+				"{Any player has 7 or more cards in their hand.",
+				"{Any player has 7 or more cards in their trash.",
+				"{Any player has 3 or more non-character ongoing, equipment, or target cards in play.",
+				"{There are no villain web targets in play."
+			],
+			"advanced": "Reduce damage dealt to webs by 1.",
+			"advancedIcons": [
+				"ReduceDamageTaken"
+			],
+			"flippedIcons": [
+				"MakeDamageIrreducible",
+				"PlayCardNow",
+				"FlipFaceDown",
+				"IncreaseDamageDealt",
+				"EndOfTurnAction",
+				"DealDamageMelee",
+				"DealDamageInfernal"
+			],
+			"flippedBody": "Along Came a Spider",
+			"flippedGameplay": [
+				"{Vampirism} is indestructible.",
+				"Radiant damage dealt to villan targets is irreducible.",
+				"The first time each turn a scheme enters or leaves play, play the top card of the villain deck.",
+				"The first time each turn {TheBaroness} is dealt 5 or more damage at once, put a non-character hero card in play face down in the villain play area.",
+				"The first time each turn each player draws a card, increase the next damage dealt by {TheBaroness} by 1.",
+				"At the end of the villain turn, play the top card of the villain deck. Then, {TheBaroness} deals the hero target with the highest HP {H} melee and {H} infernal damage."
+			],
+			"flippedAdvanced": "Increase damage dealt by {TheBaroness} by 1.",
+			"challengeTitle": "Killer Instinct",
+			"challengeText": "At the end of the villain turn, put the top card of each hero deck face down in the villain play area.",
+			"challengeIcons": [
+				"EndOfTurnAction"
+			],
+			"difficulty": 4
 		}
 	]
 }

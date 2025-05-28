@@ -142,6 +142,19 @@ namespace VainFacadeTest
             AssertIsInPlay(rockslide);
             AssertAtLocation(sbd, akash.TurnTaker.PlayArea);
         }
+
+        [Test()]
+        public void TestMacguffin_NoTargets()
+        {
+            SetupGameController("AkashBhuta", "VainFacadePlaytest.Carnaval", "Legacy", "Bunker", "TheScholar", "InsulaPrimalis");
+            StartGame();
+
+            GoToPlayCardPhase(FindEnvironment());
+            PlayCard("ObsidianField");
+            Card macguffin = PlayCard("ExplosiveMacguffin");
+            DiscardCard(legacy);
+            AssertInTrash(macguffin);
+        }
     }
 }
 
