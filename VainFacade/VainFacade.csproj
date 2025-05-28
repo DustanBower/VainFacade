@@ -443,6 +443,7 @@
     <Compile Include="Sphere\X51QuantumFieldStabilizerCardController.cs" />
     <Compile Include="TheBaroness\AgelessEnmityCardController.cs" />
     <Compile Include="TheBaroness\ArcaneVeinsCardController.cs" />
+    <Compile Include="TheBaroness\BaronessBaseCardController.cs" />
     <Compile Include="TheBaroness\BaronessUtilityCardController.cs" />
     <Compile Include="TheBaroness\BatCardController.cs" />
     <Compile Include="TheBaroness\ByTheThroatCardController.cs" />
@@ -452,12 +453,17 @@
     <Compile Include="TheBaroness\EndlessThirstCardController.cs" />
     <Compile Include="TheBaroness\EternalSilenceCardController.cs" />
     <Compile Include="TheBaroness\FangAndClawCardController.cs" />
+    <Compile Include="TheBaroness\JustBusinessCardController.cs" />
+    <Compile Include="TheBaroness\PoliticsAsUsualCardController.cs" />
+    <Compile Include="TheBaroness\SecretSocietiesCardController.cs" />
     <Compile Include="TheBaroness\TheBaronessCharacterCardController.cs" />
+    <Compile Include="TheBaroness\TheBaronessSpiderCharacterCardController.cs" />
     <Compile Include="TheBaroness\TheBaronessTurnTakerController.cs" />
     <Compile Include="TheBaroness\TwistedPerceptionsCardController.cs" />
     <Compile Include="TheBaroness\UndyingEssenceCardController.cs" />
     <Compile Include="TheBaroness\VampiricStrengthCardController.cs" />
     <Compile Include="TheBaroness\VampirismCardController.cs" />
+    <Compile Include="TheBaroness\WebCardController.cs" />
     <Compile Include="TheBaroness\WingedTerrorCardController.cs" />
     <Compile Include="TheFury\AbyssalGazeCardController.cs" />
     <Compile Include="TheFury\AllottedTimeCardController.cs" />
