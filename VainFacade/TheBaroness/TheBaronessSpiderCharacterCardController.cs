@@ -29,7 +29,7 @@ namespace VainFacadePlaytest.TheBaroness
         {
             int max = base.Game.HeroTurnTakers.Select((HeroTurnTaker htt) => htt.NumberOfCardsInHand).Max();
             List<string> names = base.Game.HeroTurnTakers.Where((HeroTurnTaker htt) => htt.NumberOfCardsInHand == max).Select((HeroTurnTaker htt) => htt.Name).ToList();
-            return $"{names.ToCommaList(true)} {(names.Count() == 1 ? "has" : "have")} {max} cards in their hand";
+            return $"{names.ToCommaList(true)} {(names.Count() == 1 ? "has" : "have")} {max} {(max == 1 ? "card" : "cards")} in their hand";
         }
 
         private string HerosDrawnThisTurnSpecialString()
@@ -47,14 +47,14 @@ namespace VainFacadePlaytest.TheBaroness
         {
             int max = base.Game.HeroTurnTakers.Select((HeroTurnTaker htt) => htt.Trash.NumberOfCards).Max();
             List<string> names = base.Game.HeroTurnTakers.Where((HeroTurnTaker htt) => htt.Trash.NumberOfCards == max).Select((HeroTurnTaker htt) => htt.Name).ToList();
-            return $"{names.ToCommaList(true)} {(names.Count() == 1 ? "has" : "have")} {max} cards in their trash";
+            return $"{names.ToCommaList(true)} {(names.Count() == 1 ? "has" : "have")} {max} {(max == 1 ? "card" : "cards")} in their trash";
         }
 
         private string CardsInPlaySpecialString()
         {
-            int max = base.Game.HeroTurnTakers.Select((HeroTurnTaker htt) => FindCardsWhere((Card c) => !c.IsCharacter && c.Owner == htt && c.IsInPlay).Count()).Max();
+            int max = base.Game.HeroTurnTakers.Select((HeroTurnTaker htt) => FindCardsWhere((Card c) => !c.IsCharacter && c.Owner == htt && c.IsInPlayAndHasGameText && (IsOngoing(c) || IsEquipment(c) || c.IsTarget)).Count()).Max();
             List<string> names = base.Game.HeroTurnTakers.Where((HeroTurnTaker htt) => FindCardsWhere((Card c) => !c.IsCharacter && c.Owner == htt && c.IsInPlayAndHasGameText && (IsOngoing(c) || IsEquipment(c) || c.IsTarget)).Count() == max).Select((HeroTurnTaker htt) => htt.Name).ToList();
-            return $"{names.ToCommaList(true)} {(names.Count() == 1 ? "has" : "have")} {max} non-character cards in play";
+            return $"{names.ToCommaList(true)} {(names.Count() == 1 ? "has" : "have")} {max} non-character ongoing, equipment, or target {(max == 1 ? "card" : "cards")} in play";
         }
 
         protected const string VampirismIdentifier = "Vampirism";
@@ -140,7 +140,7 @@ namespace VainFacadePlaytest.TheBaroness
         {
             //Any player has 7 or more cards in their hand.
             //Any player has 7 or more cards in their trash.
-            //Any player has 3 or more non-character cards in play.
+            //Any player has 3 or more non-character ongoing, equipment, or target cards in play.
             //There are no villain web targets in play.
 
             bool flag = FindTurnTakersWhere((TurnTaker tt) => tt.IsPlayer && !tt.IsIncapacitatedOrOutOfGame && tt.ToHero().NumberOfCardsInHand >= 7).Any();
