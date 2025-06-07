@@ -19,11 +19,67 @@ namespace VainFacadePlaytest.Ember
             SpecialStringMaker.ShowIfElseSpecialString(() => TimesHealedThisTurn() > 0, () => "HP has been regained " + TimesHealedThisTurn().ToString() + " " + TimesHealedThisTurn().ToString_SingularOrPlural("time", "times") + " with " + base.Card.Title + " this turn.", () => "HP has not been regained with " + base.Card.Title + " this turn.").Condition = () => base.Card.IsInPlayAndHasGameText;
         }
 
+        private string BasicMode = "CleansingFireBasicMode";
+        private string ModeSelected = "CleansingFireModeSelected";
+
+        public override IEnumerator Play()
+        {
+            if (!IsPropertyTrue(ModeSelected))
+            {
+                IEnumerator coroutine = SetModeResponse();
+                if (base.UseUnityCoroutines)
+                {
+                    yield return base.GameController.StartCoroutine(coroutine);
+                }
+                else
+                {
+                    base.GameController.ExhaustCoroutine(coroutine);
+                }
+            }
+        }
+
         public override void AddTriggers()
         {
             base.AddTriggers();
             // "When {EmberCharacter} would deal a target fire damage, that target may regain that much HP instead. Reduce HP gained this way by 1 for each time HP has been regained this way this turn, to a minimum of 1."
-            AddOptionalPreventDamageTrigger((DealDamageAction dda) => dda.DamageSource != null && dda.DamageSource.IsSameCard(base.CharacterCard) && dda.DamageType == DamageType.Fire && dda.Amount > 0, GainHPBasedOnDamagePrevented, new TriggerType[] { TriggerType.GainHP }, false);
+            AddOptionalPreventDamageTrigger(CleansingFireCriteria, GainHPBasedOnDamagePrevented, new TriggerType[] { TriggerType.GainHP }, false);
+
+            //Ask what mode to use at the start of Ember's turn
+            AddStartOfTurnTrigger((TurnTaker tt) => tt == this.TurnTaker && !IsPropertyTrue(ModeSelected), (PhaseChangeAction pca) => SetModeResponse(), TriggerType.Hidden);
+            AddAfterLeavesPlayAction(() => ResetFlagAfterLeavesPlay(BasicMode));
+            AddAfterLeavesPlayAction(() => ResetFlagAfterLeavesPlay(ModeSelected));
+        }
+
+        //Based on Diving Save
+        private IEnumerator SetModeResponse()
+        {
+            SelectFunctionDecision selectControlMode = new SelectFunctionDecision(functionChoices: new List<Function>
+            {
+                new Function(base.HeroTurnTakerController, "Basic Control: Only allow Cleansing Fire to heal hero targets", SelectionType.None, () => SetFlags(flag: true)),
+                new Function(base.HeroTurnTakerController, "Full Control: Allow Cleansing Fire to heal any target", SelectionType.None, () => SetFlags(flag: false))
+            }, gameController: base.GameController, hero: base.HeroTurnTakerController, optional: false, gameAction: null, noSelectableFunctionMessage: null, associatedCards: null, cardSource: GetCardSource());
+            IEnumerator performFunction = base.GameController.SelectAndPerformFunction(selectControlMode, null, new Card[1] { base.Card });
+            if (base.UseUnityCoroutines)
+            {
+                yield return base.GameController.StartCoroutine(performFunction);
+            }
+            else
+            {
+                base.GameController.ExhaustCoroutine(performFunction);
+            }
+        }
+
+        //Based on Diving Save
+        private IEnumerator SetFlags(bool flag)
+        {
+            SetCardProperty(BasicMode, flag);
+            SetCardProperty(ModeSelected, value: true);
+            yield return null;
+        }
+
+        private bool CleansingFireCriteria(DealDamageAction dda)
+        {
+            return dda.DamageSource != null && dda.DamageSource.IsSameCard(base.CharacterCard) && dda.DamageType == DamageType.Fire && dda.Amount > 0 && (IsHeroTarget(dda.Target) || !IsPropertyCurrentlyTrue(BasicMode));
         }
 
         public int TimesHealedThisTurn()
@@ -90,7 +146,7 @@ namespace VainFacadePlaytest.Ember
                 GameController.ExhaustCoroutine(enumerator);
                 return DoNothing();
             };
-            ITrigger result = AddTrigger((DealDamageAction dd) => damageCriteria(dd) && dd.Amount > 0 && dd.CanDealDamage, response, TriggerType.WouldBeDealtDamage, TriggerTiming.Before, isActionOptional: true);
+            ITrigger result = AddTrigger((DealDamageAction dd) => damageCriteria(dd) && dd.Amount > 0 && dd.CanDealDamage, response, new TriggerType[] { TriggerType.WouldBeDealtDamage, TriggerType.CancelAction }, TriggerTiming.Before, isActionOptional: true);
             if (followUpResponse != null && followUpTriggerTypes != null)
             {
                 AddTrigger((DealDamageAction dd) => dd == preventedDamage && !dd.IsSuccessful && cancelDamage != null && cancelDamage.FirstOrDefault() != null && cancelDamage.First().CardSource.Card == Card, response2, followUpTriggerTypes, TriggerTiming.After, null, isConditional: false, requireActionSuccess: false);
@@ -121,15 +177,18 @@ namespace VainFacadePlaytest.Ember
                 RememberedTarget = ga.Target;
                 if (DidPlayerAnswerYes(storedYesNo))
                 {
+                    Console.WriteLine("Cleansing Fire - answered yes");
                     DecisionShouldHeal = true;
                 }
                 else
                 {
+                    Console.WriteLine("Cleansing Fire - answered no");
                     DecisionShouldHeal = false;
                 }
             }
             if (DecisionShouldHeal == true)
             {
+                Console.WriteLine("Cleansing Fire - canceling damage");
                 IEnumerator coroutine = base.CancelAction(ga, showOutput: showOutput, cancelFutureRelatedDecisions: cancelFutureRelatedDecisions, storedResults: storedResults, isPreventEffect: isPreventEffect);
                 if (base.UseUnityCoroutines)
                 {
@@ -143,6 +202,7 @@ namespace VainFacadePlaytest.Ember
 
             if (IsRealAction(ga))
             {
+                Console.WriteLine("Cleansing Fire - resetting variables");
                 RememberedTarget = null;
                 DecisionShouldHeal = null;
             }
