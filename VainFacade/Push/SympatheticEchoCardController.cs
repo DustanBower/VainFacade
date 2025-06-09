@@ -23,18 +23,78 @@ namespace VainFacadePlaytest.Push
         private DamageType? _selectedDamageType;
         public Card CardToDiscard { get; set; }
 
+        private string BasicMode = "SympatheticEchoBasicMode";
+        private string ModeSelected = "SympatheticEchoModeSelected";
+
+        public override IEnumerator Play()
+        {
+            if (!IsPropertyCurrentlyTrue(ModeSelected))
+            {
+                IEnumerator coroutine = SetModeResponse();
+                if (base.UseUnityCoroutines)
+                {
+                    yield return base.GameController.StartCoroutine(coroutine);
+                }
+                else
+                {
+                    base.GameController.ExhaustCoroutine(coroutine);
+                }
+            }
+        }
+
         public override void AddTriggers()
         {
             //Once per turn, when damage would be dealt to a target, you may discard a card to change the damage type to projectile or melee.
             //Based on Mind over Matter
 
-            AddTrigger<DealDamageAction>((DealDamageAction dd) => !IsPropertyTrue(ChangeDamageTypeKey), ChangeTypeResponse, new TriggerType[1] { TriggerType.ChangeDamageType }, TriggerTiming.Before);
+            AddTrigger<DealDamageAction>(ChangeDamageTypeCriteria, ChangeTypeResponse, new TriggerType[1] { TriggerType.ChangeDamageType }, TriggerTiming.Before);
 
-            //The first time each turn melee, projectile, or sonic damage is dealt to Push by any target, Push may deal the source of that damage 3 projectile damage.
+            //The first time each turn melee, projectile, or sonic damage is dealt to Push by a target, Push may deal the source of that damage 3 projectile damage.
             AddTrigger<DealDamageAction>((DealDamageAction dd) => !IsPropertyTrue(FirstDamageKey)  && (dd.DamageType == DamageType.Melee || dd.DamageType == DamageType.Projectile || dd.DamageType == DamageType.Sonic) && dd.DamageSource.IsTarget && dd.Target == this.CharacterCard && dd.DidDealDamage, CounterDamageResponse, TriggerType.DealDamage, TriggerTiming.After);
 
             AddAfterLeavesPlayAction((GameAction ga) => ResetFlagAfterLeavesPlay(FirstDamageKey), TriggerType.Hidden);
             AddAfterLeavesPlayAction((GameAction ga) => ResetFlagAfterLeavesPlay(ChangeDamageTypeKey), TriggerType.Hidden);
+
+            //Ask what mode to use at the start of Push's turn
+            AddStartOfTurnTrigger((TurnTaker tt) => tt == this.TurnTaker && !IsPropertyTrue(ModeSelected), (PhaseChangeAction pca) => SetModeResponse(), TriggerType.Hidden);
+            AddAfterLeavesPlayAction(() => ResetFlagAfterLeavesPlay(BasicMode));
+            AddAfterLeavesPlayAction(() => ResetFlagAfterLeavesPlay(ModeSelected));
+        }
+
+        //Based on Diving Save
+        private IEnumerator SetModeResponse()
+        {
+            SelectFunctionDecision selectControlMode = new SelectFunctionDecision(functionChoices: new List<Function>
+            {
+                new Function(base.HeroTurnTakerController, $"Basic Control: Only allow {this.Card.Title} to change damage type dealt to {this.CharacterCard.Title}", SelectionType.None, () => SetFlags(flag: true)),
+                new Function(base.HeroTurnTakerController, $"Full Control: Allow {this.Card.Title} to change damage type dealt to any target", SelectionType.None, () => SetFlags(flag: false))
+            }, gameController: base.GameController, hero: base.HeroTurnTakerController, optional: false, gameAction: null, noSelectableFunctionMessage: null, associatedCards: null, cardSource: GetCardSource());
+            IEnumerator performFunction = base.GameController.SelectAndPerformFunction(selectControlMode, null, new Card[1] { base.Card });
+            if (base.UseUnityCoroutines)
+            {
+                yield return base.GameController.StartCoroutine(performFunction);
+            }
+            else
+            {
+                base.GameController.ExhaustCoroutine(performFunction);
+            }
+        }
+
+        //Based on Diving Save
+        private IEnumerator SetFlags(bool flag)
+        {
+            IEnumerable<Card> GotHim = base.TurnTaker.GetCardsByIdentifier(this.Card.Identifier);
+            foreach (Card ds in GotHim)
+            {
+                base.GameController.FindCardController(ds).SetCardProperty(BasicMode, flag);
+                base.GameController.FindCardController(ds).SetCardProperty(ModeSelected, value: true);
+            }
+            yield return null;
+        }
+
+        private bool ChangeDamageTypeCriteria(DealDamageAction dda)
+        {
+            return !IsPropertyTrue(ChangeDamageTypeKey) && (dda.Target == this.CharacterCard || !IsPropertyCurrentlyTrue(BasicMode));
         }
 
         private IEnumerator CounterDamageResponse(DealDamageAction dd)
@@ -72,7 +132,7 @@ namespace VainFacadePlaytest.Push
 
                 if (DidPlayerAnswerYes(YesNoResults))
                 {
-                    coroutine = base.GameController.SelectAndDiscardCard(DecisionMaker, true, null, discardResults, dealDamageInfo: new DealDamageAction[] { dd }, cardSource: GetCardSource());
+                    coroutine = base.GameController.SelectAndDiscardCard(DecisionMaker, true, null, discardResults, responsibleTurnTaker: this.TurnTaker, dealDamageInfo: new DealDamageAction[] { dd }, cardSource: GetCardSource());
                     if (base.UseUnityCoroutines)
                     {
                         yield return base.GameController.StartCoroutine(coroutine);
