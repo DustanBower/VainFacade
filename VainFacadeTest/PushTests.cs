@@ -723,6 +723,7 @@ namespace VainFacadeTest
             StartGame();
             //Once per turn, when damage would be dealt to a target, you may discard a card to change the damage type to projectile or melee.
             //The first time each turn melee, projectile, or sonic damage is dealt to {Push} by a target, {Push} may deal the source of that damage 3 projectile damage.
+            DecisionSelectFunction = 1; //Select full control mode
             Card echo = PlayCard("SympatheticEcho");
             Card feedback = PutInHand("FeedbackBounce");
             Card folding = PutInHand("FoldingForces");
@@ -757,6 +758,7 @@ namespace VainFacadeTest
 
             //Check that it can trigger again next turn
             ResetDecisions();
+            DecisionSelectFunction = 1; //Select full control mode
             GoToStartOfTurn(push);
             DecisionYesNo = true;
             DecisionSelectCard = phase;
