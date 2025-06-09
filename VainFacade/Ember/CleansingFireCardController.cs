@@ -55,8 +55,8 @@ namespace VainFacadePlaytest.Ember
         {
             SelectFunctionDecision selectControlMode = new SelectFunctionDecision(functionChoices: new List<Function>
             {
-                new Function(base.HeroTurnTakerController, "Basic Control: Only allow Cleansing Fire to heal hero targets", SelectionType.None, () => SetFlags(flag: true)),
-                new Function(base.HeroTurnTakerController, "Full Control: Allow Cleansing Fire to heal any target", SelectionType.None, () => SetFlags(flag: false))
+                new Function(base.HeroTurnTakerController, $"Basic Control: Only allow {this.Card.Title} to heal hero targets", SelectionType.None, () => SetFlags(flag: true)),
+                new Function(base.HeroTurnTakerController, $"Full Control: Allow {this.Card.Title} to heal any target", SelectionType.None, () => SetFlags(flag: false))
             }, gameController: base.GameController, hero: base.HeroTurnTakerController, optional: false, gameAction: null, noSelectableFunctionMessage: null, associatedCards: null, cardSource: GetCardSource());
             IEnumerator performFunction = base.GameController.SelectAndPerformFunction(selectControlMode, null, new Card[1] { base.Card });
             if (base.UseUnityCoroutines)
