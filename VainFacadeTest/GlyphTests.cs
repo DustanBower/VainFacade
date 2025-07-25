@@ -1245,6 +1245,32 @@ namespace VainFacadeTest
         }
 
         [Test()]
+        public void TestSympatheticCastingDuplicates()
+        {
+            SetupGameController("AkashBhuta", "VainFacadePlaytest.Glyph", "Legacy", "Bunker", "TheScholar", "InsulaPrimalis");
+            StartGame();
+
+            //Power: Select a play area. X on this card = the number of your face-down cards in that area. {Glyph} deals herself and 1 target in that play area X irreducible infernal damage each, then {Glyph} deals that target X fire damage.
+            DecisionYesNo = true;
+            DecisionSelectTurnTaker = akash.TurnTaker;
+            PlayCard("SigiledBlade");
+            PlayCard("EmbroideredCloak");
+            PlayCard("SuntulusCompendium");
+
+            DecisionSelectTurnTaker = legacy.TurnTaker;
+            PlayCard("MilektithasDarkSummonsFate");
+
+            ResetDecisions();
+            DecisionSelectTurnTaker = akash.TurnTaker;
+
+            DecisionYesNo = false;
+            Card casting = PlayCard("SympatheticCastingFate");
+            QuickHPStorage(akash, glyph);
+            UsePower(casting);
+            QuickHPCheck(-2, -1);
+        }
+
+        [Test()]
         public void TestUnspokenDecreeDeath()
         {
             SetupGameController("AkashBhuta", "VainFacadePlaytest.Glyph", "Legacy", "Bunker", "TheScholar", "InsulaPrimalis");
