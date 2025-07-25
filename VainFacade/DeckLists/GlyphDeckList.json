@@ -327,7 +327,7 @@
 						"death"
 					],
 					"powers": [
-						"Select a play area. X on this card = the number of your face-down cards in that area. {Glyph} deals herself and 1 target in that play area X irreducible infernal damage each, then {Glyph} deals that target X fire damage."
+						"Select a play area. X on this card = the number of different visible keywords on your face-down cards in that area. {Glyph} deals herself and 1 target in that play area X irreducible infernal damage each, then {Glyph} deals that target X fire damage."
 					],
 					"icons": [
 						"HasPower",
@@ -561,7 +561,7 @@
 						"destruction"
 					],
 					"powers": [
-						"Select a play area. X on this card = the number of your face-down cards in that area. {Glyph} deals herself and 1 target in that play area X irreducible infernal damage each, then {Glyph} deals that target X fire damage."
+						"Select a play area. X on this card = the number of different visible keywords on your face-down cards in that area. {Glyph} deals herself and 1 target in that play area X irreducible infernal damage each, then {Glyph} deals that target X fire damage."
 					],
 					"icons": [
 						"HasPower",
@@ -836,7 +836,7 @@
 						"fate"
 					],
 					"powers": [
-						"Select a play area. X on this card = the number of your face-down cards in that area. {Glyph} deals herself and 1 target in that play area X irreducible infernal damage each, then {Glyph} deals that target X fire damage."
+						"Select a play area. X on this card = the number of different visible keywords on your face-down cards in that area. {Glyph} deals herself and 1 target in that play area X irreducible infernal damage each, then {Glyph} deals that target X fire damage."
 					],
 					"icons": [
 						"HasPower",
