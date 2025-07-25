@@ -18,7 +18,7 @@ namespace VainFacadePlaytest.Glyph
 
         public override IEnumerator UsePower(int index = 0)
         {
-            //Select a play area. X on this card = the number of your face-down cards in that area. {Glyph} deals herself and 1 target in that play area X irreducible infernal damage each, then {Glyph} deals that target X fire damage.
+            //Select a play area. X on this card = the number of different visible keywords on your face-down cards in that area. {Glyph} deals herself and 1 target in that play area X irreducible infernal damage each, then {Glyph} deals that target X fire damage.
             int num = GetPowerNumeral(0, 1);
 
             List<SelectTurnTakerDecision> results = new List<SelectTurnTakerDecision>();
@@ -35,7 +35,28 @@ namespace VainFacadePlaytest.Glyph
             if (DidSelectTurnTaker(results))
             {
                 TurnTaker selected = GetSelectedTurnTaker(results);
-                int X = FindCardsWhere((Card c) => IsGlyphFaceDownCard(c) && c.Location.HighestRecursiveLocation == selected.PlayArea).Count();
+                IEnumerable<Card> faceDownCards = FindCardsWhere((Card c) => IsGlyphFaceDownCard(c) && c.Location.HighestRecursiveLocation == selected.PlayArea);
+                int X = 0;
+                if (faceDownCards.Any(IsFaceDownMight))
+                {
+                    X++;
+                }
+                if (faceDownCards.Any(IsFaceDownInsight))
+                {
+                    X++;
+                }
+                if (faceDownCards.Any(IsFaceDownFate))
+                {
+                    X++;
+                }
+                if (faceDownCards.Any(IsFaceDownDestruction))
+                {
+                    X++;
+                }
+                if (faceDownCards.Any(IsFaceDownDeath))
+                {
+                    X++;
+                }
 
                 coroutine = DealDamage(this.CharacterCard, this.CharacterCard, X, DamageType.Infernal, true, cardSource: GetCardSource());
                 if (UseUnityCoroutines)
