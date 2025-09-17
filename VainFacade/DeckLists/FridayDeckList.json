@@ -63,8 +63,8 @@
 			],
 			"body": [
 				"[y=0.999]Increase lightning damage dealt to {Friday} by 1.[/y]",
-				"When {Friday} would be dealt damage by a source other than {Friday}, you may attune this card to that damage's type.",
-				"Each time {Friday} is dealt damage of a type this card is attuned to, reduce damage of that type dealt to {Friday} by 1 until this card is attuned to another type or this card leaves play."
+				"When {Friday} would be dealt damage by a source other than herself, you may [u]attune[/u] this card to that damage's type.",
+				"Each time {Friday} is dealt damage of a type this card is [u]attuned[/u] to, reduce damage of that type dealt to {Friday} by 1 until this card is [u]attuned[/u] to another type or this card leaves play."
 			],
 			"icons": [
 				"IncreaseDamageTakenLightning",
@@ -118,7 +118,7 @@
 				"limited"
 			],
 			"body": [
-				"When {Friday} would be dealt 5 or more damage from a single source, you may reduce that damage by up to 3."
+				"When {Friday} would be dealt 5 or more damage from a single source, reduce that damage by up to 3."
 			],
 			"powers": [
 				"Reveal cards from the top of your deck until 2 Mimicries are revealed. Put one into your hand or into play. Shuffle the remaining revealed cards into your deck. If a card entered play this way, destroy this card."
@@ -186,7 +186,7 @@
 				"limited"
 			],
 			"body": [
-				"When {Friday} would deal a type of damage that has been dealt by a source other than {Friday} since the end of your last turn, you may increase that damage by 1."
+				"When {Friday} would deal a type of damage that has been dealt by a source other than herself since the end of your last turn, you may increase that damage by 1."
 			],
 			"powers": [
 				"Select a damage type, then repeat this text 3 times: {Friday} deals 1 target 1 damage of that type. Reduce damage dealt to that target by 1 this turn."
@@ -366,7 +366,7 @@
 			"body": [
 				"Reduce damage dealt to {Friday} by 1.",
 				"Once per turn when {Friday} deals damage, she may deal 1 damage of the same type to the same target.",
-				"At the end of your turn, you may discard a card. If you do not, {Friday} deals each target other than {Friday} 1 psychic damage each."
+				"At the end of your turn, you may discard a card. If you do not, {Friday} deals each target other than {Friday} 1 psychic damage."
 			],
 			"icons": [
 				"ReduceDamageTaken",
@@ -444,10 +444,10 @@
 				"limited"
 			],
 			"body": [
-				"When this card is destroyed, {Friday} deals 1 target 1 irreducible fire damage or destroys 1 environment or ongoing card."
+				"When this card is destroyed, destroy an ongoing or environment card, or {Friday} deals 1 target 1 irreducible fire damage."
 			],
 			"powers": [
-				"Select a hero. Destroy any number of their ongoing or equipment cards. For each card destroyed this way, {Friday} deals 1 target 1 irreducible fire damage or destroys an ongoing or environment card. Destroy this card."
+				"Select a hero. Destroy any number of their ongoing or equipment cards. For each card destroyed this way, destroy an ongoing or environment card or {Friday} deals 1 target 1 irreducible fire damage. Destroy this card."
 			],
 			"icons": [
 				"DealDamageFire",
