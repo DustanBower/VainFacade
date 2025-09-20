@@ -46,7 +46,7 @@ namespace VainFacadePlaytest.Doomsayer
                 new Function(httc, "Discard a card", SelectionType.DiscardCard, () => base.GameController.SelectAndDiscardCard(httc, responsibleTurnTaker: httc.TurnTaker,cardSource:GetCardSource()), httc.HeroTurnTaker.HasCardsInHand, $"{httc.Name} has no ongoing or equipment cards in play"),
                 new Function(httc, "Destroy one of your ongoing or equipment cards", SelectionType.DestroyCard, () => base.GameController.SelectAndDestroyCard(httc, new LinqCardCriteria((Card c) => c.Owner == httc.TurnTaker && (IsOngoing(c) || IsEquipment(c)),"ongoing or equipment"),false, cardSource:GetCardSource()), FindCardsWhere((Card c) => c.IsInPlayAndHasGameText && c.Owner == httc.TurnTaker && (IsOngoing(c) || IsEquipment(c))).Count() > 0,$"{httc.Name} has no cards in hand")
                 };
-            SelectFunctionDecision selectFunction = new SelectFunctionDecision(base.GameController, base.HeroTurnTakerController, functionChoices, false, null, $"{httc.Name} has no cards in hand and no ongoing or equipment cards in play", null, GetCardSource());
+            SelectFunctionDecision selectFunction = new SelectFunctionDecision(base.GameController, httc, functionChoices, false, null, $"{httc.Name} has no cards in hand and no ongoing or equipment cards in play", null, GetCardSource());
             IEnumerator choose = base.GameController.SelectAndPerformFunction(selectFunction);
             if (base.UseUnityCoroutines)
             {
