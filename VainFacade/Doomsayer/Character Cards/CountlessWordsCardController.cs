@@ -78,11 +78,11 @@ namespace VainFacadePlaytest.Doomsayer
         {
             IEnumerable<Function> functionChoices = new Function[2]
                 {
-            new Function(base.HeroTurnTakerController, "Destroy an ongoing", SelectionType.DestroyCard, () => base.GameController.SelectAndDestroyCard(cardController.HeroTurnTakerController, new LinqCardCriteria((Card c) => IsOngoing(c), "ongoing"),false, cardSource:GetCardSource())),
-            new Function(base.HeroTurnTakerController, "Increase the next damage dealt to {Doomsayer} by 3", SelectionType.IncreaseDamage, IncreaseResponse)
+            new Function(cardController.HeroTurnTakerController, "Destroy an ongoing", SelectionType.DestroyCard, () => base.GameController.SelectAndDestroyCard(cardController.HeroTurnTakerController, new LinqCardCriteria((Card c) => IsOngoing(c), "ongoing"),false, cardSource:GetCardSource())),
+            new Function(cardController.HeroTurnTakerController, "Increase the next damage dealt to {Doomsayer} by 3", SelectionType.IncreaseDamage, IncreaseResponse)
                 };
 
-            SelectFunctionDecision selectFunction = new SelectFunctionDecision(base.GameController, base.HeroTurnTakerController, functionChoices, false, null, null, null, GetCardSource());
+            SelectFunctionDecision selectFunction = new SelectFunctionDecision(base.GameController, cardController.HeroTurnTakerController, functionChoices, false, null, null, null, GetCardSource());
             IEnumerator choose = base.GameController.SelectAndPerformFunction(selectFunction);
             if (base.UseUnityCoroutines)
             {
