@@ -59,16 +59,17 @@ namespace VainFacadePlaytest.Doomsayer
         private IEnumerator StartOfTurnResponse(PhaseChangeAction pca)
         {
             TurnTaker hero = pca.ToPhase.TurnTaker;
+            HeroTurnTakerController httc = FindHeroTurnTakerController(hero.ToHero());
             if (!hero.IsIncapacitatedOrOutOfGame)
             {
                 IEnumerable<Function> functionChoices = new Function[3]
                 {
-                new Function(base.HeroTurnTakerController, "Skip your play phase", SelectionType.SkipTurn, () => SkipPhaseResponse(hero,Phase.PlayCard)),
-                new Function(base.HeroTurnTakerController, "Skip your power phase", SelectionType.SkipTurn, () => SkipPhaseResponse(hero,Phase.UsePower)),
-                new Function(base.HeroTurnTakerController, "Skip your draw phase", SelectionType.SkipTurn, () => SkipPhaseResponse(hero,Phase.DrawCard))
+                new Function(httc, "Skip your play phase", SelectionType.SkipTurn, () => SkipPhaseResponse(hero,Phase.PlayCard)),
+                new Function(httc, "Skip your power phase", SelectionType.SkipTurn, () => SkipPhaseResponse(hero,Phase.UsePower)),
+                new Function(httc, "Skip your draw phase", SelectionType.SkipTurn, () => SkipPhaseResponse(hero,Phase.DrawCard))
                 };
 
-                SelectFunctionDecision selectFunction = new SelectFunctionDecision(base.GameController, base.HeroTurnTakerController, functionChoices, true, null, null, null, GetCardSource());
+                SelectFunctionDecision selectFunction = new SelectFunctionDecision(base.GameController, httc, functionChoices, true, null, null, null, GetCardSource());
                 IEnumerator choose = base.GameController.SelectAndPerformFunction(selectFunction);
                 if (base.UseUnityCoroutines)
                 {
