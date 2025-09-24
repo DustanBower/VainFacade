@@ -38,30 +38,30 @@ namespace VainFacadePlaytest.ParadiseIsle
         public override void AddTriggers()
         {
             base.AddTriggers();
-            // "At the end of the environment turn, 1 player may draw a card. Then, {DrWendigo} deals this card 2 toxic damage. If {DrWendigo} deals damage this way, he regains 2 HP."
-            AddEndOfTurnTrigger((TurnTaker tt) => tt == base.TurnTaker, DrawDamageHealResponse, new TriggerType[] { TriggerType.DrawCard, TriggerType.DealDamage, TriggerType.GainHP });
             // "When this card is reduced to 0 or fewer HP, each hero deals themself 1 psychic damage."
             AddBeforeDestroyAction(HeroGriefResponse);
+            // "At the end of the environment turn, {DrWendigo} regains 2 HP, then deals this card 2 toxic damage."
+            AddEndOfTurnTrigger((TurnTaker tt) => tt == base.TurnTaker, DrawDamageHealResponse, new TriggerType[] { TriggerType.DrawCard, TriggerType.DealDamage, TriggerType.GainHP });
+            //At the start of the environment turn, 1 player may draw a card.
+            AddStartOfTurnTrigger((TurnTaker tt) => tt == this.TurnTaker, (PhaseChangeAction pca) => base.GameController.SelectHeroToDrawCard(DecisionMaker, true, cardSource: GetCardSource()),TriggerType.DrawCard);
         }
 
         private IEnumerator DrawDamageHealResponse(PhaseChangeAction pca)
         {
-            // "... 1 player may draw a card."
-            IEnumerator drawCoroutine = base.GameController.SelectHeroToDrawCard(DecisionMaker, optionalSelectHero: true, cardSource: GetCardSource());
-            if (base.UseUnityCoroutines)
-            {
-                yield return base.GameController.StartCoroutine(drawCoroutine);
-            }
-            else
-            {
-                base.GameController.ExhaustCoroutine(drawCoroutine);
-            }
-            // "Then, {DrWendigo} deals this card 2 toxic damage."
             Card madDoctor = FindCard(DrWendigoIdentifier);
             if (madDoctor != null && madDoctor.IsInPlayAndHasGameText)
             {
-                List<DealDamageAction> damageResults = new List<DealDamageAction>();
-                IEnumerator damageCoroutine = DealDamage(madDoctor, base.Card, 2, DamageType.Toxic, storedResults: damageResults, cardSource: GetCardSource());
+                IEnumerator healCoroutine = base.GameController.GainHP(madDoctor, 2, cardSource: GetCardSource());
+                if (base.UseUnityCoroutines)
+                {
+                    yield return base.GameController.StartCoroutine(healCoroutine);
+                }
+                else
+                {
+                    base.GameController.ExhaustCoroutine(healCoroutine);
+                }
+
+                IEnumerator damageCoroutine = DealDamage(madDoctor, base.Card, 2, DamageType.Toxic, cardSource: GetCardSource());
                 if (base.UseUnityCoroutines)
                 {
                     yield return base.GameController.StartCoroutine(damageCoroutine);
@@ -69,19 +69,6 @@ namespace VainFacadePlaytest.ParadiseIsle
                 else
                 {
                     base.GameController.ExhaustCoroutine(damageCoroutine);
-                }
-                // "If {DrWendigo} deals damage this way, he regains 2 HP."
-                if (DidDealDamage(damageResults, fromDamageSource: madDoctor) && madDoctor.IsInPlayAndHasGameText && madDoctor.IsTarget)
-                {
-                    IEnumerator healCoroutine = base.GameController.GainHP(madDoctor, 2, cardSource: GetCardSource());
-                    if (base.UseUnityCoroutines)
-                    {
-                        yield return base.GameController.StartCoroutine(healCoroutine);
-                    }
-                    else
-                    {
-                        base.GameController.ExhaustCoroutine(healCoroutine);
-                    }
                 }
             }
             else
