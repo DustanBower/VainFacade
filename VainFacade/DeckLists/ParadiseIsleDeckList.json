@@ -14,16 +14,12 @@
 			"nemesisIdentifiers": [
 				"VainFacadePlaytest.Carnaval"
 			],
-			"hitpoints": 10,
+			"hitpoints": 12,
 			"body": [
-				"This card is immune to damage if it has not dealt damage since entering play.",
-				"The first time any target is dealt damage by any Conspirator each turn, {Bombshell} deals that target {H} projectile damage.",
-				"The first time multiple targets are dealt damage during each environment turn, {Bombshell} deals each non-Conspirator target 2 fire damage."
+				"At the start of the environment turn, {Bombshell} deals each non-conspirator target 2 fire damage."
 			],
 			"icons": [
-				"ImmuneToDamage",
-				"DealDamageProjectile",
-				"CounterDamage",
+				"StartOfTurnAction",
 				"DealDamageFire"
 			],
 			"flavorText": "Carnaval smirked. “Time for fireworks{BR}already?” The woman laughed. “Perhaps if you{BR}play your cards right, Mr. Rooke. Or if you{BR}play them wrong. Stanek wants to see you.”",
@@ -73,14 +69,12 @@
 			"keywords": [
 				"conspirator"
 			],
-			"hitpoints": 14,
+			"hitpoints": 16,
 			"body": [
-				"Reduce damage dealt to {DrWendigo} by 1.",
 				"When {DrWendigo} deals damage, add a token to this card.",
 				"At the end of the environment turn, {DrWendigo} deals the target other than himself with the second highest HP X melee damage, where X = 2 plus the number of tokens on this card."
 			],
 			"icons": [
-				"ReduceDamageTaken",
 				"AddTokens",
 				"EndOfTurnAction",
 				"DealDamageMelee"
@@ -109,20 +103,29 @@
 			"keywords": [
 				"asset"
 			],
-			"hitpoints": 7,
+			"hitpoints": 8,
 			"kind": "Hero",
 			"targetKind": "Hero",
 			"body": [
 				"This card is a hero card.",
-				"Reduce damage dealt to this card by 3. Increase damage dealt to this card by 1 for each card in the environment trash.",
 				"When this card is destroyed, remove it from the game.",
-				"At the end of the environment turn, you may reveal the top card of a deck. Discard it or replace it."
+				"Increase damage dealt to this card by 1 for each token on this card.",
+				"At the end of the environment turn, you may reveal the top card of a deck. Discard or replace it. Then add a token to this card."
 			],
 			"icons": [
-				"ReduceDamageTaken",
 				"IncreaseDamageTaken",
 				"EndOfTurnAction",
-				"Manipulate"
+				"Manipulate",
+				"AddTokens"
+			],
+			"tokenPools": [
+				{
+					"identifier": "GiselaPool",
+					"name": "Gisela Caro's Token Pool",
+					"initialValue": 0,
+					"minimumValue": 0,
+					"color": "D20E26"
+				}
 			],
 			"flavorText": "Peacekeeper grinned. “Don't worry, she's{BR}not your type anyway. Too sane.”",
 			"flavorQuotes": [
@@ -210,15 +213,13 @@
 			"keywords": [
 				"conspirator"
 			],
-			"hitpoints": 6,
+			"hitpoints": 8,
 			"body": [
-				"[y=0.90]When this card enters play, put the top {H} cards of the environment deck under it.",
-				"[y=0.90]When this card would be dealt damage, discard a card under it. If you do, prevent that damage.",
-				"[y=0.90]At the start of the environment turn, this card deals the non-Conspirator target with the second highest HP X projectile damage, where X = 2 plus the number of cards under this one."
+				"Reduce damage dealt to this card by 1.",
+				"At the start of the environment turn, this card deals the non-Conspirator target with the second highest HP X projectile damage, where X = the current HP of this card."
 			],
 			"icons": [
-				"Manipulate",
-				"CancelledDamageRed",
+				"ReduceDamageTaken",
 				"StartOfTurnAction",
 				"DealDamageProjectile"
 			],
@@ -239,14 +240,13 @@
 			"count": 1,
 			"title": "No, Mr. Rooke, I Expect You to Die",
 			"body": [
-				"At the start of the environment turn, the Conspirator with the highest HP deals the hero target with the highest HP X energy damage, where X = the number of cards in the environment trash.",
-				"If no damage was dealt this way, discard the top card of the environment deck. If a Conspirator is discarded this way, put it into play."
+				"At the start of the environment turn, this card deals the hero target with the highest HP {H + 2} irreducible energy damage.",
+				"Then destroy this card."
 			],
 			"icons": [
 				"StartOfTurnAction",
 				"DealDamageEnergy",
-				"Discard",
-				"PlayCardNow"
+				"DestroySelf"
 			],
 			"flavorText": "Burgess struggled to disengage the{BR}restraints. “I don't want to rush you, but if{BR}you take much longer, I'll need two seats{BR}for the flight home,” Carnaval said dryly.",
 			"flavorQuotes": [
@@ -264,14 +264,15 @@
 				"area"
 			],
 			"body": [
-				"When this card enters play, destroy all other Areas.",
-				"The first time each turn an environment card enters play, if it is a Conspirator, it deals the hero target with the highest HP {H - 1} projectile damage. Otherwise, play the top card of the environment deck, then 1 player may draw a card."
+				"When this card enters play, destroy all other Area cards.",
+				"Increase damage dealt to conspirators by 1.",
+				"At the start of the environment turn, each conspirator deals the non-conspirator target with the second highest HP 2 projectile damage each."
 			],
 			"icons": [
 				"DestroyEnvironment",
-				"DealDamageProjectile",
-				"PlayCardNow",
-				"DrawCardNow"
+				"IncreaseDamageTaken",
+				"StartOfTurnAction",
+				"DealDamageProjectile"
 			],
 			"flavorText": "Carnaval pressed on. “Ah, so he didn't tell{BR}you the whole building would blow this time?{BR}Guess you're meant to stay behind with us.”{BR}Bombshell shook her head. “You're lying.”",
 			"flavorQuotes": [
@@ -295,16 +296,14 @@
 			"body": [
 				"When this card enters play, destroy all other Areas.",
 				"Increase toxic and psychic damage dealt by 1.",
-				"At the end of the environment turn, reveal the top card of the environment deck. If that card is {TestSubjects}, put it into play, otherwise discard it and deal each hero target 1 toxic damage."
+				"At the end of the environment turn, play the top card of the environment deck."
 			],
 			"icons": [
 				"DestroyEnvironment",
 				"IncreaseDamageDealtToxic",
 				"IncreaseDamageDealtPsychic",
 				"EndOfTurnAction",
-				"PlayCardNow",
-				"Discard",
-				"DealDamageToxic"
+				"PlayCardNow"
 			],
 			"flavorText": "Peacekeeper discreetly activated his{BR}earpiece. “Listen, next time we do this,{BR}you get the creepy scientist. I had{BR}enough of that in the military.”",
 			"flavorQuotes": [
@@ -354,11 +353,9 @@
 			],
 			"hitpoints": 5,
 			"body": [
-				"Increase damage dealt by this card by 1 if there is a Conspirator in play with higher HP than this card.",
-				"At the end of the environment turn, this card deals the 2 non-Conspirator targets with the lowest HP 2 projectile damage each."
+				"At the end of the environment turn, this card deals the 2 non-conspirator targets with the lowest HP X projectile damage each, where X is the number of conspirators in play."
 			],
 			"icons": [
-				"IncreaseDamageDealt",
 				"EndOfTurnAction",
 				"DealDamageProjectile"
 			],
@@ -382,15 +379,16 @@
 			"targetKind": "Hero",
 			"body": [
 				"This card is a hero card.",
-				"At the end of the environment turn, 1 player may draw a card. Then, {DrWendigo} deals this card 2 toxic damage. If {DrWendigo} deals damage this way, he regains 2 HP.",
-				"When this card is reduced to 0 or fewer HP, each hero deals themself 1 psychic damage."
+				"When this card is reduced to 0 or fewer HP, each hero deals themself 1 psychic damage.",
+				"At the end of the environment turn, {DrWendigo} regains 2 HP, then deals this card 2 toxic damage.",
+				"At the start of the environment turn, 1 player may draw a card."
 			],
 			"icons": [
-				"EndOfTurnAction",
-				"DrawCardNow",
-				"DealDamageToxic",
+				"DealDamagePsychic",
+				"StartAndEndOfTurnAction",
 				"GainHP",
-				"DealDamagePsychic"
+				"DealDamageToxic",
+				"DrawCardNow"
 			],
 			"flavorText": "Dr. Wendigo rounded on{BR}Peacekeeper suddenly. “What would you{BR}know?!” he shrieked. “Science demands{BR}sacrifice! These undesirables pave the way for{BR}future greatness!”",
 			"flavorQuotes": [
@@ -412,8 +410,9 @@
 				"area"
 			],
 			"body": [
-				"When this card enters play, destroy all other Areas.",
-				"At the end of the environment turn, 1 player chooses a number between 1 and 4, selects a keyword, and discards the top card of their deck. If that card has the selected keyword, they draw X cards, otherwise their hero deals themself X psychic damage, where X = the chosen number."
+				"When this card enters play, destroy all other Area cards.",
+				"At the end of the environment turn, 1 player chooses a number between 1 and 4, selects a keyword, and discards the top card of their deck.",
+				"If that card has the selected keyword, they draw that many cards, otherwise their hero deals themself that much psychic damage."
 			],
 			"icons": [
 				"DestroyEnvironment",
@@ -441,15 +440,15 @@
 				"area"
 			],
 			"body": [
-				"When this card enters play, destroy all other Areas.",
-				"Reduce damage dealt by targets by 1.",
-				"Increase projectile damage dealt by 2.",
+				"When this card enters play, destroy all other Area cards.",
+				"Increase projectile damage dealt by 1.",
+				"Reduce non-projectile damage dealt by 1.",
 				"At the end of the environment turn, each player discards a card and draws a card."
 			],
 			"icons": [
 				"DestroyEnvironment",
-				"ReduceDamageDealt",
 				"IncreaseDamageDealtProjectile",
+				"ReduceDamageDealt",
 				"EndOfTurnAction",
 				"Discard",
 				"DrawCardNow"
