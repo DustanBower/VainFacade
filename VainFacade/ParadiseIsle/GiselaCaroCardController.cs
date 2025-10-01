@@ -15,8 +15,6 @@ namespace VainFacadePlaytest.ParadiseIsle
             : base(card, turnTakerController)
         {
             AddThisCardControllerToList(CardControllerListType.ModifiesDeckKind);
-            // Show number of cards in the environment trash
-            SpecialStringMaker.ShowNumberOfCardsAtLocation(base.TurnTaker.Trash);
         }
 
         public override bool? AskIfIsHero(Card card, CardSource cardSource)
@@ -33,17 +31,30 @@ namespace VainFacadePlaytest.ParadiseIsle
             return base.AskIfIsHeroTarget(card, cardSource);
         }
 
+        private readonly string TokenPoolIdentifier = "GiselaPool";
+
+        private TokenPool GiselaTokenPool()
+        {
+            return base.Card.FindTokenPool(TokenPoolIdentifier);
+        }
+
         public override void AddTriggers()
         {
             base.AddTriggers();
-            // "Reduce damage dealt to this card by 3."
-            AddReduceDamageTrigger((Card c) => c == base.Card, 3);
-            // "Increase damage dealt to this card by 1 for each card in the environment trash."
-            AddIncreaseDamageTrigger((DealDamageAction dda) => dda.Target == base.Card, (DealDamageAction dda) => base.TurnTaker.Trash.NumberOfCards);
+            // "Increase damage dealt to this card by 1 for each token on this card."
+            AddIncreaseDamageTrigger((DealDamageAction dda) => dda.Target == base.Card, (DealDamageAction dda) => GiselaTokenPool().CurrentValue);
             // "When this card is destroyed, remove it from the game."
             AddAfterDestroyedAction((GameAction ga) => base.GameController.MoveCard(base.TurnTakerController, base.Card, base.TurnTaker.OutOfGame, showMessage: true, cardSource: GetCardSource()));
             // "At the end of the environment turn, you may reveal the top card of a deck. Discard it or replace it."
             AddEndOfTurnTrigger((TurnTaker tt) => tt == base.TurnTaker, ReplaceDiscardResponse, TriggerType.RevealCard);
+            // When destroyed: reset number of tokens
+            AddWhenDestroyedTrigger(ResetTokensResponse, TriggerType.Hidden);
+        }
+
+        private IEnumerator ResetTokensResponse(GameAction ga)
+        {
+            GiselaTokenPool().SetToInitialValue();
+            yield return null;
         }
 
         public IEnumerator ReplaceDiscardResponse(PhaseChangeAction pca)
@@ -139,6 +150,17 @@ namespace VainFacadePlaytest.ParadiseIsle
             else
             {
                 base.GameController.ExhaustCoroutine(cleanupCoroutine);
+            }
+
+            //Then, add a token to this card.
+            IEnumerator coroutine = base.GameController.AddTokensToPool(GiselaTokenPool(), 1, GetCardSource());
+            if (base.UseUnityCoroutines)
+            {
+                yield return base.GameController.StartCoroutine(coroutine);
+            }
+            else
+            {
+                base.GameController.ExhaustCoroutine(coroutine);
             }
         }
     }

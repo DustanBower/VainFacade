@@ -19,7 +19,22 @@ namespace VainFacadePlaytest.ParadiseIsle
 
         public static readonly string ConspiratorKeyword = "conspirator";
 
-        public static LinqCardCriteria isConspirator = new LinqCardCriteria((Card c) => c.DoKeywordsContain(ConspiratorKeyword), "", false, false, "Conspirator", "Conspirators");
-        public static LinqCardCriteria isConspiratorInPlay = new LinqCardCriteria((Card c) => c.IsInPlayAndHasGameText && c.DoKeywordsContain(ConspiratorKeyword), "Conspirator in play", false, false, "Conspirator in play", "Conspirators in play");
+        public LinqCardCriteria isConspirator()
+        {
+            return new LinqCardCriteria((Card c) => base.GameController.DoesCardContainKeyword(c, ConspiratorKeyword), "", false, false, "Conspirator", "Conspirators");
+        }
+
+        public LinqCardCriteria isNonConspirator()
+        {
+            return new LinqCardCriteria((Card c) => !base.GameController.DoesCardContainKeyword(c, ConspiratorKeyword), "", false, false, "Non-Conspirator", "Non-Conspirators");
+        }
+
+        public LinqCardCriteria isConspiratorInPlay()
+        {
+            return new LinqCardCriteria((Card c) => c.IsInPlayAndHasGameText && base.GameController.DoesCardContainKeyword(c, ConspiratorKeyword), "Conspirator in play", false, false, "Conspirator in play", "Conspirators in play");
+        }
+
+        //public static LinqCardCriteria isConspirator = new LinqCardCriteria((Card c) => c.DoKeywordsContain(ConspiratorKeyword), "", false, false, "Conspirator", "Conspirators");
+        //public static LinqCardCriteria isConspiratorInPlay = new LinqCardCriteria((Card c) => c.IsInPlayAndHasGameText && c.DoKeywordsContain(ConspiratorKeyword), "Conspirator in play", false, false, "Conspirator in play", "Conspirators in play");
     }
 }

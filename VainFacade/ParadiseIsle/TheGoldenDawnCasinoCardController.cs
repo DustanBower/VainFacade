@@ -45,7 +45,7 @@ namespace VainFacadePlaytest.ParadiseIsle
                     int x = numberDecision.SelectedNumber.Value;
                     // "... selects a keyword, ..."
                     List<SelectWordDecision> wordChoices = new List<SelectWordDecision>();
-                    IOrderedEnumerable<string> keywords = from s in tt.Deck.Cards.SelectMany((Card c) => base.GameController.GetAllKeywords(c)).Distinct().Where((string s) => s.ToLower() != "one-shot") orderby s select s;
+                    IOrderedEnumerable<string> keywords = from s in tt.Deck.Cards.SelectMany((Card c) => base.GameController.GetAllKeywords(c)).Distinct() orderby s select s;
                     keywords = keywords.Concat("Another keyword - always fails to match".ToEnumerable()).OrderBy((string s) => s);
                     IEnumerator wordCoroutine = base.GameController.SelectWord(base.GameController.FindHeroTurnTakerController(tt.ToHero()), keywords, SelectionType.SelectKeyword, wordChoices, false, cardSource: GetCardSource());
                     if (base.UseUnityCoroutines)

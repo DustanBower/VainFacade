@@ -28,8 +28,6 @@ namespace VainFacadePlaytest.ParadiseIsle
         public override void AddTriggers()
         {
             base.AddTriggers();
-            // "Reduce damage dealt to {DrWendigo} by 1."
-            AddReduceDamageTrigger((Card c) => c == base.Card, 1);
             // "When {DrWendigo} deals damage, add a token to this card."
             AddTrigger((DealDamageAction dda) => dda.DidDealDamage && dda.DamageSource.IsSameCard(base.Card), (DealDamageAction dda) => base.GameController.AddTokensToPool(DrWendigoTokenPool(), 1, GetCardSource()), TriggerType.AddTokensToPool, TriggerTiming.After);
             // "At the end of the environment turn, {DrWendigo} deals the target other than himself with the second highest HP X melee damage, where X = 2 plus the number of tokens on this card."
