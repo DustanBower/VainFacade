@@ -977,6 +977,48 @@ namespace VainFacadeTest
             QuickHPCheck(0, -8, 0, 0);
         }
         #endregion
+
+		#region Bats in Zhu Long
+        [Test()]
+        public void TestBatsInZhuLong()
+        {
+            SetupGameController("VainFacadePlaytest.TheBaroness", "Legacy", "Tempest", "Bunker", "OmnitronX", "TheTempleOfZhuLong");
+            StartGame();
+            GoToStartOfTurn(legacy);
+            DestroyCards((Card c) => c.IsVillain && !c.IsCharacter);
+            GoToPlayCardPhase(FindEnvironment()); 
+
+            //"Whenever a non-character card villain target is destroyed, put it under this card."
+            //"At the end of the environment turn, if The True Form or Zhu Long is in play, put the bottom card under this card into play."
+            //"When this card is destroyed, put all cards under this card in the villain trash."
+            Card ritual = PlayCard("ResurrectionRitual");
+
+            //"Blood cards have a maximum of 4 HP and are villain bats"
+            Card cloud = PlayCard("CloudOfBats");
+
+            //"Each time the Baroness deals a hero target melee damage, pout the top card of that target's deck face down in the villain play area"
+            //Use to generate a lot of blood
+            //Card thirst = PlayCard("EndlessThirst");
+            Card fortitude = PutOnDeck("Fortitude");
+            DealDamage(baroness, legacy, 1, DamageType.Melee);
+            Card bat = GetCard("Bat", criteria: (Card c) => c.Location == fortitude.NextToLocation);
+
+            DecisionSelectCard = ritual;
+            DestroyCard(bat,legacy.CharacterCard);
+
+            PlayCard("TheTrueForm");
+            GoToEndOfTurn(FindEnvironment());
+            Console.WriteLine($"Bat is at {bat.Location.GetFriendlyName()}");
+            Console.WriteLine($"Fortitude is at {fortitude.Location.GetFriendlyName()} and is {(fortitude.IsInPlayAndHasGameText ? "":"not ")}face-up");
+
+            //Fortitude should be face-up in Legacy's play area
+            AssertAtLocation(fortitude, legacy.TurnTaker.PlayArea);
+            AssertHasGameText(fortitude);
+
+            //Bat should be off to the side
+            AssertOffToTheSide(bat);
+        }
+        #endregion
     }
 }
 
