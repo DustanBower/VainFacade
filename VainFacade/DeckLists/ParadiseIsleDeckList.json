@@ -171,10 +171,9 @@
 				"countdown"
 			],
 			"body": [
-				"When this card is destroyed, destroy all environment cards, then deal each target X fire damage and X projectile damage, where X = 1 plus the number of cards destroyed this way.",
-				"When this card has no tokens on it, destroy it.",
 				"When this card enters play, put 3 tokens on it.",
-				"At the end of the environment turn, remove a token from this card."
+				"At the end of the environment turn, remove a token from this card. Then, if there are no tokens on this card, destroy it.",
+				"When this card is destroyed, destroy all environment cards, then deal each target X fire damage and X projectile damage, where X = 1 plus the number of cards destroyed this way."
 			],
 			"icons": [
 				"DestroyEnvironment",
