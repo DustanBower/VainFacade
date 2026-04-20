@@ -32,7 +32,7 @@ namespace VainFacadePlaytest.ParadiseIsle
         {
             // "... you may move this card next to a hero."
             List<SelectCardDecision> choices = new List<SelectCardDecision>();
-            IEnumerator selectCoroutine = base.GameController.SelectCardAndStoreResults(DecisionMaker, SelectionType.MoveCardNextToCard, new LinqCardCriteria((Card c) => IsHeroCharacterCard(c), "hero character"), choices, true, cardSource: GetCardSource());
+            IEnumerator selectCoroutine = base.GameController.SelectCardAndStoreResults(DecisionMaker, SelectionType.MoveCardNextToCard, new LinqCardCriteria((Card c) => IsHeroCharacterCard(c) && c.IsInPlayAndHasGameText, "hero character"), choices, true, cardSource: GetCardSource());
             if (base.UseUnityCoroutines)
             {
                 yield return base.GameController.StartCoroutine(selectCoroutine);
