@@ -91,44 +91,83 @@ namespace VainFacadePlaytest.BastionCity
             if (this.Card.UnderLocation.HasCards)
             {
                 Card card = this.Card.UnderLocation.Cards.TakeRandom(1, base.Game.RNG).FirstOrDefault();
-                List<PlayCardAction> results = new List<PlayCardAction>();
-                IEnumerator message = base.GameController.SendMessageAction($"{card.Title} is put into play.", Priority.Medium, GetCardSource(), showCardSource: true);
-                if (base.UseUnityCoroutines)
-                {
-                    yield return base.GameController.StartCoroutine(message);
-                }
-                else
-                {
-                    base.GameController.ExhaustCoroutine(message);
-                }
 
-                IEnumerator coroutine = base.GameController.PlayCard(this.TurnTakerController, card, true, storedResults: results, cardSource: GetCardSource());
-                if (base.UseUnityCoroutines)
+                if (!IsLimitedAndInPlayEvenIfUnderCard(card))
                 {
-                    yield return base.GameController.StartCoroutine(coroutine);
-                }
-                else
-                {
-                    base.GameController.ExhaustCoroutine(coroutine);
-                }
-
-                if (DidPlayCards(results))
-                {
-                    Card played = results.FirstOrDefault().CardToPlay;
-                    if (played.IsEnvironment || played.IsOneShot)
+                    List<PlayCardAction> results = new List<PlayCardAction>();
+                    IEnumerator message = base.GameController.SendMessageAction($"{card.Title} is put into play.", Priority.Medium, GetCardSource(), showCardSource: true);
+                    if (base.UseUnityCoroutines)
                     {
-                        coroutine = DestroyThisCardResponse(null);
-                        if (base.UseUnityCoroutines)
+                        yield return base.GameController.StartCoroutine(message);
+                    }
+                    else
+                    {
+                        base.GameController.ExhaustCoroutine(message);
+                    }
+
+                    IEnumerator coroutine = base.GameController.PlayCard(this.TurnTakerController, card, true, storedResults: results, cardSource: GetCardSource());
+                    if (base.UseUnityCoroutines)
+                    {
+                        yield return base.GameController.StartCoroutine(coroutine);
+                    }
+                    else
+                    {
+                        base.GameController.ExhaustCoroutine(coroutine);
+                    }
+
+                    if (DidPlayCards(results))
+                    {
+                        Card played = results.FirstOrDefault().CardToPlay;
+                        if (played.IsEnvironment || played.IsOneShot)
                         {
-                            yield return base.GameController.StartCoroutine(coroutine);
-                        }
-                        else
-                        {
-                            base.GameController.ExhaustCoroutine(coroutine);
+                            coroutine = DestroyThisCardResponse(null);
+                            if (base.UseUnityCoroutines)
+                            {
+                                yield return base.GameController.StartCoroutine(coroutine);
+                            }
+                            else
+                            {
+                                base.GameController.ExhaustCoroutine(coroutine);
+                            }
                         }
                     }
                 }
+                else
+                {
+                    IEnumerator message = base.GameController.SendMessageAction($"{card.Title} is a limited card already in play, so it is discarded.", Priority.Medium, GetCardSource(), showCardSource: true);
+                    if (base.UseUnityCoroutines)
+                    {
+                        yield return base.GameController.StartCoroutine(message);
+                    }
+                    else
+                    {
+                        base.GameController.ExhaustCoroutine(message);
+                    }
+
+                    IEnumerator coroutine = base.GameController.MoveCard(this.TurnTakerController, card, FindCardController(card).GetTrashDestination().Location, isDiscard: true, responsibleTurnTaker: this.TurnTaker, cardSource: GetCardSource());
+                    if (base.UseUnityCoroutines)
+                    {
+                        yield return base.GameController.StartCoroutine(coroutine);
+                    }
+                    else
+                    {
+                        base.GameController.ExhaustCoroutine(coroutine);
+                    }
+                }
             }
+        }
+
+        private bool IsLimitedAndInPlayEvenIfUnderCard(Card card)
+        {
+            if (card.DoKeywordsContain("limited",true))
+            {
+                Func<Card, bool> isSameCard = (Card otherCard) => card != otherCard && otherCard.IsInPlayAndHasGameText && otherCard.QualifiedIdentifier == card.QualifiedIdentifier;
+                if (base.GameController.TurnTakerControllers.Any((TurnTakerController ttc) => ttc.TurnTaker.GetPlayAreaCards(true, false, true).Any(isSameCard)))
+                {
+                    return true;
+                }
+            }
+            return false;
         }
     }
 }
