@@ -28,7 +28,7 @@ namespace VainFacadePlaytest.Arctis
             //If Defensive Combat and Crystal Armor are in play, this prompts first to reduce the damage, then asks whether Crystal Armor or Defensive Combat should take effect first.
             //After choosing a card, if you select not to redirect or not to prvent, it prompts to reduce damage again
             //This seems wrong, but Twist the Ether does it as well in the same scenario, so it's not a problem with this card.
-            _modifyDamageAmount = AddTrigger<DealDamageAction>((DealDamageAction dd) => dd.DamageType == DamageType.Cold && (dd.Target == this.CharacterCard || (dd.DamageSource.IsCard && dd.DamageSource.Card == this.CharacterCard)), ModifyDamageAmountResponse, new TriggerType[2] { TriggerType.ReduceDamage, TriggerType.PutIntoPlay }, TriggerTiming.Before);
+            _modifyDamageAmount = AddTrigger<DealDamageAction>((DealDamageAction dd) => dd.DamageType == DamageType.Cold && (dd.Target == this.CharacterCard || (dd.DamageSource.IsCard && dd.DamageSource.Card == this.CharacterCard)), ModifyDamageAmountResponse, new TriggerType[2] { TriggerType.ModifyDamageAmount, TriggerType.PutIntoPlay }, TriggerTiming.Before);
         }
 
         //private IEnumerator DamageResponse(DealDamageAction dda)

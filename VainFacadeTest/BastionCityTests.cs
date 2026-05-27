@@ -753,6 +753,33 @@ namespace VainFacadeTest
         }
 
         [Test()]
+        public void TestPlayingBothSidesLimited()
+        {
+            SetupGameController("Apostate", "Ra", "Legacy", "Bunker", "VainFacadePlaytest.Burgess", "VainFacadePlaytest.BastionCity");
+            StartGame();
+
+            //When this card enters play, put the top card of each deck under it.
+            //At the end of the environment turn, a player may discard 2 cards. If they do not, put the top card of the villain deck under this card.
+            //At the start of the environment turn, put a random card from under this card into play. If a one-shot or environment card is played this way, destroy this card.
+            Card fortitude = PutOnDeck("Fortitude");
+            Card ammo = PutOnDeck("AmmoDrop");
+            Card blazing = PutOnDeck("BlazingTornado");
+            Card pistol = PutOnDeck("S9PServicePistol");
+            Card imp = PutOnDeck("ImpPilferer");
+            Card grim = PutOnDeck("GrimSebastian");
+
+            Card sides = PlayCard("PlayingBothSides");
+            MoveCards(FindEnvironment(), new Card[] { pistol, ammo, blazing, imp, grim }, (Card c) => c.NativeTrash);
+            //Card pistol2 = GetCard("S9PServicePistol", 0, (Card c) => !c.IsInPlay);
+            //PlayCard(pistol2);
+            Card fortitude2 = GetCard("Fortitude", 0, (Card c) => !c.IsInPlay);
+            PlayCard(fortitude2);
+
+            GoToStartOfTurn(bastion);
+            AssertInTrash(fortitude);
+        }
+
+        [Test()]
         public void TestPlayingBothSidesStartOneShot()
         {
             SetupGameController("Apostate", "Ra", "Legacy", "Bunker", "Tachyon", "VainFacadePlaytest.BastionCity");
