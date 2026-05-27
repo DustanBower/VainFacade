@@ -1,11 +1,11 @@
 {
-    "title": "Vain Facade (playtesting)",
+    "title": "Vain Facade (beta)",
     "author": "Tonitrus",
     "description": [
-      "Playtesting mod for Vain Facade custom expansion.",
-      "Decks on this mod are considered to be in Beta. They've been extensively tested by me and tested by others as well. They have placeholder art, including all cutouts. They may require minor tweaks but are not expected to change unless issues arise. I am conservative on my designations, so what I call Beta, most would probably consider finalized. Additionally, I won't consider any deck finalized until it's fully arted. As I am not an artist, this will be quite a while.",
+      "Vain Facade is a custom expansion for Sentinels of the Multiverse.",
+      "Decks on this mod are considered to be in Beta. They've been extensively tested by me and tested by others as well. They have placeholder art, including all cutouts. They may require minor tweaks but are not expected to change unless issues arise. I am conservative on my designations, so what I call Beta, most would probably consider finalized. I'm doing a minor simplification pass and will be marking things as final once that's done.",
       "Music for Environments and Villains is done.",
-      "Decks in earlier states are available on my TTS mod. Once decks are finalized, I'll put them up on another mod.",
+      "Decks in earlier states are available on my TTS mod.",
       "Discord for bugs, etc.: https://discord.gg/xP5h3cVR3s",
       "Currently available:",
       "Heroes:",
@@ -38,7 +38,7 @@
     "namespace": "VainFacadePlaytest",
     "dll": "VainFacadePlaytest.dll",
     "publishedFileId": 2835111137,
-    "version": "0.24.4",
+    "version": "0.24.5",
     "color": "232370",
     "manualTags": [],
     "decks": {
