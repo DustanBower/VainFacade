@@ -16,7 +16,14 @@ namespace VainFacadePlaytest.Node
         public OpenLineCardController(Card card, TurnTakerController turnTakerController)
             : base(card, turnTakerController)
         {
+            base.SpecialStringMaker.ShowSpecialString(OpenLineSpecialString).Condition = () => this.Card.IsInPlayAndHasGameText;
+        }
 
+        private string OpenLineSpecialString()
+        {
+            //Build special string for how many times Open Line has been used this turn, since it's limited to 3
+            int timesUsed = GetCardPropertyJournalEntryInteger(DrawPlayCount).GetValueOrDefault(0);
+            return $"{this.Card.Title} has been used {timesUsed} {(timesUsed == 1 ? "time" : "times")} this turn.";
         }
 
         public override bool IsValidPlayArea(TurnTaker tt)
@@ -27,6 +34,9 @@ namespace VainFacadePlaytest.Node
 
         private bool ReplacingActionByNode = false;
         private bool ActionToReplaceIsDraw = false;
+
+        //Card property name for counting number of uses
+        private const string DrawPlayCount = "OpenLineDrawPlayCount";
 
         public override CustomDecisionText GetCustomDecisionText(IDecision decision)
         {
@@ -81,8 +91,20 @@ namespace VainFacadePlaytest.Node
         {
             base.AddTriggers();
             // "When you or that play area's owner would draw or play a card, the other may do so instead."
-            AddTrigger((DrawCardAction dca) => base.TurnTaker.IsHero && base.Card.Location.HighestRecursiveLocation.OwnerTurnTaker.IsHero && (dca.HeroTurnTaker == base.TurnTaker.ToHero() || dca.HeroTurnTaker == base.Card.Location.HighestRecursiveLocation.OwnerTurnTaker.ToHero()) && this.Card.BattleZone == this.TurnTaker.BattleZone, OfferDrawExchangeResponse, new TriggerType[] { TriggerType.CancelAction, TriggerType.DrawCard }, TriggerTiming.Before);
-            AddTrigger((PlayCardAction pca) => base.TurnTaker.IsHero && base.Card.Location.HighestRecursiveLocation.OwnerTurnTaker.IsHero && (pca.ResponsibleTurnTaker == base.TurnTaker || pca.ResponsibleTurnTaker == base.Card.Location.HighestRecursiveLocation.OwnerTurnTaker) && !pca.IsPutIntoPlay && this.Card.BattleZone == this.TurnTaker.BattleZone, OfferPlayExchangeResponse, new TriggerType[] { TriggerType.CancelAction, TriggerType.PlayCard }, TriggerTiming.Before);
+            //Added check for CardSource not being this card, so that it only asks you once if the other hero should draw/play
+            //Added check of card property DrawPlayCount to limit number of uses per turn
+            AddTrigger((DrawCardAction dca) => dca.CardSource?.Card != this.Card && GetCardPropertyJournalEntryInteger(DrawPlayCount).GetValueOrDefault(0) < 3 && base.TurnTaker.IsHero && base.Card.Location.HighestRecursiveLocation.OwnerTurnTaker.IsHero && (dca.HeroTurnTaker == base.TurnTaker.ToHero() || dca.HeroTurnTaker == base.Card.Location.HighestRecursiveLocation.OwnerTurnTaker.ToHero()) && this.Card.BattleZone == this.TurnTaker.BattleZone, OfferDrawExchangeResponse, new TriggerType[] { TriggerType.CancelAction, TriggerType.DrawCard }, TriggerTiming.Before);
+            AddTrigger((PlayCardAction pca) => pca.CardSource?.Card != this.Card && GetCardPropertyJournalEntryInteger(DrawPlayCount).GetValueOrDefault(0) < 3 && base.TurnTaker.IsHero && base.Card.Location.HighestRecursiveLocation.OwnerTurnTaker.IsHero && (pca.ResponsibleTurnTaker == base.TurnTaker || pca.ResponsibleTurnTaker == base.Card.Location.HighestRecursiveLocation.OwnerTurnTaker) && !pca.IsPutIntoPlay && this.Card.BattleZone == this.TurnTaker.BattleZone, OfferPlayExchangeResponse, new TriggerType[] { TriggerType.CancelAction, TriggerType.PlayCard }, TriggerTiming.Before);
+
+            //Reset card property DrawPlayCount when going to the next turn
+            AddPhaseChangeTrigger((TurnTaker tt) => true, (Phase p) => true, (PhaseChangeAction pca) => pca.FromPhase?.TurnTaker != pca.ToPhase?.TurnTaker, ResetCount, new TriggerType[] { TriggerType.Hidden }, TriggerTiming.Before, true);
+        }
+
+        private IEnumerator ResetCount(PhaseChangeAction pca)
+        {
+            //Reset card property DrawPlayCount
+            SetCardProperty(DrawPlayCount, 0);
+            yield return null;
         }
 
         private IEnumerator OfferDrawExchangeResponse(DrawCardAction dca)
@@ -110,6 +132,10 @@ namespace VainFacadePlaytest.Node
                 }
                 if (DidPlayerAnswerYes(choice))
                 {
+                    //Add 1 to card property DrawPlayCount if player chooses to replace action
+                    int value = GetCardPropertyJournalEntryInteger(DrawPlayCount).GetValueOrDefault(0) + 1;
+                    SetCardProperty(DrawPlayCount, value);
+
                     IEnumerator cancelCoroutine = CancelAction(dca);
                     if (base.UseUnityCoroutines)
                     {
@@ -157,6 +183,10 @@ namespace VainFacadePlaytest.Node
                 }
                 if (DidPlayerAnswerYes(choice))
                 {
+                    //Add 1 to card property DrawPlayCount if player chooses to replace action
+                    int value = GetCardPropertyJournalEntryInteger(DrawPlayCount).GetValueOrDefault(0) + 1;
+                    SetCardProperty(DrawPlayCount, value);
+
                     IEnumerator cancelCoroutine = CancelAction(pca);
                     if (base.UseUnityCoroutines)
                     {
