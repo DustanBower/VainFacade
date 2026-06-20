@@ -274,7 +274,7 @@
 			],
 			"body": [
 				"Play this card in another hero's play area. Cards in this play area and {NodeCharacter}'s are [i]Connected.[/i]",
-				"When you or that play area's owner would draw or play a card, the other may do so instead."
+				"3 times each turn, when you or that play area's owner would draw or play a card, the other may do so instead."
 			],
 			"icons": [
 				"DrawCardNow",
